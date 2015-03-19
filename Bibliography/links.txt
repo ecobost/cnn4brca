@@ -1,0 +1,11 @@
+http://www.cancer.gov/cancertopics/types/breast/mammograms-fact-sheet
+
+
+Order of work
+Simple ConvNets for 2d mammograms
+	microcalcif
+	masses
+	or the two
+Advanced convnets for 2d mammograms (CNN-SVM, other optimized ConvNets)
+ConvNet ensembles | ConvNets for digital tomosinthesis 3D
+
