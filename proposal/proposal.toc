@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Related work}{1}{subsection.1.1}
+\contentsline {section}{\numberline {2}Problem Definition}{2}{section.2}
+\contentsline {section}{\numberline {3}Objectives}{2}{section.3}
+\contentsline {section}{\numberline {4}Hypotheses}{3}{section.4}
+\contentsline {section}{\numberline {5}Background}{3}{section.5}
+\contentsline {section}{\numberline {6}Methodology}{3}{section.6}
+\contentsline {section}{\numberline {7}Work Plan}{3}{section.7}

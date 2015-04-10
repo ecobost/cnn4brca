@@ -1,0 +1,88 @@
+Yet to write
+
+We offer an overview of some essential concepts for Cancer~ref(Cancer subsection), Neural Netrowkrs and the mamografic database used in this document~ ref{Seciton 3,4}
+
+\begin{comment}
+Elaborar el {\it Marco Teórico} consiste en sustentar teóricamente el estudio.
+ Ello
+implica una revisión bibliográfica del estado del arte, la construcción de una
+perspectiva teórica, las técnicas, las investigaciones y antecedentes
+relacionados con el problema y que establecen los fundamentos para llevar a
+cabo la investigación. \\
+
+La ecuación \ref{eqejem} muestra un ejemplo de {\bf expresión matemática:}
+
+
+\begin{equation}
+ \label{eqejem}
+  \begin{array}{c}
+    k_1f(x_n, y_n) + k_2\left[ f(x_n, y_n) + \alpha
+      hf_x(x_n,y_n) + \beta hf(x_n,y_n)f_y(x_n,y_n) \right] \\
+    = f(x_n,y_n) + \frac{h}{2}\left[
+      f(x_n,y_n)f_y(x_n,y_n) \right]
+  \end{array}
+\end{equation}
+\end{comment}
+
+\begin{comment}
+Breast Cancer
+Definition
+Factors(age, sex and race)
+Incidence, mortality and survival rate definitino
+Stages
+say on which stages people is normally diagnosesd, localized (35%), deviante()
+Diagnosis
+	Mammograms
+		Defintion(screening vs more advanced)
+		read by expert radiologists
+		Figure
+		Limitaitons: high false positive rate and altough there is a debate on the need for further screening (with costs estimated to be $4billion) it is still the best tool we have to detect signs of possible breast cancer u=in an ealry stage before it has spread to other parts of the body(metastasis)		Healty vs microcalcififcations
+		...
+	Biuopsy
+	3d mammogrsmas. difgital tomosintesis, tsd
+Signs
+	Microcalcifications
+	Masses
+In this work we will center on using mammogrmas (2d Xray images of the breast) to detect microcalcifications and masses and diagnos its likelihood of breast cancer, i.e, make a prediction on the probability that a mmaogram signals breast cancer. this is of importance because of ... 
+ 
+
+aartificial neural networks
+they come from 1960
+A n artificial neruon has a set iof inputs representative of the dendrites on treal neurons, an output  that represents the axon and an activation funciton (traditionally a sigmoid function) that represents the computation or preference of a given neuron.
+
+Trained via backpropagation
+
+Convolutional networks 
+Convolutional networks, also known as ConvNets or CNNs, were first introduced by Fukushima et al. )=sskks and later refined and exapnded by LeCun)=. The first convolutional networks, called neocognitron (from neocortex and pereptron) are a natural expansion of simple Artificial Neural  Networks inspied on the way our neocortex process visual information.
+Each neuron does that and that, actrivation function, figure. this neurons were used on  this and this.
+Lecun workes on this and this,.. adding that and that and showing its applicability in that and that. 
+More recently, various advances have been fostered by the interest on deep learning and more computational power as... dropout, ReLus, ...
+
+GPU gains and recent advances have nmad econvnets one of the leading options for o ject recognition tasks in visual image recognition as imageNet, ...
+They have replaced standard methods that require handcrafted feature selection on various subjects
+
+although, convnets were inspired on neocortex they ghave bracehd out of this initially simple convolutional netowkrs and become veruy different in aras of finding improvemest over tye classification and without regard of the biology behiund oit.thus, they do not represent a valid model of the ewya the human braoin processes visual information. Reagardless of that, some davances in neuronscience still inspire new advancement s in convnets and some of the onvnets results ahave shown some results in neuroscience to be true (cite...)
+
+Training on backpropagation, 
+
+side note on language
+I will sometimes refer to convolutional netowkrs with no pooling or maxout layers as simple convolutional networks and to those developed more recently simply as convolutional networks. i would also put the parameters of each onvnet to avoid any confusion
+also, even thpough Although the convolutinoal nmetworks are an artificial neutral network AND THUS INSPIRED INTITIALYY ON THE BIOLOGY OF NEURAL NETWORKS, on this work I would USE THE NMORE STANDAR NAMES OVER THE BIOINSPIRED ONES, THUS prefer to use more standard names to defoine its parts over the more bioinspireds, thjus, units over neurons and convolutional networks over convolutiona networks. Other authors prefer the more bioinspired terms and both could be find interchangaebky in the literature
+
+Mammogram databases
+Description of what we have?
+
+Measuring a classifier
+An unbalanced classification task is  a proble,m that has only a small number of examples of either one of the classes, in this case we have to deal with learning a classfiication function (via a classifer such as ConvNets) when presented with an unbalanced dat set and measuring the quality of given classifier. Breats cancer classificaiton, as well as the classificaiton of rarediseases(not common in the population) is an unbalanced classificait0on taks because  from a randomly selected sample of patients only a small number will have breast cancer/ belong to the positive class.
+The quality of a classifer trained in a balanced class is usually measured using the accuracy on an independent test set, i.e. the proportion of correct classifications it maskes on the test set. nonetheles, for unbalanced classesth is is not a good measure for unbalanced classes as those some bad classifiers can achieve very good accuracy, for instance a classifier that predicts that a patient does not have breast cancer will be correct around x% of the time but it is clearly not a good predictor for our problem. 
+FOr unblanced classes a set of metrics calculated in base of its confusion matrix is used. A confusion matrix is this>
+
+and some of the most used classifiers are 
+Sensitivity used in mediciine
+Specificity or Recall used in medicine
+Precision
+F1-score
+AUC
+We will generally present the results of specificity, Sensitivity and F1-score and use them to measure the perfomrance of our classifiers. 
+
+\end{comment}

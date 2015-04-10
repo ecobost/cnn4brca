@@ -1,0 +1,100 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Written by: Erick Cobos Tandazo (a01184587@itesm.mx)
+% Date: 7-April-2014
+%
+% Project proposal for my Master's thesis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}	% Spanish accents
+\usepackage{proposal} 		% Title pages and overall format
+\usepackage{verbatim} 		% Block Comm\usepackage{textcomp}ents
+\usepackage{textcomp}		% For the degree sign(°)
+\usepackage{hyperref}		% To manage \url
+
+
+% Set properties of the document
+\propautor{Erick Michael Cobos Tandazo}		% Author name
+\propautormat{1184587}			% Author ID number
+\propmes{April 7}			% Date (month)
+\propanio{2015}				% Year
+\propcd{Monterrey, N.L.}		% Place
+\proptitulo{Early detection and diagnosis of breast cancer lessions using (deep) convolutional neural networks in digital mammographic images.(working title)}	% Title
+\propasesor{Dr.~Hugo Terashima Mar\'{i}n}	% Advisor
+\propsinodalA{Por definir}		% First supervisor
+\propsinodalB{Por definir}		% Second supervisor.
+\propdirectorPG{Dr.~Ram\'{o}n Brena Pinero}	% Program Director
+\propPG{Ingenier\'{i}a y Ciencias}		% Program Departnment
+\propcampus{Monterrey}			% University Campus
+\propgrado{Master in Science}		% Academic degree
+\propgradosiglas{M.Sc.}			% Academic degree abbreviation
+\propespecialidad{Intelligent Systems}	% Subject
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\propportada                        % Genera la portada.
+\proppagfirmas                      % Genera la pagina de firmas.
+\thispagestyle{empty}
+\tableofcontents                    % Genera indice general.
+\newpage
+\sloppy
+\newpage
+
+\pagenumbering{arabic}
+
+\begin{abstract}
+Yet to write
+
+\begin{comment}
+Normalmente, cuando se presenta un documento de este tipo o un artículo, es
+importante incluir un {\it Resumen}, que en alrededor de 200 palabras 
+informa al
+lector los aspectos más relevantes del trabajo. Esto es de importancia, por
+ejemplo, para buscar bibliografía o seleccionar aquellos documentos que en
+determinado momento son de interés para alguien.  
+
+Las preguntas a contestar en el Resumen son las siguientes:
+\begin{itemize}
+	\item ?`Para qué Maestría es la Propuesta?
+	\item ?`Cuál es la el contexto y situación problemática en la que se encuentra?
+	\item ?`Qué problema particular se piensa resolver? ¿por qué se quiere
+	  resolver  y para qué?
+	\item ?`Qué se ha hecho antes?
+	\item ?`Cómo se piensa resolver?
+	\item ?`Qué se espera obtener?
+\end{itemize}
+\end{comment}
+\end{abstract}
+
+
+\section{Introduction}
+\input{introduction}
+
+\section{Problem Definition}
+\input{probdefinition}
+
+\section{Objectives}
+\input{objectives}
+
+\section{Hypotheses}
+\input{hypotheses}
+
+\section{Background}
+\input{background}
+
+\section{Methodology}
+\input{methodology}
+
+\section{Work Plan}
+\input{workplan}
+
+% Bibliography
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+\end{document} 

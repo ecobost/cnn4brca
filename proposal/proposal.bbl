@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{CSR2014}
+Nadia Howlader, Anne~M. Noone, Martin~F. Krapcho, J.~Garshell, Denise~A.
+  Miller, Sean~F. Altekruse, Carol~L. Kosary, Mandi Yu, Jennifer Ruhl, Zaria
+  Tatalovich, Angela~B. Mariotto, Denise~R. Lewis, Huann~S. Chen, Eric~J.
+  Feuer, and Kathleen~A. Cronin.
+\newblock Seer cancer statistics review, 1975-2011.
+\newblock electronic, National Cancer Institute, Bethesda, MD, April 2014.
+\newblock Available on \url{seer.cancer.gov/csr/1975_2011/}.
+
+\bibitem{MammogramFactSheet2014}
+National~Cancer Institute.
+\newblock Mammogram fact sheet.
+\newblock electronic, National Cancer Institute, Bethesda, MD, March 2014.
+\newblock Available on
+  \url{http://www.cancer.gov/cancertopics/types/breast/mammograms-fact-sheet}.
+
+\bibitem{Lo1995}
+Shih-Chung~B. Lo, Heang-Ping Chan, Jyh-Shyan Lin, Huai Li, Matthew~T. Freedman,
+  and Seong~K. Mun.
+\newblock Artificial convolution neural network for medical image pattern
+  recognition.
+\newblock {\em Neural Networks}, 8(7–8):1201 -- 1214, 1995.
+\newblock Automatic Target Recognition.
+
+\end{thebibliography}

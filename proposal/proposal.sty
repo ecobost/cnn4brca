@@ -1,0 +1,288 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modified by: Erick Cobos Tandazo (a01184587@itesm.mx)
+% Date: April 07, 2015
+%
+% Copyright notice left as is (under request of authors).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% Archivo: propuesta.sty, version 1.1, Marzo de 2003
+%%% ==================================================
+%%%
+%%% Ultima modificacion: Marzo 14 de 2003.
+%%% ------------------------------------------
+%%%
+%%% Copyright (c) 2003 por Horacio Martinez Alfaro.  Derechos reservados.
+%%% Este archivo es gratuito y puede ser modificado o distribuido siempre y
+%%% cuando se cumplan las siguientes condiciones:
+%%%
+%%% 1. Este aviso de copyright se mantenga sin modicarlo en todas las copias
+%%%    modificadas.
+%%% 2. Si alguien modifica este archivo, NO DEBERA utilizar el nombre original
+%%%    de este archivo.
+%%%
+%%% Autor: Dr. Horacio Martinez Alfaro
+%%%        hma@itesm.mx
+%%%        Centro de Sistemas Inteligentes
+%%%        Tec de Monterrey, Campus Monterrey
+%%%
+%%% En este archivo se definen macros utilizadas para preparar una propuesta
+%%% de tesis para el Instituto Tecnologico y de Estudios Superiores de
+%%% Monterrey.  No se garantiza que cumpla con TODAS las especificaciones de
+%%% los Programas de Graduados del ITESM.  Sin embargo, si ud. encuentra algo
+%%% que no cumpla con dichas especificaciones o con algun paquete de macros
+%%% para LaTeX, por favor envieme un mensaje a <hma@itesm.mx> y tratare de
+%%% resolver el problema.
+%%%
+%%% Uso:
+%%% ====
+%%%
+%%% Para utilizar este archivo con LaTeX2e, asegurese que la variable de
+%%% ambiente TEXINPUTS contiene el directorio en donde se encuentra este
+%%% archivo.  Incluya este archivo como un paquete en el preambulo:
+%%%
+%%% \documentclass[...]{article}
+%%% \usepackage{propuesta}
+%%%
+%%% Un ejemplo de prop se proporciona en el archivo ``propuesta-ej.tex'', el
+%%% cual se lo podra encontrar en el mismo lugar que encontro este archivo.
+%%%
+%%% Nombres de los comandos:
+%%% ========================
+%%%
+%%% TODOS los comandos utilizados en este archivo que se utilizan para
+%%% formatear la propuesta comienzan con ``prop'' (por ejemplo, \propautor).
+%%% El valor de dichos comandos se puede cambiar indicando el cambio despues
+%%% del comando y entre llaves (``{valor del comando}''), por ejemplo:
+%%%
+%%% \propautor{Nombre ApellidoMaterno ApellidoPaterno}
+%%%
+%%% despues del comando \usepackage.
+%%%
+%%% La siguiente lista de variables relacionadas con el estilo de prop, asi
+%%% como sus valores default:
+%%%
+%%% \propautor      %% Nombre del autor; default: "Borrego Estudioso".
+%%% \propautormat   %% Matricula del autor; default: "000000".
+%%% \propmes        %% Mes de graduacion; default: "Marzo".
+%%% \propanio       %% Anio de graduacion; default: "2003".
+%%% \proptitulo     %% Titulo de la prop; defaults to "Titulo de la prop".
+%%% \proptitulotamanio %% Tama&o del titulo; default: \Large.
+%%% \propasesor     %% Nombre del asesor de la prop; default: "Asesor
+%%%                 %%   Principal"
+%%% \propsinodalA   %% Nombre del primer sinodal
+%%% \propsinodalB   %% Nombre del segundo sinodal
+%%% \propdirectorPG %% Nombre del director del Programa de Graduados
+%%% \propPG         %% Nombre del Programa de Graduados
+%%% \propcampus     %% Campus del ITESM
+%%%
+%%% La mayoria de los valores default satisfaceran los requerimientos del
+%%% Programa de Graduados; sin embargo, el usuario debera MODIFICAR, por lo
+%%% menos, los siguientes comandos:
+%%%
+%%% \propautor
+%%% \propautormat
+%%% \propmes
+%%% \propanio
+%%% \proptitulo
+%%% \propasesor
+%%% \propsinodalA
+%%% \propsinodalB
+%%% \propespecialidad
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\typeout{*****************************************************}
+\typeout{* \space Estilo para Propuesta de Tesis en el ITESM, Campus Monterrey \space *}
+\typeout{* \space Version 1.0, Mar 2009 \space\space\space\space\space
+  \space\space\space\space\space\space\space\space\space\space\space
+  \space\space\space\space\space\space\space
+  \space\space\space\space *}
+\typeout{* \space Escrito por Horacio Martinez Alfaro-Modificado Hugo
+  Terashima Marín M2009 \space\space\space
+  \space\space\space\space\space\space\space\space\space\space *}
+\typeout{*\space\space\space\space\space\space\space\space\space\space
+  \space\space\space\space Centro de Computación Inteligente y Robótica
+  \space\space\space *}
+\typeout{*\space\space\space\space\space\space\space\space\space\space
+  \space\space\space\space ITESM Campus Monterrey \space\space\space
+  \space\space\space\space\space\space\space\space\space\space\space *}
+\typeout{*****************************************************}
+
+\usepackage{graphicx,setspace}
+
+%%%
+%%% Margenes de la hoja.
+%%% 
+%%% A continuacion se definen los margenes para una hoja de 8.5x11in:
+%%% Margen izquierdo: 35 mm
+%%% Margen derecho:   25 mm (1in)
+%%% Margen superior:  30 mm
+%%% Margen inferior:  25 mm (1in)
+\setlength{\textheight}{8.816in}
+\setlength{\oddsidemargin}{0.378in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.122in}
+\setlength{\topmargin}{0.184in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\parindent}{5ex}
+
+%%%
+%%% Valores default
+%%%
+\gdef\@tecdemonterrey{Instituto Tecnol\'{o}gico y de Estudios Superiores de Monterrey}
+\def\propautor#1{\gdef\@propautor{#1}}  \propautor{Borrego Estudioso}
+\def\propautormat#1{\gdef\@propautormat{#1}}  \propautormat{000000}
+\def\propmes#1{\gdef\@propmes{#1}}      \propmes{Mayo}
+\def\propanio#1{\gdef\@propanio{#1}}    \propanio{2012}
+\def\propcd#1{\gdef\@propcd{#1}}    \propcd{Monterrey, N.L.}
+
+\newcommand{\proptitulotamanio}{\Large}
+\def\proptitulo#1{\gdef\@proptitulo{{\bfseries\proptitulotamanio #1}}}
+  \proptitulo{Título de la propuesta}
+\def\propautorgradosprevios#1{\gdef\@propautorgradosprevios{#1}}
+  \propautorgradosprevios{Ing.}
+\def\propasesor#1{\gdef\@propasesor{#1}}  \propasesor{Asesor Principal}
+\def\propdireccionautor#1{\gdef\@propdireccionautor{#1}}
+  \propdireccionautor{\protect M\'{e}xico}
+\newcommand{\propaprobadapor}{Aprobado por}
+\newcommand{\propaprobadaportamanio}{\large}
+\newcommand{\proptipo}{Prop}
+\newcommand{\proptipotamanio}{\large}
+\newcommand{\proptiposize}{\large}
+\newcommand{\propgradotamanio}{\large}
+\def\propgrado#1{\gdef\@propgrado{#1}}  \propgrado{Maestro en Ciencias}
+\def\propespecialidad#1{\gdef\@propespecialidad{#1}}
+  \propespecialidad{Sistemas Inteligentes}
+\def\propgradosiglas#1{\gdef\@propgradosiglas{#1}}
+  \propgradosiglas{M.C.}
+\newcommand{\propnumerosinodal}{3}
+\def\propsinodalA#1{\gdef\@propsinodalA{#1}}
+  \propsinodalA{Sinodal1 ApPaterno ApMaterno}
+\def\propsinodalB#1{\gdef\@propsinodalB{#1}}
+  \propsinodalB{Sinodal2 ApPaterno ApMaterno}
+\def\propdirectorPG#1{\gdef\@propdirectorPG{#1}}
+  \propdirectorPG{DirectoPG ApPaterno ApMaterno}
+\def\propPG#1{\gdef\@propPG{#1}}
+  \propPG{Ingenier\'{i}a y Tecnolog\'{i}as de Informaci\'{o}n}
+\def\propcampus#1{\gdef\@propcampus{#1}}  \propcampus{Monterrey}
+\newcommand{\propcomite}{\protect Comit\'{e} de Tesis:}
+\newcommand{\propcomitetamanio}{\large}
+\newcommand{\propvitaencabezado}{Vita}
+\newcommand{\propvitaencabezadotamanio}{\Large}
+\newcommand{\propreconocencabezado}{Reconocimientos}
+\newcommand{\propreconocencabezadotamanio}{\Large}
+\newcommand{\propreconocfirma}{\@propautor}
+\newcommand{\propreconocfirmatamanio}{\large}
+
+%%%
+%%% Comando para prop de maestria.  \phdthesis se proporciona por simetria.
+%%%
+\newcommand{\propmaestria}{
+    \renewcommand{\proptipo}{Prop}
+    \renewcommand{\@publicationno}{}
+    \propgrado{\protect Maestro en Ciencias}
+    \propgradosiglas{M.C.}
+    \renewcommand{\propnumerosinodal}{3}
+    \renewcommand{\propcomite}{\protect Comit\'{e} de Tesis:}}
+\newcommand{\propphd}{}
+
+%%%
+%%% Otros comandos.
+%%%
+\newcommand{\@defaultbaselinestretch}{1}
+\newcommand{\@base}[1]{\renewcommand{\baselinestretch}{#1}}
+\newcommand{\@propaprobadapor}%
+    {\textbf{\propaprobadaportamanio \propaprobadapor}}
+\newcommand{\@proptipo}{\textbf{\proptipotamanio \proptipo}}
+\newcommand{\@propcomite}{\textbf{\propcomitetamanio \propcomite}}
+\newcommand{\@propvitaencabezado}{\propvitaencabezado}
+\newcommand{\@propreconocencabezado}{\propreconocencabezado}
+\newcommand{\@propreconocfirma}%
+    {\textsc{\propreconocfirmatamanio \propreconocfirma}}
+\newcommand{\@propreconoclugar}{\propreconoclugar}
+\newcommand{\@propestudiante}{{\bfseries \propestudiantetamanio
+    \propestudiante}}
+
+%%%
+%%% Comando para generar la portada.
+%%%
+\newcommand{\propportada}{
+  \thispagestyle{empty}
+  \begin{center}
+    {\bfseries \Large \@tecdemonterrey \\[5mm]
+      \large Campus \@propcampus} \\[8mm]
+    
+    {\bfseries \large Escuela Nacional de \@propPG} \\[3mm]
+    {\bfseries Programa de Graduados} \\[1in]
+    
+    {\bfseries Maestr\'{i}a en Ciencias en \@propespecialidad}\\[1ex]
+    {\large\bfseries Propuesta de Tesis}\\[7ex]
+    
+    {\bfseries\@proptitulo} \\[8mm]
+    por \\[3mm]
+    \@propautor \\
+    \@propautormat\\
+    
+    \vfill
+    \includegraphics[width=1.5in]{plots/logo.png}\\
+    \@propcd, \@propmes\ de \@propanio
+  \end{center}
+  \newpage}
+
+%%%
+%%% Comando para generar la pagina de firmas.
+%%%
+\newdimen\@signwidth \@signwidth=6.5cm
+\def\makelines#1{\vskip 20pt\hfil\hrule width \@signwidth \vskip 4pt
+  #1 \vskip 4pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\long\def\@signbox{
+    \centering
+    \begin{minipage}[t]{\@signwidth}
+      \centering
+      \makelines{\@propasesor} {\small Asesor Principal}
+    \end{minipage} \\[2cm]
+    \begin{minipage}[t]{\@signwidth}
+      \centering
+      \makelines{\@propsinodalA} {\small Sinodal}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{\@signwidth}
+      \centering
+      \makelines{\@propsinodalB} {\small Sinodal}
+    \end{minipage} \\[14mm]
+    \begin{minipage}[t]{\@signwidth}
+      \centering
+      \makelines{\@propdirectorPG}
+      {\small Director del Programa de Maestr\'{i}a en XXXX}
+    \end{minipage}
+  }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\proppagfirmas}{
+  \thispagestyle{empty}
+  \begin{center}
+    {\bfseries \Large \@tecdemonterrey \\[5mm]
+      \large Campus \@propcampus} \\[8mm]
+    
+    {\bfseries \large Escuela Nacional de \@propPG} \\[3mm]
+    {\bfseries Programa de Graduados} \\[10mm]
+    
+    Los miembros del comit\'{e} de tesis recomendamos que la presente
+    propuesta de \@propautor\ sea aceptada para desarrollar el proyecto de
+    tesis como requisito parcial para obtener el grado acad\'{e}mico de
+    \textbf{\@propgrado}, especialidad en: \\[5mm]
+    
+    {\bfseries \@propespecialidad} \\[10mm]
+    
+    \@propcomite\\[10mm]
+    \@signbox
+    \vfill
+    \@propmes\ de \@propanio
+  \end{center}
+  \newpage}
