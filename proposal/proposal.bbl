@@ -1,20 +1,21 @@
 \begin{thebibliography}{1}
 
+\bibitem{PerformanceMammography2013}
+{Breast Cancer Surveillance Consortium}.
+\newblock Performance measures for 1,838,372 screening mammography examinations
+  from 2004 to 2008 by age--based on {BCSC} data through 2009.
+\newblock electronic, September 2013.
+\newblock Available on
+  \url{http://breastscreening.cancer.gov/statistics/performance/screening/2009/perf_age.html}.
+
 \bibitem{CSR2014}
 Nadia Howlader, Anne~M. Noone, Martin~F. Krapcho, J.~Garshell, Denise~A.
   Miller, Sean~F. Altekruse, Carol~L. Kosary, Mandi Yu, Jennifer Ruhl, Zaria
   Tatalovich, Angela~B. Mariotto, Denise~R. Lewis, Huann~S. Chen, Eric~J.
   Feuer, and Kathleen~A. Cronin.
-\newblock Seer cancer statistics review, 1975-2011.
-\newblock electronic, National Cancer Institute, Bethesda, MD, April 2014.
-\newblock Available on \url{seer.cancer.gov/csr/1975_2011/}.
-
-\bibitem{MammogramFactSheet2014}
-National~Cancer Institute.
-\newblock Mammogram fact sheet.
-\newblock electronic, National Cancer Institute, Bethesda, MD, March 2014.
-\newblock Available on
-  \url{http://www.cancer.gov/cancertopics/types/breast/mammograms-fact-sheet}.
+\newblock {SEER} cancer statistics review, 1975-2011.
+\newblock review, National Cancer Institute, Bethesda, MD, April 2014.
+\newblock Available on \url{http://seer.cancer.gov/csr/1975_2011/}.
 
 \bibitem{Lo1995}
 Shih-Chung~B. Lo, Heang-Ping Chan, Jyh-Shyan Lin, Huai Li, Matthew~T. Freedman,
@@ -23,5 +24,12 @@ Shih-Chung~B. Lo, Heang-Ping Chan, Jyh-Shyan Lin, Huai Li, Matthew~T. Freedman,
   recognition.
 \newblock {\em Neural Networks}, 8(7–8):1201 -- 1214, 1995.
 \newblock Automatic Target Recognition.
+
+\bibitem{MammogramFactSheet2014}
+{National Cancer Institute}.
+\newblock Mammogram fact sheet.
+\newblock electronic, March 2014.
+\newblock Available on
+  \url{http://www.cancer.gov/cancertopics/types/breast/mammograms-fact-sheet}.
 
 \end{thebibliography}

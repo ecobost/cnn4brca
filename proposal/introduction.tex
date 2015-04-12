@@ -1,22 +1,24 @@
 Yet to write 
-
 \begin{comment} Goes in thesis, not here because we still don't have results or discussion.
 Hook(first paragarpah) : automatic breast cancer detection is a difficult taks for current automatic computationnal systems. In this article we apply deep learning techniques to digitaml mammogrpahic images and obtain better rredults than opresneted to date. 
 \end{comment}
+
+\begin{comment}
 Cance is this and this, bereast cancer is this and this. breats cancer has high incicdence and high mortality,
 
-Breast cancer has the second highest incidence of any cancer in the United States, an estimated 14\% of all new cancer cases in 2014 were breast cancer and the third highest mortality of any cancer accounting for 6.8\% of cancer related deaths \cite{http://seer.cancer.gov/statfacts/html/breast.html}. Among women it is by large the most commonly diagnosed cancer (30.3\% of all cancers) and has the highest death rate (15.1\%) besides lung cancer.\cite{http://seer.cancer.gov/csr/1975_2011/browse_csr.php?sectionSEL=1&pageSEL=sect_01_table.29.html}. 
+Breast cancer has the highest incidence of any cancer in the United States, an estimated 14.1\% of all new cancer cases in 2015 will be breast cancer and the third highest mortality of any cancer accounting for 6.9\% of cancer related deaths \cite{http://www.cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}. Among women it is by large the most commonly diagnosed cancer (28.6\% of all cancers) and has the highest death rate (14.5\%) besides lung cancer.\cite{http://www.cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}. 
 mammograms are this and radiologist do that
 all the other things from problem definition (problem definition section does not exist on thesis just on plan. )
-
 Michael: aqui comienza lo nuevo
-In this work we will center on using mammogrmas (2d Xray images of the breast) to detect microcalcifications and masses and diagnos its likelihood of breast cancer, i.e, make a prediction on the probability that a mmaogram signals breast cancer. this is of importance because of ... 
+This work centers on using mammogrmas (2d Xray images of the breast) to detect microcalcifications and masses and diagnos its likelihood of breast cancer, i.e, make a prediction on the probability that a mmaogram signals breast cancer. this is of importance because of ... 
 this is withr the view of form part odf abigger CAd project developed in the insitution that could help radiologists in the detection of breast cancer either by proposing zones where the radiologists could take a second look, or by giving a second informed opinion on the same patient.
+
 (why convnets?)
 convnets are a natural extension to artificial neural networks that deal with images and that
 Summary of the related work part here(this guys dd it first and this guys and i'm gteting my ideas from here and there and my contribution is this...)
 We will do this and this and that (methods and plan of work)
 Goals: We want to improve over the published results, ... and know if we can a ctuallly use this  
+\end{comment}
 
 \begin{comment}
 En esta sección se espera que el autor describa en forma más amplia a como
@@ -48,12 +50,3 @@ Walsh polynomials \cite{Clear2}....... \\
  la motivación, la justificación, el alcance de la
 investigación, los recursos y las suposiciones...}
 \end{comment}
-
-\subsection{Related work}
-Here i offer a summary of some of the work done on topics similar to that treated on this article and that have influenced this paper
-
-\cite{Lo1995} is the first article to use convolutional networks for breast cancer detection. They used a CNN with two hidden layers to detect microcalcifications. A high sensitivity image processing technique was used to obtain a set of 2104 patches (16 by 16 pixels) of all potential disease areas from 68 digital mammograms; of these, 265 were true microcalcifications and 1821 were ``false subtle microcalcifications". Prior to training the CNN, a wavelet high-pass filtering technique was used to remove the background of these images. Each image was flipped over (left-right) and 4 rotations for each the original and flipped images were used for training (0°, 90°, 180° and 270°). The CNN was composed of one input unit ($16\times16$), 12 units in the first hidden layer ($12\times12$), 12 units in the second hidden layer($8\times 8$) and two output nodes(one for YES and one for NOT). The input size ($16\time16$), number of hidden layers ($2$) and kernel size ($5\times5$) was obtained via cross validation, altough not many other options were explored: they tried input sizes of 8, 16 or 32, one or two hidden layers and kernel sizes of 2, 3, 5 or 13. The CNN reached 0.87 average AUC when identifying individual microcalcifications and 0.97 AUC for clustered microcalcifications. Only a minimum of three calcifications was considered a detection. Sensitivity and specificity test results were not reported. This article proved that simple convolutional networks can be efficiently used for medical image pattern recognition.
-Work done here at Tec
-\\
-%Learnt: two hidden layer newtwork produces better results, background reduction is neccesary and using matrices invariance to augment the data helps. Convnets work helps. and convnets work.
-%A refined approach was presented some years later along some non convolutional neural networks~\cite{Lo1998}. The setting is very similar but ..... Results are..

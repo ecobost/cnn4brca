@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  9 APR 2015 19:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  11 APR 2015 19:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -655,71 +655,76 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write4
 \openout4 = `proposal.toc'.
 
- [3] (./introduction.tex
+ [3] (./introduction.tex) (./relatedwork.tex)
+(./probdefinition.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 5.
 
-LaTeX Warning: Citation `http://seer.cancer.gov/statfacts/html/breast.html' on 
-page 1 undefined on input line 8.
 
-
-LaTeX Warning: Citation `http://seer.cancer.gov/csr/1975_2011/browse_csr.php?se
-ctionSEL=1&pageSEL=sect_01_table.29.html' on page 1 undefined on input line 8.
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 55--77
-
- []
+LaTeX Warning: Citation `doctorado' on page 1 undefined on input line 5.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.77 
-      [1] (./probdefinition.tex) (./objectives.tex) (./hypotheses.texpdfTeX war
-ning (ext4): destination with the same identifier (name{page.2}) has been alrea
-dy used, duplicate ignored
+l.6 
+     [1]
+
+LaTeX Warning: Citation `subsec:convnets' on page 2 undefined on input line 18.
+
+
+) (./objectives.texpdfTeX warning (ext4): destination with the same identifier 
+(name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.3 C
-     an we do better than what has alreayd been reported using convnets. can...
-[2]) (./background.tex) (./methodology.tex) (./workplan.tex) (./proposal.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
-been already used, duplicate ignored
+l.3 i
+     mprove the results obtained with more traiditional methods [2])
+(./hypotheses.tex) (./background.tex) (./methodology.tex) (./workplan.tex)
+(./proposal.bblpdfTeX warning (ext4): destination with the same identifier (nam
+e{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.100 \end{document}
-                     [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
+l.10 
+      [3])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
+ [4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: FAD669A354CFD279D7D80247F2876F06;386.
+(rerunfilecheck)             Checksum: AF7C59EBD2FC78710DE07063F1553FDC;386.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 5954 strings out of 495028
- 87358 string characters out of 6181498
- 166990 words of memory out of 5000000
- 9068 multiletter control sequences out of 15000+600000
- 9060 words of font info for 32 fonts, out of 8000000 for 9000
+ 5972 strings out of 495028
+ 87474 string characters out of 6181498
+ 166038 words of memory out of 5000000
+ 9076 multiletter control sequences out of 15000+600000
+ 10280 words of font info for 36 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 34i,5n,28p,1595b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,8n,28p,1603b,421s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt10.pfb>
-Output written on proposal.pdf (6 pages, 140276 bytes).
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.
+pfb>
+Output written on proposal.pdf (7 pages, 175964 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 100 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
+ 148 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
  70 words of extra memory for PDF output out of 10000 (max. 10000000)
 
