@@ -3,47 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: proposal.aux
 The style file: plain.bst
 Database file #1: bibliography.bib
-Warning--I didn't find a database entry for "http://seer.cancer.gov/statfacts/html/breast.html"
-Warning--I didn't find a database entry for "http://seer.cancer.gov/csr/1975_2011/browse_csr.php?sectionSEL=1&pageSEL=sect_01_table.29.html"
-You've used 4 entries,
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            531 strings with 5480 characters,
-and the built_in function-call counts, 1600 in all, are:
-= -- 143
-> -- 125
+            534 strings with 5524 characters,
+and the built_in function-call counts, 1800 in all, are:
+= -- 165
+> -- 132
 < -- 0
-+ -- 50
-- -- 46
-* -- 131
-:= -- 294
-add.period$ -- 16
-call.type$ -- 4
-change.case$ -- 36
++ -- 53
+- -- 48
+* -- 141
+:= -- 335
+add.period$ -- 19
+call.type$ -- 5
+change.case$ -- 40
 chr.to.int$ -- 0
-cite$ -- 4
-duplicate$ -- 33
-empty$ -- 91
-format.name$ -- 46
-if$ -- 309
+cite$ -- 5
+duplicate$ -- 41
+empty$ -- 105
+format.name$ -- 48
+if$ -- 348
 int.to.chr$ -- 0
-int.to.str$ -- 4
+int.to.str$ -- 5
 missing$ -- 1
-newline$ -- 27
-num.names$ -- 8
-pop$ -- 37
+newline$ -- 32
+num.names$ -- 10
+pop$ -- 39
 preamble$ -- 1
-purify$ -- 31
+purify$ -- 34
 quote$ -- 0
-skip$ -- 24
+skip$ -- 30
 stack$ -- 0
-substring$ -- 53
+substring$ -- 58
 swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
+type$ -- 20
 warning$ -- 0
-while$ -- 9
-width$ -- 5
-write$ -- 53
-(There were 2 warnings)
+while$ -- 11
+width$ -- 6
+write$ -- 65
