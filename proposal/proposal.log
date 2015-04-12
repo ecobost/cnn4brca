@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  11 APR 2015 23:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  12 APR 2015 01:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -675,8 +675,8 @@ LaTeX Warning: Reference `subsec:convnets' on page 2 undefined on input line 18
 (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.3 T
-     he main goal of this work is to succesfully apply convolutional neural ...
+l.3 P
+     articularly, there are various subgoals which we expect to achieve as t...
 [2]) (./hypotheses.tex) (./background.texpdfTeX warning (ext4): destination wit
 h the same identifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
@@ -700,7 +700,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
 Here is how much of TeX's memory you used:
  5972 strings out of 495028
  87485 string characters out of 6181498
- 166073 words of memory out of 5000000
+ 166066 words of memory out of 5000000
  9076 multiletter control sequences out of 15000+600000
  9972 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -715,7 +715,7 @@ ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on proposal.pdf (7 pages, 169736 bytes).
+Output written on proposal.pdf (7 pages, 169693 bytes).
 PDF statistics:
  146 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams
