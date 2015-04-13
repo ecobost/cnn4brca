@@ -16,7 +16,7 @@ Jose~Luis Hernandez.
 \newblock Master's thesis, Tecnológico de Monterrey, Monterrey, Mexico, April
   2014.
 
-\bibitem{CSR2014}
+\bibitem{Howlader2014}
 Nadia Howlader, Anne~M. Noone, Martin~F. Krapcho, J.~Garshell, Denise~A.
   Miller, Sean~F. Altekruse, Carol~L. Kosary, Mandi Yu, Jennifer Ruhl, Zaria
   Tatalovich, Angela~B. Mariotto, Denise~R. Lewis, Huann~S. Chen, Eric~J.
@@ -39,5 +39,13 @@ Shih-Chung~B. Lo, Heang-Ping Chan, Jyh-Shyan Lin, Huai Li, Matthew~T. Freedman,
 \newblock electronic, March 2014.
 \newblock Available on
   \url{http://www.cancer.gov/cancertopics/types/breast/mammograms-fact-sheet}.
+
+\bibitem{Russakovsky2014}
+Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
+  Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein,
+  Alexander~C. Berg, and Li~Fei-Fei.
+\newblock {ImageNet Large Scale Visual Recognition Challenge}.
+\newblock {\em CoRR}, abs/1409.0575, 2014.
+\newblock Available online on \url{http://arxiv.org/abs/1409.0575}.
 
 \end{thebibliography}

@@ -3,6 +3,7 @@
 \contentsline {section}{\numberline {2}Problem Definition}{1}{section.2}
 \contentsline {section}{\numberline {3}Objectives}{3}{section.3}
 \contentsline {section}{\numberline {4}Hypotheses}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}Research Questions}{4}{subsection.4.1}
 \contentsline {section}{\numberline {5}Background}{4}{section.5}
 \contentsline {section}{\numberline {6}Methodology}{4}{section.6}
 \contentsline {section}{\numberline {7}Work Plan}{4}{section.7}

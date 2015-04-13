@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  12 APR 2015 01:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  12 APR 2015 20:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -636,7 +636,7 @@ LaTeX Info: Redefining \nameref on input line 38.
 \openout3 = `proposal.out'.
 
 
-<plots/logo.png, id=36, 331.2375pt x 104.64093pt>
+<plots/logo.png, id=40, 331.2375pt x 104.64093pt>
 File: plots/logo.png Graphic file (type png)
  <use plots/logo.png>
 Package pdftex.def Info: plots/logo.png used on input line 40.
@@ -657,6 +657,10 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [3] (./introduction.tex) (./relatedwork.tex)
 (./probdefinition.tex
+
+LaTeX Warning: Citation `PerformanceMammography2013' on page 1 undefined on inp
+ut line 3.
+
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -677,34 +681,45 @@ LaTeX Warning: Reference `subsec:convnets' on page 2 undefined on input line 18
                    \relax 
 l.3 P
      articularly, there are various subgoals which we expect to achieve as t...
-[2]) (./hypotheses.tex) (./background.texpdfTeX warning (ext4): destination wit
-h the same identifier (name{page.3}) has been already used, duplicate ignored
+[2]) (./hypotheses.texpdfTeX warning (ext4): destination with the same identifi
+er (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.3 W
-     e offer an overview of some essential concepts for Cancer~ref(Cancer su...
-[3]) (./methodology.tex) (./workplan.tex) (./proposal.bbl)
+l.17 	\item C
+             an we simplify the task of image recognition for this task
+[3]
+Underfull \hbox (badness 1552) in paragraph at lines 21--22
+[]\OT1/cmr/m/n/10.95 Can the fea-tures ob-tained from a con-volo-tional net-wor
+k traine-don a dif-fer-ent
+ []
+
+) (./background.tex) (./methodology.tex) (./workplan.tex) (./proposal.bbl
+[4])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
- [4]
+ [5]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
  (./proposal.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: AF7C59EBD2FC78710DE07063F1553FDC;386.
+(rerunfilecheck)             Checksum: C155E9F05716961292A7279290B9EFA2;453.
+
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 5972 strings out of 495028
- 87485 string characters out of 6181498
- 166066 words of memory out of 5000000
- 9076 multiletter control sequences out of 15000+600000
+ 5977 strings out of 495028
+ 87568 string characters out of 6181498
+ 166060 words of memory out of 5000000
+ 9078 multiletter control sequences out of 15000+600000
  9972 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 34i,8n,28p,1603b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,8n,28p,1603b,421s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
@@ -715,10 +730,10 @@ ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on proposal.pdf (7 pages, 169693 bytes).
+Output written on proposal.pdf (8 pages, 173416 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
- 70 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 132 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
