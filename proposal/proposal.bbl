@@ -8,6 +8,13 @@
 \newblock Available on
   \url{http://breastscreening.cancer.gov/statistics/performance/screening/2009/perf_age.html}.
 
+\bibitem{Dieleman2015}
+Sander Dieleman, Kyle~W. Willett, and Joni Dambre.
+\newblock Rotation-invariant convolutional neural networks for galaxy
+  morphology prediction.
+\newblock {\em Monthly Notices of the Royal Astronomical Society}, 2015.
+\newblock Available online on \url{http://arxiv.org/abs/1503.07077}.
+
 \bibitem{Hernandez2014}
 Jose~Luis Hernandez.
 \newblock Selección de características y clasificacíon de masas por medio de
@@ -47,5 +54,12 @@ Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
 \newblock {ImageNet Large Scale Visual Recognition Challenge}.
 \newblock {\em CoRR}, abs/1409.0575, 2014.
 \newblock Available online on \url{http://arxiv.org/abs/1409.0575}.
+
+\bibitem{Taigman2014}
+Yaniv Taigman, Ming Yang, Marc'Aurelio Ranzato, and Lior Wolf.
+\newblock Deepface: Closing the gap to human-level performance in face
+  verification.
+\newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, Columbus,
+  Ohio, June 2014.
 
 \end{thebibliography}

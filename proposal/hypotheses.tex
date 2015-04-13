@@ -1,15 +1,19 @@
-Yet to write
+Although a considerable amount of work on breast cancer detection and diagnosis has been done in the institution, this project will be the first approximation to using convolutional networks for efficiently detecting and diagnosing breast cancer. Convolutional networks are widely used for object recognition tasks and have shown very good results \cite{Russakovsky2014, Taigman2014, Dieleman2015}. They have a big research community and have become one of the preferred methods to perform image classification tasks.% (similarly to neural networks in binary classification tasks).
 
-Can we do better than what has alreayd been reported using convnets. can we do better than what has been eported using other methods
-Can we simplify the task of image recognition for this task
-what are the best parameters ofr teh neural network (number of hidden networks, maxout vs pool, RELus vs logistic, kernel sizes)Is there a big improvement on refining and tuning the nertwork paraameters for the task in hand
-How good are the resutls on the enrtire mammogram image?. Is there a way to join the results on the small patche to make a prediction on the patient?
-Is the GPu optimization neccesary. 
-Will the data be eough or willht network overfit to the small amount of data.
-Can the features obtained from a convolotional network trainedon  a different database(like the imageNet database) be used ot o btain results on our images. are thos results better than using a shallow convnet trained on medical images
-Are convolutionla netowkrs traine don pixel images better at this task than non convolutional neural networks or other non linear classifiers (SVMs, k-means) trained on handcarfted features?
-Is this a good path to keep working on to try to solve these bproblem or sjould we put resources on other methods?
-can we achieve human-like performance 
+Due to the exploratory nature of this work we are not certain of the results that will be obtained. Nevertheless, we have a well established idea of what we expect to obtain. We will apply some of these newly developed techniques expecting to produce similar or better results than those obtained using more traditional computer vision techniques. We believe that implementing convolutional networks for mamographic images will not be very difficult as it has already been done (see Section~\ref{subsec:RelatedWork}). We do not think that a simple convolutional network will suffice to obtain acceptable results; we will need to use a more refined convolutional network with well fitted parameters.
+
+\subsection{Research Questions}
+Some of the questions which will be answered in this work are:
+\begin{itemize} 
+	\item Can we improve the results reported by other groups using convolutional networks? Is training a convolutional network on mammographic images better than computing numeric features from the mammograms and training a simple classifier?
+	\item Is deep learning feasible with the resources we have? Is the data and computational power we posses enough? Is there any advantage to use GPU acceleration?
+	\item Can we simplify the pipeline for breast cancer diagnosis? Can preprocessing be replaced by more layers on the same convolutional network? Could we use an entire mammogram for diagnosis instead of only small patches or could we automatically join results for small patches to generate results on the entire mammogram?
+	\item What are the best parameters for our convolutional networks (number of layers, number of units, kernel sizes, regularization, activation functions, etc)? Is there a big improvement on refining the network and tuning parameters?
+	\item What are the advantages of using a deep versus a shallow convolutional network? 
+	\item Could we use a convolutional network trained on a different database (such as the ImageNet database) to obtain features for mammographic images and use these features for classification?
+	\item Are convolutional networks a good option for future research?
+\end{itemize}
+
 \begin{comment}
 Las {\it Hipótesis}, que de acuerdo a Sampieri {\it indican lo que estamos
   buscando 
