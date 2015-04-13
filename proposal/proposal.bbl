@@ -57,7 +57,7 @@ Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
 
 \bibitem{Taigman2014}
 Yaniv Taigman, Ming Yang, Marc'Aurelio Ranzato, and Lior Wolf.
-\newblock Deepface: Closing the gap to human-level performance in face
+\newblock {DeepFace}: Closing the gap to human-level performance in face
   verification.
 \newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, Columbus,
   Ohio, June 2014.

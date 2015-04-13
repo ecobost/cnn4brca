@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  13 APR 2015 04:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  13 APR 2015 12:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -636,7 +636,7 @@ LaTeX Info: Redefining \nameref on input line 38.
 \openout3 = `proposal.out'.
 
 
-<plots/logo.png, id=40, 331.2375pt x 104.64093pt>
+<plots/logo.png, id=64, 331.2375pt x 104.64093pt>
 File: plots/logo.png Graphic file (type png)
  <use plots/logo.png>
 Package pdftex.def Info: plots/logo.png used on input line 40.
@@ -666,13 +666,8 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.6 
-     [1]
-
-LaTeX Warning: Reference `subsec:convnets' on page 2 undefined on input line 18
-.
-
-) (./objectives.texpdfTeX warning (ext4): destination with the same identifier 
-(name{page.2}) has been already used, duplicate ignored
+     [1]) (./objectives.texpdfTeX warning (ext4): destination with the same ide
+ntifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.3 P
@@ -685,34 +680,24 @@ l.9 	\item I
             s deep learning feasible with the resources we have? Is the data...
 [3]) (./breastcancer.tex) (./methodology.tex) (./workplan.tex) (./proposal.bbl
 [4])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
  [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
-
-
-Package rerunfilecheck Warning: File `proposal.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `proposal.out':
-(rerunfilecheck)             Before: C155E9F05716961292A7279290B9EFA2;453
-(rerunfilecheck)             After:  CB4EEECDCF901108F3F2FB97BB446E86;516.
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+Package rerunfilecheck Info: File `proposal.out' has not changed.
+(rerunfilecheck)             Checksum: 8F5A58D8FDD5D18BC39D70391F9EEBE1;889.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
  ) 
 Here is how much of TeX's memory you used:
- 5983 strings out of 495028
- 87668 string characters out of 6181498
- 166217 words of memory out of 5000000
- 9081 multiletter control sequences out of 15000+600000
+ 5994 strings out of 495028
+ 87834 string characters out of 6181498
+ 166269 words of memory out of 5000000
+ 9087 multiletter control sequences out of 15000+600000
  9972 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 34i,8n,28p,1604b,419s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,8n,28p,1604b,373s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
@@ -723,10 +708,10 @@ ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on proposal.pdf (8 pages, 178263 bytes).
+Output written on proposal.pdf (8 pages, 179122 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 196 PDF objects out of 1000 (max. 8388607)
+ 171 compressed objects within 2 object streams
+ 32 named destinations out of 1000 (max. 500000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
