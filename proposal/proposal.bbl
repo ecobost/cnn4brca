@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{PerformanceMammography2013}
 {Breast Cancer Surveillance Consortium}.
@@ -6,14 +6,13 @@
   from 2004 to 2008 by age--based on {BCSC} data through 2009.
 \newblock electronic, September 2013.
 \newblock Available on
-  \url{http://breastscreening.cancer.gov/statistics/performance/screening/2009/perf_age.html}.
+  \url{breastscreening.cancer.gov/statistics/performance/screening/2009/perf_age.html}.
 
 \bibitem{Dieleman2015}
 Sander Dieleman, Kyle~W. Willett, and Joni Dambre.
 \newblock Rotation-invariant convolutional neural networks for galaxy
   morphology prediction.
 \newblock {\em Monthly Notices of the Royal Astronomical Society}, 2015.
-\newblock Available online on \url{http://arxiv.org/abs/1503.07077}.
 
 \bibitem{Hernandez2014}
 Jose~Luis Hernandez.
@@ -30,7 +29,22 @@ Nadia Howlader, Anne~M. Noone, Martin~F. Krapcho, J.~Garshell, Denise~A.
   Feuer, and Kathleen~A. Cronin.
 \newblock {SEER} cancer statistics review, 1975-2011.
 \newblock review, National Cancer Institute, Bethesda, MD, April 2014.
-\newblock Available on \url{http://seer.cancer.gov/csr/1975_2011/}.
+\newblock Available on \url{seer.cancer.gov/csr/1975_2011/}.
+
+\bibitem{WYNTKABreastCancer2012}
+National~Cancer Institute.
+\newblock What you need to know about breast cancer.
+\newblock electronic, Bethesda, MD, August 2012.
+\newblock Available online on
+  \url{cancer.gov/publications/patient-education/WYNTK_breast.pdf}.
+
+\bibitem{Kerlikowske2011}
+Karla Kerlikowske, Rebecca~A. Hubbard, Diana~L. Miglioretti, Berta~M. Geller,
+  Bonnie~C. Yankaskas, Constance~D. Lehman, Stephen~H. Taplin, and Edward~A.
+  Sickles.
+\newblock Comparative effectiveness of digital versus film-screen mammography
+  in community practice in the united states: A cohort study.
+\newblock {\em Annals of Internal Medicine}, 155(8):493--502, 2011.
 
 \bibitem{Lo1995}
 Shih-Chung~B. Lo, Heang-Ping Chan, Jyh-Shyan Lin, Huai Li, Matthew~T. Freedman,
@@ -40,12 +54,22 @@ Shih-Chung~B. Lo, Heang-Ping Chan, Jyh-Shyan Lin, Huai Li, Matthew~T. Freedman,
 \newblock {\em Neural Networks}, 8(7–8):1201 -- 1214, 1995.
 \newblock Automatic Target Recognition.
 
-\bibitem{MammogramFactSheet2014}
+\bibitem{Mammograms2014}
 {National Cancer Institute}.
-\newblock Mammogram fact sheet.
+\newblock Mammograms.
 \newblock electronic, March 2014.
 \newblock Available on
-  \url{http://www.cancer.gov/cancertopics/types/breast/mammograms-fact-sheet}.
+  \url{cancer.gov/cancertopics/types/breast/mammograms-fact-sheet}.
+
+\bibitem{Pisano2008}
+Etta~D Pisano, R.~Edward Hendrick, Martin~J. Yaffe, Janet~K. Baum, Suddhasatta
+  Acharyya, Jean~B. Cormack, Lucy~A. Hanna, Emily~F. Conant, Laurie~L. Fajardo,
+  Lawrence~W. Bassett, Carl~J. D'Orsi, Roberta~A. Jong, Murray Rebner, Anna
+  N.~A. Tosteson, and Constantine~A. Gatsonis.
+\newblock Diagnostic accuracy of digital versus film mammography: Exploratory
+  analysis of selected population subgroups in {DMIST}.
+\newblock {\em Radiology}, 246(2):376--383, 2008.
+\newblock PMID: 18227537.
 
 \bibitem{Russakovsky2014}
 Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
@@ -53,7 +77,22 @@ Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
   Alexander~C. Berg, and Li~Fei-Fei.
 \newblock {ImageNet Large Scale Visual Recognition Challenge}.
 \newblock {\em CoRR}, abs/1409.0575, 2014.
-\newblock Available online on \url{http://arxiv.org/abs/1409.0575}.
+\newblock Available online on \url{arxiv.org/abs/1409.0575}.
+
+\bibitem{Skaane2007}
+Per Skaane, Solveig Hofvind, and Arnulf Skjennald.
+\newblock Randomized trial of screen-film versus full-field digital mammography
+  with soft-copy reading in population-based screening program: Follow-up and
+  final results of oslo ii study.
+\newblock {\em Radiology}, 244(3):708--717, 2007.
+\newblock PMID: 17709826.
+
+\bibitem{MammogramsACS2014}
+American~Cancer Society.
+\newblock Mammograms and other breast imaging tests.
+\newblock electronic, Atlanta, GA, 2014.
+\newblock Available online on
+  \url{http://www.cancer.org/acs/groups/cid/documents/webcontent/003178-pdf.pdf}.
 
 \bibitem{Taigman2014}
 Yaniv Taigman, Ming Yang, Marc'Aurelio Ranzato, and Lior Wolf.

@@ -13,6 +13,7 @@
 \usepackage{verbatim} 		% Block Comm\usepackage{textcomp}ents
 \usepackage{textcomp}		% For the degree sign(°)
 \usepackage{hyperref}		% To manage \url and citations as links to the reference part.
+\usepackage{subcaption}		% For subfigure in breastcancer.tex
 
 
 % Set properties of the document
@@ -21,7 +22,7 @@
 \propmes{April 7}			% Date (month)
 \propanio{2015}				% Year
 \propcd{Monterrey, N.L.}		% Place
-\proptitulo{Early detection and diagnosis of breast cancer lessions using (deep) convolutional networks in digital mammographic images.(working title)}	% Title
+\proptitulo{Early Detection and Diagnosis of Breast Cancer Lessions using Deep Convolutional Networks in Digital Mammograms}	% Title
 \propasesor{Dr.~Hugo Terashima Mar\'{i}n}	% Advisor
 \propsinodalA{Por definir}		% First supervisor
 \propsinodalB{Por definir}		% Second supervisor.
@@ -75,10 +76,6 @@ Las preguntas a contestar en el Resumen son las siguientes:
 \section{Introduction}
 \input{introduction}
 
-	\subsection{Related Work}
-	\label{subsec:RelatedWork}
-	\input{relatedwork}
-
 \section{Problem Definition}
 \input{probdefinition}
 
@@ -105,6 +102,9 @@ We offer an introduction to some of the essential concepts needed to understand 
 
 	\subsection{Mammography DB}
 
+	\subsection{Related Work}
+	\label{subsec:RelatedWork}
+	\input{relatedwork}
 
 \section{Methodology}
 \input{methodology}

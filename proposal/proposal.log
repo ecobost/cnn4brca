@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  13 APR 2015 12:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 APR 2015 06:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -564,42 +564,65 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip43
 )
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen110
+\captionmargin@=\dimen111
+\captionwidth=\dimen112
+\caption@tempdima=\dimen113
+\caption@indent=\dimen114
+\caption@parindent=\dimen115
+\caption@hangindent=\dimen116
+)
+\c@ContinuedFloat=\count98
+Package caption Info: hyperref package is loaded.
+)
+\c@subfigure=\count99
+\c@subtable=\count100
+)
 (./proposal.aux)
 \openout1 = `proposal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count98
-\scratchdimen=\dimen110
+\scratchcounter=\count101
+\scratchdimen=\dimen117
 \scratchbox=\box26
-\nofMPsegments=\count99
-\nofMParguments=\count100
+\nofMPsegments=\count102
+\nofMParguments=\count103
 \everyMPshowfont=\toks19
-\MPscratchCnt=\count101
-\MPscratchDim=\dimen111
-\MPnumerator=\count102
-\makeMPintoPDFobject=\count103
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen118
+\MPnumerator=\count105
+\makeMPintoPDFobject=\count106
 \everyMPtoPDFconversion=\toks20
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -617,7 +640,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box27
-Package hyperref Info: Link coloring OFF on input line 38.
+Package hyperref Info: Link coloring OFF on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -625,38 +648,39 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count104
+\c@section@level=\count107
 )
-LaTeX Info: Redefining \ref on input line 38.
-LaTeX Info: Redefining \pageref on input line 38.
-LaTeX Info: Redefining \nameref on input line 38.
+LaTeX Info: Redefining \ref on input line 39.
+LaTeX Info: Redefining \pageref on input line 39.
+LaTeX Info: Redefining \nameref on input line 39.
 
 (./proposal.out) (./proposal.out)
 \@outlinefile=\write3
 \openout3 = `proposal.out'.
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 
-<plots/logo.png, id=64, 331.2375pt x 104.64093pt>
+<plots/logo.png, id=68, 331.2375pt x 104.64093pt>
 File: plots/logo.png Graphic file (type png)
  <use plots/logo.png>
-Package pdftex.def Info: plots/logo.png used on input line 40.
+Package pdftex.def Info: plots/logo.png used on input line 41.
 (pdftex.def)             Requested size: 108.405pt x 34.24579pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./plots/logo.png>] [2]
 (./proposal.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 2.
+(Font)              <10.95> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 2.
+(Font)              <8> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 2.
+(Font)              <6> on input line 5.
 )
 \tf@toc=\write4
 \openout4 = `proposal.toc'.
 
- [3] (./introduction.tex) (./relatedwork.tex)
-(./probdefinition.tex
+ [3] (./introduction.tex) (./probdefinition.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <9> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -665,39 +689,73 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.6 
-     [1]) (./objectives.texpdfTeX warning (ext4): destination with the same ide
-ntifier (name{page.2}) has been already used, duplicate ignored
+l.12 	\item T
+             o produce good results it requires knowledge in various fields ...
+[1]) (./objectives.tex)pdfTeX warning (ext4): destination with the same identif
+ier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.3 P
-     articularly, there are various subgoals which we expect to achieve as t...
-[2]) (./hypotheses.texpdfTeX warning (ext4): destination with the same identifi
-er (name{page.3}) has been already used, duplicate ignored
+l.85 \section
+             {Hypotheses} [2] (./hypotheses.tex)pdfTeX warning (ext4): destinat
+ion with the same identifier (name{page.3}) has been already used, duplicate ig
+nored
 <to be read again> 
                    \relax 
-l.9 	\item I
-            s deep learning feasible with the resources we have? Is the data...
-[3]) (./breastcancer.tex) (./methodology.tex) (./workplan.tex) (./proposal.bbl
-[4])
+l.91 	\subsection
+                 {Breast Cancer} [3] (./breastcancer.tex
+<plots/breastAnatomy.png, id=138, 419.5675pt x 454.69875pt>
+File: plots/breastAnatomy.png Graphic file (type png)
+
+<use plots/breastAnatomy.png>
+Package pdftex.def Info: plots/breastAnatomy.png used on input line 7.
+(pdftex.def)             Requested size: 176.9719pt x 191.79086pt.
+ [4 <./plots/breastAnatomy.png>]
+<plots/normalMammogram.jpg, id=152, 144.54pt x 184.69pt>
+File: plots/normalMammogram.jpg Graphic file (type jpg)
+
+<use plots/normalMammogram.jpg>
+Package pdftex.def Info: plots/normalMammogram.jpg used on input line 18.
+(pdftex.def)             Requested size: 132.73228pt x 169.60966pt.
+
+<plots/breastMicrocalcification.png, id=157, 95.35625pt x 95.35625pt>
+File: plots/breastMicrocalcification.png Graphic file (type png)
+
+<use plots/breastMicrocalcification.png>
+Package pdftex.def Info: plots/breastMicrocalcification.png used on input line 
+30.
+(pdftex.def)             Requested size: 132.73228pt x 132.74847pt.
+
+<plots/breastMass.png, id=158, 108.405pt x 108.405pt>
+File: plots/breastMass.png Graphic file (type png)
+
+<use plots/breastMass.png>
+Package pdftex.def Info: plots/breastMass.png used on input line 34.
+(pdftex.def)             Requested size: 132.73228pt x 132.74847pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5 <./plots/normalMammogram.jpg>]) (./relatedwork.tex [6 <./plots/breastMicroca
+lcification.png> <./plots/breastMass.png>]) (./methodology.tex) (./workplan.tex
+) (./proposal.bbl [7])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
- [5]
+ [8]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
  (./proposal.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: 8F5A58D8FDD5D18BC39D70391F9EEBE1;889.
+(rerunfilecheck)             Checksum: 146CE5CF01850EEDFCE61F5B2D61BE60;959.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
  ) 
 Here is how much of TeX's memory you used:
- 5994 strings out of 495028
- 87834 string characters out of 6181498
- 166269 words of memory out of 5000000
- 9087 multiletter control sequences out of 15000+600000
+ 7096 strings out of 495028
+ 108019 string characters out of 6181498
+ 185842 words of memory out of 5000000
+ 10163 multiletter control sequences out of 15000+600000
  9972 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 34i,8n,28p,1604b,373s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,41p,1605b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
@@ -708,10 +766,10 @@ ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on proposal.pdf (8 pages, 179122 bytes).
+Output written on proposal.pdf (11 pages, 381743 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
+ 44 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 
