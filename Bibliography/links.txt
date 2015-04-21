@@ -1,18 +1,8 @@
 Writing an article paper
 	http://www.elsevier.com/connect/11-steps-to-structuring-a-science-paper-editors-will-take-seriously
-Mammograms facts
-	http://www.cancer.gov/cancertopics/types/breast/mammograms-fact-sheet
-Cancer U.S. statistics
-	http://seer.cancer.gov/csr/1975_2011/
-News on the cost of high false positives in mammogram
-	http://www.nbcnews.com/health/cancer/what-breast-cancer-fight-costing-us-n336601
 
+Caffee tutorial
+http://on-demand.gputechconf.com/gtc/2014/webinar/gtc-express-deep-learning-caffee-evan-shelhamer.mp4
 
-Order of work
-Simple ConvNets for 2d mammograms
-	microcalcif
-	masses
-	or the two
-Advanced convnets for 2d mammograms (CNN-SVM, other optimized ConvNets)
-ConvNet ensembles | ConvNets for digital tomosinthesis 3D
+Stanford convnet course (bookmarked on Firefox)
 
