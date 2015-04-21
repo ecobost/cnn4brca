@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 APR 2015 16:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 APR 2015 17:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -702,7 +702,7 @@ entifier (name{page.3}) has been already used, duplicate ignored
                    \relax 
 l.15 \end{itemize}
                    [3]) (./breastcancer.tex
-<plots/breastAnatomy.png, id=145, 419.5675pt x 454.69875pt>
+<plots/breastAnatomy.png, id=146, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
@@ -736,7 +736,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [5 <./plots/normalMammogram.jpg>]) (./classification.tex) (./relatedwork.tex
 [6 <./plots/breastMicrocalcification.png> <./plots/breastMass.png>])
-(./methodology.tex [7]) (./workplan.tex) (./proposal.bbl
+(./methodology.tex [7]) (./workplan.tex
+<plots/workplan.png, id=195, 1203.49625pt x 275.0275pt>
+File: plots/workplan.png Graphic file (type png)
+
+<use plots/workplan.png>
+Package pdftex.def Info: plots/workplan.png used on input line 4.
+(pdftex.def)             Requested size: 442.4365pt x 101.10811pt.
+) (./proposal.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 12--18
 []\OT1/cmr/m/n/10.95 Breast Can-cer Surveil-lance Con-sor-tium
  []
@@ -747,7 +754,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--18
 e / screening / 2009 / perf _ age .
  []
 
-[8]
+[8 <./plots/workplan.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 63--68
 []\OT1/cmr/m/n/10.95 National Can-cer In-sti-tute (2014).  Mam-mo-
  []
@@ -758,22 +765,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--68
 ancer . gov / cancertopics / types / breast /
  []
 
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
- [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
+[9])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
+ [10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 125.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: 9853E8C1899FA0DB62EC197D9E24D95C;959.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
  ) 
 Here is how much of TeX's memory you used:
- 7105 strings out of 495028
- 108185 string characters out of 6181498
- 186425 words of memory out of 5000000
- 10168 multiletter control sequences out of 15000+600000
+ 7113 strings out of 495028
+ 108334 string characters out of 6181498
+ 187505 words of memory out of 5000000
+ 10174 multiletter control sequences out of 15000+600000
  9972 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,8n,40p,1595b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -787,10 +794,10 @@ ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on proposal.pdf (12 pages, 387005 bytes).
+Output written on proposal.pdf (13 pages, 421719 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 227 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 154 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 159 words of extra memory for PDF output out of 10000 (max. 10000000)
 
