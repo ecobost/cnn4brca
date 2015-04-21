@@ -13,4 +13,4 @@
 \contentsline {subsection}{\numberline {5.6}Convolutional Networks applied to Breast Cancer}{6}{subsection.5.6}
 \contentsline {subsection}{\numberline {5.7}Related Work}{6}{subsection.5.7}
 \contentsline {section}{\numberline {6}Methodology}{7}{section.6}
-\contentsline {section}{\numberline {7}Work Plan}{7}{section.7}
+\contentsline {section}{\numberline {7}Work Plan}{8}{section.7}
