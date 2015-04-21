@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 APR 2015 07:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 APR 2015 07:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -691,18 +691,17 @@ been already used, duplicate ignored
                    \relax 
 l.12 	\item T
              o produce good results it requires knowledge in various fields ...
-[1]) (./objectives.tex)pdfTeX warning (ext4): destination with the same identif
-ier (name{page.2}) has been already used, duplicate ignored
+[1]) (./objectives.texpdfTeX warning (ext4): destination with the same identifi
+er (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.85 \section
-             {Hypotheses} [2] (./hypotheses.tex)pdfTeX warning (ext4): destinat
-ion with the same identifier (name{page.3}) has been already used, duplicate ig
-nored
+l.16 
+      [2]) (./hypotheses.texpdfTeX warning (ext4): destination with the same id
+entifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.90 
-      [3] (./breastcancer.tex
+l.15 \end{itemize}
+                   [3]) (./breastcancer.tex
 <plots/breastAnatomy.png, id=145, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
@@ -788,7 +787,7 @@ ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on proposal.pdf (11 pages, 383414 bytes).
+Output written on proposal.pdf (11 pages, 383564 bytes).
 PDF statistics:
  259 PDF objects out of 1000 (max. 8388607)
  224 compressed objects within 3 object streams
