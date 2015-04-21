@@ -86,21 +86,27 @@ Las preguntas a contestar en el Resumen son las siguientes:
 \input{hypotheses}
 
 \section{Background}
-We offer an introduction to some of the essential concepts needed to understand the rest of this document. %concepts used in this document.
+We offer an introduction to some of the essential concepts needed to understand the rest of this document. We start by discussing breast cancer and mammograms in Section~\ref{subsec:BreastCancer}, we describe the specifics of the mammography database used for this thesis in Section~\ref{subsec:MammographyDB}, we offer some basic concepts about classification and evaluation measures in Section~\ref{subsec:Classification}, in Sections~\ref{subsec:ANNs} and~\ref{subsec:ConvNets} we give a short introduction into Artificial Neural Networks and Convolutional Neural Networks and finally we offer an overview of how convolutional networks have been used for breast cancer diagnosis in Sections~\ref{subsec:BreastCancerConvNets} and~\ref{subsec:RelatedWork}.
 
 	\subsection{Breast Cancer}
+	\label{subsec:BreastCancer}
 	\input{breastcancer}
 
+	\subsection{Mammography DB}
+	\label{subsec:MammographyDB}
+
 	\subsection{Classification}
+	\label{subsec:Classification}
+	\input{classification}
 
 	\subsection{Artificial Neural Networks}
+	\label{subsec:ANNs}
 
 	\subsection{Convolutional Networks}
-	\label{subsec:convnets}
+	\label{subsec:ConvNets}
 
 	\subsection{Convolutional Networks applied to Breast Cancer}
-
-	\subsection{Mammography DB}
+	\label{subsec:BreastCancerConvNets}	
 
 	\subsection{Related Work}
 	\label{subsec:RelatedWork}
@@ -113,7 +119,7 @@ We offer an introduction to some of the essential concepts needed to understand 
 \input{workplan}
 
 % Bibliography
-\bibliographystyle{plain}
+\bibliographystyle{apalike}
 \bibliography{bibliography}
 
 \end{document} 

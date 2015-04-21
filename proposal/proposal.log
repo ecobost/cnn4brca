@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 APR 2015 06:30
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 APR 2015 07:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -701,23 +701,23 @@ ion with the same identifier (name{page.3}) has been already used, duplicate ig
 nored
 <to be read again> 
                    \relax 
-l.91 	\subsection
-                 {Breast Cancer} [3] (./breastcancer.tex
-<plots/breastAnatomy.png, id=138, 419.5675pt x 454.69875pt>
+l.90 
+      [3] (./breastcancer.tex
+<plots/breastAnatomy.png, id=145, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
 Package pdftex.def Info: plots/breastAnatomy.png used on input line 7.
 (pdftex.def)             Requested size: 176.9719pt x 191.79086pt.
  [4 <./plots/breastAnatomy.png>]
-<plots/normalMammogram.jpg, id=152, 144.54pt x 184.69pt>
+<plots/normalMammogram.jpg, id=157, 144.54pt x 184.69pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
 Package pdftex.def Info: plots/normalMammogram.jpg used on input line 18.
 (pdftex.def)             Requested size: 132.73228pt x 169.60966pt.
 
-<plots/breastMicrocalcification.png, id=157, 95.35625pt x 95.35625pt>
+<plots/breastMicrocalcification.png, id=162, 95.35625pt x 95.35625pt>
 File: plots/breastMicrocalcification.png Graphic file (type png)
 
 <use plots/breastMicrocalcification.png>
@@ -725,7 +725,7 @@ Package pdftex.def Info: plots/breastMicrocalcification.png used on input line
 30.
 (pdftex.def)             Requested size: 132.73228pt x 132.74847pt.
 
-<plots/breastMass.png, id=158, 108.405pt x 108.405pt>
+<plots/breastMass.png, id=163, 108.405pt x 108.405pt>
 File: plots/breastMass.png Graphic file (type png)
 
 <use plots/breastMass.png>
@@ -735,27 +735,49 @@ Package pdftex.def Info: plots/breastMass.png used on input line 34.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5 <./plots/normalMammogram.jpg>]) (./relatedwork.tex [6 <./plots/breastMicroca
-lcification.png> <./plots/breastMass.png>]) (./methodology.tex) (./workplan.tex
-) (./proposal.bbl [7])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
+[5 <./plots/normalMammogram.jpg>]) (./classification.tex) (./relatedwork.tex
+[6 <./plots/breastMicrocalcification.png> <./plots/breastMass.png>])
+(./methodology.tex) (./workplan.tex) (./proposal.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 12--18
+[]\OT1/cmr/m/n/10.95 Breast Can-cer Surveil-lance Con-sor-tium
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--18
+[]$\OT1/cmtt/m/n/10.95 breastscreening . cancer . gov / statistics / performanc
+e / screening / 2009 / perf _ age .
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 63--68
+[]\OT1/cmr/m/n/10.95 National Can-cer In-sti-tute (2014).  Mam-mo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--68
+\OT1/cmr/m/n/10.95 grams.  elec-tronic.  Avail-able on []$\OT1/cmtt/m/n/10.95 c
+ancer . gov / cancertopics / types / breast /
+ []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
  [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 125.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 125.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 125.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: 146CE5CF01850EEDFCE61F5B2D61BE60;959.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
+(rerunfilecheck)             Checksum: 9853E8C1899FA0DB62EC197D9E24D95C;959.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  ) 
 Here is how much of TeX's memory you used:
- 7096 strings out of 495028
- 108019 string characters out of 6181498
- 185842 words of memory out of 5000000
- 10163 multiletter control sequences out of 15000+600000
+ 7104 strings out of 495028
+ 108179 string characters out of 6181498
+ 186425 words of memory out of 5000000
+ 10168 multiletter control sequences out of 15000+600000
  9972 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,8n,41p,1605b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,40p,1596b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
@@ -766,10 +788,10 @@ ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
 amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb>
-Output written on proposal.pdf (11 pages, 381743 bytes).
+Output written on proposal.pdf (11 pages, 383409 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 217 compressed objects within 3 object streams
+ 259 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
  44 named destinations out of 1000 (max. 500000)
  154 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,104 +1,101 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{}
 
-\bibitem{PerformanceMammography2013}
-{Breast Cancer Surveillance Consortium}.
+\bibitem[{American Cancer Society}, 2014]{MammogramsACS2014}
+{American Cancer Society} (2014).
+\newblock Mammograms and other breast imaging tests.
+\newblock electronic, Atlanta, GA.
+\newblock Available online on
+  \url{cancer.org/acs/groups/cid/documents/webcontent/003178-pdf.pdf}.
+
+\bibitem[{Breast Cancer Surveillance Consortium},
+  2013]{PerformanceMammography2013}
+{Breast Cancer Surveillance Consortium} (2013).
 \newblock Performance measures for 1,838,372 screening mammography examinations
   from 2004 to 2008 by age--based on {BCSC} data through 2009.
-\newblock electronic, September 2013.
+\newblock electronic.
 \newblock Available on
   \url{breastscreening.cancer.gov/statistics/performance/screening/2009/perf_age.html}.
 
-\bibitem{Dieleman2015}
-Sander Dieleman, Kyle~W. Willett, and Joni Dambre.
+\bibitem[Dieleman et~al., 2015]{Dieleman2015}
+Dieleman, S., Willett, K.~W., and Dambre, J. (2015).
 \newblock Rotation-invariant convolutional neural networks for galaxy
   morphology prediction.
-\newblock {\em Monthly Notices of the Royal Astronomical Society}, 2015.
+\newblock {\em Monthly Notices of the Royal Astronomical Society}.
 
-\bibitem{Hernandez2014}
-Jose~Luis Hernandez.
+\bibitem[Hernandez, 2014]{Hernandez2014}
+Hernandez, J.~L. (2014).
 \newblock Selección de características y clasificacíon de masas por medio de
   redes neuronales, máquinas de vector de soporte, análisis discriminante y
   regresíon logística en mamografías digitales.
-\newblock Master's thesis, Tecnológico de Monterrey, Monterrey, Mexico, April
-  2014.
+\newblock Master's thesis, Tecnológico de Monterrey, Monterrey, Mexico.
 
-\bibitem{Howlader2014}
-Nadia Howlader, Anne~M. Noone, Martin~F. Krapcho, J.~Garshell, Denise~A.
-  Miller, Sean~F. Altekruse, Carol~L. Kosary, Mandi Yu, Jennifer Ruhl, Zaria
-  Tatalovich, Angela~B. Mariotto, Denise~R. Lewis, Huann~S. Chen, Eric~J.
-  Feuer, and Kathleen~A. Cronin.
+\bibitem[Howlader et~al., 2014]{Howlader2014}
+Howlader, N., Noone, A.~M., Krapcho, M.~F., Garshell, J., Miller, D.~A.,
+  Altekruse, S.~F., Kosary, C.~L., Yu, M., Ruhl, J., Tatalovich, Z., Mariotto,
+  A.~B., Lewis, D.~R., Chen, H.~S., Feuer, E.~J., and Cronin, K.~A. (2014).
 \newblock {SEER} cancer statistics review, 1975-2011.
-\newblock review, National Cancer Institute, Bethesda, MD, April 2014.
+\newblock review, National Cancer Institute, Bethesda, MD.
 \newblock Available on \url{seer.cancer.gov/csr/1975_2011/}.
 
-\bibitem{WYNTKABreastCancer2012}
-National~Cancer Institute.
+\bibitem[Kerlikowske et~al., 2011]{Kerlikowske2011}
+Kerlikowske, K., Hubbard, R.~A., Miglioretti, D.~L., Geller, B.~M., Yankaskas,
+  B.~C., Lehman, C.~D., Taplin, S.~H., and Sickles, E.~A. (2011).
+\newblock Comparative effectiveness of digital versus film-screen mammography
+  in community practice in the united states: A cohort study.
+\newblock {\em Annals of Internal Medicine}, 155(8):493--502.
+
+\bibitem[Lo et~al., 1995]{Lo1995}
+Lo, S.-C.~B., Chan, H.-P., Lin, J.-S., Li, H., Freedman, M.~T., and Mun, S.~K.
+  (1995).
+\newblock Artificial convolution neural network for medical image pattern
+  recognition.
+\newblock {\em Neural Networks}, 8(7–8):1201 -- 1214.
+\newblock Automatic Target Recognition.
+
+\bibitem[{National Cancer Institute}, 2012]{WYNTKABreastCancer2012}
+{National Cancer Institute} (2012).
 \newblock What you need to know about breast cancer.
-\newblock electronic, Bethesda, MD, August 2012.
+\newblock electronic, Bethesda, MD.
 \newblock Available online on
   \url{cancer.gov/publications/patient-education/WYNTK_breast.pdf}.
 
-\bibitem{Kerlikowske2011}
-Karla Kerlikowske, Rebecca~A. Hubbard, Diana~L. Miglioretti, Berta~M. Geller,
-  Bonnie~C. Yankaskas, Constance~D. Lehman, Stephen~H. Taplin, and Edward~A.
-  Sickles.
-\newblock Comparative effectiveness of digital versus film-screen mammography
-  in community practice in the united states: A cohort study.
-\newblock {\em Annals of Internal Medicine}, 155(8):493--502, 2011.
-
-\bibitem{Lo1995}
-Shih-Chung~B. Lo, Heang-Ping Chan, Jyh-Shyan Lin, Huai Li, Matthew~T. Freedman,
-  and Seong~K. Mun.
-\newblock Artificial convolution neural network for medical image pattern
-  recognition.
-\newblock {\em Neural Networks}, 8(7–8):1201 -- 1214, 1995.
-\newblock Automatic Target Recognition.
-
-\bibitem{Mammograms2014}
-{National Cancer Institute}.
+\bibitem[{National Cancer Institute}, 2014]{Mammograms2014}
+{National Cancer Institute} (2014).
 \newblock Mammograms.
-\newblock electronic, March 2014.
+\newblock electronic.
 \newblock Available on
   \url{cancer.gov/cancertopics/types/breast/mammograms-fact-sheet}.
 
-\bibitem{Pisano2008}
-Etta~D Pisano, R.~Edward Hendrick, Martin~J. Yaffe, Janet~K. Baum, Suddhasatta
-  Acharyya, Jean~B. Cormack, Lucy~A. Hanna, Emily~F. Conant, Laurie~L. Fajardo,
-  Lawrence~W. Bassett, Carl~J. D'Orsi, Roberta~A. Jong, Murray Rebner, Anna
-  N.~A. Tosteson, and Constantine~A. Gatsonis.
+\bibitem[Pisano et~al., 2008]{Pisano2008}
+Pisano, E.~D., Hendrick, R.~E., Yaffe, M.~J., Baum, J.~K., Acharyya, S.,
+  Cormack, J.~B., Hanna, L.~A., Conant, E.~F., Fajardo, L.~L., Bassett, L.~W.,
+  D'Orsi, C.~J., Jong, R.~A., Rebner, M., Tosteson, A. N.~A., and Gatsonis,
+  C.~A. (2008).
 \newblock Diagnostic accuracy of digital versus film mammography: Exploratory
   analysis of selected population subgroups in {DMIST}.
-\newblock {\em Radiology}, 246(2):376--383, 2008.
+\newblock {\em Radiology}, 246(2):376--383.
 \newblock PMID: 18227537.
 
-\bibitem{Russakovsky2014}
-Olga Russakovsky, Jia Deng, Hao Su, Jonathan Krause, Sanjeev Satheesh, Sean Ma,
-  Zhiheng Huang, Andrej Karpathy, Aditya Khosla, Michael Bernstein,
-  Alexander~C. Berg, and Li~Fei-Fei.
+\bibitem[Russakovsky et~al., 2014]{Russakovsky2014}
+Russakovsky, O., Deng, J., Su, H., Krause, J., Satheesh, S., Ma, S., Huang, Z.,
+  Karpathy, A., Khosla, A., Bernstein, M., Berg, A.~C., and Fei-Fei, L. (2014).
 \newblock {ImageNet Large Scale Visual Recognition Challenge}.
-\newblock {\em CoRR}, abs/1409.0575, 2014.
+\newblock {\em CoRR}, abs/1409.0575.
 \newblock Available online on \url{arxiv.org/abs/1409.0575}.
 
-\bibitem{Skaane2007}
-Per Skaane, Solveig Hofvind, and Arnulf Skjennald.
+\bibitem[Skaane et~al., 2007]{Skaane2007}
+Skaane, P., Hofvind, S., and Skjennald, A. (2007).
 \newblock Randomized trial of screen-film versus full-field digital mammography
   with soft-copy reading in population-based screening program: Follow-up and
-  final results of oslo ii study.
-\newblock {\em Radiology}, 244(3):708--717, 2007.
+  final results of oslo {II} study.
+\newblock {\em Radiology}, 244(3):708--717.
 \newblock PMID: 17709826.
 
-\bibitem{MammogramsACS2014}
-American~Cancer Society.
-\newblock Mammograms and other breast imaging tests.
-\newblock electronic, Atlanta, GA, 2014.
-\newblock Available online on
-  \url{http://www.cancer.org/acs/groups/cid/documents/webcontent/003178-pdf.pdf}.
-
-\bibitem{Taigman2014}
-Yaniv Taigman, Ming Yang, Marc'Aurelio Ranzato, and Lior Wolf.
+\bibitem[Taigman et~al., 2014]{Taigman2014}
+Taigman, Y., Yang, M., Ranzato, M., and Wolf, L. (2014).
 \newblock {DeepFace}: Closing the gap to human-level performance in face
   verification.
 \newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, Columbus,
-  Ohio, June 2014.
+  Ohio.
 
 \end{thebibliography}
