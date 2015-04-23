@@ -6,3 +6,6 @@ http://on-demand.gputechconf.com/gtc/2014/webinar/gtc-express-deep-learning-caff
 
 Stanford convnet course (bookmarked on Firefox)
 
+Stanford deep learning course
+http://ufldl.stanford.edu/tutorial/supervised/FeatureExtractionUsingConvolution/
+
