@@ -7,6 +7,13 @@
 \newblock Available online on
   \url{cancer.org/acs/groups/cid/documents/webcontent/003178-pdf.pdf}.
 
+\bibitem[{American Cancer Society}, 2015]{ACS2015}
+{American Cancer Society} (2015).
+\newblock {\em Cancer Facts \& Figures 2015}.
+\newblock American Cancer Society, Atlanta, GA.
+\newblock Available on
+  \url{cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}.
+
 \bibitem[{Breast Cancer Surveillance Consortium},
   2013]{PerformanceMammography2013}
 {Breast Cancer Surveillance Consortium} (2013).
@@ -21,6 +28,13 @@ Dieleman, S., Willett, K.~W., and Dambre, J. (2015).
 \newblock Rotation-invariant convolutional neural networks for galaxy
   morphology prediction.
 \newblock {\em Monthly Notices of the Royal Astronomical Society}.
+
+\bibitem[Fukushima, 1980]{Fukushima1980}
+Fukushima, K. (1980).
+\newblock Neocognitron: A self-organizing neural network model for a mechanism
+  of pattern recognition unaffected by shift in position.
+\newblock {\em Biological Cybernetics}, 36:193--202.
+\newblock PMID: 7370364.
 
 \bibitem[Hernandez, 2014]{Hernandez2014}
 Hernandez, J.~L. (2014).
@@ -43,6 +57,11 @@ Kerlikowske, K., Hubbard, R.~A., Miglioretti, D.~L., Geller, B.~M., Yankaskas,
 \newblock Comparative effectiveness of digital versus film-screen mammography
   in community practice in the united states: A cohort study.
 \newblock {\em Annals of Internal Medicine}, 155(8):493--502.
+
+\bibitem[LeCun et~al., 1998]{LeCun1998}
+LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998).
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324.
 
 \bibitem[Lo et~al., 1995]{Lo1995}
 Lo, S.-C.~B., Chan, H.-P., Lin, J.-S., Li, H., Freedman, M.~T., and Mun, S.~K.

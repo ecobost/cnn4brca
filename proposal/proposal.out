@@ -1,15 +1,16 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Problem Definition}{}% 2
 \BOOKMARK [1][-]{section.3}{Objectives}{}% 3
-\BOOKMARK [1][-]{section.4}{Hypotheses}{}% 4
+\BOOKMARK [1][-]{section.4}{Hypothesis}{}% 4
 \BOOKMARK [2][-]{subsection.4.1}{Research Questions}{section.4}% 5
 \BOOKMARK [1][-]{section.5}{Background}{}% 6
 \BOOKMARK [2][-]{subsection.5.1}{Breast Cancer}{section.5}% 7
 \BOOKMARK [3][-]{subsubsection.5.1.1}{Mammograms}{subsection.5.1}% 8
-\BOOKMARK [2][-]{subsection.5.2}{Classification}{section.5}% 9
-\BOOKMARK [2][-]{subsection.5.3}{Artificial Neural Networks}{section.5}% 10
-\BOOKMARK [2][-]{subsection.5.4}{Convolutional Networks}{section.5}% 11
-\BOOKMARK [2][-]{subsection.5.5}{Convolutional Networks applied to Breast Cancer}{section.5}% 12
-\BOOKMARK [2][-]{subsection.5.6}{Related Work}{section.5}% 13
-\BOOKMARK [1][-]{section.6}{Methodology}{}% 14
-\BOOKMARK [1][-]{section.7}{Work Plan}{}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Mammography DB}{section.5}% 9
+\BOOKMARK [2][-]{subsection.5.3}{Classification}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.4}{Artificial Neural Networks}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.5}{Convolutional Networks}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.6}{Convolutional Networks applied to Breast Cancer}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.7}{Related Work}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Methodology}{}% 15
+\BOOKMARK [1][-]{section.7}{Work Plan}{}% 16

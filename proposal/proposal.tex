@@ -45,7 +45,6 @@
 \newpage
 \sloppy
 \newpage
-
 \pagenumbering{arabic}
 
 \begin{abstract}
@@ -53,28 +52,31 @@ Breast cancer is one of the most common and deadly cancers in woman around the w
 %Keywords: convolutional neural  networks, breast cancer, CAD, mammograms
 \end{abstract}
 
-
 \section{Introduction}
 \input{introduction}
 
 \section{Problem Definition}
+\label{sec:ProblemDefinition}
 \input{probdefinition}
 
 \section{Objectives}
+\label{sec:Objectives}
 \input{objectives}
 
-\section{Hypotheses}
+\section{Hypothesis}
+\label{sec:Hypothesis}
 \input{hypotheses}
 
 \section{Background}
+\label{sec:Background}
 We offer an introduction to some of the essential concepts needed to understand the rest of this document. We start by discussing breast cancer and mammograms in Section~\ref{subsec:BreastCancer}, we describe the specifics of the mammography database used for this thesis in Section~\ref{subsec:MammographyDB}, we offer some basic concepts about classification and evaluation measures in Section~\ref{subsec:Classification}, in Sections~\ref{subsec:ANNs} and~\ref{subsec:ConvNets} we give a short introduction into Artificial Neural Networks and Convolutional Neural Networks and finally we offer an overview of how convolutional networks have been used for breast cancer diagnosis in Sections~\ref{subsec:BreastCancerConvNets} and~\ref{subsec:RelatedWork}.
 
 	\subsection{Breast Cancer}
 	\label{subsec:BreastCancer}
 	\input{breastcancer}
 
-	%\subsection{Mammography DB}
-	%\label{subsec:MammographyDB}
+	\subsection{Mammography DB}
+	\label{subsec:MammographyDB}
 
 	\subsection{Classification}
 	\label{subsec:Classification}
@@ -98,6 +100,7 @@ We offer an introduction to some of the essential concepts needed to understand 
 \input{methodology}
 
 \section{Work Plan}
+\label{sec:WorkPlan}
 \input{workplan}
 
 % Bibliography

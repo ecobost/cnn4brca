@@ -1,24 +1,26 @@
-Yet to write 
-\begin{comment} Goes in thesis, not here because we still don't have results or discussion.
-Hook(first paragarpah) : automatic breast cancer detection is a difficult taks for current automatic computationnal systems. In this article we apply deep learning techniques to digitaml mammogrpahic images and obtain better rredults than opresneted to date. 
+\begin{comment} 
+Hook(first paragarpah) : Automatic breast cancer diagnosis is a very difficult taks for current automatic computationnal systems. In this article,  we apply deep learning techniques to digital mammogrpahic images and obtain better results than presented to date. We show or prove or use this technique to obtain this... (when we have results)
 \end{comment}
+Automatic breast cancer diagnosis is a very difficult task for current computational systems. In this thesis, we apply deep learning techniques to digital mammographic images in order to improve the performance of such systems. We layout here the hypotheses, experiments and goals of our future research.
 
-\begin{comment}
-Cance is this and this, bereast cancer is this and this. breats cancer has high incicdence and high mortality,
+Breast cancer is a disease caused by abnormal breast cells which grow out of control forming tumors and invading surrounding tissue.
+%If this growth is not controlled it can cause serious illness or death. Breast cancer 
+It has the highest incidence rate of any cancer in the United States, an estimated 14.1\% of all new cancer cases in 2015 will be breast cancer, and the third highest mortality of any cancer accounting for 6.9\% of cancer related deaths. Among women it is by large the most commonly diagnosed cancer (28.6\% of all cancers) and has the highest death rate (14.5\%) besides lung cancer~\cite{ACS2015}.
 
-Breast cancer has the highest incidence of any cancer in the United States, an estimated 14.1\% of all new cancer cases in 2015 will be breast cancer and the third highest mortality of any cancer accounting for 6.9\% of cancer related deaths \cite{http://www.cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}. Among women it is by large the most commonly diagnosed cancer (28.6\% of all cancers) and has the highest death rate (14.5\%) besides lung cancer.\cite{http://www.cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}. 
-mammograms are this and radiologist do that
-all the other things from problem definition (problem definition section does not exist on thesis just on plan. )
-Michael: aqui comienza lo nuevo
-This work centers on using mammogrmas (2d Xray images of the breast) to detect microcalcifications and masses and diagnos its likelihood of breast cancer, i.e, make a prediction on the probability that a mmaogram signals breast cancer. this is of importance because of ... 
-this is withr the view of form part odf abigger CAd project developed in the insitution that could help radiologists in the detection of breast cancer either by proposing zones where the radiologists could take a second look, or by giving a second informed opinion on the same patient.
+The recommended method for early breast cancer detection in aging women is to have regular screening mammograms. Mammograms are x-ray images of the breast used by radiologists to look for signs of possible tumor formation. There are different lesions that can be found on a mammogram, we center on two: clustered microcalcifications, tiny deposits of calcium which could appear around cancerous tissue, and breast masses, more direct signs of the existence of a tumor although they are very often benign. Most breast cancers can be detected with a mammogram.%~\cite{Mammograms2014,PerformanceMammography2013}
+%For the diagnosis of suspicious areas, more mamograms or a biopsy are normally required. The quality of a mmamogram and the diligence and experience of the radiologist is an important factor to succesfully detect breast cancer. the quality of the mmaogram
 
-(why convnets?)
-convnets are a natural extension to artificial neural networks that deal with images and that
-Summary of the related work part here(this guys dd it first and this guys and i'm gteting my ideas from here and there and my contribution is this...)
-We will do this and this and that (methods and plan of work)
-Goals: We want to improve over the published results, ... and know if we can a ctuallly use this  
-\end{comment}
+In this work, we center on using mammograms to automatically detect microcalcifications and breast masses and predict the probability of breast cancer on the patient. Although manual examination of mammograms has a high sensitivity rate, automatic analysis could be used on places where expert radiologists are not available or it could be used by doctors as a second informed opinion or to help them decide to which regions of the image dedicate more time. With this motivation, a project that intends to design a computer aided diagnosis (CAD) tool for breast cancer has existed in this institution since 2007. This thesis falls under the scope of this project and will be its first approximation to use deep learning for breast cancer diagnosis.
+
+Traditional CAD systems for breast cancer diagnosis work as a pipeline where each stage uses different computer vision and machine learning techniques. An standard pipeline will, for instance, preprocess the image, identify and segment the relevant parts of the picture, extract features from the segmented parts and train a classifier on the extracted features. Although some successful systems are built in this manner, they have a few disadvantages: each stage is a separate component and hence work is needed on each of them to notably improve overall results, it is composed of dependent stages so that changes on one component can affect the performance of other parts of the system, it uses complex image vision techniques to segment the images and extract features which are difficult to handcraft and select, it requires expert knowledge to be properly tuned, among others.
+
+We plan to investigate the potential of convolutional networks to replace some if not all of the stages of traditional image processing systems. Convolutional networks~\cite{Fukushima1980,LeCun1998}, a natural extension to feedforward neural networks, are a statistical learning classifier which uses raw images as input and learns the important features for the classification task as it is trained. Convolutional networks are designed to work with minimally preprocessed images, can be trained to be rotational and translational invariant and perform segementation, feature extraction and classification in one step. In our case, convolutional networks simplify the process of classification potentially reducing it to one component which is trained from labelled data and can be improved and properly tuned to obtain better results. Although there are some drawbacks with convolutional networks, they are the state-of-the-art technology for object recognition~\cite{Russakovsky2014} and we believe it is worthy to experiment with them.
+
+%Summary of the related work part here(this guys dd it first and this guys and i'm gteting my ideas from here and there and my contribution is this...)
+
+We will start our experiments training a simple convolutional network in images preprocessed with different techniques including unpreprocessed images, later we will train a convolutional network using whole mammogram images, pretrain a convolutional network with a different image database and fine-tune it using our database and finally we will use the gathered knowledge to build an optimal convolutional network. We intend to learn whether convolutional networks can automatically preprocess mammographic images or else which is the best preprocessing for mammographic images, what is the best segmentation strategy we can use and whether we can achieve results similar to those of more traditional systems.
+
+This document starts by offering an insight into the problem with traditional methods for image analysis in Section~\ref{sec:ProblemDefinition}. It exposes the particular objectives and hypotheses of the thesis in Sections~\ref{sec:Objectives} and~\ref{sec:Hypothesis}. Section~\ref{sec:Background} presents a comprehensive background of the scientific concepts used throughout the document and lastly a detailed methodology and work plan are shown in Sections~\ref{sec:Methodology} and~\ref{sec:WorkPlan}.
 
 \begin{comment}
 En esta sección se espera que el autor describa en forma más amplia a como

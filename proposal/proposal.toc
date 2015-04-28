@@ -1,15 +1,16 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
-\contentsline {section}{\numberline {2}Problem Definition}{1}{section.2}
-\contentsline {section}{\numberline {3}Objectives}{2}{section.3}
-\contentsline {section}{\numberline {4}Hypotheses}{3}{section.4}
-\contentsline {subsection}{\numberline {4.1}Research Questions}{3}{subsection.4.1}
-\contentsline {section}{\numberline {5}Background}{4}{section.5}
-\contentsline {subsection}{\numberline {5.1}Breast Cancer}{4}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}Mammograms}{5}{subsubsection.5.1.1}
-\contentsline {subsection}{\numberline {5.2}Classification}{6}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Artificial Neural Networks}{7}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Convolutional Networks}{7}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Convolutional Networks applied to Breast Cancer}{7}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Related Work}{7}{subsection.5.6}
-\contentsline {section}{\numberline {6}Methodology}{7}{section.6}
-\contentsline {section}{\numberline {7}Work Plan}{8}{section.7}
+\contentsline {section}{\numberline {2}Problem Definition}{2}{section.2}
+\contentsline {section}{\numberline {3}Objectives}{4}{section.3}
+\contentsline {section}{\numberline {4}Hypothesis}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Research Questions}{5}{subsection.4.1}
+\contentsline {section}{\numberline {5}Background}{5}{section.5}
+\contentsline {subsection}{\numberline {5.1}Breast Cancer}{5}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Mammograms}{6}{subsubsection.5.1.1}
+\contentsline {subsection}{\numberline {5.2}Mammography DB}{8}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Classification}{8}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Artificial Neural Networks}{8}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Convolutional Networks}{8}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Convolutional Networks applied to Breast Cancer}{8}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}Related Work}{8}{subsection.5.7}
+\contentsline {section}{\numberline {6}Methodology}{9}{section.6}
+\contentsline {section}{\numberline {7}Work Plan}{10}{section.7}
