@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  28 APR 2015 17:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  3 MAY 2015 13:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -587,43 +587,112 @@ Package caption Info: hyperref package is loaded.
 \c@subfigure=\count99
 \c@subtable=\count100
 )
-(./proposal.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks19
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks20
+\ex@=\dimen117
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen118
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count101
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count102
+\leftroot@=\count103
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count104
+\DOTSCASE@=\count105
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen119
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count106
+\c@MaxMatrixCols=\count107
+\dotsspace@=\muskip11
+\c@parentequation=\count108
+\dspbrk@lvl=\count109
+\tag@help=\toks21
+\row@=\count110
+\column@=\count111
+\maxfields@=\count112
+\andhelp@=\toks22
+\eqnshift@=\dimen120
+\alignsep@=\dimen121
+\tagshift@=\dimen122
+\tagwidth@=\dimen123
+\totwidth@=\dimen124
+\lineht@=\dimen125
+\@envbody=\toks23
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+) (./proposal.aux)
 \openout1 = `proposal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 39.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 41.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count101
-\scratchdimen=\dimen117
-\scratchbox=\box26
-\nofMPsegments=\count102
-\nofMParguments=\count103
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count104
-\MPscratchDim=\dimen118
-\MPnumerator=\count105
-\makeMPintoPDFobject=\count106
-\everyMPtoPDFconversion=\toks20
+\scratchcounter=\count113
+\scratchdimen=\dimen126
+\scratchbox=\box28
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count116
+\MPscratchDim=\dimen127
+\MPnumerator=\count117
+\makeMPintoPDFobject=\count118
+\everyMPtoPDFconversion=\toks26
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -639,8 +708,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box27
-Package hyperref Info: Link coloring OFF on input line 39.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring OFF on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -648,11 +717,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count107
+\c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 39.
-LaTeX Info: Redefining \pageref on input line 39.
-LaTeX Info: Redefining \nameref on input line 39.
+LaTeX Info: Redefining \ref on input line 41.
+LaTeX Info: Redefining \pageref on input line 41.
+LaTeX Info: Redefining \nameref on input line 41.
 
 (./proposal.out) (./proposal.out)
 \@outlinefile=\write3
@@ -661,27 +730,30 @@ LaTeX Info: Redefining \nameref on input line 39.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
-<plots/logo.png, id=68, 331.2375pt x 104.64093pt>
+<plots/logo.png, id=64, 331.2375pt x 104.64093pt>
 File: plots/logo.png Graphic file (type png)
  <use plots/logo.png>
-Package pdftex.def Info: plots/logo.png used on input line 41.
+Package pdftex.def Info: plots/logo.png used on input line 43.
 (pdftex.def)             Requested size: 108.405pt x 34.24579pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./plots/logo.png>] [2]
 (./proposal.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 5.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 5.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 5.
+LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
+LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
 \tf@toc=\write4
 \openout4 = `proposal.toc'.
 
- [3] (./introduction.texpdfTeX warning (ext4): destination with the same identi
-fier (name{page.1}) has been already used, duplicate ignored
+ [3]
+(./introduction.texpdfTeX warning (ext4): destination with the same identifier 
+(name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.16 
@@ -690,25 +762,20 @@ e identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.4 
-     [2]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 5.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 5.
-) (./objectives.texpdfTeX warning (ext4): destination with the same identifier 
-(name{page.3}) has been already used, duplicate ignored
+     [2]) (./objectives.texpdfTeX warning (ext4): destination with the same ide
+ntifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.3 
-     [3]) (./hypotheses.tex [4]) (./breastcancer.tex [5]
-<plots/breastAnatomy.png, id=171, 419.5675pt x 454.69875pt>
+     [3]) (./hypotheses.tex [4]) (./breastcancer.tex
+<plots/breastAnatomy.png, id=158, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
 Package pdftex.def Info: plots/breastAnatomy.png used on input line 7.
 (pdftex.def)             Requested size: 176.9719pt x 191.79086pt.
-
-<plots/normalMammogram.jpg, id=174, 144.54pt x 184.69pt>
+ [5]
+<plots/normalMammogram.jpg, id=168, 144.54pt x 184.69pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
@@ -719,7 +786,7 @@ Package pdftex.def Info: plots/normalMammogram.jpg used on input line 18.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [6 <./plots/breastAnatomy.png>]
-<plots/breastMicrocalcification.png, id=185, 95.35625pt x 95.35625pt>
+<plots/breastMicrocalcification.png, id=180, 95.35625pt x 95.35625pt>
 File: plots/breastMicrocalcification.png Graphic file (type png)
 
 <use plots/breastMicrocalcification.png>
@@ -727,22 +794,22 @@ Package pdftex.def Info: plots/breastMicrocalcification.png used on input line
 30.
 (pdftex.def)             Requested size: 132.73228pt x 132.74847pt.
 
-<plots/breastMass.png, id=186, 108.405pt x 108.405pt>
+<plots/breastMass.png, id=181, 108.405pt x 108.405pt>
 File: plots/breastMass.png Graphic file (type png)
 
 <use plots/breastMass.png>
 Package pdftex.def Info: plots/breastMass.png used on input line 34.
 (pdftex.def)             Requested size: 132.73228pt x 132.74847pt.
- [7 <./plots/normalMammogram.jpg> <./plots/breastMicrocalcification.png> <./plo
-ts/breastMass.png>]) (./classification.tex)
-(./relatedwork.tex [8]) (./methodology.tex [9]) (./workplan.tex
-<plots/workplan.png, id=216, 1203.49625pt x 275.0275pt>
+) [7 <./plots/normalMammogram.jpg> <./plots/breastMicrocalcification.png> <./pl
+ots/breastMass.png>] (./classification.tex [8]
+[9]) [10] (./relatedwork.tex) (./methodology.tex [11]) (./workplan.tex
+<plots/workplan.png, id=239, 1203.49625pt x 275.0275pt>
 File: plots/workplan.png Graphic file (type png)
 
 <use plots/workplan.png>
 Package pdftex.def Info: plots/workplan.png used on input line 4.
 (pdftex.def)             Requested size: 442.4365pt x 101.10811pt.
-) (./proposal.bbl [10 <./plots/workplan.png>]
+ [12]) (./proposal.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 19--25
 []\OT1/cmr/m/n/10.95 Breast Can-cer Surveil-lance Con-sor-tium
  []
@@ -753,7 +820,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--25
 e / screening / 2009 / perf _ age .
  []
 
-
+[13 <./plots/workplan.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 82--87
 []\OT1/cmr/m/n/10.95 National Can-cer In-sti-tute (2014).  Mam-mo-
  []
@@ -764,39 +831,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--87
 ancer . gov / cancertopics / types / breast /
  []
 
-[11])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 110.
- [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 110.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 110.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 110.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 116.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 116.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: 88DC3DF30701F1177D9A5B456BD0F2B2;959.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 110.
+(rerunfilecheck)             Checksum: 750759CF6B0B59D10C44AD5A73649F91;895.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
  ) 
 Here is how much of TeX's memory you used:
- 7126 strings out of 495028
- 108512 string characters out of 6181498
- 187836 words of memory out of 5000000
- 10182 multiletter control sequences out of 15000+600000
- 9972 words of font info for 35 fonts, out of 8000000 for 9000
+ 8012 strings out of 495028
+ 118393 string characters out of 6181498
+ 198860 words of memory out of 5000000
+ 11020 multiletter control sequences out of 15000+600000
+ 13159 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,8n,40p,1595b,410s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,9n,40p,1608b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmtt10.pfb>
-Output written on proposal.pdf (15 pages, 432382 bytes).
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on proposal.pdf (17 pages, 476549 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
- 255 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 159 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 333 PDF objects out of 1000 (max. 8388607)
+ 287 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 
