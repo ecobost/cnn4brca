@@ -63,6 +63,12 @@ LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998).
 \newblock Gradient-based learning applied to document recognition.
 \newblock {\em Proceedings of the IEEE}, 86(11):2278--2324.
 
+\bibitem[Linnainmaa, 1970]{Linnainmaa1970}
+Linnainmaa, S. (1970).
+\newblock The representation of the cumulative rounding error of an algorithm
+  as a taylor expansion of the local rounding errors.
+\newblock Master's thesis, University of Helsinki, Helsinki, Finland.
+
 \bibitem[Lo et~al., 1995]{Lo1995}
 Lo, S.-C.~B., Chan, H.-P., Lin, J.-S., Li, H., Freedman, M.~T., and Mun, S.~K.
   (1995).
@@ -70,6 +76,11 @@ Lo, S.-C.~B., Chan, H.-P., Lin, J.-S., Li, H., Freedman, M.~T., and Mun, S.~K.
   recognition.
 \newblock {\em Neural Networks}, 8(7–8):1201 -- 1214.
 \newblock Automatic Target Recognition.
+
+\bibitem[McCulloch and Pitts, 1943]{McCulloch1943}
+McCulloch, W.~S. and Pitts, W. (1943).
+\newblock A logical calculus of the ideas immanent in nervous activity.
+\newblock {\em Bulletin of Mathematical Biophysics}, 5:115--133.
 
 \bibitem[{National Cancer Institute}, 2012]{WYNTKABreastCancer2012}
 {National Cancer Institute} (2012).
@@ -101,12 +112,31 @@ Pisano, E.~D., Hendrick, R.~E., Yaffe, M.~J., Baum, J.~K., Acharyya, S.,
 \newblock {\em Radiology}, 246(2):376--383.
 \newblock PMID: 18227537.
 
+\bibitem[Rosenblatt, 1962]{Rosenblatt1962}
+Rosenblatt, F. (1962).
+\newblock {\em Principles of neurodynamics: perceptrons and the theory of brain
+  mechanisms}.
+\newblock Report (Cornell Aeronautical Laboratory). Spartan Books.
+
+\bibitem[Rumelhart et~al., 1986]{Rumelhart1986}
+Rumelhart, D.~E., Hinton, G.~E., and Williams, R.~J. (1986).
+\newblock Learning internal representations by error propagation.
+\newblock In Rumelhart, D.~E., McClelland, J.~L., and PDP Research~Group, C.,
+  editors, {\em Parallel Distributed Processing: Explorations in the
+  Microstructure of Cognition, Vol. 1}, pages 318--362. MIT Press, Cambridge,
+  MA.
+
 \bibitem[Russakovsky et~al., 2014]{Russakovsky2014}
 Russakovsky, O., Deng, J., Su, H., Krause, J., Satheesh, S., Ma, S., Huang, Z.,
   Karpathy, A., Khosla, A., Bernstein, M., Berg, A.~C., and Fei-Fei, L. (2014).
 \newblock {ImageNet Large Scale Visual Recognition Challenge}.
 \newblock {\em CoRR}, abs/1409.0575.
 \newblock Available online on \url{arxiv.org/abs/1409.0575}.
+
+\bibitem[Schmidhuber, 2015]{Schmidhuber2015}
+Schmidhuber, J. (2015).
+\newblock Deep learning in neural networks: An overview.
+\newblock {\em Neural Networks}, 61(0):85--117.
 
 \bibitem[Skaane et~al., 2007]{Skaane2007}
 Skaane, P., Hofvind, S., and Skjennald, A. (2007).
@@ -122,5 +152,17 @@ Taigman, Y., Yang, M., Ranzato, M., and Wolf, L. (2014).
   verification.
 \newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, Columbus,
   Ohio.
+
+\bibitem[Werbos, 1974]{Werbos1974}
+Werbos, P.~J. (1974).
+\newblock {\em Beyond regression: new tools for prediction and analysis in the
+  behavioral sciences}.
+\newblock PhD thesis, Harvard University, Boston, MA.
+
+\bibitem[Widrow and Hoff, 1960]{Widrow1960}
+Widrow, B. and Hoff, M.~E. (1960).
+\newblock Adaptive switching circuits.
+\newblock In {\em 1960 {IRE} {WESCON} Convention Record, Part 4}, pages
+  96--104, New York. {IRE}.
 
 \end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  5 MAY 2015 00:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  5 MAY 2015 10:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -767,20 +767,15 @@ ntifier (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.3 
-     [3]) (./hypotheses.tex
-
-LaTeX Warning: Reference `subsec:RelatedWork' on page 4 undefined on input line
- 3.
-
-[4]) (./breastcancer.tex
-<plots/breastAnatomy.png, id=156, 419.5675pt x 454.69875pt>
+     [3]) (./hypotheses.tex [4]) (./breastcancer.tex
+<plots/breastAnatomy.png, id=157, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
 Package pdftex.def Info: plots/breastAnatomy.png used on input line 7.
 (pdftex.def)             Requested size: 176.9719pt x 191.79086pt.
  [5]
-<plots/normalMammogram.jpg, id=166, 144.54pt x 184.69pt>
+<plots/normalMammogram.jpg, id=167, 144.54pt x 184.69pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
@@ -791,7 +786,7 @@ Package pdftex.def Info: plots/normalMammogram.jpg used on input line 18.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [6 <./plots/breastAnatomy.png>]
-<plots/breastMicrocalcification.png, id=178, 95.35625pt x 95.35625pt>
+<plots/breastMicrocalcification.png, id=179, 95.35625pt x 95.35625pt>
 File: plots/breastMicrocalcification.png Graphic file (type png)
 
 <use plots/breastMicrocalcification.png>
@@ -799,7 +794,7 @@ Package pdftex.def Info: plots/breastMicrocalcification.png used on input line
 30.
 (pdftex.def)             Requested size: 132.73228pt x 132.74847pt.
 
-<plots/breastMass.png, id=179, 108.405pt x 108.405pt>
+<plots/breastMass.png, id=180, 108.405pt x 108.405pt>
 File: plots/breastMass.png Graphic file (type png)
 
 <use plots/breastMass.png>
@@ -807,15 +802,31 @@ Package pdftex.def Info: plots/breastMass.png used on input line 34.
 (pdftex.def)             Requested size: 132.73228pt x 132.74847pt.
 ) [7 <./plots/normalMammogram.jpg> <./plots/breastMicrocalcification.png> <./pl
 ots/breastMass.png>] (./classification.tex [8]
-[9]) [10] (./neuralnetworks.tex) (./relatedwork.tex) (./methodology.tex
-[11] [12]) (./workplan.tex
-<plots/workplan.png, id=249, 1203.49625pt x 275.0275pt>
+[9]) [10] (./neuralnetworks.tex
+<plots/neuralNetwork.png, id=237, 969.6225pt x 561.09625pt>
+File: plots/neuralNetwork.png Graphic file (type png)
+
+<use plots/neuralNetwork.png>
+Package pdftex.def Info: plots/neuralNetwork.png used on input line 7.
+(pdftex.def)             Requested size: 442.4365pt x 256.02693pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11] [12 <./plots/neuralNetwork.png>]
+Overfull \hbox (2.41304pt too wide) detected at line 38
+\OML/cmm/m/it/10.95 J\OT1/cmr/m/n/10.95 (^^B) = \OMS/cmsy/m/n/10.95 ^^@[] [] []
+  \OT1/cmr/m/n/10.95 + [] [] [] [] ^^B[]
+ []
+
+) (./relatedwork.tex) (./methodology.tex [13] [14]) (./workplan.tex
+<plots/workplan.png, id=290, 1203.49625pt x 275.0275pt>
 File: plots/workplan.png Graphic file (type png)
 
 <use plots/workplan.png>
 Package pdftex.def Info: plots/workplan.png used on input line 4.
 (pdftex.def)             Requested size: 442.4365pt x 101.10811pt.
-) (./proposal.bbl
+) (./proposal.bbl [15 <./plots/workplan.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 19--25
 []\OT1/cmr/m/n/10.95 Breast Can-cer Surveil-lance Con-sor-tium
  []
@@ -826,37 +837,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--25
 e / screening / 2009 / perf _ age .
  []
 
-[13 <./plots/workplan.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 82--87
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 93--98
 []\OT1/cmr/m/n/10.95 National Can-cer In-sti-tute (2014).  Mam-mo-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 82--87
+Underfull \hbox (badness 10000) in paragraph at lines 93--98
 \OT1/cmr/m/n/10.95 grams.  elec-tronic.  Avail-able on []$\OT1/cmtt/m/n/10.95 c
 ancer . gov / cancertopics / types / breast /
  []
 
-[14])
+)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
- [15]
+ [17]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
  (./proposal.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: B426F85B86B0ADBBDBD68A2C3E5B33CA;894.
-
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
  ) 
 Here is how much of TeX's memory you used:
- 8025 strings out of 495028
- 118519 string characters out of 6181498
- 199786 words of memory out of 5000000
- 11019 multiletter control sequences out of 15000+600000
+ 8055 strings out of 495028
+ 119027 string characters out of 6181498
+ 200331 words of memory out of 5000000
+ 11032 multiletter control sequences out of 15000+600000
  13159 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,9n,40p,1608b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -865,18 +872,23 @@ hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on proposal.pdf (18 pages, 478394 bytes).
+fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/symbols/msbm10.pfb>
+Output written on proposal.pdf (20 pages, 620224 bytes).
 PDF statistics:
- 345 PDF objects out of 1000 (max. 8388607)
- 298 compressed objects within 3 object streams
- 72 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 409 PDF objects out of 1000 (max. 8388607)
+ 352 compressed objects within 4 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 
