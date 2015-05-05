@@ -1,0 +1,53 @@
+\emph{Artificial neural networks}, also know as \emph{ANN} or simply \emph{neural networks}, are one of the most popular nonlinear classifiers used today (maybe next to kernelized Support Vector Machines).
+-They were first developed by to simulate the way a neuron processes the information coming from its dendrites and relaying it through its axon to neighboring neurons.
+%Mcculoch an pitss 1943, widrow and hoff 1960(?), rosenblatt 1962, rumelhart 1986
+-Although the convolutinoal nmetworks are an artificial neutral network AND THUS INSPIRED INTITIALYY ON THE BIOLOGY OF NEURAL NETWORKS, on this work I would USE THE NMORE STANDAR NAMES OVER THE BIOINSPIRED ONES, THUS prefer to use more standard names to defoine its parts over the more bioinspireds, thjus, units over neurons and convolutional networks over convolutiona networks. Other authors prefer the more bioinspired terms and both could be find interchangaebky in the literature
+practical value
+%biologically motivated
+do not try to represent a good biological neural network, but somthing that for modelling functions. 
+not modelling nature.
+-Plus, we focus on multilayer feedforward neural networks, the name will become apparent after the following parapgharps, convolutional netwokrs are a type of neural networks and they are defined in the next section.
+
+% Say that if it is connected it sends information from there
+% Weights (parametersto be learned).
+% Example of a small neural network with 3 layers, 3 input units (not counting the bias unit), 3 hidden units (not counting the bias unit) and 1 output unit. 
+
+A neural network is composed of varous layers of units (which)this is cpmposed by layers of unitswhcih are fully connected to the next layer, the first layer receives the inputs  and is called the input layer, he last layer has size K = number fo classes of the problem (or 1 for binary classification) and is called the output layer. 
+How do we count the number of layers, deep neural networks are those with many layers, 
+Each connection has a \emph{weight} assigned to it, so between each layer we have a weight matrix  where each column represents the conection between the first layer. Plus each layer has a wieght bias w0 always equals to 1 which ... (what it does)
+
+Each unit computes a funciton of the form:
+where g is a n activation function has an activation function. Usually a sigmoidal is used to thuis, it represents the probability of a function in a. 
+To obtain a prediciton h(x) the inputs are processed layer by layer starting on the input layr . 
+Each unit then does a logistic regression whihc is a nonlinear commputation when combined with the outpus of other neurons it gets ytranformed into a nonlinear function. A more intuitive view of why are neural networks is to think of the units on the first hidden layer looking for a feature (via logistic regression), the second hidden layer units wil then look for features using te outputs of the first hiiden layer units and so on, thus the neural network learns the features that are more relevant for the task and as more layers are included, more complicated features can be learned (granted there is enough training data).
+
+Cost function is defined as ...
+Cost function is not convex but the weights generally cinverge to a good estimate if useing gradiet descent. Especifically, error backpropagation\cite{werbos, 1975} is used where the ouput error is backpropagated through the network and each eithg is tuned. 
+Regularization can be performed by modyfing the cost function to be:
+
+
+
+Q: Add this to gradient descent ((Hadamard,
+1908))
+\begin{comment}
+describe f(x)
+
+aartificial neural networks
+BISHOP ann 
+non linea classifiers mad eof layers of neurons or processing untis which make a separte computation and have paramteres which need to be learned. 
+When using sigmoids it models the probability of ocurrence of a given event. 
+they come from 1960
+A n artificial neruon has a set iof inputs representative of the dendrites on treal neurons, an output  that represents the axon and an activation funciton (traditionally a sigmoid function) that represents the computation or preference of a given neuron.
+Layers
+
+Trained via backpropagation
+
+
+side note on language
+I will sometimes refer to convolutional netowkrs with no pooling or maxout layers as simple convolutional networks and to those developed more recently simply as convolutional networks. i would also put the parameters of each onvnet to avoid any confusion
+also, even thpough Although the convolutinoal nmetworks are an artificial neutral network AND THUS INSPIRED INTITIALYY ON THE BIOLOGY OF NEURAL NETWORKS, on this work I would USE THE NMORE STANDAR NAMES OVER THE BIOINSPIRED ONES, THUS prefer to use more standard names to defoine its parts over the more bioinspireds, thjus, units over neurons and convolutional networks over convolutiona networks. Other authors prefer the more bioinspired terms and both could be find interchangaebky in the literature
+
+\end{comment}
+
+
+
