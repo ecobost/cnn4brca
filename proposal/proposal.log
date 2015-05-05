@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  5 MAY 2015 10:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  5 MAY 2015 10:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -819,8 +819,8 @@ Overfull \hbox (2.41304pt too wide) detected at line 38
   \OT1/cmr/m/n/10.95 + [] [] [] [] ^^B[]
  []
 
-) (./relatedwork.tex) (./methodology.tex [13] [14]) (./workplan.tex
-<plots/workplan.png, id=290, 1203.49625pt x 275.0275pt>
+) (./convnets.tex) (./relatedwork.tex) (./methodology.tex [13] [14])
+(./workplan.tex <plots/workplan.png, id=290, 1203.49625pt x 275.0275pt>
 File: plots/workplan.png Graphic file (type png)
 
 <use plots/workplan.png>
@@ -849,19 +849,19 @@ ancer . gov / cancertopics / types / breast /
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 118.
  [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 118.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 118.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 118.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: B426F85B86B0ADBBDBD68A2C3E5B33CA;894.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 118.
  ) 
 Here is how much of TeX's memory you used:
- 8055 strings out of 495028
- 119027 string characters out of 6181498
+ 8058 strings out of 495028
+ 119061 string characters out of 6181498
  200331 words of memory out of 5000000
  11032 multiletter control sequences out of 15000+600000
  13159 words of font info for 50 fonts, out of 8000000 for 9000
@@ -885,7 +885,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on proposal.pdf (20 pages, 620224 bytes).
+Output written on proposal.pdf (20 pages, 620228 bytes).
 PDF statistics:
  409 PDF objects out of 1000 (max. 8388607)
  352 compressed objects within 4 object streams
