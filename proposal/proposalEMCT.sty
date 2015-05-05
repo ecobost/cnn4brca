@@ -137,7 +137,7 @@
 \def\propautor#1{\gdef\@propautor{#1}}  \propautor{Borrego Estudioso}
 \def\propautormat#1{\gdef\@propautormat{#1}}  \propautormat{000000}
 \def\propmes#1{\gdef\@propmes{#1}}      \propmes{Mayo}
-\def\propanio#1{\gdef\@propanio{#1}}    \propanio{2012}
+\def\propanio#1{\gdef\@propanio{#1}}    \propanio{2015}
 \def\propcd#1{\gdef\@propcd{#1}}    \propcd{Monterrey, N.L.}
 
 \newcommand{\proptitulotamanio}{\Large}
@@ -148,17 +148,17 @@
 \def\propasesor#1{\gdef\@propasesor{#1}}  \propasesor{Asesor Principal}
 \def\propdireccionautor#1{\gdef\@propdireccionautor{#1}}
   \propdireccionautor{\protect M\'{e}xico}
-\newcommand{\propaprobadapor}{Aprobado por}
+\newcommand{\propaprobadapor}{Approved by}
 \newcommand{\propaprobadaportamanio}{\large}
 \newcommand{\proptipo}{Prop}
 \newcommand{\proptipotamanio}{\large}
 \newcommand{\proptiposize}{\large}
 \newcommand{\propgradotamanio}{\large}
-\def\propgrado#1{\gdef\@propgrado{#1}}  \propgrado{Maestro en Ciencias}
+\def\propgrado#1{\gdef\@propgrado{#1}}  \propgrado{Master of Science}
 \def\propespecialidad#1{\gdef\@propespecialidad{#1}}
-  \propespecialidad{Sistemas Inteligentes}
+  \propespecialidad{Intelligent Systems}
 \def\propgradosiglas#1{\gdef\@propgradosiglas{#1}}
-  \propgradosiglas{M.C.}
+  \propgradosiglas{M.Sc.}
 \newcommand{\propnumerosinodal}{3}
 \def\propsinodalA#1{\gdef\@propsinodalA{#1}}
   \propsinodalA{Sinodal1 ApPaterno ApMaterno}
@@ -169,11 +169,11 @@
 \def\propPG#1{\gdef\@propPG{#1}}
   \propPG{Ingenier\'{i}a y Tecnolog\'{i}as de Informaci\'{o}n}
 \def\propcampus#1{\gdef\@propcampus{#1}}  \propcampus{Monterrey}
-\newcommand{\propcomite}{\protect Comit\'{e} de Tesis:}
+\newcommand{\propcomite}{\protect Thesis Committee:}
 \newcommand{\propcomitetamanio}{\large}
 \newcommand{\propvitaencabezado}{Vita}
 \newcommand{\propvitaencabezadotamanio}{\Large}
-\newcommand{\propreconocencabezado}{Reconocimientos}
+\newcommand{\propreconocencabezado}{Acknowledgments}
 \newcommand{\propreconocencabezadotamanio}{\Large}
 \newcommand{\propreconocfirma}{\@propautor}
 \newcommand{\propreconocfirmatamanio}{\large}
@@ -184,10 +184,10 @@
 \newcommand{\propmaestria}{
     \renewcommand{\proptipo}{Prop}
     \renewcommand{\@publicationno}{}
-    \propgrado{\protect Maestro en Ciencias}
-    \propgradosiglas{M.C.}
+    \propgrado{\protect Master of Science}
+    \propgradosiglas{M.Sc.}
     \renewcommand{\propnumerosinodal}{3}
-    \renewcommand{\propcomite}{\protect Comit\'{e} de Tesis:}}
+    \renewcommand{\propcomite}{\protect Thesis Committee:}}
 \newcommand{\propphd}{}
 
 %%%
@@ -216,20 +216,20 @@
     {\bfseries \Large \@tecdemonterrey \\[5mm]
       \large Campus \@propcampus} \\[8mm]
     
-    {\bfseries \large Escuela Nacional de \@propPG} \\[3mm]
-    {\bfseries Programa de Graduados} \\[1in]
+    {\bfseries \large School of \@propPG} \\[3mm]
+    {\bfseries Graduate Program} \\[1in]
     
-    {\bfseries Maestr\'{i}a en Ciencias en \@propespecialidad}\\[1ex]
-    {\large\bfseries Propuesta de Tesis}\\[7ex]
+    {\bfseries Master of Science in \@propespecialidad}\\[1ex]
+    {\large\bfseries Thesis Proposal}\\[7ex]
     
     {\bfseries\@proptitulo} \\[8mm]
-    por \\[3mm]
+    by \\[3mm]
     \@propautor \\
     \@propautormat\\
     
     \vfill
     \includegraphics[width=1.5in]{plots/logo.png}\\
-    \@propcd, \@propmes\ de \@propanio
+    \@propcd, \@propmes, \@propanio
   \end{center}
   \newpage}
 
@@ -246,20 +246,20 @@
     \centering
     \begin{minipage}[t]{\@signwidth}
       \centering
-      \makelines{\@propasesor} {\small Asesor Principal}
+      \makelines{\@propasesor} {\small Principal Advisor}
     \end{minipage} \\[2cm]
     \begin{minipage}[t]{\@signwidth}
       \centering
-      \makelines{\@propsinodalA} {\small Sinodal}
+      \makelines{\@propsinodalA} {\small Committee Member}
     \end{minipage}\hfill
     \begin{minipage}[t]{\@signwidth}
       \centering
-      \makelines{\@propsinodalB} {\small Sinodal}
+      \makelines{\@propsinodalB} {\small Committee Member}
     \end{minipage} \\[14mm]
     \begin{minipage}[t]{\@signwidth}
       \centering
       \makelines{\@propdirectorPG}
-      {\small Director del Programa de Maestr\'{i}a en XXXX}
+      {\small Director of the Master's Program in Intelligent Systems}
     \end{minipage}
   }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -270,19 +270,16 @@
     {\bfseries \Large \@tecdemonterrey \\[5mm]
       \large Campus \@propcampus} \\[8mm]
     
-    {\bfseries \large Escuela Nacional de \@propPG} \\[3mm]
-    {\bfseries Programa de Graduados} \\[10mm]
+    {\bfseries \large School of \@propPG} \\[3mm]
+    {\bfseries Graduate Program} \\[10mm]
     
-    Los miembros del comit\'{e} de tesis recomendamos que la presente
-    propuesta de \@propautor\ sea aceptada para desarrollar el proyecto de
-    tesis como requisito parcial para obtener el grado acad\'{e}mico de
-    \textbf{\@propgrado}, especialidad en: \\[5mm]
+	The committee members, hereby, recommend that the master's thesis proposal presented by \@propautor\ be accepted to develop the thesis project as a partial requirement for the degree of \textbf{\@propgrado}, with a major in: \\[5mm]
     
     {\bfseries \@propespecialidad} \\[10mm]
     
     \@propcomite\\[10mm]
     \@signbox
     \vfill
-    \@propmes\ de \@propanio
+    \@propmes, \@propanio
   \end{center}
   \newpage}

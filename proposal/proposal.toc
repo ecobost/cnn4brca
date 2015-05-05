@@ -1,5 +1,5 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
-\contentsline {section}{\numberline {2}Problem Definition}{2}{section.2}
+\contentsline {section}{\numberline {2}Problem}{2}{section.2}
 \contentsline {section}{\numberline {3}Objectives}{4}{section.3}
 \contentsline {section}{\numberline {4}Hypothesis}{4}{section.4}
 \contentsline {subsection}{\numberline {4.1}Research Questions}{5}{subsection.4.1}
@@ -11,5 +11,5 @@
 \contentsline {subsection}{\numberline {5.4}Convolutional Networks}{11}{subsection.5.4}
 \contentsline {subsection}{\numberline {5.5}Convolutional Networks applied to Breast Cancer}{11}{subsection.5.5}
 \contentsline {subsubsection}{\numberline {5.5.1}Related Work}{11}{subsubsection.5.5.1}
-\contentsline {section}{\numberline {6}Methodology}{12}{section.6}
+\contentsline {section}{\numberline {6}Methodology}{11}{section.6}
 \contentsline {section}{\numberline {7}Work Plan}{13}{section.7}
