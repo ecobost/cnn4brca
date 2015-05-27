@@ -1,15 +1,15 @@
 # Activity Log
-Written by: Erick Cobos T (a01184587@itesm.mx)
+Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
-##May 25- May 26
+##May 25 - May 26
 ### Activities
 * Installed in CTS 5
 * Read cs231n Stanford Convnet course (cs231n.github.io).
 
 ### To do
-* End writing Backgorund
+* End writing Background
 	* ConvNet
 	* ConvNet for Breast Cancer
 	* Practical Deep Learning
