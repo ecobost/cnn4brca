@@ -1,5 +1,15 @@
 Yet to write
 
+map image pixels to scores (class probabilities/distribution of probabilities over classes)
+Local connectivity Convolution brings both sparsity )not every layer before is connectd to an input in the next layer) and weight sharing (filter thingy called feature map)
+Poling (max'pooling) for local translational invariant. subsampling reduces spatial scale adn computation. invariant to local translation.
+
+Each feature map will generate a matrix with the values obtained from applying the feature map to each location on the image, then pooling is done over this matrix by taking for example patches of 3 by 3 and generating an smaller matrix witth the values of the higher image (space invariance). Or it can be done over all features, generating one matrix of the same size of the previous matrices where the max is over all values at (0,0), (0,1) , etc (feature invariance) (for this thught something better than the max could be used, maybe a different classification, so we detect something on the upper left 4 by 4 square based on all the features calculated).
+
+inspired on fukushima's neocognitron and Developed by Lecun since 1989, (https://www.youtube.com/watch?v=Fl-W7_z3w3o).
+
+
+Image colorchannels (RGB, grayscale)
 \begin{comment}
 Convolutional networks 
 %sparse with not all possible connections of within  a layer being present.
@@ -24,4 +34,63 @@ Training on backpropagation,
 For a complete overview of the state of deep learning see \cite{Schmidhuber}
 side note on language
 I will sometimes refer to convolutional netowkrs with no pooling or maxout layers as simple convolutional networks and to those developed more recently simply as convolutional networks. i would also put the parameters of each onvnet to avoid any confusion
+
+
+
+
+
+
+Practical Machine learning
+a few general remarks for image classificaiton ncna be found here(http://cs231n.github.io/classification and in the paper linked in the bottom). In this sectio we center on collecting some of the most imporatnat practical recommendations for trainig \emph{deep neural networks}. SThis advice is taken from (Bengio vide and Bengio paper). 
+
+Feature normalizaton:
+TEst validation and training.
+hyperparameter search
+image have color channels arenormaly transfered to gray here, although sometimes theya re not (link to theone that answers color questions in Baidu)  images xi∈RD, each associated with a label yi. Here i=1…N and yi∈1…K. That is, we have N examples (each with a dimensionality D) and K distinct categories. For example, in CIFAR-10 we have a training set of N = 50,000 images, each with D = 32 x 32 x 3 = 3072 pixels, and K = 10, since there are 10 distinct classes (dog, cat, car, etc). We will now define the score function f:RD↦RK that maps the raw image pixels to class scores.
+
+Randomize trainig set before training
+
+Deep Learning: (https://www.youtube.com/watch?v=JuimBuvEWBg)
+Bengio2013(techreport)
+	Practical reccomendations for gradient based training of deep architecthure
+
+Theoretical Foundations(Bengio): Although one hidden layer ar euniversal approximators you would need up to 2^n neurons in hidden layer for them to work. You could use k layers and use way less neurons. Gaussian kernel machins need 2^d examples over d inputs.
+2006(Huinton): efficient trianing of deep networsk using unsupervised data. With only supervised data, it was impossble before, now it can be done with suppervised learning only can be trained better with better inizializations, non-linearitites (rectifiers, maxout) and regularization (dropout). (23:34min)
+Dropout(hinton et al., 2012): averaging over many mehtods.
+Efficient bacjkpropagation (withouth unsupervised pretarinais): glorot and bengio AISTATS2010 proved it can be done with right inicialitzations and rectifiers.
+2012 krishnevxskiÑ breakthrough in object recognition
+Hyperparameters: Learning rate very important, parameter initialization somehow important, number of hidden units (use many plus regularization), L1 may be a better regularizer.
+	Use minibatch stochastic gradient descent. No point on using the exact gradient because you ar enot going to advance much and it may not even be the right direction.
+	Learning rate: Cross'validate to choose the best one. Use exponential scales: 0.1, 0.01, .001. also plot error/loss vs epochs, choos ethe one that converges fast or gives the better learning rate.
+	Early stopping. free lunch, #of iterations per training should not be thought as ahyperparameter. You can just rusn until it strts overfitting or it doesn{t improve anymore and preserve the best fitted árameters. SO stop the execution every #of steps (multiple of validation set size) to see what{s the training error and how well will it do. Maybe juts set max number of iterations. important print error to see what's ging one. Use heuristic as stopping criteria, for example if I did x #iter to get to my best parameters (say 100) and in another #iter I have not improved it, then  it probably converged (so it will stop in 200).
+	Initialization: random but how?
+	Random sampling of hyperparameters: ?? (Maybe I shuld consider preprocessing as a hyperparamter)
+
+Minibatch gradient descent. 256 examles.>100 Stochastc gradient descent is extreme with oine example.
+
+Some of these details are taken care by the software(either as a defualt or optional feature) and some are qyuite new and need to be taken care manually.
+
+although the sigmoid function is historically used it has fal out of favor... (http://cs231n.github.io/neural-networks-1/) because in the end of the outputs it is plabne and its graident \emph{vanish} (i.e., become 0), thus special care is needed when initializing it to otherwise it will not learn. Second drawback, it is not zero-centered (not so important, the first one is). Tanh is always preferred to the sigmoid non-linearity. ReLUs for the win (can die, need good learning rate)., maxouts(put formula, double the number of weights per neuron).
+
+Universal approximators. 10-20 layers in convnets. on normal neural networks 3 layers beat 2 but doesn't improve much for 4,5,6 but in convnets it does. " should not be using smaller networks because you are afraid of overfitting. Instead, you should use as big of a neural network as your computational budget allows, and use other regularization techniques to control overfitting." Dropout.
+
+image part:
+Image zero-centering: center all points just rest the mean of all values ( X -= np.mean(X)). Normalization per pixel sometimes not needed, but could be done.!!! Make sure the statistics (like mean ans atdv) do not use the test data. test data should be untouched. And these same statisitics shpuld later be substartcted and applied inthe test data.
+
+initialization: For ReLu each weight vector w = np.random.randn(n) * sqrt(2.0/n) (He et al, 2015). 0 bias initialization or small random numbers do not really matter.
+
+Regularization: l2-norm normally with Dropout(Srivastava et al, 2014), works like that, doe sthat and that. p=0.5, scale the activations. Only subsample a neural network to copute the output and make an update. Inverted dropout recomended. Hyperpaameters: p, lambda. 
+
+Loss function: Softmax, svm.
+
+Learning: sgd+momentum, with nag, Decreasing/decaying learning rate slowly(divided by two every number of steps)(do i need this?, maybe not).
+
+
+Hyperparameter fitting: preprocessing, learning rate, lambda. size of the neural network (just big). Use one validation. Search in log scale. random search. momentum = [0.5, 0.9, 0.95, 0.99] or 0.9
+Parameters to choose: preprocessing(4), small vs big image, hidden layers, hidden units, regularization param, learning parameter, mu(momentum), p(dropout),
+
+
+%Overfit a tiny subset of data(cost=0). If i can't is not worthede going to a bigger dataset.
+%Change the threshold for unbalanced classes. Cross validate it to see which one is better, never use the test set. Explain why using one metric and not the other.
+%Make sure I said that data replication (rotations and such) is needed because e don't have enough examples of a simple class, not because we are trying to balance the classes.
 \end{comment}
