@@ -7,7 +7,7 @@ Contact info:
 
 Erick Cobos Tandazo
 
-a01184587@itesm.mx
+a01184587@itesm.mx<br>
 ecobos21@hotmail.com
 
 
