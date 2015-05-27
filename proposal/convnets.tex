@@ -8,8 +8,6 @@ Each feature map will generate a matrix with the values obtained from applying t
 
 inspired on fukushima's neocognitron and Developed by Lecun since 1989, (https://www.youtube.com/watch?v=Fl-W7_z3w3o).
 
-
-Image colorchannels (RGB, grayscale)
 \begin{comment}
 Convolutional networks 
 %sparse with not all possible connections of within  a layer being present.
@@ -41,6 +39,11 @@ I will sometimes refer to convolutional netowkrs with no pooling or maxout layer
 
 
 Practical Machine learning
+
+
+
+Image colorchannels (RGB, grayscale)
+
 a few general remarks for image classificaiton ncna be found here(http://cs231n.github.io/classification and in the paper linked in the bottom). In this sectio we center on collecting some of the most imporatnat practical recommendations for trainig \emph{deep neural networks}. SThis advice is taken from (Bengio vide and Bengio paper). 
 
 Feature normalizaton:
@@ -87,7 +90,7 @@ Learning: sgd+momentum, with nag, Decreasing/decaying learning rate slowly(divid
 
 
 Hyperparameter fitting: preprocessing, learning rate, lambda. size of the neural network (just big). Use one validation. Search in log scale. random search. momentum = [0.5, 0.9, 0.95, 0.99] or 0.9
-Parameters to choose: preprocessing(4), small vs big image, hidden layers, hidden units, regularization param, learning parameter, mu(momentum), p(dropout),
+Hyperparameters: preprocessing(4), small vs big image, hidden layers, hidden units, regularization param, learning parameter, mu(momentum), p(dropout),
 
 
 %Overfit a tiny subset of data(cost=0). If i can't is not worthede going to a bigger dataset.

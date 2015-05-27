@@ -3,7 +3,15 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
-##May 25 - May 26
+## May 27- Jun 2
+### Activities
+*
+### To do
+*
+### Questions
+1.
+
+## May 25 - May 26
 ### Activities
 * Installed in CTS 5
 * Read cs231n Stanford Convnet course (cs231n.github.io).
@@ -19,9 +27,21 @@ Log with activities and questions arising during every week
 * Select which forms of preprocessing to try
 
 ### Questions
-* Should I preserve a test set just for the final step (in December) or is it ok to use all data for the preprocessing choosing and then all data for the small vs big and all that?. 
-* Is it a binary classification(cancer/no cancer) or 3 classes (micro/mass/nothing) or something else(detection)?
-* Validation vs 5-fold crossvalidation?
-* When checking for different preprocessings, fit all hyperparameters or only a subset or none at all?
-* mxn o nxd for the name of dimensions?  I like mxn.
-* Will I have trouble if I use the same data to train and test different models (even if changing randomly the test samples)?
+1. Should I preserve a test set just for the final step (in December) or is it ok to use all data for the preprocessing choosing and then all data for the small vs big and all that?. 
+
+	Answer: Separate a test set right at the beginning. Treat preprocessing as a hyperparameter to fit. For transfer leraning and big vs small you cna use the entire dataset but shuffle the test set to be different. 
+
+2. Validation or 5-fold crossvalidation?
+
+	Answer: Validation. If validation ste is small, then 5-fold.
+
+3. When checking for different preprocessings, fit all hyperparameters or only a subset or none at all?
+
+	Answer:	Fit learning rate and regularization. All other hyperparams would be set to standard (including the network architecture). 
+
+4. mxn o nxd for the name of dimensions?
+	
+	Answer: mxn. m examples of n dimensions.
+
+5. Is it a binary classification(cancer/no cancer) or 3 classes (micro/mass/nothing) or something else(detection)?
+6. Which forms of preprocessing should I use?. 
