@@ -3,14 +3,11 @@ Using Convolutional Neural Networks (CNN) for Breast Cancer Detection and Diagno
 
 Most articles in the Bibliography folder were obtained directly from the authors or via agreements with my home institution. Please consider any copyright infringement before using them.
 
-Contact info:
-
-Erick Cobos Tandazo
-
-a01184587@itesm.mx<br>
-ecobos21@hotmail.com
+#####Contact info:<br>
+Erick Cobos Tandazo<br>
+a01184587@itesm.mx
 
 
 #### To do:
 * Add description of folders:
-	* Maybe add \docs folders (with all latex) or reorganize as in .....
+	* Maybe add \docs folders (with all latex) or reorganize as in [here](http://www.vukovicnikola.info/folder-structure-for-research/)
