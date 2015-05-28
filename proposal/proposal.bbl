@@ -51,12 +51,25 @@ Howlader, N., Noone, A.~M., Krapcho, M.~F., Garshell, J., Miller, D.~A.,
 \newblock review, National Cancer Institute, Bethesda, MD.
 \newblock Available on \url{seer.cancer.gov/csr/1975_2011/}.
 
+\bibitem[Karpathy, 2015]{Karpathy2015}
+Karpathy, A. (2015).
+\newblock Convolutional neural networks for visual recognition course.
+\newblock online.
+\newblock Available on \url{http://cs231n.github.io}.
+
 \bibitem[Kerlikowske et~al., 2011]{Kerlikowske2011}
 Kerlikowske, K., Hubbard, R.~A., Miglioretti, D.~L., Geller, B.~M., Yankaskas,
   B.~C., Lehman, C.~D., Taplin, S.~H., and Sickles, E.~A. (2011).
 \newblock Comparative effectiveness of digital versus film-screen mammography
   in community practice in the united states: A cohort study.
 \newblock {\em Annals of Internal Medicine}, 155(8):493--502.
+
+\bibitem[Krizhevsky et~al., 2012]{Krizhevsky2012}
+Krizhevsky, A., Sutskever, I., and Hinton, G.~E. (2012).
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In Pereira, F., Burges, C., Bottou, L., and Weinberger, K., editors,
+  {\em Advances in Neural Information Processing Systems 25}, pages 1097--1105.
+  Curran Associates, Inc.
 
 \bibitem[LeCun et~al., 1998]{LeCun1998}
 LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998).

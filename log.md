@@ -9,7 +9,7 @@ Log with activities and questions arising during every week
 ### To do
 *
 ### Questions
-1.
+1. Should I use loss or cost function?.
 
 ## May 25 - May 26
 ### Activities
