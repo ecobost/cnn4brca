@@ -71,6 +71,12 @@ Krizhevsky, A., Sutskever, I., and Hinton, G.~E. (2012).
   {\em Advances in Neural Information Processing Systems 25}, pages 1097--1105.
   Curran Associates, Inc.
 
+\bibitem[LeCun et~al., 1989]{LeCun1989}
+LeCun, Y., Boser, B., Denker, J.~S., Henderson, D., Howard, R.~E., Hubbard, W.,
+  and Jackel, L.~D. (1989).
+\newblock Backpropagation applied to handwritten zip code recognition.
+\newblock {\em Neural Computation}, 1(4):541--551.
+
 \bibitem[LeCun et~al., 1998]{LeCun1998}
 LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P. (1998).
 \newblock Gradient-based learning applied to document recognition.
@@ -158,6 +164,11 @@ Skaane, P., Hofvind, S., and Skjennald, A. (2007).
   final results of oslo {II} study.
 \newblock {\em Radiology}, 244(3):708--717.
 \newblock PMID: 17709826.
+
+\bibitem[Springenberg et~al., 2014]{Springenberg2014}
+Springenberg, J.~T., Dosovitskiy, A., Brox, T., and Riedmiller, M.~A. (2014).
+\newblock Striving for simplicity: The all convolutional net.
+\newblock {\em CoRR}, abs/1412.6806.
 
 \bibitem[Taigman et~al., 2014]{Taigman2014}
 Taigman, Y., Yang, M., Ranzato, M., and Wolf, L. (2014).

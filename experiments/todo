@@ -3,3 +3,8 @@ Preprocessing(http://scipy-lectures.github.io/advanced/image_processing/#statist
 	median if noisy
 	wavelet, not tried
 	(other enhancements)
+
+% Train a network with all standard features.
+% For final model, use both(only convolutions and conv&pool)
+% Use VGG Net pretrained in Caffe.
+% Train an ensemble of networks with different hyperparameters at the start and average.

@@ -5,7 +5,8 @@ Log with activities and questions arising during every week
 
 ## May 27- Jun 2
 ### Activities
-*
+* Read CS231n
+* Write Convnet section in thesis
 ### To do
 *
 ### Questions

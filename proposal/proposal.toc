@@ -9,7 +9,12 @@
 \contentsline {subsection}{\numberline {5.2}Classification}{8}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}Artificial Neural Networks}{11}{subsection.5.3}
 \contentsline {subsection}{\numberline {5.4}Convolutional Networks}{13}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Convolutional Networks applied to Breast Cancer}{13}{subsection.5.5}
-\contentsline {subsubsection}{\numberline {5.5.1}Related Work}{13}{subsubsection.5.5.1}
-\contentsline {section}{\numberline {6}Methodology}{14}{section.6}
-\contentsline {section}{\numberline {7}Work Plan}{15}{section.7}
+\contentsline {paragraph}{Convolutional layer}{15}{section*.8}
+\contentsline {paragraph}{ReLU layer}{15}{section*.10}
+\contentsline {paragraph}{Pooling layer}{16}{section*.11}
+\contentsline {paragraph}{Fully connected layer}{16}{section*.12}
+\contentsline {subsection}{\numberline {5.5}Practical Deep Learning}{18}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Convolutional Networks applied to Breast Cancer}{18}{subsection.5.6}
+\contentsline {subsubsection}{\numberline {5.6.1}Related Work}{18}{subsubsection.5.6.1}
+\contentsline {section}{\numberline {6}Methodology}{18}{section.6}
+\contentsline {section}{\numberline {7}Work Plan}{20}{section.7}

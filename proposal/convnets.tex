@@ -1,107 +1,72 @@
-Yet to write
-\begin{comment}
+\emph{Convolutional networks}, also \emph{ConvNets} or \emph{CNNs}, were first inspired on the way the human visual cortex proccesses information~\cite{Fukushima1980} but, as regular neural networks, they have evolved to favor practical performance over biological accuracy. LeCun et al. used a convolutional network to achieve good classification performance on the MNIST data set of handwritten digits~\cite{LeCun1989, LeCun1998}, the first successful application of modern convolutional networks. Recently, they have been used to achieve state-of-the-art performance on the ImageNet Large Scale Visual Recognition Challenge~\cite{Krizhevsky2012}, an image classification and object localization challenge with 1000 categories~\cite{Russakovsky2014}. Since then, thanks to various advances (maxpooling , ReLU activations, weight initialization, GPU training, efficient backpropagation, etc.) they have become one of the most popular methods for image classification tasks and (along with recursive neural networks for generative models) an emblem for deep learning.
 
+In this section we show the standard features and training of current convolutional networks, Section~\ref{subsec:PracticalDL} gives some practical advice for choosing hyperparameters and training deep architectures. For an in depth review of convolutional networks, see \cite{Karpathy2015}. For a complete overview of the history and state of deep learning, see \cite{Schmidhuber2015}.
 
+Convolutional networks map raw image pixels to a score vector $h_\Theta(x) \in \mathbb{R}^K$ representing the distribution of (unnormalized log) probabilities over the $K$ classes. We could easily use a regular neural network (presented in Section~\ref{subsec:ANNs}) to do this classification but the amount of learnable parameters (the weights) becomes very big. For instance, a small color image of size $100\times100$ with 3 color channels (RGB) will require $30\,000$ units in the input layer and each unit in the second layer will therefore have $30\,000$ weights to learn. This is impractical not only because it will require a lot of data and time to train but because the cost function has very many local minima and thus it is harder to find a good local minimum.
 
+Convolutional networks are specially designed to handle images reducing the number of connections between layers and the number of parameters to learn. Instead of fully connected layers such as regular neural networks convolutional layers are \emph{sparsely connected}, i.e., a unit is only connected to a small subset of the units in the previous layer. Furthermore, they are \emph{locally connected}, i.e., units are connected considering their position on the original image. The architecture of a convolutional network also imposes \emph{weight sharing} between layers, i.e., different connections are forced to share the same weights (this determines filters and feature maps, defined below). \emph{Pooling} is a subsampling mechanism that reduces the spatial scale and makes the computations invariant to local translation. All this features reduce computation and improve the classification performance of convolutional networks; they are a product of the way convolutional networks are defined, which we explain below.
 
+Each layer is composed of a set of \emph{feature maps}, 2-dimensional grids of unit activations~($\mathbb{R}^{h\times w}$), arranged into a 3-dimensional matrix ($\mathbb{R}^{h\times w \times d}$) where the third dimension is used to put together all feature maps. One could think of each layer as having all unit activations in a single column as in regular neural networks but seeing them as a 3-dimensional volume makes the definitions easier. The input layer could be considered as a 3-dimensional matrix ($\mathbb{R}^{h\times w \times c}$) holding the image of size $w\times h$ with $c$ color channels (usually one for grayscale images or three for RGB). The output layer could also be thought of as a volume of size $R^{1\times 1 \times K}$ where each feature map is just one activation ($R^{1\times 1}$) representing the final score. The convolutional network then receives an input image $x$, transforms it into the first layer of feature maps (which does not need to have the same dimensions as the previous layer) and keeps transforming it until we have an output layer of size $h(x) = R^{1\times 1 \times K}$. See Fig.~\ref{fig:ConvNetVolumes} for an illustration. We describe the possible transformations next.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.7\textwidth]{plots/convNetVolumes.jpeg}
+	\caption[Convolutional network visualization]{A simple representation of the transformations of the input that a convolutional network computes. Input layer is shown in pink, hidden layers are shown in blue and output layer is shown in green. The third layer has 5 feature maps of size $2\times3$. Notice that the width is listed first by convention. Image courtesy of~\cite{Karpathy2015}.}
+	\label{fig:ConvNetVolumes}
+\end{figure}
 
-map image pixels to scores (class probabilities/distribution of probabilities over classes)
-Local connectivity Convolution brings both sparsity )not every layer before is connectd to an input in the next layer) and weight sharing (filter thingy called feature map)
-Poling (max'pooling) for local translational invariant. subsampling reduces spatial scale adn computation. invariant to local translation.
+There are four types of layers: convolutional layer, ReLU layer, pooling layer and fully connected layer all of which compute a differentiable function on its input and combine to form a convolutional network architecture.
 
-Each feature map will generate a matrix with the values obtained from applying the feature map to each location on the image, then pooling is done over this matrix by taking for example patches of 3 by 3 and generating an smaller matrix witth the values of the higher image (space invariance). Or it can be done over all features, generating one matrix of the same size of the previous matrices where the max is over all values at (0,0), (0,1) , etc (feature invariance) (for this thught something better than the max could be used, maybe a different classification, so we detect something on the upper left 4 by 4 square based on all the features calculated).
+\paragraph{Convolutional layer} Convolutional layers are the heart of convolutional networks. They are composed of a set of learnable filters which will be applied to the volume in the previous layer. A \emph{filter} is a matrix of weights 
+which has a small spatial size (width and height) but goes across all feature maps of the volume (the third dimension). For instance, a $3\times 3$ filter to be applied in a volume with 10 feature maps will have 90 parameters ($\mathbb{R}^{3\times3\times10}$). See Figure~\ref{fig:ConvLayer} for an example. Each feature map in this layer is obtained by sliding a filter across the spatial dimensions (width and height) of the previous volume computing the dot product (a weighted sum) between the filter and the input producing a 2-dimensional array of values~\footnote{Each filter has also a bias term which is added to the product.}. Notice that all values in a single feature map are computed using the same filter. If we think of the feature map as a grid of units we can see that every unit is connected with only a small local subset of the units in the previous layer and that all units in the map share the same weights. 
 
-inspired on fukushima's neocognitron and Developed by Lecun since 1989, (https://www.youtube.com/watch?v=Fl-W7_z3w3o).
+At each convolutional layer, many feature maps are computed (each with its own filter) and stacked together to form the volume in the layer. We can think of each filter as looking for an specific feature of the input and each feature map collecting the probabilities of the feature being present in different positions of the original image.
 
-Convolutional networks 
-%sparse with not all possible connections of within  a layer being present.
+We need to define various hyperparameters for this layer: the filter size, the stride (the number of places to shift the filter at each step), the amount of zero padding around the image and the number of feature maps. These define the shape of the resulting volume; the first three are usually defined in a way that it preserves the spatial size of the previous volume, the third dimension is solely dependent on the number of feature maps desired.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.4\textwidth]{plots/convLayer.jpeg}
+	\caption[Example of a filter in a convolutional layer]{Example of a filter applied to a volume ($\mathbb{R}^{32\times 32\times 3}$) to obtain the values shown in the blue volume. The filter comprises all 3 feature maps of the input volume. We compute 5 feature maps as shown by the 5 units in the blue volume. For a complete convolution this filter will have to slide across the input volume. Notice all units in the same feature map share the same filter but units in different feature maps do not, even though they can be connected to the same local region of the input. Image courtesy of~\cite{Karpathy2015}.}
+	\label{fig:ConvLayer}
+\end{figure}
 
-Feedforward networks (left) initially proposed as two-layer perceptrons (Rosenblatt, 1958) and later developed into “deep” networks (e.g., Hinton et al., 2006 and LeCun et al., 1998). David H. Hubel & Torsten Wiesel, 
-Convolutional networks, also known as ConvNets or CNNs, were first introduced by Fukushima et al. ) yuneetr the name of neocognitron, =sskks and later refined and exapnded by LeCun)=. The first convolutional networks, called neocognitron (from neocortex and pereptron) are a natural expansion of simple Artificial Neural  Networks inspied on the way our neocortex process visual information.
-Convolutional networks are formed by subsequent layers of units and 
-Each neuron does that and that, actrivation function, figure. this neurons were used on  this and this. Feature maps act as feature detcetors on the image
+\paragraph{ReLU layer} This layer receives an input volume and performs an elementwise ReLU activation function to it, i.e, each value $z$ in the volume is passed through the nonlinearity $\max(0,z)$. It does not change the dimensions of the volume and has no learnable parameters, although the activation function itself could be considered as a hyperparameter. Usually a convolutional layer is always followed by a ReLU layer (or any other activation function), for this reason they are sometimes considered part of the convolutional layer, we leave them separate for clarity.
 
+\paragraph{Pooling layer} The pooling layer subsamples the volume on the spatial dimensions reducing the size of the feature maps but keeping the number fixed. Standard max pooling slides a fixed size windows (normally $2\times2$) along each feature map with stride 2 (it is, without overlapping) and selects the maximum element on that space. This will reduce each dimension of the feature map by half, thus reducing the total number of activations by 75\%, e.g., a $4\times4$ feature map gets subsampled to size $2\times 2$ where each value is the maximum activation on each of the four quadrants of the original feature map. Notice that the subsampling is applied to each feature map separately contrary to the convolution. A popular variant of max pooling uses $3\times 3$ windows with stride 2, allowing for overlapping in the pooling.
 
-Lecun workes on this and this,.. adding that and that and showing its applicability in that and that. 
-More recently, various advances have been fostered by the interest on deep learning and more computational power as... dropout, ReLus, ...
+\paragraph{Fully connected layer} One or more fully connected layers are used at the end of the network to compute the final score vector. Feature maps in this layer have size $1 \times 1$ resulting in a row volume or alternatively a row vector of values. Each feature map in this layer is fully connected to all units in the previous volume and outputs a dot product between the input and the connection weights which are the parameters to be learned during training. The output layer of a convolutional network is always a fully connected network with as many feature maps as classes. The interpretation of the scores of the output layer is similar to that of regular neural networks as the (unnormalized log) probability of $x$ belonging to class $k$. Lastly, notice that a fully connected layer can be simulated by a convolutional layer with the same number of feature maps and filter size $w\times h$ where $w$ and $h$ are the dimensions of the feature maps in the previous layer, i.e, filters that comprise the entire previous volume.
 
-GPU gains and recent advances have nmad econvnets one of the leading options for o ject recognition tasks in visual image recognition as imageNet, ...
-They have replaced standard methods that require handcrafted feature selection on various subjects
+\bigskip
+Convolutional layers (plus ReLUs) compute features on the input while pooling layers shrinken the volume before passing to the fully connected layers which act as a neural network classifier on the obtained features. The standard convolutional network architecture can be represented textually as:
+\begin{verbatim}
+       INPUT -> [[CONV -> RELU]*N -> POOL?]*M -> [FC -> RELU]*K -> FC
+\end{verbatim}
+where \texttt{*N} indicates that the layers are repeated \texttt{N} times, \texttt{?} indicates that the layer is optional and \texttt{N,M,K >= 0}. We can use this template to construct ever more flexible models from a linear classifier \texttt{INPUT -> FC} (\texttt{N,M,K = 0}) to a regular neural network \texttt{INPUT -> [FC -> RELU]+ -> FC} (\texttt{N,M = 0}, \texttt{K > 0}) to a convolutional network \texttt{INPUT -> [[CONV -> RELU]+ -> POOL?]+ -> [FC -> RELU]* -> FC} (\texttt{N,M > 0}, \texttt{K >= 0}). For instance, a typical deep convolutional network could be:
+\begin{verbatim}
+        INPUT -> [[CONV -> RELU]*2 -> POOL]*3 -> [FC -> RELU]*2 -> FC
+\end{verbatim}
+This network receives an input volume (the image) computes two sets of convolution plus ReLUs before pooling and repeats this pattern three times followed by fully connected layers plus ReLUs which are repeated twice and the output layer which reports the final classification scores. Although there is no standard way of counting the number of layers of a convolutional network usually the ReLU or pooling layers are not counted as they have no learnable parameters, therefore our example architecture has 10 layers (21 in total) which is a good depth for big data sets. Practical recommendations on building convolutional network architectures is offered in the Section~\ref{subsec:PracticalDL}.
 
-although, convnets were inspired on neocortex they ghave bracehd out of this initially simple convolutional netowkrs and become veruy different in aras of finding improvemest over tye classification and without regard of the biology behiund oit.thus, they do not represent a valid model of the ewya the human braoin processes visual information. Reagardless of that, some davances in neuronscience still inspire new advancement s in convnets and some of the onvnets results ahave shown some results in neuroscience to be true (cite...)
+% Counting layers (?)
 
-Training on backpropagation, 
+Figure~\ref{fig:ConvNetExample} shows an example of a convolutional network with its different kind of layers. The image is taken from a simulation accesible at \url{cs231n.stanford.edu}.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.85\textwidth]{plots/convNetExample.jpeg}
+	\caption[Example of a convolutional network in action]{Example of a convolutional network with architecture \texttt{INPUT -> [[CONV -> RELU]*2 -> POOL]*3 -> FC}. The input image has size $32\times 32$. Each hidden layer uses 10 feature maps (shown as columns). Notice that although the size of the feature maps looks constant in fact each pooling layer reduces each dimension by half (the feature maps of the final pooling layer have size $4\times 4$). The final scores are shown only for the 5 most probable classes. Image courtesy of~\cite{Karpathy2015}.}
+	\label{fig:ConvNetExample}
+\end{figure}
 
-For a complete overview of the state of deep learning see \cite{Schmidhuber}
-side note on language.
+Recently there has been a push towards simpler convolutional network architectures. The All Convolutional Net~\cite{Springenberg2014} is a network formed solely by convolutional layers, pooling layers are replaced by convolutional layers with larger strides and fully connected layers are replaced as explained above.
 
-I will sometimes refer to convolutional netowkrs with no pooling or maxout layers as simple convolutional networks and to those developed more recently simply as convolutional networks. i would also put the parameters of each onvnet to avoid any confusion
+Converting the fully connected layers to convolutional layers has another advantage: we can use a convolutional network trained on small images to classify bigger images. By the way convolutional layers are defined when a bigger image is used as input the entire convolutional network will slide across the image and be applied to different portions of the image generating a score vector for each of them. Therefore, instead of having a single score for each class we will have an entire matrix of scores (for each position where the convolutional network was applied). We can then average over all scores per class to obtain a single score vector for the bigger image. Furthermore, we can control the stride of the convolution to choose how the convolutional network is slided across the big image.
+For instance, if we train a convolutional network with images of size $32\times 32$ which via pooling get reduced to feature maps of size $4\times 4$ which are in turn passed to the (converted) fully connected layers to obtain a score vector, then when using a $96\times 96$ image as input to the same convolutional network it will get reduced to feature maps of size $12 \times 12$ and the fully connected layers will output a matrix of scores of size $9\times 9$ (for each class), i.e, it slides the $4\times 4$ fully connected layers across the $12\times 12$ feature maps. Averaging each score matrix we obtain the final scores for the big image. We could have also  set a stride of 4 in the first (converted) fully connected layer to get score matrices of size $3\times 3$ for each 9 nonoverlapping $32\times 32$ partitions of the original image. It works exactly as if we were applying the convolutional network to the original image at a stride of 32 but does all computations in just one pass. This way we can reuse a pretrained network to classify images of bigger size. 
 
+\emph{Transfer learning}, a related concept, is a method where a  convolutional network is trained on images from a specific domain and later used as a feature extractor for images on a different domain or as a initialized network which is fine tuned with examples of the new domain.
 
-
-\begin{comment}
-
-
-Practical Machine learning
-
-
-
-Image colorchannels (RGB, grayscale)
-
-a few general remarks for image classificaiton ncna be found here(http://cs231n.github.io/classification and in the paper linked in the bottom). In this sectio we center on collecting some of the most imporatnat practical recommendations for trainig \emph{deep neural networks}. SThis advice is taken from (Bengio vide and Bengio paper). 
-
-Feature normalizaton:
-TEst validation and training.
-hyperparameter search
-image have color channels arenormaly transfered to gray here, although sometimes theya re not (link to theone that answers color questions in Baidu)  images xi∈RD, each associated with a label yi. Here i=1…N and yi∈1…K. That is, we have N examples (each with a dimensionality D) and K distinct categories. For example, in CIFAR-10 we have a training set of N = 50,000 images, each with D = 32 x 32 x 3 = 3072 pixels, and K = 10, since there are 10 distinct classes (dog, cat, car, etc). We will now define the score function f:RD↦RK that maps the raw image pixels to class scores.
-
-Randomize trainig set before training
-
-Deep Learning: (https://www.youtube.com/watch?v=JuimBuvEWBg)
-Bengio2013(techreport)
-	Practical reccomendations for gradient based training of deep architecthure
-
-Theoretical Foundations(Bengio): Although one hidden layer ar euniversal approximators you would need up to 2^n neurons in hidden layer for them to work. You could use k layers and use way less neurons. Gaussian kernel machins need 2^d examples over d inputs.
-2006(Huinton): efficient trianing of deep networsk using unsupervised data. With only supervised data, it was impossble before, now it can be done with suppervised learning only can be trained better with better inizializations, non-linearitites (rectifiers, maxout) and regularization (dropout). (23:34min)
-Dropout(hinton et al., 2012): averaging over many mehtods.
-Efficient bacjkpropagation (withouth unsupervised pretarinais): glorot and bengio AISTATS2010 proved it can be done with right inicialitzations and rectifiers.
-2012 krishnevxskiÑ breakthrough in object recognition
-Hyperparameters: Learning rate very important, parameter initialization somehow important, number of hidden units (use many plus regularization), L1 may be a better regularizer.
-	Use minibatch stochastic gradient descent. No point on using the exact gradient because you ar enot going to advance much and it may not even be the right direction.
-	Learning rate: Cross'validate to choose the best one. Use exponential scales: 0.1, 0.01, .001. also plot error/loss vs epochs, choos ethe one that converges fast or gives the better learning rate.
-	Early stopping. free lunch, #of iterations per training should not be thought as ahyperparameter. You can just rusn until it strts overfitting or it doesn{t improve anymore and preserve the best fitted árameters. SO stop the execution every #of steps (multiple of validation set size) to see what{s the training error and how well will it do. Maybe juts set max number of iterations. important print error to see what's ging one. Use heuristic as stopping criteria, for example if I did x #iter to get to my best parameters (say 100) and in another #iter I have not improved it, then  it probably converged (so it will stop in 200).
-	Initialization: random but how?
-	Random sampling of hyperparameters: ?? (Maybe I shuld consider preprocessing as a hyperparamter)
-
-Minibatch gradient descent. 256 examles.>100 Stochastc gradient descent is extreme with oine example.
-
-Some of these details are taken care by the software(either as a defualt or optional feature) and some are qyuite new and need to be taken care manually.
-
-although the sigmoid function is historically used it has fal out of favor... (http://cs231n.github.io/neural-networks-1/) because in the end of the outputs it is plabne and its graident \emph{vanish} (i.e., become 0), thus special care is needed when initializing it to otherwise it will not learn. Second drawback, it is not zero-centered (not so important, the first one is). Tanh is always preferred to the sigmoid non-linearity. ReLUs for the win (can die, need good learning rate)., maxouts(put formula, double the number of weights per neuron).
-
-Universal approximators. 10-20 layers in convnets. on normal neural networks 3 layers beat 2 but doesn't improve much for 4,5,6 but in convnets it does. " should not be using smaller networks because you are afraid of overfitting. Instead, you should use as big of a neural network as your computational budget allows, and use other regularization techniques to control overfitting." Dropout.
-
-image part:
-Image zero-centering: center all points just rest the mean of all values ( X -= np.mean(X)). Normalization per pixel sometimes not needed, but could be done.!!! Make sure the statistics (like mean ans atdv) do not use the test data. test data should be untouched. And these same statisitics shpuld later be substartcted and applied inthe test data.
-
-initialization: For ReLu each weight vector w = np.random.randn(n) * sqrt(2.0/n) (He et al, 2015). 0 bias initialization or small random numbers do not really matter.
-
-Regularization: l2-norm normally with Dropout(Srivastava et al, 2014), works like that, doe sthat and that. p=0.5, scale the activations. Only subsample a neural network to copute the output and make an update. Inverted dropout recomended. Hyperpaameters: p, lambda. 
-
-Loss function: Softmax, svm.
-
-Learning: sgd+momentum, with nag, Decreasing/decaying learning rate slowly(divided by two every number of steps)(do i need this?, maybe not).
-
-
-Hyperparameter fitting: preprocessing, learning rate, lambda. size of the neural network (just big). Use one validation. Search in log scale. random search. momentum = [0.5, 0.9, 0.95, 0.99] or 0.9
-Hyperparameters: preprocessing(4), small vs big image, hidden layers, hidden units, regularization param, learning parameter, mu(momentum), p(dropout),
-
-Automatic differentiation:
-
-Checks, gradient checking, loss, ...
-
-%Overfit a tiny subset of data(cost=0). If i can't is not worthede going to a bigger dataset.
-%Change the threshold for unbalanced classes. Cross validate it to see which one is better, never use the test set. Explain why using one metric and not the other.
-%Make sure I said that data replication (rotations and such) is needed because e don't have enough examples of a simple class, not because we are trying to balance the classes.
-\end{comment}
+The cost function for a multiclass convolutional neural network is similar to that for a regular neural network (Equation~\ref{eq:ANNRegularizedCostFunction}) except that the vector score $h_\Theta(x)$ is now defined by the architecture of the convolutional network.
+\begin{equation}
+	J(\Theta) = -\frac{1}{m} \sum_{i=1}^m \log \left ( \frac{ e^{h_\Theta(x^{(i)})_{y^{(i)}}} }{ \sum_{j=1}^K e^{ h_\Theta (x^{(i)})_j} } \right ) + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s^{(l)}}\sum_{j=1}^{s^{(l+1)}} \left(\Theta^{(l)}_{ij}\right)^2
+	\label{eq:ConvNetCostFunction}
+\end{equation}
+Furthermore, this cost function is still differentiable with respect to $\Theta$ and thus the entire network can be trained via gradient descent. Gradients of the cost function are also calculated using backpropagation.
