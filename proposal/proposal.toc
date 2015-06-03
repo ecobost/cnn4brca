@@ -18,5 +18,6 @@
 \contentsline {subsection}{\numberline {5.6}Practical Deep Learning}{18}{subsection.5.6}
 \contentsline {paragraph}{Image preprocessing}{19}{section*.14}
 \contentsline {paragraph}{Convolutional network architecture}{19}{section*.15}
+\contentsline {paragraph}{Hyperparameter search}{20}{section*.16}
 \contentsline {section}{\numberline {6}Methodology}{20}{section.6}
 \contentsline {section}{\numberline {7}Work Plan}{22}{section.7}

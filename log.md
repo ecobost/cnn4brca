@@ -3,23 +3,41 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Jun 3 - Jun 10
+### Activities
+* Write PracticalDL section
+*
+
+### To do
+*
+
+### Questions
+1. Is there a standard way to report convolutional netowkr architectures (Khriznevsky style or Karpathy style or a table as in Striving for simplicity)?.
+
+
+
 ## May 27- Jun 2
 ### Activities
 * Read CS231n
 * Write Convnet section in thesis
 
 ### To do
-** End writing Background
+* End writing Background
 	* Practical Deep Learning
-	* ConvNet for Breast Cancer	
-	* Database specifics
+	* ConvNet for Breast Cancer
+* Rewrite Methodology with new experiments
 * Update LaTex template to thesis template
+* Investigate and write the features of the database and its labelling.
 * Choose software (probably Caffe)
 * Select exactly what experiments will be run and what hyperparameters be crossvalidated
 
 ### Questions
 1. Naming: Should I use loss or cost function?.
-3. How to obtain the small training images from the big images. Random sampling, crop without overlapping, with overlapping.?
+
+	Answer: Loss
+2. How to obtain the small training images from the big images. Random sampling, crop without overlapping, with overlapping.?
+
+
 
 ## May 25 - May 26
 ### Activities
@@ -54,4 +72,4 @@ Log with activities and questions arising during every week
 	Answer: mxn. m examples of n dimensions.
 
 5. Is it a binary classification(cancer/no cancer) or 3 classes (micro/mass/nothing) or something else(detection)?
-6. Which forms of preprocessing should I use?. 
+6. Which forms of image enhancement should I use?. 

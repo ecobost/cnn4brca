@@ -8,7 +8,9 @@ In this section we collect some recommendations for constructing convolutional n
 \paragraph{Image preprocessing} Some standard processing for images.
 \begin{itemize}
 	\item Images are cropped to contain only the relevant parts of the image, denoised, enhanced and optionally downsampled to maintain the input size manageable.
+
 	\item Each image feature (the raw pixels) is zero centered by substracting its mean across all training images. Normalization scales the already zero-centered features to range from $[-1 \dots 1]$ by dividing them by its standard deviations. Feature normalization is not striclty neccesary but still customary~\cite{Karpathy2015}.
+
 	\item The test data should not be used to calculate any statistic used to preprocess the training data. Furthermore, these same statistics (calculated from the training data) should later be used when normalizing the test data~\cite{Karpathy2015}.
 \end{itemize}
 
@@ -16,58 +18,58 @@ In this section we collect some recommendations for constructing convolutional n
 We offer some guidelines for designing convolutional network architectures and some standard values for various hyperparameters.
 
 \begin{itemize}
-	\item It is always better to select a complex network architecture which is flexible enough to model the data and manage overfitting with regularization rather than 
-	an architecture which is not powerful enough to model the data~\cite{Ng2014, Krizhevsky2012}. 
+	\item It is always better to select a complex network architecture which is flexible enough to model the data and manage overfitting with regularization rather than an architecture which is not powerful enough to model the data~\cite{Ng2014, Krizhevsky2012}. 
 
-	\item Although, theoretically, neural networks with a single hidden layer are universal approximators provided they have enough units ($\mathcal{O}(2^n)$ where $n$ is the size of the input), in practice, deeper architectures produce better results using less units overall. This insigth holds for convolutional networks~\cite{Bengio2014}.
+	\item Although, theoretically, neural networks with a single hidden layer are universal approximators provided they have enough units ($\mathcal{O}(2^n)$ where $n$ is the size of the input), in practice, deeper architectures produce better results using less units overall. This insight holds for convolutional networks~\cite{Bengio2014}.
 
-	\item As a rule of thumb for big datasets, use 10-20 layers overall for convolutional networks. For smaller datasets, use less layers or transfer learning~\cite{Karpathy2015}.
-	% How am I counting the number of layers, does the 10-20 refers to onlly fully connected and conv, did i get this number from Karpathy or from  engio(i think bengio). "for big datasets" and big image size, too or not?
+	\item As a rule of thumb for big data sets, use 8-20 layers (not counting pooling or ReLU layers). For small data sets, use less layers or transfer learning. ``You should use as big of a neural network as your computational budget allows, and use other regularization techniques to control overfitting.''~\cite{Karpathy2015}
 
 	\item Use the number of parameters rather than the number of layers or units as a measure of the architecture's complexity.
 
 	\item Use 2-3 \texttt{CONV -> RELU} pairs before pooling (N above)~\cite{Karpathy2015}. Pooling is a destructive operation and having two convolutional layers together allows them to pick up more complex features.
 
-	\item Use one or more . This number dependsThe number of \texttt{COnvRELu POOL} depends on the complexity of the features expected in the data (and the size of the data. . In a way, this is the actual number of layers of a convolutional network. This also decdeds how much is the volume subsampled.
-	% Rewrite. 
+	\item Use 1-5 \texttt{[CONV -> RELU]+ -> POOL} blocks (M above). This number depends on the complexity of the features expected in the data and the computational resources available. In a way, this regulates how much representational power will the architecture have. It also decides how much the volume is subsampled.
 
-	\item Use less than 3 \text{FC -> RELU} pairs before the output layer (K above)~\cite{Karpathy2015}. When the volume arrives to the fully connected layers it has shrinken enough and using more fully connected layers risks overfitting.
+	\item Use less than 3 \texttt{FC -> RELU} pairs before the output layer (K above)~\cite{Karpathy2015}. When the volume arrives to the fully connected layers it has shrinken enough and using more fully connected layers risks overfitting.
 
+	\item The number of feature maps per convolutional layer is set according to the expected number of features. This is similar to the number of units in a regular neural network. A common pattern is to start with a small amount of feature maps and increase them layer by layer~\cite{Simonyan2014}. %The reasoning is that at higher layers there are more complex features to learn and moreover as the feature maps become smaller (via pooling) it is computationally feasible to have more of them.
 
+	\item The number of feature maps per fully connected layer, or equivalently the number of units per fully connected layer, decreases from the number of units in the last convolutional layer (the number of units in each feature map times the number of feature maps) to the number of classes. For instance, having a convolutional network with two fully connected layers and 10 possible classes if the last convolutional layer produces a volume of size $8 \times 8 \times 512$ (8192 units), the first fully connected layer could have size $1 \times 1 \times 2048$ and the second (output) layer $1\times 1\times 10$.
 
+	\item Use $3\times 3$ filters with stride 1 and zero-padding 1 or $5 \times 5$ filters with stride 1 and zero-padding 2. This preserves the spatial dimensions of the volume and works better in practice~\cite{Springenberg2014}. When training on big images, the first convolutional layer uses bigger filters~\cite{Karpathy2015}.
 
+%Cite Lin, simplicity
+	
+	\item Use $2\times2$ pooling with stride 2. Both this pooling and the overlapping version presented in Section~\ref{subsec:ConvNets} produce similar results. This pooling divides the spatial dimensions of the volume by half.
 
+	\item Use square input images (width = height) with dimensions divisible by 2. The dimensions should be divisible by 2 at least as many times as the number of pooling layers in the network.
 
-	\item Use 2 by2 pooling. Both non-overlapping and overlapping pooling produce similar resultsKarpathy, Krizhevsky.overlapping pools give better results in Krizhevsky
-
-	\item Prefer small filter size on the convolutions (3by3 or 5by5)(cite Striving for simplicity or Lin 2014). If using pooling use one of the two common pooling mechanisms, becaus eusing biggest filters would be too agressive and throw away much of the information computed by the network.
-	\item Stride: using stride of 1 is standard (for small filters) with zero padding in where needed to assure the dimension of the feature map is maintained (for instance, padding one column at each side of the matrix with a 3 by 3 filter will produce an image of the same width, similarly for rows. For filter size 5, padding of 2 will work), if using a bigger stride convolutional networks can be made to soimulate poooling layers as explained in Section ...
-	use 3by3 filters with dtride 2 and zero-padding 1 or 5by5 with stride 1  and zero padding 2. This preserves the spatial dimanesions of the volume and work better in practice. Bigger filters are used for big images and normally only on the first convolutional layers compromise to use a bigger filter because the parameters of a small filter on a very big image is unbvearable. 
-
-	\item the input layer should have dimensions divisible by 2 and usually squared images. this is needed so that we can use 2-by-2 pooling layers which divide the image by 2 in each dimension.
-
-	\item convetrt fully connected layers into convolutional layers.
-
-	\item Number of feature maps starts per convolutional layer small and grows with time. (?) VGA has the same number at each feature map, ...it depends it is like the number of units in anetwork or number of different features per layer. alex Net increases because as the layer increases there are more compelx features to be learned than at the start plus  as the feature maps get smaller (becaus of pooling) is more computationally feasible to have more of them. Vga net simplifies it by using al convoutional net uses. 
-	yeah, Zoo and all convolutional do the same, feature maps increase. 
-
-	\item The number of feature maps on fully connected layers or equivalently the number of units in the fully connected layer, decreases  layer by layer. For instance the first fully connected layer could have 2048 units, the second 512 and teh final layer 32 outputs. They are normally a intermediate number between the number of classes (which is smaller) and the number of units in the last convolutional layer (number of units in each feature map multiplied by the number of feature maps). They decrease from the number of units in the last convolutional layer (the dimensions of the volume multiplied) until the number of units in he output layer. For instance for a convolutional netowkr with two fully connected layers and 10 possible classes if the lat convolutional layer is a volume of size $8 \times 8 \times 512$ (8192 units), the first fully connected network could have size 2048 and the second (the output) size 10.
+	\item Convert fully connected layers into convolutional layers.
 \end{itemize}
 
 
+\paragraph{Hyperparameter search}
+We deal here with choosing hyperparameters other than those of the network architecture.
+\begin{itemize}
+\item there are many hyperparameters: ...,. furthermore there are many related to the convlutional network architecture: ...
+
+\item Important Hyperparameters: Learning rate very important. Others will report only a slight improvement and could be set manually.Hyperparameter fitting: preprocessing, learning rate, lambda. size of the neural network (just big). Karpathy
+
+\item Use one validation with a big validation set (Bengio).
+
+\item hyperparameter search random Bengio, 2012 karpathy.
+
+\item Search in log scale. se exponential scales: 0.1, 0.01, .001
+
+\item momentum = [0.5, 0.9, 0.95, 0.99] or 0.9
+
+\item for learning rate also plot error/loss vs epochs, choos ethe one that converges fast or gives the better learning rate.
+\end{itemize}
+% Hyperparameters: preprocessing(4), small vs big image, regularization param, learning parameter, mu(momentum) 0.9 , p(dropout) 0.5, filter size, learning rate schedule,...
+
+
 \begin{comment}
-\paragraph{Choosing hyperparameters}
-Other hyperparameters rather tahn those of the architecture and training
 
-\item the important ones are. Others will report only a slight improvement into 
-
-\item The complete list of hyperparameters
-
-Hyperparameters: Learning rate very important, parameter initialization somehow important, number of hidden units (use many plus regularization), L1 may be a better regularizer
-Hyperparameter fitting: preprocessing, learning rate, lambda. size of the neural network (just big). Use one validation. Search in log scale. random search. momentum = [0.5, 0.9, 0.95, 0.99] or 0.9
-Hyperparameters: preprocessing(4), small vs big image, hidden layers, hidden units, regularization param, learning parameter, mu(momentum), p(dropout),
-Learning rate: Cross'validate to choose the best one. Use exponential scales: 0.1, 0.01, .001. also plot error/loss vs epochs, choos ethe one that converges fast or gives the better learning rate.
-hyperparameter search random Bergstra and Bengio
 
 
 
@@ -87,7 +89,7 @@ Regularization: l2-norm normally with Dropout(Srivastava et al, 2014), works lik
 
 Randomize trainig set before training
 
-initialization: For ReLu each weight vector w = np.random.randn(n) * sqrt(2.0/n) (He et al, 2015). 0 bias initialization or small random numbers do not really matter.
+Sensible parameter initialization is very important: For ReLu each weight vector w = np.random.randn(n) * sqrt(2.0/n) (He et al, 2015). 0 bias initialization or small random numbers do not really matter.
 
 Use minibatch stochastic gradient descent. No point on using the exact gradient because you ar enot going to advance much and it may not even be the right direction.Minibatch gradient descent. 256 examles.>100 Stochastc gradient descent is extreme with oine example.
 
@@ -95,12 +97,10 @@ Early stopping. free lunch, #of iterations per training should not be thought as
 
 Learning: sgd+momentum, with nag, Decreasing/decaying learning rate schedule: slowly(divided by two every number of steps)(do i need this?, maybe not).
 
-\paragraph{Other things to try}
-For transfer learning, given that a network trained in the ImageNet is very diffferent to the images we are going to test them on and our dtaaset is small/large, we should train a linear clasifier from the activations somewhere inside of the network (where the features obtained are probably more general)/ we could fine tune only the upper layers of the network. Plus when finetuning the learning rate is normally smaller that wehne training a network from scratch. \item Transfer Learning may not work cause the dataset is quite different.
-\item Have a score for every space or apply the convolutional network to different parts of the input (this needs way too many parameters).
-\item all convolutional 
+l2 regularization.
 
 \textbf{Checks}:
+loss at chance performance
 Overfit a tiny subset of data(cost=0). If i can't is not worthede going to a bigger dataset.
 Gradient check, loss
 
@@ -108,9 +108,15 @@ Gradient check, loss
 Change the threshold for unbalanced classes. Cross validate it to see which one is better, never use the test set. Explain why using one metric and not the other.
 %Make sure I said that data replication (rotations and such) is needed because e don't have enough examples of a simple class, not because we are trying to balance the classes. Data replication is different.
 
+\paragraph{Other things to try}
+For transfer learning, given that a network trained in the ImageNet is very diffferent to the images we are going to test them on and our dtaaset is small/large, we should train a linear clasifier from the activations somewhere inside of the network (where the features obtained are probably more general)/ we could fine tune only the upper layers of the network. Plus when finetuning the learning rate is normally smaller that wehne training a network from scratch. \item Transfer Learning may not work cause the dataset is quite different.
+\item Have a score for every space or apply the convolutional network to different parts of the input (this needs way too many parameters).
+
+\item all convolutional Due to the aggressive reduction in the size of the representation (which is helpful only for smaller datasets to control overfitting), the trend in the literature is towards discarding the pooling layer in modern ConvNets.
+
 \paragraph{Software} 
 \item caffe
-\item theano,
+\item theano: Implments recommendations from Bengio
 \item torch 
 \item deeplearning4j
 \end{comment}
@@ -121,5 +127,7 @@ Change the threshold for unbalanced classes. Cross validate it to see which one 
 
 % Train a simple convolutional
 % Train one with bells and whistles(choosen by heart)
-% Improve on the two,
-% how to deal with the small dataset (how small it is)
+% Improve on the two, how to deal with the small dataset (how small it is)
+% analogical representations for free, htm for word representation. Representation Learning, 
+% Idea: Stop the linear recombination and impose some sense into it, if every neuron learns a feature then to learn a face wyou will be summing ears and eyes and things like that but a lot of info is lost in the way, convolutional networks solve the problem for spatial info, but is there more, which is next to each other and how many of them they are. Neurons don't just take a weighted sum butwhat do they do?.
+% Idea: what about only applying the pool after some epochs, because the pooling ewill select and encourage the first feature it founds on the 2by2 space, thus disencouraging exploration (exploration meaning filters for other things). I.e., as soon as the filter identifies some feature in the data the pooling will try to make this filter better for that specific feature but if there was a filter for another feature that is better it will not get learn. 
