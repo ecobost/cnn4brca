@@ -8,9 +8,16 @@ Log with activities and questions arising during every week
 * Read CS231n
 * Write Convnet section in thesis
 ### To do
-*
+** End writing Background
+	* Practical Deep Learning
+	* ConvNet for Breast Cancer	
+	* Database specifics
+* Update LaTex template to thesis template
+* Choose software (probably Caffe)
+* Select exactly what experiments will be run and what hyperparameters be crossvalidated
 ### Questions
-1. Should I use loss or cost function?.
+1. Naming: Should I use loss or cost function?.
+3. How to obtain the small training images from the big images. Random sampling, crop without overlapping, with overlapping.?
 
 ## May 25 - May 26
 ### Activities
