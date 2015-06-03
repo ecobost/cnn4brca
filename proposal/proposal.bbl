@@ -14,6 +14,12 @@
 \newblock Available on
   \url{cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}.
 
+\bibitem[Bengio, 2014]{Bengio2014}
+Bengio, Y. (2014).
+\newblock Deep learning workshop.
+\newblock online.
+\newblock Available on \url{youtu.be/JuimBuvEWBg}.
+
 \bibitem[{Breast Cancer Surveillance Consortium},
   2013]{PerformanceMammography2013}
 {Breast Cancer Surveillance Consortium} (2013).
@@ -55,7 +61,7 @@ Howlader, N., Noone, A.~M., Krapcho, M.~F., Garshell, J., Miller, D.~A.,
 Karpathy, A. (2015).
 \newblock Convolutional neural networks for visual recognition course.
 \newblock online.
-\newblock Available on \url{http://cs231n.github.io}.
+\newblock Available on \url{cs231n.github.io}.
 
 \bibitem[Kerlikowske et~al., 2011]{Kerlikowske2011}
 Kerlikowske, K., Hubbard, R.~A., Miglioretti, D.~L., Geller, B.~M., Yankaskas,
@@ -156,6 +162,11 @@ Russakovsky, O., Deng, J., Su, H., Krause, J., Satheesh, S., Ma, S., Huang, Z.,
 Schmidhuber, J. (2015).
 \newblock Deep learning in neural networks: An overview.
 \newblock {\em Neural Networks}, 61(0):85--117.
+
+\bibitem[Simonyan and Zisserman, 2014]{Simonyan2014}
+Simonyan, K. and Zisserman, A. (2014).
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock {\em CoRR}, abs/1409.1556.
 
 \bibitem[Skaane et~al., 2007]{Skaane2007}
 Skaane, P., Hofvind, S., and Skjennald, A. (2007).
