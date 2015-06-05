@@ -14,11 +14,22 @@
 \newblock Available on
   \url{cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}.
 
+\bibitem[Bengio, 2012]{Bengio2012}
+Bengio, Y. (2012).
+\newblock Practical recommendations for gradient-based training of deep
+  architectures.
+\newblock {\em CoRR}, abs/1206.5533.
+
 \bibitem[Bengio, 2014]{Bengio2014}
 Bengio, Y. (2014).
 \newblock Deep learning workshop.
 \newblock online.
 \newblock Available on \url{youtu.be/JuimBuvEWBg}.
+
+\bibitem[Bergstra and Bengio, 2012]{Bergstra2012}
+Bergstra, J. and Bengio, Y. (2012).
+\newblock Random search for hyper-parameter optimization.
+\newblock {\em J. Machine Learning Research}, 13(1):281--305.
 
 \bibitem[{Breast Cancer Surveillance Consortium},
   2013]{PerformanceMammography2013}
@@ -28,6 +39,12 @@ Bengio, Y. (2014).
 \newblock electronic.
 \newblock Available on
   \url{breastscreening.cancer.gov/statistics/performance/screening/2009/perf_age.html}.
+
+\bibitem[Cawley and Talbot, 2010]{Cawley2010}
+Cawley, G.~C. and Talbot, N.~L. (2010).
+\newblock On over-fitting in model selection and subsequent selection bias in
+  performance evaluation.
+\newblock {\em J. Machine Learning Research}, 11:2079--2107.
 
 \bibitem[Dieleman et~al., 2015]{Dieleman2015}
 Dieleman, S., Willett, K.~W., and Dambre, J. (2015).
@@ -41,6 +58,12 @@ Fukushima, K. (1980).
   of pattern recognition unaffected by shift in position.
 \newblock {\em Biological Cybernetics}, 36:193--202.
 \newblock PMID: 7370364.
+
+\bibitem[He et~al., 2015]{He2015}
+He, K., Zhang, X., Ren, S., and Sun, J. (2015).
+\newblock Delving deep into rectifiers: Surpassing human-level performance on
+  imagenet classification.
+\newblock {\em CoRR}, abs/1502.01852.
 
 \bibitem[Hernandez, 2014]{Hernandez2014}
 Hernandez, J.~L. (2014).
