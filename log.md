@@ -35,7 +35,7 @@ Log with activities and questions arising during every week
 1. Naming: Should I use loss or cost function?.
 
 	Answer: Loss
-2. How to obtain the small training images from the big images. Random sampling, crop without overlapping, with overlapping.?
+2. How to obtain the small training images from the big images. Random sampling, crop without overlapping, with overlapping.? How to measure performance?. What are the labels?.
 
 
 
