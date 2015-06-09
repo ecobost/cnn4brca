@@ -14,6 +14,12 @@
 \newblock Available on
   \url{cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}.
 
+\bibitem[Bastien et~al., 2012]{Bastien2012}
+Bastien, F., Lamblin, P., Pascanu, R., Bergstra, J., Goodfellow, I.~J.,
+  Bergeron, A., Bouchard, N., and Bengio, Y. (2012).
+\newblock Theano: new features and speed improvements.
+\newblock Deep Learning and Unsupervised Feature Learning NIPS 2012 Workshop.
+
 \bibitem[Bengio, 2012]{Bengio2012}
 Bengio, Y. (2012).
 \newblock Practical recommendations for gradient-based training of deep
@@ -26,10 +32,23 @@ Bengio, Y. (2014).
 \newblock online.
 \newblock Available on \url{youtu.be/JuimBuvEWBg}.
 
+\bibitem[Bengio et~al., 2012]{Bengio2012b}
+Bengio, Y., Boulanger{-}Lewandowski, N., and Pascanu, R. (2012).
+\newblock Advances in optimizing recurrent networks.
+\newblock {\em CoRR}, abs/1212.0901.
+
 \bibitem[Bergstra and Bengio, 2012]{Bergstra2012}
 Bergstra, J. and Bengio, Y. (2012).
 \newblock Random search for hyper-parameter optimization.
 \newblock {\em J. Machine Learning Research}, 13(1):281--305.
+
+\bibitem[Bergstra et~al., 2010]{Bergstra2010}
+Bergstra, J., Breuleux, O., Bastien, F., Lamblin, P., Pascanu, R., Desjardins,
+  G., Turian, J., Warde-Farley, D., and Bengio, Y. (2010).
+\newblock Theano: a {CPU} and {GPU} math expression compiler.
+\newblock In {\em Proceedings of the Python for Scientific Computing Conference
+  ({SciPy})}.
+\newblock Oral Presentation.
 
 \bibitem[{Breast Cancer Surveillance Consortium},
   2013]{PerformanceMammography2013}
@@ -45,6 +64,11 @@ Cawley, G.~C. and Talbot, N.~L. (2010).
 \newblock On over-fitting in model selection and subsequent selection bias in
   performance evaluation.
 \newblock {\em J. Machine Learning Research}, 11:2079--2107.
+
+\bibitem[Collobert et~al., 2011]{Collobert2011}
+Collobert, R., Kavukcuoglu, K., and Farabet, C. (2011).
+\newblock Torch7: A matlab-like environment for machine learning.
+\newblock In {\em BigLearn, NIPS Workshop}.
 
 \bibitem[Dieleman et~al., 2015]{Dieleman2015}
 Dieleman, S., Willett, K.~W., and Dambre, J. (2015).
@@ -80,6 +104,12 @@ Howlader, N., Noone, A.~M., Krapcho, M.~F., Garshell, J., Miller, D.~A.,
 \newblock review, National Cancer Institute, Bethesda, MD.
 \newblock Available on \url{seer.cancer.gov/csr/1975_2011/}.
 
+\bibitem[Jia et~al., 2014]{Jia2014}
+Jia, Y., Shelhamer, E., Donahue, J., Karayev, S., Long, J., Girshick, R.~B.,
+  Guadarrama, S., and Darrell, T. (2014).
+\newblock Caffe: Convolutional architecture for fast feature embedding.
+\newblock {\em CoRR}, abs/1408.5093.
+
 \bibitem[Karpathy, 2015]{Karpathy2015}
 Karpathy, A. (2015).
 \newblock Convolutional neural networks for visual recognition course.
@@ -92,6 +122,12 @@ Kerlikowske, K., Hubbard, R.~A., Miglioretti, D.~L., Geller, B.~M., Yankaskas,
 \newblock Comparative effectiveness of digital versus film-screen mammography
   in community practice in the united states: A cohort study.
 \newblock {\em Annals of Internal Medicine}, 155(8):493--502.
+
+\bibitem[Krizhevsky, 2014]{Krizhevsky2014}
+Krizhevsky, A. (2014).
+\newblock cuda-convnet2: Fast convolutional neural networks in c++/cuda.
+\newblock online.
+\newblock Available online on \url{github.com/akrizhevsky/cuda-convnet2}.
 
 \bibitem[Krizhevsky et~al., 2012]{Krizhevsky2012}
 Krizhevsky, A., Sutskever, I., and Hinton, G.~E. (2012).
@@ -150,6 +186,14 @@ Ng, A. (2014).
 \newblock online.
 \newblock Available on \url{coursera.org/course/ml}.
 
+\bibitem[\"{O}zg\"{u}r et~al., 2005]{Ozgur2005}
+\"{O}zg\"{u}r, A., \"{O}zg\"{u}r, L., and G\"{u}ng\"{o}r, T. (2005).
+\newblock Text categorization with class-based and corpus-based keyword
+  selection.
+\newblock In {\em Proceedings of the 20th International Conference on Computer
+  and Information Sciences}, ISCIS'05, pages 606--615, Berlin, Heidelberg.
+  Springer-Verlag.
+
 \bibitem[Pisano et~al., 2008]{Pisano2008}
 Pisano, E.~D., Hendrick, R.~E., Yaffe, M.~J., Baum, J.~K., Acharyya, S.,
   Cormack, J.~B., Hanna, L.~A., Conant, E.~F., Fajardo, L.~L., Bassett, L.~W.,
@@ -159,6 +203,11 @@ Pisano, E.~D., Hendrick, R.~E., Yaffe, M.~J., Baum, J.~K., Acharyya, S.,
   analysis of selected population subgroups in {DMIST}.
 \newblock {\em Radiology}, 246(2):376--383.
 \newblock PMID: 18227537.
+
+\bibitem[Provost, 2000]{Provost2000}
+Provost, F. (2000).
+\newblock Machine learning from imbalanced data sets 101.
+\newblock {\em Proceedings of the AAAI-2000 Workshop on Imbalanced Data Sets}.
 
 \bibitem[Rosenblatt, 1962]{Rosenblatt1962}
 Rosenblatt, F. (1962).
@@ -203,6 +252,12 @@ Skaane, P., Hofvind, S., and Skjennald, A. (2007).
 Springenberg, J.~T., Dosovitskiy, A., Brox, T., and Riedmiller, M.~A. (2014).
 \newblock Striving for simplicity: The all convolutional net.
 \newblock {\em CoRR}, abs/1412.6806.
+
+\bibitem[Srivastava et~al., 2014]{Srivastava2014}
+Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., and Salakhutdinov,
+  R. (2014).
+\newblock Dropout: A simple way to prevent neural networks from overfitting.
+\newblock {\em Journal of Machine Learning Research}, 15:1929--1958.
 
 \bibitem[Taigman et~al., 2014]{Taigman2014}
 Taigman, Y., Yang, M., Ranzato, M., and Wolf, L. (2014).
