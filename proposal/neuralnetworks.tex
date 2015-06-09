@@ -47,8 +47,17 @@ The \emph{softmax} loss function for a multiclass neural network classifier is d
 \begin{equation}
 	J(\Theta) = -\frac{1}{m} \sum_{i=1}^m \log \left ( \frac{ e^{h_\Theta(x^{(i)})_{y^{(i)}}} }{ \sum_{j=1}^K e^{ h_\Theta (x^{(i)})_j} } \right )
 \end{equation}
-where $m$ is the number of examples in the training set, $h_\Theta(x)$ is the score vector, $K$ is the number of classes and $(x^{(i)},y^{(i)})$ is the $i^{th}$ example. $J(\Theta)$ is differentiable with respect to $\Theta$ but non-convex, nonetheless, gradient descent usually converges to a good estimate of the network weights~\cite{Ng2014}. \emph{Error backpropagation}~\cite{Linnainmaa1970, Werbos1974}, an algorithm to calculate the derivatives with respect to $\Theta$ needed for gradient descent, computes the error terms in the output layer and backpropagates them layer by layer using the chain rule of derivatives. Given the big number of parameters which need to be estimated, neural networks are susceptible to overfitting. The simplest approach to overcome this problenm is to use regularization. Regularization for neural networks is done by performing gradient descent on the regularized loss function presented in Equation~\ref{eq:ANNRegularizedLossFunction}
+where $m$ is the number of examples in the training set, $h_\Theta(x)$ is the score vector, $K$ is the number of classes and $(x^{(i)},y^{(i)})$ is the $i^{th}$ example. $J(\Theta)$ is differentiable with respect to $\Theta$ but non-convex, nonetheless, gradient descent usually converges to a good estimate of the network weights~\cite{Ng2014}. \emph{Error backpropagation}~\cite{Linnainmaa1970, Werbos1974}, an algorithm to calculate the derivatives with respect to $\Theta$ needed for gradient descent, computes the error terms in the output layer and backpropagates them layer by layer using the chain rule of derivatives. Deep neural networks are often susceptible to overfitting given the amount of parameters which need to be estimated. The simplest approach to overcome this problem is to use regularization. Regularization for neural networks is done by performing gradient descent on the regularized loss function presented in Equation~\ref{eq:ANNRegularizedLossFunction}
 \begin{equation}
 	J(\Theta) = -\frac{1}{m} \sum_{i=1}^m \log \left ( \frac{ e^{h_\Theta(x^{(i)})_{y^{(i)}}} }{ \sum_{j=1}^K e^{ h_\Theta (x^{(i)})_j} } \right ) + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s^{(l)}}\sum_{j=1}^{s^{(l+1)}} \left(\Theta^{(l)}_{ij}\right)^2
 	\label{eq:ANNRegularizedLossFunction}
 \end{equation}
+
+\emph{Dropout}~\cite{Srivastava2014} is another popular method to prevent overfitting. Each training iteration, dropout samples a different network architecture from the original network and updates only a subset of the values in $\Theta$; a unit (and its connections) is retained with probability $p$, usually 0.5, and gradient descent works on this sampled network. See Fig.~\ref{fig:Dropout} for an example. During testing all units are active but their activations are scaled by $p$ to match their expected output ($p a^{(l)}_i + (1-p) 0$). This can be interpreted as training many models (with shared weights) and averaging their results at test time.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.65\textwidth]{plots/dropout.png}
+	\caption[Example of dropout]{Dropout applied to a simple neural network. Crossed units were dropped. Image courtesy of~\cite{Srivastava2014}.}
+	\label{fig:Dropout}
+\end{figure}
