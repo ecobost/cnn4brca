@@ -4,7 +4,13 @@ Preprocessing(http://scipy-lectures.github.io/advanced/image_processing/#statist
 	wavelet, not tried
 	(other enhancements)
 
-% Train a network with all standard features.
+
+% Train a simple convolutional
+% Train one with bells and whistles(choosen by heart)
+% Choose better hyperparameters
+% Unbalanced datasets
 % For final model, use both(only convolutions and conv&pool)
 % Use VGG Net pretrained in Caffe.
 % Train an ensemble of networks with different hyperparameters at the start and average.
+
+% IN methodology write a section called operationalization were i explain how the problem is reduced to a clsssification task(what are the labels and how the images are cropped and what are the performance metrics))

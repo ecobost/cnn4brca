@@ -6,13 +6,14 @@ Log with activities and questions arising during every week
 ## Jun 3 - Jun 10
 ### Activities
 * Write PracticalDL section
-*
+* Write ConvNet for Breast Cancer
 
 ### To do
 *
 
 ### Questions
-1. Is there a standard way to report convolutional netowkr architectures (Khriznevsky style or Karpathy style or a table as in Striving for simplicity)?.
+1. Is there a standard way to report convolutional network architectures (Krizhevsky style or Karpathy style or a table as in Striving for simplicity)?.
+2. Use NAG or SGD+Momentum?
 
 
 
