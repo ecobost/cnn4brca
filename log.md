@@ -6,15 +6,18 @@ Log with activities and questions arising during every week
 ## Jun 3 - Jun 10
 ### Activities
 * Write PracticalDL section
-* Write ConvNet for Breast Cancer
 
 ### To do
-*
+* Write ConvNet for Breast Cancer
+* Rewrite Methodology with new experiments
+* Update LaTex template to thesis template
+* Investigate and write the features of the database and its labelling.
+* Choose software (probably Caffe)
 
 ### Questions
 1. Is there a standard way to report convolutional network architectures (Krizhevsky style or Karpathy style or a table as in Striving for simplicity)?.
 2. Use NAG or SGD+Momentum?
-
+3. Use Bioinformatics account or create another one?.
 
 
 ## May 27- Jun 2
