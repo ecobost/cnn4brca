@@ -1,11 +1,9 @@
 In this section we collect some recommendations for constructing convolutional networks as well as efficiently training deep neural networks. These are intended to be specific to this project but most will also be useful in similar projects.
 % Some of these details are taken care by the software(either as a defualt or optional feature) and some are qyuite new and need to be taken care manually. 
 
-%mamogrpahy images are sufficiently different from images used in other object recognition challenges for example labeling may not be as sharp, they are not color mages, the object to recognize is quite small compared to the image, ammograms come in different sizes and the usable part is rectangular (higher than wider), mammogrpahuics image are sometimes required to identify the object and localize it which is not a requirement on other data. and thus some of these advice may prove counterproductive. We will start with the most weel tested features, diagnose the model and add features which willl hopefully produce beter vresults and work this way until obtaining the best model which will be trained and tested for a final time.
-
 \paragraph{Image preprocessing} Some standard processing for images.
 \begin{itemize}
-	\item Images are cropped to contain only the relevant parts of the image, denoised, enhanced and optionally downsampled to maintain the input size manageable.
+	\item Images are cropped to contain only the relevant parts of the image, denoised, enhanced and optionally downsampled to maintain the input size fixed and manageable.
 
 	\item Each image feature (the raw pixels) is zero centered by substracting its mean across all training images. Normalization scales the already zero-centered features to range from $[-1 \dots 1]$ by dividing them by its standard deviations. Feature normalization is not striclty neccesary but still customary~\cite{Karpathy2015}.
 
@@ -36,8 +34,8 @@ We offer some guidelines for designing convolutional network architectures and s
 
 	\item Use $3\times 3$ filters with stride 1 and zero-padding 1 or $5 \times 5$ filters with stride 1 and zero-padding 2. This preserves the spatial dimensions of the volume and works better in practice~\cite{Springenberg2014}. When training on big images, the first convolutional layer uses bigger filters~\cite{Karpathy2015}.
 	
-	\item Use $2\times2$ pooling with stride 2. Both this pooling and the overlapping version presented in Section~\ref{subsec:ConvNets} produce similar results. This pooling divides the spatial dimensions of the volume by half.
-
+	\item Use $2\times2$ pooling with stride 2. Both this pooling and the overlapping version presented in Section~\ref{subsec:ConvNets} produce similar results. Pooling divides the spatial dimensions of the volume in half~\cite{Krizhevsky2012}.
+%krizhevsky says overlapping is slightly better. so does dieleman but it slows thing down.
 	\item Use square input images (width = height) with dimensions divisible by 2. The dimensions should be divisible by 2 at least as many times as the number of pooling layers in the network.
 
 	\item Convert fully connected layers into convolutional layers.
@@ -65,12 +63,11 @@ We deal here with choosing hyperparameters other than those of the network archi
 
 	\item Theoretically we could fit all the hyperparameters using a validation set but in practice it is computationally unfeasible and could result in overfitting the hyperparameters to the validation data~\cite{Cawley2010}.
 
-	\item Set $\alpha$, $\lambda$ and optionally the type of preprocessing using a validation set. Other hyperparameters are set to a sensible default.
+	\item Set $\alpha$, $\lambda$ and optionally the type of preprocessing using a validation set. Other hyperparameters can be set to a sensible default. 
 %The learning rate schedule and training epochs are set using heuristics. 
 
-
-	\item The learning rate $\alpha$ is ``the single most important hyperparameter and one should always make sure that it has been tuned''~\cite{Bengio2012}. It ranges from $10^{-6}$ to $10$. Use a log scale to draw new values ($\alpha = 10^{unif(-6, 1)}$ where $unif(a,b)$ is the continous uniform distribution)~\cite{Karpathy2015}.
-%0.01
+	\item The learning rate $\alpha$ is ``the single most important hyperparameter and one should always make sure that it has been tuned''~\cite{Bengio2012}. It ranges from $10^{-6}$ to $10^{0}$. Use a log scale to draw new values ($\alpha = 10^{unif(-6, 0)}$ where $unif(a,b)$ is the continous uniform distribution)~\cite{Karpathy2015}.
+%0.01: Bengio, 2012 says that the optimal learning rate is close to the highest learning rate that does not cause divergence.
 
 	\item The regularization strength $\lambda$ is usually data (and loss function) dependant. It ranges from $10^{-3}$ to $10^4$. Search in log scale ($\lambda = 10^{unif(-3, 4)}$).
 %1
@@ -86,7 +83,7 @@ We deal here with choosing hyperparameters other than those of the network archi
 	\item Use 0.9-1 probability $p$ of retaining a unit in the input layer, 0.65-0.85 in the first 2-4 convolutional layers and 0.5 in the last convolutional layers and all fully connected layers~\cite{Srivastava2014}. Less dropout is used on the first layers because they have less parameters~\cite{Karpathy2015}.
 % Maybe don't use dropout in the input layer, because putting a zero there has a meaning(black), maybe the advantage of dropout in cinvolutional layers is just that it adds noise to the input.
 
-	\item Use mini-batch size of 32 or 64. A larger batch size requires more training time. It affects training time more than test performance~\cite{Bengio2012}.
+	\item Use mini-batch size of 64 or 32. A larger batch size requires more training time. It affects training time more than test performance~\cite{Bengio2012}.
 
 \end{itemize}
 
@@ -96,7 +93,9 @@ We deal here with choosing hyperparameters other than those of the network archi
 Some general tips for efficiently training convolutional networks with million of parameters and very big data sets. Using these algorithms for small networks may be somewhat excessive but it will not hurt the performance.
 
 \begin{itemize}
-	\item Randomize the order of the trainig examples before training. As we are using an stochastic estimator of the gradient this ensures the examples in each batch are sampled independently~\cite{Bengio2012}.
+	\item Randomize the order of the trainig examples before training. As we are using an stochastic estimator of the gradient this ensures the examples in each batch are sampled independently. Shuffling the examples after each epoch could also speed convergence~\cite{Bengio2012}.
+
+	\item To estimate the number of examples needed to train a convolutional network divide the total number of learnable parameters by 25-100 (assuming some data augmentation). Some groups have been able to learn up to 40M parameters from as little as 60K training examples~\cite{Dieleman2015, Springenberg2014}.
 
 	\item Weight initialization is very important for a proper convergence of the network. The current recommendation for ReLU units is to initialize each weight as a value drawn from a gaussian distribution $\mathcal{N}(\mu = 0, \sigma = \sqrt{2/n_{in}})$ where $n_{in}$ is the fan-in of the unit, i.e., the number of inputs to the unit. Specifically, each filter weight could be initialized as \texttt{w = randn()*sqrt(2/nIn)} where \texttt{randn()} returns a value drawn from a standard normal distribution and \texttt{nIn} is the number of connections to this filter (9 for a $3\times 3$ filter, for example). Weights for units in the fully connected layer follow the same formula. Biases can be initialized likewise or to zero~\cite{He2015}.
 
@@ -123,7 +122,7 @@ Some simple checks to make sure the training is working properly.
 \begin{itemize}
 	\item After weight initialization, the network should predict similar scores for each class (uniform probability) and have a loss function (without regularization) equal to $-\log(1/K)$. You can check this by running a test on a small set of examples. Adding regularization should increase the loss~\cite{Karpathy2015}.
 
-	\item If you implement back propagation manually or believe it may not be working properly you can run a gradient check. Gradient checks compare the analytic gradient produced by backpropagation with a numerical gradient produced by the symmetric difference quotient~\cite{Karpathy2015}.
+	\item If you implement back propagation manually or believe it may not be working properly you can run a gradient check. Gradient checks compare the analytic gradient produced by backpropagation with a numerical gradient produced by a finite difference approximation~\cite{Karpathy2015}.
 
 	\item Train the network with a very small subset of data (20 examples, for instance) and make sure it produces zero loss (without regularization). If it cannot overfit a tiny subset of examples the model is too simple~\cite{Ng2014}.
 
@@ -137,7 +136,8 @@ One of the easiest ways to reduce overfitting in image data is to generate addit
 For instance, if we present it with images of a book on different rotations, we expect it to learn to identify a book no matter its position.
 
 \begin{itemize}
-	\item There are many transformations one can apply: rotations, translations, reflections on the x or y-axis, zooms, crops (sample patches of the original image), etc. For color images, adding some noise to (jittering) the colors is also a valid transformation.
+	\item There are many transformations one can apply: rotations, translations, horizontal and vertical reflections, crops (sample patches of the original image), zooms, etc. For color images, adding some noise to (jittering) the colors is also a valid transformation.
+% Dieleman didn't like jittering or scales and crops
 
 	\item Exploit the invariances you expect in the data set. For instance, galaxies are rotation invariant given that in space there is no up or down~\cite{Dieleman2015} but trees are not as it is rare to see an upside down tree.
 
@@ -161,7 +161,7 @@ Having very few examples of one class compared to the rest is common in practice
 
 	\item Oversampling and undersampling, repeating the examples of the rare class or discarding some examples from the dominant class, are discouraged because they either not add information or throw away some of it.
 
-	\item Replicating rare examples (oversampling) is useful when the examples are very scarce and the classifier simply does not have enough data to learn. This could be achieved by balancing the classes on each minibatch via stratified sampling or by augmenting the rare class more than the dominant class during data augmentation.
+	\item Replicating rare examples (oversampling) is useful when the examples are very scarce and the classifier simply does not have enough data to learn. This could be achieved by balancing the classes on each mini-batch via stratified sampling or by augmenting the rare class more than the dominant class during data augmentation.
 
 	\item Data augmentation differs from data replication in that it only tries to enrich the data set with invariant images but actually leaves the proportion of classes unchanged.
 \end{itemize}
@@ -189,7 +189,7 @@ When we have a small data set we could use a pretrained convolutional network ei
 
 \begin{itemize}
 	\item Caffe~\cite{Jia2014}: Caffe is an already mature deep learning framework developed in C++/CUDA by the Berkeley Vision and Learning Center (BVLC) and community contributors. It offers a command line, Python and Matlab interface, reference models and tutorials and very fast code with easy GPU activation.
-	\item Torch7~\cite{Collobert2011}: Torch is a scientific computing framework developed in C/Lua/CUDA at the IDIAP Research Institute. It offers n-dimensional arrays (tensors) and its mathematical functions, a command line and Lua interface, GPU support and easy building of complex neural network architectures.
+	\item Torch7~\cite{Collobert2011}: Torch is a scientific computing framework developed in C/Lua/CUDA at the IDIAP Research Institute. It offers n-dimensional arrays (tensors), automatic differentiation, a command line and Lua interface, GPU support and easy building of complex neural network architectures.
 	\item Theano~\cite{Bergstra2010, Bastien2012}: Theano is a Python library developed in Python/CUDA at the University of Montreal. It is tightly integrated with NumPy, performs symbolic automatic differentiation and uses the GPU to efficiently evaluate mathematical expressions involving multi dimensional arrays.
 	\item Cuda-ConvNet2~\cite{Krizhevsky2014}: Cuda-ConvNet2 is a highly optimized convolutional network library developed in C++/CUDA by Alex Krizhevsky. It offers different off-the-shelf configurations for convolutional networks, a command line interface and multi-GPU training.
 \end{itemize}
