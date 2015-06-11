@@ -3,6 +3,20 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Jun 10 - Jun 17
+### Activities
+* Write ConvNet for Breast Cancer
+* Some preprocessing experiments
+
+### To do
+* Rewrite Methodology with new experiments
+* Update LaTex template to thesis template
+* Investigate and write the features of the database and its labelling.
+* Choose software (probably Caffe)
+
+### Questions
+1. 
+
 ## Jun 3 - Jun 10
 ### Activities
 * Write PracticalDL section
@@ -15,10 +29,13 @@ Log with activities and questions arising during every week
 * Choose software (probably Caffe)
 
 ### Questions
-1. Is there a standard way to report convolutional network architectures (Krizhevsky style or Karpathy style or a table as in Striving for simplicity)?.
-2. Use NAG or SGD+Momentum?
-3. Use Bioinformatics account or create another one?.
-
+1. Use NAG or SGD+Momentum?
+	
+	Answer: NAG
+2. Use Bioinformatics account or create another one?.
+	
+	Answer: Bioinformatics
+3. Is there a standard way to report convolutional network architectures (Krizhevsky style or Karpathy style or a table as in Striving for simplicity)?.
 
 ## May 27- Jun 2
 ### Activities
