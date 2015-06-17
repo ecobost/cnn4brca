@@ -70,9 +70,20 @@ Sensitivity and specificity are usually preferred to present results in medical 
 	\label{eq:G-mean}
 \end{equation}
 
-In this thesis, we will generally present results for all this metrics (precision, recall or sensitivity, specificity, $F_1$ score and G-mean). The metric used when selecting a model influences its characteristics and behaviour, hence, one should put some consideration into choosing it. We favor $F_1$ score over G-mean because it concentrates on prediction in the positive class (cancer) which is harder to predict and the class we are more interested in. Furthermore, it represents a more balanced tradeoff (an small change in precision is corresponded with a small change in recall) than G-mean where an small change in specificity can be corresponded with a big change in sensitivity.
+The threshold of a classifier regulates the trade-off between sensitivity and specificity (or similarly precision and recall): a classifier with a low threshold is prone to classify examples as positive but will potentially produce more false positives thus having high sensitivity but low specificity and viceversa for higher thresholds. The \emph{precision-recall curve} of a classifier is a line connecting the points produced by drawing its precision (on the y axis) against its recall (on the x axis) as its threshold varies. The \emph{receiver operating characteristic curve} is defined similarly but plots sensitivity (also called true positive rate) against 1-specificity (also called false positive rate). See Figure ~\ref{fig:AUCandPRAUC} for an example. The \emph{area under the precision-recall curve} PRAUC and the \emph{area under the receiver operating characteristic curve} AUC summarize the performance of the classifier over all possible thresholds and can be used for model selection; they range from 0 to 1 with higher been better. As with the previous metrics, AUC is sometimes preferred for medical diagnosis while PRAUC is mostly used in machine learning. For unbalanced data sets, ``using the classifiers produced by standard machine learning algorithms without adjusting the output threshold may well be a critical mistake''~\cite{Provost2000}. For this reason, it is preferable to use metrics which consider all possible thresholds (AUC or PRAUC) rather than those where only one threshold is considered ($F_1$ score or G-mean). However, the simpler metrics can be used as long as the threshold is obtained separately using a validation set. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width = 0.8\textwidth]{plots/AUCandPRAUC.png}
+	\caption[Sample ROC and PR curves]{Sample receiver operating characteristic curve (left) and precision-recall curve (right). Each algorithm is evaluated on different thresholds and the points produced are used to obtain the curves. Image courtesy of~\cite{Davis2006}}
+	\label{fig:AUCandPRAUC}
+\end{figure}
+
+In this thesis, we will generally present results for all these metrics (precision, recall or sensitivity, specificity, $F_1$ score, G-mean, AUC and PRAUC). The metric used when selecting a model influences its characteristics and behaviour, hence, one should put some consideration into choosing it; we favor the used of PRAUC over AUC (as well as $F_1$ score over G-mean) because they concentrate on predictions in the positive class (cancer) which is harder to predict and the class we are more interested in. Furthermore, PRAUC has been shown to have better properties than AUC in unbalanced data sets~\cite{Davis2006}.
+%F1 better represents a more balanced tradeoff  (an small change in precision is corresponded with a small change in recall) than AUC where an small change in specificity can be corresponded with a big change in sensitivity.
+
 \begin{comment} Discussion of why G-mean over F1
 (Not sure about this) As a rule of thumb, using G-mean will generate models that predict more positives given that the sensitivity will greatly improve and specificity will only slightly decrease. Using $F_1$ score, the model will predict less positives as that will improve precision but only slightly decrease sensitivity. 
+5 here say PRAUc is better for unbalanced classes
 
 Why G-means? Because it is more important to obtain a low error in specificity than in precision, i .e, would you prefer a 90% in specificity or a 90% in precision?. 90% in specificity means that 10% of actual negatives (10 persons) were told they have no cancer although they actually had cancer, meanwhile 10% of expected positives(a small number, maybe 1) was said he has cancer although he doesn{t. First is worse.
 
@@ -83,4 +94,4 @@ Using F1 I'll probably predict less positives, sensitivity is going to go slight
 Other diagonal, the algorithm will learn negatives pretty well, so the one that predicts less positives(f1) probably isn{t learning much (it is predicting all negative).
 \end{comment}
 
-This section is meant to be a compendium of basic concepts in machine learning, practical machine learning involves many subtleties and implementation details not mentioned here. Notation and content in this section is mostly based on materials from Stanford's Machine Learning course\cite{Ng2014}.
+Finally, we point out that this section is meant to be a compendium of basic concepts in machine learning, practical machine learning involves many subtleties and implementation details not mentioned here. Notation and content in this section is mostly based on materials from Stanford's Machine Learning course\cite{Ng2014}.
