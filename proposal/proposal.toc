@@ -9,22 +9,22 @@
 \contentsline {subsection}{\numberline {5.2}Classification}{8}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}Artificial Neural Networks}{11}{subsection.5.3}
 \contentsline {subsection}{\numberline {5.4}Convolutional Networks}{14}{subsection.5.4}
-\contentsline {paragraph}{Convolutional layer}{15}{section*.9}
-\contentsline {paragraph}{ReLU layer}{15}{section*.11}
-\contentsline {paragraph}{Pooling layer}{16}{section*.12}
-\contentsline {paragraph}{Fully connected layer}{16}{section*.13}
-\contentsline {subsection}{\numberline {5.5}Convolutional Networks applied to Breast Cancer}{18}{subsection.5.5}
-\contentsline {subsubsection}{\numberline {5.5.1}Related Work}{18}{subsubsection.5.5.1}
-\contentsline {subsection}{\numberline {5.6}Practical Deep Learning}{19}{subsection.5.6}
-\contentsline {paragraph}{Image preprocessing}{19}{section*.15}
-\contentsline {paragraph}{Convolutional network architecture}{19}{section*.16}
-\contentsline {paragraph}{Hyperparameter search}{20}{section*.17}
-\contentsline {paragraph}{Training}{22}{section*.18}
-\contentsline {paragraph}{Sanity checks}{23}{section*.19}
-\contentsline {paragraph}{Data augmentation}{23}{section*.20}
-\contentsline {paragraph}{Unbalanced data}{24}{section*.21}
-\contentsline {paragraph}{All convolutional networks}{24}{section*.22}
-\contentsline {paragraph}{Transfer learning}{25}{section*.23}
-\contentsline {paragraph}{Software}{25}{section*.24}
-\contentsline {section}{\numberline {6}Methodology}{26}{section.6}
-\contentsline {section}{\numberline {7}Work Plan}{27}{section.7}
+\contentsline {paragraph}{Convolutional layer}{15}{section*.10}
+\contentsline {paragraph}{ReLU layer}{16}{section*.12}
+\contentsline {paragraph}{Pooling layer}{16}{section*.13}
+\contentsline {paragraph}{Fully connected layer}{17}{section*.14}
+\contentsline {subsection}{\numberline {5.5}Convolutional Networks applied to Breast Cancer}{19}{subsection.5.5}
+\contentsline {subsubsection}{\numberline {5.5.1}Related Work}{19}{subsubsection.5.5.1}
+\contentsline {subsection}{\numberline {5.6}Practical Deep Learning}{21}{subsection.5.6}
+\contentsline {paragraph}{Image preprocessing}{21}{section*.16}
+\contentsline {paragraph}{Convolutional network architecture}{21}{section*.17}
+\contentsline {paragraph}{Hyperparameter search}{22}{section*.18}
+\contentsline {paragraph}{Training}{23}{section*.19}
+\contentsline {paragraph}{Sanity checks}{24}{section*.20}
+\contentsline {paragraph}{Data augmentation}{25}{section*.21}
+\contentsline {paragraph}{Unbalanced data}{25}{section*.22}
+\contentsline {paragraph}{All convolutional networks}{26}{section*.23}
+\contentsline {paragraph}{Transfer learning}{27}{section*.24}
+\contentsline {paragraph}{Software}{27}{section*.25}
+\contentsline {section}{\numberline {6}Methodology}{28}{section.6}
+\contentsline {section}{\numberline {7}Work Plan}{29}{section.7}

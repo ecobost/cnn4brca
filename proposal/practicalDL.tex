@@ -137,7 +137,8 @@ For instance, if we present it with images of a book on different rotations, we 
 
 \begin{itemize}
 	\item There are many transformations one can apply: rotations, translations, horizontal and vertical reflections, crops (sample patches of the original image), zooms, etc. For color images, adding some noise to (jittering) the colors is also a valid transformation.
-% Dieleman didn't like jittering or scales and crops
+% Dieleman galaxies didn't like jittering or scales and crops
+% Lo liked rotation and horizontal flipping
 
 	\item Exploit the invariances you expect in the data set. For instance, galaxies are rotation invariant given that in space there is no up or down~\cite{Dieleman2015} but trees are not as it is rare to see an upside down tree.
 
@@ -146,6 +147,8 @@ For instance, if we present it with images of a book on different rotations, we 
 	\item Most transformations are affine in the geometric plane and can be combined into a single one. If you plan to apply various transformations to the same image, applying a single affine transformation is faster and reduces information loss~\cite{Dieleman2015}.
 
 	\item Generate the augmented images during training. This saves storage and can be performed alongside the training~\cite{Krizhevsky2012}.
+
+	\item Data augmentation can also be used at test time by presenting the network with various versions of the same image and averaging its predictions~\cite{Krizhevsky2012}. 
 	
 \end{itemize}
 
@@ -153,9 +156,13 @@ For instance, if we present it with images of a book on different rotations, we 
 \paragraph{Unbalanced data}
 Having very few examples of one class compared to the rest is common in practice. We offer here some advice to deal with unbalanced classes using standard convolutional networks. We note that there is no accepted way to manage this problem.
 \begin{itemize}
-	\item Once the network is trained, use a validation set to select the threshold that produces the best results ($F_1$ score, not loss). ``Using the classifiers produced by standard machine learning algorithms without adjusting the output threshold may well be a critical mistake''~\cite{Provost2000}. Another adjustment is to divide the predicted probabilities by their corresponding class priors and renormalize the values. 
+	\item For a binary classifier, if the positive class is the rare class use PRAUC as a performance metric. If you are reporting the $F_1$ score, you should select an appropiate threshold using a validation set~\cite{Davis2006}.
 
-	\item For a binary classifier, if the rare class is the positive class use $F_1$ score as a performance metric. For multiclass classifiers you can use the macro-averaged $F_1$ score, an average over all classes~\cite{Ozgur2005}.
+	\item If using PRAUC or selecting the threshold with a validation set is impractical, a simple adjustment is to divide the predicted probabilities by their corresponding class priors and to renormalize the values.
+
+	\item For multiclass classification, use the macro-averaged $F_1$ score, an average of $F_1$ scores per class, with validated thresholds~\cite{Ozgur2005}. A multiclass PRAUC also exists but it is not as easy to interpret.
+
+	\item As the threshold setting does not affect training it can be fitted independently of other hyperparameters once the network has already been trained. If fitting more than one, consider each one as a separate hyperparameter and use random search to find the best combination.
 
 	\item One of the preferred methods to learn with unbalanced data sets is to use a modified loss function which gives a higher weight to errors in the rare class so that during training errors in the rare class will produce higher learning in the network parameters. Specific knowledge of the domain is required to estimate the cost of each class of error.
 
@@ -196,7 +203,7 @@ When we have a small data set we could use a pretrained convolutional network ei
 
 \bigskip
 
-Lastly, we acknowledge that mammographic data is fairly different to that used in other object recognition challenges, for instance, labelling may not be as sharp or correct, images come in different sizes and ratios, image quality varies, the object to recognize may be very small in relation to the image, object localization may be a requirement, etc. and therefore some of the advice given above may prove counterproductive. When possible, design decisions should be based on the data and results obtained until that point.
+Lastly, we acknowledge that mammographic data is fairly different to that used in common object recognition tasks, for instance, labelling may not be as sharp or correct, images come in different sizes and ratios, image quality varies, the object to recognize may be very small in relation to the image, object localization may be a requirement, etc. and therefore some of the advice given above may prove counterproductive. When possible, design decisions should be based on the data and results obtained until that point.
 
 %We plan to start with a simple convolutional architecture and add some of the well tested features first and other possible features later to obtain an optimized model which will be trained and tes.
 

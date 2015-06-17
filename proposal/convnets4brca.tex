@@ -1,22 +1,174 @@
 Yet to write. Redacted version of section Related Work.
 
+Radiographs for medical imaging has been used for many years, lo was the first one in ..
+
+We refer as detection to the task of classifying a lession as present or not in the image no matter its malignancy, for instance, classifying an image patch as either clustered microcalcifications or normal tissue, while we talk of diagnosis when classifying a lession as either benign or malign~\footnote{If the feature is not actually present on the image it is considered benign.}.
+
+Most are entirely convolutional, not pooling and small < 10K paramters and two to three layers.
 \subsubsection{Related Work}
-In this section we offer a summary of some of the first work on using convolutional networks for breast cancer diagnosis as well as some of the articles that have influenced this thesis.
-
-\cite{Lo1995} were the first group to use convolutional networks for breast cancer detection. They used a CNN with two hidden layers to detect microcalcifications. A high sensitivity image processing technique was used to obtain a set of 2104 patches (16 by 16 pixels) of all potential disease areas from 68 digital mammograms; of these, 265 were true microcalcifications and 1821 were ``false subtle microcalcifications". Prior to training the CNN, a wavelet high-pass filtering technique was used to remove the background of these images. Each image was flipped over (left-right) and 4 rotations for each the original and flipped images were used for training (0°, 90°, 180° and 270°). The CNN was composed of one input unit ($16\times16$), 12 units in the first hidden layer ($12\times12$), 12 units in the second hidden layer($8\times 8$) and two output nodes(one for YES and one for NOT). The input size ($16\time16$), number of hidden layers ($2$) and kernel size ($5\times5$) was obtained via cross validation, altough not many other options were explored: they tried input sizes of 8, 16 or 32, one or two hidden layers and kernel sizes of 2, 3, 5 or 13. The CNN reached 0.87 average AUC when identifying individual microcalcifications and 0.97 AUC for clustered microcalcifications. Only a minimum of three calcifications was considered a detection. Sensitivity and specificity test results were not reported. This article proved that simple convolutional networks can be efficiently used for medical image pattern recognition.
-%Lesson learned: two hidden layer newtwork produces better results, background reduction is neccesary and using matrices invariance to augment the data helps. Convnets work helps and convnets work.
-
-%A refined approach was presented some years later by the same authors along some non convolutional neural networks~\cite{Lo1998}. The setting is very similar but ..... Results are..
+In this section we offer a summary of the most relevant work in using convolutional networks for breast cancer diagnosis. %Results are presented in a chronological order
 
 
-%1995, 1998, 2002, shi-chung lo.
-%1996, 2002, 2007, (optimal..) heang ping chan hadjiiski
-% 2014 cruz-roa (IDC with a fairly new convolutional network)
+%*************************************** Lo1995 *************************************
+\begin{comment} Lo1995
+- detect microcalcifications
+- only years after lecun showed it to be good on the mnist dataset.
+- preselected images
+- Background removal with wavelet high pass filtering ("a three-level wavelet transform was used and only the lowest frequency was eliminated for high-pass filtering before image reconstruction."). For lung nodules: Background removal like constrast enhancement.
+- YES/NO output. For lung nodules: degrees of sensitivity in output(1-10) instead of disease/no disease . 
+- Rotation and translation invariance. 0,90,180,270 and flipped over. (all of this on the small 32 by 32 images). No use of translation, it talks about it, though.
+- Uses ROC/AUC.
+- Each pixel represented 0.105 mm. (for instance 16 pixel input was 1.7mm)
+- Same set used for validation and test
+- using the data augmented versions one after the other in training gives better performance here (not sure why)
+- 30-fold crossvalidation results reported (no test set): 0.89 AUC for individual miscrocalcifications and 0.97 for clustered microcalcif. 
+- not quite clear if label were beningn/malign, microcalc/non-microcalc. It hink it is detection not diagonsis
+- not clear how they measure the detection of microcalc. I think, of those microcalc detected from the normal algorithm if more than 3 were in the same 1 cm^2 area, it was considered as if the convnet detcted a cluster. 
+- Easier to detect clusters these way because there could be 20 micorcalcif in a 1 cm^2 area and it only needs to detect 3.
+- Bunch of questions on how on hell is this done. It could be done in a way that would help a lot the results, maybe that is why they have 0.97 AUC
+\end{comment}
+To the best of the author knowledge, the first attempt to use convolutional networks for breast cancer is reported in "Artificial Convolution Neural Network for Medical Image Pattern Recognition"~\cite{Lo1995}. 
+They used a small convolutional network to detect microcalcifications (3 layers, $\sim$5.4K parameters). Details of the architecture are offered on Table~\ref{tab:BrCaConvNetArchitectures}. The input size ($16\time16$), number of hidden layers ($2$) and kernel size ($5\times5$) was obtained using a validation set, altough only few options were explored: they tried input sizes of 8, 16 or 32, one or two hidden layers and kernel sizes of 2, 3, 5 or 13.
+A high sensitivity image technique was used to obtain a set of 2104 image patches ($16 \times 16$ pixels equivalent to an area of 1.7 $mm^2$) of potential microcalcifications from 68 digitalized mammograms; of these, 265 were true microcalcifications and 1821 were ``false subtle microcalcifications". Prior to training, a wavelet high-pass filtering technique was used to remove the background. Each image was flipped horizontally and 4 rotations for each the original and flipped images were used for training (0°, 90°, 180° and 270°).
+The network reached 0.89 AUC when identifying individual microcalcifications and 0.97 AUC for clustered microcalcifications; results obtained with a 30 fold cross validation. More than two individual microcalcifications detected on a 1 $cm^2$ area is considered a cluster detection, the predicted probability for the cluster is the average of the probabilities of all suspect patches inside the 1 $cm^2$ area~\footnote{This method is not clearly explained either in this article or~\cite{Lo1998} so this interpretation may not be correct. The way this evaluation is performed greatly affects the validity of the reported results.} Other performance metrics were not explicitly reported.
+% Do I only consider the patches who were suspect in the first place and are inside the 1 cm2?. waht if a single suspect patch has more than 2 microcalcifications, isthat considered a cluster detection?, how do I make the cluster grouping. how is the labelling in the original images done, are the 1 cm^2 preset, when is a cluster not detected. Are only the dected clusters used to calculate the rsulting NDDI?
+% Is this left intentionally vague?
+This article proved that simple convolutional networks can be used for medical image pattern recognition. It also showed that deeper networks, background removal and data augmentation improved results.
+% Lesson learned: two hidden layer newtwork produces better results, background reduction is neccesary and using matrices invariance to augment the data helps.
+% 1 cm2 for clustered microcalcifications
+
+% ********************************* Lo1995 *****************************************
+% Shih-Chung B. Lo ; Huai Li ; Jyh-Shyan Lin ; Akira Hasegawa ; Chris Y. Wu, et al. "Artificial convolution neural network with wavelet kernels for disease pattern recognition", Proc. SPIE 2434, Medical Imaging 1995: Image Processing, 579 (May 12, 1995); 
+% Detection of microcalcifications
+% "Wavelet based kernels". Same results.
 
 
-% 2012a, 2012b deep learning.
+%********************************** Chan1995 ****************************************
+% Chan, H.-P., Lo, S.-C.B., Sahiner, B., Kwok Leung Lam, Helvie, M.A. Computer-aided detection of mammographic microcalcifications: Pattern recognition with an artificial neural network (1995) Medical Physics, 22 (10), pp. 1555-1567.
+% Initial set divided in obvious, average and subtle microcalcifications
+% Trained with hard cases and proved different architectures resulting in AUC 0.9
 
+
+%********************************* Lo1996 *******************************************
+%Lo, S.-C.B., Li, H., Lin, J.-S., Hasegawa, A., Tsujii, O., Freedman, M.T., Mun, S.K. Detection of clustered microcalcifications using fuzzy modeling and convolution neural network (1996) Proceedings of SPIE - The International Society for Optical Engineering, 2710, pp. 8-15.
+% A fuzzy classification modeling was employed to extract each suspected microcalcification
+% Fuzzy function also used to determine the of spots near a cluster as part of the cluster (it received as input the distance to the cluster an the output of the convolutional network)
+% Sensitivity 90% at 0.5 FP per image 
+
+
+
+%************************************* Lo1998 ***************************************
+\begin{comment} Lo 1998
+- similar to Lo 1995:
+	detect microcalcifications
+	pre-selected image patches
+	8 rotations per image(0,90,180,270 and flipped)
+	sigmoid activation function
+	16 by 16 pixel size
+	5 by 5 filters
+	2 outputs
+	clustering method
+- only 10 groups per layer
+- "Typically, the sizes of microcalcifications vary from 0.16 mm to 1.0 mm."
+- each pixel 0.1mm, more than that may make dissapear the microcalc.
+- DYSTAL network, regular neural network, and convolutional network. convnet ouptperforms them.
+- rotation and translation invariance.
+- gaussian-like activation function in input (?)
+- 38 "digital" mammograms: 220 true and 1132 subtle microcalcififcations
+- divided into two roughly equal sets for test (no cross validation)
+- 0.9 AUC for microcalc and 0.97 AUC for clustered microcalcif
+\end{comment}
+A convolutional network with a similar architecture (3 layers, $\sim$4.5K parameters) was presented by the same group in~\cite{Lo1998}. It detects microcalcifications from $16 \times 16$ image patches which were pre-selected and preprocessed using the same image techniques as above. For these experiments, nonetheless, they used 38 digital mammograms and extracted 220 true microcalcifications and 1132 false ones which were randomly divided into a training and test set of roughly equal sizes. The network obtained a 0.9 AUC for individual microcalcifications and 0.97 AUC for clustered microcalcifications (also evaluated as in~\cite{Lo1995}). It showed that a convolutional network outperforms a regular neural network and a DYSTAL network in the microcalcification detection task when using raw pixels as input features.
+% Lesson learned: better data is good, microcalcifications are 0.2-1 mm
+
+
+
+%******************************** Sahiner1996 **************************************
+\begin{comment} Sahiner1996
+- detection of tumors
+- uses mass to mean benign or malign tumors (growths of cell with no purpose) and normal tissue is other masses (cysts, liquids, no mass at all, etc)
+- 168 mammograms: 168 positive classes, 504 negative classes
+- 0.87 AUC, 0.9 sensitivity, 0.69 specificity
+- texture "contains useful information that can be used to effectively distinguish masses from normal tissue." Not sure 'bout this
+- one output sigmoid
+- GD+momentum, adaptive learning rates,  early stopping
+- manually extracted ROI's
+- "The average size (length of the long axis) of the masses, as estimated by the radiologists, was 12.2 mm., and the standard deviation of the mass size was 4.5
+mm." i could use a 2-2.5 cm filter.
+- digitized mammograms (not digital)
+- For each mamogram, 4 ROIs extracted (a tumor, fatty tissue, dense tissue nad mixed dense/fatty tissue)
+- each pixel 0.1 mm
+- 256 pixels by 256 pixels initial image (2.56 cm by 2.56 cm)
+- background reduction (averaging a 2 by 2 box with an average of 4 cardianl boxes). 
+- (Because they didn't have the power) nonoverlapping average pooling (where the avg function is applied instead of the max function) with 16 x 16 filters (rsulting in 16 by 16 image patches) and 8 by 8 filters (resulting in 32 by 32 image patches)
+- 8 rotations(0,90,180,270 and flipped). Used all to calculate a single output for training, so all 8 will contribute a single number. Output obtained as average among all of them.
+ 
+- Experiment with single input image:
+	single hidden layer network with variable feature maps and kernel size.
+	Best results with kernel size 10 for 16 and 20 for 32.
+	small grid search(needed to test more values).
+	0.83 AUC
+- GLDS texture features: contrast, angular second moment, enlropy and mean. Calculated at different subregions of the original 256 by 256 pixel image (it produces a 16 by 16 image).
+- Experiment with GLDS plus pool-averaged image: 
+	one hidden layer (3 feature maps, 10by 10 filter)
+	16 by 16 raw input and one of the four possible GLDS
+	good results already 0.86s 0.85
+SGLD features: correlation, entropy, and difference entropy 
+- Experiment with SGLD plus pool-averaged input:
+	one hidden layer (3 feature maps, 10 by 10 filter)
+	16 by 16 plus one
+	NOt so good 0.84 AUC
+- Good one: one of each plus index 
+	one hidden layer
+	varying kernel size and number of feature maps
+	3 input images: pool-averaged, mean GLDS, SGLD correlation
+- why not try imputing all possible GLDS+ all SLDS features+ raw  (8 feature maps) or deeper network? Probably because of no comp power
+- give more info helps the AUC, maybe the improvement comes from the info lost by subsampling and the shallowness of the network, a deeper network with million parameters (and bigger input) will be able to learn the GLDS or SLDS features.
+- texture images improve classification
+- conv architecture not as important as texture images. (more image data/info)
+- also points the need for bigger networks and the suboptimality of the hyperparamteer search (not all reasonable combination tried)
+- no difference on 16 \times 16 vs 32 \times 32 (not sure about these because they were not one tested on the exact same architecture).
+\end{comment}
+The first use of convolutional networks for the detection of masses is reported in~\cite{Sahiner1996}~\footnote{They call mass to what we refer to as tumor (either cancerous or non-cancerous) but not other kind of masses (cysts, fibroadenomas, fatty tissue, etc.). Thus, it actually detects tumors.}. They performed various experiments on a simple convolutional network (2 layers, $\sim$1K parameters), details of the best performing architecture can be found on Table~\ref{tab:BrCaConvNetArchitectures}. The dataset consisted of 672 manually selected regions of interest from 168 digitized mammograms: out of which 168 were real tumors and 504 were not. Background reduction was performed on each image. The images (size $256 \times 256$ pixels equivalent to a 2.56 $cm^2$ area) were downsampled via nonoverlapping average pooling (filter size $16 \times 16$) to size $16\times 16$; downsampling to $32 \times 32$ via an $8 \times 8$ average pooling was also performed and gave similar results. Furthermore, the data was augmented by using 4 rotations (0°, 90°, 180° and 270°) on each original image and each horizontally flipped image (8 per each training image). The network was trained via batch gradient descent plus momentum and per parameter adaptive learning rate. Two sets of experiments were performed: in the first, the $16 \times 16$ image patches (and their 8 rotations) were used for training producing 0.83 AUC on the best architecture, later these image patches were complemented with 2 $16 \times 16$ ``texture-images'' calculated using image techniques on the initial mass image (three input feature maps in total) producing 0.87 AUC, 0.9 sensitivity and 0.69 specificity with the best network architecture. The authors showed that the network architecture was not as important for performance as providing the network with texture information. The texture features give back some of the information lost during the downsampling, which explains the improvement observed. The authors also acknowledge that the network architecture is far from optimal given its simplicity (one convolutional layer with three feature maps) and the incomplete hyperparameter tuning. A deeper network with more learnable parameters and a bigger input size could produce similar or better results without a need to include handcrafted texture features which will in theory be learned by the network (if needed).
+%Learned lesson: masses from 0.7-1.7 cm^2, conv arch may not be as important, bigger networks are better
+
+
+%************************************ Lo1998 ****************************************
+% Lo, S.-C.B., Li, H., Hasegawa, A., Wang, Y.J., Freedman, M.T., Mun, S.K. Detection of mammographic masses using sector features with a multiple circular path neural network (1998) Proceedings of SPIE - The International Society for Optical Engineering, 3338, pp. 1205-1214.
+% Born of Multipatch circular neural network, explained better in Lo2002
+
+
+%*********************************** Lo2002 *****************************************
+\begin{comment} Lo2002
+- Decide which are the important ones from them an heang pincg chan and that. 
+\end{comment}
+\cite{Lo2002} offered an alternative slighlty modified convolutional network specifically designed for breast masses
+% Maybe not
+% detection
+
+
+%******************************** Kinnard2002 **************************************
+% Kinnard, L., Lo, S.-C.B., Wang, P., Freedman, M., Chouikha, M. Separation of malignant and benign masses using maximum-likelihood modeling and neural networks (2002) Proceedings of SPIE - The International Society for Optical Engineering, 4684 II, pp. 733-741.
+% MCPCNN pus max'likelihood. Maybe not. malignancy
+
+
+
+\begin{comment} 
+
+Two teams (search for more papers from them)
+Georgetown University Medical Center: Shih-Chung Lo, Matthew Freedman, Huai Li
+Michigan Medical Center: Heang-Ping Chan, Sahiner, Hadjiiski, Helvie
+
+
+1995 (and Michigan), 1998, 2002 Georgetown
+1996, 2002 (Optimal Neu...), 2007 Michigan
+2014 cruz-roa (Not on x-Ray with pooling)
+
+(clusters ) GM95, G98, 
+(masses) M96, G02
+(clusters) M02, M07
 
 %%%%%%%%%%%%% Breast cancer CAD.
-% 2013 breast cancer diagnosis a review
-% Work at Tec.
+2013 breast cancer diagnosis a review or other good review.
+Work at Tec.
+\end{comment}

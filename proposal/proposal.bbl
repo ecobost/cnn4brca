@@ -70,6 +70,12 @@ Collobert, R., Kavukcuoglu, K., and Farabet, C. (2011).
 \newblock Torch7: A matlab-like environment for machine learning.
 \newblock In {\em BigLearn, NIPS Workshop}.
 
+\bibitem[Davis and Goadrich, 2006]{Davis2006}
+Davis, J. and Goadrich, M. (2006).
+\newblock The relationship between precision-recall and roc curves.
+\newblock In {\em Proceedings of the 23rd International Conference on Machine
+  Learning}, ICML '06, pages 233--240, New York, NY, USA. ACM.
+
 \bibitem[Dieleman et~al., 2015]{Dieleman2015}
 Dieleman, S., Willett, K.~W., and Dambre, J. (2015).
 \newblock Rotation-invariant convolutional neural networks for galaxy
@@ -161,6 +167,14 @@ Lo, S.-C.~B., Chan, H.-P., Lin, J.-S., Li, H., Freedman, M.~T., and Mun, S.~K.
 \newblock {\em Neural Networks}, 8(7–8):1201 -- 1214.
 \newblock Automatic Target Recognition.
 
+\bibitem[Lo et~al., 1998]{Lo1998}
+Lo, S.-C.~B., Lin, J.-S.~J., Freedman, M.~T., and Mun, S.~K. (1998).
+\newblock Application of artificial neural networks to medical image pattern
+  recognition: Detection of clustered microcalcifications on mammograms and
+  lung cancer on chest radiographs.
+\newblock {\em Journal of VLSI signal processing systems for signal, image and
+  video technology}, 18(3):263--274.
+
 \bibitem[McCulloch and Pitts, 1943]{McCulloch1943}
 McCulloch, W.~S. and Pitts, W. (1943).
 \newblock A logical calculus of the ideas immanent in nervous activity.
@@ -229,6 +243,13 @@ Russakovsky, O., Deng, J., Su, H., Krause, J., Satheesh, S., Ma, S., Huang, Z.,
 \newblock {ImageNet Large Scale Visual Recognition Challenge}.
 \newblock {\em CoRR}, abs/1409.0575.
 \newblock Available online on \url{arxiv.org/abs/1409.0575}.
+
+\bibitem[Sahiner et~al., 1996]{Sahiner1996}
+Sahiner, B., Chan, H.-P., Petrick, N., Wei, D., Helvie, M.~A., Adler, D.~D.,
+  and Goodsitt, M.~M. (1996).
+\newblock Classification of mass and normal breast tissue: A convolution neural
+  network classifier with spatial domain and texture images.
+\newblock {\em IEEE Transactions on Medical Imaging}, 15(5):598--610.
 
 \bibitem[Schmidhuber, 2015]{Schmidhuber2015}
 Schmidhuber, J. (2015).
