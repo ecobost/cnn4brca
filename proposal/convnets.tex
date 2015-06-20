@@ -67,4 +67,4 @@ The loss function for a multiclass convolutional neural network is similar to th
 	J(\Theta) = -\frac{1}{m} \sum_{i=1}^m \log \left ( \frac{ e^{h_\Theta(x^{(i)})_{y^{(i)}}} }{ \sum_{j=1}^K e^{ h_\Theta (x^{(i)})_j} } \right ) + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s^{(l)}}\sum_{j=1}^{s^{(l+1)}} \left(\Theta^{(l)}_{ij}\right)^2
 	\label{eq:ConvNetLossFunction}
 \end{equation}
-Furthermore, this loss function is still differentiable with respect to $\Theta$ and thus the entire network can be trained via gradient descent. Gradients of the loss function are also calculated using backpropagation.
+Furthermore, this loss function is still differentiable with respect to $\Theta$ and thus the entire network can be trained via gradient descent. Gradients of the loss function can be calculated using backpropagation.
