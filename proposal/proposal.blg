@@ -4,45 +4,45 @@ The top-level auxiliary file: proposal.aux
 The style file: apalike.bst
 Database file #1: bibliography.bib
 Warning--I didn't find a database entry for "Lo2002"
-You've used 46 entries,
+You've used 47 entries,
             1935 wiz_defined-function locations,
-            785 strings with 14161 characters,
-and the built_in function-call counts, 19011 in all, are:
-= -- 1827
-> -- 996
-< -- 28
-+ -- 353
-- -- 347
-* -- 1604
-:= -- 3441
-add.period$ -- 160
-call.type$ -- 46
-change.case$ -- 398
-chr.to.int$ -- 46
-cite$ -- 46
-duplicate$ -- 667
-empty$ -- 1162
-format.name$ -- 405
-if$ -- 3666
+            791 strings with 14413 characters,
+and the built_in function-call counts, 19628 in all, are:
+= -- 1889
+> -- 1019
+< -- 30
++ -- 361
+- -- 355
+* -- 1651
+:= -- 3531
+add.period$ -- 163
+call.type$ -- 47
+change.case$ -- 407
+chr.to.int$ -- 47
+cite$ -- 47
+duplicate$ -- 696
+empty$ -- 1207
+format.name$ -- 414
+if$ -- 3803
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 35
-newline$ -- 249
-num.names$ -- 142
-pop$ -- 317
+missing$ -- 36
+newline$ -- 254
+num.names$ -- 145
+pop$ -- 329
 preamble$ -- 1
-purify$ -- 400
+purify$ -- 409
 quote$ -- 0
-skip$ -- 517
+skip$ -- 542
 stack$ -- 0
-substring$ -- 1042
-swap$ -- 79
-text.length$ -- 5
+substring$ -- 1090
+swap$ -- 92
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 272
+type$ -- 278
 warning$ -- 0
-while$ -- 123
+while$ -- 127
 width$ -- 0
-write$ -- 636
+write$ -- 650
 (There was 1 warning)

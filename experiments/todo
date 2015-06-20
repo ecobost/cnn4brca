@@ -1,16 +1,26 @@
 Preprocessing(http://scipy-lectures.github.io/advanced/image_processing/#statistical-information)
 	contrast in python seems good.
 	median if noisy
-	wavelet, not tried
+	high pass wavelet filter (not tried)
+	texture information
 	(other enhancements)
 
 
 % Train a simple convolutional
-% Train one with bells and whistles(choosen by heart)
-% Choose better hyperparameters
-% Unbalanced datasets
+% Train one with bells and whistles(choosen by heart) (threshold moving)
+% Choose better hyperparameters (threshold moving)
+% Unbalanced datasets (data replication, threshold moving)
 % For final model, use both(only convolutions and conv&pool)
 % Use VGG Net pretrained in Caffe.
+% Use vairous image features as a feature map of the input volume 
 % Train an ensemble of networks with different hyperparameters at the start and average.
 
-% IN methodology write a section called operationalization were i explain how the problem is reduced to a clsssification task(what are the labels and how the images are cropped and what are the performance metrics))
+% IN methodology write a section called operationalization were i explain how the problem is reduced to a clsssification task(what are the labels and how the images are cropped and what are the performance metrics). Maybe label a region as a mass or microclacification if most of the mass or microcalc is in inside the image (either 50% of the image is the mass or x% of the mass is inside the image). If it's halfway into the image that means the middle pixel ought to be a lession
+
+More Ideas:
+% What about visualizaing the output (http://googleresearch.blogspot.mx/2015/06/inceptionism-going-deeper-into-neural.html). What a mass looks like?, what a microcalcific looks like?
+% Maybe use inceptionism to create some new data. (dtaa augmentation)
+% What aobut including other parameters as a feature (age, date, whatever). So use the convnet as a feature extractor and then add those data and done
+
+DDSM has 2.4K images. IRMA 10K. Way too little. Michigan has 2.4K and 300 tomosinthesys.
+

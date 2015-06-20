@@ -287,6 +287,12 @@ Taigman, Y., Yang, M., Ranzato, M., and Wolf, L. (2014).
 \newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, Columbus,
   Ohio.
 
+\bibitem[Wei et~al., 1995]{Wei1995}
+Wei, D., Sahiner, B., Chan, H.-P., and Petrick, N. (1995).
+\newblock Detection of masses on mammograms using a convolution neural network.
+\newblock In {\em International Conference on Acoustics, Speech, and Signal
+  Processing, 1995. ICASSP-95.}, volume~5, pages 3483--3486.
+
 \bibitem[Werbos, 1974]{Werbos1974}
 Werbos, P.~J. (1974).
 \newblock {\em Beyond regression: new tools for prediction and analysis in the

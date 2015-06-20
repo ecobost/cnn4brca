@@ -18,12 +18,12 @@
 \contentsline {subsection}{\numberline {5.6}Practical Deep Learning}{21}{subsection.5.6}
 \contentsline {paragraph}{Image preprocessing}{21}{section*.16}
 \contentsline {paragraph}{Convolutional network architecture}{21}{section*.17}
-\contentsline {paragraph}{Hyperparameter search}{22}{section*.18}
-\contentsline {paragraph}{Training}{23}{section*.19}
-\contentsline {paragraph}{Sanity checks}{24}{section*.20}
+\contentsline {paragraph}{Hyperparameter search}{23}{section*.18}
+\contentsline {paragraph}{Training}{24}{section*.19}
+\contentsline {paragraph}{Sanity checks}{25}{section*.20}
 \contentsline {paragraph}{Data augmentation}{25}{section*.21}
-\contentsline {paragraph}{Unbalanced data}{25}{section*.22}
-\contentsline {paragraph}{All convolutional networks}{26}{section*.23}
+\contentsline {paragraph}{Unbalanced data}{26}{section*.22}
+\contentsline {paragraph}{All convolutional networks}{27}{section*.23}
 \contentsline {paragraph}{Transfer learning}{27}{section*.24}
 \contentsline {paragraph}{Software}{27}{section*.25}
 \contentsline {section}{\numberline {6}Methodology}{28}{section.6}

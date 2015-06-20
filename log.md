@@ -6,7 +6,6 @@ Log with activities and questions arising during every week
 ## Jun 10 - Jun 17
 ### Activities
 * Write ConvNet for Breast Cancer
-* Some preprocessing experiments
 
 ### To do
 * Rewrite Methodology with new experiments
@@ -16,6 +15,21 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. 
+
+
+## Jun 10 - Jun 17
+### Activities
+* Write ConvNet for Breast Cancer
+* Some preprocessing experiments
+
+### To do
+* Rewrite Methodology with new experiments
+* Update LaTex template to thesis template
+* Investigate and write the features of the database and its labelling.
+* Choose software (probably Caffe)
+
+### Questions
+1. Is the unbalanced data thing neded or does the network learns by its own?. May i be overkilling it? 
 
 ## Jun 3 - Jun 10
 ### Activities

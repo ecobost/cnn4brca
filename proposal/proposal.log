@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  17 JUN 2015 08:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  20 JUN 2015 14:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -817,12 +817,12 @@ File: plots/AUCandPRAUC.png Graphic file (type png)
 Package pdftex.def Info: plots/AUCandPRAUC.png used on input line 76.
 (pdftex.def)             Requested size: 353.95053pt x 154.87473pt.
  [10]) (./neuralnetworks.tex [11 <./plots/AUCandPRAUC.png>] <plots/neuralNetwor
-k.png, id=262, 970.62625pt x 562.1pt>
+k.png, id=262, 970.62625pt x 589.20125pt>
 File: plots/neuralNetwork.png Graphic file (type png)
 
 <use plots/neuralNetwork.png>
 Package pdftex.def Info: plots/neuralNetwork.png used on input line 7.
-(pdftex.def)             Requested size: 442.4365pt x 256.22763pt.
+(pdftex.def)             Requested size: 420.31331pt x 255.14969pt.
  [12 <./plots/neuralNetwork.png>] [13]
 <plots/dropout.png, id=297, 769.87625pt x 415.5525pt>
 File: plots/dropout.png Graphic file (type png)
@@ -862,16 +862,16 @@ Package pdftex.def Info: plots/convNetExample.jpeg used on input line 53.
 (./convnets4brca.tex
 
 LaTeX Warning: Reference `tab:BrCaConvNetArchitectures' on page 19 undefined on
- input line 31.
+ input line 72.
 
 [19]
 
 LaTeX Warning: Reference `tab:BrCaConvNetArchitectures' on page 20 undefined on
- input line 132.
+ input line 96.
 
 [20]
 
-LaTeX Warning: Citation `Lo2002' on page 21 undefined on input line 145.
+LaTeX Warning: Citation `Lo2002' on page 21 undefined on input line 156.
 
 ) (./practicalDL.tex [21] [22]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 81.
@@ -888,14 +888,18 @@ m/m/it/10.95 :\OT1/cmr/m/n/10.95 9$. When us-ing a val-i-da-tion set try val-ue
 s in \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 0.5, 0.9, 0.95,
  []
 
-[23] [24] [25] [26]) (./methodology.tex [27] [28]) (./workplan.tex
-<plots/workplan.png, id=510, 1203.49625pt x 275.0275pt>
+[23] [24] [25] [26] [27]) (./methodology.tex [28]) (./workplan.tex
+<plots/workplan.png, id=513, 1203.49625pt x 275.0275pt>
 File: plots/workplan.png Graphic file (type png)
 
 <use plots/workplan.png>
 Package pdftex.def Info: plots/workplan.png used on input line 4.
 (pdftex.def)             Requested size: 442.4365pt x 101.10811pt.
-) (./proposal.bbl [29 <./plots/workplan.png>]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./proposal.bbl [29]
 Underfull \hbox (badness 10000) in paragraph at lines 55--61
 []\OT1/cmr/m/n/10.95 Breast Can-cer Surveil-lance Con-sor-tium
  []
@@ -906,7 +910,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 55--61
 e / screening / 2009 / perf _ age .
  []
 
-[30] [31]
+[30 <./plots/workplan.png>] [31]
 Underfull \hbox (badness 10000) in paragraph at lines 191--196
 []\OT1/cmr/m/n/10.95 National Can-cer In-sti-tute (2014).  Mam-mo-
  []
@@ -933,13 +937,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
  ) 
 Here is how much of TeX's memory you used:
- 8204 strings out of 495028
- 121306 string characters out of 6181498
- 202943 words of memory out of 5000000
- 11102 multiletter control sequences out of 15000+600000
+ 8207 strings out of 495028
+ 121338 string characters out of 6181498
+ 202989 words of memory out of 5000000
+ 11103 multiletter control sequences out of 15000+600000
  13159 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,9n,41p,2476b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,9n,41p,2561b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
@@ -958,10 +962,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on proposal.pdf (36 pages, 995698 bytes).
+Output written on proposal.pdf (36 pages, 1008408 bytes).
 PDF statistics:
- 653 PDF objects out of 1000 (max. 8388607)
- 567 compressed objects within 6 object streams
- 152 named destinations out of 1000 (max. 500000)
+ 657 PDF objects out of 1000 (max. 8388607)
+ 571 compressed objects within 6 object streams
+ 154 named destinations out of 1000 (max. 500000)
  189 words of extra memory for PDF output out of 10000 (max. 10000000)
 
