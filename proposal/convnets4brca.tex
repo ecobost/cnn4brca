@@ -9,7 +9,6 @@ We refer as detection to the task of classifying a lession as present or not in 
 
 Two groups: michigan(henag-oing chan) and georgetown(Lo)
 The first in mass:
-then it presented a new techniwue
 The first in mocrocalc:
 Grca et al improed on the work of Lo for microcalcification detection and tried to sleect the best 
 All these work resulted in a CAD system in Ge2007. A simialr CAd syste was developed for masses but convnets were not used.
@@ -22,11 +21,10 @@ In this section we offer a summary of the most relevant work in using convolutio
 \begin{comment}
 Separated in blocks:
 	1. Initial mass: Sahiran 1996
-	2. Multipath circular neural net for mass: Lo 1998-Kinnard 2002 (maybe not)
-	3. Intial microcalc detection: Lo 1995- Lo 1998
-	4. Optimization of architecture for microcalc: Gurcan 2000-Gurcan 2002
-	5. CAD for microcalcification in FFDM. Ge 2007 (CAD for masses didn't use Convnets, used LDA and rule-based classifiers).
-	6. Unpublished Stanford convnet: Agarwal 2015
+	2. Intial microcalc detection: Lo 1995- Lo 1998
+	3. Optimization of architecture for microcalc: Gurcan 2000-Gurcan 2002
+	4. CAD for microcalcification in FFDM. Ge 2007 (CAD for masses didn't use Convnets, used LDA and rule-based classifiers).
+	5. Unpublished Stanford convnet: Agarwal 2015
 \end{comment}
 
 \subsubsection{Detection of masses}
@@ -82,33 +80,6 @@ SGLD features: correlation, entropy, and difference entropy
 \end{comment}
 They used a small convolutional network (2 layers, $\sim$1K parameters) for the detection of masses~\footnote{They use the term mass to refer to tumors (either cancerous or non-cancerous) but not other kind of breast masses (cysts, fibroadenomas, fatty tissue, etc.). Thus, it actually detects tumors.}. Details of the best performing architecture can be found on Table~\ref{tab:BrCaConvNetArchitectures}. The data set consisted of 672 manually selected possible tumors from 168 digitized mammograms: out of which 168 were real tumors and 504 were not. Background reduction was performed on each image (using a rather convoluted method). The original images (size $256 \times 256$ pixels equivalent to a 2.56 $cm^2$ area) were downsampled via non-overlapping average pooling (filter size $16 \times 16$) to size $16\times 16$; downsampling to $32 \times 32$ pixels via an $8 \times 8$ average pooling was also tried but gave similar results. Furthermore, the data was augmented by using 4 rotations (0°, 90°, 180° and 270°) on each original image and on each horizontally flipped image (8 in total per each training image)~\footnote{The original article does not mention any data augmentation but it was probably performed given that they obtained the same results.}. The network was trained via batch gradient descent plus momentum and per parameter adaptive learning rate. Two sets of experiments were performed: first, the $16 \times 16$ image patches (and their 8 rotations) were used for training producing 0.83 AUC on the best architecture, later these image patches were complemented with 2 $16 \times 16$ ``texture-images'' calculated using image techniques on the initial mass image (a $16\times 16 \times 3$ input volume) producing 0.87 AUC, 0.9 sensitivity and 0.69 specificity with the best network architecture. The authors showed that the network architecture was not as important for performance as providing the network with texture information. The texture features give back some of the information lost during the downsampling, which explains the improvement observed. The authors also acknowledge that the network architecture is far from optimal given its simplicity (one convolutional layer with three feature maps) and the incomplete hyperparameter tuning. A deeper network with more learnable parameters and a bigger input size could produce similar or better results without a need to include handcrafted texture features which in theory could be learned by the network.
 %Learned lesson: masses from 0.7-1.7 cm^2, conv arch may not be as important, bigger networks are better
-
-
-
-%!!!!NOT CONVOLUTION
-%************************************ Lo1998 ****************************************
-% Lo, S.-C.B., Li, H., Hasegawa, A., Wang, Y.J., Freedman, M.T., Mun, S.K. Detection of mammographic masses using sector features with a multiple circular path neural network (1998) Proceedings of SPIE - The International Society for Optical Engineering, 3338, pp. 1205-1214.
-% Born of Multipatch circular neural network, explained better in Lo2002
-
-%*********************************** Lo2002 *****************************************
-\begin{comment} Lo2002
-- "In short, the results of these detection programs indicate that a high true-positive (TP) rate can be obtained at the expense of two or three false-positive (FP) detections per mammogram."
-- model-based image segmentation: enhancement and model selection
-- Backrground removal via morpholfical features
-- Segmentation via FGGM and CBRl methods
-- 3143 possible tumors: 181 were tumors (segmentation missed 5 tumors) from 200 mammograms.
-- divide the image from the center in 36 pizza slices. (look at Fig. 5). compute 4 featrures per each.
-- 1-D convolutional network where input has size 36x4(each of the 4 feature from the 36 regions) and filter size in hidden layer is size 5, stride 1.
-- in the hidden units, the fully connnected paths join the NC paths and the SC paths. then fully connected to outputs.
-\end{comment}
-\cite{Lo2002} offered an alternative slighlty modified convolutional network specifically designed for breast masses called Multiple circular path convolution network.
-morphological enhancement and model-based segmentation to select suspect areas.(details in Li2001)
-% Lession learned: more masses found, less probability of cancer. malignant masses are denser, > 0.8 mm, irregular shape.
-
-\subsubsection{Diagnosis of masses}
-%******************************** Kinnard2002 **************************************
-% Kinnard, L., Lo, S.-C.B., Wang, P., Freedman, M., Chouikha, M. Separation of malignant and benign masses using maximum-likelihood modeling and neural networks (2002) Proceedings of SPIE - The International Society for Optical Engineering, 4684 II, pp. 733-741.
-MCPCNN pus max-likelihood. Maybe not. malignancy(!!!!)
 
 
 
