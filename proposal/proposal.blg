@@ -3,10 +3,9 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: proposal.aux
 The style file: apalike.bst
 Database file #1: bibliography.bib
-Warning--I didn't find a database entry for "Lo2002"
 You've used 47 entries,
             1935 wiz_defined-function locations,
-            791 strings with 14413 characters,
+            789 strings with 14401 characters,
 and the built_in function-call counts, 19628 in all, are:
 = -- 1889
 > -- 1019
@@ -45,4 +44,3 @@ warning$ -- 0
 while$ -- 127
 width$ -- 0
 write$ -- 650
-(There was 1 warning)
