@@ -5,7 +5,7 @@ Preprocessing(http://scipy-lectures.github.io/advanced/image_processing/#statist
 	texture information
 	(other enhancements)
 
-
+TO DO:
 % Train a simple convolutional
 % Train one with bells and whistles(choosen by heart) (threshold moving)
 % Choose better hyperparameters (threshold moving)
@@ -15,12 +15,18 @@ Preprocessing(http://scipy-lectures.github.io/advanced/image_processing/#statist
 % Use vairous image features as a feature map of the input volume 
 % Train an ensemble of networks with different hyperparameters at the start and average.
 
-% IN methodology write a section called operationalization were i explain how the problem is reduced to a clsssification task(what are the labels and how the images are cropped and what are the performance metrics). Maybe label a region as a mass or microclacification if most of the mass or microcalc is in inside the image (either 50% of the image is the mass or x% of the mass is inside the image). If it's halfway into the image that means the middle pixel ought to be a lession
-
 More Ideas:
 % What about visualizaing the output (http://googleresearch.blogspot.mx/2015/06/inceptionism-going-deeper-into-neural.html). What a mass looks like?, what a microcalcific looks like?
 % Maybe use inceptionism to create some new data. (dtaa augmentation)
 % What aobut including other parameters as a feature (age, date, whatever). So use the convnet as a feature extractor and then add those data and done
 
 DDSM has 2.4K images. IRMA 10K. Way too little. Michigan has 2.4K and 300 tomosinthesys.
+
+% IN methodology write a section called operationalization were i explain how the problem is reduced to a clsssification task(what are the labels and how the images are cropped and what are the performance metrics). Maybe label a region as a mass or microclacification if most of the mass or microcalc is in inside the image (either 50% of the image is the mass or x% of the mass is inside the image). If it's halfway into the image that means the middle pixel ought to be a lession. Or maybe just take a 2x2 middle square and if the lesion surrounds that then say the entire image is a lession(con: if the lession is small and is in the perimeter of the region it wll not be detected as a lession so it is not translation nvariant, a cluster on the lower corner will not be identified as a true microcalcification, also when rotating it, the 2x2 square may not longer hold the microcalcification). labellling only when it apprears in the middel sounds good for detection purposes. although doing like a convolution to select different images acts as data ugmentation with translation invariance:
+1. Segment with a 0.2 mm stride, 
+2. Put positive label if the lession is inside the middel of the image. Also, preserve which kind of lession it is and benign malignant.
+3. Delete those that are all black
+4. Data augmentation
+5. Lession vs non-lession.
+6. Report results for this pathes, plus images of entire mammography.
 
