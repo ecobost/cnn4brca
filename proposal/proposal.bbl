@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[Agarwal and Carson, 2015]{Agarwal2015}
+Agarwal, V. and Carson, C. (2015).
+\newblock Using deep convolutional neural networks to predict semantic features
+  of lesions in mammograms.
+\newblock Project report.
+
 \bibitem[{American Cancer Society}, 2014]{MammogramsACS2014}
 {American Cancer Society} (2014).
 \newblock Mammograms and other breast imaging tests.
@@ -88,6 +94,28 @@ Fukushima, K. (1980).
   of pattern recognition unaffected by shift in position.
 \newblock {\em Biological Cybernetics}, 36:193--202.
 \newblock PMID: 7370364.
+
+\bibitem[Ge et~al., 2007]{Ge2007}
+Ge, J., Hadjiiski, L.~M., Sahiner, B., Wei, J., Helvie, M.~A., Zhou, C., and
+  Chan, H.-P. (2007).
+\newblock Computer-aided detection system for clustered microcalcifications:
+  comparison of performance on full-field digital mammograms and digitized
+  screen-film mammograms.
+\newblock {\em Physics in Medicine and Biology}, 52(4):981.
+
+\bibitem[Ge et~al., 2006]{Ge2006}
+Ge, J., Sahiner, B., Hadjiiski, L.~M., Chan, H.-P., Wei, J., Helvie, M.~A., and
+  Zhou, C. (2006).
+\newblock Computer aided detection of clusters of microcalcifications on full
+  field digital mammograms.
+\newblock {\em Medical Physics}, 33(8):2975--2988.
+
+\bibitem[Gurcan et~al., 2002]{Gurcan2002}
+Gurcan, M.~N., Chan, H.-P., Sahiner, B., Hadjiiski, L., Petrick, N., and
+  Helvie, M.~A. (2002).
+\newblock Optimal neural network architecture selection: Improvement in
+  computerized detection of microcalcifications.
+\newblock {\em Academic Radiology}, 9(4):420 -- 429.
 
 \bibitem[He et~al., 2015]{He2015}
 He, K., Zhang, X., Ren, S., and Sun, J. (2015).
@@ -286,6 +314,13 @@ Taigman, Y., Yang, M., Ranzato, M., and Wolf, L. (2014).
   verification.
 \newblock In {\em Computer Vision and Pattern Recognition (CVPR)}, Columbus,
   Ohio.
+
+\bibitem[Tang et~al., 2009]{Tang2009}
+Tang, J., Rangayyan, R., Xu, J., El~Naqa, I., and Yang, Y. (2009).
+\newblock Computer-aided detection and diagnosis of breast cancer with
+  mammography: Recent advances.
+\newblock {\em Information Technology in Biomedicine, IEEE Transactions on},
+  13(2):236--251.
 
 \bibitem[Wei et~al., 1995]{Wei1995}
 Wei, D., Sahiner, B., Chan, H.-P., and Petrick, N. (1995).

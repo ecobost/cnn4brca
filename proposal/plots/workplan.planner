@@ -23,42 +23,42 @@
     <task id="1" name="Literature review" note="" work="748800" start="20150421T000000Z" end="20150526T170000Z" work-start="20150421T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="start-no-earlier-than" time="20150223T000000Z"/>
     </task>
-    <task id="2" name="Software review" note="" work="374400" start="20150526T170000Z" end="20150612T170000Z" work-start="20150527T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="2" name="Database preprocessing" note="" work="864000" start="20150526T170000Z" end="20150707T170000Z" work-start="20150527T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="1" type="FS"/>
       </predecessors>
     </task>
-    <task id="3" name="Database preprocessing" note="" work="748800" start="20150612T170000Z" end="20150720T170000Z" work-start="20150615T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="3" name="Software review" note="" work="288000" start="20150707T170000Z" end="20150721T170000Z" work-start="20150708T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="2" type="FS"/>
       </predecessors>
     </task>
-    <task id="4" name="Assesing image preprocessing" note="" work="921600" start="20150720T170000Z" end="20150902T170000Z" work-start="20150721T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="4" name="Exploratory experiments" note="" work="864000" start="20150721T170000Z" end="20150901T170000Z" work-start="20150722T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="3" type="FS"/>
       </predecessors>
     </task>
-    <task id="5" name="Exploratory experiments" note="" work="1296000" start="20150902T170000Z" end="20151104T170000Z" work-start="20150903T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="5" name="Model selection" note="" work="576000" start="20150901T170000Z" end="20150929T170000Z" work-start="20150902T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="4" type="FS"/>
       </predecessors>
     </task>
-    <task id="6" name="Model selection" note="" work="201600" start="20151104T170000Z" end="20151113T170000Z" work-start="20151105T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="6" name="Further experiments" note="" work="1728000" start="20150929T170000Z" end="20151222T170000Z" work-start="20150930T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="5" type="FS"/>
       </predecessors>
     </task>
-    <task id="7" name="Further experiments" note="" work="1814400" start="20151113T170000Z" end="20160210T170000Z" work-start="20151116T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="7" name="Alternative convolutional networks" note="" work="1008000" start="20151222T170000Z" end="20160209T170000Z" work-start="20151223T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="6" type="FS"/>
       </predecessors>
     </task>
-    <task id="8" name="Gathering results" note="" work="374400" start="20160210T170000Z" end="20160229T170000Z" work-start="20160211T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="8" name="Gathering results" note="" work="432000" start="20160209T170000Z" end="20160301T170000Z" work-start="20160210T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="7" type="FS"/>
       </predecessors>
     </task>
-    <task id="9" name="Reporting results" note="" work="720000" start="20160229T170000Z" end="20160404T170000Z" work-start="20160301T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="9" name="Reporting results" note="" work="720000" start="20160301T170000Z" end="20160405T170000Z" work-start="20160302T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="8" type="FS"/>
       </predecessors>

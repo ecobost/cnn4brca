@@ -4,19 +4,15 @@ In order to achieve the proposed objectives and test our hypotheses we will need
 	\item \textbf{Literature review}
 
 A thorough review of the published work using the databases and resources available in the institution. By the end of this task, a complete theoretical background should be obtained and written. This will also help refine the scope of the project and the experiments to be conducted.
+	\item \textbf{Database preprocessing}
+
+We will ready the database images for the experiments; these implies joining different databases, obtaining the required features, preprocessing the images, assigning labels, etc.	
 	\item \textbf{Software review}
 
 Once a clear idea of what are the possible experiments to be executed, we will need to find appropiate software to perform them. Software for database managing, preprocessing and implementation of different neural networks should be either located or developed.
-	\item \textbf{Database preprocessing}
-
-We will ready the database images for the experiments; these implies joining different databases, obtaining the required features, preprocessing the images, assigning labels, etc.
-	\item \textbf{Assesing image preprocessing}
-
-We will train a standard convolutional network with fixed parameters on mammograms with three different preprocessings: no preprocessing, image enhancement using median or gaussian filters and wavelet filtered images. Furthermore, we will train a deeper convolutional network on nonpreprocessed images. We want to answer three research questions: which is the best preprocessing for convolutional networks, is using the best filter significantly better than using nonpreprocessed images and can a convolutional network automatically preprocess the images?
-% Q: Is it better to make different preprocessings oin the same convolutional network or to fit each convolutional network for each preprocessing, thus, giving it the best chance to perform but taking more time.
 	\item \textbf{Exploratory experiments}
 
-We will train standard convolutional networks in two different inputs: small image patches obtained from mammograms and whole mammogram images. We will also train a linear classifier, probably rectified linear units, on the features obtained from a convolutional network trained on the ImageNet database, i.e., we will use an already trained convolutional network instead of one trained specifically in mammograms. Here we will use the image preprocessing technique that showed better results in the previous step. We want to answer two research questions: Can a convolutional network trained on whole mammograms perform as well as one trained on small patches and can we use an already trained convolutional network to classify mammograms?
+We will train a standard convolutional networks with fixed parameters for the detection of microcalcifications and the detection of masses. We want to answer whether the convolutional network is powerful enough to learn the task in hand, whether we have enough data for the network to learn or more data augmentation is needed and wether the computational resources and parameter settings allow the network to learn in a timely fashion.
 	\item \textbf{Model selection}
 
 Using the insights from previous sections and the current literature on convolutional networks, we will select a network architecture along with novel features, preprocessing, training and regularization procedures. We aspire to find the best convolutional network configuration for mammogram classification.
@@ -24,6 +20,11 @@ Using the insights from previous sections and the current literature on convolut
 
 We will train the chosen convolutional network on our mammographic database. We will perform crossvalidation to adjust the most important network parameters and use regularization to avoid possible overfitting. We want to answer two research questions: is the performance of the convolutional network considerably improved by parameter tuning and, more importantly, is this a good performance?.
 %Maybe train one with no tune fitting.
+
+	\item \textbf{Alternative convolutional networks}
+
+We will train a linear classifier, probably rectified linear units, on the features obtained from a convolutional network trained on the ImageNet database, i.e., we will use an already trained convolutional network instead of one trained specifically in mammograms. We will also use an all convolutional network of a size relative to the best arhcitecture up to that point. We want to answer two questions: can we use an already trained convolutional network to classify mammograms and do using an all convolutional network affects significatively the results?
+
 	\item \textbf{Gathering results}
 
 Produce results on the test set and elaborate figures and tables. This could be obtained directly from software output or from further program executions.

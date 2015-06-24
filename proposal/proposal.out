@@ -12,7 +12,7 @@
 \BOOKMARK [2][-]{subsection.5.5}{Convolutional Networks applied to Breast Cancer}{section.5}% 12
 \BOOKMARK [3][-]{subsubsection.5.5.1}{Detection of masses}{subsection.5.5}% 13
 \BOOKMARK [3][-]{subsubsection.5.5.2}{Detection of microcalcifications}{subsection.5.5}% 14
-\BOOKMARK [3][-]{subsubsection.5.5.3}{Diagnosis of microcalcifications}{subsection.5.5}% 15
+\BOOKMARK [3][-]{subsubsection.5.5.3}{Diagnosis of lesions}{subsection.5.5}% 15
 \BOOKMARK [2][-]{subsection.5.6}{Practical Deep Learning}{section.5}% 16
 \BOOKMARK [1][-]{section.6}{Methodology}{}% 17
 \BOOKMARK [1][-]{section.7}{Work Plan}{}% 18
