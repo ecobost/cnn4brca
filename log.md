@@ -7,16 +7,16 @@ Log with activities and questions arising during every week
 ### Activities
 * Ended review
 * Write ConvNet for Breast Cancer
+* Rewrite some parts of proposal (introduction, objectives, methodology)
 
 ### To do
-* Rewrite Methodology with new experiments
 * Update LaTex template to thesis template
 * Investigate and write the features of the database and its labelling.
 * Choose software (probably Caffe)
 
 ### Questions
 1. Should i put mass vs nonmass, microcalc vs nonmicrocalc, or put every lession together (mass, microcalc, distortions, etc.) vs nonlession?. Thus, only train one network that differentiates all lessions vs no lession?. 
-2. Should I use a single networkwith multiple outputs to classify every kind of lession?.
+2. Should I use a single network with multiple outputs to classify every kind of lession?.
 3. Should I use data augmentation only on the minority classes (lessions)?
 
 
