@@ -3,6 +3,17 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Jun 24 - Jul 1
+### Activities
+* 
+
+### To do
+* Update LaTex template to thesis template
+* Choose software (probably Caffe)
+
+### Questions
+1. Some in report/imageRetrieval/
+
 ## Jun 18 - Jun 23
 ### Activities
 * Ended review
@@ -10,8 +21,10 @@ Log with activities and questions arising during every week
 * Rewrite some parts of proposal (introduction, objectives, methodology)
 
 ### To do
-* Update LaTex template to thesis template
 * Investigate and write the features of the database and its labelling.
+* Decide how to obtain the small crops from the big mammograms
+* Write software to automatically obtain the small crops from the mammogram
+* Update LaTex template to thesis template
 * Choose software (probably Caffe)
 
 ### Questions
@@ -32,7 +45,7 @@ Log with activities and questions arising during every week
 * Choose software (probably Caffe)
 
 ### Questions
-1. Is the unbalanced data thing neded or does the network learns by its own?. May i be overkilling it? 
+1. Is the unbalanced data thing needed or does the network learns by its own?. May i be overkilling it? 
 
 ## Jun 3 - Jun 10
 ### Activities

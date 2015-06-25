@@ -1,0 +1,59 @@
+We use the database ta that to obtain our mammographic images. We call image patches to those who are obtained.
+
+\subsubsection{DDSM o IRMA}
+Description of the database and the data available
+
+
+Look at the IRMA database docs.
+%0.01 mm per pixel
+% digital does seem to improve a lot.
+
+\subsubsection{Cropping and retrieving small images}
+All the details and decisions taken for the image retrieval. It will go as a convolutional filter, it will move around the image obtaining smaller squares of a given size.
+
+\paragraph{Image aspect ratio}
+	We will use a square aspect ratio because it is simpler and common use in practice. 
+
+\paragraph{Image size}
+	The image size has two components: how big is the pixelated image and how much space does it represent in the real mammogram. The actual size in a breats is arguably more important because if we chose a size which is way too big it will take way more noise over the actual lesion we are looking for and if we choose one that is too small it will miss the lesion. Mass sizes are normally between ... and ... \cite{somebody}.
+
+\paragraph{Labeling}
+When the lesion hits the middle of the image, when the lession overlaps with the image or when the iomage is a given porcentage of the lession, or when a given porcentage of the lession apears in the image
+
+\paragraph{Label info}
+We will only use mass, MCC, normal, benign, malign and nothing.
+
+\paragraph{Additional label information}
+Is there any other info needed?
+
+\paragraph{Image enhancement}
+I will cut the images first and store them as is.
+
+\paragraph{data augmentation}
+Should I do the image enhancement and data augmentation(rotations and flipping) during training or before hand. Or only the enhancement beforehand. Can I do them withouth changing the label? (depends on how the label is assigned, rotations and mirrors leve the same four squares in the middle of the image, thus, the label should not change, sclaing and others will.). Does it affect to present all different augmentations of the same image in one batch rather than in different batches
+
+\paragraph{Data cleaning}
+Do I need to remove the marks and arrows and thingys. Could I let the network learn that those are not microcalcifications
+
+\paragraph{whjat about the blakc spaces}
+Should I remove the black spaces or images that are more than 50\% black or something like that. Should I do it during this stage or after the cut. If i do what is going to be thenetwork performance when presneted with an entirely black input. what about lession which are pressed agains the breats skin, if i delete these images, they may dissapear.
+
+\paragraph{Stride}
+\paragraph{Total number of image patches.}
+
+
+\paragraph{Padding}
+Should I use some padding so that I don't lose lesions which are in the very corner. For example, if I use a 2.5cm square and in there is a 1$cm$ mass close to the end of the image, then it may not detect it. Maybe not, I don't think ther eis going to be that many images on the side.
+
+\paragraph{Resizing}
+Does it affect the quality of the image what kind of resizing I do, should I use interpolation resizing or something. Hopefully I will always have to downsample so I may not lose much.
+
+\paragraph{DB}
+Generate a data set like the ImageNet challenge
+
+
+
+\subsubsection{Retrieval software}
+Developed in Python, named..... Does this and that. I would store all smaller images from the same in a matrix with the same name as the image where they came from. Maybe also preserve the same folder architecture.
+Make another tool to put it in Caffe style
+

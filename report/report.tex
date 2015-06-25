@@ -1,0 +1,43 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Written by: Erick Cobos Tandazo (a01184587@itesm.mx)
+% Date: 24-June-2014
+%
+% Master's thesis main document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+
+\begin{document}
+	\part{Methods}
+	\section{Operationalization}
+	We document here how we tranform/reduce the breast cancer detection and diagnosis task into a machine learning task able to be taken by the convolutional networks, i.e., how we produce a data set with $m$ inputs $x^{(i)} \in \mathbb{R}^n$ and $m$ corresponding labels $y^{(i)}$. We use this notation throughout this section. 
+	\subsection{Image retrieval}
+	\input{imageRetrieval}
+
+	\subsection{Convolutional network}
+	The network could be slided across an image. Options: (1) a network for detection of microcalcification and one for masses (and slide both across and plot their results with differerent colors) (2) a network for diagnosis of microcalc and one for masses(slide them both) and (3) one that detects micro+mass vs non-lession (stanford guys did bad with this one) and (4) one that detects any lession(micro+mass+other) vs no lession and (5) one that also detects more than one network but has multiple output.
+	
+	Questions: how to deal with corners of images when presenting results, maybe not that important. Try extreme padding or just leaving it there.
+
+	Questions: Should I only use images from digital mammograms. Is there enough. Or maybe only use digital for testing (train on the ones who are harder: digitized and test on digital only).
+
+	Questions: If i choose to go with simple networks, start with microcalcifications or masses. which one is more useful (apparently masses).
+
+	\section{Hardware}
+	Computational resources:
+	\begin{table}[h]
+		\begin{tabular}{cp{4cm}cp{2.5cm}p{1.7cm}c}
+			PC 	& GPU 						& RAM 	& CPU 				& HD 					& \#\\
+			\hline
+			CTS-516	& GeForce GTX-580\newline 512 cores \newline 1.5GB 384-bit GDDR5 & ? 	& ?  				& ? (enough) & 1 \\
+			A4-401	& Nvidia Quadro K620\newline 384 cores \newline 2GB 128-bit DDR3 & 8 GB 	& i5-4570\newline  3.2GHz x ?(1) & 230 GB\newline free 100\newline ubuntu ? & 27\\
+			Mine	& Nvidia NVS 5400M \newline 96 cores \newline 2GB 128-bit DDR3	& 4 GB 	& i5-3210M\newline 2.50GHz x 4	& 320 GB \newline free 200\newline ubuntu 56 & 1 \\
+%A4-404	& Nvidia Quadro FX580 \newline 32 cores (0.5GB)	& 6 GB 	& Xeon W3503\newline 2.4GHz x ?(1) & 200 GB\newline free 100\newline ubuntu ? & 15
+			\hline
+		\end{tabular}
+		\caption{Available computers}
+	\end{table}
+	
+\end{document}
