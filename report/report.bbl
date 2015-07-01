@@ -1,0 +1,30 @@
+\begin{thebibliography}{1}
+
+\bibitem{Heath2001}
+Michael Heath, Kevin Bowyer, Daniel Kopans, Richard Moore, and W.~Philip
+  Kegelmeyer.
+\newblock The digital database for screening mammography.
+\newblock In M.J. Yaffe, editor, {\em Proceedings of the Fifth International
+  Workshop on Digital Mammography}, pages 212--218. Medical Physics Publishing,
+  2001.
+
+\bibitem{Moreira2012}
+Inês~C. Moreira, Igor Amaral, Inês Domingues, António Cardoso, Maria~João
+  Cardoso, and Jaime~S. Cardoso.
+\newblock Inbreast: Toward a full-field digital mammographic database.
+\newblock {\em Academic Radiology}, 19(2):236--248, 2012.
+
+\bibitem{Nepomuceno2011}
+Bruno~Roberto Nepomuceno~Matheus and Homero Schiabel.
+\newblock Online mammographic images database for development and comparison of
+  cad schemes.
+\newblock {\em Journal of Digital Imaging}, 24(3):500--506, 2011.
+
+\bibitem{Zheng2012}
+B~Zheng, J~H Sumkin, M~L Zuley, D~Lederman, X~Wang, and D~Gur.
+\newblock Computer-aided detection of breast masses depicted on full-field
+  digital mammograms: a performance assessment.
+\newblock {\em The British Journal of Radiology}, 85(1014):e153--e161, 2012.
+\newblock PMID: 21343322.
+
+\end{thebibliography}

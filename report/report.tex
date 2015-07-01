@@ -8,13 +8,104 @@
 \documentclass[11pt]{article}
 
 \usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{verbatim}
 
 \begin{document}
 	\part{Methods}
 	\section{Operationalization}
-	We document here how we tranform/reduce the breast cancer detection and diagnosis task into a machine learning task able to be taken by the convolutional networks, i.e., how we produce a data set with $m$ inputs $x^{(i)} \in \mathbb{R}^n$ and $m$ corresponding labels $y^{(i)}$. We use this notation throughout this section. 
+	We document here how we tranform/reduce the breast cancer detection and diagnosis task into a machine learning task able to be taken by convolutional networks, i.e., how we produce a data set with $m$ inputs $x^{(i)} \in \mathbb{R}^n$ and $m$ corresponding labels $y^{(i)}$. We use this notation throughout this section. 
+
+	\subsection{Database}
+	There are many publicly available mammography databases and many more which are private. Given the size of the expected network architecture and the data thirst of convolutional networks we focus only on the bigger databases. We also need pixel-level labels, i.e., lesions to be marked on each mammogram; this is generally made by expert radiologists drawing the boundaries of the lessions in the mammograms.
+% Do I need to have perfect image segmentation?. Maybe not.
+Furthermore, we prefer to have good contrast resolution, the number of gray colors represented per pixel, and good spatial resolution, the area represented per pixel: at least 12-bit images ($10^12 = 4048$ gray values per pixel) with 0.1-0.15 $mm^2$ maximum area per pixel. Greater constrast resolution means that more brightness values are captured per pixel while greater spatial resolution means that hopefully more detail is included in the image. Most mammography databases including all described below satisfy these conditions.
+ 
+	The Digital Database for Screening Mammography (DDSM)~\cite{Heath2001} is arguably the most popular database used for CAD development. It is composed of around 10.5K digitised film mammograms from 2620 patients. Mammograms are either 12-bit or 16-bit images with 0.05 $mm^2$ spatial resolution. Age and breast density of each patient is provided. Each lesion boundary is specified along with its information: type, assesment, subtlety and malignancy.
+%Type is mass, microcalcification, assesment (1-5) in BIRADs, subtlety(1-5) and 
+
+	The BancoWeb database~\cite{Nepomuceno2011} consists of around 1.5K digitised film mammograms from 300 patients although they claim other 5K images stored internally ``are being progressively transferred to the online database''~\footnote{This claim was made back in 2011 so we expect it to be done by now.}. Mammograms are 12-bit images with 0.075 or 0.15 $mm^2$ area per pixel. At the time of publishing (2011) only very few lesions had been marked in the mammograms and it was impossible to review the current state of the database given that its webpage was not accesible online, which could be a sign of permanent closure. The only advantage of this database and the reason we include it here is that it was collected in Brazil and may be useful to test our CAD in Latin American patients.
+
+	The Breast Cancer Digital Repository (BCDR-DM) consists of 3.6K digital mammograms from 724 patients; this number was obtained from its website (\url{bcdr.eu/information/about}) which also states the database is still in construction and it is expected to have mammograms from 2000 to 3000 patients. Mammograms are 14-bit images with good spatial resolution~\footnote{The webpage does not explicitly states the image's spatial resolution but judging by the size of the entire images it is good enough.}. Each lesion outline is marked in the image along with its assesment and other relevant clinical data. They also have a fairly big repository of digitised film mammograms called BCDR-FM (3.7K) but at lower resolutions.
+
+	Another small digital mammogram repository is called INbreast~\cite{Moreira2012}. It consists of 410 digital mammograms from 115 patients. Each mammogram is a 14-bit image with 0.7 $mm^2$ spatial resolution. Lesion boundaries are accurately marked and its information is also included. This could be used in conjunction with the BCDR-DM repository.
+
+	Finally,~\cite{Zheng2012} used a private repository of around 6.5K digital mammograms obtained from 1120 patients. Specifics of contrast and spatial resolution are not provided but they are most probably good enough. Lesions are marked (with a circle) on the mammograms and lesion and patient information is provided. Even though this is a private repository of the University of Pittsburgh, if needed, we could ask them for access to it. This may not be plausible given the complications of sharing personal (granted anonymized) information and the size of the database.
+
+
+\paragraph{Decision}
+We have decided to use digital mammograms over film mammograms. Digital mammograms are sharper and do not have marks, stamps or other artifacts present in digitised film mammograms. On the downside, because the technology is newer it may be harder to obtain big databases and given its higher resolution they are normally heavier in terms of disk space. We believe the network will be able to pick up better features from the higher quality images and that the size on disk will not be a trouble given the storage availability on current computers. A small number of examples in the database is a big problem and some alternatives are offered below in case the network is not able to learn with the available data. For these reasons, we have decided to use initially the BCDR-DM and INbreast databases.
+%A small desciption is offered below.
+
+\paragraph{Alternatives}
+We hope to obtain enough examples after cropping the mammograms into smaller image patches and applying some data augmentation to them (rotation and horizontal flipping). In case this is still not enough we could try various things: (1) obtain more labelled data from other sources, (2) reduce the complexity of the architecture to have less parameters to learn, (3) be more aggresive with the data augmentation, (4) pretrain the network with unlabelled digital mammograms which may be easier to get, (5) use film mammograms to pretrain the network and fine tune it on digital mammograms and (6) use an already pretrained network in other similar domains and fine tune it with digital mammograms.
+
+Another option is to use only digitised film mammograms for the entire project but this will produce networks which expectedly produce bad results in digital mammograms~\cite{Zheng2012} and seems like a step in the wrong direction given the clear trend of hospitals replacing film mammography by digital mammography. A final option is to join film and digital mammograms into a single data set, this may or may not work given the difference between them but will most probably decrease the quality of results on digital mammograms when compared to a network trained only on digital mammograms.
+% To only test on FFDM?
+
+\begin{comment}
+Film Mammograms 
+MIAS, DDSM, BancoWeb, CALMA, AMDI, B-screen, MiRAcle, BCDR-FM
+inBeast paper has a good summary.
+
+Digital 
+INBreast, MIDAS (no labels), BCDR-DM
+
+Zheng2012 also says that "direct application of an SFM image-based CAD scheme to the FFDM images resulted in the substantial degradation of performance" "digitised image-based CAD can be converted for FFDMs while performing at a comparable, or better, level" "This is largely due to better contrast resolution, detection quantum efficiency and system linearity." He means converted as in retrained, though. (the ANN is completely retrained but it has little params)
+
+Guys from Tabasco:
+Canul-Reich, J., Gutiérrez Méndez, O.T. A new collection of preprocessed digital mammograms (2013) Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics), 8265 LNAI (PART 1), pp. 570-581. 
+Don't think they have labels
+
+Benchmarking datasets:
+Moura, D.C., Loṕez, M.A.G., Cunha, P., De Posada, N.G., Pollan, R.R., Ramos, I., Loureiro, J.P., Moreira, I.C., De Araújo, B.M.F., Fernandes, T.C. Benchmarking datasets for breast cancer computer-aided diagnosis (CADx) (2013) Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics), 8258 LNCS (PART 1), pp. 326-333. 
+show that 'this combination of clinical data and image descriptors is advantageous in most CADx scenarios.'
+\end{comment}
+
+	\subsection{BCDR-DM}
+	Files and how are they organized. Data available per case and per mammogram. How are boundaries written. formats, etc.
+
 	\subsection{Image retrieval}
 	\input{imageRetrieval}
+
+	\subsection{Retrieval software}
+Developed in Python, named..... Does this and that. I would store all smaller images from the same in a matrix with the same name as the image where they came from. Maybe also preserve the same folder architecture.
+Make another tool to put it in Caffe style
+
+%IN methodology write a section called operationalization were i explain how the problem is reduced to a clsssification task(what are the labels and how the images are cropped and what are the performance metrics). Maybe label a region as a mass or microclacification if most of the mass or microcalc is in inside the image (either 50% of the image is the mass or x% of the mass is inside the image). If it's halfway into the image that means the middle pixel ought to be a lession. Or maybe just take a 2x2 middle square and if the lesion surrounds that then say the entire image is a lession(con: if the lession is small and is in the perimeter of the region it wll not be detected as a lession so it is not translation nvariant, a cluster on the lower corner will not be identified as a true microcalcification, also when rotating it, the 2x2 square may not longer hold the microcalcification). labellling only when it apprears in the middel sounds good for detection purposes. although doing like a convolution to select different images acts as data ugmentation with translation invariance:
+%1. Segment with a 0.2 mm stride,
+%2. Put positive label if the lession is inside the middle of the image. Also, preserve which kind of lession it is and benign malignant.
+%3. Delete those that are all black
+%4. Repeat for the rotations of each image. and the mirrors: data ugmentation
+%5. Lession vs non-lession.
+%6. Report results for this patches(could report average of 8 differnet rotations and mirrors), plus images of entire mammography(only for the center of the image or with big zero padding).
+
+
+%************************** New section *******************************
+
+	\section{Training}
+	Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
+
+	\subsection{Hardware}
+	Computational resources:
+	\begin{table}[h]
+		\begin{tabular}{cp{4cm}cp{2.5cm}p{1.7cm}c}
+		PC 	& GPU 						& RAM 	& CPU 				& HD 					& \#\\
+		\hline
+		A4-401	& Nvidia Quadro K620\newline 384 cores \newline 2GB 29 GB/s 128-bit	& 8 GB 	& i5-4570\newline  3.2GHz x ?(1) & 230 GB\newline free 100\newline ubuntu ? & 27\\
+		Mine	& Nvidia NVS 5400M\newline 96 cores \newline 2GB 29 GB/s(?) 128-bit	& 4 GB 	& i5-3210M\newline 2.50GHz x 4	& 320 GB \newline free 200\newline ubuntu 56 & 1 \\
+% A4-404	& Nvidia Quadro FX580 \newline 32 cores (0.5GB)	& 6 GB 	& Xeon W3503\newline 2.4GHz x ?(1) & 200 GB\newline free 100\newline ubuntu ? & 15
+% Khrizhevsky uses a NVIDIA "GeForce GTX-580 3GB"(has 512 cores, 192 GB/s)
+		\hline
+		\end{tabular}
+		\caption{Available computers}
+	384 will have to do.
+	\end{table}
+
+	\subsection{Architectures}
+	Write/Draw here the considered architectures.
+
+	I choose that.
 
 	\subsection{Convolutional network}
 	The network could be slided across an image. Options: (1) a network for detection of microcalcification and one for masses (and slide both across and plot their results with differerent colors) (2) a network for diagnosis of microcalc and one for masses(slide them both) and (3) one that detects micro+mass vs non-lession (stanford guys did bad with this one) and (4) one that detects any lession(micro+mass+other) vs no lession and (5) one that also detects more than one network but has multiple output.
@@ -25,19 +116,17 @@
 
 	Questions: If i choose to go with simple networks, start with microcalcifications or masses. which one is more useful (apparently masses).
 
-	\section{Hardware}
-	Computational resources:
-	\begin{table}[h]
-		\begin{tabular}{cp{4cm}cp{2.5cm}p{1.7cm}c}
-			PC 	& GPU 						& RAM 	& CPU 				& HD 					& \#\\
-			\hline
-			CTS-516	& GeForce GTX-580\newline 512 cores \newline 1.5GB 384-bit GDDR5 & ? 	& ?  				& ? (enough) & 1 \\
-			A4-401	& Nvidia Quadro K620\newline 384 cores \newline 2GB 128-bit DDR3 & 8 GB 	& i5-4570\newline  3.2GHz x ?(1) & 230 GB\newline free 100\newline ubuntu ? & 27\\
-			Mine	& Nvidia NVS 5400M \newline 96 cores \newline 2GB 128-bit DDR3	& 4 GB 	& i5-3210M\newline 2.50GHz x 4	& 320 GB \newline free 200\newline ubuntu 56 & 1 \\
-%A4-404	& Nvidia Quadro FX580 \newline 32 cores (0.5GB)	& 6 GB 	& Xeon W3503\newline 2.4GHz x ?(1) & 200 GB\newline free 100\newline ubuntu ? & 15
-			\hline
-		\end{tabular}
-		\caption{Available computers}
-	\end{table}
+
+
+	\part{Experiments}
+	\section{Image retrieval}
+	Results and discussion.
+	\section{Experiment 1}
+	Architecture selected. Hyperparameters selected. results and discussion.
+	% ROCKIT for ROC curves.
+
+	% Bibliography
+	\bibliographystyle{plain}
+	\bibliography{bibliography}
 	
 \end{document}

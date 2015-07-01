@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: report.aux
+The style file: plain.bst
+Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "somebody"
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            533 strings with 5002 characters,
+and the built_in function-call counts, 1838 in all, are:
+= -- 171
+> -- 111
+< -- 1
++ -- 44
+- -- 39
+* -- 153
+:= -- 311
+add.period$ -- 14
+call.type$ -- 4
+change.case$ -- 31
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 56
+empty$ -- 126
+format.name$ -- 39
+if$ -- 380
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 4
+newline$ -- 24
+num.names$ -- 10
+pop$ -- 26
+preamble$ -- 1
+purify$ -- 27
+quote$ -- 0
+skip$ -- 41
+stack$ -- 0
+substring$ -- 118
+swap$ -- 14
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 0
+while$ -- 14
+width$ -- 5
+write$ -- 49
+(There was 1 warning)

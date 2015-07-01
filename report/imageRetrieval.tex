@@ -1,21 +1,43 @@
-We use the database ta that to obtain our mammographic images. We call image patches to those who are obtained.
+We document here the decisions taken to obtain the small image patches $x$ and its respective labels $y$ from the chosen databases.
 
-\subsubsection{DDSM o IRMA}
-Description of the database and the data available
+To obtain these image patches from the entire mammogram we move a square across the image similarly to the way convolutional filters move accross an image and store the image patch directly beneath it. This generates a big number of small patches from one mammogram and takes advantage of the translational invariance of our data, i.e., a breast mass will continue to be a breast mass no matter its position in the patch. The size of these patches, its labels and the overlapping between them depend on some variables that we define next.
 
+%\paragraph{Aspect ratio} We will use square images because it is common in practice and simpifies data augmentation.
 
-Look at the IRMA database docs.
-%0.01 mm per pixel
-% digital does seem to improve a lot.
+\paragraph{Image dimensions}
+	We use square images because they are common in practice and simplify data augmentation. To define the size we have to consider two aspects: keeping a manageable input size (in pixels) for the network and capturing the entire mammogram in the image. 
+ 
+how big is the size in pixels and how big w  how big is the pixelated image and how much space does it represent in the real mammogram. The actual size in a breats is arguably more important because we want to capture the entire lession or a representative part in the picture otherwise the image loses any real meaning 
+if we chose a size which is way too big it will take way more noise over the actual lesion we are looking for and if we choose one that is too small it will miss the lesion. 
 
-\subsubsection{Cropping and retrieving small images}
-All the details and decisions taken for the image retrieval. It will go as a convolutional filter, it will move around the image obtaining smaller squares of a given size.
+Clustered microcalcifications are x which siuggests size of ...
+Mass sizes are normally between ... and ... \cite{somebody} whish suggests a size between ... and ..... 
 
-\paragraph{Image aspect ratio}
-	We will use a square aspect ratio because it is simpler and common use in practice. 
+Better use changing/big sizes, becaus ethe mass thing is big enough and with 64 by 64 should be enough to get the details, meanwhile the microcalcif in 1 cm2 should be better to pick up the details.
+using 128 may be overkill and run into memory bottlenecks in GPU. Is it worth using 128 pixels. Will some microcalcifications dissapear?. 128 gaves way too many hyperparamters
 
-\paragraph{Image size}
-	The image size has two components: how big is the pixelated image and how much space does it represent in the real mammogram. The actual size in a breats is arguably more important because if we chose a size which is way too big it will take way more noise over the actual lesion we are looking for and if we choose one that is too small it will miss the lesion. Mass sizes are normally between ... and ... \cite{somebody}.
+From Lo1998 "Typically, the sizes of microcalcifications vary from 0.16 mm to 1.0 mm.".
+If i want each pixel to cover a .1 mm, i get 6.4 mm2
+If i want each pixel to cover a .15625 mm i get a 10 mm2 area
+If i want each pixel to cover a .16 mm i get images of 10.24 mm2 (which is also good for area).
+if i want each pixel to cover a .2 mm i get 12.8 (but may be losing some of the smaller microcalcif)
+
+From Sahiner1996: The average size (length of the long axis) of the masses, as estimated by the radiologists, was 12.2 mm., and the standard deviation of the mass size was 4.5 mm.". Used a 2.56 by 2.56 initial size. > 0.8 is more cancerous.
+pixel size .3 equals area 19.2 mm
+pixel size .3125 equals area 20 mm
+pixel size 0.39 equals area 25 mm
+pixel size .4 mm equals ara 25.6 mm (exactly the size in Sahiner1996)
+pixel size .46875 equals 30 mm area
+
+Decision: use different sizes for micro and masses because up to the resolution of micro ist would b eiunviable for masses .
+
+different sizes because if i use a 2.5cm area for microcalcifications ome of the detail may get lost (some microcalcifications disappear).
+
+\paragraph{Stride}
+Depends on the size of the lession, if it is way too big i may miss some lession. for instance a small microcalcification cluster
+
+\paragraph{Padding}
+Should I use some padding so that I don't lose lesions which are in the very corner. For example, if I use a 2.5cm square and in there is a 1$cm$ mass close to the end of the image, then it may not detect it. Maybe not, I don't think ther eis going to be that many images on the side.
 
 \paragraph{Labeling}
 When the lesion hits the middle of the image, when the lession overlaps with the image or when the iomage is a given porcentage of the lession, or when a given porcentage of the lession apears in the image
@@ -24,36 +46,25 @@ When the lesion hits the middle of the image, when the lession overlaps with the
 We will only use mass, MCC, normal, benign, malign and nothing.
 
 \paragraph{Additional label information}
-Is there any other info needed?
+Is there any other info needed?. age breast density per case. per abnormality, assesment, subtlety BI-RADs words,  
 
 \paragraph{Image enhancement}
-I will cut the images first and store them as is.
+I will cut the images first and store them as is. Later truy different enhancements per image
+Contrast after cropping, or contrast before cropping.
+\paragraph{Data cleaning}
+Do I need to remove the marks and arrows and thingys. Could I let the network learn that those are not microcalcifications
 
 \paragraph{data augmentation}
 Should I do the image enhancement and data augmentation(rotations and flipping) during training or before hand. Or only the enhancement beforehand. Can I do them withouth changing the label? (depends on how the label is assigned, rotations and mirrors leve the same four squares in the middle of the image, thus, the label should not change, sclaing and others will.). Does it affect to present all different augmentations of the same image in one batch rather than in different batches
 
-\paragraph{Data cleaning}
-Do I need to remove the marks and arrows and thingys. Could I let the network learn that those are not microcalcifications
-
 \paragraph{whjat about the blakc spaces}
 Should I remove the black spaces or images that are more than 50\% black or something like that. Should I do it during this stage or after the cut. If i do what is going to be thenetwork performance when presneted with an entirely black input. what about lession which are pressed agains the breats skin, if i delete these images, they may dissapear.
-
-\paragraph{Stride}
-\paragraph{Total number of image patches.}
-
-
-\paragraph{Padding}
-Should I use some padding so that I don't lose lesions which are in the very corner. For example, if I use a 2.5cm square and in there is a 1$cm$ mass close to the end of the image, then it may not detect it. Maybe not, I don't think ther eis going to be that many images on the side.
 
 \paragraph{Resizing}
 Does it affect the quality of the image what kind of resizing I do, should I use interpolation resizing or something. Hopefully I will always have to downsample so I may not lose much.
 
-\paragraph{DB}
-Generate a data set like the ImageNet challenge
+\paragraph{Total number of image patches.}
 
-
-
-\subsubsection{Retrieval software}
-Developed in Python, named..... Does this and that. I would store all smaller images from the same in a matrix with the same name as the image where they came from. Maybe also preserve the same folder architecture.
-Make another tool to put it in Caffe style
+\paragraph{Resukting data base}
+Generate a data set like the ImageNet challenge/
 
