@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  24 JUN 2015 02:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  4 JUL 2015 01:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**proposal
+**proposal.tex
 (./proposal.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -791,34 +791,34 @@ File: plots/breastAnatomy.png Graphic file (type png)
 Package pdftex.def Info: plots/breastAnatomy.png used on input line 7.
 (pdftex.def)             Requested size: 154.85547pt x 167.81961pt.
  [6 <./plots/breastAnatomy.png>]
-<plots/normalMammogram.jpg, id=194, 144.54pt x 184.69pt>
+<plots/normalMammogram.jpg, id=194, 2569.6pt x 3340.48pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
 Package pdftex.def Info: plots/normalMammogram.jpg used on input line 18.
-(pdftex.def)             Requested size: 110.60912pt x 141.33246pt.
+(pdftex.def)             Requested size: 110.60912pt x 143.79076pt.
 
-<plots/breastMicrocalcification.png, id=199, 95.35625pt x 95.35625pt>
-File: plots/breastMicrocalcification.png Graphic file (type png)
+<plots/breastMicrocalcification.jpg, id=199, 338.26375pt x 338.26375pt>
+File: plots/breastMicrocalcification.jpg Graphic file (type jpg)
 
-<use plots/breastMicrocalcification.png>
-Package pdftex.def Info: plots/breastMicrocalcification.png used on input line 
+<use plots/breastMicrocalcification.jpg>
+Package pdftex.def Info: plots/breastMicrocalcification.jpg used on input line 
 30.
-(pdftex.def)             Requested size: 110.60912pt x 110.61331pt.
+(pdftex.def)             Requested size: 110.60912pt x 110.61057pt.
 
-<plots/breastMass.png, id=200, 108.405pt x 108.405pt>
-File: plots/breastMass.png Graphic file (type png)
+<plots/breastMass.jpg, id=200, 430.60875pt x 431.6125pt>
+File: plots/breastMass.jpg Graphic file (type jpg)
 
-<use plots/breastMass.png>
-Package pdftex.def Info: plots/breastMass.png used on input line 34.
-(pdftex.def)             Requested size: 110.60912pt x 110.61462pt.
+<use plots/breastMass.jpg>
+Package pdftex.def Info: plots/breastMass.jpg used on input line 34.
+(pdftex.def)             Requested size: 110.60912pt x 110.86649pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [7 <./plots/normalMammogram.jpg>]) (./classification.tex [8 <./plots/breastMicr
-ocalcification.png> <./plots/breastMass.png>] [9] [10]
-<plots/AUCandPRAUC.png, id=253, 972.63374pt x 425.59pt>
+ocalcification.jpg> <./plots/breastMass.jpg>] [9] [10]
+<plots/AUCandPRAUC.png, id=251, 972.63374pt x 425.59pt>
 File: plots/AUCandPRAUC.png Graphic file (type png)
 
 <use plots/AUCandPRAUC.png>
@@ -826,7 +826,7 @@ Package pdftex.def Info: plots/AUCandPRAUC.png used on input line 76.
 (pdftex.def)             Requested size: 353.95053pt x 154.87473pt.
  [11 <./plots/AUCandPRAUC.png>])
 (./neuralnetworks.tex
-<plots/neuralNetwork.png, id=274, 970.62625pt x 589.20125pt>
+<plots/neuralNetwork.png, id=272, 970.62625pt x 589.20125pt>
 File: plots/neuralNetwork.png Graphic file (type png)
 
 <use plots/neuralNetwork.png>
@@ -837,7 +837,7 @@ Package pdftex.def Info: plots/neuralNetwork.png used on input line 7.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [12] [13 <./plots/neuralNetwork.png>]
-<plots/dropout.png, id=312, 769.87625pt x 415.5525pt>
+<plots/dropout.png, id=310, 769.87625pt x 415.5525pt>
 File: plots/dropout.png Graphic file (type png)
  <use plots/dropout.png>
 Package pdftex.def Info: plots/dropout.png used on input line 60.
@@ -847,21 +847,21 @@ Package pdftex.def Info: plots/dropout.png used on input line 60.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./convnets.tex [14]
-<plots/convNetVolumes.jpeg, id=337, 571.13374pt x 202.7575pt>
+<plots/convNetVolumes.jpeg, id=335, 571.13374pt x 202.7575pt>
 File: plots/convNetVolumes.jpeg Graphic file (type jpg)
 
 <use plots/convNetVolumes.jpeg>
 Package pdftex.def Info: plots/convNetVolumes.jpeg used on input line 12.
 (pdftex.def)             Requested size: 309.7042pt x 109.9484pt.
  [15 <./plots/dropout.png>]
-<plots/convLayer.jpeg, id=346, 465.74pt x 327.2225pt>
+<plots/convLayer.jpeg, id=344, 465.74pt x 327.2225pt>
 File: plots/convLayer.jpeg Graphic file (type jpg)
 
 <use plots/convLayer.jpeg>
 Package pdftex.def Info: plots/convLayer.jpeg used on input line 27.
 (pdftex.def)             Requested size: 176.9719pt x 124.33585pt.
  [16 <./plots/convNetVolumes.jpeg>] [17 <./plots/convLayer.jpeg>] <plots/convNe
-tExample.jpeg, id=368, 1259.70625pt x 603.25375pt>
+tExample.jpeg, id=366, 1259.70625pt x 603.25375pt>
 File: plots/convNetExample.jpeg Graphic file (type jpg)
 
 <use plots/convNetExample.jpeg>
@@ -982,7 +982,7 @@ s in \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 0.5, 0.9, 0.95,
  []
 
 [27] [28] [29] [30]) (./methodology.tex [31] [32]) (./workplan.tex
-<plots/workplan.png, id=575, 1355.0625pt x 277.035pt>
+<plots/workplan.png, id=573, 1355.0625pt x 277.035pt>
 File: plots/workplan.png Graphic file (type png)
  <use plots/workplan.png>
 Package pdftex.def Info: plots/workplan.png used on input line 4.
@@ -1031,7 +1031,7 @@ Here is how much of TeX's memory you used:
  11120 multiletter control sequences out of 15000+600000
  13159 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,10n,41p,2564b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,41p,2568b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
@@ -1050,9 +1050,9 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on proposal.pdf (40 pages, 1012154 bytes).
+Output written on proposal.pdf (40 pages, 2271956 bytes).
 PDF statistics:
- 722 PDF objects out of 1000 (max. 8388607)
+ 720 PDF objects out of 1000 (max. 8388607)
  631 compressed objects within 7 object streams
  167 named destinations out of 1000 (max. 500000)
  205 words of extra memory for PDF output out of 10000 (max. 10000000)
