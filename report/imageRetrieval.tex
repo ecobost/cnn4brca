@@ -1,40 +1,28 @@
 We document here the decisions taken to obtain the small image patches $x$ and its respective labels $y$ from the chosen databases.
 
-To obtain these image patches from the entire mammogram we move a square across the image similarly to the way convolutional filters move accross an image and store the image patch directly beneath it. This generates a big number of small patches from one mammogram and takes advantage of the translational invariance of our data, i.e., a breast mass will continue to be a breast mass no matter its position in the patch. The size of these patches, its labels and the overlapping between them depend on some variables that we define next.
-
-%\paragraph{Aspect ratio} We will use square images because it is common in practice and simpifies data augmentation.
+To obtain these image patches from the entire mammogram we move a square window across the image similarly to the way convolutional filters move accross an image and store the image patch directly beneath it. This generates a big number of small patches from each mammogram and takes advantage of the translational invariance of our data, i.e., a breast mass will continue to be a breast mass no matter its position in the image. The size of these patches, its labels and the overlapping between them depend on some variables that we define next.
 
 \paragraph{Image dimensions}
-	We use square images because they are common in practice and simplify data augmentation. To define the size we have to consider two aspects: keeping a manageable input size (in pixels) for the network and capturing the entire mammogram in the image. 
- 
-how big is the size in pixels and how big w  how big is the pixelated image and how much space does it represent in the real mammogram. The actual size in a breats is arguably more important because we want to capture the entire lession or a representative part in the picture otherwise the image loses any real meaning 
-if we chose a size which is way too big it will take way more noise over the actual lesion we are looking for and if we choose one that is too small it will miss the lesion. 
+We use square images because they are common in practice and simplify data augmentation. To define the size we have to consider two aspects: keeping a manageable input size for the network (in pixels) and capturing the entire lesion in the image (in mm).
 
-Clustered microcalcifications are x which siuggests size of ...
-Mass sizes are normally between ... and ... \cite{somebody} whish suggests a size between ... and ..... 
+The smallest microcalcification worth considering could be as small as 0.16 mm~\cite{Lo1998}, thus the spatial resolution should be at most 0.16 mm. The standard definition of a cluster of microcalcifications is of 5 or more inside a 1 $cm^2$ area~\cite{Sickles2013}, thus the entire image patch should cover at least a 1 $cm^2$ area. Using a spatial resolution of 0.16 mm and an image size of $64 \times 64$ pixels we cover an area of 1.024 cm $\times$ 1.024 cm = $\sim$1.05 $cm^2$.
+% Pixel size .15625 mm i get a 10 mm2 area
 
-Better use changing/big sizes, becaus ethe mass thing is big enough and with 64 by 64 should be enough to get the details, meanwhile the microcalcif in 1 cm2 should be better to pick up the details.
-using 128 may be overkill and run into memory bottlenecks in GPU. Is it worth using 128 pixels. Will some microcalcifications dissapear?. 128 gaves way too many hyperparamters
+Mass sizes (length of the long axis) vary from 5 mm to 20 mm~\cite{Sahiner1996}~\footnote{Bigger masses are easily detectable by touch and thus less important for our purposes.} There is not really any restriction on spatial resolution other than it being good enough to capture texture information. Using a spatial resolution of 0.32 mm and an image size of $64 \times 64$ pixels we cover an area of 2.048 cm $\times$ 2.048 cm = $\sim$4.2 $cm^2$.
+% pixel size .3125 equals area 20 mm
+%pixel size 0.39 equals area 25 mm
+% pixel size .4 mm equals ara 25.6 mm (exactly the size in Sahiner1996)
 
-From Lo1998 "Typically, the sizes of microcalcifications vary from 0.16 mm to 1.0 mm.".
-If i want each pixel to cover a .1 mm, i get 6.4 mm2
-If i want each pixel to cover a .15625 mm i get a 10 mm2 area
-If i want each pixel to cover a .16 mm i get images of 10.24 mm2 (which is also good for area).
-if i want each pixel to cover a .2 mm i get 12.8 (but may be losing some of the smaller microcalcif)
+Although we use the same input size ($64 \times 64$) for microcalcifications and masses they do not cover the same area in the mammogram. We need to use two different sizes because if we preserve the spatial resolution of 0.16 mm, the 1 $cm^2$ area would not be able to contain the entire mass meanwhile if we use a spatial resolution of 0.32 mm, some microcalcifications will dissapear and the 4 $cm^2$ area would have way too much noise compared to the size of the cluster of microcalcifications.
 
-From Sahiner1996: The average size (length of the long axis) of the masses, as estimated by the radiologists, was 12.2 mm., and the standard deviation of the mass size was 4.5 mm.". Used a 2.56 by 2.56 initial size. > 0.8 is more cancerous.
-pixel size .3 equals area 19.2 mm
-pixel size .3125 equals area 20 mm
-pixel size 0.39 equals area 25 mm
-pixel size .4 mm equals ara 25.6 mm (exactly the size in Sahiner1996)
-pixel size .46875 equals 30 mm area
-
-Decision: use different sizes for micro and masses because up to the resolution of micro ist would b eiunviable for masses .
-
-different sizes because if i use a 2.5cm area for microcalcifications ome of the detail may get lost (some microcalcifications disappear).
+An alternative is to use a $128 \times 128$ pixels image patch with 0.16 mm, this will result on the same 4 $cm^2$ area needed for masses with the spatial resolution needed for microcalcifications allowing us to train a single network for both kinds of lessions. Nonetheless, this has some critical flaws: the number of learnable parameters will almost double, the GPU may run into memory bottlenecks because of the increased number of parameters and unnnecesary details (noise) will be included in the image.
 
 \paragraph{Stride}
+% Size of the image to see how many strides can i Give.
 Depends on the size of the lession, if it is way too big i may miss some lession. for instance a small microcalcification cluster
+and how much overlap we want from image to image.
+or how many images fdo we obtain from an entire mammogram.
+More data augmentation if less stride.
 
 \paragraph{Padding}
 Should I use some padding so that I don't lose lesions which are in the very corner. For example, if I use a 2.5cm square and in there is a 1$cm$ mass close to the end of the image, then it may not detect it. Maybe not, I don't think ther eis going to be that many images on the side.
@@ -59,6 +47,7 @@ Should I do the image enhancement and data augmentation(rotations and flipping) 
 
 \paragraph{whjat about the blakc spaces}
 Should I remove the black spaces or images that are more than 50\% black or something like that. Should I do it during this stage or after the cut. If i do what is going to be thenetwork performance when presneted with an entirely black input. what about lession which are pressed agains the breats skin, if i delete these images, they may dissapear.
+40\% black out.
 
 \paragraph{Resizing}
 Does it affect the quality of the image what kind of resizing I do, should I use interpolation resizing or something. Hopefully I will always have to downsample so I may not lose much.

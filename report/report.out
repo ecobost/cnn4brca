@@ -1,0 +1,13 @@
+\BOOKMARK [0][-]{part.1}{I Methods}{}% 1
+\BOOKMARK [1][-]{section.1}{Operationalization}{part.1}% 2
+\BOOKMARK [2][-]{subsection.1.1}{Database}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.2}{BCDR-DM}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.3}{Image retrieval}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.4}{Retrieval software}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{Training}{part.1}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Hardware}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.2}{Architectures}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{Convolutional network}{section.2}% 10
+\BOOKMARK [0][-]{part.2}{II Experiments}{}% 11
+\BOOKMARK [1][-]{section.3}{Image retrieval}{part.2}% 12
+\BOOKMARK [1][-]{section.4}{Experiment 1}{part.2}% 13

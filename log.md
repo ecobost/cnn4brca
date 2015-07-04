@@ -3,16 +3,31 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
-## Jun 24 - Jul 1
+## Jul 2 - Jul 8
 ### Activities
-* 
+* Write emails looking for more digital mammograms
+* Document decisions on how to crop big images.
 
 ### To do
+* 
+
+### Questions
+1.
+
+## Jun 24 - Jul 1
+### Activities
+* Look for databases and its features
+* Decide how to crop the images from the entire mammograms
+
+### To do
+* Write the features of the database and its labelling.
+* Decide how to obtain the small crops from the big mammograms.
+* Write code to automatically obtain the small crops from the mammogram.
 * Update LaTex template to thesis template
 * Choose software (probably Caffe)
 
 ### Questions
-1. Some in report/imageRetrieval/
+1. Should I try to get more digital mammograms or just go with film?.
 
 ## Jun 18 - Jun 23
 ### Activities

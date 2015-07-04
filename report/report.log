@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  1 JUL 2015 02:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  4 JUL 2015 06:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -208,14 +208,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./imageRetrieval.tex 
 [3]
 
-LaTeX Warning: Citation `somebody' on page 4 undefined on input line 14.
+LaTeX Warning: Citation `Lo1998' on page 4 undefined on input line 8.
+
+
+LaTeX Warning: Citation `Sickles2013' on page 4 undefined on input line 8.
+
+
+LaTeX Warning: Citation `Sahiner1996' on page 4 undefined on input line 11.
 
 [4] [5])
-Overfull \hbox (16.33548pt too wide) in paragraph at lines 92--101
+Overfull \hbox (16.33548pt too wide) in paragraph at lines 91--100
 [][] 
  []
 
-[6] (./report.bbl [7]
+[6] (./report.bbl
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ª in font cmr10!
 Missing character: There is no Ã in font cmr10!
@@ -224,29 +230,32 @@ Missing character: There is no Ã in font cmr10!
 Missing character: There is no ³ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no £ in font cmr10!
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 132.
+ [7])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
  [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 132.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 132.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 132.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 131.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: AAE97F79E428C46021367ABFF48DDB79;741.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 132.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 131.
  ) 
 Here is how much of TeX's memory you used:
- 4643 strings out of 495028
- 68334 string characters out of 6181498
+ 4647 strings out of 495028
+ 68385 string characters out of 6181498
  139745 words of memory out of 5000000
- 7797 multiletter control sequences out of 15000+600000
+ 7799 multiletter control sequences out of 15000+600000
  12817 words of font info for 49 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,10n,28p,1104b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,10n,28p,1104b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -259,10 +268,10 @@ onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
 0.pfb>
-Output written on report.pdf (8 pages, 154468 bytes).
+Output written on report.pdf (8 pages, 156164 bytes).
 PDF statistics:
- 186 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
- 45 named destinations out of 1000 (max. 500000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
+ 47 named destinations out of 1000 (max. 500000)
  105 words of extra memory for PDF output out of 10000 (max. 10000000)
 
