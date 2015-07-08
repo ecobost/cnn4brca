@@ -1,5 +1,15 @@
 \begin{thebibliography}{1}
 
+\bibitem{Ciresan2013}
+Dan~C. Cireşan, Alessandro Giusti, Luca~M. Gambardella, and Jürgen
+  Schmidhuber.
+\newblock Mitosis detection in breast cancer histology images with deep neural
+  networks.
+\newblock In Kensaku Mori, Ichiro Sakuma, Yoshinobu Sato, Christian Barillot,
+  and Nassir Navab, editors, {\em Medical Image Computing and Computer-Assisted
+  Intervention – MICCAI 2013}, volume 8150 of {\em Lecture Notes in Computer
+  Science}, pages 411--418. Springer Berlin Heidelberg, 2013.
+
 \bibitem{Heath2001}
 Michael Heath, Kevin Bowyer, Daniel Kopans, Richard Moore, and W.~Philip
   Kegelmeyer.
