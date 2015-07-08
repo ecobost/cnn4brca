@@ -1,176 +1,220 @@
-# Summary: Use some level of contrast adjustment, either mean or half the mean.
-# Anything else will robably be unnecesary, plus most times raw data is feeded to
-# the network and it still works. I do believe contrast will help, though because 
-# otherwise the background mix with the image and features are harder to pick.
-# Plus, it is common practie in radiology.
+# Summary: Use normalization or background reduction plus normalization= contrast stretchin with vmin = mean(image).
 
 import scipy.misc
 import matplotlib.pyplot as plt
+import numpy as np
 
-#################### Background reduction (Contrast change)
-#Background makes only the clusters light up, everything else goes to black.
-# But does the background give info t the network (like breast density).
+# plt.imshow() does constrast strecthing with range equal to the range in the image or vmin, vmax if passed to it.
+# According to these (http://www.mathworks.com/help/images/adjusting-image-contrast-using-the-adjust-contrast-tool.html#brc1_4s-1) constrast stretching stretches the contrast between two specified points. " pixel values below a specified value are displayed as black, pixel values above a specified value are displayed as white, and pixel values in between these two values are displayed as shades of gray."
 
-# vmin is done like this
-mcB = mc.copy()
-mcB[mcB <= 50] = 0
-mcB[mcB>50] -= 50
-# I'm not sure about vmax but is probably something like 
-mcB[mcB > 200] = 0
+>>> mass = scipy.misc.imread("breastMass.jpg")
+>>> np.shape(mass)
+(430, 429, 3)
+>>> mass = mass[:,:,0]
+>>> np.mean(mass)
+172.95355342332087
+>>> massB = mass.copy()
+>>> massB[massB <= 173] = 0
+>>> massB[massB > 173] -= 173
+>>> massB2 = mass.copy()
+>>> massB2[massB2 <= 86] = 0
+>>> massB2[massB2 > 86] -= 86
+>>> massB3 = mass.copy()
+>>> massB3[massB3 <= 173] = 0
+>>> scipy.misc.imsave("massB.png",massB)
+>>> scipy.misc.imsave("massB2.png",massB2)
+>>> scipy.misc.imsave("massB3.png",massB3)
+>>> plt.gray()
+>>> plt.subplot(2,2,1)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f19e668>
+>>> plt.title("Normal mass")
+<matplotlib.text.Text object at 0x7fc47f7876d8>
+>>> plt.imshow(mass)
+<matplotlib.image.AxesImage object at 0x7fc47f799c50>
+>>> plt.subplot(2,2,2)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f799c88>
+>>> plt.title("Mean Background reduction")
+<matplotlib.text.Text object at 0x7fc47f74a208>
+>>> plt.imshow(massB)
+<matplotlib.image.AxesImage object at 0x7fc47f767748>
+>>> plt.subplot(2,2,3)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f767780>
+>>> plt.title("Half Mean Background reduction")
+<matplotlib.text.Text object at 0x7fc47f702898>
+>>> plt.imshow(massB2)
+<matplotlib.image.AxesImage object at 0x7fc47f71f550>
+>>> plt.subplot(2,2,4)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f71f588>
+>>> plt.title("Background reduction wo substract.")
+<matplotlib.text.Text object at 0x7fc47f0ceac8>
+>>> plt.imshow(massB3)
+<matplotlib.image.AxesImage object at 0x7fc47f0f0048>
+>>> plt.show()
 
-## Actual code
->>> mc = scipy.misc.imread("breastMicrocalcification.png")
+# No normalization.
+>>> plt.subplot(2,2,1)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f0444e0>
+>>> plt.title("Normal mass")
+<matplotlib.text.Text object at 0x7fc47f170be0>
+>>> plt.imshow(mass,vmin = 0, vmax = 255)
+<matplotlib.image.AxesImage object at 0x7fc47f12dd30>
+>>> plt.subplot(2,2,2)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f18ca58>
+>>> plt.title("Mean Background reduction")
+<matplotlib.text.Text object at 0x7fc47f021fd0>
+>>> plt.imshow(massB,vmin = 0, vmax = 255)
+<matplotlib.image.AxesImage object at 0x7fc47f029550>
+>>> plt.subplot(2,2,3)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f029ac8>
+>>> plt.title("Half Mean Background reduction")
+<matplotlib.text.Text object at 0x7fc47f8bb5c0>
+>>> plt.imshow(massB2,vmin = 0, vmax = 255)
+<matplotlib.image.AxesImage object at 0x7fc47f8d7278>
+>>> plt.subplot(2,2,4)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f8d77f0>
+>>> plt.title("Background reduction wo substract.")
+<matplotlib.text.Text object at 0x7fc47f8857f0>
+>>> plt.imshow(massB3,vmin = 0, vmax = 255)
+<matplotlib.image.AxesImage object at 0x7fc47f8a1d30>
+>>> plt.show()
+
+
+# Microcalcifications
+>>> mc = scipy.misc.imread("breastMicrocalcification.jpg")
+>>> np.shape(mc)
+(337, 337, 3)
 >>> mc = mc[:,:,0]
 >>> np.mean(mc)
-84.898947368421048
-# For mcb, anything less than the average pixel value is considered background
->>> mcB = mc.copy()
->>> mcB[mcB <= 85] = 0
->>> mcB[mcB> 85] -= 85
-# Same for half the mean pixel value
+171.04156063714569
+>>> mcB= mc.copy()
+>>> mcB[mcB <= 171] = 0
+>>> mcB[mcB > 171] -= 171
 >>> mcB2 = mc.copy()
->>> mcB2[mcB2 <= 42] = 0
->>> mcB2[mcB2 > 42] -=42
-# One where the background is set to black, but everything else is the same.
+>>> mcB2[mcB2 <= 85] = 0
+>>> mcB2[mcB2>85] -= 85
 >>> mcB3 = mc.copy()
->>> mcB3[mcB3 <= 85] = 0
-# Save em
->>> scipy.misc.imsave("mcB.png", mcB)
->>> scipy.misc.imsave("mcB2.png", mcB2)
->>> scipy.misc.imsave("mcB3.png", mcB3)
-# Plot em
+>>> mcB3[mcB3 <= 171] = 0
+>>> scipy.misc.imsave("mcB.png",mcB)
+>>> scipy.misc.imsave("mcB2.png",mcB2)
+>>> scipy.misc.imsave("mcB3.png",mcB3)
 >>> plt.subplot(2,2,1)
-<matplotlib.axes.AxesSubplot object at 0x7f139bd5a908>
+<matplotlib.axes.AxesSubplot object at 0x7fc47f844fd0>
+>>> plt.title("Normal Microcalcifications")
+<matplotlib.text.Text object at 0x7fc47f08ac18>
 >>> plt.imshow(mc)
-<matplotlib.image.AxesImage object at 0x7f139c29fb38>
+<matplotlib.image.AxesImage object at 0x7fc47f7a8d68>
 >>> plt.subplot(2,2,2)
-<matplotlib.axes.AxesSubplot object at 0x7f139c9b7e48>
+<matplotlib.axes.AxesSubplot object at 0x7fc47f7a8fd0>
+>>> plt.title("Mean Background Reduction")
+<matplotlib.text.Text object at 0x7fc47f73fd30>
 >>> plt.imshow(mcB)
-<matplotlib.image.AxesImage object at 0x7f139c9b7668>
+<matplotlib.image.AxesImage object at 0x7fc47f0af668>
 >>> plt.subplot(2,2,3)
-<matplotlib.axes.AxesSubplot object at 0x7f139bdf1080>
+<matplotlib.axes.AxesSubplot object at 0x7fc47f0aff28>
+>>> plt.title("Half Mean Background Reduction")
+<matplotlib.text.Text object at 0x7fc47f0b4ac8>
 >>> plt.imshow(mcB2)
-<matplotlib.image.AxesImage object at 0x7f139be5ca20>
+<matplotlib.image.AxesImage object at 0x7fc47f0d4c18>
 >>> plt.subplot(2,2,4)
-<matplotlib.axes.AxesSubplot object at 0x7f139bfc87f0>
+<matplotlib.axes.AxesSubplot object at 0x7fc47f0d4b70>
+>>> plt.title("Background Reduction wo substract")
+<matplotlib.text.Text object at 0x7fc47f03bd30>
 >>> plt.imshow(mcB3)
-<matplotlib.image.AxesImage object at 0x7f139bf90470>
->>> plt.show() 
-
-# For masses
->>> bm = scipy.misc.imread("breastMass.png")
->>> bm = bm[:,:,0]
->>> np.mean(bm)
-104.82896090534979
-
-
->>> bmB = bm.copy()
->>> bmB[bmB <= 105] = 0
->>> bmB[bmB> 105] -= 105
-
->>> bmB2 = bm.copy()
->>> bmB2[bmB2 <= 52] = 0
->>> bmB2[bmB2 > 52] -=52
-
->>> bmB3 = bm.copy()
->>> bmB3[bmB3 <= 105] = 0
-
->>> scipy.misc.imsave("bmB.png", bmB)
->>> scipy.misc.imsave("bmB2.png", bmB2)
->>> scipy.misc.imsave("bmB3.png", bmB3)
-
->>> plt.subplot(2,2,1)
-<matplotlib.axes.AxesSubplot object at 0x7f139c1bf8d0>
->>> plt.imshow(bm)
-<matplotlib.image.AxesImage object at 0x7f139c9e24e0>
->>> plt.subplot(2,2,2)
-<matplotlib.axes.AxesSubplot object at 0x7f139be4f748>
->>> plt.imshow(bmB)
-<matplotlib.image.AxesImage object at 0x7f139c2aa7b8>
->>> plt.subplot(2,2,3)
-<matplotlib.axes.AxesSubplot object at 0x7f139c9bcd30>
->>> plt.imshow(bmB2)
-<matplotlib.image.AxesImage object at 0x7f139c2aae48>
->>> plt.subplot(2,2,4)
-<matplotlib.axes.AxesSubplot object at 0x7f139c9c2518>
->>> plt.imshow(bmB3)
-<matplotlib.image.AxesImage object at 0x7f139be6d860>
+<matplotlib.image.AxesImage object at 0x7fc47f047780>
 >>> plt.show()
 
-###################### Filters ##################
-# Also played with other filters
-# None worked.
-
-import scipy.ndimage
-
-# Gaussian
->>> gaussian_mc = scipy.ndimage.gaussian_filter(mc, sigma = 2)
-# Median
->>> median_mc = scipy.ndimage.median_filter(mc,3)
-# Sharpen
->>> filter_gaussian = scipy.ndimage.gaussian_filter(gaussian_mc, 1)
->>> sharpen_mc = gaussian_mc + 10*(gaussian_mc - filter_gaussian)
-# DoG
->>> gaussian2_mc = scipy.ndimage.gaussian_filter(mc, sigma= 2)
->>> gaussian1_mc = scipy.ndimage.gaussian_filter(mc, sigma= 1)
->>> gaussiandiff_mc = gaussian2_mc-gaussian1_mc
-# Plot
+# No normalization
 >>> plt.subplot(2,2,1)
-<matplotlib.axes.AxesSubplot object at 0x7f139c9e7f60>
->>> plt.imshow(gaussian_mc)
-<matplotlib.image.AxesImage object at 0x7f13a5a8cb70>
+<matplotlib.axes.AxesSubplot object at 0x7fc47f8da6d8>
+>>> plt.title("Normal Microcalcifications")
+<matplotlib.text.Text object at 0x7fc47f6f7cf8>
+>>> plt.imshow(mc,vmin=0,vmax=255)
+<matplotlib.image.AxesImage object at 0x7fc47f7677f0>
 >>> plt.subplot(2,2,2)
-<matplotlib.axes.AxesSubplot object at 0x7f139be7a048>
->>> plt.imshow(median_mc)
-<matplotlib.image.AxesImage object at 0x7f139be7a3c8>
+<matplotlib.axes.AxesSubplot object at 0x7fc47f7677b8>
+>>> plt.title("Mean Background Reduction")
+<matplotlib.text.Text object at 0x7fc47f0cb5f8>
+>>> plt.imshow(mcB,vmin=0,vmax=255)
+<matplotlib.image.AxesImage object at 0x7fc47f767e48>
 >>> plt.subplot(2,2,3)
-<matplotlib.axes.AxesSubplot object at 0x7f139c0e74a8>
->>> plt.imshow(sharpen_mc)
-<matplotlib.image.AxesImage object at 0x7f139c0e7320>
+<matplotlib.axes.AxesSubplot object at 0x7fc47f7a8208>
+>>> plt.title("Half Mean Background Reduction")
+<matplotlib.text.Text object at 0x7fc47f139198>
+>>> plt.imshow(mcB2,vmin=0,vmax=255)
+<matplotlib.image.AxesImage object at 0x7fc47f7a82b0>
 >>> plt.subplot(2,2,4)
-<matplotlib.axes.AxesSubplot object at 0x7f139c0d0198>
->>> plt.imshow(gaussiandiff_mc)
-<matplotlib.image.AxesImage object at 0x7f139bd3a470>
+<matplotlib.axes.AxesSubplot object at 0x7fc47f73f630>
+>>> plt.title("Background Reduction wo substract")
+<matplotlib.text.Text object at 0x7fc47f7a27b8>
+>>> plt.imshow(mcB3,vmin=0,vmax=255)
+<matplotlib.image.AxesImage object at 0x7fc47f1160f0>
 >>> plt.show()
 
+# Histogram Equalization
+# Code taken from: http://stackoverflow.com/questions/28518684/histogram-equalization-of-grayscale-images-with-numpy
+>>> imhist,bins = np.histogram(mc.flatten(), 256 ,normed=True)
+>>> cdf = imhist.cumsum()
+>>> cdf = 255 * cdf / cdf[-1] #normalize
+>>> im2 = np.interp(mc.flatten(),bins[:-1],cdf)
+>>> mcH = im2.reshape(mc.shape)
+>>> scipy.misc.imsave("mcH.png",mcH)
+>>> imhist,bins = np.histogram(mass.flatten(), 256 ,normed=True)
+>>> cdf = imhist.cumsum()
+>>> cdf = 255 * cdf / cdf[-1] #normalize
+>>> im2 = np.interp(mass.flatten(),bins[:-1],cdf)
+>>> massH = im2.reshape(mass.shape)
+>>> scipy.misc.imsave("massH.png", massH)
 
-# matshow vs imshow. Matshow to actually see the values with no interpolation or weird things (not quite so). 
-#Don't know why the bm with a white arrow looks different than with a black arrow. Values are the same, other than the arrow.
+# Normal vs Normalized/Constrast Stretching vs Contrast Stretching plus Background Reduction vs Histogram Equalization
+>>> plt.subplot(2,2,1)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f0204e0>
+>>> plt.imshow(mass, vmin= 0, vmax = 255)
+<matplotlib.image.AxesImage object at 0x7fc47f0eafd0>
+>>> plt.title("No preprocessing")
+<matplotlib.text.Text object at 0x7fc47f0f9160>
+>>> plt.subplot(2,2,2)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f8aeb00>
+>>> plt.title("Normalized image")
+<matplotlib.text.Text object at 0x7fc47f0b4048>
+>>> plt.imshow(mass)
+<matplotlib.image.AxesImage object at 0x7fc47f850c88>
+>>> plt.subplot(2,2,3)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f850198>
+>>> plt.title("Background Reduction + Norm")
+<matplotlib.text.Text object at 0x7fc47f081eb8>
+>>> plt.imshow(massB)
+<matplotlib.image.AxesImage object at 0x7fc47f767630>
+>>> plt.subplot(2,2,4)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f767ba8>
+>>> plt.title("Histogram Equalization")
+<matplotlib.text.Text object at 0x7fc47f110278>
+>>> plt.imshow(massH, vmin= 0, vmax = 255)
+<matplotlib.image.AxesImage object at 0x7fc47f83be48>
+>>> plt.show()
 
-mc = scipy.misc.imread("breastMicrocalcification.png")
-mc = mc[:,:,0]
-mcB = scipy.misc.imread("breastMicrocalcification.png")
-mcB = mcB[:,:,0]
-mcB[mcB < 50] = 0
-plt.subplot(2,2,1)
-plt.imshow(mc)
-plt.subplot(2,2,2)
-plt.imshow(mcB)
-plt.subplot(2,2,3)
-plt.imshow(mc, vmin = 40, vmax = 200)
-plt.subplot(2,2,4)
-plt.imshow(mcB, vmin = 40, vmax = 200)
-plt.show()
-
-# And for masses
-bm = scipy.misc.imread("breastMass.png")
-bm = bm[:,:,0]
-bmB = scipy.misc.imread("breastMass.png")
-bmB = bmB[:,:,0]
-bmB[bmB < 50] = 0
-plt.subplot(2,2,1)
-plt.imshow(bm)
-plt.subplot(2,2,2)
-plt.imshow(bmB)
-plt.subplot(2,2,3)
-plt.imshow(bm, vmin = 40, vmax = 200)
-plt.subplot(2,2,4)
-plt.imshow(bmB, vmin = 40, vmax = 200)
-plt.show()
-#same for bm2 and bm3
-
-
-
-
-
-
+>>> plt.show()
+>>> plt.subplot(2,2,1)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f73f9b0>
+>>> plt.imshow(mc, vmin= 0, vmax = 255)
+<matplotlib.image.AxesImage object at 0x7fc47f7f69b0>
+>>> plt.title("No preprocessing")
+<matplotlib.text.Text object at 0x7fc47f006ef0>
+>>> plt.subplot(2,2,2)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f7074e0>
+>>> plt.imshow(mc)
+<matplotlib.image.AxesImage object at 0x7fc47f707cc0>
+>>> plt.title("Normalized image")
+<matplotlib.text.Text object at 0x7fc47f8e2828>
+>>> plt.subplot(2,2,3)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f8b6828>
+>>> plt.title("Background Reduction + Norm")
+<matplotlib.text.Text object at 0x7fc47f8c9550>
+>>> plt.imshow(mcB)
+<matplotlib.image.AxesImage object at 0x7fc47ee3bc88>
+>>> plt.subplot(2,2,4)
+<matplotlib.axes.AxesSubplot object at 0x7fc47ee3b908>
+>>> plt.title("Histogram Equalization")
+<matplotlib.text.Text object at 0x7fc47f7f7d68>
+>>> plt.imshow(mcH, vmin= 0, vmax = 255)
+<matplotlib.image.AxesImage object at 0x7fc47f7eef28>
+>>> plt.show()
