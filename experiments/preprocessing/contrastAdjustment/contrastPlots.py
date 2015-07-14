@@ -1,4 +1,4 @@
-# Summary: Use normalization or background reduction plus normalization= contrast stretchin with vmin = mean(image).
+# Summary: Use background reduction plus normalization or simple normalization.
 
 import scipy.misc
 import matplotlib.pyplot as plt
@@ -192,7 +192,6 @@ import numpy as np
 <matplotlib.image.AxesImage object at 0x7fc47f83be48>
 >>> plt.show()
 
->>> plt.show()
 >>> plt.subplot(2,2,1)
 <matplotlib.axes.AxesSubplot object at 0x7fc47f73f9b0>
 >>> plt.imshow(mc, vmin= 0, vmax = 255)
@@ -218,3 +217,31 @@ import numpy as np
 >>> plt.imshow(mcH, vmin= 0, vmax = 255)
 <matplotlib.image.AxesImage object at 0x7fc47f7eef28>
 >>> plt.show()
+
+# No interpolation
+>>> plt.subplot(2,2,1)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f73f9b0>
+>>> plt.imshow(mc, vmin= 0, vmax = 255, interpolation = "none")
+<matplotlib.image.AxesImage object at 0x7fc47f7f69b0>
+>>> plt.title("No preprocessing")
+<matplotlib.text.Text object at 0x7fc47f006ef0>
+>>> plt.subplot(2,2,2)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f7074e0>
+>>> plt.imshow(mc, interpolation = "none")
+<matplotlib.image.AxesImage object at 0x7fc47f707cc0>
+>>> plt.title("Normalized image")
+<matplotlib.text.Text object at 0x7fc47f8e2828>
+>>> plt.subplot(2,2,3)
+<matplotlib.axes.AxesSubplot object at 0x7fc47f8b6828>
+>>> plt.title("Background Reduction + Norm")
+<matplotlib.text.Text object at 0x7fc47f8c9550>
+>>> plt.imshow(mcB, interpolation = "none")
+<matplotlib.image.AxesImage object at 0x7fc47ee3bc88>
+>>> plt.subplot(2,2,4)
+<matplotlib.axes.AxesSubplot object at 0x7fc47ee3b908>
+>>> plt.title("Histogram Equalization")
+<matplotlib.text.Text object at 0x7fc47f7f7d68>
+>>> plt.imshow(mcH, vmin= 0, vmax = 255, interpolation = "none")
+<matplotlib.image.AxesImage object at 0x7fc47f7eef28>
+>>> plt.show()
+

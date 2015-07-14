@@ -1,5 +1,5 @@
 # Summary: Use some level of contrast adjustment, either mean or half the mean.
-# Anything else will robably be unnecesary, plus most times raw data is feeded to
+# Anything else will probably be unnecesary, plus most times raw data is feeded to
 # the network and it still works. I do believe contrast will help, though because 
 # otherwise the background mix with the image and features are harder to pick.
 # Plus, it is common practie in radiology.
