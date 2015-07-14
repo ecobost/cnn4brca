@@ -9,7 +9,7 @@ Log with activities and questions arising during every week
 * Document decisions on how to crop big images.
 
 ### To do
-* 
+* Ask for institutional email.
 
 ### Questions
 1.

@@ -10,6 +10,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{verbatim}
+\usepackage{graphicx}
 
 \begin{document}
 	\part{Methods}
@@ -63,6 +64,7 @@ show that 'this combination of clinical data and image descriptors is advantageo
 
 	\subsection{BCDR-DM}
 	Files and how are they organized. Data available per case and per mammogram. How are boundaries written. formats, etc.
+	159 calcifications, 36 micro, 11 micro+calcif, thus 108 micro or calcif. 106 nodule, 20 nodule+ calcific, 11 nodule + micro
 
 	\subsection{Image retrieval}
 	\input{imageRetrieval}
@@ -70,7 +72,6 @@ show that 'this combination of clinical data and image descriptors is advantageo
 	\subsection{Retrieval software}
 Developed in Python, named..... Does this and that. I would store all smaller images from the same in a matrix with the same name as the image where they came from. Maybe also preserve the same folder architecture.
 Make another tool to put it in Caffe style
-
 %IN methodology write a section called operationalization were i explain how the problem is reduced to a clsssification task(what are the labels and how the images are cropped and what are the performance metrics). Maybe label a region as a mass or microclacification if most of the mass or microcalc is in inside the image (either 50% of the image is the mass or x% of the mass is inside the image). If it's halfway into the image that means the middle pixel ought to be a lession. Or maybe just take a 2x2 middle square and if the lesion surrounds that then say the entire image is a lession(con: if the lession is small and is in the perimeter of the region it wll not be detected as a lession so it is not translation nvariant, a cluster on the lower corner will not be identified as a true microcalcification, also when rotating it, the 2x2 square may not longer hold the microcalcification). labellling only when it apprears in the middel sounds good for detection purposes. although doing like a convolution to select different images acts as data ugmentation with translation invariance:
 %1. Segment with a 0.2 mm stride,
 %2. Put positive label if the lession is inside the middle of the image. Also, preserve which kind of lession it is and benign malignant.
@@ -80,10 +81,16 @@ Make another tool to put it in Caffe style
 %6. Report results for this patches(could report average of 8 differnet rotations and mirrors), plus images of entire mammography(only for the center of the image or with big zero padding).
 
 
+
+
+
 %************************** New section *******************************
 
 	\section{Training}
 	Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
+
+	\subsection{Dataset}
+	We have x number of images with x positives and negatives. Resunmied in Table...
 
 	\subsection{Hardware}
 	Computational resources:
@@ -101,21 +108,27 @@ Make another tool to put it in Caffe style
 	384 will have to do.
 	\end{table}
 
+	\subsection{Software}
+	Caffe
+
 	\subsection{Architectures}
 	Write/Draw here the considered architectures.
 
-	I choose that.
+	I choose that one. Maybe add one like this ((conv-> relu)*2 -> POOL)*3, try bigger input sizes (spatial resolution is not good)
 
 	\subsection{Convolutional network}
 	The network could be slided across an image. Options: (1) a network for detection of microcalcification and one for masses (and slide both across and plot their results with differerent colors) (2) a network for diagnosis of microcalc and one for masses(slide them both) and (3) one that detects micro+mass vs non-lession (stanford guys did bad with this one) and (4) one that detects any lession(micro+mass+other) vs no lession and (5) one that also detects more than one network but has multiple output.
-	
+
+	\subsection{Evaluation}
+We used x and x metric.
+
+	Question: Should I test on all possible data augmentations and average the results or just on the simple ones?.	
 	Questions: how to deal with corners of images when presenting results, maybe not that important. Try extreme padding or just leaving it there.
 
-	Questions: Should I only use images from digital mammograms. Is there enough. Or maybe only use digital for testing (train on the ones who are harder: digitized and test on digital only).
+	Present the normal mammogram on the left and the output on the right.
 
-	Questions: If i choose to go with simple networks, start with microcalcifications or masses. which one is more useful (apparently masses).
-
-
+	Does it matter to test with images from the same patient (for example if i shuffle the entire trainng set, or should i keep all images from a patient in the same part of the training/testing division)
+	
 
 	\part{Experiments}
 	\section{Image retrieval}
