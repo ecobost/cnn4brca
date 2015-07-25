@@ -1,0 +1,29 @@
+Pseudocode:
+1. Crate subfolder massPatches/ .pch (or mccPatches/)
+2. Calculate how many pixels are 2cm and how many are 0.1mm
+3. For each image:
+4. 	For each image patch cut the big image and send each patch to preprocesssing, receive and save it:
+5. 		Preprocesing: delete blacks(25% or more black), enhance
+6.		Assign label
+7.		Reduce
+8.		save (patch, label) per image on 3-d matrix
+9.	Accumulate the mean and std of patch values in image so that we can normalize per feature on entire database. Runing average.
+10.	save 3-d .pch on disk.
+11.Save the mean and std of all images on disk (for later normalization of test and entire mammogram).
+==> Maybe later (during training), that way I can use the same.pchs to see if the normalization changes something.
+1. Normalize per feature on entire database (have to go over all 3-d .pchs). NO, I have to left the test aside (maybe use different folders).
+2. Augment
+
+# how to test on entire mammogram?. 
+1. Load mammogram/create subfolder /evals, for each mammogram: load
+2. Create a matrix of same size set all to 0.
+3. Calculate how many pixels are 2cm and the stride(1 or 3).
+4. For each patch:
+5.	Crop patch x, preprocess and reduce
+6.(Opt)	Normalize (with training values) and augment x
+7. 	Obtain prob p= h(x) of the patch
+8.	Assign p to a 3,3 square at the center of the patch. Sum, don't override.
+9. Divide everything by 9 (to normalize) or 9*8 = 72 (if augmentations). Problem: in the very border they have value 0 but after that there is some spaces which only have 1 or 2 values. (maybe not that important, those could be considered part f the border)
+10. Save new matrix as image (same size of mammogram and all evals are there).
+
+# On normal (unpreprocessed mammograms) I can giv ethe network the entire mamogram and it will produce a heatmap. But as the preprocessing is local to each patch then i would  need to apply the convnet manually.

@@ -1,6 +1,7 @@
 TO DO:
-% Train a simple convolutional
-% Train one with bells and whistles(choosen by heart) (threshold moving)
+% Train a simple convolutional (validate lambda)
+% Train one with bells and whistles(choosen by heart) (threshold moving)  (validate lambda and alpha)
+% Test different configurations (normalizations, bigger smaller input, etc)
 % Choose better hyperparameters (threshold moving)
 % Unbalanced datasets (data replication, threshold moving)
 % For final model, use both(only convolutions and conv&pool)
