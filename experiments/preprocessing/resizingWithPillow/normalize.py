@@ -1,3 +1,5 @@
+# Written by: Erick Cobos (a01184587@itesm.mx)
+# Date: 25-Jul-2016
 def adjustContrast(array, newMax = 255):
 	"""
 	Performs background reduction by substracting the mean of the image and
@@ -12,8 +14,8 @@ def adjustContrast(array, newMax = 255):
 		A numpy 2-dimensional array containing the image
 
 	newMax: int, float
-		Number of intensity values to have after constrast stretching. Could
-		also be 1.
+		Number of intensity values to have after constrast stretching.
+		Could also be 1.
 
 	Returns
 	-----------------
