@@ -20,9 +20,9 @@ To obtain the image patches from the entire mammogram we slide a square window a
 An alternative is to sample the desired number of image patches at random positions from the mammograms.
 
 \paragraph{Stride}
-We chose a stride of 1 mm for the microcalcifications case and 2 mm for breast masses. This is midway between a very small stride, say 0.05 mm, which produces many image patches with maximum overlapping and big strides, say 1 cm, which produces fewer patches with little to no overlapping. We use a rather small stride to have a lesion appear in various image patches (although in a slightly different place in each one) and to produce a good number of patches from the original image. We use no padding.
+We chose a stride of 3 mm. This is midway between a very small stride, say 0.05 mm, which produces many image patches with maximum overlapping and a big stride, say 1 cm, which produces fewer patches with little to no overlapping. We use a rather small stride to have a lesion appear in various image patches (although in a slightly different place in each one) and to produce a good number of patches from the original image (around 1K per mammogram). We use no padding.
 
-When sliding the window starting from the upper left corner of the original image it is possible that due to a dimension mismatch pixels in the rightmost and bottom strips do not appear in any image patch, this is not a problem given that the lost strips are very thin ($<$ 1 mm for microcalcifications or  $<$ 2 mm for masses) and they are normally part of the background.
+When sliding the window starting from the upper left corner of the original image it is possible that due to a dimension mismatch pixels in the rightmost and bottom strips do not appear in any image patch, this is not a problem given that the lost strips are very thin ($<$ 3 mm) and they are normally part of the black background.
 
 \paragraph{Background}
 Mammograms capture images of the breast against a black background which covers a good part of the mammogram. We delete any image patch which is 25\% or more black. No important information is lost in this process because the same part of the breast which appears in a deleted patch also appears on other image patches with less black background. A remaining question is how will the trained convolutional network react when presented with an all black input, for example, when slided across the background of a test mammogram. In practice, however, this is not relevant because it is clear that no lesion could occur outside the breast. 
@@ -72,4 +72,4 @@ We have to resize the images to achieve the desired patch size. There is a coupl
 \end{figure}
 
 \paragraph{Storage}
-For each mammogram we will generate a single 3-dimensional matrix ($64 \times 64 \times x$)  containing all $x$ preprocessed patches obtained from the mammogram. This matrix will be stored as a .pch file with the same name and on the same directory as the original image.
+For each mammogram we will generate a 3-dimensional matrix ($x \times 64 \times 64$)  containing all $x$ preprocessed patches obtained from the mammogram and a 2-dimensional matrix ($x \times 4$) containing its respective labels. This matrices will be stored with the same name (plus a suffix) and on the same directory as the original image.

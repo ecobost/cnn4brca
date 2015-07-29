@@ -70,17 +70,8 @@ show that 'this combination of clinical data and image descriptors is advantageo
 	\input{imageRetrieval}
 
 	\subsection{Retrieval software}
-Developed in Python, named..... Does this and that. I would store all smaller images from the same in a matrix with the same name as the image where they came from. Maybe also preserve the same folder architecture.
+Developed in Python, named..... Does this and that. I would store all smaller images from the same in a matrix with the same name as the image where they came from. 
 Make another tool to put it in Caffe style
-%IN methodology write a section called operationalization were i explain how the problem is reduced to a clsssification task(what are the labels and how the images are cropped and what are the performance metrics). Maybe label a region as a mass or microclacification if most of the mass or microcalc is in inside the image (either 50% of the image is the mass or x% of the mass is inside the image). If it's halfway into the image that means the middle pixel ought to be a lession. Or maybe just take a 2x2 middle square and if the lesion surrounds that then say the entire image is a lession(con: if the lession is small and is in the perimeter of the region it wll not be detected as a lession so it is not translation nvariant, a cluster on the lower corner will not be identified as a true microcalcification, also when rotating it, the 2x2 square may not longer hold the microcalcification). labellling only when it apprears in the middel sounds good for detection purposes. although doing like a convolution to select different images acts as data ugmentation with translation invariance:
-%1. Segment with a 0.2 mm stride,
-%2. Put positive label if the lession is inside the middle of the image. Also, preserve which kind of lession it is and benign malignant.
-%3. Delete those that are all black
-%4. Repeat for the rotations of each image. and the mirrors: data ugmentation
-%5. Lession vs non-lession.
-%6. Report results for this patches(could report average of 8 differnet rotations and mirrors), plus images of entire mammography(only for the center of the image or with big zero padding).
-
-
 
 
 
@@ -96,9 +87,9 @@ Make another tool to put it in Caffe style
 	Computational resources:
 	\begin{table}[h]
 		\begin{tabular}{cp{4cm}cp{2.5cm}p{1.7cm}c}
-		PC 	& GPU 						& RAM 	& CPU 				& HD 					& \#\\
+		PC	& GPU	& RAM	& CPU	& HD	& \# \\
 		\hline
-		A4-401	& Nvidia Quadro K620\newline 384 cores \newline 2GB 29 GB/s 128-bit	& 8 GB 	& i5-4570\newline  3.2GHz x ?(1) & 230 GB\newline free 100\newline ubuntu ? & 27\\
+		A4-401	& Nvidia Quadro K620\newline 384 cores\newline 2GB 29 GB/s 128-bit	& 8 GB	& i5-4570\newline  3.2GHz x ?(1) & 230 GB\newline free 100\newline ubuntu ?	& 27\\
 		Mine	& Nvidia NVS 5400M\newline 96 cores \newline 2GB 29 GB/s(?) 128-bit	& 4 GB 	& i5-3210M\newline 2.50GHz x 4	& 320 GB \newline free 200\newline ubuntu 56 & 1 \\
 % A4-404	& Nvidia Quadro FX580 \newline 32 cores (0.5GB)	& 6 GB 	& Xeon W3503\newline 2.4GHz x ?(1) & 200 GB\newline free 100\newline ubuntu ? & 15
 % Khrizhevsky uses a NVIDIA "GeForce GTX-580 3GB"(has 512 cores, 192 GB/s)
@@ -116,7 +107,7 @@ Make another tool to put it in Caffe style
 
 	I choose that one. Maybe add one like this ((conv-> relu)*2 -> POOL)*3, try bigger input sizes (spatial resolution is not good)
 
-	\subsection{Convolutional network}
+	\subsection{Task, detection vs diagnosis masses or microcalcifications.}
 	The network could be slided across an image. Options: (1) a network for detection of microcalcification and one for masses (and slide both across and plot their results with differerent colors) (2) a network for diagnosis of microcalc and one for masses(slide them both) and (3) one that detects micro+mass vs non-lession (stanford guys did bad with this one) and (4) one that detects any lession(micro+mass+other) vs no lession and (5) one that also detects more than one network but has multiple output.
 
 	\subsection{Evaluation}

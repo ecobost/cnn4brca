@@ -2,7 +2,7 @@
 # Date: 27-Jul-2015
 '''
 Methods to generate small image patches from full mammograms. Justification for most decisions taken are provided in the thesis. Run as:
-	python3 retrieval
+	python3 retrieval.py
 
 Methods createMassPatches and createMCCPatches could also be used independently.
 
@@ -10,12 +10,14 @@ Configuration params
 -----------------
 _path: string
 	Directory containing the mammograms. Default: .
-_recursive: boolean (!Not yet working)
+_recursive: boolean (!Not working)
 	Whether folders in the directory should also be explored. Default: False
 _ext: string
 	Image extension of the mammograms. Default: .jpg
-_extOut: string
-	Extension of the patches file. Default: .pch
+_patchSuffix: string
+	String to attach at the end of the patches file name. Default: _pch
+_labelSuffix: string
+	String to attach at the end of the labels file name. Default: _lbl
 _originalPixelSize: float
 	Pixel size in mm of the mammograms. Default: 0.05
 _patchSizeInPixels: int
@@ -35,13 +37,28 @@ Uses PILLOW 3.0. Will not work with PIL.
 
 Uses 64-bit floats to calculate the mean and variance statistics, 32-bit machines
 may lose precision. Using images with depth 19 or more will cause lose of precision
-when calculating the variance; 8-bit or 16-bit images are alright.
+when calculating the variance; 8-bit or 16-bit images are alright. Variance is not
+a very good approximation; enough for feature scaling, though.
+
+Using very small strides, thus producing many patches per image (over 3K) may cause
+memory bottlenecks
+
+Tests (performed)
+----------------
+	Does not delete or crash if subfolder already exists. It ignores it.
+	It works if there is no images.
+	Overwrites files if they already exist.
+	It deletes patches with more than 25% black.
+	It prints float32 images, float64 stats
+	Mean is quite good, variance is not so. Tried Welford's method, no better.
+	Works with various images
 
 '''
 _path = "."
 _recursive = False
 _ext = ".jpg"
-_extOut = ".pch"
+_patchSuffix = "_pch"
+_labelSuffix = "_lbl"
 _originalPixelSize = 0.05
 _patchSizeInPixels = 127
 _maxBlackAllowed = 0.25
@@ -54,29 +71,33 @@ import scipy.misc
 from PIL import Image
 
 
-def createPatches(patchSizeInMm, stride, subfolder, path = _path, ext = _ext,
-		extOut = _extOut, originalPixelSize = _originalPixelSize,
-		patchSizeInPixels = _patchSizeInPixels,
-		maxBlackAllowed = _maxBlackAllowed, grayValues = _grayValues):
+def createPatches(patchSizeInMm, stride, suffix, path = _path, ext = _ext,
+		patchSuffix = _patchSuffix, labelSuffix = _labelSuffix,
+		originalPixelSize = _originalPixelSize, patchSizeInPixels =
+		_patchSizeInPixels, maxBlackAllowed = _maxBlackAllowed,
+		grayValues = _grayValues):
 	'''
 	Creates smaller images (patches) by sliding a window over big images.
 	
-	Creates a subfolder to store the patches of every image in the path directory. Crops the image according to the patchSize and originalPixelSize. Assigns its respective labels and resizes it to pacthSizeInPixels pixels. Accumulates some overall statistics (mean and var) for feature normalization (later).
+	Creates a subfolder to store the patches of every image in the path directory. Crops the image according to the patchSize and originalPixelSize. Assigns its respective labels and resizes it to pacthSizeInPixels pixels. Accumulates some overall statistics (mean and var) for feature normalization (later). Saves the patches and labels per image and overall statistics on disk.
 	
 	Parameters
 	-------
 	patchSizeInMm: int
 		Desired size of the patch in milimeters.
 	stride: int
-		Amount of space milimeters that the window is moved at each step.
-	subfolder: string
-		Name of the subfolder where the patches are going to be stored.
+		Amount of space (milimeters) that the window is moved at each step..
+	suffix: string
+		Suffix for the folder where the patches are going to be stored and 
+		the mean and variance files.
 	path: string
 		Directory containing the mammograms.
 	ext: string
 		Image extension of the mammograms.
-	extOut: string
-		Extension of the patches file.
+	patchSuffix: string
+		String to attach at the end of the patches file name.
+	labelSuffix: string
+		String to attach at the end of the labels file name.
 	originalPixelSize: float
 		Pixel size in mm of the mammograms.
 	patchSizeInPixels: int
@@ -93,7 +114,8 @@ def createPatches(patchSizeInMm, stride, subfolder, path = _path, ext = _ext,
 
 	# Create subfolder
 	os.chdir(path)
-	os.makedirs(subfolder, exist_ok = True)
+	folderName = "patches" + suffix
+	os.makedirs(folderName, exist_ok = True)
 
 	# Calculate the number of pixels that represent the patch and stride in the 		# original big images.
 	bigPatchSize = round(patchSizeInMm / originalPixelSize)
@@ -170,24 +192,19 @@ def createPatches(patchSizeInMm, stride, subfolder, path = _path, ext = _ext,
 		
 		# Update the overall mean as a running average.
 		tmpSum = np.sum(imagePatches, axis = 0, dtype = np.float64)
-		overallMean = (overallMean * (oldNumberOfPatches / numberOfPatches) 					+ tmpSum / numberOfPatches)
+		overallMean = (overallMean * (oldNumberOfPatches / numberOfPatches)
+				+ tmpSum / numberOfPatches)
 
 		# Update the overall variance as a running average. Not exact because
 		# the mean is only an approximation up to this point.
 		tmpSum = np.sum( (imagePatches - overallMean) ** 2, axis = 0,
 				dtype = np.float64)
-		overallVar = (overallVar * (oldNumberOfPatches / numberOfPatches) 
+		overallVar = (overallVar * (oldNumberOfPatches / numberOfPatches)
 				+ tmpSum / numberOfPatches)
 
-#TODO Still don't like the accuracy. Compare with Welford method (https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance). Use 4 images and see which one gives a more exact approx to the real var.
-
-
 		# Save image patches and labels to subfolder.
-		np.save(subfolder + "/" + fileName + "_pch", imagePatches)
-		np.save(subfolder + "/" + fileName + ".lbl", imageLabels)
-#TODO: extOut, maybe let it as .npy or extOut.npy. Waht about extension for labels. add _labelSuffix = "L". 
-# mammogram4.pch.npy or mammogram4_pch.npy or mammogram4.npy
-# if i say glob(.npy) it wil be hard to get both npy and L, it may be that some pictures are named_L. Maybe it is better to put another extension because it is easier to do pattern matchiong.
+		np.save(folderName + "/" + fileName + patchSuffix, imagePatches)
+		np.save(folderName + "/" + fileName + labelSuffix, imageLabels)
 	
 		# Print a signal (.) to show that it is still running
 		print('.', end = "", flush = True)
@@ -195,8 +212,8 @@ def createPatches(patchSizeInMm, stride, subfolder, path = _path, ext = _ext,
 	# Recursivity: END here.
 
 	# Save statistics(mean and var)
-	np.save("overallMean", overallMean)
-	np.save("overallVar", overallVar)
+	np.save("mean" + suffix, overallMean)
+	np.save("var" + suffix, overallVar)
 	
 	# Print some statistics
 	print("\nPatches were succesfully generated!")
@@ -258,22 +275,26 @@ def adjustContrast(array, newMax):
 
 
 # Utilities to create mass and mcc patches
-def createMassPatches(patchSizeInMm = 20, stride = 2, subfolder = "massPatches"):
+def createMassPatches(patchSizeInMm = 20, stride = 3, suffix = "_mass"):
 	'''
 	Calls createPatches with the default values for mass. It can be simply called as createMassPatches().
 
 	Parameters are documented in help(createPatches).
 	'''
-	createPatches(patchSizeInMm, stride, subfolder)
+	print("Generating patches for masses (20 mm, stride 3 mm)")
+	createPatches(patchSizeInMm, stride, suffix)
+	print("-------------------------------")
 
 
-def createMCCPatches(patchSizeInMm = 10, stride = 1, subfolder = "mccPatches"):
+def createMCCPatches(patchSizeInMm = 10, stride = 3, suffix = "_mcc"):
 	'''
 	Calls createPatches with the default values for microcalcification clusters. It can be simply called as createMCCPatches().
 
 	Parameters are documented in help(createPatches).
 	'''
-	createPatches(patchSizeInMm, stride, subfolder)
+	print("Generating patches for microcalcifications (10 mm, stride 3 mm)")
+	createPatches(patchSizeInMm, stride, suffix)
+	print("-------------------------------")
 
 
 
@@ -282,19 +303,6 @@ if __name__ == "__main__":
 	createMassPatches()
 	createMCCPatches()
 
-# friday 6:55, 2:45
-# Too many patches. May need slightly bigger stride (3 mm will probably do). Need from 500-1000 patches per mamogram. Maybe it's better to generate more than 1000 (small stride) and drop some normal ones to upsample the lessions (Nop, way too many images of the same lession, just translated, overfitting). Maybe put 2mm for microcalc, too.
+# saturday 4:20, 9:05
 # Maybe use uint8/uint16 format instead of float32 for weight.
-# 2234 127x127 patches in uint8 36MB, float32 144MB. Exactly 4 times more.
-'''
-Tests: (already performed)
-	Does not delete or crash if subfolder already exists. It ignores it.
-	Overwrites files if they already exist.
-	It does deletes patches with more than 25% black.
-	It prints format32
-
-Tests (to do):
-	Mean and var work. Errors in the 1*e-5 ratio. 
-	check other online var and mean.
-	Works with various images
-'''
+# Each patch is 66KB. 1K is 65MB. 1M is 64GB.
