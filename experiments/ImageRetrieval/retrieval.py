@@ -260,7 +260,7 @@ def adjustContrast(array, newMax):
 	# To avoid modifying the input array
 	result = array.copy()
 	
-	# Background reduction
+	# Background reduction.
 	image_mean = result.mean()
 	result[result < image_mean] = image_mean;
 
@@ -303,6 +303,5 @@ if __name__ == "__main__":
 	createMassPatches()
 	createMCCPatches()
 
-# saturday 4:20, 9:05
 # Maybe use uint8/uint16 format instead of float32 for weight.
 # Each patch is 66KB. 1K is 65MB. 1M is 64GB.

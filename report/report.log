@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  29 JUL 2015 11:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  31 JUL 2015 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -252,16 +252,18 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+) (./database.tex
+[1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./imageRetrieval.tex
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2])
+(./imageRetrieval.tex
 
 LaTeX Warning: Citation `Lo1998' on page 3 undefined on input line 6.
 
 
 LaTeX Warning: Citation `Sahiner1996' on page 3 undefined on input line 8.
 
-[3] [4] [5] <plots/mcDiffPreprocessings.png, id=128, 863.225pt x 867.24pt>
+[3] [4] [5] <plots/mcDiffPreprocessings.png, id=120, 863.225pt x 867.24pt>
 File: plots/mcDiffPreprocessings.png Graphic file (type png)
 
 <use plots/mcDiffPreprocessings.png>
@@ -280,18 +282,23 @@ Missing character: There is no ° in font cmr10!
 Missing character: There is no Â in font cmr10!
 Missing character: There is no ° in font cmr10!
 [6] [7 <./plots/mcDiffPreprocessings.png>]
-<plots/mcDiffResizings.png, id=146, 822.4326pt x 722.7pt>
+<plots/mcDiffResizings.png, id=138, 822.4326pt x 722.7pt>
 File: plots/mcDiffResizings.png Graphic file (type png)
 
 <use plots/mcDiffResizings.png>
 Package pdftex.def Info: plots/mcDiffResizings.png used on input line 69.
 (pdftex.def)             Requested size: 288.0011pt x 253.08112pt.
 ) [8 <./plots/mcDiffResizings.png>]
-Overfull \hbox (16.33548pt too wide) in paragraph at lines 89--98
+Overfull \hbox (2.1091pt too wide) in paragraph at lines 41--48
 [][] 
  []
 
-[9] (./report.bbl
+[9]
+Overfull \hbox (4.71802pt too wide) in paragraph at lines 79--79
+[]\OT1/cmr/bx/n/14.4 Experiment2: De-tec-tion of masses or some-thing? 
+ []
+
+(./report.bbl
 Missing character: There is no Å in font cmr10!
 Missing character: There is no Ÿ in font cmr10!
 Missing character: There is no Ã in font cmr10!
@@ -309,28 +316,28 @@ Missing character: There is no ³ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no £ in font cmr10!
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 135.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
  [11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 135.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 135.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 135.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 6945638CD701AAC5A9F281304A100C62;954.
+(rerunfilecheck)             Checksum: E88775386CD2C5F894633EDD329E6AF5;863.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 135.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
  ) 
 Here is how much of TeX's memory you used:
- 5485 strings out of 495028
- 80201 string characters out of 6181498
+ 5484 strings out of 495028
+ 80175 string characters out of 6181498
  155271 words of memory out of 5000000
- 8597 multiletter control sequences out of 15000+600000
+ 8595 multiletter control sequences out of 15000+600000
  12817 words of font info for 49 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,10n,28p,999b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,10n,28p,999b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -343,10 +350,10 @@ onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
 0.pfb>
-Output written on report.pdf (11 pages, 768647 bytes).
+Output written on report.pdf (11 pages, 768156 bytes).
 PDF statistics:
- 223 PDF objects out of 1000 (max. 8388607)
- 192 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
- 139 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 184 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 123 words of extra memory for PDF output out of 10000 (max. 10000000)
 
