@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  14 JUL 2015 00:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  4 AUG 2015 17:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -873,7 +873,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [18]) (./convnets4brca.tex [19 <./plots/convNetExample.jpeg>]
 
-Package caption Warning: \label without proper \caption on input line 259.
+Package caption Warning: \label without proper \caption on input line 286.
 See the caption package documentation for explanation.
 
 
@@ -882,7 +882,7 @@ LaTeX Warning: Reference `tab:BrCaConvNetArchitectures' on page 20 undefined on
 
 [20]
 
-Package caption Warning: \label without proper \caption on input line 259.
+Package caption Warning: \label without proper \caption on input line 286.
 See the caption package documentation for explanation.
 
 
@@ -891,7 +891,7 @@ LaTeX Warning: Reference `tab:BrCaConvNetArchitectures' on page 21 undefined on
 
 [21]
 
-Package caption Warning: \label without proper \caption on input line 259.
+Package caption Warning: \label without proper \caption on input line 286.
 See the caption package documentation for explanation.
 
 
@@ -955,7 +955,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--283
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 283--283
-\OT1/cmtt/m/n/10.95 -> [CONV -> RELU -> POOL]*3 ->
+\OT1/cmtt/m/n/10.95 -> [CONV -> RELU -> POOL]*3 -> [FC
  []
 
 
@@ -1021,9 +1021,6 @@ Package rerunfilecheck Info: File `proposal.out' has not changed.
 
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 112.
  ) 
