@@ -21,61 +21,87 @@
 	\input{database}
 
 	\subsection{BCDR-DM}
-	Files and how are they organized. Data available per case and per mammogram. How are boundaries written. formats, etc.
-	159 calcifications, 36 micro, 11 micro+calcif, thus 108 micro or calcif. 106 nodule, 20 nodule+ calcific, 11 nodule + micro
+	Yet to write
+% Files and how are they organized. Data available per case and per mammogram. How are boundaries written. formats, etc.
+% 159 calcifications, 36 micro, 11 micro+calcif, thus 108 micro or calcif. 106 nodule, 20 nodule+ calcific, 11 nodule + micro
 
 	\subsection{Image retrieval}
 	\input{imageRetrieval}
 
 
-
 	\section{Training}
-	Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
+	%Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
 
-	\subsection{Dataset}
-	We have x number of images with x positives and negatives. Resunmied in Table...
+	\subsection{Data set}
+	Yet to write
+%	We have x number of images with x positives and negatives. Resunmied in Table...
 
 	\subsection{Hardware}
-	Training deep neural networks is computationally intensive and requires computers with powerful GPUs. We enlist here the resources available for this thesis.
+	Training deep neural networks is computationally intensive and requires equipment with powerful GPUs. We enlist here the resources available for this thesis.
 	\begin{table}[h]
-		\begin{tabular}{cp{4cm}p{1.7cm}p{2.0cm}cc}
-		PC	& GPU	& HD	& CPU	& RAM	& \# \\
+		\centering
+		\begin{tabular}{cp{3.7cm}p{1.7cm}p{2cm}cc}
 		\hline
+		\textbf{PC}	& \textbf{GPU}	& \textbf{HD}	& \textbf{CPU}	& \textbf{RAM}	& \textbf{\#} \\
+		\hline
+		Personal	& Nvidia NVS 5400M \newline 2GB 29 GB/s 128-bit \newline 96 cores	& 57 GB \newline (36 free)	& i5-3210M \newline 2.5GHz x 4	& 4 GB	& 1 \\
 		A4-401	& Nvidia Quadro K620 \newline 2GB 29 GB/s 128-bit \newline 384 cores	& 240 GB \newline (230 free)	& i5-4570 \newline  3.2GHz x 4	& 8 GB	& 27\\
-		Mine	& Nvidia NVS 5400M \newline 2GB 29 GB/s 128-bit \newline 96 cores	& 57 GB \newline (36 free)	& i5-3210M \newline 2.5GHz x 4	& 4 GB	& 1 \\
+
 		\hline
 		\end{tabular}
 		\caption{Available hardware for experiments}
 	\end{table}
+	% We did our experiments in x computers from A3-401
 
-	\subsection{Architectures}
-	using som eof the advice of section ... We tailored it down t two architectures: one for input 64 x64 and one for inpout 127 x 127. Both architectures are quite similar other than the first convolutiona layer. We present the architecture for 127.
-	I choose that one. Maybe add one like this ((conv-> relu)*2 -> POOL)*3, try bigger input sizes (spatial resolution is not good)
-127 and 64.
-Itr uses only 3 x3 it is symmetric.
-Depends on the ntry, after first layer everythin is similar.
+	\subsection{Architecture}
+	Using the advice in Section~\ref{subsec:PracticalDL} we decided to use a simple network with six convolutional layers and two fully connected layers with the following architecture:
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{lccccr}
+		\hline
+		\textbf{Layer} & \textbf{Filter} & \textbf{Stride} &\textbf{Pad} & \textbf{Volume} & \textbf{Params} \\
+		\hline
+		\texttt{INPUT}	& -	& - & - & $127 \times 127 \times 1$ & -\\
+		\texttt{CONV -> RELU} & $5 \times 5$ & 2 & 2 & $64 \times 64 \times 64$ & 1\,625\\
+		\texttt{CONV -> RELU} & $3 \times 3$ & 1 & 1 & $64 \times 64 \times 64$ & 36\,928\\
+		\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $32 \times 32 \times 64$ & -\\
+		\texttt{CONV -> RELU} & $3 \times 3$ & 1 & 1 & $32 \times 32 \times 96$ & 55\,392\\
+		\texttt{CONV -> RELU} & $3 \times 3$ & 1 & 1 & $32 \times 32 \times 96$ & 83\,040\\
+		\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $16 \times 16 \times 96$ & -\\
+		\texttt{CONV -> RELU} & $3 \times 3$ & 1 & 1 & $16 \times 16 \times 128$ & 110\,720\\
+		\texttt{CONV -> RELU} & $3 \times 3$ & 1 & 1 & $16 \times 16 \times 128$ & 147\,584\\
+		\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $8 \times 8 \times 128$ & -\\
+		\texttt{FC -> RELU} & $8 \times 8$ & - & - & $1 \times 1 \times 512$ & 4\,194\,816\\
+		\texttt{FC -> SIGMOID} & $1 \times 1$ & - & - & $1 \times 1 \times 1$ & 513 \\
+		\hline
+		\end{tabular}
+		\label{tab:convNetArchitecture}
+		\caption[Selected Convolutional Network Architecture]{Architecture of the network used for experiments. It shows the filter, stride and padding used in each layer as well as the resulting volume and the number of learnable parameters per layer.}
+	\end{table}
+
+	The first convolutional layer uses a $5 \times 5$ filter with stride 2 (padding 2) to reduce the input spatial size from $127 \times 127$ to $64 \times 64$. After that all filters are $3 \times 3$ with stride 1 (padding 1), which preserves the spatial size and the pooling is $2\times 2$ stride 2 (padding 0) which reduces the spatial size by a half. This architecture has 4.63 million learnable parameters. 
+
+	In case the input was size $64 \times 64$ pixels we could replace use a $3 \times 3$ filter with stride 1 in the first convolutional layer and leave everything else unchanged. For an all convolutional architecture we could replace all pooling layers by a $5 \times 5$ filter  with stride 2 and use input images of size of $113 \times 113$ or $129 \times 129$.
 
 	\subsection{Evaluation}
-	We use this divisions, we divide per patient or per image (?)
-We used x and x metric.
+	When dividing the data set we make sure \textit{all} image patches obtained from the same patient are assigned to either the training set or test set (not distributed) to avoid any possible overfit to the test set. Given that our data is unbalanced, with far more negative than positive examples, we use PRAUC (see Section~\ref{subsec:Classification}) to choose between models for hyperparameter selection and as an overall performance metric. Other metrics are also reported for completeness. 
 
-	Question: Should I test on all possible data augmentations and average the results or just on the simple ones?.	
-	Questions: how to deal with corners of images when presenting results, maybe not that important. Try mean padding there or just leaving it there and presnt as black (for no prediction), or maybe present the mammogram without the corners and our rpedictions there too.
+	We could also evaluate the network on all augmentations of an image and output the average prediction; in theory, this would give us better results. For simplicity, we do not apply it for model selection.
 
-	Present the normal mammogram on the left and the output on the right.
-
-	Does it matter to test with images from the same patient (for example if i shuffle the entire trainng set, or should i keep all images from a patient in the same part of the training/testing division)
-% ROCKIT for ROC curves.
+	For detection of lesions on entire mammograms we slide the trained convolutional network across the mammogram computing a per-pixel prediction. The generated heatmap preserves the size of the original mammogram (with some zero-padding) and can be presented side to side to the original mammogram as a CAD system. In case this heatmap is noisy (predictions changes abruptly from pixel to pixel) we could use a median or gaussian filter to smooth it out.% We do not evaluate the network on the entire mammogram (or per patient), we limit ourselves to show the results.
 
 	\subsection{Software}
-	Tools developed in Python mostly and used Caffe software (cite Berkelye Lab) for the actual trainig of the netwroks. 
-	
+	We use Caffe~\cite{Jia2014} to train the networks and Python to develop any other tools (image retrieval and augmentation, model evaluation, figure generation, etc.).
+
+
+
+
 
 	\part{Experiments}
 	\section{Experiment 1: detection vs diagnosis masses or microcalcifications.}
 %Choose what is this experiment: The network could be slided across an image. Options: (1) a network for detection of microcalcification and one for masses (and slide both across and plot their results with differerent colors) (2) a network for diagnosis of microcalc and one for masses(slide them both) and (3) one that detects micro+mass vs non-lession (stanford guys did bad with this one) and (4) one that detects any lession(micro+mass+other) vs no lession and (5) one that also detects more than one network but has multiple output. 
-
 	Task selected. Architecture selected. Hyperparameters selected. results and discussion.
+
 	\section{Experiment2: Detection of masses or something?}
 	
 
