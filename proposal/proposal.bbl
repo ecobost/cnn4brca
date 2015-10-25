@@ -228,6 +228,12 @@ Ng, A. (2014).
 \newblock online.
 \newblock Available on \url{coursera.org/course/ml}.
 
+\bibitem[Oeffinger et~al., 2015]{Oeffinger2015}
+Oeffinger, K.~C., Fontham, E.~T., Etzioni, R., and et~al (2015).
+\newblock Breast cancer screening for women at average risk: 2015 guideline
+  update from the american cancer society.
+\newblock {\em JAMA}, 314(15):1599--1614.
+
 \bibitem[\"{O}zg\"{u}r et~al., 2005]{Ozgur2005}
 \"{O}zg\"{u}r, A., \"{O}zg\"{u}r, L., and G\"{u}ng\"{o}r, T. (2005).
 \newblock Text categorization with class-based and corpus-based keyword
@@ -237,10 +243,9 @@ Ng, A. (2014).
   Springer-Verlag.
 
 \bibitem[Pisano et~al., 2008]{Pisano2008}
-Pisano, E.~D., Hendrick, R.~E., Yaffe, M.~J., Baum, J.~K., Acharyya, S.,
-  Cormack, J.~B., Hanna, L.~A., Conant, E.~F., Fajardo, L.~L., Bassett, L.~W.,
-  D'Orsi, C.~J., Jong, R.~A., Rebner, M., Tosteson, A. N.~A., and Gatsonis,
-  C.~A. (2008).
+Pisano, E.~D., Hendrick, R., Yaffe, M.~J., Baum, J.~K., Acharyya, S., Cormack,
+  J.~B., Hanna, L.~A., Conant, E.~F., Fajardo, L.~L., Bassett, L.~W., D'Orsi,
+  C.~J., Jong, R.~A., Rebner, M., Tosteson, A.~N., and Gatsonis, C.~A. (2008).
 \newblock Diagnostic accuracy of digital versus film mammography: Exploratory
   analysis of selected population subgroups in {DMIST}.
 \newblock {\em Radiology}, 246(2):376--383.

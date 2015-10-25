@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  4 AUG 2015 17:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 OCT 2015 00:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**proposal
+**proposal.tex
 (./proposal.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -759,13 +759,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.16 
-      [1]) (./problem.texpdfTeX warning (ext4): destination with the same ident
-ifier (name{page.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.2 
-     [2]
+l.17 
+      [1]) (./problem.tex
 Underfull \hbox (badness 1490) in paragraph at lines 3--4
 \OT1/cmr/m/n/10.95 by ra-di-ol-o-gists to search for early signs of can-cer suc
 h as tu-mors or mi-cro-cal-ci-fi-
@@ -777,101 +772,102 @@ Underfull \hbox (badness 1107) in paragraph at lines 3--4
  a screen-ing mam-mo-
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.15 	\item A
-             s it is a complex system with different subsystems involved man...
-[3]) (./objectives.tex) (./hypotheses.tex [4]) [5] (./breastcancer.tex
-<plots/breastAnatomy.png, id=184, 419.5675pt x 454.69875pt>
+l.4 
+     [2]pdfTeX warning (ext4): destination with the same identifier (name{page.
+3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.17 \end{itemize}
+                   [3]) (./objectives.tex) (./hypotheses.tex [4])
+(./breastcancer.tex [5]
+<plots/breastAnatomy.png, id=186, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
 Package pdftex.def Info: plots/breastAnatomy.png used on input line 7.
 (pdftex.def)             Requested size: 154.85547pt x 167.81961pt.
- [6 <./plots/breastAnatomy.png>]
-<plots/normalMammogram.jpg, id=194, 2569.6pt x 3340.48pt>
+
+<plots/normalMammogram.jpg, id=189, 2569.6pt x 3340.48pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
-Package pdftex.def Info: plots/normalMammogram.jpg used on input line 18.
+Package pdftex.def Info: plots/normalMammogram.jpg used on input line 19.
 (pdftex.def)             Requested size: 110.60912pt x 143.79076pt.
-
-<plots/breastMicrocalcification.jpg, id=199, 338.26375pt x 338.26375pt>
-File: plots/breastMicrocalcification.jpg Graphic file (type jpg)
-
-<use plots/breastMicrocalcification.jpg>
-Package pdftex.def Info: plots/breastMicrocalcification.jpg used on input line 
-30.
-(pdftex.def)             Requested size: 110.60912pt x 110.61057pt.
-
-<plots/breastMass.jpg, id=200, 430.60875pt x 431.6125pt>
-File: plots/breastMass.jpg Graphic file (type jpg)
-
-<use plots/breastMass.jpg>
-Package pdftex.def Info: plots/breastMass.jpg used on input line 34.
-(pdftex.def)             Requested size: 110.60912pt x 110.86649pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <./plots/normalMammogram.jpg>]) (./classification.tex [8 <./plots/breastMicr
-ocalcification.jpg> <./plots/breastMass.jpg>] [9] [10]
-<plots/AUCandPRAUC.png, id=251, 972.63374pt x 425.59pt>
+[6 <./plots/breastAnatomy.png>]
+<plots/breastMicrocalcification.jpg, id=202, 338.26375pt x 338.26375pt>
+File: plots/breastMicrocalcification.jpg Graphic file (type jpg)
+
+<use plots/breastMicrocalcification.jpg>
+Package pdftex.def Info: plots/breastMicrocalcification.jpg used on input line 
+31.
+(pdftex.def)             Requested size: 110.60912pt x 110.61057pt.
+
+<plots/breastMass.jpg, id=203, 430.60875pt x 431.6125pt>
+File: plots/breastMass.jpg Graphic file (type jpg)
+
+<use plots/breastMass.jpg>
+Package pdftex.def Info: plots/breastMass.jpg used on input line 35.
+(pdftex.def)             Requested size: 110.60912pt x 110.86649pt.
+ [7 <./plots/normalMammogram.jpg> <./plots/breastMicrocalcification.jpg> <./plo
+ts/breastMass.jpg>]) (./classification.tex [8]
+[9] <plots/AUCandPRAUC.png, id=244, 972.63374pt x 425.59pt>
 File: plots/AUCandPRAUC.png Graphic file (type png)
 
 <use plots/AUCandPRAUC.png>
 Package pdftex.def Info: plots/AUCandPRAUC.png used on input line 76.
 (pdftex.def)             Requested size: 353.95053pt x 154.87473pt.
- [11 <./plots/AUCandPRAUC.png>])
-(./neuralnetworks.tex
-<plots/neuralNetwork.png, id=272, 970.62625pt x 589.20125pt>
+ [10]) (./neuralnetworks.tex [11 <./plots/AUCandPRAUC.png>] <plots/neuralNetwor
+k.png, id=275, 970.62625pt x 589.20125pt>
 File: plots/neuralNetwork.png Graphic file (type png)
 
 <use plots/neuralNetwork.png>
 Package pdftex.def Info: plots/neuralNetwork.png used on input line 7.
 (pdftex.def)             Requested size: 420.31331pt x 255.14969pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[12] [13 <./plots/neuralNetwork.png>]
-<plots/dropout.png, id=310, 769.87625pt x 415.5525pt>
+ [12 <./plots/neuralNetwork.png>] [13]
+<plots/dropout.png, id=312, 769.87625pt x 415.5525pt>
 File: plots/dropout.png Graphic file (type png)
  <use plots/dropout.png>
 Package pdftex.def Info: plots/dropout.png used on input line 60.
 (pdftex.def)             Requested size: 287.58101pt x 155.22942pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./convnets.tex [14]
-<plots/convNetVolumes.jpeg, id=335, 571.13374pt x 202.7575pt>
+)
+(./convnets.tex [14 <./plots/dropout.png>]
+<plots/convNetVolumes.jpeg, id=336, 571.13374pt x 202.7575pt>
 File: plots/convNetVolumes.jpeg Graphic file (type jpg)
 
 <use plots/convNetVolumes.jpeg>
 Package pdftex.def Info: plots/convNetVolumes.jpeg used on input line 12.
 (pdftex.def)             Requested size: 309.7042pt x 109.9484pt.
- [15 <./plots/dropout.png>]
-<plots/convLayer.jpeg, id=344, 465.74pt x 327.2225pt>
-File: plots/convLayer.jpeg Graphic file (type jpg)
-
-<use plots/convLayer.jpeg>
-Package pdftex.def Info: plots/convLayer.jpeg used on input line 27.
-(pdftex.def)             Requested size: 176.9719pt x 124.33585pt.
- [16 <./plots/convNetVolumes.jpeg>] [17 <./plots/convLayer.jpeg>] <plots/convNe
-tExample.jpeg, id=366, 1259.70625pt x 603.25375pt>
-File: plots/convNetExample.jpeg Graphic file (type jpg)
-
-<use plots/convNetExample.jpeg>
-Package pdftex.def Info: plots/convNetExample.jpeg used on input line 53.
-(pdftex.def)             Requested size: 376.07372pt x 180.09384pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[18]) (./convnets4brca.tex [19 <./plots/convNetExample.jpeg>]
+[15] <plots/convLayer.jpeg, id=347, 465.74pt x 327.2225pt>
+File: plots/convLayer.jpeg Graphic file (type jpg)
+
+<use plots/convLayer.jpeg>
+Package pdftex.def Info: plots/convLayer.jpeg used on input line 26.
+(pdftex.def)             Requested size: 176.9719pt x 124.33585pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[16 <./plots/convNetVolumes.jpeg>] [17 <./plots/convLayer.jpeg>]
+<plots/convNetExample.jpeg, id=368, 1259.70625pt x 603.25375pt>
+File: plots/convNetExample.jpeg Graphic file (type jpg)
+
+<use plots/convNetExample.jpeg>
+Package pdftex.def Info: plots/convNetExample.jpeg used on input line 52.
+(pdftex.def)             Requested size: 376.07372pt x 180.09384pt.
+ [18 <./plots/convNetExample.jpeg>])
+(./convnets4brca.tex [19]
 
 Package caption Warning: \label without proper \caption on input line 286.
 See the caption package documentation for explanation.
@@ -889,6 +885,12 @@ See the caption package documentation for explanation.
 LaTeX Warning: Reference `tab:BrCaConvNetArchitectures' on page 21 undefined on
  input line 111.
 
+
+Underfull \hbox (badness 4168) in paragraph at lines 111--119
+\OT1/cmr/m/n/10.95 The first use of con-vo-lu-tional net-works to de-tect mi-cr
+o-cal-ci-fi-ca-tions is re-ported
+ []
+
 [21]
 
 Package caption Warning: \label without proper \caption on input line 286.
@@ -898,7 +900,7 @@ See the caption package documentation for explanation.
 LaTeX Warning: Reference `tab:BrCaConvNetArchitectures' on page 22 undefined on
  input line 222.
 
-[22] [23]
+[22]
 Overfull \hbox (4.44269pt too wide) in paragraph at lines 276--276
 []\OT1/cmr/bx/n/10.95 Filters| 
  []
@@ -963,10 +965,10 @@ Overfull \hbox (4.71227pt too wide) in paragraph at lines 274--287
  [][] 
  []
 
-[24]) (./practicalDL.tex [25
+[23]) (./practicalDL.tex [24
 
 
-] [26]
+] [25]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 81.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -981,13 +983,13 @@ m/m/it/10.95 :\OT1/cmr/m/n/10.95 9$. When us-ing a val-i-da-tion set try val-ue
 s in \OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 0.5, 0.9, 0.95,
  []
 
-[27] [28] [29] [30]) (./methodology.tex [31] [32]) (./workplan.tex
-<plots/workplan.png, id=573, 1355.0625pt x 277.035pt>
+[26] [27] [28] [29]) (./methodology.tex [30] [31]) (./workplan.tex
+<plots/workplan.png, id=571, 1355.0625pt x 277.035pt>
 File: plots/workplan.png Graphic file (type png)
  <use plots/workplan.png>
 Package pdftex.def Info: plots/workplan.png used on input line 4.
 (pdftex.def)             Requested size: 442.4365pt x 90.4538pt.
-) (./proposal.bbl [33 <./plots/workplan.png>]
+) (./proposal.bbl [32 <./plots/workplan.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 61--67
 []\OT1/cmr/m/n/10.95 Breast Can-cer Surveil-lance Con-sor-tium
  []
@@ -998,7 +1000,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--67
 e / screening / 2009 / perf _ age .
  []
 
-[34] [35]
+[33] [34]
 Underfull \hbox (badness 10000) in paragraph at lines 219--224
 []\OT1/cmr/m/n/10.95 National Can-cer In-sti-tute (2014).  Mam-mo-
  []
@@ -1009,29 +1011,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 219--224
 ancer . gov / cancertopics / types / breast /
  []
 
-[36])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 112.
+[35] [36])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 121.
  [37]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 112.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
  (./proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 112.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 112.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 121.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 121.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: 8ECD284057AEBA12CC37C7B08FC1D300;1171.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 112.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
  ) 
 Here is how much of TeX's memory you used:
- 8240 strings out of 495028
- 121841 string characters out of 6181498
- 203456 words of memory out of 5000000
- 11120 multiletter control sequences out of 15000+600000
+ 8242 strings out of 495028
+ 121874 string characters out of 6181498
+ 205513 words of memory out of 5000000
+ 11121 multiletter control sequences out of 15000+600000
  13159 words of font info for 50 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,10n,41p,2564b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,41p,2569b,416s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/michael/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive
@@ -1050,10 +1052,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/symbols/msbm10.pfb>
-Output written on proposal.pdf (40 pages, 2271803 bytes).
+Output written on proposal.pdf (40 pages, 2270646 bytes).
 PDF statistics:
- 720 PDF objects out of 1000 (max. 8388607)
- 631 compressed objects within 7 object streams
- 167 named destinations out of 1000 (max. 500000)
+ 722 PDF objects out of 1000 (max. 8388607)
+ 633 compressed objects within 7 object streams
+ 168 named destinations out of 1000 (max. 500000)
  205 words of extra memory for PDF output out of 10000 (max. 10000000)
 
