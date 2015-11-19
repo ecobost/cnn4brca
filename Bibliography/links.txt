@@ -1,11 +1,42 @@
 Writing an article paper
 	http://www.elsevier.com/connect/11-steps-to-structuring-a-science-paper-editors-will-take-seriously
 
-Caffee tutorial
-http://on-demand.gputechconf.com/gtc/2014/webinar/gtc-express-deep-learning-caffee-evan-shelhamer.mp4
+Career advice for young scientis
+	http://sciencecareers.sciencemag.org/career_magazine/previous_issues/articles/2015_05_12/caredit.a1500124
 
-Stanford convnet course (bookmarked on Firefox)
 
-Stanford deep learning course
-http://ufldl.stanford.edu/tutorial/supervised/FeatureExtractionUsingConvolution/
-
+---- Some journals and important conferences to keep an eye on.
+Journals:
+	IJCV
+	PAMI
+	Journal of Machine Learning Research
+	Transactions on Image Processing (TIP)
+	Journal of Signal Processing: Image Communication
+	Journal of Visual Communication and Image Retrieval 
+	Artificial intelligence in medicine
+	Academic radiology
+	arxiv.stat.ML
+Medical Journals:
+	Medical Physics
+	Radiology
+	Academic Radiology
+	Proceedings of SPIE
+	Breast Journal
+Conferences (Deadlines):
+	NIPS (Jun 05, 2015)
+	AAAI/IAAI (September 10, 2015)
+	CVPR (November 6, 2015)
+	ICCV (April 15, 2015)
+	ECCV (Mar 7, 2014)
+	BMVC (May 11, 2015)
+	ICPR (Mar 07, 2016)
+	ICML (Feb 6, 2015)
+	COLT (Feb 19,2015)
+	ICANN (Mar 20, 2015)
+	ICLR (Dec 19,2014)
+	IJCAI (Feb 8, 2015)
+	UAI (Mar 3, 2015)
+	ACCV (Jun 20,2014)
+	ICIP (Jan 25, 2016)
+	WACV (Sep 4, 2015 & Nov 11, 2015)
+	ISVC (August 21, 2015)
