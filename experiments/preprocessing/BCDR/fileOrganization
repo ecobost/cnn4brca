@@ -1,0 +1,63 @@
+Written by: Erick Cobos T.
+Date: 9-November-2015
+
+This file describes the organization of the original BCDR database (as downloaded from bcdr.inegi.up.pt)
+
+Notation:
+DDD: Dataset D01, D02 or DN01
+PPP: Patient number (with no padding)
+SSS: Number of the study (with no padding)
+XXX: Series number. Almost always 1.
+MMM: Type of mammogram LO, LCC, RO, RCC
+
+----- ORGANIZATION OF MAMMOGRAMS ----
+Mammograms are ordered in a hierarchy
+ \BCDR-DDD_dataset
+	\patient_PPP
+		\study_SSS
+			image_PPP_SSS_XXX_MMM.tif
+
+
+
+Some mammograms appear in more than one dataset (same patient and study in two places but with different lessions)
+
+------ ORGANIZATION OF INFO ----------------
+There are some comma-separated-values files inside each BCDR-DDD_dataset folder which offer info on the lesions and patients.
+
+1. bcdr_DDD_outlines.csv
+	It contains the info and outline of each lession
+		patient_id (same as PPP)
+		study_id (same as SSS)
+		series (same as XXX)
+		lesion_id (unique per lession in the two image views (CC and O) and two datasets, but changes with studies and series)
+		segmentation_id (changes per outline, same lession can have different segmentations (2) in different image views and different datasets)
+		image_view (1 for RCC, 2 for LCC, 3 for RO and 4 for LO)
+		image_filename (such as 'patient_3/study_4/img_3_4_1_LO.tif')
+		lw_x_points (space separated x-coordenates of the outline, they do not start and end in same point)
+		lw_y_points (space separated y-coordenates of the outline, they do not start and end in same point)
+		mammography_type (boolean, indicates whether a lession is present, always 1)
+		mammography_nodule (boolean, is lesion a mass?, always 1 in BCDR-D01)
+		mammography_calcification (boolean, is lesion a calcification?, in BCDR-D02, either this is 1 or mammography_microcalcification is 1)
+		mammography_microcalcification (boolean, is lesion a calcification?, in BCDR-D02, either this is 1 or mammography_calcification is 1)
+		mammography_axiliary_adenopathy (boolean, is lesion an axiliary adenopathy?, always 0)
+		mammography_architectural_distortion (boolean, is there an architectural distortion?)
+		mammography_stroma_distortion (boolean, is there an stroma distortion?)
+		age (patient's age when study was made)
+		classification (Lession biopsy result: 'Benign' or 'Malign')
+
+One lesion can appear in the two datasets once as a mass and once as a microcalcification (lesion_id, segmentation_id and therefore outline are preserved).
+There can be more than one lession per mammogram.
+
+2. bcdr_DDD_img.csv
+	It contains some clinical and bookeeping info. Same info as in outlines.
+		patient_id (same as PPP)
+		study_id (same as SSS)
+		series (same as XXX)
+		image_filename (such as 'patient_3/study_4/img_3_4_1_LO.tif')
+		image_type_name (same as MMM)
+		image_type_id (0 for RCC, 1 for LCC, 2 for RO and 3 for LO)
+		age (Patient age when study was made)
+		density (Breast density)
+
+3. bcdr_DDD_features.csv
+	It contains some precomputed image features. Not needed for us. 

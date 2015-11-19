@@ -1,0 +1,8 @@
+1. Manual examination to delete people with implants or things like that.
+2. Format computer-install TensorFlow. Maybe just install TensorFlow.
+3. Find what kind of file does caffe/tensorflow receives.
+2. Learn what is the way that i want the input as (big whole images, a lot of small images, numpy matrices)
+2. Find a way to reorganize and rename each file (or decide to left as is). Maybe mix all patients and join the outlines.
+	2.1 Separate test and training (in turn separate cv here)
+	2.2 Connect the positions which are open (thowing a stright line between them) or maybe with a heatmap (maybe this is easier on a per pixel training).
+4. Take some other decisions on tretrieval, to make easy to generate the heatma later.
