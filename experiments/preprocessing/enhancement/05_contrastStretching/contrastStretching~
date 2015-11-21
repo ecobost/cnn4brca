@@ -1,0 +1,70 @@
+# Some more tests with the new images (BCDR)
+
+import normalize
+import scipy.misc
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+mammogram = scipy.misc.imread("img_213_287_1_LCC.tif")
+
+patchBright = mammogram[1500:1850,800:1150]
+patchDark = mammogram[2000:2350,0:350]
+np.mean(patchBright)
+#162.536
+np.mean(patchDark)
+#93.94491428571429
+pB = patchBright.copy()
+pB[pB < 162] = 162
+pD = patchDark.copy()
+pD[pD < 94] = 94
+
+
+# Differences in a bright against a dark patch, both taken from the same mammogram.
+plt.subplot(2,3,1)
+plt.imshow(patchBright, vmin=0,vmax=255, interpolation = "none")
+plt.title("Bright w no preprocessing")
+
+
+plt.subplot(2,3,2)
+plt.imshow(patchBright, interpolation = "none")
+plt.title("Bright w local contrast")
+
+plt.subplot(2,3,3)
+plt.imshow(pB, interpolation = "none")
+plt.title("Bright w local backgr reduction + contrast")
+
+plt.subplot(2,3,4)
+plt.imshow(patchDark, vmin=0,vmax=255, interpolation = "none")
+plt.title("Dark w no preprocessing")
+
+
+plt.subplot(2,3,5)
+plt.imshow(patchDark, interpolation = "none")
+plt.title("Dark w local contrast")
+
+plt.subplot(2,3,6)
+plt.imshow(pD, interpolation = "none")
+plt.title("Dark w local backgr reduction + contrast")
+
+plt.show()
+
+
+
+# Try resizing after or before the enhancement
+patchBrightN = normalize.adjustContrast(patchBright)
+patchDarkN = normalize.adjustContrast(patchDark)
+pB = normalize.adjustContrast(pB)
+pD = normalize.adjustContrast(pD)
+
+#TODO
+
+
+
+# preprocessing first -> resizing
+patchBrightIm = scipy.misc.toimage(patchBright, mode = 'F')
+patchBrightIm = patchBrightIm.resize((60,60), Image.LANCZOS)
+smallPatchBright = patch = np.array(patchBrightIm)
+
+pBIm = scipy.misc.toimage(pB, mode = 'F')
+pBIm = pBIm.resize((60,60), Image.LANCZOS)
