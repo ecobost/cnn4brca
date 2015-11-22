@@ -17,3 +17,5 @@
 - Crear el DB 
 	Separate training, cv and, test
 	Escoger como como guardar labels de cada patch.
+
+- Esciribir en formato de tesis
