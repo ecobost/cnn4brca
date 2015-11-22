@@ -1,6 +1,3 @@
-- Preprocessing then reduction or reduction then preprocessing? (if preprocessing can come after it will be better to run different experiemtns in the same database)
-	Que tamaño real tienen las mamografias de BCDR
-
 - Manual examination to delete people with implants or things like that.
 
 - Crear el heatmap para las lesiones:
@@ -8,8 +5,15 @@
 	Add one that includes all lesions and one that has only malign lessions per 		patient.
 	Check some random examples to see if it works
 
+- Preprocessing then reduction or reduction then preprocessing? (if preprocessing can come after it will be better to run different experiemtns in the same database)
+	Que tamaño real tienen las mamografias de BCDR
+
+- Crear VPN entre A3, CTS y mi compu
+
+- Install TensorFlow on machines at CTS, A3
+
+- Pedir acceso en vacaciones
+ 
 - Crear el DB 
 	Separate training, cv and, test
 	Escoger como como guardar labels de cada patch.
-
-- Install TensorFlow on machines at A3
