@@ -23,7 +23,7 @@ def adjustContrast(array, newMax = 255):
 		A numpy array (dtype = 'float64') containing the processed image.
 
 	"""
-	# To produce float64 results, comment it to maintain uint8 format.
+	# Needed. Operations on uint8 cannot manage negative numbers.
 	result = array.astype('float')
 	
 	# Background reduction

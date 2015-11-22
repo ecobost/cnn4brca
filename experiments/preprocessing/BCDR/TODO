@@ -1,10 +1,5 @@
-- Escoger el tipo de enhancement.
-
 - Preprocessing then reduction or reduction then preprocessing? (if preprocessing can come after it will be better to run different experiemtns in the same database)
 	Que tamaño real tienen las mamografias de BCDR
-	Como leer las TIFFs con sus 14-bits
-
-- Escoger si masas o microcalcifications
 
 - Manual examination to delete people with implants or things like that.
 
