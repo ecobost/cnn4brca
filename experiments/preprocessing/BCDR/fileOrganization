@@ -46,7 +46,7 @@ There are some comma-separated-values files inside each BCDR-DDD_dataset folder 
 		classification (Lession biopsy result: 'Benign' or 'Malign')
 
 One lesion can appear in the two datasets once as a mass and once as a microcalcification (lesion_id, segmentation_id and therefore outline are preserved).
-There can be more than one lession per mammogram.
+There are mammograms with no lesion as well as mammograms with more than one lession.
 
 2. bcdr_DDD_img.csv
 	It contains some clinical and bookeeping info. Same info as in outlines.
