@@ -1,0 +1,14 @@
+I manually inspected all mammograms to check for mammograms who are odd or were poorly taken. I enlist here all I have deleted; the _img and _outlines file are updated to reflect the changes
+
+Patient	| Right/Left 
+511	Implants
+65	Both
+71	Both
+30	Both
+118	Right
+129	Implants
+183 	Left
+329	Both
+470	Both
+
+I also generated a  lesion mask for each remaining image.

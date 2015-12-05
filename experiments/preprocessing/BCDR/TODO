@@ -1,20 +1,17 @@
-- Manual examination of microcalcifications
-- Create masks for BCDR-DN01 y BCDR-D02
-
 - Instalar TensorFlow en CTS/laptop
-	- Correr algún experimento de prueba
+	- Correr algún experimento de prueba (MNIST)
 
 - Enhancement then reduction or reduction then enhancement? (if enhancement can come after it will be better to resize everything and adpat to the enhancement whether during training or just before)
 	Que tamaño real tienen las mamografias de BCDR
 
-- Separate training, cv and, test
+- Crear el DB en CTS
+	Escoger como guardar labels de cada patch. (csv con filename y label)
 
-- Instalar Tensorflow y pasar datos a A3
+- Pasar datos a A3
 	- git clone
 	- Copiar BCDR (con masks y las que fueron borradas)
 
-- Crear el DB 
-	Escoger como guardar labels de cada patch.
+- Instalar TensorFlow en A3
 
 - Escribir en formato de tesis
 
