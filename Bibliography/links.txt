@@ -14,7 +14,6 @@ Journals:
 	Journal of Signal Processing: Image Communication
 	Journal of Visual Communication and Image Retrieval 
 	Artificial intelligence in medicine
-	Academic radiology
 	arxiv.stat.ML
 Medical Journals:
 	Medical Physics
@@ -40,3 +39,4 @@ Conferences (Deadlines):
 	ICIP (Jan 25, 2016)
 	WACV (Sep 4, 2015 & Nov 11, 2015)
 	ISVC (August 21, 2015)
+	MICCAI

@@ -1,44 +1,24 @@
-- Pedir acceso en vacaciones.
-
-- Crear conexion entre CTS y A3
-	- A3 Windows
-		- Crear usuario Mike
-		- Permitir conexiones remotas a Mike y Juan Nolazco (Control panel
-		  /System)
-		- Configurar para que Windows no se suspenda.
-		- Tomar la IP de Windows 
-	- A3 Ubuntu
-		- Crear usuario Mike
-		- Modificar el GRUB para que al reiniciar la computadora siempre
-		  entre directo a Ubuntu
-		- Modificar Desktop Sharing para que permita conexion
-		- Tomar la IP de Ubuntu
-	-CTS
-		- Verificar que me puedo conectar (desde Ubuntu) a Ubuntu y Windows
-			- Verificar que puedo entrar a Mike incluso si alguien más 
-				  está conectado.
-
 - Manual examination of microcalcifications
 - Create masks for BCDR-DN01 y BCDR-D02
 
-- Pasar datos a A3
+- Instalar TensorFlow en CTS/laptop
+	- Correr algún experimento de prueba
+
+- Enhancement then reduction or reduction then enhancement? (if enhancement can come after it will be better to resize everything and adpat to the enhancement whether during training or just before)
+	Que tamaño real tienen las mamografias de BCDR
+
+- Separate training, cv and, test
+
+- Instalar Tensorflow y pasar datos a A3
 	- git clone
 	- Copiar BCDR (con masks y las que fueron borradas)
 
-- Instalar TensorFlow en CTS y A3
-	- Correr algún experimento de prueba
-
-- Crear VPN entre CTS y mi compu (fuera del campus)
-	- Verificar que me puedo conectar a CTS y CTS se puede conectar a A3 al mismo
-	  tiempo. Sino, Crear VPN con A3
-
-- Preprocessing then reduction or reduction then preprocessing? (if preprocessing can come after it will be better to run different experiemtns in the same database)
-	Que tamaño real tienen las mamografias de BCDR
-
 - Crear el DB 
-	Separate training, cv and, test
-	Escoger como como guardar labels de cada patch.
-
-- Correr experimentos
+	Escoger como guardar labels de cada patch.
 
 - Escribir en formato de tesis
+
+- Correr experimentos
+	- Escoger arcquitectura
+
+
