@@ -1,0 +1,68 @@
+%% \title{ITESM-MIT-MasterThesis}
+%%  This is a sample file that makes use of the style file that  is necessary to generate a properly set up document for your master thesis
+
+\documentclass[english,12pt,oneside,openright]{report}   	%% This sets the printing on just one side of a page
+%\documentclass[english,12pt,twoside,openright]{report}    	%%  This sets the printing on both sides of a page
+\usepackage{phdThesisFormat}      							%%  This is the sty file that is to be used to generate the 	
+															%%	document.  This line is a must!!!
+\usepackage{times}                							%%  This is the font that the document is to use. This is a must!!!
+\usepackage[english]{babel}
+
+%%  Useful packages to use in your document
+%%  These are optional but I recommend you used them and that you keep them here.
+
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage[pdftex]{graphicx}    							%%  This package is necessary to use pdflatex excellent results
+\usepackage{url}
+\usepackage{amsfonts}
+
+%% Definition of new commands
+\newcommand{\field}[1]{\mathbb{#1}}
+\renewcommand{\thefootnote}{\alph{footnote}}
+  
+%%  Here you set up the variables according to your work
+\advisor{Dr. Name-Last-Name}                             			%%  Your advisor's name
+\advisorInstitution{Tecnol\'{o}gico de Monterrey}           			%%  Your advisor's institution
+\committeeMemberA{Committee member A's name}                   	%%  Committee member A's name
+\committeeMemberAInstitution{Committee member A's institution}    %%  Committee member A's institution
+\committeeMemberB{Committee member B's name}                   	%%  Committee member B's name
+\committeeMemberBInstitution{Committee member B's institution} 	%%  Committee member B's institution
+\graduateProgramDirector{Dr. Jorge Welti Chanes}        			%%  Graduate program director's name
+\researchCenter{Autonomous Agents for Ambient intelligence  (AAAmI)}                   								%%  The research center you are associated with
+\doctoralStudent{First-Middle-Last-Name (Student)}         		%%  Very important: Your name
+\dissertationMonth{May}                                       %%  The month when you give your thesis
+\dissertationYear{2015}                                         	%%  The year when you give your thesis
+\dissertationTitle{Thesis title}								%%  The title of your dissertation
+\campus{Monterrey}                                            		%%  The campus where you are to give your thesis
+\major{Intelligent Systems}                                      	%%  Your major
+\abstractFile{abstractFile}                                     	%%  This is a plain tex file that holds your abstract
+\acknowledgementFile{acknowledgementFile}                       	%%  This is a plain tex file that holds your acknowledgements
+\dedicationFile{dedicationFile}                                 	%%  This is a plain tex file that holds your dedication
+\bibliographyFile{References}                                 		%%  This is a bib file with te bibliography for your dissertation
+
+\begin{document}
+
+% The following commands are not to be changed as they prepare the initial pages of the document. Also, they set up the environment for the real content.  Do not move them or erase them; they are needed for a proper presentation of your dissertation
+
+\MainTitle
+\ThesisCommittee
+\Declaration
+\Dedication
+\Acknowledgements
+\Abstract
+\contentsAndLists
+\startContent
+
+% Here you call the files that you prepared in order to get a nice and concise master thesis (i.e., the chapters).  Just call on the command as many times as necessary. Note that it is the same for either thesis chapters or appendices.
+
+\insertChapter{"Chapter_01"}
+\insertChapter{"Chapter_02"}
+\appendix        													%%  This command is needed before you start inserting your 
+																	%%	appendices for proper formatting.
+\insertChapter{"Appendix_01"}
+
+% These two last commands are not to be changed either. The first one prepares the bibliography and sets its style while the second inserts the author's vita.
+\insertBibliography
+\insertVita{vitaFile}
+\end{document}

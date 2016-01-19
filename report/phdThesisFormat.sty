@@ -1,0 +1,366 @@
+%%  This style file is to be used when preparing the master thesis in  Master of Science in Intelligent Systems after February, 2015.  Most of the work about formatting is done by this file so the only thing you need to worry about is the content.
+
+\typeout{******************************************************}
+\typeout{** Style file for the Master Thesis in} 
+\typeout{** Master of Science in Intelligent Systems}
+\typeout{** Prepared by: Luis Marcelo Fernandez Carrasco}
+\typeout{** Updated by: José Carlos Ortiz Bayliss}
+\typeout{** Overleaf template by: Carl W. Handlin}
+\typeout{** Center for Intelligent Systems}
+\typeout{** ITESM - Monterrey Campus}
+\typeout{** Version 1.2 - Feb 2015}
+\typeout{******************************************************}
+
+%%  Checks if the report style is being used
+\@ifundefined{chapter}{\@latexerr{The `phdThesisFormat' option should be used with the `report' document style}{You might be missing that command at the beginning.}}{}
+
+%%  Sets required packages for this sty file to work
+\RequirePackage{setspace}
+\RequirePackage{ifpdf}
+\ifpdf
+	\usepackage[pdftex]{graphicx}
+   	\pdfcompresslevel = 9
+   	\pdfpagewidth = 8.5truein % 297truemm
+   	\pdfpageheight = 11truein % 210truemm
+   	\pdfhorigin = 1truein     % default value(?), but doesn't work without
+   	\pdfvorigin = 1truein     % default value(?), but doesn't work without
+\else
+   	\usepackage{graphicx}
+\fi
+
+%%  Checks if the document is to be printed on just one side of the pages or on both sides and, accordingly, sets up the margins
+\if@twoside
+	\setlength\oddsidemargin   {36.1\p@}
+	\setlength\evensidemargin  {0\p@}
+	\setlength\marginparwidth {40\p@} 
+\else
+	\setlength\oddsidemargin   {36.1\p@}
+	\setlength\evensidemargin  {36.1\p@}
+	\setlength\marginparwidth  {40\p@}
+\fi
+
+\marginparsep 10pt
+
+\topmargin -0.6in
+%\headsep .5in
+\textheight 9.05in
+\textwidth 6.18in
+\parindent 0pt
+\brokenpenalty = 10000
+
+%%  Defines the commands that are to be used in the stlye file.  Please be extremely careful if you decide to modify any of these commands as they are needed for the proper work of the style file.  Also, default values of each command are given.
+%%  In general, you should NOT change anything in this section. the information used to produce the output document is taken from the main file.
+
+%% Information about the institution
+\gdef\@tecdemonterrey{Instituto Tecnol\'ogico y de Estudios Superiores de Monterrey}
+
+%% Information related to the dissertation and the student.
+\def\dissertationTitle#1{\gdef\@dissertationTitle{#1}}
+	\dissertationTitle{Dissertation's Title}
+\def\doctoralStudent#1{\gdef\@doctoralStudent{#1}}
+	\doctoralStudent{Student's Name} 
+\def\dissertationMonth#1{\gdef\@dissertationMonth{#1}}
+	\dissertationMonth{Month}
+\def\dissertationYear#1{\gdef\@dissertationYear{#1}}
+	\dissertationYear{Year}
+\def\major#1{\gdef\@major{#1}}
+	\major{Intelligent Systems}
+\def\campus#1{\gdef\@campus{#1}}
+	\campus{Monterrey}
+\def\researchCenter#1{\gdef\@researchCenter{#1}}
+	\researchCenter{CSI}
+
+%% Information about Committee members
+\def\advisor#1{\gdef\@advisor{#1}}
+	\advisor{Advisor's Name}
+\def\advisorInstitution#1{\gdef\@advisorInstitution{#1}}
+  	\advisorInstitution{Advisor's Institution}
+\def\committeeMemberA#1{\gdef\@committeeMemberA{#1}}
+  	\committeeMemberA{Member's name}
+\def\committeeMemberAInstitution#1{\gdef\@committeeMemberAInstitution{#1}}
+  	\committeeMemberAInstitution{Member's Institution}
+\def\committeeMemberB#1{\gdef\@committeeMemberB{#1}}
+  	\committeeMemberB{Member's name}
+\def\committeeMemberBInstitution#1{\gdef\@committeeMemberBInstitution{#1}}
+  	\committeeMemberBInstitution{Member's Institution}	
+\def\committeeMemberC#1{\gdef\@committeeMemberC{#1}}
+  	\committeeMemberC{Member's name}
+\def\committeeMemberCInstitution#1{\gdef\@committeeMemberCInstitution{#1}}
+  	\committeeMemberCInstitution{Member's Institution}
+\def\committeeMemberD#1{\gdef\@committeeMemberD{#1}}
+  \committeeMemberD{Member's name}
+\def\committeeMemberDInstitution#1{\gdef\@committeeMemberDInstitution{#1}}
+  \committeeMemberDInstitution{Member's Institution}	
+\def\graduateProgramDirector#1{\gdef\@graduateProgramDirector{#1}}
+  \graduateProgramDirector{Dr.~Jorge Welti Chanes.}
+
+%% Defines the commands to generate the first pages of the dissertation
+\def\abstractFile#1{\gdef\@abstractFile{#1}}
+	\abstractFile{Abstract}
+\def\acknowledgementFile#1{\gdef\@acknowledgementFile{#1}}
+  	\acknowledgementFile{Acknowledgement}
+\def\dedicationFile#1{\gdef\@dedicationFile{#1}}
+  	\dedicationFile{Dedication}	
+\def\bibliographyFile#1{\gdef\@bibliographyFile{#1}}
+  	\bibliographyFile{Bibliography}					 
+
+%% This command is used when printing on both sides of a page so that the even page is really blank
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+	\clearpage
+  	{\pagestyle{empty}\origdoublepage}%
+}
+
+%%  Prepare and generate the first pages of the dissertation.  These pages are NOT to be changed, either as they follow the format required for a doctoral dissertation.
+
+%% Sets up the main first cover
+\newcommand{\MainTitle}{
+	\begin{titlepage}
+  		\thispagestyle{empty}
+  		\begin{center}
+    		{\large {\@tecdemonterrey}}\\
+			\vspace*{1cm}      
+    		Campus \@campus\\
+    		\vspace*{1cm}
+			{\large School of Engineering and Sciences}\\
+			\vspace*{0.5cm}			
+			\begin{figure}[h]
+				\ifpdf
+					\centerline{\includegraphics[width=9cm]{escudo-itesm.png}}
+				\else
+					\centerline{\includegraphics[width=9cm]{escudo-itesm.eps}}
+				\fi
+			\end{figure}
+			\vspace*{0.5cm}
+			{\bf \large {\@dissertationTitle}}\\
+			\vspace*{0.5cm}
+			A thesis presented by\\
+			\vspace*{0.5cm}
+			{\bf \large {\@doctoralStudent}}\\
+			\vspace*{0.5cm}	
+			Submitted to the\\
+			School of Engineering and Sciences\\
+			in partial fulfillment of the requirements for the degree of\\
+			\vspace*{0.5cm}
+			Master of Science\\
+			\vspace*{0.5cm}
+			in\\
+			\vspace*{0.5cm}
+		    {\@major}\\		
+			\vfill
+    		Monterrey, Nuevo Le\'{o}n, {\@dissertationMonth}, {\@dissertationYear}
+  		\end{center}
+  		\if@twoside
+			\pagestyle{empty}
+  			\cleardoublepage
+  		\pagestyle{empty}
+  		\fi
+	\end{titlepage}
+}
+
+%% Sets up thesis committee page where signatures are required.
+\newcommand{\ThesisCommittee}{
+	\pagestyle{plain}
+	\pagenumbering{roman}
+	\setcounter{page}{1}
+	\newpage
+	\begin{center}
+		{\large \@tecdemonterrey}\\
+		\vspace*{0.5cm}
+		Campus \@campus\\
+		\vspace*{0.5cm}
+		School of Engineering and Sciences\\
+		\vspace*{0.5cm}
+   \end{center}
+
+	The committee members, hereby, certify that have read the thesis presented by {\@doctoralStudent} and that it is fully adequate in scope and quality as a partial requirement for the degree of Master of Science in {\@major}.
+
+	\vspace*{0.65cm}
+	
+	\hspace*{3.5in}\hrulefill\\
+	\hspace*{0cm} \hfill {\@advisor}\\
+	\hspace*{0cm} \hfill {\@advisorInstitution}\\
+	\hspace*{0cm} \hfill Principal Advisor
+	
+	\vspace*{0.65cm}
+	\hspace*{3.5in}\hrulefill\\
+	\hspace*{0cm} \hfill {\@committeeMemberA}\\
+	\hspace*{0cm} \hfill {\@committeeMemberAInstitution}\\
+	\hspace*{0cm} \hfill Committee Member
+	
+	\vspace*{0.65cm}
+	\hspace*{3.5in}\hrulefill\\
+	\hspace*{0cm} \hfill {\@committeeMemberB}\\
+	\hspace*{0cm} \hfill {\@committeeMemberBInstitution}\\
+	\hspace*{0cm} \hfill Committee Member
+	
+    %Uncomment for more Committee Member
+	%\vspace*{0.65cm}
+	%\hspace*{3.5in}\hrulefill\\
+	%\hspace*{0cm} \hfill {\@committeeMemberC}\\
+	%\hspace*{0cm} \hfill {\@committeeMemberCInstitution}\\
+	%\hspace*{0cm} \hfill Committee Member
+	
+	%\vspace*{0.65cm}
+	%\hspace*{3.5in}\hrulefill\\
+	%\hspace*{0cm} \hfill {\@committeeMemberD}\\
+	%\hspace*{0cm} \hfill {\@committeeMemberDInstitution}\\
+	%\hspace*{0cm} \hfill Committee Member
+	
+    \vfill
+	\vspace*{0.5cm}
+	\begin{center}
+    	\hspace*{1.5in} \hrulefill \hspace*{1.5in} \\
+    	{\@graduateProgramDirector}\\
+    	Associate Dean of Graduate Studies \\
+    	School of Engineering and Sciences
+	\end{center}
+	\begin{center}
+		Monterrey, Nuevo Le\'{o}n, {\@dissertationMonth}, {\@dissertationYear}
+	\end{center}
+	\if@twoside
+		\clearemptydoublepage
+	\fi  
+}
+
+%% Sets up declaration of autorship page where you, the author, state that this is "YOUR work".
+\newcommand{\Declaration}{
+	\newpage
+	\begin{center}
+    	{\bf \LARGE Declaration of Authorship}
+	\end{center}	
+	\vspace*{1.5cm}
+	I, {\@doctoralStudent}, declare that this thesis titled, "{\@dissertationTitle}" and the work presented in it are my own. I confirm that:
+
+	\begin{itemize}
+		\item This work was done wholly or mainly while in candidature for a research degree at this University.
+		\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.	
+		\item Where I have consulted the published work of others, this is always clearly attributed.
+		\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this dissertation is entirely my own work.
+		\item I have acknowledged all main sources of help.
+		\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.	
+	\end{itemize}
+
+	\vspace*{1.5in} 
+	\hspace*{3.45in}\hrulefill\\
+	\hspace*{0cm} \hfill {\@doctoralStudent}\\
+	\hspace*{0cm} \hfill Monterrey, Nuevo Le\'{o}n, {\@dissertationMonth}, {\@dissertationYear}\\
+	\vfill
+	\begin{center}
+		\copyright {\@dissertationYear} by {\@doctoralStudent}\\
+		All Rights Reserved
+	\end{center}
+	\if@twoside
+		\clearemptydoublepage
+	\fi  
+}
+
+%% Sets up declaration page where you acknowledge all those that you see fit.
+\newcommand{\Acknowledgements}{
+	\newpage
+	\parindent 5ex
+	\begin{center}
+	   	{\LARGE {Acknowledgements}}
+	\end{center}
+	\vspace*{1.5cm}
+	\input{\@acknowledgementFile}
+	\if@twoside
+		\clearemptydoublepage	
+	\fi
+}
+
+%% Sets up dedication page where you dedicate this work to someone (or something)
+\newcommand{\Dedication}{
+	\newpage
+	\begin{center}
+   		{\LARGE {Dedication}}\\   		
+	\end{center}
+	\vspace*{1.5cm}
+	\input{\@dedicationFile}
+	\if@twoside
+		\clearemptydoublepage
+	\fi
+}
+
+%% Sets up abstract page where you provide a short summary of what your work is about
+\newcommand{\Abstract}{
+	\newpage
+	\addcontentsline{toc}{chapter}{Abstract}
+	\parindent 5ex
+	\begin{center}
+   		{\Large {{\bf \@dissertationTitle}\\
+			by\\
+   			\@doctoralStudent\\
+	   		\vspace*{0.7cm}
+   			Abstract}
+		}
+	\end{center}
+	\vspace*{0.7cm}
+	\input{\@abstractFile}
+	\if@twoside
+		\clearemptydoublepage
+	\fi
+}
+
+%% Sets up table of contents of your thesis
+\newcommand{\contentsAndLists}{
+	\newpage
+	\listoffigures
+	\addcontentsline{toc}{chapter}{List of Figures}
+	\if@twoside
+		\clearemptydoublepage
+	\fi
+	\newpage
+	\listoftables
+	\addcontentsline{toc}{chapter}{List of Tables}	
+	\if@twoside
+		\clearemptydoublepage
+	\fi
+	\newpage
+	\tableofcontents
+	\if@twoside
+		\clearemptydoublepage
+	\fi
+}
+
+%% Sets up what the chapters in the thesis will look like
+\newcommand{\startContent}{
+   \newpage
+   \pagestyle{headings}
+   \pagenumbering{arabic}
+   \setcounter{page}{1}
+}
+
+%% Inserts the tex file (which is a chapter) in the document
+\newcommand{\insertChapter}[1]{
+	\input{#1}
+	\if@twoside
+		\clearemptydoublepage	
+	\fi
+}
+
+%% This inserts the bibliography in the document.  It defines the style to use.
+\newcommand{\insertBibliography}{
+	\bibliographystyle{acm}
+	\bibliography{\@bibliographyFile}
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\if@twoside
+		\clearemptydoublepage	
+	\fi
+}
+
+%% Sets the vita inforamtion about the author
+\newcommand{\insertVita}[1]{
+	\newpage
+	\thispagestyle{empty}
+	{\LARGE \bf {Curriculum Vitae}}\\
+	\vspace*{0.8cm}\\
+	\input{#1}
+	
+	\vfill
+	
+	This document was typed in using {\LaTeXe}\footnote{The style file \texttt{phdThesisFormat.sty} used to set up this thesis was prepared by the Center of Intelligent Systems of the {\@tecdemonterrey}, Monterrey Campus} by {\@doctoralStudent}.
+	\if@twoside
+		\clearemptydoublepage	
+	\fi
+}
