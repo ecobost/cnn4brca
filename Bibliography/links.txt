@@ -14,6 +14,7 @@ Journals:
 	Journal of Signal Processing: Image Communication
 	Journal of Visual Communication and Image Retrieval 
 	Artificial intelligence in medicine
+	Journal of Clinical Imaging Science
 	arxiv.stat.ML
 Medical Journals:
 	Medical Physics
