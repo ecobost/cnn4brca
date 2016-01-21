@@ -1,0 +1,27 @@
+Although a considerable amount of work on breast cancer detection and diagnosis has been done in the institution, this project will be the first approximation to using convolutional networks for efficiently detecting and diagnosing breast cancer. Convolutional networks are widely used for object recognition tasks and have shown very good results~\cite{Russakovsky2014, Taigman2014, Dieleman2015}. They have a big research community and have become one of the preferred methods to perform image classification tasks.% (similarly to neural networks in binary classification tasks).
+
+Due to the exploratory nature of this work we are not truly certain of the results that will be obtained. Nevertheless, we have a well established idea of what to expect. Our hypothesis is that applying convolutional networks to mammographic images will produce similar or better results than those obtained using more traditional computer vision techniques. Additionally, we do not expect that a simple convolutional network will suffice to obtain competitive results; we will need a more refined convolutional network with well fitted parameters. Furthermore, we believe that implementing convolutional networks for breast cancer will not be very difficult as it has already been done by other groups (see Section~\ref{subsec:BreastCancerConvNets}) and there is plenty of software for it. 
+
+\subsection{Research Questions}
+Some of the questions which will be answered in this work are:
+\begin{itemize} 
+	\item Can we improve the results reported by other groups using convolutional networks? Is training a convolutional network on mammographic images better than computing numeric features from the mammograms and training a simple classifier?
+	\item Is deep learning feasible with the resources we have? Is our data and computational power sufficient? Is there any advantage to use GPU acceleration?
+	\item Can we simplify the pipeline for breast cancer diagnosis? Can preprocessing be replaced by more layers on the same convolutional network? Could we automatically join results for small patches to generate results on the entire mammogram?
+	\item What are the best parameters for our convolutional networks (number of layers, number of units, kernel sizes, regularization, activation functions, etc)? Is there a big improvement on refining the network and tuning parameters?
+	\item Should we train a convolutional network for each type of breast lession or could we use a single one with multiple outputs?
+	\item What are the advantages of using a deep versus a shallow convolutional network? 
+	\item Could we use a convolutional network trained on a different database (such as the ImageNet database) to obtain features for mammographic images and use these features for classification?
+	\item Are convolutional networks a good option for future research?
+\end{itemize}
+
+\begin{comment}
+Las {\it Hipótesis}, que de acuerdo a Sampieri {\it indican lo que estamos
+  buscando 
+o tratando de probar y pueden definirse como explicaciones tentativas del
+fenómeno investigado y formuladas a manera de proposiciones}. Las hipótesis
+surgen normalmente de los {\it Objetivos} y proponen contestar tentativamente
+  las preguntas de investigación.
+
+{\bf Las preguntas de investigación se incluyen aquí ......}
+\end{comment}

@@ -1,5 +1,8 @@
 %%  This style file is to be used when preparing the master thesis in  Master of Science in Intelligent Systems after February, 2015.  Most of the work about formatting is done by this file so the only thing you need to worry about is the content.
 
+% Modified by: Erick Cobos Tandazo
+% Date: 20-January-2016
+
 \typeout{******************************************************}
 \typeout{** Style file for the Master Thesis in} 
 \typeout{** Master of Science in Intelligent Systems}
@@ -17,16 +20,7 @@
 %%  Sets required packages for this sty file to work
 \RequirePackage{setspace}
 \RequirePackage{ifpdf}
-\ifpdf
-	\usepackage[pdftex]{graphicx}
-   	\pdfcompresslevel = 9
-   	\pdfpagewidth = 8.5truein % 297truemm
-   	\pdfpageheight = 11truein % 210truemm
-   	\pdfhorigin = 1truein     % default value(?), but doesn't work without
-   	\pdfvorigin = 1truein     % default value(?), but doesn't work without
-\else
-   	\usepackage{graphicx}
-\fi
+\RequirePackage{graphicx}
 
 %%  Checks if the document is to be printed on just one side of the pages or on both sides and, accordingly, sets up the margins
 \if@twoside
@@ -106,12 +100,12 @@
 
 %% This command is used when printing on both sides of a page so that the even page is really blank
 \let\origdoublepage\cleardoublepage
-\newcommand{\clearemptydoublepage}{%
+\newcommand{\clearemptydoublepage}{
 	\clearpage
-  	{\pagestyle{empty}\origdoublepage}%
+  	{\pagestyle{empty}\origdoublepage}
 }
 
-%%  Prepare and generate the first pages of the dissertation.  These pages are NOT to be changed, either as they follow the format required for a doctoral dissertation.
+%%  Prepare and generate the first pages of the dissertation.  These pages are NOT to be changed either as they follow the format required for a doctoral dissertation.
 
 %% Sets up the main first cover
 \newcommand{\MainTitle}{
@@ -125,11 +119,7 @@
 			{\large School of Engineering and Sciences}\\
 			\vspace*{0.5cm}			
 			\begin{figure}[h]
-				\ifpdf
-					\centerline{\includegraphics[width=9cm]{escudo-itesm.png}}
-				\else
-					\centerline{\includegraphics[width=9cm]{escudo-itesm.eps}}
-				\fi
+				\centerline{\includegraphics[width=9cm]{plots/escudo-itesm.png}}
 			\end{figure}
 			\vspace*{0.5cm}
 			{\bf \large {\@dissertationTitle}}\\
@@ -359,7 +349,7 @@
 	
 	\vfill
 	
-	This document was typed in using {\LaTeXe}\footnote{The style file \texttt{phdThesisFormat.sty} used to set up this thesis was prepared by the Center of Intelligent Systems of the {\@tecdemonterrey}, Monterrey Campus} by {\@doctoralStudent}.
+	This document was typed in using {\LaTeXe}\footnote{The style file \texttt{thesisFormat.sty} used to set up this thesis was prepared by the Center of Intelligent Systems of the {\@tecdemonterrey}, Monterrey Campus} by {\@doctoralStudent}.
 	\if@twoside
 		\clearemptydoublepage	
 	\fi

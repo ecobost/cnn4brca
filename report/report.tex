@@ -1,0 +1,83 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Written by: Erick Cobos Tandazo (a01184587@itesm.mx)
+% Date: 20-January-2016
+%
+% Master's thesis main file. 
+% Based on example provided by: ITESM-Monterrey Campus 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other document class options
+%\documentclass[english,12pt,oneside,openright]{report}
+%\documentclass[english,12pt,twoside,openright]{report} 	%Two-sided
+
+\documentclass[12pt, openright]{report}
+\usepackage{thesisFormat}	% Formatting for the thesis
+\usepackage{times}		% Font of the document
+\usepackage[utf8]{inputenc}	% Spanish accents
+\usepackage{verbatim}		% For block comments
+\usepackage{hyperref}		% To manage \url and citations as links
+\usepackage{subcaption}		% For subfigure in breastcancer.tex
+\usepackage{textcomp}		% For the degree sign(°)
+\usepackage{amssymb}		% For R (real numbers) symbol, among others.
+\usepackage{amsmath}		% Add text to math and further math equations.
+\usepackage{lscape}		% For vertical tables
+\usepackage{graphicx}		% For graphics (also added by thesisFormat.sty)
+
+%% Definition of new commands
+%\newcommand{\field}[1]{\mathbb{#1}}
+%\renewcommand{\thefootnote}{\alph{footnote}}
+
+% Setting up variables for the thesis format  
+\advisor{Dr. Hugo Terashima Marín}
+\advisorInstitution{Tecnológico de Monterrey}
+\committeeMemberA{Committee member A's name}
+\committeeMemberAInstitution{Committee member A's institution}
+\committeeMemberB{Committee member B's name}
+\committeeMemberBInstitution{Committee member B's institution}
+\graduateProgramDirector{Graduate Program Director's name}
+\doctoralStudent{Erick Michael Cobos Tandazo}
+\campus{Monterrey}
+\major{Intelligent Systems}
+\dissertationMonth{May}
+\dissertationYear{2016}
+\dissertationTitle{Segmentation of Breast Cancer Lesions in Digital Mammograms: A Convolutional Network}
+%Segmentation of Breast Cancer Lesions in Digital Mammograms using Convolutional Networks
+%Segmentation of Breast Cancer Lesions in Digital Mammograms: A Convolutional Network
+%Segmentation of Lesions in  Digital Mammograms using Convolutional Networks
+%Lesion Segmentation in Digital Mammograms using Convolutional Networks
+%Segmentation of Breast Cancer Lesions using Convolutional Networks
+
+% Initial pages
+\dedicationFile{dedication}
+\acknowledgementFile{acknowledgements}
+\abstractFile{abstract}
+\bibliographyFile{bibliography}
+
+\begin{document}
+
+% Initial pages
+\MainTitle
+\ThesisCommittee
+\Declaration
+\Dedication
+\Acknowledgements
+\Abstract
+\contentsAndLists
+\startContent
+
+% Chapters 
+% Slightly modelled as in here: cs.uwaterloo.ca/~brecht/thesis-hints.html
+\insertChapter{"introduction"}
+\insertChapter{"background"}
+\insertChapter{"model"}
+\insertChapter{"experiment1"}
+\insertChapter{"conclusions"}
+
+% Appendix
+%\appendix        
+%\insertChapter{"Appendix_01"}
+
+% Bibiography and CV
+\insertBibliography
+\insertVita{cv}
+\end{document}

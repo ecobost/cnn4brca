@@ -1,0 +1,210 @@
+In this section we collect some recommendations for constructing convolutional networks as well as efficiently training deep neural networks. These are intended to be specific to this project but most will also be useful in similar projects.
+% Some of these details are taken care by the software(either as a defualt or optional feature) and some are qyuite new and need to be taken care manually. 
+
+\paragraph{Image preprocessing} Some standard processing for images.
+\begin{itemize}
+	\item Images are cropped to contain only the relevant parts of the image, denoised, enhanced and optionally downsampled to maintain the input size fixed and manageable.
+
+	\item Each image feature (the raw pixels) is zero centered by substracting its mean across all training images. Normalization scales the already zero-centered features to range from $[-1 \dots 1]$ by dividing them by its standard deviations. Feature normalization is not striclty neccesary but still customary~\cite{Karpathy2015}.
+
+	\item The test data should not be used to calculate any statistic used to preprocess the training data. Furthermore, these same statistics (calculated from the training data) should be used when normalizing the test data~\cite{Karpathy2015}.
+\end{itemize}
+
+\paragraph{Convolutional network architecture}
+We offer some guidelines for designing convolutional network architectures and some standard values for various hyperparameters.
+
+\begin{itemize}
+	\item It is always better to select a complex network architecture which is flexible enough to model the data and manage overfitting with regularization rather than an architecture which is not powerful enough to model the data~\cite{Ng2014, Krizhevsky2012}. 
+
+	\item Although, theoretically, neural networks with a single hidden layer are universal approximators provided they have enough units ($\mathcal{O}(2^n)$ where $n$ is the size of the input), in practice, deeper architectures produce better results using less units overall. This insight holds for convolutional networks~\cite{Bengio2014}.
+
+	\item As a rule of thumb for big data sets, use 8-20 layers (not counting pooling or ReLU layers). For small data sets, use less layers or transfer learning. ``You should use as big of a neural network as your computational budget allows, and use other regularization techniques to control overfitting.''~\cite{Karpathy2015}
+
+	\item Use the number of parameters rather than the number of layers or units as a measure of the architecture's complexity.
+
+	\item Use 2-3 \texttt{CONV -> RELU} pairs before pooling (N above)~\cite{Karpathy2015}. Pooling is a destructive operation and having two convolutional layers together allows them to pick up more complex features.
+
+	\item Use 1-5 \texttt{[CONV -> RELU]+ -> POOL} blocks (M above). This number depends on the complexity of the features expected in the data and the computational resources available. In a way, this regulates how much representational power will the architecture have. It also decides how much the volume is subsampled.
+
+	\item Use less than 3 \texttt{FC -> RELU} pairs before the output layer (K above)~\cite{Karpathy2015}. When the volume arrives to the fully connected layers it has shrinken enough and using more fully connected layers risks overfitting.
+
+	\item The number of feature maps per convolutional layer is set according to the expected number of features. This is similar to the number of units in a regular neural network. A common pattern is to start with a small amount of feature maps and increase them layer by layer~\cite{Simonyan2014}. %The reasoning is that at higher layers there are more complex features to learn and moreover as the feature maps become smaller (via pooling) it is computationally feasible to have more of them.
+
+	\item The number of feature maps per fully connected layer, or equivalently the number of units per fully connected layer, decreases from the number of units in the last convolutional layer (the number of units in each feature map times the number of feature maps) to the number of classes. For instance, having a convolutional network with two fully connected layers and 10 possible classes if the last convolutional layer produces a volume of size $8 \times 8 \times 512$ (8192 units), the first fully connected layer could have size $1 \times 1 \times 2048$ and the second (output) layer $1\times 1\times 10$.
+
+	\item Use $3\times 3$ filters with stride 1 and zero-padding 1 or $5 \times 5$ filters with stride 1 and zero-padding 2. This preserves the spatial dimensions of the volume and works better in practice~\cite{Springenberg2014}. When training on big images, the first convolutional layer uses bigger filters~\cite{Karpathy2015}.
+	
+	\item Use $2\times2$ pooling with stride 2. Both this pooling and the overlapping version presented in Section~\ref{subsec:ConvNets} produce similar results. Pooling divides the spatial dimensions of the volume in half~\cite{Krizhevsky2012}.
+%krizhevsky says overlapping is slightly better. so does dieleman but it slows thing down.
+	\item Use square input images (width = height) with dimensions divisible by 2. The dimensions should be divisible by 2 at least as many times as the number of pooling layers in the network.
+
+	\item Convert fully connected layers into convolutional layers.
+\end{itemize}
+
+
+
+\paragraph{Hyperparameter search}
+We deal here with choosing hyperparameters other than those of the network architecture.
+
+\begin{itemize}
+
+	\item Use a single sufficiently large validation set (20-30\%) rather than cross validation~\cite{Bengio2014}. For small data sets, cross validation can give better estimates and is preferred~\cite{Ng2014}.
+
+	\item Use random search rather than grid search. Random search draws each parameter from a value distribution rather than a set of predefined values.~\cite{Bergstra2012}
+
+	\item Train each parameter combination for 1-2 epochs to narrow the search space. Later, train for more epochs on the refined ranges. Full convergence is not needed to make a decision on the hyperparameters~\cite{Karpathy2015}.
+
+	%\item Use a different validation set if you need to run the hyperparameter search for new parameters. :: Because the old validation set is already good for the hyperparameters chosen, we want to choose good hyperparameters in general not only in that validation set.
+
+	\item Hyperparameters related to the convolutional architecture, e.g., number of layers, number of feature maps, filter sizes, etc., are set manually (as explained above) rather than using a validation set.
+% M,N,K, filter size, stride and padding in each convolutional layer, feature maps and units in CONV/FC layers, pooling
+
+	\item There are several hyperparameters to set: initial learning rate $\alpha$, learning rate decay schedule, regularization strength $\lambda$, momentum $\mu$, probability of keeping a unit active in dropout $p$, mini-batch size and type of image preprocessing.
+
+	\item Theoretically we could fit all the hyperparameters using a validation set but in practice it is computationally unfeasible and could result in overfitting the hyperparameters to the validation data~\cite{Cawley2010}.
+
+	\item Set $\alpha$, $\lambda$ and optionally the type of preprocessing using a validation set. Other hyperparameters can be set to a sensible default. 
+%The learning rate schedule and training epochs are set using heuristics. 
+
+	\item The learning rate $\alpha$ is ``the single most important hyperparameter and one should always make sure that it has been tuned''~\cite{Bengio2012}. It ranges from $10^{-6}$ to $10^{0}$. Use a log scale to draw new values ($\alpha = 10^{unif(-6, 0)}$ where $unif(a,b)$ is the continous uniform distribution)~\cite{Karpathy2015}.
+%0.01: Bengio, 2012 says that the optimal learning rate is close to the highest learning rate that does not cause divergence.
+
+	\item The regularization strength $\lambda$ is usually data (and loss function) dependant. It ranges from $10^{-3}$ to $10^4$. Search in log scale ($\lambda = 10^{unif(-3, 4)}$).
+%1
+
+	\item If the best values for a hyperparameter are found in the limit of the range, explore further.~\cite{Bengio2012}.
+
+	\item Use standard image enhancements. If there are no standard methods, use the validation set to choose from the options.
+
+	\item Halve the learning rate every time the validation error stops improving. To obtain a fixed number of epochs, train the network (with the obtained hyperparameters) and observe when the validation error stops decreasing~\cite{Krizhevsky2012}.
+
+	\item Use $\mu=0.9$. When using a validation set try values in \{0.5, 0.9, 0.95, 0.99\}~\cite{Karpathy2015}.
+
+	\item Use 0.9-1 probability $p$ of retaining a unit in the input layer, 0.65-0.85 in the first 2-4 convolutional layers and 0.5 in the last convolutional layers and all fully connected layers~\cite{Srivastava2014}. Less dropout is used on the first layers because they have less parameters~\cite{Karpathy2015}.
+% Maybe don't use dropout in the input layer, because putting a zero there has a meaning(black), maybe the advantage of dropout in cinvolutional layers is just that it adds noise to the input.
+
+	\item Use mini-batch size of 64 or 32. A larger batch size requires more training time. It affects training time more than test performance~\cite{Bengio2012}.
+
+\end{itemize}
+
+
+
+\paragraph{Training}
+Some general tips for efficiently training convolutional networks with million of parameters and very big data sets. Using these algorithms for small networks may be somewhat excessive but it will not hurt the performance.
+
+\begin{itemize}
+	\item Randomize the order of the trainig examples before training. As we are using an stochastic estimator of the gradient this ensures the examples in each batch are sampled independently. Shuffling the examples after each epoch could also speed convergence~\cite{Bengio2012}.
+
+	\item To estimate the number of examples needed to train a convolutional network divide the total number of learnable parameters by 25-100 (assuming some data augmentation). Some groups have been able to learn up to 40M parameters from as little as 60K training examples~\cite{Dieleman2015, Springenberg2014}.
+
+	\item Weight initialization is very important for a proper convergence of the network. The current recommendation for ReLU units is to initialize each weight as a value drawn from a gaussian distribution $\mathcal{N}(\mu = 0, \sigma = \sqrt{2/n_{in}})$ where $n_{in}$ is the fan-in of the unit, i.e., the number of inputs to the unit. Specifically, each filter weight could be initialized as \texttt{w = randn()*sqrt(2/nIn)} where \texttt{randn()} returns a value drawn from a standard normal distribution and \texttt{nIn} is the number of connections to this filter (9 for a $3\times 3$ filter, for example). Weights for units in the fully connected layer follow the same formula. Biases can be initialized likewise or to zero~\cite{He2015}.
+
+	\item Use mini-batches to compute the gradient. Using the entire training set to compute the gradient of the loss function takes a big amount of computation and points to the steepest descent direction locally but may not be the right direction if the update step is large. Using mini-batches allows us to make more updates, more frequently which results in faster convergence and better test results~\cite{Bengio2012}.
+
+	\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. It is a modified version of gradient descent which has shown to work slightly better for certain architectures~\cite{Bengio2012b}. Stochastic Gradient Descent with Momentum (SGD+Momentum) is also a viable option~\cite{Karpathy2015}.
+% May need to crossvalidate the momentum if using NAG 
+
+	\item Use dropout as a complement to $l_2$-norm regularization. Dropout usually improves results but it may slow network convergence~\cite{Krizhevsky2012}.
+
+	\item Store the network parameters regularly during training. Once per epoch should be enough but it depends on the number of parameters and size of the data. This allows you to come back to different versions of the network and select the one with the best overall validation/test error or one with some special characteristics~\cite{Bengio2014}.
+
+	\item Stop the training process when the validation or test error has not improved since the last learning rate reduction. At this point gradient descent may not have converged but the validation error has and will start to increase (overfit)~\cite{Bengio2012}.
+
+	\item Use the validation or test error to select the best parameters for the network from those stored~\cite{Bengio2014}. 
+
+	\item If you use the test set to refine a model, shuffle the entire data set and choose a diferent training and test set for the new model. Otherwise, you run the risk of overfitting to the test set~\cite{Ng2014}.
+\end{itemize}
+
+
+
+\paragraph{Sanity checks}
+Some simple checks to make sure the training is working properly.
+\begin{itemize}
+	\item After weight initialization, the network should predict similar scores for each class (uniform probability) and have a loss function (without regularization) equal to $-\log(1/K)$. You can check this by running a test on a small set of examples. Adding regularization should increase the loss~\cite{Karpathy2015}.
+
+	\item If you implement back propagation manually or believe it may not be working properly you can run a gradient check. Gradient checks compare the analytic gradient produced by backpropagation with a numerical gradient produced by a finite difference approximation~\cite{Karpathy2015}.
+
+	\item Train the network with a very small subset of data (20 examples, for instance) and make sure it produces zero loss (without regularization). If it cannot overfit a tiny subset of examples the model is too simple~\cite{Ng2014}.
+
+	\item During training, the training loss should always decrease or only slightly increase. Otherwise, gradient descent may not be working properly either because of an implementation error or poorly tuned hyperparamters (high learning rate, low momentum)~\cite{Karpathy2015}.
+
+	\item Monitor the training and validation loss during training to identify overfitting and underfitting. Underfitting is characterized for a high training loss, overfitting is characterized for a big gap between training and validation (or test) loss~\cite{Ng2014}.
+\end{itemize}
+
+\paragraph{Data augmentation}
+One of the easiest ways to reduce overfitting in image data is to generate additional examples from the original data by applying some simple label-preserving transformations. Data augmentation allows the network to see different views of the same object thus enabling it to identify features that do not depend on the invariance introduced by the transformations. 
+For instance, if we present it with images of a book on different rotations, we expect it to learn to identify a book no matter its position.
+
+\begin{itemize}
+	\item There are many transformations one can apply: rotations, translations, horizontal and vertical reflections, crops (sample patches of the original image), zooms, etc. For color images, adding some noise to (jittering) the colors is also a valid transformation.
+% Dieleman galaxies didn't like jittering or scales and crops
+% Lo liked rotation and horizontal flipping
+
+	\item Exploit the invariances you expect in the data set. For instance, galaxies are rotation invariant given that in space there is no up or down~\cite{Dieleman2015} but trees are not as it is rare to see an upside down tree.
+
+	\item When combining different transformations in the same image be careful to preserve the original label. An overly modified image may lose its meaning. 
+
+	\item Most transformations are affine in the geometric plane and can be combined into a single one. If you plan to apply various transformations to the same image, applying a single affine transformation is faster and reduces information loss~\cite{Dieleman2015}.
+
+	\item Generate the augmented images during training. This saves storage and can be performed alongside the training~\cite{Krizhevsky2012}.
+
+	\item Data augmentation can also be used at test time by presenting the network with various versions of the same image and averaging its predictions~\cite{Krizhevsky2012}. 
+	
+\end{itemize}
+
+% Need some sources for this section. I've read it all around.
+\paragraph{Unbalanced data}
+Having very few examples of one class compared to the rest is common in practice. We offer here some advice to deal with unbalanced classes using standard convolutional networks. We note that there is no accepted way to manage this problem.
+\begin{itemize}
+	\item For a binary classifier, if the positive class is the rare class use PRAUC as a performance metric. If you are reporting the $F_1$ score, you should select an appropiate threshold using a validation set~\cite{Davis2006}.
+
+	\item If using PRAUC or selecting the threshold with a validation set is impractical, a simple adjustment is to divide the predicted probabilities by their corresponding class priors and to renormalize the values.
+
+	\item For multiclass classification, use the macro-averaged $F_1$ score, an average of $F_1$ scores per class, with validated thresholds~\cite{Ozgur2005}. A multiclass PRAUC also exists but it is not as easy to interpret.
+
+	\item As the threshold setting does not affect training it can be fitted independently of other hyperparameters once the network has already been trained. If fitting more than one, consider each one as a separate hyperparameter and use random search to find the best combination.
+
+	\item One of the preferred methods to learn with unbalanced data sets is to use a modified loss function which gives a higher weight to errors in the rare class so that during training errors in the rare class will produce higher learning in the network parameters. Specific knowledge of the domain is required to estimate the cost of each class of error.
+
+	\item Oversampling and undersampling, repeating the examples of the rare class or discarding some examples from the dominant class, are discouraged because they either not add information or throw away some of it.
+
+	\item Replicating rare examples (oversampling) is useful when the examples are very scarce and the classifier simply does not have enough data to learn. This could be achieved by balancing the classes on each mini-batch via stratified sampling or by augmenting the rare class more than the dominant class during data augmentation.
+
+	\item Data augmentation differs from data replication in that it only tries to enrich the data set with invariant images but actually leaves the proportion of classes unchanged.
+\end{itemize}
+
+\paragraph{All convolutional networks}
+The research community has been moving towards discarding the pooling layers and using all convolutional networks. This can be interpreted as letting the network learn the pooling operation. We offer a couple of guidelines for implementing all convolutional networks.  
+\begin{itemize}
+	\item Replace each pooling layer with a convolutional layer with as many feature maps as in the previous layer and filter size $2\times 2$ with stride $2$ for normal pooling or $3\times 3$ with stride $2$ for overlapping pooling~\cite{Springenberg2014}. 
+
+	\item For small data sets pooling layers also work as a regularizer because they reduce the number of learnable parameters and replacing them with convolutional layers may not be convenient~\cite{Karpathy2015}.
+\end{itemize}
+
+\paragraph{Transfer learning}
+When we have a small data set we could use a pretrained convolutional network either as a feature extractor for the new examples or to provide initializations for the new convolutional network, this is called transfer learning. We offer some tips for using a pretrained model specifically for mammographic images.
+
+\begin{itemize}
+	\item Using a convolutional network pretrained in natural images, such as the ImageNet database, CIFAR-10, CIFAR-100, etc., may not work for mammographic images because features useful for one kind of classification are not very useful for the other. Nonetheless, given that features become more specific at higher layers, we could discard the higher layers of the network and use only the cropped network~\cite{Karpathy2015}.
+ 
+	\item Depending on the amount of data that we have we could: (1) add some fully connected layers on top of the pretrained network and train only these new layers, (2) add some convoutional and fully connected layers and train these new layers or (3) add convolutional and/or fully connected layers and train the entire network~\cite{Karpathy2015}.
+
+	\item When training on a pretrained model or fine-tuning use an smaller learning rate than when training a network from scratch. Using a small learning rate assures that we do not disturb very much the already good network parameters.~\cite{Karpathy2015}.
+\end{itemize}
+
+\paragraph{Software}A short description of four of the most popular packages for deep learning. They are pretty similar in capabilities and availability (open-source).
+
+\begin{itemize}
+	\item Caffe~\cite{Jia2014}: Caffe is an already mature deep learning framework developed in C++/CUDA by the Berkeley Vision and Learning Center (BVLC) and community contributors. It offers a command line, Python and Matlab interface, reference models and tutorials and very fast code with easy GPU activation.
+	\item Torch7~\cite{Collobert2011}: Torch is a scientific computing framework developed in C/Lua/CUDA at the IDIAP Research Institute. It offers n-dimensional arrays (tensors), automatic differentiation, a command line and Lua interface, GPU support and easy building of complex neural network architectures.
+	\item Theano~\cite{Bergstra2010, Bastien2012}: Theano is a Python library developed in Python/CUDA at the University of Montreal. It is tightly integrated with NumPy, performs symbolic automatic differentiation and uses the GPU to efficiently evaluate mathematical expressions involving multi dimensional arrays.
+	\item Cuda-ConvNet2~\cite{Krizhevsky2014}: Cuda-ConvNet2 is a highly optimized convolutional network library developed in C++/CUDA by Alex Krizhevsky. It offers different off-the-shelf configurations for convolutional networks, a command line interface and multi-GPU training.
+\end{itemize}
+
+\bigskip
+
+Lastly, we acknowledge that mammographic data is fairly different to that used in common object recognition tasks, for instance, labelling may not be as sharp or correct, images come in different sizes and ratios, image quality varies, the object to recognize may be very small in relation to the image, object localization may be a requirement, etc. and therefore some of the advice given above may prove counterproductive. When possible, design decisions should be based on the data and results obtained until that point.
+
+%We plan to start with a simple convolutional architecture and add some of the well tested features first and other possible features later to obtain an optimized model which will be trained and tes.
+
+%Deep Learning (Bengio Lecture): (https://www.youtube.com/watch?v=JuimBuvEWBg)

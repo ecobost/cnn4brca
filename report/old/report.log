@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  11 NOV 2015 00:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  20 JAN 2016 23:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report.tex
+**report
 (./report.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -158,27 +158,6 @@ Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks16
 \verbatim@line=\toks17
 \verbatim@in@stream=\read1
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
-)
-Package graphics Info: Driver file: pdftex.def on input line 91.
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count97
-))
-\Gin@req@height=\dimen107
-\Gin@req@width=\dimen108
 ) (./report.aux)
 \openout1 = `report.aux'.
 
@@ -198,13 +177,14 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 \AtBeginShipoutBox=\box26
 Package hyperref Info: Link coloring OFF on input line 15.
- (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count98
+\c@section@level=\count97
 )
 LaTeX Info: Redefining \ref on input line 15.
 LaTeX Info: Redefining \pageref on input line 15.
@@ -214,35 +194,6 @@ LaTeX Info: Redefining \nameref on input line 15.
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count99
-\scratchdimen=\dimen109
-\scratchbox=\box27
-\nofMPsegments=\count100
-\nofMParguments=\count101
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count102
-\MPscratchDim=\dimen110
-\MPnumerator=\count103
-\makeMPintoPDFobject=\count104
-\everyMPtoPDFconversion=\toks19
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-)
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
 LaTeX Font Info:    Try loading font information for U+msa on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -263,16 +214,34 @@ LaTeX Warning: Citation `Lo1998' on page 3 undefined on input line 6.
 
 LaTeX Warning: Citation `Sahiner1996' on page 3 undefined on input line 8.
 
-[3] [4] [5] <plots/mcDiffPreprocessings.png, id=120, 863.225pt x 867.24pt>
-File: plots/mcDiffPreprocessings.png Graphic file (type png)
+[3] [4] [5]
+! Undefined control sequence.
+l.51 	\includegraphics
+                       [width = 0.7\textwidth]{plots/mcDiffPreprocessings.png}
+? q
+OK, entering \batchmode...
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.51 	\includegraphics [width = 0.7\textwidth]
+                                              {plots/mcDiffPreprocessings.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
 
-<use plots/mcDiffPreprocessings.png>
-Package pdftex.def Info: plots/mcDiffPreprocessings.png used on input line 51.
-(pdftex.def)             Requested size: 251.9989pt x 253.16052pt.
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.51 	\includegraphics [width = 0.7\textwidth]
+                                              {plots/mcDiffPreprocessings.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+ [6]
 Missing character: There is no Â in font cmr10!
 Missing character: There is no ° in font cmr10!
 Missing character: There is no Â in font cmr10!
@@ -281,13 +250,37 @@ Missing character: There is no Â in font cmr10!
 Missing character: There is no ° in font cmr10!
 Missing character: There is no Â in font cmr10!
 Missing character: There is no ° in font cmr10!
-[6] <plots/mcDiffResizings.png, id=131, 822.4326pt x 722.7pt>
-File: plots/mcDiffResizings.png Graphic file (type png)
+! Undefined control sequence.
+l.69 	\includegraphics
+                       [width = 0.8\textwidth]{plots/mcDiffResizings.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-<use plots/mcDiffResizings.png>
-Package pdftex.def Info: plots/mcDiffResizings.png used on input line 69.
-(pdftex.def)             Requested size: 288.0011pt x 253.08112pt.
- [7 <./plots/mcDiffPreprocessings.png>])
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.69 	\includegraphics [width = 0.8\textwidth]
+                                              {plots/mcDiffResizings.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.69 	\includegraphics [width = 0.8\textwidth]
+                                              {plots/mcDiffResizings.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+) [7]
 Underfull \hbox (badness 2735) in paragraph at lines 48--48
 \OT1/cmr/m/n/10.95 384 cores, 2GB, 5.0
  []
@@ -297,25 +290,27 @@ Overfull \hbox (5.11609pt too wide) in paragraph at lines 43--52
  [][] 
  []
 
-[8 <./plots/mcDiffResizings.png>]
 
-LaTeX Warning: Reference `subsec:PracticalDL' on page 9 undefined on input line
+LaTeX Warning: Reference `subsec:PracticalDL' on page 8 undefined on input line
  57.
 
-[9]
 
-LaTeX Warning: Reference `subsec:Classification' on page 10 undefined on input 
-line 87.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: Citation `Jia2014' on page 10 undefined on input line 94.
+LaTeX Warning: Reference `subsec:Classification' on page 8 undefined on input l
+ine 87.
 
-[10]
+ [8]
+
+LaTeX Warning: Citation `Jia2014' on page 9 undefined on input line 94.
+
+ [9]
 Overfull \hbox (4.71802pt too wide) in paragraph at lines 105--105
 []\OT1/cmr/bx/n/14.4 Experiment2: De-tec-tion of masses or some-thing? 
  []
 
-(./report.bbl
+ (./report.bbl
 Missing character: There is no Å in font cmr10!
 Missing character: There is no Ÿ in font cmr10!
 Missing character: There is no Ã in font cmr10!
@@ -331,9 +326,9 @@ Missing character: There is no Ã in font cmr10!
 Missing character: There is no ³ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no £ in font cmr10!
- [11])
+ [10])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 112.
- [12]
+ [11]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 112.
  (./report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 112.
@@ -341,19 +336,21 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 112.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 5B4ABCC2BE0CF2BA7E57AF3DFE60E785;863.
 
-
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 112.
  ) 
 Here is how much of TeX's memory you used:
- 5490 strings out of 495028
- 80266 string characters out of 6181498
- 158313 words of memory out of 5000000
- 8599 multiletter control sequences out of 15000+600000
+ 4664 strings out of 495028
+ 68621 string characters out of 6181498
+ 145893 words of memory out of 5000000
+ 7808 multiletter control sequences out of 15000+600000
  12817 words of font info for 49 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,10n,28p,1003b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,10n,28p,999b,425s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -366,10 +363,10 @@ onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
 0.pfb>
-Output written on report.pdf (12 pages, 773613 bytes).
+Output written on report.pdf (11 pages, 170766 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 188 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
- 123 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 184 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

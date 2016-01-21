@@ -1,0 +1,45 @@
+In order to achieve the proposed objectives and test our hypotheses we will need to carry out various tasks. We list them here in the order in which we plan to execute them:
+
+\begin{enumerate}
+	\item \textbf{Literature review}
+
+A thorough review of the published work using the databases and resources available in the institution. By the end of this task, a complete theoretical background should be obtained and written. This will also help refine the scope of the project and the experiments to be conducted.
+	\item \textbf{Database preprocessing}
+
+We will ready the database images for the experiments; these implies joining different databases, obtaining the required features, preprocessing the images, assigning labels, etc.	
+	\item \textbf{Software review}
+
+Once a clear idea of what are the possible experiments to be executed, we will need to find appropiate software to perform them. Software for database managing, preprocessing and implementation of different neural networks should be either located or developed.
+	\item \textbf{Exploratory experiments}
+
+We will train a standard convolutional networks with fixed parameters for the detection of microcalcifications and the detection of masses. We want to answer whether the convolutional network is powerful enough to learn the task in hand, whether we have enough data for the network to learn or more data augmentation is needed and wether the computational resources and parameter settings allow the network to learn in a timely fashion.
+	\item \textbf{Model selection}
+
+Using the insights from previous sections and the current literature on convolutional networks, we will select a network architecture along with novel features, preprocessing, training and regularization procedures. We aspire to find the best convolutional network configuration for mammogram classification.
+	\item \textbf{Further experiments}
+
+We will train the chosen convolutional network on our mammographic database. We will perform crossvalidation to adjust the most important network parameters and use regularization to avoid possible overfitting. We want to answer two research questions: is the performance of the convolutional network considerably improved by parameter tuning and, more importantly, is this a good performance?.
+%Maybe train one with no tune fitting.
+
+	\item \textbf{Alternative convolutional networks}
+
+We will train a linear classifier, probably rectified linear units, on the features obtained from a convolutional network trained on the ImageNet database, i.e., we will use an already trained convolutional network instead of one trained specifically in mammograms. We will also use an all convolutional network of a size relative to the best arhcitecture up to that point. We want to answer two questions: can we use an already trained convolutional network to classify mammograms and do using an all convolutional network affects significatively the results?
+
+	\item \textbf{Gathering results}
+
+Produce results on the test set and elaborate figures and tables. This could be obtained directly from software output or from further program executions.
+	\item \textbf{Reporting results}
+
+Write the thesis and any article or technical guide which may result from this work. Both this and the previous step will be performed along the execution of the project, hopefully benefiting from the supervisors' feedback.
+\end{enumerate}
+Finally, we would like to note that this is an idealized workflow and some changes may occur due to time limitations or lack of resources. In the unlikely case that the work is finished before the project deadline, we will either reiterate on model selection, experiments and results gathering and reporting or look into digital tomosynthesis, network ensembles or evolving convolutional networks.
+
+\begin{comment}
+La {\it Metodología} (o lo que algunos autores llaman el {\it Método})
+ es el proceso o
+conjunto de pasos que debe efectuarse para llegar a cumplir con los
+objetivos. Esos pasos deben contener  los experimentos a realizar, la forma de
+llevarlos a cabo, la evaluación de los resultados, la prueba de las hipótesis,
+la respuesta a las preguntas de investigación y el último paso debe ser el
+reporte escrito de los resultados.
+\end{comment}

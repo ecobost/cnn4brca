@@ -1,0 +1,54 @@
+\begin{comment} 
+Hook(first paragarpah) : Automatic breast cancer diagnosis is a very difficult taks for current automatic computationnal systems. In this article,  we apply deep learning techniques to digital mammogrpahic images and obtain better results than presented to date. We show or prove or use this technique to obtain this... (when we have results)
+Automatic breast cancer diagnosis is a very difficult task for current computational systems. In this thesis, we apply deep learning techniques to digital mammographic images in order to improve the performance of such systems. We layout here the hypotheses, experiments and goals of our future research.
+\end{comment}
+Accurately diagnosing breast cancer is hard for current computational systems; in this thesis, we use deep learning to improve their performance.
+
+Breast cancer is caused by abnormal cells that grow out of control forming tumors and invading surrounding breast tissue.
+%If this growth is not controlled it can cause serious illness or death.
+It has the highest incidence rate of any cancer in the United States, an estimated 14.1\% of cancer diagnoses in 2015, and the third highest mortality accounting for 6.9\% of all cancer-related deaths. Among women, it is the most commonly diagnosed cancer (28.6\%) and has the highest death rate (14.5\%) besides lung cancer~\cite{ACS2015}. The American Cancer Society recommends that women aged 45 or older should get mammograms, images of the breast which show signs of tumor formation, annually or biennially~\cite{Oeffinger2015}. We consider two of the lessions that can be found on a mammogram: clustered microcalcifications, tiny deposits of calcium that could appear around cancerous tissue; and breast masses, more direct signs of the existence of a tumor although often benign.
+%For the diagnosis of suspicious areas, more mamograms or a biopsy are normally required. The quality of a mmamogram and the diligence and experience of the radiologist is an important factor to succesfully detect breast cancer.
+
+We focus on using mammograms to automatically detect these lesions and predict the probability of breast cancer on the patient. Although manual examination of mammograms has a high sensitivity rate, automatic examination could be used by radiologists as a second informed opinion or as a help in deciding which regions should be further analysed. It could also be used where doctors are unavailable. With this motivation, the department created a project to design a computer-aided diagnosis system (CAD) for breast cancer. This thesis falls under the scope of this project as the first attempt to use deep learning for breast cancer diagnosis.
+
+Traditional CAD systems for breast cancer work as a pipeline where each stage uses different computer vision and machine learning techniques. An standard pipeline will, for instance, preprocess the image, identify and segment the relevant parts of the picture, extract features from the segmented parts and train a classifier on the extracted features. Although some successful systems are built in this manner, they have a few disadvantages: each stage is a separate component and hence each of them needs to be improved to notably improve overall results, it is composed of dependent stages so that changes on one component affect the performance of other parts of the system, it uses complex image vision techniques that are difficult to handcraft to segment the images and extract features, it requires expert knowledge to be properly tuned, among others.
+
+We plan to investigate the potential of convolutional networks to replace some if not all of the stages of traditional image processing systems. Convolutional networks~\cite{Fukushima1980,LeCun1998}, a natural extension to feedforward neural networks, are a statistical learning classifier that uses raw images as input and learns the important features for the classification task as it is trained. Convolutional networks work well with minimally preprocessed images, can be trained to be rotational and translational invariant and perform segmentation, feature extraction and classification in one step. In our case, convolutional networks simplify classification potentially reducing it to a single component that we can train from labelled data and tune to obtain better results. Although convolutional networks have some drawbacks, they are the state-of-the-art technology for object recognition~\cite{Russakovsky2014} and we believe it is worthy to experiment with them.
+
+%Summary of the related work part here(this guys dd it first and this guys and i'm gteting my ideas from here and there and my contribution is this...)
+Researchers have used small convolutional networks to detect breast masses from normal tissue~\cite{Sahiner1996} and individual microcalcifications from noise in the image~\cite{Lo1995, Ge2007}. In these experiments mammograms were preprocessed, enhanced and potential masses and microcalcifications were segmented and presented to the network for classification. We plan to use the available data and aggresively augment it using rotations, translations and reflections so that we could train bigger networks that would potentially learn more complex features. Furthermore, we plan to apply some of the most recent advances such as rectified linear unit activations, max-pooling, dropout, etc. to new tasks related to breast cancer detection where they have not yet been applied. For instance, the detection and diagnosis of masses and clustered microcalcifications.
+
+We start our experiments by training a simple convolutional network to detect masses and clustered microcalcifications, later we train a more complex network architecture including some of the most recent advances and finally use the gathered knowledge to build an optimal convolutional network with tuned hyperparameter. As further experiments and depending on the available time we plan to pretrain a convolutional network with a different image database and fine-tune it using our database, use an all convolutional architecture, account for the problem of using an unbalanced data set and use an ensemble of networks. We intend to learn whether convolutional networks can automatically detect and diagnose breast cancer lesions, what are the advantages of using more data, a bigger architecture and tuned hyperparameters and whether we can achieve results similar to those of traditional systems.
+
+This document offers an insight into the problem with traditional methods for image analysis in Section~\ref{sec:ProblemDefinition}. It exposes the particular objectives and hypotheses of the thesis in Sections~\ref{sec:Objectives} and~\ref{sec:Hypothesis}. Section~\ref{sec:Background} presents a comprehensive background of the scientific concepts used throughout the document and lastly a detailed methodology and work plan are shown in Sections~\ref{sec:Methodology} and~\ref{sec:WorkPlan}.
+
+\begin{comment}
+En esta sección se espera que el autor describa en forma más amplia a como
+se presentó en el {\it Resumen}, algunos aspectos como el contexto de la
+investigación, el problema a resolver, la forma propuesta de resolver, algunos
+antecedentes, entre otros.
+
+Los puntos importantes en la {\it Introducción} son:
+\begin{itemize}
+	\item Introducción al contexto donde se va a realizar la propuesta
+	\item Determinar la situación problemática 
+	\item Definir el problema y los factores y aspectos más importantes que intervienen  en el problema
+	\item Justificar por qué es importante resolver ese problema
+ Michael: Hasta aqui es pareciod a lo de definicion de problema. M
+	\item Explicar lo qué se ha hecho para resolver ese problema
+	\item Describir el modelo de solución del problema
+	\item Establecer los posibles logros en la solución del problema
+	\item Describir la organización del documento
+\end{itemize}
+
+{\bf Ejemplo de Cita Bibliográfica:}
+
+En años recientes se ha manifestado interés en el área de Algoritmos Genéticos
+con la Teoría de Dificultad
+Walsh polynomials \cite{Clear2}....... \\
+
+
+{\bf No olviden incluir en donde corresponde
+ la motivación, la justificación, el alcance de la
+investigación, los recursos y las suposiciones...}
+\end{comment}
