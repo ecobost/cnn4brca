@@ -20,6 +20,14 @@
 \newblock Available on
   \url{cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}.
 
+\bibitem{Arevalo2015}
+{\sc Arevalo, J., Gonzalez, F.~A., Ramos-Pollan, R., Oliveira, J.~L., and
+  Guevara~Lopez, M.~A.}
+\newblock Convolutional neural networks for mammography mass lesion
+  classification.
+\newblock In {\em Engineering in Medicine and Biology Society (EMBC), 2015 37th
+  Annual International Conference of the IEEE\/} (Aug 2015), pp.~797--800.
+
 \bibitem{Bastien2012}
 {\sc Bastien, F., Lamblin, P., Pascanu, R., Bergstra, J., Goodfellow, I.~J.,
   Bergeron, A., Bouchard, N., and Bengio, Y.}
@@ -299,12 +307,13 @@
   Microstructure of Cognition, Vol. 1}, D.~E. Rumelhart, J.~L. McClelland, and
   C.~PDP Research~Group, Eds. MIT Press, Cambridge, MA, 1986, pp.~318--362.
 
-\bibitem{Russakovsky2014}
+\bibitem{Russakovsky2015}
 {\sc Russakovsky, O., Deng, J., Su, H., Krause, J., Satheesh, S., Ma, S.,
   Huang, Z., Karpathy, A., Khosla, A., Bernstein, M., Berg, A.~C., and Fei-Fei,
   L.}
 \newblock {ImageNet Large Scale Visual Recognition Challenge}.
-\newblock {\em CoRR abs/1409.0575\/} (2014).
+\newblock {\em International Journal of Computer Vision (IJCV) 115}, 3 (2015),
+  211--252.
 \newblock Available online on \url{arxiv.org/abs/1409.0575}.
 
 \bibitem{Sahiner1996}

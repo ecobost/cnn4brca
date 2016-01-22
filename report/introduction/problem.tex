@@ -1,8 +1,10 @@
-Breast cancer is the most commonly diagnosed cancer in woman and its death rates are among the highest of any cancer. It is estimated that about 1 in 8 U.S. women will be diagnosed with breast cancer at some point in their lifetime. Early detection is key in reducing the number of deaths from breast cancer; detection in its earlier stage (\textit{in situ}) increases the survival rate to virtually 100\%~\cite{Howlader2014}.
+Image segmentation partitions an image into multiple regions, essentially assigning a label to each pixel. For instance, classifying each pixel in a street image as road, building, tree, pedestrian or bicycle. If we are only interested in discriminating between a single class and the background, we could also present
+we could also present a heatmap with the different probabilities in each pixel of the image, for instance on mammograms we could present a grayscale image of whether a lesion is present.
+In medical imaging, automatic lesion segmentation is tasked with distinguishing lesions from normal tissue.
+% doctors need to identify in each image if there are any lesiona and wheter they are malignant, this is done by scaning the mammogram looking for abnormal findings. this is error prone and its efficacy depends greatly on the preparation and dilligence of the doctor. 
 
-With current technology, a high quality mammogram is ``the most efective way to detect breast cancer early''~\cite{Mammograms2014}. Mammograms are used by radiologists to search for early signs of cancer such as tumors or microcalcifications. About 85\% of breast cancers can be detected with a screening mammogram~\cite{PerformanceMammography2013}. This high sensitivity is the product of careful examination of the mammograms by experienced radiologists. A computer-aided diagnosis tool (CAD) could automatically detect and diagnose these abnormalities saving the time and training needed by expert radiologists and avoiding any human error. Computer based approaches could also be used by radiologists as a help during the screening proccess or as a second informed opinion on a diagnosis.
-
-CAD systems are based on image and classification techniques coming from Artificial Intelligence and Machine Learning. Traditional CAD tools for breast cancer diagnosis are composed of three steps: feature extraction, feature selection and classification. In the feature extraction phase, the system uses filters and image transformations to preprocess the mammogram and find geometric patterns which are used to produce a set of features for the image; expert knowledge is sometimes used in this phase. Feature selection or regularization is used to focus only on the important features for the classification task. Once a vector of features is obtained for each image, an standard binary classifier can be used to perform the final detection or diagnosis. These techniques have been used for many years and are standard in the industry~\footnote{See~\cite{Hernandez2014} for an example of a CAD system developed in this institution.}.
+CAD systems are based on image and classification techniques coming from Artificial Intelligence and Machine Learning. Traditional CAD tools for breast cancer detection are composed of three steps: feature extraction, feature selection and classification. In the feature extraction phase, the system uses filters and image transformations to preprocess the mammogram and find geometric patterns, producing a set of features for the image; expert knowledge is often needed in this phase. Feature selection or regularization is used to focus only on the important features for the classification task. Once a vector of features is obtained for each image, an standard binary classifier performs the final detection or diagnosis. These techniques have been used for many years and are standard in the industry~\footnote{See~\cite{Hernandez2014} for an example of a CAD system developed in this institution.}. 
+%traditional cad systems are ill-defined to deal with this difficult problem subpar
 
 Despite its widespread use and efficiency, systems based on traditional computer vision techniques have various limitations that should be addressed to further improve its performance:
 \begin{itemize}
@@ -16,21 +18,5 @@ Despite its widespread use and efficiency, systems based on traditional computer
 	\item The techniques currently used are complex but the improvements achieved are not substantial. Much work is needed to make only incremental improvements and it is hard to know to which part of the system dedicate more resources.
 \end{itemize}
 
+% To remedy this I plan to do this, i do image segmentation with convnets. end-to-end,
 This project will center around using Convolutional Networks, a recent development in computer vision, (see Section~\ref{subsec:ConvNets}) to tackle some of these limitations, especifically automate preprocessing, feature extraction and segementation, use entire mammogram images and simplify the system pipeline by using a convolutional network as a replacement for many steps traditionally performed in succesion.
-
-\begin{comment}
-El {\it Problema} es el núcleo de la propuesta. En esta parte se define y se
-justifica clara y ampliamente la situación que se pretende
-resolver. Normalmente el problema particular a resolver cae dentro de un
-contexto más amplio, dentro de una situación problemática de la cual se
-derivan regularmente más de un problema. Los aspectos a considerar en esta
-parte consisten en lo siguiente:
-\begin{itemize}
-	\item Describir la Situación problemática, es decir, identificar los
-	problemas o áreas de oportunidad donde se ubica su investigación y los
-	antecedentes de esa situación. 
-	\item Definir el problema a detalle con sus factores, aspectos, relaciones
-  y desarrollar la importancia de ese problema. Debería estar basado en
-  literatura.
-\end{itemize}
-\end{comment}

@@ -25,7 +25,7 @@
 
 %% Definition of new commands
 %\newcommand{\field}[1]{\mathbb{#1}}
-%\renewcommand{\thefootnote}{\alph{footnote}}
+\renewcommand{\thefootnote}{\alph{footnote}} % For alphabetic footnotes 
 
 % Setting up variables for the thesis format  
 \advisor{Dr. Hugo Terashima Marín}
@@ -68,7 +68,10 @@
 % Chapters 
 % Slightly modelled as in here: cs.uwaterloo.ca/~brecht/thesis-hints.html
 \insertChapter{"introduction"}
+% say end-to-end system from image to classification in a single model
 \insertChapter{"background"}
+% Image segmentation is the process of labelling each image pixel with a set of specificed classes, for instance, as cancerous or noncancerous tissue. Convolutional networks lend themselves to be easily used for image segmentation by sliding it in the image and recording its output for each pixel. The produced heatmap under can be thresholded to produce a resulting segmentation image. 
+% Metrics for image segmentation. hard thresholded
 \insertChapter{"model"}
 \insertChapter{"experiment1"}
 \insertChapter{"conclusions"}
