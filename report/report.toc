@@ -4,68 +4,69 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motivation}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Problem Definition}{2}{section.1.2}
-\contentsline {section}{\numberline {1.3}Objectives}{4}{section.1.3}
+\contentsline {section}{\numberline {1.3}Objectives}{3}{section.1.3}
 \contentsline {section}{\numberline {1.4}Hypothesis}{4}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}Research Questions}{5}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.1}Research Questions}{4}{subsection.1.4.1}
 \contentsline {section}{\numberline {1.5}Methodology}{5}{section.1.5}
-\contentsline {section}{\numberline {1.6}Contributions}{7}{section.1.6}
-\contentsline {section}{\numberline {1.7}Outline of the thesis}{7}{section.1.7}
-\contentsline {chapter}{\numberline {2}Background}{8}{chapter.2}
-\contentsline {section}{\numberline {2.1}Breast Cancer}{8}{section.2.1}
-\contentsline {subsubsection}{Mammograms}{9}{section*.6}
-\contentsline {section}{\numberline {2.2}Classification}{10}{section.2.2}
-\contentsline {section}{\numberline {2.3}Artificial Neural Networks}{14}{section.2.3}
-\contentsline {section}{\numberline {2.4}Convolutional Networks}{17}{section.2.4}
-\contentsline {paragraph}{Convolutional layer}{18}{section*.14}
-\contentsline {paragraph}{ReLU layer}{20}{section*.16}
-\contentsline {paragraph}{Pooling layer}{20}{section*.17}
-\contentsline {paragraph}{Fully connected layer}{20}{section*.18}
-\contentsline {section}{\numberline {2.5}Convolutional Networks applied to Breast Cancer}{22}{section.2.5}
-\contentsline {paragraph}{Overview}{23}{section*.20}
-\contentsline {subsubsection}{Detection of masses}{23}{section*.21}
-\contentsline {subsubsection}{Detection of microcalcifications}{24}{section*.22}
-\contentsline {subsubsection}{Diagnosis of lesions}{25}{section*.23}
-\contentsline {section}{\numberline {2.6}Practical Deep Learning}{28}{section.2.6}
-\contentsline {paragraph}{Image preprocessing}{28}{section*.25}
-\contentsline {paragraph}{Convolutional network architecture}{28}{section*.26}
-\contentsline {paragraph}{Hyperparameter search}{29}{section*.27}
-\contentsline {paragraph}{Training}{30}{section*.28}
-\contentsline {paragraph}{Sanity checks}{31}{section*.29}
-\contentsline {paragraph}{Data augmentation}{32}{section*.30}
-\contentsline {paragraph}{Unbalanced data}{33}{section*.31}
-\contentsline {paragraph}{All convolutional networks}{33}{section*.32}
-\contentsline {paragraph}{Transfer learning}{34}{section*.33}
-\contentsline {paragraph}{Software}{34}{section*.34}
-\contentsline {chapter}{\numberline {3}Solution Model}{36}{chapter.3}
-\contentsline {section}{\numberline {3.1}Operationalization}{36}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Database}{36}{subsection.3.1.1}
-\contentsline {paragraph}{Decision}{37}{section*.35}
-\contentsline {paragraph}{Alternatives}{37}{section*.36}
-\contentsline {subsection}{\numberline {3.1.2}BCDR-DM}{38}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Image retrieval}{38}{subsection.3.1.3}
-\contentsline {paragraph}{Image dimensions}{38}{section*.37}
-\contentsline {paragraph}{Cropping}{39}{section*.38}
-\contentsline {paragraph}{Stride}{39}{section*.39}
-\contentsline {paragraph}{Background}{39}{section*.40}
-\contentsline {paragraph}{Assigning labels}{39}{section*.41}
-\contentsline {paragraph}{Label information}{40}{section*.42}
-\contentsline {paragraph}{Image enhancement}{40}{section*.43}
-\contentsline {paragraph}{Data augmentation}{40}{section*.45}
-\contentsline {paragraph}{Resizing}{40}{section*.46}
-\contentsline {paragraph}{Storage}{41}{section*.48}
-\contentsline {section}{\numberline {3.2}Training}{41}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Data set}{41}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Hardware}{43}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Architecture}{43}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Evaluation}{44}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Software}{44}{subsection.3.2.5}
-\contentsline {section}{\numberline {3.3}Implementation}{44}{section.3.3}
-\contentsline {section}{\numberline {3.4}Implementation details}{44}{section.3.4}
-\contentsline {section}{\numberline {3.5}Evaluation metrics}{44}{section.3.5}
-\contentsline {chapter}{\numberline {4}(Experiment's title)Detection vs diagnosis masses or microcalcifications.}{45}{chapter.4}
-\contentsline {section}{\numberline {4.1}Experiment}{45}{section.4.1}
-\contentsline {section}{\numberline {4.2}Results}{45}{section.4.2}
-\contentsline {section}{\numberline {4.3}Discussion}{45}{section.4.3}
-\contentsline {chapter}{\numberline {5}Conclusions}{46}{chapter.5}
-\contentsline {section}{\numberline {5.1}Future Work}{46}{section.5.1}
-\contentsline {chapter}{Bibliography}{52}{chapter*.51}
+\contentsline {section}{\numberline {1.6}Contributions}{6}{section.1.6}
+\contentsline {section}{\numberline {1.7}Outline of the thesis}{6}{section.1.7}
+\contentsline {chapter}{\numberline {2}Background}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Breast Cancer}{7}{section.2.1}
+\contentsline {subsubsection}{Mammograms}{8}{section*.6}
+\contentsline {section}{\numberline {2.2}Classification}{9}{section.2.2}
+\contentsline {section}{\numberline {2.3}Artificial Neural Networks}{13}{section.2.3}
+\contentsline {section}{\numberline {2.4}Convolutional Networks}{16}{section.2.4}
+\contentsline {paragraph}{Convolutional layer}{17}{section*.14}
+\contentsline {paragraph}{ReLU layer}{19}{section*.16}
+\contentsline {paragraph}{Pooling layer}{19}{section*.17}
+\contentsline {paragraph}{Fully connected layer}{19}{section*.18}
+\contentsline {section}{\numberline {2.5}Practical Deep Learning}{21}{section.2.5}
+\contentsline {paragraph}{Image preprocessing}{21}{section*.20}
+\contentsline {paragraph}{Convolutional network architecture}{22}{section*.21}
+\contentsline {paragraph}{Hyperparameter search}{23}{section*.22}
+\contentsline {paragraph}{Training}{24}{section*.23}
+\contentsline {paragraph}{Sanity checks}{25}{section*.24}
+\contentsline {paragraph}{Data augmentation}{26}{section*.25}
+\contentsline {paragraph}{Unbalanced data}{26}{section*.26}
+\contentsline {paragraph}{All convolutional networks}{27}{section*.27}
+\contentsline {paragraph}{Transfer learning}{27}{section*.28}
+\contentsline {paragraph}{Software}{28}{section*.29}
+\contentsline {section}{\numberline {2.6}Convolutional Networks in Breast Cancer Research}{28}{section.2.6}
+\contentsline {paragraph}{Overview}{29}{section*.30}
+\contentsline {subsubsection}{Detection of masses}{29}{section*.31}
+\contentsline {subsubsection}{Detection of microcalcifications}{30}{section*.32}
+\contentsline {subsubsection}{Diagnosis of lesions}{32}{section*.33}
+\contentsline {chapter}{\numberline {3}Solution Model}{34}{chapter.3}
+\contentsline {section}{\numberline {3.1}Operationalization}{34}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Database}{34}{subsection.3.1.1}
+\contentsline {paragraph}{Decision}{35}{section*.35}
+\contentsline {paragraph}{Alternatives}{35}{section*.36}
+\contentsline {subsection}{\numberline {3.1.2}BCDR-DM}{36}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Image retrieval}{36}{subsection.3.1.3}
+\contentsline {paragraph}{Image dimensions}{36}{section*.37}
+\contentsline {paragraph}{Cropping}{37}{section*.38}
+\contentsline {paragraph}{Stride}{37}{section*.39}
+\contentsline {paragraph}{Background}{37}{section*.40}
+\contentsline {paragraph}{Assigning labels}{37}{section*.41}
+\contentsline {paragraph}{Label information}{38}{section*.42}
+\contentsline {paragraph}{Image enhancement}{38}{section*.43}
+\contentsline {paragraph}{Data augmentation}{38}{section*.45}
+\contentsline {paragraph}{Resizing}{38}{section*.46}
+\contentsline {paragraph}{Storage}{39}{section*.48}
+\contentsline {section}{\numberline {3.2}Training}{39}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Data set}{39}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Hardware}{41}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Architecture}{41}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Evaluation}{42}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Software}{42}{subsection.3.2.5}
+\contentsline {section}{\numberline {3.3}Implementation}{42}{section.3.3}
+\contentsline {section}{\numberline {3.4}Implementation details}{42}{section.3.4}
+\contentsline {section}{\numberline {3.5}Evaluation metrics}{42}{section.3.5}
+\contentsline {section}{\numberline {3.6}Presentation of results}{42}{section.3.6}
+\contentsline {chapter}{\numberline {4}(Experiment's title)Detection vs diagnosis masses or microcalcifications.}{43}{chapter.4}
+\contentsline {section}{\numberline {4.1}Experiment}{43}{section.4.1}
+\contentsline {section}{\numberline {4.2}Results}{43}{section.4.2}
+\contentsline {section}{\numberline {4.3}Discussion}{43}{section.4.3}
+\contentsline {chapter}{\numberline {5}Conclusions}{44}{chapter.5}
+\contentsline {section}{\numberline {5.1}Future Work}{44}{section.5.1}
+\contentsline {chapter}{Bibliography}{50}{chapter*.51}

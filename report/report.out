@@ -15,8 +15,8 @@
 \BOOKMARK [1][-]{section.2.2}{Classification}{chapter.2}% 15
 \BOOKMARK [1][-]{section.2.3}{Artificial Neural Networks}{chapter.2}% 16
 \BOOKMARK [1][-]{section.2.4}{Convolutional Networks}{chapter.2}% 17
-\BOOKMARK [1][-]{section.2.5}{Convolutional Networks applied to Breast Cancer}{chapter.2}% 18
-\BOOKMARK [1][-]{section.2.6}{Practical Deep Learning}{chapter.2}% 19
+\BOOKMARK [1][-]{section.2.5}{Practical Deep Learning}{chapter.2}% 18
+\BOOKMARK [1][-]{section.2.6}{Convolutional Networks in Breast Cancer Research}{chapter.2}% 19
 \BOOKMARK [0][-]{chapter.3}{Solution Model}{}% 20
 \BOOKMARK [1][-]{section.3.1}{Operationalization}{chapter.3}% 21
 \BOOKMARK [2][-]{subsection.3.1.1}{Database}{section.3.1}% 22
@@ -31,10 +31,11 @@
 \BOOKMARK [1][-]{section.3.3}{Implementation}{chapter.3}% 31
 \BOOKMARK [1][-]{section.3.4}{Implementation details}{chapter.3}% 32
 \BOOKMARK [1][-]{section.3.5}{Evaluation metrics}{chapter.3}% 33
-\BOOKMARK [0][-]{chapter.4}{\(Experiment's title\)Detection vs diagnosis masses or microcalcifications.}{}% 34
-\BOOKMARK [1][-]{section.4.1}{Experiment}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.2}{Results}{chapter.4}% 36
-\BOOKMARK [1][-]{section.4.3}{Discussion}{chapter.4}% 37
-\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 38
-\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 39
-\BOOKMARK [0][-]{chapter*.51}{Bibliography}{}% 40
+\BOOKMARK [1][-]{section.3.6}{Presentation of results}{chapter.3}% 34
+\BOOKMARK [0][-]{chapter.4}{\(Experiment's title\)Detection vs diagnosis masses or microcalcifications.}{}% 35
+\BOOKMARK [1][-]{section.4.1}{Experiment}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.2}{Results}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.3}{Discussion}{chapter.4}% 38
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 39
+\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 40
+\BOOKMARK [0][-]{chapter*.51}{Bibliography}{}% 41

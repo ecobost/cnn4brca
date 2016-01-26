@@ -28,6 +28,15 @@
 \newblock In {\em Engineering in Medicine and Biology Society (EMBC), 2015 37th
   Annual International Conference of the IEEE\/} (Aug 2015), pp.~797--800.
 
+\bibitem{Ashraf2013}
+{\sc Ashraf, A.~B., Gavenonis, S.~C., Daye, D., Mies, C., Rosen, M.~A., and
+  Kontos, D.}
+\newblock A multichannel markov random field framework for tumor segmentation
+  with an application to classification of gene expression-based breast cancer
+  recurrence risk.
+\newblock {\em Medical Imaging, IEEE Transactions on 32}, 4 (April 2013),
+  637--648.
+
 \bibitem{Bastien2012}
 {\sc Bastien, F., Lamblin, P., Pascanu, R., Bergstra, J., Goodfellow, I.~J.,
   Bergeron, A., Bouchard, N., and Bengio, Y.}
@@ -146,14 +155,6 @@
 \newblock In {\em Proceedings of the Fifth International Workshop on Digital
   Mammography\/} (2001), M.~Yaffe, Ed., Medical Physics Publishing,
   pp.~212--218.
-
-\bibitem{Hernandez2014}
-{\sc Hernandez, J.~L.}
-\newblock Selección de características y clasificacíon de masas por medio de
-  redes neuronales, máquinas de vector de soporte, análisis discriminante y
-  regresíon logística en mamografías digitales.
-\newblock Master's thesis, Tecnológico de Monterrey, Monterrey, Mexico, April
-  2014.
 
 \bibitem{Howlader2014}
 {\sc Howlader, N., Noone, A.~M., Krapcho, M.~F., Garshell, J., Miller, D.~A.,
