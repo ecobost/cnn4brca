@@ -64,7 +64,7 @@ We document here how we tranform/reduce the breast cancer detection and diagnosi
 		\hline
 		\end{tabular}
 		\label{tab:convNetArchitecture}
-		\caption[Selected Convolutional Network Architecture]{Architecture of the network used for experiments. It shows the filter, stride and padding used in each layer as well as the resulting volume and the number of learnable parameters per layer.}
+		\caption[Selected convolutional network architecture]{Architecture of the network used for experiments. It shows the filter, stride and padding used in each layer as well as the resulting volume and the number of learnable parameters per layer.}
 	\end{table}
 
 	The first convolutional layer uses a $5 \times 5$ filter with stride 2 (padding 2) to reduce the input spatial size from $127 \times 127$ to $64 \times 64$. After that all filters are $3 \times 3$ with stride 1 (padding 1), which preserves the spatial size and the pooling is $2\times 2$ stride 2 (padding 0) which reduces the spatial size by a half. This architecture has 4.63 million learnable parameters. 

@@ -1,4 +1,5 @@
 In this section we collect some recommendations for constructing convolutional networks as well as efficiently training deep neural networks. These are intended to be specific to this project but most will also be useful in similar projects.
+% Deep learning is a fast-changing field and this advice may become outdated after a couple of years.
 % Some of these details are taken care by the software(either as a defualt or optional feature) and some are qyuite new and need to be taken care manually. 
 
 \paragraph{Image preprocessing} Some standard processing for images.
@@ -196,15 +197,12 @@ When we have a small data set we could use a pretrained convolutional network ei
 
 \begin{itemize}
 	\item Caffe~\cite{Jia2014}: Caffe is an already mature deep learning framework developed in C++/CUDA by the Berkeley Vision and Learning Center (BVLC) and community contributors. It offers a command line, Python and Matlab interface, reference models and tutorials and very fast code with easy GPU activation.
-	\item Torch7~\cite{Collobert2011}: Torch is a scientific computing framework developed in C/Lua/CUDA at the IDIAP Research Institute. It offers n-dimensional arrays (tensors), automatic differentiation, a command line and Lua interface, GPU support and easy building of complex neural network architectures.
 	\item Theano~\cite{Bergstra2010, Bastien2012}: Theano is a Python library developed in Python/CUDA at the University of Montreal. It is tightly integrated with NumPy, performs symbolic automatic differentiation and uses the GPU to efficiently evaluate mathematical expressions involving multi dimensional arrays.
-	\item Cuda-ConvNet2~\cite{Krizhevsky2014}: Cuda-ConvNet2 is a highly optimized convolutional network library developed in C++/CUDA by Alex Krizhevsky. It offers different off-the-shelf configurations for convolutional networks, a command line interface and multi-GPU training.
+	\item Torch7~\cite{Collobert2011}: Torch is a scientific computing framework developed in C/Lua/CUDA at the IDIAP Research Institute. It offers n-dimensional arrays (tensors), automatic differentiation, a command line and Lua interface, GPU support and easy building of complex neural network architectures.
+%	\item Cuda-ConvNet2~\cite{Krizhevsky2014}: Cuda-ConvNet2 is a highly optimized convolutional network library developed in C++/CUDA by Alex Krizhevsky. It offers different off-the-shelf configurations for convolutional networks, a command line interface and multi-GPU training.
 \end{itemize}
 
 \bigskip
 
 Lastly, we acknowledge that mammographic data is fairly different to that used in common object recognition tasks, for instance, labelling may not be as sharp or correct, images come in different sizes and ratios, image quality varies, the object to recognize may be very small in relation to the image, object localization may be a requirement, etc. and therefore some of the advice given above may prove counterproductive. When possible, design decisions should be based on the data and results obtained until that point.
-
-%We plan to start with a simple convolutional architecture and add some of the well tested features first and other possible features later to obtain an optimized model which will be trained and tes.
-
 %Deep Learning (Bengio Lecture): (https://www.youtube.com/watch?v=JuimBuvEWBg)
