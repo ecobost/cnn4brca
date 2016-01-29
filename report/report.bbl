@@ -183,24 +183,12 @@
   in community practice in the united states: A cohort study.
 \newblock {\em Annals of Internal Medicine 155}, 8 (2011), 493--502.
 
-\bibitem{Krizhevsky2014}
-{\sc Krizhevsky, A.}
-\newblock cuda-convnet2: Fast convolutional neural networks in c++/cuda.
-\newblock online, 2014.
-\newblock Available online on \url{github.com/akrizhevsky/cuda-convnet2}.
-
 \bibitem{Krizhevsky2012}
 {\sc Krizhevsky, A., Sutskever, I., and Hinton, G.~E.}
 \newblock Imagenet classification with deep convolutional neural networks.
 \newblock In {\em Advances in Neural Information Processing Systems 25},
   F.~Pereira, C.~Burges, L.~Bottou, and K.~Weinberger, Eds. Curran Associates,
   Inc., 2012, pp.~1097--1105.
-
-\bibitem{LeCun1989}
-{\sc LeCun, Y., Boser, B., Denker, J.~S., Henderson, D., Howard, R.~E.,
-  Hubbard, W., and Jackel, L.~D.}
-\newblock Backpropagation applied to handwritten zip code recognition.
-\newblock {\em Neural Computation 1}, 4 (Winter 1989), 541--551.
 
 \bibitem{LeCun1998}
 {\sc LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P.}

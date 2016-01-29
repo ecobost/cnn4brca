@@ -19,22 +19,22 @@
 \contentsline {paragraph}{Convolutional layer}{17}{section*.14}
 \contentsline {paragraph}{ReLU layer}{18}{section*.16}
 \contentsline {paragraph}{Pooling layer}{18}{section*.17}
-\contentsline {paragraph}{Fully connected layer}{19}{section*.18}
+\contentsline {paragraph}{Fully connected layer}{18}{section*.18}
 \contentsline {section}{\numberline {2.5}Practical Deep Learning}{21}{section.2.5}
 \contentsline {paragraph}{Image preprocessing}{21}{section*.20}
 \contentsline {paragraph}{Convolutional network architecture}{21}{section*.21}
-\contentsline {paragraph}{Hyperparameter search}{23}{section*.22}
-\contentsline {paragraph}{Training}{24}{section*.23}
-\contentsline {paragraph}{Sanity checks}{25}{section*.24}
+\contentsline {paragraph}{Hyperparameter search}{22}{section*.22}
+\contentsline {paragraph}{Training}{23}{section*.23}
+\contentsline {paragraph}{Sanity checks}{24}{section*.24}
 \contentsline {paragraph}{Data augmentation}{25}{section*.25}
 \contentsline {paragraph}{Unbalanced data}{26}{section*.26}
-\contentsline {paragraph}{All convolutional networks}{27}{section*.27}
+\contentsline {paragraph}{All convolutional networks}{26}{section*.27}
 \contentsline {paragraph}{Transfer learning}{27}{section*.28}
 \contentsline {paragraph}{Software}{27}{section*.29}
 \contentsline {section}{\numberline {2.6}Convolutional Networks in Breast Cancer Research}{28}{section.2.6}
 \contentsline {paragraph}{Overview}{28}{section*.30}
 \contentsline {subsubsection}{Detection of masses}{29}{section*.31}
-\contentsline {subsubsection}{Detection of microcalcifications}{30}{section*.32}
+\contentsline {subsubsection}{Detection of microcalcifications}{29}{section*.32}
 \contentsline {subsubsection}{Diagnosis of lesions}{31}{section*.33}
 \contentsline {chapter}{\numberline {3}Solution Model}{33}{chapter.3}
 \contentsline {section}{\numberline {3.1}Operationalization}{33}{section.3.1}

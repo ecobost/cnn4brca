@@ -5,10 +5,10 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Signs of possible breast cancer}}{9}{figure.caption.8}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Sample ROC and PR curves}}{13}{figure.caption.10}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Example of an artificial neural network}}{14}{figure.caption.11}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Example of dropout}}{16}{figure.caption.12}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Example of Dropout}}{16}{figure.caption.12}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Convolutional network visualization}}{17}{figure.caption.13}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Example of a filter in a convolutional layer}}{18}{figure.caption.15}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Example of a convolutional network in action}}{20}{figure.caption.19}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Example of a convolutional network in action}}{19}{figure.caption.19}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Example of constrast adjustment techniques}}{38}{figure.caption.44}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Example of resizing schemes}}{39}{figure.caption.47}
