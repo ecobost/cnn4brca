@@ -21,7 +21,7 @@ Log with activities and questions arising during every week
 2. Which evaluation metric should I use? Accuracy, F1-score, PRAUC or ROC?
 
 
------------------------------ Last year ----------------------------------
+----------------------------- 
 ## Jul 2 - Jul 8
 ### Activities
 * Write emails looking for more digital mammograms
