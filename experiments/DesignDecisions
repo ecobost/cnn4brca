@@ -1,0 +1,29 @@
+Here I document each decision taken and its possible alternatives. The first one is the one I took, the others are ordered according to what I believe would be the next best.
+
+Masses or microcalcifications
+	Masses
+	Calcifications and microcalcifications
+Enhancement
+	Global contrast stretching/No enhancement
+	Global background reduction + contrast stretching
+	Local contrast stretching
+	local background reduction + contrast
+Black patches
+	Deletes any patch that is more than 20% black (on the original image).
+
+-----
+
+Resizing
+	Before enhancement
+	After enhancement
+
+Software
+	Tensorflow
+	Caffe
+
+ConvNet architecture
+
+
+
+
+	

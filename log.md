@@ -3,6 +3,25 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Jan 25 - Feb 11
+### Activities
+* Writing final draft of Chapter 2
+* Taking last important design decisions
+
+### To do
+* Write chapter 3 (Solution Model)
+* Ready database
+* Install TensorFlow (CTS/Laptop)
+* Write network in Tensorflow/Keras
+* Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)
+* Ask for institutional email
+
+### Questions
+1. Which post-processing should I use? Gaussian smoothing, cluster-based enhancement, fully connected CRFs or a combination?
+2. Which evaluation metric should I use? Accuracy, F1-score, PRAUC or ROC?
+
+
+----------------------------- Last year ----------------------------------
 ## Jul 2 - Jul 8
 ### Activities
 * Write emails looking for more digital mammograms
@@ -12,7 +31,7 @@ Log with activities and questions arising during every week
 * Ask for institutional email.
 
 ### Questions
-1.
+1. 
 
 ## Jun 24 - Jul 1
 ### Activities
@@ -28,6 +47,7 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Should I try to get more digital mammograms or just go with film?.
+	Answer: Enough digital mammograms, work with wath you have. If needed, ask Dr. Tamez.
 
 ## Jun 18 - Jun 23
 ### Activities
@@ -61,6 +81,7 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Is the unbalanced data thing needed or does the network learns by its own?. May i be overkilling it? 
+	Answer: Train normally, cross-validate the threshold
 
 ## Jun 3 - Jun 10
 ### Activities
@@ -75,12 +96,13 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Use NAG or SGD+Momentum?
-	
 	Answer: NAG
+
 2. Use Bioinformatics account or create another one?.
-	
 	Answer: Bioinformatics
+
 3. Is there a standard way to report convolutional network architectures (Krizhevsky style or Karpathy style or a table as in Striving for simplicity)?.
+	Answer: No. Image if small, Table if big.
 
 ## May 27- Jun 2
 ### Activities
@@ -99,9 +121,10 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Naming: Should I use loss or cost function?.
-
 	Answer: Loss
+
 2. How to obtain the small training images from the big images. Random sampling, crop without overlapping, with overlapping.? How to measure performance?. What are the labels?.
+	Answer: Patches not needed. Labels are 1 in lesion, 0 in no lesion.
 
 
 
@@ -122,20 +145,18 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Should I preserve a test set just for the final step (in December) or is it ok to use all data for the preprocessing choosing and then all data for the small vs big and all that?. 
-
-	Answer: Separate a test set right at the beginning. Treat preprocessing as a hyperparameter to fit. For transfer leraning and big vs small you cna use the entire dataset but shuffle the test set to be different. 
+	Answer: Separate a test set right at the beginning. Treat preprocessing as a hyperparameter to fit. For transfer leraning and big vs small you can use the entire dataset but shuffle the test set to be different. 
 
 2. Validation or 5-fold crossvalidation?
-
-	Answer: Validation. If validation ste is small, then 5-fold.
+	Answer: Validation. If validation set is too small, then 5-fold.
 
 3. When checking for different preprocessings, fit all hyperparameters or only a subset or none at all?
-
-	Answer:	Fit learning rate and regularization. All other hyperparams would be set to standard (including the network architecture). 
+	Answer:	Fit learning rate and regularization. All other hyperparameters would be set to standard (including the network architecture). 
 
 4. mxn o nxd for the name of dimensions?
-	
 	Answer: mxn. m examples of n dimensions.
 
-5. Is it a binary classification(cancer/no cancer) or 3 classes (micro/mass/nothing) or something else(detection)?
-6. Which forms of image enhancement should I use?. 
+5. Is it a binary classification(cancer/no cancer) or 3 classes (micro/mass/nothing) or something else(detection).
+	Answer: Image segmentation. Lesion vs. background.
+
+6. Which forms of image enhancement should I use?. No preprocessing or global contrast stretching?

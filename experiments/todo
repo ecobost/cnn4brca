@@ -1,3 +1,35 @@
+- In PracticalDL add something about segmentation and get rid of anything not useful
+
+- Make some pretraining decisions
+	- Size of the receptive field
+	- Architecture of the network
+	- Whether to do upsampling as part of the network or after
+	- Type of preprocessing.
+
+- Prepare the database (images and ground truth, only in training)
+	- Preprocess 
+	- Cut black space
+	- Reduce (Ground labels more if not using upsampling layer)
+
+- Aprender TensorFlow
+
+- Instalar TensorFlow en CTS/laptop
+	- Correr algún experimento de prueba (MNIST)
+
+- Crear el DB en CTS
+	Escoger como organizar imagenes y labels
+
+- Pasar datos a A3
+	- git clone
+	- Copiar DB
+
+- Instalar TensorFlow en A3
+
+- Correr experimentos
+	- Escoger arcquitectura
+
+
+
 TO DO:
 % Train a simple convolutional (validate lambda)
 % Train one with bells and whistles(choosen by heart) (threshold moving)  (validate lambda and alpha)
@@ -10,6 +42,5 @@ TO DO:
 % Train an ensemble of networks with different hyperparameters at the start and average.
 
 More Ideas:
-% What about visualizaing the output (http://googleresearch.blogspot.mx/2015/06/inceptionism-going-deeper-into-neural.html). What a mass looks like?, what a microcalcific looks like?
-% Maybe use inceptionism to create some new data. (dtaa augmentation)
-% What aobut including other parameters as a feature (age, date, whatever). So use the convnet as a feature extractor and then add those data and done
+% What about visualizaing the output (http://googleresearch.blogspot.mx/2015/06/inceptionism-going-deeper-into-neural.html). What a mass looks like to the network?, what a microcalcific looks like?
+% What aobut including other parameters as a feature (age, date, whatever). So use the convnet as
