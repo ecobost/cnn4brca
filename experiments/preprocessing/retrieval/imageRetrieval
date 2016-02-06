@@ -26,4 +26,4 @@ Pseudocode:
 9. Divide everything by 9 (to normalize) or 9*8 = 72 (if augmentations). Problem: in the very border they have value 0 but after that there is some spaces which only have 1 or 2 values. (maybe not that important, those could be considered part f the border)
 10. Save new matrix as image (same size of mammogram and all evals are there).
 
-# On normal (unpreprocessed mammograms) I can giv ethe network the entire mamogram and it will produce a heatmap. But as the preprocessing is local to each patch then i would  need to apply the convnet manually.
+# On normal (unpreprocessed mammograms) I can give the network the entire mamogram and it will produce a heatmap. But as the preprocessing is local to each patch then i would  need to apply the convnet manually.

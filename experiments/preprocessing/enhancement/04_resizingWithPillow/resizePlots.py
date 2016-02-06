@@ -8,6 +8,7 @@
 import scipy.misc
 import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image 
 
 patch = scipy.misc.imread("patch.jpg")
 patch.shape
@@ -19,7 +20,7 @@ patchB = patch.copy()
 patchB[patchB <= 137] = 137
 
 # Test the BICUBIC vs "ANTIALIASING" PIL interpolations (old PIL, not PILLOW) 
-from PIL import Image 
+
 im = Image.fromarray(patch)
 im.size
 # (404, 404)
