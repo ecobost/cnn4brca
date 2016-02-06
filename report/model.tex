@@ -100,4 +100,10 @@ Choose a threshold and delete any clusters less than x...
 
 we could also present a heatmap with the different probabilities in each pixel of the image, for instance on mammograms we could present a grayscale image of whether a lesion is present.
 
+%Upsampling can be done using ndimage.zoom or scipy.misc.imresize or Image.resize (http://stackoverflow.com/questions/13242382/resampling-a-numpy-array-representing-an-image) and the cubic interpolation is almost certainly differentiable.
+% write a zero-padding function, i will need it if i do manual upsampling(instead of a python function) or if the network learn it  and when calculating gradients in any case
+% For interpolations, see http://paulbourke.net/miscellaneous/interpolation/ y las definiciones de bilinear y bicubic above
+% for training the option is to downsample the ground truth, to add a bilinear layer as part of the network or to add a learnable layer as part of the network
+
+% CRFs: public available implementation of (Krahenbuhl & Koltun)
 % For the figure draw a random one  of 100x100 with a little signal in there and apply all corrections.

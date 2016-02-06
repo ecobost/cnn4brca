@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  30 JAN 2016 04:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  6 FEB 2016 05:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -743,7 +743,7 @@ LaTeX Info: Redefining \nameref on input line 56.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
-<plots/escudo-itesm.png, id=168, 60.5478pt x 28.04076pt>
+<plots/escudo-itesm.png, id=172, 60.5478pt x 28.04076pt>
 File: plots/escudo-itesm.png Graphic file (type png)
 
 <use plots/escudo-itesm.png>
@@ -818,7 +818,7 @@ l.24
 (./introduction/outline.tex)) (./background.tex [6]
 Chapter 2.
 (./background/breastcancer.tex
-<plots/breastAnatomy.png, id=377, 419.5675pt x 454.69875pt>
+<plots/breastAnatomy.png, id=385, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
@@ -830,14 +830,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [7
 
-] <plots/normalMammogram.jpg, id=385, 2569.6pt x 3340.48pt>
+] <plots/normalMammogram.jpg, id=395, 2569.6pt x 3340.48pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
 Package pdftex.def Info: plots/normalMammogram.jpg used on input line 20.
 (pdftex.def)             Requested size: 116.12083pt x 150.92677pt.
  [8 <./plots/breastAnatomy.png> <./plots/normalMammogram.jpg>]
-<plots/breastMicrocalcification.jpg, id=397, 338.26375pt x 338.26375pt>
+<plots/breastMicrocalcification.jpg, id=407, 338.26375pt x 338.26375pt>
 File: plots/breastMicrocalcification.jpg Graphic file (type jpg)
 
 <use plots/breastMicrocalcification.jpg>
@@ -845,7 +845,7 @@ Package pdftex.def Info: plots/breastMicrocalcification.jpg used on input line
 32.
 (pdftex.def)             Requested size: 111.65701pt x 111.65834pt.
 
-<plots/breastMass.jpg, id=398, 430.60875pt x 431.6125pt>
+<plots/breastMass.jpg, id=408, 430.60875pt x 431.6125pt>
 File: plots/breastMass.jpg Graphic file (type jpg)
 
 <use plots/breastMass.jpg>
@@ -858,7 +858,7 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ))
 (./background/classification.tex [9 <./plots/breastMicrocalcification.jpg> <./p
 lots/breastMass.jpg>] [10] [11]
-<plots/AUCandPRAUC.png, id=443, 972.63374pt x 425.59pt>
+<plots/AUCandPRAUC.png, id=453, 972.63374pt x 425.59pt>
 File: plots/AUCandPRAUC.png Graphic file (type png)
 
 <use plots/AUCandPRAUC.png>
@@ -869,7 +869,7 @@ Package pdftex.def Info: plots/AUCandPRAUC.png used on input line 75.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) [12] (./background/neuralnetworks.tex
-<plots/neuralNetwork.png, id=467, 970.62625pt x 589.20125pt>
+<plots/neuralNetwork.png, id=477, 970.62625pt x 589.20125pt>
 File: plots/neuralNetwork.png Graphic file (type png)
 
 <use plots/neuralNetwork.png>
@@ -880,7 +880,7 @@ Package pdftex.def Info: plots/neuralNetwork.png used on input line 10.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13 <./plots/AUCandPRAUC.png>] [14 <./plots/neuralNetwork.png>]
-<plots/dropout.png, id=501, 769.87625pt x 415.5525pt>
+<plots/dropout.png, id=511, 769.87625pt x 415.5525pt>
 File: plots/dropout.png Graphic file (type png)
  <use plots/dropout.png>
 Package pdftex.def Info: plots/dropout.png used on input line 69.
@@ -890,51 +890,74 @@ Package pdftex.def Info: plots/dropout.png used on input line 69.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./background/convnets.tex [15] [16 <./plots/dropout.png>]
-<plots/convNetVolumes.jpeg, id=525, 571.13374pt x 202.7575pt>
+<plots/convNetVolumes.jpeg, id=535, 571.13374pt x 202.7575pt>
 File: plots/convNetVolumes.jpeg Graphic file (type jpg)
 
 <use plots/convNetVolumes.jpeg>
 Package pdftex.def Info: plots/convNetVolumes.jpeg used on input line 21.
 (pdftex.def)             Requested size: 312.63828pt x 110.98792pt.
 
-<plots/convLayer.jpeg, id=531, 465.74pt x 327.2225pt>
+<plots/convLayer.jpeg, id=541, 465.74pt x 327.2225pt>
 File: plots/convLayer.jpeg Graphic file (type jpg)
 
 <use plots/convLayer.jpeg>
-Package pdftex.def Info: plots/convLayer.jpeg used on input line 37.
+Package pdftex.def Info: plots/convLayer.jpeg used on input line 35.
 (pdftex.def)             Requested size: 178.6485pt x 125.51419pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [17 <./plots/convNetVolumes.jpeg>] [18 <./plots/convLayer.jpeg>]
-<plots/convNetExample.jpeg, id=550, 1259.70625pt x 603.25375pt>
+<plots/convNetExample.jpeg, id=560, 1259.70625pt x 603.25375pt>
 File: plots/convNetExample.jpeg Graphic file (type jpg)
 
 <use plots/convNetExample.jpeg>
 Package pdftex.def Info: plots/convNetExample.jpeg used on input line 67.
 (pdftex.def)             Requested size: 379.63658pt x 181.79675pt.
+) (./background/segmentation.tex
+<plots/segmentationImage.png, id=566, 294.09875pt x 371.3875pt>
+File: plots/segmentationImage.png Graphic file (type png)
+
+<use plots/segmentationImage.png>
+Package pdftex.def Info: plots/segmentationImage.png used on input line 7.
+(pdftex.def)             Requested size: 120.59148pt x 152.28119pt.
+
+<plots/segmentationTruth.png, id=567, 294.09875pt x 371.3875pt>
+File: plots/segmentationTruth.png Graphic file (type png)
+
+<use plots/segmentationTruth.png>
+Package pdftex.def Info: plots/segmentationTruth.png used on input line 12.
+(pdftex.def)             Requested size: 120.59148pt x 152.28119pt.
  [19 <./plots/convNetExample.jpeg>])
-(./background/practicalDL.tex [20] [21]
+(./background/practicalDL.tex [20 <./plots/segmentationImage.png> <./plots/segm
+entationTruth.png>] [21]
 
 LaTeX Warning: Reference `subsec:ConvNets' on page 22 undefined on input line 3
-8.
+7.
 
 [22]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 82.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 81.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 82.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
  [23] [24]
 [25] [26]
-Overfull \hbox (5.95892pt too wide) in paragraph at lines 199--200
+Overfull \hbox (5.95892pt too wide) in paragraph at lines 198--199
 []\OT1/ptm/m/n/12 Caffe [[]]: Caffe is an al-ready ma-ture deep learn-ing frame
 -work de-vel-oped in C++/CUDA
  []
 
-) (./background/convnets4brca.tex [27] [28] [29] [30] [31]
+) (./background/convnets4brca.tex [27]
+
+LaTeX Warning: Citation `Agarwal2015' on page 28 undefined on input line 7.
+
+[28] [29] [30]
+
+LaTeX Warning: Citation `Agarwal2015' on page 31 undefined on input line 250.
+
+[31]
 Overfull \hbox (2.02522pt too wide) in paragraph at lines 276--276
 []\OT1/ptm/b/n/12 Filters| 
  []
@@ -995,6 +1018,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 282--282
  []
 
 
+LaTeX Warning: Citation `Agarwal2015' on page 32 undefined on input line 283.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 283--283
 []\OT1/pcr/m/n/12 INPUT -> [CONV -> RELU]*2
  []
@@ -1024,8 +1050,11 @@ Overfull \hbox (23.20444pt too wide) in paragraph at lines 10--12
 eb-site ([]$\OT1/pcr/m/n/12 bcdr . eu / information /
  []
 
-[34]) (./model/imageRetrieval.tex [35] [36]
-<plots/mcDiffPreprocessings.png, id=793, 863.225pt x 867.24pt>
+[34]) (./model/imageRetrieval.tex [35]
+
+LaTeX Warning: Citation `Ciresan2013' on page 36 undefined on input line 35.
+
+[36] <plots/mcDiffPreprocessings.png, id=808, 863.225pt x 867.24pt>
 File: plots/mcDiffPreprocessings.png Graphic file (type png)
 
 <use plots/mcDiffPreprocessings.png>
@@ -1035,7 +1064,7 @@ Package pdftex.def Info: plots/mcDiffPreprocessings.png used on input line 51.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[37] <plots/mcDiffResizings.png, id=804, 822.4326pt x 722.7pt>
+[37] <plots/mcDiffResizings.png, id=818, 822.4326pt x 722.7pt>
 File: plots/mcDiffResizings.png Graphic file (type png)
 
 <use plots/mcDiffResizings.png>
@@ -1077,89 +1106,92 @@ Chapter 5.
 ] [44
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 78--84
+Underfull \hbox (badness 2261) in paragraph at lines 74--80
 []\OT1/ptm/m/sc/12 Breast Can-cer Surveil-lance Con-sor-tium\OT1/ptm/m/n/12 .  
-Per-for-mance mea-sures
+Per-for-mance mea-sures for
  []
 
 
-Underfull \hbox (badness 4279) in paragraph at lines 78--84
-\OT1/ptm/m/n/12 for 1,838,372 screen-ing mam-mog-ra-phy ex-am-i-na-tions from 2
-004 to 2008 by
+Underfull \hbox (badness 2600) in paragraph at lines 74--80
+\OT1/ptm/m/n/12 1,838,372 screen-ing mam-mog-ra-phy ex-am-i-na-tions from 2004 
+to 2008 by age--
  []
 
 
-Underfull \hbox (badness 1184) in paragraph at lines 78--84
-\OT1/ptm/m/n/12 age--based on BCSC data through 2009.  elec-tronic, Septem-ber 
-2013.  Avail-
+Underfull \hbox (badness 1655) in paragraph at lines 74--80
+\OT1/ptm/m/n/12 based on BCSC data through 2009.  elec-tronic, Septem-ber 2013.
+  Avail-able
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--84
-\OT1/ptm/m/n/12 able on []$\OT1/pcr/m/n/12 breastscreening . cancer . gov / sta
-tistics / performance /
+Underfull \hbox (badness 4441) in paragraph at lines 74--80
+\OT1/ptm/m/n/12 on-line on []$\OT1/pcr/m/n/12 breastscreening . cancer . gov / 
+statistics / performance /
  []
 
 [45] [46]
-Underfull \hbox (badness 1527) in paragraph at lines 232--237
+Underfull \hbox (badness 1527) in paragraph at lines 227--232
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  What you need
  to know about breast can-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--244
+Underfull \hbox (badness 3364) in paragraph at lines 234--239
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  Mam-mo-grams.
-  elec-tronic, March
+  elec-tronic, March 2014.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--244
-\OT1/ptm/m/n/12 2014.  Avail-able on []$\OT1/pcr/m/n/12 cancer . gov / cancerto
-pics / types / breast /
+Underfull \hbox (badness 10000) in paragraph at lines 234--239
+\OT1/ptm/m/n/12 Avail-able on-line on []$\OT1/pcr/m/n/12 cancer . gov / cancert
+opics / types / breast /
  []
 
 [47] [48]) [49] (./cv.tex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
  [50]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 85.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 781C7DBAA3C9E04D12926FF75B919B29;2538.
+(rerunfilecheck)             Checksum: C2FBB5164CB8F69F8CBC3C2E2D7A05D6;2603.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 85.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 8528 strings out of 495028
- 126362 string characters out of 6181498
- 206759 words of memory out of 5000000
- 11260 multiletter control sequences out of 15000+600000
- 36617 words of font info for 77 fonts, out of 8000000 for 9000
+ 8550 strings out of 495028
+ 126748 string characters out of 6181498
+ 206777 words of memory out of 5000000
+ 11274 multiletter control sequences out of 15000+600000
+ 38202 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,10n,42p,2602b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
-/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (60 pages, 3820031 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (60 pages, 4158557 bytes).
 PDF statistics:
- 992 PDF objects out of 1000 (max. 8388607)
- 882 compressed objects within 9 object streams
- 237 named destinations out of 1000 (max. 500000)
- 394 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1024 PDF objects out of 1200 (max. 8388607)
+ 906 compressed objects within 10 object streams
+ 239 named destinations out of 1000 (max. 500000)
+ 412 words of extra memory for PDF output out of 10000 (max. 10000000)
 

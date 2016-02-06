@@ -2,7 +2,7 @@
 \emph{Convolutional networks} are inspired by models of the visual cortex~\cite{Fukushima1980} but, like regular neural networks, favor practical performance over biological accuracy.
 % Modern convolutional networks were [introduced|used for the first time] [in 1998] [[and [used|tested] them| demostrated their use to successfully recognize handwritten digits from the MNIST data set]~\cite{LeCun1998}.
 Modern convolutional networks were introduced in 1998: LeCun et al. used them to successfully recognize handwritten digits from the MNIST data set~\cite{LeCun1998}.
-Recently, Krizhevsky et al. achieved state-of-the-art performance on the ImageNet Large-Scale Visual Recognition Challenge~\cite{Krizhevsky2012}, an image classification and object localization challenge with 1000 categories~\cite{Russakovsky2015}. Thanks to recent developments, convolutional networks have become one of the most popular methods for image classification and the emblem of deep learning.
+Recently, Krizhevsky et al. achieved state-of-the-art performance on the ImageNet Large-Scale Visual Recognition Challenge~\cite{Krizhevsky2012}, an image classification and object localization challenge with 1000 categories~\cite{Russakovsky2015}. Thanks to recent developments, convolutional networks have become one of the most popular methods for image classification and the driving force behind deep learning.
 
 %Classifying an image reduces, in principle, to learning the underlying function $f(x)$ that maps any image $x$ to a score vector representing the (unnormalized log probabilities of x belonging to any class.
 
@@ -30,8 +30,6 @@ Feature maps are computed separately and stacked together to form the output vol
 All values in a single feature map are computed using the same filter; these filters are the parameters that need to be learned.
 
 We could think of each filter as looking for an specific feature on the input and the feature map as showing its likelihood at each position. If we regard each feature map as a grid of units, we notice that units connect only to a small local subset of units in the previous volume and that all of them share the same weights (Fig.~\ref{fig:ConvLayer}).
-
-We choose various hyperparameters for this layer: number of feature maps, filter size, stride (the number of places to shift the filter at each step) and amount of padding around the image; these define the shape of the resulting volume. The number of feature maps depends on the amount of distinct features we wish to learn, the filter size is usually small ($3\times3$ to $9\times9$) and the last two are usually set to preserve the spatial dimensions of the volume in the previous layer.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width = 0.4\textwidth]{plots/convLayer.jpeg}
@@ -39,11 +37,13 @@ We choose various hyperparameters for this layer: number of feature maps, filter
 	\label{fig:ConvLayer}
 \end{figure}
 
+We choose four hyperparameters for this layer: number of feature maps, filter size, stride (the number of places to shift the filter at each step) and amount of padding around the volume; these define the shape of the resulting volume. The number of feature maps depends on the amount of distinct features we wish to learn, the filter size is usually small ($3\times3$ to $9\times9$), stride is 1 and zero-padding is usually $\lfloor (f_s-1)/2\rfloor$ where $f_s$ is the filter size; the last one is needed to preserve the spatial dimensions of the volume in the previous layer.
+
 \paragraph{ReLU layer} This layer performs an elementwise ReLU activation function to the volume in the previous layer, i.e., each value $z$ in the volume is passed through the nonlinearity $\max(0,z)$. It outputs a volume with the same dimensions of the previous one and has no parameters to learn. A ReLU layer (or any other activation function) usually follows a convolutional layer so it is sometimes considered part of it; we separate them for clarity. 
 
 \paragraph{Pooling layer} The pooling layer subsamples the volume in the previous layer reducing the size of its feature maps but keeping their number. Max pooling slides a fixed-sized windows (normally $2\times2$) with stride 2 (without overlapping) along each feature map and selects the maximum element on that space. This reduces each feature map dimension by half reducing the total number of activations by 75\%, e.g., a $4\times4$ feature map gets subsampled to a $2\times 2$ feature map where values are the maximum activation in each of the four quadrants of the original feature map. Pooling is applied to each feature map separately. A popular variant of max pooling uses $3\times 3$ windows with stride 2, allowing for some overlapping.
 
-\paragraph{Fully connected layer} Every feature map in a fully connected layer has size $1 \times 1$. Each feature map computes the dot product between all activations in the previous volume and an equal amount of weights, which are the parameters that need to be learned. Notice that a fully connected layer is equivalent to a convolutional layer with the same number of feature maps and filter size $w\times h$ where $w$ and $h$ are the spatial dimensions of the volume in the previous layer, i.e., filters that comprise the entire volume. The output layer of a convolutional network is always a fully connected layer with as many feature maps as classes. %We interpret the scores of the output layer like those of regular neural networks as the (unnormalized log) probability of $x$ belonging to class $k$. 
+\paragraph{Fully connected layer} A fully connected layer is a convolutional layer with $w\times h$ filters where $w$ and $h$ are the spatial dimensions of the volume in the previous layer and no zero-padding, i.e., filters cover the entire volume, resulting in feature maps with size $1 \times 1$. The output layer of a convolutional network is always fully connected with as many feature maps as possible classes.% We interpret the scores of the output layer like those of regular neural networks as the (unnormalized log) probability of $x$ belonging to class $k$.  
 
 \bigskip
 %[The reasoning behind is] Convolutional layers (plus ReLU layers) compute features on the input while pooling layers shrinken the volume before passing to the fully connected layers that act as a regular neural network classifier on the obtained features.
@@ -60,7 +60,7 @@ INPUT -> [[CONV -> RELU]*2 -> POOL]*3 -> [FC -> RELU]*2 -> FC
 \end{verbatim}
 This network receives an input volume (the image), computes two sets of convolution plus ReLUs before pooling and repeats this pattern three times followed by fully connected layers plus ReLUs which are repeated twice and the output layer that reports the final classification scores. Although there is not a standard way of counting the number of layers, we usually ignore ReLU and pooling layers because they lack learnable parameters. Therefore, our network has 10 layers (21 in total), which is a good depth for big data sets. Practical advice on choosing an architecture is offered in Section~\ref{sec:PracticalDL}.
 
-Figure~\ref{fig:ConvNetExample} shows a convolutional network with different kind of layers. The image was obtained in a simulation accesible at \url{cs231n.stanford.edu}.
+Figure~\ref{fig:ConvNetExample} shows a convolutional network with different kinds of layers. The image was obtained in a simulation accesible at \url{cs231n.stanford.edu}.
 
 \begin{figure}[h]
 	\centering
@@ -69,12 +69,7 @@ Figure~\ref{fig:ConvNetExample} shows a convolutional network with different kin
 	\label{fig:ConvNetExample}
 \end{figure}
 
-Lately, simpler convolutional network architectures have emerged. The All Convolutional Net~\cite{Springenberg2014} is a network formed solely by convolutional layers: we replace pooling layers by convolutional layers with larger strides and fully connected layers as explained above. This greatly increases the number of parameters, therefore it is inappropiate for small data sets.
-
-Converting fully connected layers to convolutional layers has another advantage: we can use a convolutional network trained on small images to classify bigger images. By the way convolutional layers are defined when we use a bigger image as input the entire convolutional network will slide across the image and be applied to different portions of the image generating a score vector for each of them. Therefore, instead of having a single score for each class we will have an entire matrix of scores (for each position where the convolutional network was applied). Then, we can average over all scores per class to obtain a single score vector for the bigger image. Furthermore, we can control the stride of the convolution to choose how the convolutional network is slided across the big image.
-For instance, if we train a convolutional network with images of size $32\times 32$ that via pooling get reduced to feature maps of size $4\times 4$ in turn passed to the (converted) fully connected layers to obtain a score vector, then when using a $96\times 96$ image as input to the same convolutional network it will get reduced to feature maps of size $12 \times 12$ and the fully connected layers will output a matrix of scores of size $9\times 9$ (for each class), i.e, it slides the $4\times 4$ fully connected layers across the $12\times 12$ feature maps. Averaging each score matrix we obtain the final scores for the big image. We could have also  set a stride of 4 in the first (converted) fully connected layer to get score matrices of size $3\times 3$ for each 9 non-overlapping $32\times 32$ partitions of the original image. It works exactly as if we applied the convolutional network to the original image at a stride of 32 but does all computations in just one pass. This way we can reuse a pretrained network to classify images of bigger size. 
-
-\emph{Transfer learning} is a related method where we train a convolutional network on images from a specific domain and later use it to extract features on images from a different domain. It could also be used as an initialized network  to be fine-tuned with examples of the new domain.
+Lately, simpler convolutional network architectures have emerged. The All Convolutional Net~\cite{Springenberg2014} is a network formed solely by convolutional layers: we replace pooling layers by convolutional layers with larger strides. This greatly increases the number of parameters so it is inappropiate for small data sets. \emph{Transfer learning} is a related trend where we train a convolutional network on data from a specific domain and later reuse it to extract image features in a different domain or as an initialized network to fine-tune with the new data.
 
 The loss function for a multiclass convolutional network is similar to that for a regular neural network (Eq.~\ref{eq:ANNRegularizedLossFunction}) except that, in this case, the convolutional network defines the vector score $h_\Theta(x)$.
 \begin{equation}
@@ -83,4 +78,6 @@ The loss function for a multiclass convolutional network is similar to that for 
 \end{equation}
 This function is differentiable with respect to $\Theta$, thus, we can train the entire convolutional network via gradient descent. We use backpropagation to calculate the gradient of the loss function.
 
-In this section we revised the standard features and training of current convolutional networks. For an in depth review of convolutional networks, see \cite{Karpathy2015}. For a complete overview of the history and state of deep learning, see \cite{Schmidhuber2015}. Section~\ref{sec:PracticalDL} gives some practical advice for choosing hyperparameters and training deep architectures. 
+\begin{comment}
+In this section we revised the standard features and training of current convolutional networks. For an in depth review of convolutional networks, see \cite{Karpathy2015}. For a complete overview of the history and state of deep learning, see \cite{Schmidhuber2015}. Section~\ref{sec:PracticalDL} gives some practical advice for choosing hyperparameters and training deep architectures.
+\end{comment}

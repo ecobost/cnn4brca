@@ -3,44 +3,47 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 The style file: acm.bst
 Database file #1: bibliography.bib
-You've used 58 entries,
+Warning--I didn't find a database entry for "Agarwal2015"
+Warning--I didn't find a database entry for "Ciresan2013"
+You've used 57 entries,
             2253 wiz_defined-function locations,
-            941 strings with 17771 characters,
-and the built_in function-call counts, 21878 in all, are:
-= -- 2015
-> -- 1327
+            942 strings with 17682 characters,
+and the built_in function-call counts, 21390 in all, are:
+= -- 1976
+> -- 1293
 < -- 0
-+ -- 542
-- -- 479
-* -- 1841
-:= -- 3666
-add.period$ -- 194
-call.type$ -- 58
-change.case$ -- 405
++ -- 530
+- -- 468
+* -- 1800
+:= -- 3589
+add.period$ -- 197
+call.type$ -- 57
+change.case$ -- 399
 chr.to.int$ -- 0
-cite$ -- 58
-duplicate$ -- 685
-empty$ -- 1561
-format.name$ -- 479
-if$ -- 4476
+cite$ -- 57
+duplicate$ -- 663
+empty$ -- 1524
+format.name$ -- 468
+if$ -- 4368
 int.to.chr$ -- 0
-int.to.str$ -- 58
+int.to.str$ -- 57
 missing$ -- 49
-newline$ -- 309
-num.names$ -- 124
-pop$ -- 399
+newline$ -- 311
+num.names$ -- 120
+pop$ -- 386
 preamble$ -- 1
-purify$ -- 349
+purify$ -- 344
 quote$ -- 0
-skip$ -- 431
+skip$ -- 414
 stack$ -- 0
-substring$ -- 1100
-swap$ -- 188
+substring$ -- 1067
+swap$ -- 178
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 226
+type$ -- 222
 warning$ -- 0
-while$ -- 166
-width$ -- 60
+while$ -- 161
+width$ -- 59
 write$ -- 632
+(There were 2 warnings)

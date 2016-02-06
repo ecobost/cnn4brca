@@ -1,12 +1,6 @@
 \begin{thebibliography}{10}
 
-\bibitem{Agarwal2015}
-{\sc Agarwal, V., and Carson, C.}
-\newblock Using deep convolutional neural networks to predict semantic features
-  of lesions in mammograms.
-\newblock Project report, 2015.
-
-\bibitem{MammogramsACS2014}
+\bibitem{ACS2014}
 {\sc {American Cancer Society}}.
 \newblock Mammograms and other breast imaging tests.
 \newblock electronic, Atlanta, GA, 2014.
@@ -17,7 +11,7 @@
 {\sc {American Cancer Society}}.
 \newblock {\em Cancer Facts \& Figures 2015}.
 \newblock American Cancer Society, Atlanta, GA, 2015.
-\newblock Available on
+\newblock Available online on
   \url{cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}.
 
 \bibitem{Arevalo2015}
@@ -49,6 +43,7 @@
 \newblock Practical recommendations for gradient-based training of deep
   architectures.
 \newblock {\em CoRR abs/1206.5533\/} (2012).
+\newblock Available online on \url{http://arxiv.org/abs/1206.5533}.
 
 \bibitem{Bengio2014}
 {\sc Bengio, Y.}
@@ -60,6 +55,7 @@
 {\sc Bengio, Y., Boulanger{-}Lewandowski, N., and Pascanu, R.}
 \newblock Advances in optimizing recurrent networks.
 \newblock {\em CoRR abs/1212.0901\/} (2012).
+\newblock Available online on \url{http://arxiv.org/abs/1212.0901}.
 
 \bibitem{Bergstra2012}
 {\sc Bergstra, J., and Bengio, Y.}
@@ -74,12 +70,12 @@
   ({SciPy})\/} (June 2010).
 \newblock Oral Presentation.
 
-\bibitem{PerformanceMammography2013}
+\bibitem{BCSC2013}
 {\sc {Breast Cancer Surveillance Consortium}}.
 \newblock Performance measures for 1,838,372 screening mammography examinations
   from 2004 to 2008 by age--based on {BCSC} data through 2009.
 \newblock electronic, September 2013.
-\newblock Available on
+\newblock Available online on
   \url{breastscreening.cancer.gov/statistics/performance/screening/2009/perf_age.html}.
 
 \bibitem{Cawley2010}
@@ -87,15 +83,6 @@
 \newblock On over-fitting in model selection and subsequent selection bias in
   performance evaluation.
 \newblock {\em J. Machine Learning Research 11\/} (August 2010), 2079--2107.
-
-\bibitem{Ciresan2013}
-{\sc Cireşan, D.~C., Giusti, A., Gambardella, L.~M., and Schmidhuber, J.}
-\newblock Mitosis detection in breast cancer histology images with deep neural
-  networks.
-\newblock In {\em Medical Image Computing and Computer-Assisted Intervention
-  – MICCAI 2013}, K.~Mori, I.~Sakuma, Y.~Sato, C.~Barillot, and N.~Navab,
-  Eds., vol.~8150 of {\em Lecture Notes in Computer Science}. Springer Berlin
-  Heidelberg, 2013, pp.~411--418.
 
 \bibitem{Collobert2011}
 {\sc Collobert, R., Kavukcuoglu, K., and Farabet, C.}
@@ -113,6 +100,7 @@
 \newblock Rotation-invariant convolutional neural networks for galaxy
   morphology prediction.
 \newblock {\em Monthly Notices of the Royal Astronomical Society\/} (2015).
+\newblock Available online on \url{arxiv.org/abs/1503.07077}.
 
 \bibitem{Fukushima1980}
 {\sc Fukushima, K.}
@@ -148,6 +136,7 @@
 \newblock Delving deep into rectifiers: Surpassing human-level performance on
   imagenet classification.
 \newblock {\em CoRR abs/1502.01852\/} (2015).
+\newblock Available online on {http://arxiv.org/abs/1502.01852}.
 
 \bibitem{Heath2001}
 {\sc Heath, M., Bowyer, K., Kopans, D., Moore, R., and Kegelmeyer, W.~P.}
@@ -162,7 +151,7 @@
   A.~B., Lewis, D.~R., Chen, H.~S., Feuer, E.~J., and Cronin, K.~A.}
 \newblock {SEER} cancer statistics review, 1975-2011.
 \newblock review, National Cancer Institute, Bethesda, MD, April 2014.
-\newblock Available on \url{seer.cancer.gov/csr/1975_2011/}.
+\newblock Available online on \url{seer.cancer.gov/csr/1975_2011/}.
 
 \bibitem{Jia2014}
 {\sc Jia, Y., Shelhamer, E., Donahue, J., Karayev, S., Long, J., Girshick,
@@ -217,6 +206,12 @@
 \newblock {\em Journal of VLSI signal processing systems for signal, image and
   video technology 18}, 3 (1998), 263--274.
 
+\bibitem{Long2015}
+{\sc Long, J., Shelhamer, E., and Darrell, T.}
+\newblock Fully convolutional networks for semantic segmentation.
+\newblock {\em CVPR\/} (November 2015).
+\newblock Available on \url{arxiv.org/abs/1411.4038}.
+
 \bibitem{McCulloch1943}
 {\sc McCulloch, W.~S., and Pitts, W.}
 \newblock A logical calculus of the ideas immanent in nervous activity.
@@ -228,18 +223,18 @@
 \newblock Inbreast: Toward a full-field digital mammographic database.
 \newblock {\em Academic Radiology 19}, 2 (2012), 236--248.
 
-\bibitem{WYNTKABreastCancer2012}
+\bibitem{NCI2012}
 {\sc {National Cancer Institute}}.
 \newblock What you need to know about breast cancer.
 \newblock electronic, Bethesda, MD, August 2012.
 \newblock Available online on
   \url{cancer.gov/publications/patient-education/WYNTK_breast.pdf}.
 
-\bibitem{Mammograms2014}
+\bibitem{NCI2014}
 {\sc {National Cancer Institute}}.
 \newblock Mammograms.
 \newblock electronic, March 2014.
-\newblock Available on
+\newblock Available online on
   \url{cancer.gov/cancertopics/types/breast/mammograms-fact-sheet}.
 
 \bibitem{Nepomuceno2011}
@@ -252,13 +247,14 @@
 {\sc Ng, A.}
 \newblock Machine learning course.
 \newblock online, December 2014.
-\newblock Available on \url{coursera.org/course/ml}.
+\newblock Available online on \url{coursera.org/course/ml}.
 
 \bibitem{Oeffinger2015}
 {\sc Oeffinger, K.~C., Fontham, E.~T., Etzioni, R., and et~al}.
 \newblock Breast cancer screening for women at average risk: 2015 guideline
   update from the american cancer society.
-\newblock {\em JAMA 314}, 15 (2015), 1599--1614.
+\newblock {\em Journal of the American Medical Association 314}, 15 (2015),
+  1599--1614.
 
 \bibitem{Ozgur2005}
 {\sc \"{O}zg\"{u}r, A., \"{O}zg\"{u}r, L., and G\"{u}ng\"{o}r, T.}
@@ -329,6 +325,7 @@
 {\sc Simonyan, K., and Zisserman, A.}
 \newblock Very deep convolutional networks for large-scale image recognition.
 \newblock {\em CoRR abs/1409.1556\/} (2014).
+\newblock Available online on \url{arxiv.org/abs/1409.1556}.
 
 \bibitem{Skaane2007}
 {\sc Skaane, P., Hofvind, S., and Skjennald, A.}
@@ -342,6 +339,7 @@
 {\sc Springenberg, J.~T., Dosovitskiy, A., Brox, T., and Riedmiller, M.~A.}
 \newblock Striving for simplicity: The all convolutional net.
 \newblock {\em CoRR abs/1412.6806\/} (2014).
+\newblock Available online on \url{arxiv.org/abs/1412.6806}.
 
 \bibitem{Srivastava2014}
 {\sc Srivastava, N., Hinton, G., Krizhevsky, A., Sutskever, I., and
