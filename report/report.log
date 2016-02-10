@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  6 FEB 2016 05:05
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  10 FEB 2016 02:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -743,7 +743,7 @@ LaTeX Info: Redefining \nameref on input line 56.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
-<plots/escudo-itesm.png, id=172, 60.5478pt x 28.04076pt>
+<plots/escudo-itesm.png, id=176, 60.5478pt x 28.04076pt>
 File: plots/escudo-itesm.png Graphic file (type png)
 
 <use plots/escudo-itesm.png>
@@ -818,7 +818,7 @@ l.24
 (./introduction/outline.tex)) (./background.tex [6]
 Chapter 2.
 (./background/breastcancer.tex
-<plots/breastAnatomy.png, id=385, 419.5675pt x 454.69875pt>
+<plots/breastAnatomy.png, id=390, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
@@ -830,14 +830,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [7
 
-] <plots/normalMammogram.jpg, id=395, 2569.6pt x 3340.48pt>
+] <plots/normalMammogram.jpg, id=400, 2569.6pt x 3340.48pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
 Package pdftex.def Info: plots/normalMammogram.jpg used on input line 20.
 (pdftex.def)             Requested size: 116.12083pt x 150.92677pt.
  [8 <./plots/breastAnatomy.png> <./plots/normalMammogram.jpg>]
-<plots/breastMicrocalcification.jpg, id=407, 338.26375pt x 338.26375pt>
+<plots/breastMicrocalcification.jpg, id=412, 338.26375pt x 338.26375pt>
 File: plots/breastMicrocalcification.jpg Graphic file (type jpg)
 
 <use plots/breastMicrocalcification.jpg>
@@ -845,7 +845,7 @@ Package pdftex.def Info: plots/breastMicrocalcification.jpg used on input line
 32.
 (pdftex.def)             Requested size: 111.65701pt x 111.65834pt.
 
-<plots/breastMass.jpg, id=408, 430.60875pt x 431.6125pt>
+<plots/breastMass.jpg, id=413, 430.60875pt x 431.6125pt>
 File: plots/breastMass.jpg Graphic file (type jpg)
 
 <use plots/breastMass.jpg>
@@ -858,7 +858,7 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ))
 (./background/classification.tex [9 <./plots/breastMicrocalcification.jpg> <./p
 lots/breastMass.jpg>] [10] [11]
-<plots/AUCandPRAUC.png, id=453, 972.63374pt x 425.59pt>
+<plots/AUCandPRAUC.png, id=459, 972.63374pt x 425.59pt>
 File: plots/AUCandPRAUC.png Graphic file (type png)
 
 <use plots/AUCandPRAUC.png>
@@ -869,7 +869,7 @@ Package pdftex.def Info: plots/AUCandPRAUC.png used on input line 75.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) [12] (./background/neuralnetworks.tex
-<plots/neuralNetwork.png, id=477, 970.62625pt x 589.20125pt>
+<plots/neuralNetwork.png, id=482, 970.62625pt x 589.20125pt>
 File: plots/neuralNetwork.png Graphic file (type png)
 
 <use plots/neuralNetwork.png>
@@ -880,7 +880,7 @@ Package pdftex.def Info: plots/neuralNetwork.png used on input line 10.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13 <./plots/AUCandPRAUC.png>] [14 <./plots/neuralNetwork.png>]
-<plots/dropout.png, id=511, 769.87625pt x 415.5525pt>
+<plots/dropout.png, id=516, 769.87625pt x 415.5525pt>
 File: plots/dropout.png Graphic file (type png)
  <use plots/dropout.png>
 Package pdftex.def Info: plots/dropout.png used on input line 69.
@@ -890,14 +890,14 @@ Package pdftex.def Info: plots/dropout.png used on input line 69.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./background/convnets.tex [15] [16 <./plots/dropout.png>]
-<plots/convNetVolumes.jpeg, id=535, 571.13374pt x 202.7575pt>
+<plots/convNetVolumes.jpeg, id=540, 571.13374pt x 202.7575pt>
 File: plots/convNetVolumes.jpeg Graphic file (type jpg)
 
 <use plots/convNetVolumes.jpeg>
 Package pdftex.def Info: plots/convNetVolumes.jpeg used on input line 21.
 (pdftex.def)             Requested size: 312.63828pt x 110.98792pt.
 
-<plots/convLayer.jpeg, id=541, 465.74pt x 327.2225pt>
+<plots/convLayer.jpeg, id=546, 465.74pt x 327.2225pt>
 File: plots/convLayer.jpeg Graphic file (type jpg)
 
 <use plots/convLayer.jpeg>
@@ -908,56 +908,50 @@ Package pdftex.def Info: plots/convLayer.jpeg used on input line 35.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [17 <./plots/convNetVolumes.jpeg>] [18 <./plots/convLayer.jpeg>]
-<plots/convNetExample.jpeg, id=560, 1259.70625pt x 603.25375pt>
+<plots/convNetExample.jpeg, id=565, 1259.70625pt x 603.25375pt>
 File: plots/convNetExample.jpeg Graphic file (type jpg)
 
 <use plots/convNetExample.jpeg>
 Package pdftex.def Info: plots/convNetExample.jpeg used on input line 67.
 (pdftex.def)             Requested size: 379.63658pt x 181.79675pt.
-) (./background/segmentation.tex
-<plots/segmentationImage.png, id=566, 294.09875pt x 371.3875pt>
+) (./background/segmentation.tex [19 <./plots/convNetExample.jpeg>]
+<plots/segmentationImage.png, id=577, 294.09875pt x 371.3875pt>
 File: plots/segmentationImage.png Graphic file (type png)
 
 <use plots/segmentationImage.png>
-Package pdftex.def Info: plots/segmentationImage.png used on input line 7.
+Package pdftex.def Info: plots/segmentationImage.png used on input line 9.
 (pdftex.def)             Requested size: 120.59148pt x 152.28119pt.
 
-<plots/segmentationTruth.png, id=567, 294.09875pt x 371.3875pt>
+<plots/segmentationTruth.png, id=578, 294.09875pt x 371.3875pt>
 File: plots/segmentationTruth.png Graphic file (type png)
 
 <use plots/segmentationTruth.png>
-Package pdftex.def Info: plots/segmentationTruth.png used on input line 12.
+Package pdftex.def Info: plots/segmentationTruth.png used on input line 14.
 (pdftex.def)             Requested size: 120.59148pt x 152.28119pt.
- [19 <./plots/convNetExample.jpeg>])
-(./background/practicalDL.tex [20 <./plots/segmentationImage.png> <./plots/segm
-entationTruth.png>] [21]
+) (./background/practicalDL.tex [20 <./plots/segmentationImage.png> <./plots/se
+gmentationTruth.png>] [21] [22]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 76.
 
-LaTeX Warning: Reference `subsec:ConvNets' on page 22 undefined on input line 3
-7.
-
-[22]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 81.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 81.
- [23] [24]
-[25] [26]
-Overfull \hbox (5.95892pt too wide) in paragraph at lines 198--199
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 76.
+ [23] [24] [25]
+Overfull \hbox (5.95892pt too wide) in paragraph at lines 216--217
 []\OT1/ptm/m/n/12 Caffe [[]]: Caffe is an al-ready ma-ture deep learn-ing frame
 -work de-vel-oped in C++/CUDA
  []
 
-) (./background/convnets4brca.tex [27]
+[26]) (./background/convnets4brca.tex
 
-LaTeX Warning: Citation `Agarwal2015' on page 28 undefined on input line 7.
+LaTeX Warning: Citation `Agarwal2015' on page 27 undefined on input line 7.
 
-[28] [29] [30]
+[27] [28] [29]
 
-LaTeX Warning: Citation `Agarwal2015' on page 31 undefined on input line 250.
+LaTeX Warning: Citation `Agarwal2015' on page 30 undefined on input line 250.
 
-[31]
+[30]
 Overfull \hbox (2.02522pt too wide) in paragraph at lines 276--276
 []\OT1/ptm/b/n/12 Filters| 
  []
@@ -1018,7 +1012,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 282--282
  []
 
 
-LaTeX Warning: Citation `Agarwal2015' on page 32 undefined on input line 283.
+LaTeX Warning: Citation `Agarwal2015' on page 31 undefined on input line 283.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 283--283
@@ -1038,9 +1032,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--283
 
 LaTeX Warning: Float too large for page by 14.0718pt on input line 288.
 
-[32])) (./model.tex
+[31])) (./model.tex
 Chapter 3.
-(./model/database.tex [33
+(./model/database.tex [32
 
 
 
@@ -1050,11 +1044,11 @@ Overfull \hbox (23.20444pt too wide) in paragraph at lines 10--12
 eb-site ([]$\OT1/pcr/m/n/12 bcdr . eu / information /
  []
 
-[34]) (./model/imageRetrieval.tex [35]
+[33]) (./model/imageRetrieval.tex [34]
 
-LaTeX Warning: Citation `Ciresan2013' on page 36 undefined on input line 35.
+LaTeX Warning: Citation `Ciresan2013' on page 35 undefined on input line 35.
 
-[36] <plots/mcDiffPreprocessings.png, id=808, 863.225pt x 867.24pt>
+[35] <plots/mcDiffPreprocessings.png, id=808, 863.225pt x 867.24pt>
 File: plots/mcDiffPreprocessings.png Graphic file (type png)
 
 <use plots/mcDiffPreprocessings.png>
@@ -1064,38 +1058,38 @@ Package pdftex.def Info: plots/mcDiffPreprocessings.png used on input line 51.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[37] <plots/mcDiffResizings.png, id=818, 822.4326pt x 722.7pt>
+[36] <plots/mcDiffResizings.png, id=818, 822.4326pt x 722.7pt>
 File: plots/mcDiffResizings.png Graphic file (type png)
 
 <use plots/mcDiffResizings.png>
 Package pdftex.def Info: plots/mcDiffResizings.png used on input line 69.
 (pdftex.def)             Requested size: 357.3038pt x 313.97496pt.
 )
-Underfull \hbox (badness 4608) in paragraph at lines 35--35
+Underfull \hbox (badness 4608) in paragraph at lines 36--36
 \OT1/ptm/m/n/12 96 cores, 1GB, 2.1
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 36--36
+Underfull \hbox (badness 1675) in paragraph at lines 37--37
 \OT1/ptm/m/n/12 384 cores, 2GB, 5.0
  []
 
-[38 <./plots/mcDiffPreprocessings.png>] [39 <./plots/mcDiffResizings.png>]
+[37 <./plots/mcDiffPreprocessings.png>] [38 <./plots/mcDiffResizings.png>]
 
-LaTeX Warning: Reference `subsec:PracticalDL' on page 40 undefined on input lin
-e 45.
+LaTeX Warning: Reference `subsec:PracticalDL' on page 39 undefined on input lin
+e 46.
 
 
-LaTeX Warning: Reference `subsec:Classification' on page 40 undefined on input 
-line 75.
+LaTeX Warning: Reference `subsec:Classification' on page 39 undefined on input 
+line 76.
 
-[40]
-Overfull \hbox (2.19142pt too wide) in paragraph at lines 93--95
+[39]
+Overfull \hbox (2.19142pt too wide) in paragraph at lines 95--97
 \OT1/ptm/m/n/12 Probabilities vs UN-cor-rected thresh-old vs Thresh-old and clu
 s-ter ex-tent cor-rec-tion vs threshold-
  []
 
-) (./experiment1.tex [41]
+) (./experiment1.tex [40] [41]
 Chapter 4.
 ) (./conclusions.tex [42
 
@@ -1106,43 +1100,43 @@ Chapter 5.
 ] [44
 
 ]
-Underfull \hbox (badness 2261) in paragraph at lines 74--80
+Underfull \hbox (badness 2261) in paragraph at lines 86--92
 []\OT1/ptm/m/sc/12 Breast Can-cer Surveil-lance Con-sor-tium\OT1/ptm/m/n/12 .  
 Per-for-mance mea-sures for
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 74--80
+Underfull \hbox (badness 2600) in paragraph at lines 86--92
 \OT1/ptm/m/n/12 1,838,372 screen-ing mam-mog-ra-phy ex-am-i-na-tions from 2004 
 to 2008 by age--
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 74--80
+Underfull \hbox (badness 1655) in paragraph at lines 86--92
 \OT1/ptm/m/n/12 based on BCSC data through 2009.  elec-tronic, Septem-ber 2013.
   Avail-able
  []
 
 
-Underfull \hbox (badness 4441) in paragraph at lines 74--80
+Underfull \hbox (badness 4441) in paragraph at lines 86--92
 \OT1/ptm/m/n/12 on-line on []$\OT1/pcr/m/n/12 breastscreening . cancer . gov / 
 statistics / performance /
  []
 
 [45] [46]
-Underfull \hbox (badness 1527) in paragraph at lines 227--232
+Underfull \hbox (badness 1527) in paragraph at lines 239--244
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  What you need
  to know about breast can-
  []
 
 
-Underfull \hbox (badness 3364) in paragraph at lines 234--239
+Underfull \hbox (badness 3364) in paragraph at lines 246--251
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  Mam-mo-grams.
   elec-tronic, March 2014.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--239
+Underfull \hbox (badness 10000) in paragraph at lines 246--251
 \OT1/ptm/m/n/12 Avail-able on-line on []$\OT1/pcr/m/n/12 cancer . gov / cancert
 opics / types / breast /
  []
@@ -1155,7 +1149,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: C2FBB5164CB8F69F8CBC3C2E2D7A05D6;2603.
+(rerunfilecheck)             Checksum: 75961C2FA25647C958D5DE7909C8F4FF;2664.
 
 
 LaTeX Warning: There were undefined references.
@@ -1163,10 +1157,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 8550 strings out of 495028
- 126748 string characters out of 6181498
- 206777 words of memory out of 5000000
- 11274 multiletter control sequences out of 15000+600000
+ 8553 strings out of 495028
+ 126778 string characters out of 6181498
+ 206809 words of memory out of 5000000
+ 11276 multiletter control sequences out of 15000+600000
  38202 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,10n,42p,2602b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1188,10 +1182,10 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (60 pages, 4158557 bytes).
+Output written on report.pdf (60 pages, 4158960 bytes).
 PDF statistics:
- 1024 PDF objects out of 1200 (max. 8388607)
- 906 compressed objects within 10 object streams
- 239 named destinations out of 1000 (max. 500000)
- 412 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1029 PDF objects out of 1200 (max. 8388607)
+ 911 compressed objects within 10 object streams
+ 240 named destinations out of 1000 (max. 500000)
+ 420 words of extra memory for PDF output out of 10000 (max. 10000000)
 

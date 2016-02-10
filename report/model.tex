@@ -23,6 +23,7 @@ We document here how we tranform/reduce the breast cancer detection and diagnosi
 	\subsection{Data set}
 	Yet to write
 %	We have x number of images with x positives and negatives. Resunmied in Table...
+% Images will not be zero-centered , normalized or whitened.
 
 	\subsection{Hardware}
 	Training deep neural networks is computationally intensive and requires equipment with powerful GPUs. We enlist here the resources available for this thesis.
@@ -84,8 +85,9 @@ We document here how we tranform/reduce the breast cancer detection and diagnosi
 
 \section{Implementation}
 
+
 \section{Implementation details}
-What library I used
+What library I used,
 
 \section{Evaluation metrics}
 
@@ -107,3 +109,7 @@ we could also present a heatmap with the different probabilities in each pixel o
 
 % CRFs: public available implementation of (Krahenbuhl & Koltun)
 % For the figure draw a random one  of 100x100 with a little signal in there and apply all corrections.
+
+\section{Regularization}
+Dropout and l2-norm
+Other options: batch normalization

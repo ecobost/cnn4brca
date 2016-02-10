@@ -5,45 +5,45 @@ The style file: acm.bst
 Database file #1: bibliography.bib
 Warning--I didn't find a database entry for "Agarwal2015"
 Warning--I didn't find a database entry for "Ciresan2013"
-You've used 57 entries,
+You've used 58 entries,
             2253 wiz_defined-function locations,
-            942 strings with 17682 characters,
-and the built_in function-call counts, 21390 in all, are:
-= -- 1976
-> -- 1293
+            947 strings with 18565 characters,
+and the built_in function-call counts, 22813 in all, are:
+= -- 2074
+> -- 1495
 < -- 0
-+ -- 530
-- -- 468
-* -- 1800
-:= -- 3589
-add.period$ -- 197
-call.type$ -- 57
-change.case$ -- 399
++ -- 611
+- -- 548
+* -- 1964
+:= -- 3857
+add.period$ -- 200
+call.type$ -- 58
+change.case$ -- 442
 chr.to.int$ -- 0
-cite$ -- 57
-duplicate$ -- 663
-empty$ -- 1524
-format.name$ -- 468
-if$ -- 4368
+cite$ -- 58
+duplicate$ -- 671
+empty$ -- 1547
+format.name$ -- 548
+if$ -- 4610
 int.to.chr$ -- 0
-int.to.str$ -- 57
+int.to.str$ -- 58
 missing$ -- 49
-newline$ -- 311
-num.names$ -- 120
-pop$ -- 386
+newline$ -- 316
+num.names$ -- 122
+pop$ -- 434
 preamble$ -- 1
-purify$ -- 344
+purify$ -- 386
 quote$ -- 0
-skip$ -- 414
+skip$ -- 421
 stack$ -- 0
-substring$ -- 1067
-swap$ -- 178
+substring$ -- 1072
+swap$ -- 180
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 222
+type$ -- 226
 warning$ -- 0
-while$ -- 161
-width$ -- 59
-write$ -- 632
+while$ -- 163
+width$ -- 60
+write$ -- 642
 (There were 2 warnings)
