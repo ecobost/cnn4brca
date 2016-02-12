@@ -19,6 +19,7 @@ Log with activities and questions arising during every week
 ### Questions
 1. Which post-processing should I use? Gaussian smoothing, cluster-based enhancement, fully connected CRFs or a combination?
 2. Which evaluation metric should I use? Accuracy, F1-score, PRAUC or ROC?
+3. Should I cite Agarwal2015 (unpublished Stanford report)?
 
 ---------------------------------------------------------------------------
 ---------------------------------------------------------------------------

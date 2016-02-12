@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  12 FEB 2016 03:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  12 FEB 2016 04:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report~
+**report
 (./report.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -814,8 +814,8 @@ l.24
 
 ]) (./introduction/motivation.tex) (./introduction/problem.tex [2])
 (./introduction/objectives.tex [3]) (./introduction/hypotheses.tex [4])
-(./introduction/methodology.tex) (./introduction/contributions.tex) [5]
-(./introduction/outline.tex)) (./background.tex [6]
+(./introduction/methodology.tex) (./introduction/contributions.tex)
+(./introduction/outline.tex)) (./background.tex [5] [6]
 Chapter 2.
 (./background/breastcancer.tex
 <plots/breastAnatomy.png, id=390, 419.5675pt x 454.69875pt>
@@ -1154,11 +1154,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
 Here is how much of TeX's memory you used:
  8559 strings out of 495028
  126851 string characters out of 6181498
- 206874 words of memory out of 5000000
+ 206873 words of memory out of 5000000
  11278 multiletter control sequences out of 15000+600000
  38202 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 45i,10n,42p,2603b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,42p,2602b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1177,7 +1177,7 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (60 pages, 4157697 bytes).
+Output written on report.pdf (60 pages, 4157639 bytes).
 PDF statistics:
  1040 PDF objects out of 1200 (max. 8388607)
  922 compressed objects within 10 object streams

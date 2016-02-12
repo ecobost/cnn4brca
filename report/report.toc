@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {1.4}Hypothesis}{4}{section.1.4}
 \contentsline {subsection}{\numberline {1.4.1}Research Questions}{4}{subsection.1.4.1}
 \contentsline {section}{\numberline {1.5}Methodology}{5}{section.1.5}
-\contentsline {section}{\numberline {1.6}Contributions}{6}{section.1.6}
+\contentsline {section}{\numberline {1.6}Contributions}{5}{section.1.6}
 \contentsline {section}{\numberline {1.7}Outline of the thesis}{6}{section.1.7}
 \contentsline {chapter}{\numberline {2}Background}{7}{chapter.2}
 \contentsline {section}{\numberline {2.1}Breast Cancer}{7}{section.2.1}

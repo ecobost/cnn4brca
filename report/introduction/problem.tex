@@ -3,12 +3,12 @@ Image segmentation partitions an image into multiple regions, essentially assign
 
 Despite their widespread use and relative success, various limitations should be address to further advance the field:
 \begin{itemize}
-	\item Lack of standard preprocessing techniques. Some techniques are commonly used but their performance can vary.
-	\item Handcrafted features. The features extracted from the image are chosen beforehand (maybe designed with the help of experts) and special filters and image techniques are used to extract them.
-	\item Expertise needs. They require knowledge in various fields such as radiology, oncology, image processing, computer vision, machine learning, etc.
-	\item Pipeline structure. Systems are composed of many sequential steps. At each stage, the researcher chooses among many techniques and estimates many parameters representing a cost in time and performance as it is improbable to achieve an optimal combination.
-	\item Low ceiling. Techniques are already complex and require much work to achieve only incremental improvements.
-	\item Complexity. Issues such as non-desired or unknown dependencies between subsystems, difficulty to localize errors and maintainability could arise. 
+	\item Lack of standard preprocessing techniques. Techniques are commonly used but their performance varies.
+	\item Handcrafted features. Image features are chosen beforehand, designed with help of experts and extracted using complex, problem-dependent techniques.
+	\item Expertise needs. Traditional systems require knowledge in many fields such as radiology, oncology, image processing, computer vision and machine learning.
+	\item Pipeline structure. Traditional systems are composed of sequential steps. At each stage, researchers choose among many techniques and adjust their parameters; as achieving an optimal combination of techniques is unlikely, this is both inconvenient and inefficient.
+	\item Low ceiling. Algorithms are already complex and require much work to achieve incremental improvements.
+	\item Complexity. Issues such as non-desired or unknown dependencies between subsystems, difficulty to localize errors and maintainability arise. 
 \end{itemize}
 
 In this thesis, we use convolutional networks, a recent development in machine learning,~(Sec.~\ref{sec:ConvNets}) to remedy some of these problems. In particular, we simplify the system pipeline by using a single end-to-end trainable model that learns the relevant preprocessing and image features from raw data. We can also focus on improving the learning mechanism, both the model and algorithm, rather than working on designing novel image features or improving specific subsystems.
