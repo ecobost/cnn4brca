@@ -27,31 +27,32 @@
 \contentsline {paragraph}{Hyperparameters}{22}{section*.23}
 \contentsline {paragraph}{Training}{23}{section*.24}
 \contentsline {paragraph}{Sanity checks}{24}{section*.25}
-\contentsline {paragraph}{Data augmentation}{25}{section*.26}
-\contentsline {paragraph}{Unbalanced data}{26}{section*.27}
-\contentsline {paragraph}{Software}{26}{section*.28}
-\contentsline {section}{\numberline {2.7}Convolutional Networks in Breast Cancer Research}{27}{section.2.7}
-\contentsline {paragraph}{Overview}{27}{section*.29}
-\contentsline {subsubsection}{Detection of masses}{28}{section*.30}
-\contentsline {subsubsection}{Detection of microcalcifications}{29}{section*.31}
-\contentsline {subsubsection}{Diagnosis of lesions}{30}{section*.32}
+\contentsline {paragraph}{Image segmentation}{25}{section*.26}
+\contentsline {paragraph}{Data augmentation}{25}{section*.27}
+\contentsline {paragraph}{Unbalanced data}{25}{section*.28}
+\contentsline {paragraph}{Software}{26}{section*.29}
+\contentsline {section}{\numberline {2.7}Convolutional Networks in Breast Cancer Research}{26}{section.2.7}
+\contentsline {paragraph}{Overview}{27}{section*.30}
+\contentsline {subsubsection}{Detection of masses}{27}{section*.31}
+\contentsline {subsubsection}{Detection of microcalcifications}{28}{section*.32}
+\contentsline {subsubsection}{Diagnosis of lesions}{30}{section*.33}
 \contentsline {chapter}{\numberline {3}Solution Model}{32}{chapter.3}
 \contentsline {section}{\numberline {3.1}Operationalization}{32}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Database}{32}{subsection.3.1.1}
-\contentsline {paragraph}{Decision}{33}{section*.34}
-\contentsline {paragraph}{Alternatives}{33}{section*.35}
+\contentsline {paragraph}{Decision}{33}{section*.35}
+\contentsline {paragraph}{Alternatives}{33}{section*.36}
 \contentsline {subsection}{\numberline {3.1.2}BCDR-DM}{34}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}Image retrieval}{34}{subsection.3.1.3}
-\contentsline {paragraph}{Image dimensions}{34}{section*.36}
-\contentsline {paragraph}{Cropping}{35}{section*.37}
-\contentsline {paragraph}{Stride}{35}{section*.38}
-\contentsline {paragraph}{Background}{35}{section*.39}
-\contentsline {paragraph}{Assigning labels}{35}{section*.40}
-\contentsline {paragraph}{Label information}{36}{section*.41}
-\contentsline {paragraph}{Image enhancement}{36}{section*.42}
-\contentsline {paragraph}{Data augmentation}{36}{section*.44}
-\contentsline {paragraph}{Resizing}{36}{section*.45}
-\contentsline {paragraph}{Storage}{37}{section*.47}
+\contentsline {paragraph}{Image dimensions}{34}{section*.37}
+\contentsline {paragraph}{Cropping}{35}{section*.38}
+\contentsline {paragraph}{Stride}{35}{section*.39}
+\contentsline {paragraph}{Background}{35}{section*.40}
+\contentsline {paragraph}{Assigning labels}{35}{section*.41}
+\contentsline {paragraph}{Label information}{36}{section*.42}
+\contentsline {paragraph}{Image enhancement}{36}{section*.43}
+\contentsline {paragraph}{Data augmentation}{36}{section*.45}
+\contentsline {paragraph}{Resizing}{36}{section*.46}
+\contentsline {paragraph}{Storage}{37}{section*.48}
 \contentsline {section}{\numberline {3.2}Training}{37}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Data set}{37}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Hardware}{39}{subsection.3.2.2}
@@ -69,4 +70,4 @@
 \contentsline {section}{\numberline {4.3}Discussion}{42}{section.4.3}
 \contentsline {chapter}{\numberline {5}Conclusions}{43}{chapter.5}
 \contentsline {section}{\numberline {5.1}Future Work}{43}{section.5.1}
-\contentsline {chapter}{Bibliography}{49}{chapter*.50}
+\contentsline {chapter}{Bibliography}{49}{chapter*.51}

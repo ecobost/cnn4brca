@@ -82,6 +82,11 @@
   ({SciPy})\/} (June 2010).
 \newblock Oral Presentation.
 
+\bibitem{Bishop1995}
+{\sc Bishop, C.~M.}
+\newblock {\em Neural Networks for Pattern Recognition}.
+\newblock Oxford University Press, Inc., New York, NY, USA, 1995.
+
 \bibitem{BCSC2013}
 {\sc {Breast Cancer Surveillance Consortium}}.
 \newblock Performance measures for 1,838,372 screening mammography examinations
@@ -95,6 +100,13 @@
 \newblock On over-fitting in model selection and subsequent selection bias in
   performance evaluation.
 \newblock {\em J. Machine Learning Research 11\/} (August 2010), 2079--2107.
+
+\bibitem{Chen2015}
+{\sc Chen, L., Papandreou, G., Kokkinos, I., Murphy, K., and Yuille, A.~L.}
+\newblock Semantic image segmentation with deep convolutional nets and fully
+  connected {CRF}s.
+\newblock {\em CoRR abs/1412.7062\/} (2015).
+\newblock Available online on \url{arxiv.org/abs/1412.7062}.
 
 \bibitem{Collobert2011}
 {\sc Collobert, R., Kavukcuoglu, K., and Farabet, C.}

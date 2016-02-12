@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  10 FEB 2016 02:32
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  12 FEB 2016 03:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report
+**report~
 (./report.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -930,20 +930,15 @@ Package pdftex.def Info: plots/segmentationTruth.png used on input line 14.
 (pdftex.def)             Requested size: 120.59148pt x 152.28119pt.
 ) (./background/practicalDL.tex [20 <./plots/segmentationImage.png> <./plots/se
 gmentationTruth.png>] [21] [22]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 76.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 74.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 76.
- [23] [24] [25]
-Overfull \hbox (5.95892pt too wide) in paragraph at lines 216--217
-[]\OT1/ptm/m/n/12 Caffe [[]]: Caffe is an al-ready ma-ture deep learn-ing frame
--work de-vel-oped in C++/CUDA
- []
-
-[26]) (./background/convnets4brca.tex
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 74.
+ [23] [24] [25])
+(./background/convnets4brca.tex [26]
 
 LaTeX Warning: Citation `Agarwal2015' on page 27 undefined on input line 7.
 
@@ -1048,7 +1043,7 @@ eb-site ([]$\OT1/pcr/m/n/12 bcdr . eu / information /
 
 LaTeX Warning: Citation `Ciresan2013' on page 35 undefined on input line 35.
 
-[35] <plots/mcDiffPreprocessings.png, id=808, 863.225pt x 867.24pt>
+[35] <plots/mcDiffPreprocessings.png, id=817, 863.225pt x 867.24pt>
 File: plots/mcDiffPreprocessings.png Graphic file (type png)
 
 <use plots/mcDiffPreprocessings.png>
@@ -1058,7 +1053,7 @@ Package pdftex.def Info: plots/mcDiffPreprocessings.png used on input line 51.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[36] <plots/mcDiffResizings.png, id=818, 822.4326pt x 722.7pt>
+[36] <plots/mcDiffResizings.png, id=827, 822.4326pt x 722.7pt>
 File: plots/mcDiffResizings.png Graphic file (type png)
 
 <use plots/mcDiffResizings.png>
@@ -1081,10 +1076,10 @@ e 46.
 
 
 LaTeX Warning: Reference `subsec:Classification' on page 39 undefined on input 
-line 76.
+line 78.
 
 [39]
-Overfull \hbox (2.19142pt too wide) in paragraph at lines 95--97
+Overfull \hbox (2.19142pt too wide) in paragraph at lines 97--99
 \OT1/ptm/m/n/12 Probabilities vs UN-cor-rected thresh-old vs Thresh-old and clu
 s-ter ex-tent cor-rec-tion vs threshold-
  []
@@ -1100,43 +1095,43 @@ Chapter 5.
 ] [44
 
 ]
-Underfull \hbox (badness 2261) in paragraph at lines 86--92
+Underfull \hbox (badness 2261) in paragraph at lines 91--97
 []\OT1/ptm/m/sc/12 Breast Can-cer Surveil-lance Con-sor-tium\OT1/ptm/m/n/12 .  
 Per-for-mance mea-sures for
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 86--92
+Underfull \hbox (badness 2600) in paragraph at lines 91--97
 \OT1/ptm/m/n/12 1,838,372 screen-ing mam-mog-ra-phy ex-am-i-na-tions from 2004 
 to 2008 by age--
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 86--92
+Underfull \hbox (badness 1655) in paragraph at lines 91--97
 \OT1/ptm/m/n/12 based on BCSC data through 2009.  elec-tronic, Septem-ber 2013.
   Avail-able
  []
 
 
-Underfull \hbox (badness 4441) in paragraph at lines 86--92
+Underfull \hbox (badness 4441) in paragraph at lines 91--97
 \OT1/ptm/m/n/12 on-line on []$\OT1/pcr/m/n/12 breastscreening . cancer . gov / 
 statistics / performance /
  []
 
 [45] [46]
-Underfull \hbox (badness 1527) in paragraph at lines 239--244
+Underfull \hbox (badness 1527) in paragraph at lines 251--256
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  What you need
  to know about breast can-
  []
 
 
-Underfull \hbox (badness 3364) in paragraph at lines 246--251
+Underfull \hbox (badness 3364) in paragraph at lines 258--263
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  Mam-mo-grams.
   elec-tronic, March 2014.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--251
+Underfull \hbox (badness 10000) in paragraph at lines 258--263
 \OT1/ptm/m/n/12 Avail-able on-line on []$\OT1/pcr/m/n/12 cancer . gov / cancert
 opics / types / breast /
  []
@@ -1149,7 +1144,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 75961C2FA25647C958D5DE7909C8F4FF;2664.
+(rerunfilecheck)             Checksum: 3CB323E2878BDDD36648A1D57B26C9AC;2664.
 
 
 LaTeX Warning: There were undefined references.
@@ -1157,13 +1152,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 8553 strings out of 495028
- 126778 string characters out of 6181498
- 206809 words of memory out of 5000000
- 11276 multiletter control sequences out of 15000+600000
+ 8559 strings out of 495028
+ 126851 string characters out of 6181498
+ 206874 words of memory out of 5000000
+ 11278 multiletter control sequences out of 15000+600000
  38202 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,10n,42p,2602b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,10n,42p,2603b,456s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1182,10 +1177,10 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (60 pages, 4158960 bytes).
+Output written on report.pdf (60 pages, 4157697 bytes).
 PDF statistics:
- 1029 PDF objects out of 1200 (max. 8388607)
- 911 compressed objects within 10 object streams
- 240 named destinations out of 1000 (max. 500000)
+ 1040 PDF objects out of 1200 (max. 8388607)
+ 922 compressed objects within 10 object streams
+ 244 named destinations out of 1000 (max. 500000)
  420 words of extra memory for PDF output out of 10000 (max. 10000000)
 
