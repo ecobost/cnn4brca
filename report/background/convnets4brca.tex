@@ -1,4 +1,4 @@
-Traditional CAD systems for breast cancer detection (CADe) and diagnosis (CADx) are normally composed of various succesive stages: preprocessing and image enhancement, segmentation of suspicious regions, feature extraction from the segemented image patches, optionally feature selection and region classification using machine learning methods. \cite{Tang2009} offers a good review of the current state of traditional CAD systems. Here we focus on the previous application of convolutional networks for breast cancer detection and diagnosis in mammographic images.
+Traditional CAD systems for breast cancer detection (CADe) and diagnosis (CADx) are normally composed of various succesive stages: preprocessing and image enhancement, localization of suspicious regions, feature extraction from the suspect image patches, feature selection (optionally) and region classification using machine learning methods. \cite{Tang2009} offers a good review of the current state of traditional CAD systems. Here we focus on the previous application of convolutional networks for breast cancer detection and diagnosis in mammographic images.
 
 As explained in Section~\ref{sec:BreastCancer} there are two main signs of breast cancer: breast masses and clustered microcalcifications, however, their presence does not necessarily imply cancer because they could be benign lesions. We refer as detection to the task of classifying a lesion as present or absent in the image no matter its malignancy, for instance, classifying an image patch as either clustered microcalcifications or normal tissue, while we talk of diagnosis when classifying a lesion as either benign or malignant~\footnote{Images without lesions are considered benign.}.
 
@@ -8,7 +8,9 @@ The only work using convolutional networks to detect masses was presented in~\ci
 
 In summary, convolutional networks have been sporadically used for breast cancer detection and diagnosis but have only played a minor role. Other than the most recent application, researchers have used very small networks (2 or 3 layers, $<$10K parameters) withouth any recent advancement (ReLUs, pooling layers, regularization, GPU computation) trained on very little data to classify image patches that were preselected using advanced image techniques. For instance, convolutional networks have only been used to detect individual microcalcifications but not clusters of microcalcifications and although they have been used to detect breast masses, using a larger network could probably improve those results. They have not been used for any type of breast cancer diagnosis either.
 
-In the following sections we expand on the work mentioned above. We present a thorough summary of the most important articles organized by topic.
+% Ours does lesion segementation, not tissue segmentation and it uses digital mammograms which have better resolutions, uses end-to-end training (contrary to Petersen) and bigger database (contrary to Dubrovina). It is worth noting that this is a significantly harder task than simple classification where images are already sorted or than tissue segmentation, when pixels can be easily discriminated by intensity values or other measures appearances between regions are quite disimilar which is not the case with lesions.. Lesion segmentation has more confounding variables. Plus, we try to make use of preprocessing and postprocessing techniques to obtain better results. Should I add this in introduction
+
+In the following sections we expand on the work mentioned above. We present a thorough summary of the most important articles organized by topic. % Table... shows the archtcture
 
 \begin{comment}
 Separated in blocks:
@@ -16,14 +18,14 @@ Separated in blocks:
 	2. Intial microcalc detection: Lo 1995- Lo 1998 (georgetown/both)
 	3. Optimal architecture for microcalc: Gurcan 2000-Gurcan 2002 (michigan)
 	4. CAD for microcalcification in FFDM. Ge 2007 (CAD for masses didn't use Convnets, used LDA and rule-based classifiers). (michigan)
-	5. Unpublished Stanford convnet: Agarwal 2015 (stanford)
+	5. Late mass diagnosis
 \end{comment}
 
-\subsubsection{Detection of masses}
+\subsection{Detection of masses}
 %******************************** Wei1995 *******************************************
 % Wei, Datong, Sahiner, Berkman, Chan, Heang-Ping, Petrick, Nicholas. Detection of masses on mammograms using a convolution neural network (1995) ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings, 5, pp. 3483-3486.
 % Pretty much the same as Sahiner1996 but smaller and simpler.
-To the best of the author knowledge, the first attempt to use convolutional networks for breast cancer is reported in "Detection of masses on mammograms using a convolution neural network"~\cite{Wei1995}. This 4-page article was later expanded in~\cite{Sahiner1996}.
+To the best of the author knowledge, the first attempt to use convolutional networks for breast cancer is reported in "Detection of masses on mammograms using a convolution neural network"~\cite{Wei1995}. This 4-page article was expanded in~\cite{Sahiner1996}.
 
 %******************************** Sahiner1996 **************************************
 % Sahiner, B., Chan, H.-P., Petrick, N., Wei, D., Helvie, M.A., Adler, D.D., Goodsitt, M.M. Classification of mass and normal breast tissue: A convolution neural network classifier with spatial domain and texture images (1996) IEEE Transactions on Medical Imaging, 15 (5), pp. 598-610. 
@@ -75,20 +77,9 @@ SGLD features: correlation, entropy, and difference entropy
 They used a small convolutional network (2 layers, $\sim$1K parameters) for the detection of masses~\footnote{They use the term mass to refer to tumors (either cancerous or non-cancerous) but not other kind of breast masses (cysts, fibroadenomas, fatty tissue, etc.). Thus, it actually detects tumors.}. Details of the best performing architecture can be found on Table~\ref{tab:BrCaConvNetArchitectures}. The data set consisted of 672 manually selected possible tumors from 168 digitized mammograms: out of which 168 were real tumors and 504 were not. Background reduction was performed on each image (using a rather convoluted method). The original images (size $256 \times 256$ pixels equivalent to a 2.56 $cm^2$ area) were downsampled via non-overlapping average pooling (filter size $16 \times 16$) to size $16\times 16$; downsampling to $32 \times 32$ pixels via an $8 \times 8$ average pooling was also tried but gave similar results. Furthermore, the data was augmented by using 4 rotations (0°, 90°, 180° and 270°) on each original image and on each horizontally flipped image (8 in total per each training image)~\footnote{The original article does not mention any data augmentation but it was probably performed given that they obtained the same results.}. The network was trained via batch gradient descent plus momentum and per parameter adaptive learning rate. Two sets of experiments were performed: first, the $16 \times 16$ image patches (and their 8 rotations) were used for training producing 0.83 AUC on the best architecture, later these image patches were complemented with 2 $16 \times 16$ ``texture-images'' calculated using image techniques on the initial mass image (a $16\times 16 \times 3$ input volume) producing 0.87 AUC, 0.9 sensitivity and 0.69 specificity with the best network architecture. The authors showed that the network architecture was not as important for performance as providing the network with texture information. The texture features give back some of the information lost during the downsampling, which explains the improvement observed. The authors also acknowledge that the network architecture is far from optimal given its simplicity (one convolutional layer with three feature maps) and the incomplete hyperparameter tuning. A deeper network with more learnable parameters and a bigger input size could produce similar or better results without a need to include handcrafted texture features, which in theory could be learned by the network.
 %Learned lesson: masses from 0.7-1.7 cm^2, conv arch may not be as important, bigger networks are better. More masses there is, less change of cancer. Cancer tumors are denser, > 0.8 mm, irregular shape and poorly defined margins
 
-%***************************** Arevalo2015 ****************************************
-\begin{comment}
--Guys from Porto, accepted but unpublished yet.
--Diagnosis/detection of masses on ROIS.
-- quite good, lot of new features(dropout, max-norm, convs). 
-- Cons: Uses big filters and big pooling filters too because the input size (150x150) makes it unmanageable otherwise. only one , rsizes the images, uses only two convolutions (each followed by pool) plus a couple of softmaxs.
-- Trains different architectures: says it is going ot report them in other article. Doesn't talk about momentum hyperparameters or learning.
-- use an nvidia tesla k40(2880 cores!)
-\end{comment}
 
 
-
-
-\subsubsection{Detection of microcalcifications}
+\subsection{Detection of microcalcifications}
 %*************************************** Lo1995 *************************************
 % Lo, S.-C.B., Chan, H.-P., Lin, J.-S., Li, H., Freedman, M.T., Mun, S.K. Artificial convolution neural network for medical image pattern recognition (1995) Neural Networks, 8 (7-8), pp. 1201-1214
 \begin{comment}
@@ -229,10 +220,14 @@ The authors show that optimizing the architecture of the convolutional network s
 \cite{Ge2007} compared the performance of both CAD systems in film mammograms and digital mammograms. They found that the performance in film mammograms is significatively better than in film mammograms which is intuitive given that digital mammograms have less noise and thus segmentation and feature extraction are sharper. Moreover, the convolutional network will be able to pick up more subtle details from the image without a need for further image enhancement.
 
 
+\subsection{Diagnosis of masses}
+%******************************* Jamieson2012 *************************************
+% A. R. Jamieson, K. Drukker, and M. L. Giger, “Breast image feature learning with adaptive deconvolutional networks,” 2012.
+\begin{comment}
+- Unsupervised convolutional networks, trained as autoencoders with some slight variations. Uses SVM for classification.
+- Not really a convnet
+\end{comment}
 
-
-
-\subsubsection{Diagnosis of lesions}
 %********************************* Agarwal2015 **************************************
 \begin{comment}
 - not published report
@@ -247,52 +242,109 @@ The authors show that optimizing the architecture of the convolutional network s
 - tried different network sizes.
 - accuracy 87% for micro vs mass and 69.8% for malignancy.
 \end{comment}
+\begin{comment}
 A recent unpublished report~\cite{Agarwal2015} uses a big convolutional network (8 layers, $\sim$3.6M parameters) with recent features to diagnose lesions as benign or malignant. Clustered microcalcifications and masses are segmented from 8752 mammograms obtained from a public database (DDSM). Two to three square images ($64 \times 64$) are randomly sampled from each lesion and each of these is rotated 8 times (at 45° steps) producing 50K image lesions in total. No further preprocessing is performed. The convolutional network obtains 69.8\% accuracy on the task. Other performance metrics are not provided. This is a project report for a course in Convolutional Networks~\cite{Karpathy2015} and may be incomplete or incorrect. We acknowledge it here for completeness.
+\end{comment}
 
+%***************************** Arevalo2015 ****************************************
+\begin{comment}
+- Colombia and Porto
+- Benign vs. malign lesions
+- Each lesion was cropped to 150x150 pixel images---bigger lesions wer reduced preserving aspect ratio.
+- 8 transformations: rotations at 0, 90, 180, 270 and same rotations for flipping
+- Enhancement: global contrast normalization (substract the meean of all intensities from each pixel) and local contrast normalization (each pixel is substracted the mean of a local neighborhood (11x11) and divided by the standard deviation of the neighborhood)
+- They train a linear SVM with the features from the first fully connected layer of the network to perfrom the final classification.
+- 1.7M paramteres(although they say they have 4.6M)
+- film mammograms, not digital.
+- dropout and max-norm
+- early stopping
+- 25 different architectures tried, and C in SVM cost also tuned
+- Cons: Uses big filters and big pooling filters too because the input size (150x150) makes it unmanageable otherwise, resizes the images, uses only two convolutions (each followed by pool) plus a couple of softmaxs.
+- Doesn't talk about momentum hyperparameters or learning.
+- use an nvidia tesla k40(2880 cores!)
+- adding more layers to the network (it is the fully convolutionla layer) improves performance
+- AUC 0.86
+\end{comment}
+\cite{Arevalo2015} trained a medium-sized convolutional network (1.7M parameters) to diagnose mass lesions from 736 film mammograms: 426 benign and 310 malign. Lesions were cropped, centered and resized to $150\times150$ input images. Lesions were flipped horizontally and both versions were rotated four times: 0°, 90°, 180°, 360°.
+Pixels were normalized globally, substracting the mean intensity of all pixels in the image, and locally, substracting the mean of an $11\times11$ neighborhood and dividing by their standard deviation. It uses modern deep learning features such as dropout, max-norm, early stopping and stochastic gradient descent with momentum. They trained 25 different models used random sampling to arrive to a three-layer convolutional network with big filter sizes (Tab.~\ref{tab:BrCaConvNetArchitectures}). This network was used to obtain features from the images which were later classified using a linear SVM. Their best network achieved 0.86 AUC. They showed that the performance of the network improved as they added convolutional layers and that even a simple network could outperform handcrafted features.
+
+\subsection{Tissue segmentation}
 %*************************** Petersen2014 *****************************************
-% K. Petersen, M. Nielsen, P. Diao, N. Karssemeijer, and M. Lillholm, “Breast Tissue Segmentation and Mammographic Risk Scoring Using Deep Learning,” in Breast Imaging (H. Fujita, T. Hara, and C. Muramatsu, eds.), vol. 8539 of Lecture Notes in Computer Science, pp. 88–94, Springer International Publishing, 2014.
+% K. Petersen, M. Nielsen, P. Diao, N. Karssemeijer, and M. Lillholm, “Breast Tissue Segmentation and Mammographic Risk Scoring Using Deep Learning” in Breast Imaging (H. Fujita, T. Hara, and C. Muramatsu, eds.), vol. 8539 of Lecture Notes in Computer Science, pp. 88–94, Springer International Publishing, 2014.
 \begin{comment}
-- convolutional sparse autoencoder: semisupervised, convolutional networks are trained as a deep sparse autoencoder. Later full classification on the obtained features.
-- 50K patches from 1K film mamograms
-- does segmentation(background, pectoral muscle and breast tissue), density classification (fatty and dense) and risk scoring/diagnosis (healthy and disease)
-- done per pixel.
-- http://deep-learning.compute.dtu.dk/wp-content/uploads/2014/08/poster_Diao.pdf.
+- convolutional sparse autoencoder (unsupervised)
+- does segmentation(background, pectoral muscle and breast tissue), density classification (fatty and dense) and risk scoring/diagnosis (healthy and disease).
+- 990 film mammograms: 250 controls and 245 future-cancers, i.e., mammograms were obtained 2-4 years before cancer was actually detected in the patient.
+- semisupervised: convolutional networks are trained as a deep sparse autoencoder. Later full classification with on the obtained features.
+- 50K patches () randomly selected
+- obtained better results with convolutional layer instead of pooling
 - Many convolutional networks are trained with segments of different scales and all results from different networks is used in the FC layers
+- not clear whether they do segmentation or scoring for healthy and diseased. It looks like it is scoring.
+- 0.65 AUC
+- http://deep-learning.compute.dtu.dk/wp-content/uploads/2014/08/poster_Diao.pdf.
+- https://books.google.com.mx/books?id=z-MkBAAAQBAJ&pg=PA88&lpg=PA88&dq=Breast+Tissue+Segmentation+and+Mammographic+Risk+Scoring+Using+Deep+Learning&source=bl&ots=uOf2-bXKqT&sig=OKtt2L67KN8qhZJR1Fs27FB28G4&hl=en&sa=X&ved=0ahUKEwjuzqHr8_XKAhXBPj4KHSraAd4Q6AEIUDAI#v=onepage&q=Breast%20Tissue%20Segmentation%20and%20Mammographic%20Risk%20Scoring%20Using%20Deep%20Learning&f=false
 \end{comment}
+%Peterson2014 trained a convolutional network in an unsupervised manner to perform breast segmentation, i.e., separate between background, pectoral muscle and breast tissue. A classifier was trained on top of this network to predict the pixel scores. Details of the architecture are not provided. It does, though get s to 99% IOU.
 
-%******************************* Jamieson2012 *************************************
-% A. R. Jamieson, K. Drukker, and M. L. Giger, “Breast image feature learning with adaptive deconvolutional networks,” 2012.
+%************************************** Dubrovina2015 ****************************
+%A. Dubrovina, P. Kiselev, B. Ginsburg, S. Hashoul and R. Kimmel Proc. Deep Learning in Medical Image analisys (DLMIA), MICCAI workshop, 2015
 \begin{comment}
-- Unsupervised convolutional networks, trained as autoencoders with some slight variations.
+- uses sliding convnets/trained end-to-end/ fully convolutional networks
+- Faster computation because of end-to-end
+- Tissue segmentation (not lesion segmentation): pectoral muscle, fibroglandular tissue, nipple, and general breast tissue and background.
+- data set 40(!) digital(!) mammograms
+- no enhancement
+- small 61x61 input images
+- global zero-mean (substract the mean of all intensity values) (not so necessary). 
+- cross-entropy loss
+- by overlapping, they get 8x10^5 training patches
+- overlapping pooling
+- they do not use zero-padding,
+- 829 x 640 original image dimensions
+- train on 39 images, test on 1 LOOCV
+- shift-and-stitch method (no upsampling)
+- post-processing: regions are filled, and clusters less than a threshold are deleted (threshold is set arbitrarily)
+- SGD with momentum
+- mini-batches of 256 image patches, learning rate = 0.001, learning rate was reduced by a factor of 10 after 10 and 20 epochs, momentum 0.9, weight decay 0.0005
+Dropout removed during testing.
+- trained with patches, tested with fully convnet
 \end{comment}
-
-
+A supervised convolutional network was used by~\cite{Dubrovina2015} to segment breast tissue into 5 categories: pectoral muscle, fibroglandular tissue, nipple, general breast tissue and background. It trained it on around 800\,000 overlapping patches obtained from 39 digital mammograms and tested it on a single mammogram. This pattern was repeated for every image in their dataset (leave-one-out crossvalidation). Except for being zero-centered, patches were not preprocessed. The network is small(34K parameters) and its architecture was chosen by hand. It was trained using stochastic gradient descent with momentum, learning rate and weight decay, dropout and minibatches of 256 patches. The output of the network was preprocessed by filling regions and deleting clusters smaller than a predefined threshold (chosen arbitrarily). They obtained 0.55 mean IOU. They show that a convolutional networm can succesfully be trained to perfrom image segmentation even with very little data. It is expected than using more data and a bigger architecture, results will improve.
 
 \begin{landscape}
-\begin{table}
-	\centering
-	\begin{tabular}{cp{3.3cm}p{7cm}p{2cm}p{1.1cm}c}
-		\hline
-		\textbf{Article}&\textbf{Goal}&\textbf{Architecture}&\textbf{Volumes} & \textbf{Filters} & \textbf{\# Params}\\
-		\hline
-		\cite{Sahiner1996} & Detect masses & \texttt{INPUT -> CONV -> SIGMOID -> FC -> SIGMOID} & $16\times 16 \times 3$ \newline $7 \times 7 \times 3$ \newline $1\times 1 \times 1$ & $10 \times 10$ \newline $7 \times 7$ & 1047\\
-		\cite{Lo1995}& Detect individual microcalcifications& \texttt{INPUT -> [CONV -> SIGMOID]*2 -> FC -> SIGMOID} & $16\times 16 \times 1$ \newline $12 \times 12 \times 12$\newline $8\times 8 \times 12$\newline $1 \times 1 \times 2$ & $5 \times 5$\newline $5 \times 5$ \newline $8 \times 8$& 5436 \\
-		\cite{Lo1998}& Detect individual microcalcifications & \texttt{INPUT -> GAUSSIAN -> [CONV -> SIGMOID]*2 -> FC -> SIGMOID} & $16\times 16 \times 1$ \newline $12 \times 12 \times 10$\newline $8\times 8 \times 10$\newline $1 \times 1 \times 2$ & $5 \times 5$\newline $5 \times 5$ \newline $8 \times 8$& 4530 \\
-		\cite{Gurcan2002}& Detect individual microcalcifications & \texttt{INPUT -> [CONV -> SIGMOID]*2 -> FC -> SIGMOID} & $16\times 16 \times 1$ \newline $12 \times 12 \times 14$\newline $6\times 6 \times 10$\newline $1 \times 1 \times 1$ & $5 \times 5$\newline $7 \times 7$ \newline $6 \times 6$& 7570 \\
-		\cite{Ge2006}& Detect individual microcalcifications & \texttt{INPUT -> [CONV -> SIGMOID]*2 -> FC -> SIGMOID} & $16\times 16 \times 1$ \newline $12 \times 12 \times 14$\newline $6\times 6 \times 10$\newline $1 \times 1 \times 1$ & $5 \times 5$\newline $7 \times 7$ \newline $6 \times 6$& 7570 \\
-		\cite{Agarwal2015}& Diagnose lesions & \texttt{INPUT -> [CONV -> RELU]*2 -> POOL -> [CONV -> RELU -> POOL]*3 -> [FC -> RELU]*3 -> SOFTMAX} & $64\times 64 \times 1$ \newline $64 \times 64 \times 32$\newline $32\times 32 \times 64$\newline $16 \times 16 \times 128$ \newline $8 \times 8 \times 256$ \newline $4 \times 4 \times 512$ \newline $1 \times 1 \times 256$ \newline $1 \times 1 \times 64$ \newline $1 \times 1 \times 2$ & $3 \times 3$ \newline $3 \times 3$ \newline $3 \times 3$ \newline $3 \times 3$ \newline $3 \times 3$ \newline $4 \times 4$ \newline $1 \times 1$ \newline $1 \times 1$ & 3.68M \\
+\centering
+\begin{longtable}{cp{3.4cm}p{7cm}p{2.7cm}p{1.3cm}c}
+	\caption[Breast cancer convolutional network architectures]{Architectures of the different convolutional networks used for breast cancer detection and diagnosis.}\label{tab:BrCaConvNetArchitectures}\\
 	\hline
-	\end{tabular}
-	\caption[Breast cancer convolutional network architectures]{Architectures of the different convolutional networks used for breast cancer detection and diagnosis.}
-	\label{tab:BrCaConvNetArchitectures}
-\end{table}
+	\textbf{Article}&\textbf{Goal}&\textbf{Architecture}&\textbf{Volumes} & \textbf{Filters} & \textbf{\# Params}\\
+	\hline
+	\endfirsthead
+	\caption*{Table~\ref*{tab:BrCaConvNetArchitectures} (continued): Architectures of the different convolutional networks used for breast cancer detection and diagnosis.}\\
+	\hline
+	\textbf{Article}&\textbf{Goal}&\textbf{Architecture}&\textbf{Volumes} & \textbf{Filters} & \textbf{\# Params}\\
+	\hline
+	\endhead
+	\hline
+	\endfoot
+	\hline
+	\endlastfoot
+	\cite{Sahiner1996} & Detect masses & \texttt{INPUT -> CONV -> SIGMOID -> FC -> SIGMOID} & $16\times 16 \times 3$ \newline $7 \times 7 \times 3$ \newline $1\times 1 \times 1$ & $10 \times 10$ \newline $7 \times 7$ & 1047\\
+	\cite{Lo1995}& Detect individual microcalcifications& \texttt{INPUT -> [CONV -> SIGMOID]*2 -> FC -> SIGMOID} & $16\times 16 \times 1$ \newline $12 \times 12 \times 12$\newline $8\times 8 \times 12$\newline $1 \times 1 \times 2$ & $5 \times 5$\newline $5 \times 5$ \newline $8 \times 8$& 5436 \\
+	\cite{Lo1998}& Detect individual microcalcifications & \texttt{INPUT -> GAUSSIAN -> [CONV -> SIGMOID]*2 -> FC -> SIGMOID} & $16\times 16 \times 1$ \newline $12 \times 12 \times 10$\newline $8\times 8 \times 10$\newline $1 \times 1 \times 2$ & $5 \times 5$\newline $5 \times 5$ \newline $8 \times 8$& 4530 \\
+	\cite{Gurcan2002}& Detect individual microcalcifications & \texttt{INPUT -> [CONV -> SIGMOID]*2 -> FC -> SIGMOID} & $16\times 16 \times 1$ \newline $12 \times 12 \times 14$\newline $6\times 6 \times 10$\newline $1 \times 1 \times 1$ & $5 \times 5$\newline $7 \times 7$ \newline $6 \times 6$& 7570 \\
+	\cite{Ge2006}& Detect individual microcalcifications & \texttt{INPUT -> [CONV -> SIGMOID]*2 -> FC -> SIGMOID} & $16\times 16 \times 1$ \newline $12 \times 12 \times 14$\newline $6\times 6 \times 10$\newline $1 \times 1 \times 1$ & $5 \times 5$\newline $7 \times 7$ \newline $6 \times 6$& 7570 \\
+%		\cite{Agarwal2015}& Diagnose lesions & \texttt{INPUT -> [CONV -> RELU]*2 -> POOL -> [CONV -> RELU -> POOL]*3 -> [FC -> RELU]*3 -> SOFTMAX} & $64\times 64 \times 1$ \newline $64 \times 64 \times 32$\newline $32\times 32 \times 64$\newline $16 \times 16 \times 128$ \newline $8 \times 8 \times 256$ \newline $4 \times 4 \times 512$ \newline $1 \times 1 \times 256$ \newline $1 \times 1 \times 64$ \newline $1 \times 1 \times 2$ & $3 \times 3$ \newline $3 \times 3$ \newline $3 \times 3$ \newline $3 \times 3$ \newline $3 \times 3$ \newline $4 \times 4$ \newline $1 \times 1$ \newline $1 \times 1$ & 3.68M \\
+	\cite{Arevalo2015}& Diagnose masses & \texttt{INPUT -> [CONV -> RELU -> POOL]*2 -> MAXOUT -> SOFTMAX} & $150\times 150 \times 1$ \newline $140 \times 140 \times 64$\newline $35\times 35 \times 64$\newline $32 \times 32 \times 64$ \newline $8 \times 8 \times 64$ \newline $1 \times 1 \times 400$ \newline $1 \times 1 \times 2$ & $11 \times 11$ \newline $5 \times 5$ \newline $4 \times 4$ \newline $4 \times 4$ \newline $8 \times 8$ \newline $1 \times 1$ & 1.71M \\
+	\cite{Dubrovina2015}& Segment tissue & \texttt{INPUT -> [CONV -> RELU -> POOL]*3 -> [FC -> RELU]*2 -> SOFTMAX} & $61\times 61 \times 1$ \newline $55 \times 55 \times 16$\newline $27\times 27 \times 16$\newline $23 \times 23 \times 16$ \newline $11 \times 11 \times 16$ \newline $6 \times 6 \times 16$ \newline $3 \times 3 \times 16$ \newline $1 \times 1 \times 128$ \newline $1 \times 1 \times 16$ \newline $1 \times 1 \times 4$ & $7 \times 7$ \newline $3 \times 3$ \newline $5 \times 5$ \newline $3 \times 3$ \newline $5 \times 5$ \newline $3 \times 3$ \newline $3 \times 3$ \newline $1 \times 1$ \newline $1 \times 1$ & 34324 \\
+\end{longtable}
 \end{landscape}
+
+
 \begin{comment} 
 Groups working on convnets for breast cancer:
 Georgetown University Medical Center: Shih-Chung Lo, Matthew Freedman, Huai Li
 Michigan Medical Center: Heang-Ping Chan, Sahiner, Hadjiiski, Helvie, Gurcan, Wei j and Ge, J
 University of chicago (MTANN): Suzuki Kenji (not quite convnets)
-
 
 Other deep learning applications:
 Cruz-Roa mitosis detection in breast cancer histology images,

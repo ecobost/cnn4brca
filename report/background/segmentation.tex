@@ -38,8 +38,11 @@ Convolutional networks transform image segmentation into an end-to-end, learnabl
 %We use \emph{pixel accuracy}, the proportion of correctly classified pixels in a segmentation, to evaluate results. Evaluation metrics, including pixel accuracy, are the average value of a classification metric (Sec.~\ref{sec:Classification}) measured on segmentations produced for the test set. 
 %To evaluate results, we compute the average value of a classification metric (Sec.~\ref{sec:Classification}) measured on segmentations produced for the test (or validation) set. \emph{Pixel accuracy}, for instance, estimates the (expected) proportion of correctly classified pixels in a segmentation.
 %Evaluation metrics are the average value of a classification metric (Sec.~\ref{sec:Classification}) measured on segmentations produced for the test (or validation) set. \emph{Pixel accuracy}, for instance, estimates the (expected) proportion of correctly classified pixels in a segmentation.
-To evaluate the model, we measure a classification metric (Sec.~\ref{sec:Classification}) on segmentations produced for images in the test set and average the results. \emph{Pixel accuracy}, for instance, estimates the average proportion of correctly classified pixels in a segmentation; other metrics are calculated similarly.
+%To evaluate the model, we measure a classification metric (Sec.~\ref{sec:Classification}) on segmentations of images in the test set and average the results;
+To evaluate the model, we evaluate each segmentation using standard metrics (Sec.~\ref{sec:Classification}) and average over all test images. \emph{Pixel accuracy}, for instance, is the average proportion of correctly classified pixels in an image.
 %[Other metrics are calculated| We calculate other metrics] [similarly|in a similar fashion]. 
-%Another popular metric is the intersection over union (IOU) which can be calculated from the confusion matrix (Tab.~\ref{tab:ConfusionMatrix}) as TP/TP+FN+FP.
+Another popular metric, \emph{intersection over union} or \emph{IOU}, is calculated for a single segmentation as $TP/(TP+FP+FN)$ (Tab.~\ref{tab:ConfusionMatrix}).
+%IOU = DC/(2-DC) (DC: Dice coefficient)
+%DC = 2IOU/(IOU+1)
 
 If we are interested in a particular class, e.g. object vs. background, we present a single score map showing its probability distribution across every position in the image. We can refine this map using gaussian smoothing, cluster-based thresholding and conditional random fields among other techniques. Finally, we threshold the post-processed map at some specific value to produce a segmentation; the threshold can be chosen using a validation set.

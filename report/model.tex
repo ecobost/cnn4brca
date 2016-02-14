@@ -72,7 +72,7 @@ We document here how we tranform/reduce the breast cancer detection and diagnosi
 
 	In case the input was size $64 \times 64$ pixels we could replace use a $3 \times 3$ filter with stride 1 in the first convolutional layer and leave everything else unchanged. For an all convolutional architecture we could replace all pooling layers by a $5 \times 5$ filter  with stride 2 and use input images of size of $113 \times 113$ or $129 \times 129$.
 
-	% Replacing the pooling layers by convolutional layers or overlapping pooling could marginally improve results.
+	% Replacing the pooling layers by convolutional layers or overlapping pooling could marginally improve results. doing it all convolutional  is not that expensive and produces better results
 
 	\subsection{Evaluation}
 	When dividing the data set we make sure \textit{all} image patches obtained from the same patient are assigned to either the training set or test set (not distributed) to avoid any possible overfit to the test set. Given that our data is unbalanced, with far more negative than positive examples, we use PRAUC (see Section~\ref{subsec:Classification}) to choose between models for hyperparameter selection and as an overall performance metric. Other metrics are also reported for completeness. 
@@ -113,6 +113,8 @@ we could also present a heatmap with the different probabilities in each pixel o
 % For the figure draw a random one  of 100x100 with a little signal in there and apply all corrections.
 
 % If using the threshold/ value under the cluster one, use the validation set t select pairs(threshold, total acceptable value)
+
+% Background is thresholded at zero and shown in black
 
 \section{Regularization}
 Dropout and l2-norm

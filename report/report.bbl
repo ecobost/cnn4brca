@@ -126,6 +126,12 @@
 \newblock {\em Monthly Notices of the Royal Astronomical Society\/} (2015).
 \newblock Available online on \url{arxiv.org/abs/1503.07077}.
 
+\bibitem{Dubrovina2015}
+{\sc Dubrovina, A., Kisilev, P., Ginsburg, B., and Hashoul, S.}
+\newblock Computational mammography using deep neural networks.
+\newblock In {\em MICCAI-2015 Proc. Deep Learning in Medical Image Analisys
+  ({DLMIA})\/} (2015).
+
 \bibitem{Fukushima1980}
 {\sc Fukushima, K.}
 \newblock Neocognitron: A self-organizing neural network model for a mechanism
