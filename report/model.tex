@@ -6,6 +6,9 @@ Design decisions, its rationale and implemetation notes. this in ther and that i
 \section{Operationalization}
 We document here how we tranform/reduce the breast cancer detection and diagnosis task into a machine learning task able to be taken by convolutional networks, i.e., how we produce a data set with $m$ inputs $x^{(i)} \in \mathbb{R}^n$ and $m$ corresponding labels $y^{(i)}$. We use this notation throughout this section. 
 
+	\subsection{Task definition}
+Segment lesions (tumors or all massses) (benign and malignant or only malignant) from normal tissue. Masses or microcalcifications.
+	
 	\subsection{Database}
 	\input{model/database}
 
@@ -115,6 +118,8 @@ we could also present a heatmap with the different probabilities in each pixel o
 % If using the threshold/ value under the cluster one, use the validation set t select pairs(threshold, total acceptable value)
 
 % Background is thresholded at zero and shown in black
+
+% Masses are 12.2mm + 4.5mm std . 2 cm holds 96% of masses. 1.5 holds 73 % of masses.
 
 \section{Regularization}
 Dropout and l2-norm

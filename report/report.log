@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  14 FEB 2016 05:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  15 FEB 2016 01:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -766,7 +766,7 @@ Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 
-<plots/escudo-itesm.png, id=192, 60.5478pt x 28.04076pt>
+<plots/escudo-itesm.png, id=196, 60.5478pt x 28.04076pt>
 File: plots/escudo-itesm.png Graphic file (type png)
 
 <use plots/escudo-itesm.png>
@@ -841,7 +841,7 @@ l.24
 (./introduction/outline.tex)) (./background.tex [5] [6]
 Chapter 2.
 (./background/breastcancer.tex
-<plots/breastAnatomy.png, id=414, 419.5675pt x 454.69875pt>
+<plots/breastAnatomy.png, id=417, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
@@ -853,35 +853,35 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [7
 
-] <plots/normalMammogram.jpg, id=424, 2569.6pt x 3340.48pt>
+] <plots/normalMammogram.jpg, id=427, 2569.6pt x 3340.48pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
 Package pdftex.def Info: plots/normalMammogram.jpg used on input line 20.
 (pdftex.def)             Requested size: 116.12083pt x 150.92677pt.
  [8 <./plots/breastAnatomy.png> <./plots/normalMammogram.jpg>]
-<plots/breastMicrocalcification.jpg, id=436, 338.26375pt x 338.26375pt>
+<plots/breastMicrocalcification.jpg, id=439, 338.26375pt x 338.26375pt>
 File: plots/breastMicrocalcification.jpg Graphic file (type jpg)
 
 <use plots/breastMicrocalcification.jpg>
 Package pdftex.def Info: plots/breastMicrocalcification.jpg used on input line 
-32.
+47.
 (pdftex.def)             Requested size: 111.65701pt x 111.65834pt.
 
-<plots/breastMass.jpg, id=437, 430.60875pt x 431.6125pt>
+<plots/breastMass.jpg, id=440, 430.60875pt x 431.6125pt>
 File: plots/breastMass.jpg Graphic file (type jpg)
 
 <use plots/breastMass.jpg>
-Package pdftex.def Info: plots/breastMass.jpg used on input line 36.
+Package pdftex.def Info: plots/breastMass.jpg used on input line 51.
 (pdftex.def)             Requested size: 111.65701pt x 111.91365pt.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 51.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 66.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ))
 (./background/classification.tex [9 <./plots/breastMicrocalcification.jpg> <./p
 lots/breastMass.jpg>] [10] [11]
-<plots/AUCandPRAUC.png, id=483, 972.63374pt x 425.59pt>
+<plots/AUCandPRAUC.png, id=486, 972.63374pt x 425.59pt>
 File: plots/AUCandPRAUC.png Graphic file (type png)
 
 <use plots/AUCandPRAUC.png>
@@ -892,7 +892,7 @@ Package pdftex.def Info: plots/AUCandPRAUC.png used on input line 75.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) [12] (./background/neuralnetworks.tex
-<plots/neuralNetwork.png, id=506, 970.62625pt x 589.20125pt>
+<plots/neuralNetwork.png, id=509, 970.62625pt x 589.20125pt>
 File: plots/neuralNetwork.png Graphic file (type png)
 
 <use plots/neuralNetwork.png>
@@ -903,7 +903,7 @@ Package pdftex.def Info: plots/neuralNetwork.png used on input line 10.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13 <./plots/AUCandPRAUC.png>] [14 <./plots/neuralNetwork.png>]
-<plots/dropout.png, id=540, 769.87625pt x 415.5525pt>
+<plots/dropout.png, id=543, 769.87625pt x 415.5525pt>
 File: plots/dropout.png Graphic file (type png)
  <use plots/dropout.png>
 Package pdftex.def Info: plots/dropout.png used on input line 69.
@@ -913,14 +913,14 @@ Package pdftex.def Info: plots/dropout.png used on input line 69.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./background/convnets.tex [15] [16 <./plots/dropout.png>]
-<plots/convNetVolumes.jpeg, id=564, 571.13374pt x 202.7575pt>
+<plots/convNetVolumes.jpeg, id=567, 571.13374pt x 202.7575pt>
 File: plots/convNetVolumes.jpeg Graphic file (type jpg)
 
 <use plots/convNetVolumes.jpeg>
 Package pdftex.def Info: plots/convNetVolumes.jpeg used on input line 21.
 (pdftex.def)             Requested size: 312.63828pt x 110.98792pt.
 
-<plots/convLayer.jpeg, id=570, 465.74pt x 327.2225pt>
+<plots/convLayer.jpeg, id=573, 465.74pt x 327.2225pt>
 File: plots/convLayer.jpeg Graphic file (type jpg)
 
 <use plots/convLayer.jpeg>
@@ -931,21 +931,21 @@ Package pdftex.def Info: plots/convLayer.jpeg used on input line 35.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [17 <./plots/convNetVolumes.jpeg>] [18 <./plots/convLayer.jpeg>]
-<plots/convNetExample.jpeg, id=589, 1259.70625pt x 603.25375pt>
+<plots/convNetExample.jpeg, id=592, 1259.70625pt x 603.25375pt>
 File: plots/convNetExample.jpeg Graphic file (type jpg)
 
 <use plots/convNetExample.jpeg>
 Package pdftex.def Info: plots/convNetExample.jpeg used on input line 67.
 (pdftex.def)             Requested size: 379.63658pt x 181.79675pt.
 ) (./background/segmentation.tex [19 <./plots/convNetExample.jpeg>]
-<plots/segmentationImage.png, id=602, 294.09875pt x 371.3875pt>
+<plots/segmentationImage.png, id=605, 294.09875pt x 371.3875pt>
 File: plots/segmentationImage.png Graphic file (type png)
 
 <use plots/segmentationImage.png>
 Package pdftex.def Info: plots/segmentationImage.png used on input line 9.
 (pdftex.def)             Requested size: 120.59148pt x 152.28119pt.
 
-<plots/segmentationTruth.png, id=603, 294.09875pt x 371.3875pt>
+<plots/segmentationTruth.png, id=606, 294.09875pt x 371.3875pt>
 File: plots/segmentationTruth.png Graphic file (type png)
 
 <use plots/segmentationTruth.png>
@@ -966,72 +966,72 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 LaTeX Warning: Citation `Agarwal2015' on page 27 undefined on input line 7.
 
 [27] [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 330--330
+Underfull \hbox (badness 10000) in paragraph at lines 348--348
 []|\OT1/pcr/m/n/12 INPUT -> CONV -> SIGMOID ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--331
+Underfull \hbox (badness 10000) in paragraph at lines 349--349
 []|\OT1/ptm/m/n/12 Detect in-di-vid-ual
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--331
+Underfull \hbox (badness 10000) in paragraph at lines 349--349
 []|\OT1/pcr/m/n/12 INPUT -> [CONV ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--332
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
 []|\OT1/ptm/m/n/12 Detect in-di-vid-ual
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--332
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
 []|\OT1/pcr/m/n/12 INPUT -> GAUSSIAN -> [CONV
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--332
+Underfull \hbox (badness 10000) in paragraph at lines 350--350
 \OT1/pcr/m/n/12 -> SIGMOID]*2 -> FC ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--333
+Underfull \hbox (badness 10000) in paragraph at lines 351--351
 []|\OT1/ptm/m/n/12 Detect in-di-vid-ual
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--333
+Underfull \hbox (badness 10000) in paragraph at lines 351--351
 []|\OT1/pcr/m/n/12 INPUT -> [CONV ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 10000) in paragraph at lines 352--352
 []|\OT1/ptm/m/n/12 Detect in-di-vid-ual
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--334
+Underfull \hbox (badness 10000) in paragraph at lines 352--352
 []|\OT1/pcr/m/n/12 INPUT -> [CONV ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--336
+Underfull \hbox (badness 10000) in paragraph at lines 354--354
 []|\OT1/pcr/m/n/12 INPUT -> [CONV -> RELU
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--336
+Underfull \hbox (badness 10000) in paragraph at lines 354--354
 \OT1/pcr/m/n/12 -> POOL]*2 -> MAXOUT ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 337--337
+Underfull \hbox (badness 10000) in paragraph at lines 355--355
 []|\OT1/pcr/m/n/12 INPUT -> [CONV -> RELU ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 337--337
+Underfull \hbox (badness 10000) in paragraph at lines 355--355
 \OT1/pcr/m/n/12 POOL]*3 -> [FC -> RELU]*2
  []
 
@@ -1052,7 +1052,7 @@ eb-site ([]$\OT1/pcr/m/n/12 bcdr . eu / information /
 
 LaTeX Warning: Citation `Ciresan2013' on page 36 undefined on input line 35.
 
-[36] <plots/mcDiffPreprocessings.png, id=848, 863.225pt x 867.24pt>
+[36] <plots/mcDiffPreprocessings.png, id=850, 863.225pt x 867.24pt>
 File: plots/mcDiffPreprocessings.png Graphic file (type png)
 
 <use plots/mcDiffPreprocessings.png>
@@ -1062,38 +1062,39 @@ Package pdftex.def Info: plots/mcDiffPreprocessings.png used on input line 51.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[37] <plots/mcDiffResizings.png, id=858, 822.4326pt x 722.7pt>
+[37] <plots/mcDiffResizings.png, id=859, 822.4326pt x 722.7pt>
 File: plots/mcDiffResizings.png Graphic file (type png)
 
 <use plots/mcDiffResizings.png>
 Package pdftex.def Info: plots/mcDiffResizings.png used on input line 69.
 (pdftex.def)             Requested size: 357.3038pt x 313.97496pt.
-)
-Underfull \hbox (badness 4608) in paragraph at lines 36--36
+) [38 <./plots/mcDiffPreprocessings.png>]
+[39 <./plots/mcDiffResizings.png>]
+Underfull \hbox (badness 4608) in paragraph at lines 39--39
 \OT1/ptm/m/n/12 96 cores, 1GB, 2.1
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 37--37
+Underfull \hbox (badness 1675) in paragraph at lines 40--40
 \OT1/ptm/m/n/12 384 cores, 2GB, 5.0
  []
 
-[38 <./plots/mcDiffPreprocessings.png>] [39 <./plots/mcDiffResizings.png>]
 
 LaTeX Warning: Reference `subsec:PracticalDL' on page 40 undefined on input lin
-e 46.
-
-
-LaTeX Warning: Reference `subsec:Classification' on page 40 undefined on input 
-line 78.
+e 49.
 
 [40]
-Overfull \hbox (2.19142pt too wide) in paragraph at lines 97--99
+
+LaTeX Warning: Reference `subsec:Classification' on page 41 undefined on input 
+line 81.
+
+
+Overfull \hbox (2.19142pt too wide) in paragraph at lines 100--102
 \OT1/ptm/m/n/12 Probabilities vs UN-cor-rected thresh-old vs Thresh-old and clu
 s-ter ex-tent cor-rec-tion vs threshold-
  []
 
-) (./experiment1.tex [41] [42]
+[41]) (./experiment1.tex [42]
 Chapter 4.
 ) (./conclusions.tex [43
 
@@ -1153,7 +1154,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 93FDA1DF3AC437335515FFB14A3E62D1;2969.
+(rerunfilecheck)             Checksum: 4BA712861177393E17FB63B911EA757B;3052.
 
 
 LaTeX Warning: There were undefined references.
@@ -1161,13 +1162,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 8688 strings out of 495028
- 128639 string characters out of 6181498
+ 8689 strings out of 495028
+ 128661 string characters out of 6181498
  217739 words of memory out of 5000000
- 11398 multiletter control sequences out of 15000+600000
+ 11399 multiletter control sequences out of 15000+600000
  38202 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,10n,45p,2602b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,45p,1424b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1186,10 +1187,10 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (61 pages, 4160655 bytes).
+Output written on report.pdf (61 pages, 4160009 bytes).
 PDF statistics:
- 1072 PDF objects out of 1200 (max. 8388607)
- 953 compressed objects within 10 object streams
+ 1074 PDF objects out of 1200 (max. 8388607)
+ 955 compressed objects within 10 object streams
  247 named destinations out of 1000 (max. 500000)
- 452 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 460 words of extra memory for PDF output out of 10000 (max. 10000000)
 

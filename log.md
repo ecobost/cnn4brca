@@ -3,6 +3,24 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Feb 12 - Feb 17
+### Activities
+* Writing section 2.6 and 2.7
+
+### To do
+* Write chapter 3 (Solution Model)
+* Ready database
+* Install TensorFlow (CTS/Laptop)
+* Write network in Tensorflow/Keras
+* Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)
+* Ask for institutional email
+
+### Questions
+1. Is IOU fine for unbalanced data sets?
+	Answer: For model selection IOU is going to try to maximize the intersection and minimize the union as the union is waaay bigger (because objects are small), it will probably try to minimize the union more prediciting less positive labels and it may lose sensitivity (for the sake of specificity). Not sure about this, though, seems like F-1 is gonna do the same.
+2. Should I leave Section 2.7 citations as "[23] trained ..." or write "Ge et al. trained"?
+
+
 ## Jan 25 - Feb 11
 ### Activities
 * Writing final draft of Chapter 2
@@ -18,8 +36,10 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Which post-processing should I use? Gaussian smoothing, cluster-based enhancement, fully connected CRFs or a combination?
-2. Which evaluation metric should I use? Accuracy, F1-score, PRAUC or ROC?
+2. Which evaluation metric should I use? Accuracy, F1-score, PRAUC, ROC, IOU, Dice?
+	Answer: IOU
 3. Should I cite Agarwal2015 (unpublished Stanford report)?
+	Answer: No.
 
 ---------------------------------------------------------------------------
 ---------------------------------------------------------------------------
@@ -66,8 +86,11 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Should i put mass vs nonmass, microcalc vs nonmicrocalc, or put every lession together (mass, microcalc, distortions, etc.) vs nonlession?. Thus, only train one network that differentiates all lessions vs no lession?. 
+	Answer: Segmentation (mass(benign or malign) vs non-mass)
 2. Should I use a single network with multiple outputs to classify every kind of lession?.
+	Answer: No.
 3. Should I use data augmentation only on the minority classes (lessions)?
+	Answer: Use everywhere. No oversampling
 
 
 ## Jun 10 - Jun 17

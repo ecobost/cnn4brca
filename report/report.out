@@ -18,30 +18,31 @@
 \BOOKMARK [1][-]{section.2.5}{Image Segmentation}{chapter.2}% 18
 \BOOKMARK [1][-]{section.2.6}{Practical Deep Learning}{chapter.2}% 19
 \BOOKMARK [1][-]{section.2.7}{Convolutional Networks in Breast Cancer Research}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.7.1}{Detection of masses}{section.2.7}% 21
+\BOOKMARK [2][-]{subsection.2.7.1}{Detection of breast masses}{section.2.7}% 21
 \BOOKMARK [2][-]{subsection.2.7.2}{Detection of microcalcifications}{section.2.7}% 22
-\BOOKMARK [2][-]{subsection.2.7.3}{Diagnosis of masses}{section.2.7}% 23
+\BOOKMARK [2][-]{subsection.2.7.3}{Diagnosis of breast masses}{section.2.7}% 23
 \BOOKMARK [2][-]{subsection.2.7.4}{Tissue segmentation}{section.2.7}% 24
 \BOOKMARK [0][-]{chapter.3}{Solution Model}{}% 25
 \BOOKMARK [1][-]{section.3.1}{Operationalization}{chapter.3}% 26
-\BOOKMARK [2][-]{subsection.3.1.1}{Database}{section.3.1}% 27
-\BOOKMARK [2][-]{subsection.3.1.2}{BCDR-DM}{section.3.1}% 28
-\BOOKMARK [2][-]{subsection.3.1.3}{Image retrieval}{section.3.1}% 29
-\BOOKMARK [1][-]{section.3.2}{Training}{chapter.3}% 30
-\BOOKMARK [2][-]{subsection.3.2.1}{Data set}{section.3.2}% 31
-\BOOKMARK [2][-]{subsection.3.2.2}{Hardware}{section.3.2}% 32
-\BOOKMARK [2][-]{subsection.3.2.3}{Architecture}{section.3.2}% 33
-\BOOKMARK [2][-]{subsection.3.2.4}{Evaluation}{section.3.2}% 34
-\BOOKMARK [2][-]{subsection.3.2.5}{Software}{section.3.2}% 35
-\BOOKMARK [1][-]{section.3.3}{Implementation}{chapter.3}% 36
-\BOOKMARK [1][-]{section.3.4}{Implementation details}{chapter.3}% 37
-\BOOKMARK [1][-]{section.3.5}{Evaluation metrics}{chapter.3}% 38
-\BOOKMARK [1][-]{section.3.6}{Presentation of results}{chapter.3}% 39
-\BOOKMARK [1][-]{section.3.7}{Regularization}{chapter.3}% 40
-\BOOKMARK [0][-]{chapter.4}{\(Experiment's title\)Detection vs diagnosis masses or microcalcifications.}{}% 41
-\BOOKMARK [1][-]{section.4.1}{Experiment}{chapter.4}% 42
-\BOOKMARK [1][-]{section.4.2}{Results}{chapter.4}% 43
-\BOOKMARK [1][-]{section.4.3}{Discussion}{chapter.4}% 44
-\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 45
-\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 46
-\BOOKMARK [0][-]{chapter*.47}{Bibliography}{}% 47
+\BOOKMARK [2][-]{subsection.3.1.1}{Task definition}{section.3.1}% 27
+\BOOKMARK [2][-]{subsection.3.1.2}{Database}{section.3.1}% 28
+\BOOKMARK [2][-]{subsection.3.1.3}{BCDR-DM}{section.3.1}% 29
+\BOOKMARK [2][-]{subsection.3.1.4}{Image retrieval}{section.3.1}% 30
+\BOOKMARK [1][-]{section.3.2}{Training}{chapter.3}% 31
+\BOOKMARK [2][-]{subsection.3.2.1}{Data set}{section.3.2}% 32
+\BOOKMARK [2][-]{subsection.3.2.2}{Hardware}{section.3.2}% 33
+\BOOKMARK [2][-]{subsection.3.2.3}{Architecture}{section.3.2}% 34
+\BOOKMARK [2][-]{subsection.3.2.4}{Evaluation}{section.3.2}% 35
+\BOOKMARK [2][-]{subsection.3.2.5}{Software}{section.3.2}% 36
+\BOOKMARK [1][-]{section.3.3}{Implementation}{chapter.3}% 37
+\BOOKMARK [1][-]{section.3.4}{Implementation details}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.5}{Evaluation metrics}{chapter.3}% 39
+\BOOKMARK [1][-]{section.3.6}{Presentation of results}{chapter.3}% 40
+\BOOKMARK [1][-]{section.3.7}{Regularization}{chapter.3}% 41
+\BOOKMARK [0][-]{chapter.4}{\(Experiment's title\)Detection vs diagnosis masses or microcalcifications.}{}% 42
+\BOOKMARK [1][-]{section.4.1}{Experiment}{chapter.4}% 43
+\BOOKMARK [1][-]{section.4.2}{Results}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.3}{Discussion}{chapter.4}% 45
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 46
+\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 47
+\BOOKMARK [0][-]{chapter*.47}{Bibliography}{}% 48
