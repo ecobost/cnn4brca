@@ -5,7 +5,7 @@ In this section we collect guidelines for building as well as efficiently traini
 \begin{itemize}
 	\item Crop images to contain only the relevant regions, denoise, enhance and resize them to maintain the input size fixed and manageable.
 
-	\item Zero-center each image feature (the raw pixels) by substracting its mean across all training images. Optionally, normalize each zero-centered feature to range from $[-1 \dots 1]$ by dividing them by its standard deviation~\cite{Karpathy2015}.
+	\item Zero-center each image feature (the raw pixels) by subtracting its mean across all training images. Optionally, normalize each zero-centered feature to range from $[-1 \dots 1]$ by dividing them by its standard deviation~\cite{Karpathy2015}.
 
 	\item Test data should not be used to calculate any statistic used for preprocessing. Furthermore, the same statistics (calculated from training data) should be used to preprocess test data~\cite{Karpathy2015}.
 \end{itemize}

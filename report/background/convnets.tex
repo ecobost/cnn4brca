@@ -18,7 +18,7 @@ The input layer is a volume ($\mathbb{R}^{h\times w \times c}$) that holds the i
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width = 0.7\textwidth]{plots/convNetVolumes.jpeg}
+	\includegraphics[width = 0.73\textwidth]{plots/convNetVolumes.jpeg}
 	\caption[Illustration of a convolutional network]{A simple illustration of the transformations of the input computed by a convolutional network. Input layer is shown in pink, hidden layers are shown in blue and output layer is shown in green. The third layer has 5 feature maps of size $2\times3$ (width is listed first by convention). Image courtesy of~\cite{Karpathy2015}.}
 	\label{fig:ConvNetVolumes}
 \end{figure}
@@ -32,7 +32,7 @@ All values in a single feature map are computed using the same filter; these fil
 We could think of each filter as looking for an specific feature on the input and the feature map as showing its likelihood at each position. If we regard each feature map as a grid of units, we notice that units connect only to a small local subset of units in the previous volume and that all of them share the same weights (Fig.~\ref{fig:ConvLayer}).
 \begin{figure}[h]
 	\centering
-	\includegraphics[width = 0.4\textwidth]{plots/convLayer.jpeg}
+	\includegraphics[width = 0.38\textwidth]{plots/convLayer.jpeg}
 	\caption[Convolutional layer applied to a volume]{Convolutional layer applied to a volume ($\mathbb{R}^{32\times 32\times 3}$). The resulting volume has five feature maps as shown by the units in the blue volume ($\mathbb{R}^{32\times 32\times 5}$). Five small filters slide accross the spatial dimensions ($32\times 32$) of the volume to produce the feature maps. Image courtesy of~\cite{Karpathy2015}.}
 	\label{fig:ConvLayer}
 \end{figure}
@@ -64,7 +64,7 @@ Figure~\ref{fig:ConvNetExample} shows a convolutional network with different kin
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width = 0.85\textwidth]{plots/convNetExample.jpeg}
+	\includegraphics[width = 0.9\textwidth]{plots/convNetExample.jpeg}
 	\caption[Convolutional network in action]{Convolutional network with architecture \texttt{INPUT -> [[CONV -> RELU]*2 -> POOL]*3 -> FC}. The input image has size $32\times 32$. Each hidden layer uses 10 feature maps (shown as columns). Although the size of feature maps looks constant, each pooling layer reduces its dimensions by half (after the final pooling layer, feature maps have size $4\times 4$). We show final scores for the five most probable classes. Image courtesy of~\cite{Karpathy2015}.}
 	\label{fig:ConvNetExample}
 \end{figure}

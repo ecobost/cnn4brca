@@ -72,7 +72,7 @@ Sensitivity and specificity are preferred to present results in medical diagnosi
 The \emph{threshold} of a classifier is the probability at and over which an example is classified as positive. It regulates the trade-off between sensitivity and specificity (or similarly precision and recall): a classifier with a low threshold is prone to classify examples as positive but will potentially produce many false positives thus having high sensitivity but low specificity and viceversa for high thresholds. The \emph{precision-recall curve} of a classifier is a plot of its precision (on the y axis) against its recall (on the x axis) as the threshold varies (Fig.~\ref{fig:AUCandPRAUC}). The \emph{receiver operating characteristic curve} plots sensitivity (also called true positive rate) against 1-specificity (also called false positive rate) as the threshold varies (Fig.~\ref{fig:AUCandPRAUC}). The \emph{area under the precision-recall curve} PRAUC and the \emph{area under the receiver operating characteristic curve} AUC summarize the performance of the classifier over all possible thresholds and are used for model selection; they range from 0 to 1 with higher being better. As with previous metrics, AUC is preferred for medical diagnosis while PRAUC is mostly used in machine learning. 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width = 0.85\textwidth]{plots/AUCandPRAUC.png}
+	\includegraphics[width = 0.8\textwidth]{plots/AUCandPRAUC.png}
 	\caption[Sample ROC and PR curves]{A sample receiver operating characteristic curve (left) and precision-recall curve (right). Each algorithm is evaluated on different thresholds and the points produced are used to obtain the curves. Image courtesy of~\cite{Davis2006}}
 	\label{fig:AUCandPRAUC}
 \end{figure}

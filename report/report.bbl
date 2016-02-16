@@ -26,13 +26,12 @@
 \newblock Available online on
   \url{cancer.org/acs/groups/content/@editorial/documents/document/acspc-044552.pdf}.
 
-\bibitem{Arevalo2015}
-{\sc Arevalo, J., Gonzalez, F.~A., Ramos-Pollan, R., Oliveira, J.~L., and
+\bibitem{Arevalo2016}
+{\sc Arevalo, J., González, F.~A., Ramos-Pollán, R., Oliveira, J.~L., and
   Guevara~Lopez, M.~A.}
-\newblock Convolutional neural networks for mammography mass lesion
-  classification.
-\newblock In {\em Engineering in Medicine and Biology Society (EMBC), 2015 37th
-  Annual International Conference of the IEEE\/} (Aug 2015), pp.~797--800.
+\newblock Representation learning for mammography mass lesion classification
+  with convolutional neural networks.
+\newblock {\em Computer Methods and Programs in Biomedicine\/} (2016).
 
 \bibitem{Ashraf2013}
 {\sc Ashraf, A.~B., Gavenonis, S.~C., Daye, D., Mies, C., Rosen, M.~A., and
@@ -213,6 +212,13 @@
 {\sc LeCun, Y., Bottou, L., Bengio, Y., and Haffner, P.}
 \newblock Gradient-based learning applied to document recognition.
 \newblock {\em Proceedings of the IEEE 86}, 11 (November 1998), 2278--2324.
+
+\bibitem{Lehman2015}
+{\sc Lehman, C.~D., Wellman, R.~D., Buist, D.~S., Kerlikowske, K., Tosteson,
+  A.~N., and Miglioretti, D.~L.}
+\newblock Diagnostic accuracy of digital screening mammography with and without
+  computer-aided detection.
+\newblock {\em JAMA Internal Medicine 175}, 11 (2015), 1828--1837.
 
 \bibitem{Linnainmaa1970}
 {\sc Linnainmaa, S.}

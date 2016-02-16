@@ -32,7 +32,7 @@
 \contentsline {paragraph}{Unbalanced data}{25}{section*.28}
 \contentsline {paragraph}{Software}{26}{section*.29}
 \contentsline {section}{\numberline {2.7}Convolutional Networks in Breast Cancer Research}{26}{section.2.7}
-\contentsline {paragraph}{Overview}{27}{section*.30}
+\contentsline {paragraph}{Summary}{27}{section*.30}
 \contentsline {subsection}{\numberline {2.7.1}Detection of breast masses}{27}{subsection.2.7.1}
 \contentsline {subsection}{\numberline {2.7.2}Detection of microcalcifications}{28}{subsection.2.7.2}
 \contentsline {subsection}{\numberline {2.7.3}Diagnosis of breast masses}{29}{subsection.2.7.3}

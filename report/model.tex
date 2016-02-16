@@ -8,6 +8,7 @@ We document here how we tranform/reduce the breast cancer detection and diagnosi
 
 	\subsection{Task definition}
 Segment lesions (tumors or all massses) (benign and malignant or only malignant) from normal tissue. Masses or microcalcifications.
+%We use digital mammograms to detect breast masses and produce a valid image segmentation.
 	
 	\subsection{Database}
 	\input{model/database}
@@ -120,6 +121,8 @@ we could also present a heatmap with the different probabilities in each pixel o
 % Background is thresholded at zero and shown in black
 
 % Masses are 12.2mm + 4.5mm std . 2 cm holds 96% of masses. 1.5 holds 73 % of masses.
+
+% 70/15/15 is a good split.
 
 \section{Regularization}
 Dropout and l2-norm
