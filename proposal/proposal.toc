@@ -27,7 +27,7 @@
 \contentsline {paragraph}{Data augmentation}{28}{section*.23}
 \contentsline {paragraph}{Unbalanced data}{28}{section*.24}
 \contentsline {paragraph}{All convolutional networks}{29}{section*.25}
-\contentsline {paragraph}{Transfer learning}{29}{section*.26}
+\contentsline {paragraph}{Transfer learning}{30}{section*.26}
 \contentsline {paragraph}{Software}{30}{section*.27}
-\contentsline {section}{\numberline {6}Methodology}{30}{section.6}
+\contentsline {section}{\numberline {6}Methodology}{31}{section.6}
 \contentsline {section}{\numberline {7}Work Plan}{32}{section.7}
