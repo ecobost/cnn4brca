@@ -1,15 +1,16 @@
 \chapter{Solution Model}
 \label{ch:Model}
+We document here design decisions, its rationale and implemetation notes.
 
-Design decisions, its rationale and implemetation notes. this in ther and that in there
+%We document here how we tranform/reduce the breast cancer detection and diagnosis task into a machine learning task able to be taken by convolutional networks, i.e., how we produce a data set with $m$ inputs $x^{(i)} \in \mathbb{R}^n$ and $m$ corresponding labels $y^{(i)}$. We use this notation throughout this section. 
 
-\section{Operationalization}
-We document here how we tranform/reduce the breast cancer detection and diagnosis task into a machine learning task able to be taken by convolutional networks, i.e., how we produce a data set with $m$ inputs $x^{(i)} \in \mathbb{R}^n$ and $m$ corresponding labels $y^{(i)}$. We use this notation throughout this section. 
-
-	\subsection{Task definition}
+\section{Task definition}
 Segment lesions (tumors or all massses) (benign and malignant or only malignant) from normal tissue. Masses or microcalcifications.
 %We use digital mammograms to detect breast masses and produce a valid image segmentation.
-	
+
+
+\section{Data set}
+
 	\subsection{Database}
 	\input{model/database}
 
@@ -18,34 +19,22 @@ Segment lesions (tumors or all massses) (benign and malignant or only malignant)
 % Files and how are they organized. Data available per case and per mammogram. How are boundaries written. formats, etc.
 % 159 calcifications, 36 micro, 11 micro+calcif, thus 108 micro or calcif. 106 nodule, 20 nodule+ calcific, 11 nodule + micro
 	
-	\subsection{Image retrieval}
-	\input{model/imageRetrieval}
-
-\section{Training}
-	%Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
+	\subsection{Image retrieval/Preprocessing}
+	\input{model/imageRetrieval} 
+% Images will not be zero-centered , normalized or whitened. global contrast
 
 	\subsection{Data set}
 	Yet to write
-%	We have x number of images with x positives and negatives. Resunmied in Table...
-% Images will not be zero-centered , normalized or whitened.
+% We have x number of images with x positives and negatives. Resunmied in Table...
+	
+	\subsection{Data augmentation}
+	Rotations and flipping of original big images
 
-	\subsection{Hardware}
-	Training deep neural networks is computationally intensive and requires equipment with powerful GPUs. We enlist here the resources available for this thesis.
-	\begin{table}[h]
-		\centering
-		\begin{tabular}{cp{3.9cm}p{1.7cm}p{1.8cm}cc}
-		\hline
-		\textbf{PC}	& \textbf{GPU}	& \textbf{HD}	& \textbf{CPU}	& \textbf{RAM}	& \textbf{\#} \\
-		\hline
-		Personal	& Nvidia NVS 5400M \newline 96 cores, 1GB, 2.1 compatibility, 29 GB/s	& 57 GB \newline (36 free)	& i5-3210M \newline 2.5GHz	& 4 GB	& 1 \\
-		A4-401	& Nvidia Quadro K620 \newline 384 cores, 2GB, 5.0 compatibility, 29 GB/s & 240 GB \newline (230 free)	& i5-4570 \newline 3.2GHz	& 8 GB	& 27\\
 
-		\hline
-		\end{tabular}
-		\caption{Available hardware for experiments}
-	\end{table}
-	% We did our experiments in x computers from A3-401
+	\subsection{Data division}
+	70/15/15 is a good split. stratified per patient, this total number of patients in each set and this total number of mammograms (after augmentation) and this total number of lesions.
 
+\section{Model}
 	\subsection{Architecture}
 	Using the advice in Section~\ref{subsec:PracticalDL} we decided to use a simple network with six convolutional layers and two fully connected layers with the following architecture:
 	\begin{table}[h]
@@ -76,28 +65,42 @@ Segment lesions (tumors or all massses) (benign and malignant or only malignant)
 
 	In case the input was size $64 \times 64$ pixels we could replace use a $3 \times 3$ filter with stride 1 in the first convolutional layer and leave everything else unchanged. For an all convolutional architecture we could replace all pooling layers by a $5 \times 5$ filter  with stride 2 and use input images of size of $113 \times 113$ or $129 \times 129$.
 
-	% Replacing the pooling layers by convolutional layers or overlapping pooling could marginally improve results. doing it all convolutional  is not that expensive and produces better results
+	% Replacing the pooling layers by convolutional layers or overlapping pooling could marginally improve results. doing it all convolutional  is not that expensive and produces better results.
+% Masses are 12.2mm + 4.5mm std . 2 cm holds 96% of masses. 1.5 holds 73 % of masses
 
-	\subsection{Evaluation}
-	When dividing the data set we make sure \textit{all} image patches obtained from the same patient are assigned to either the training set or test set (not distributed) to avoid any possible overfit to the test set. Given that our data is unbalanced, with far more negative than positive examples, we use PRAUC (see Section~\ref{subsec:Classification}) to choose between models for hyperparameter selection and as an overall performance metric. Other metrics are also reported for completeness. 
+\section{Training}
+%Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
 
-	We could also evaluate the network on all augmentations of an image and output the average prediction; in theory, this would give us better results. For simplicity, we do not apply it for model selection.
+	\subsection{Hardware}
+	Training deep neural networks is computationally intensive and requires equipment with powerful GPUs. We enlist here the resources available for this thesis.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{cp{3.9cm}p{1.7cm}p{1.8cm}cc}
+		\hline
+		\textbf{PC}	& \textbf{GPU}	& \textbf{HD}	& \textbf{CPU}	& \textbf{RAM}	& \textbf{\#} \\
+		\hline
+		Personal	& Nvidia NVS 5400M \newline 96 cores, 1GB, 2.1 compatibility, 29 GB/s	& 57 GB \newline (36 free)	& i5-3210M \newline 2.5GHz	& 4 GB	& 1 \\
+		A4-401	& Nvidia Quadro K620 \newline 384 cores, 2GB, 5.0 compatibility, 29 GB/s & 240 GB \newline (230 free)	& i5-4570 \newline 3.2GHz	& 8 GB	& 27\\
 
-	For detection of lesions on entire mammograms we slide the trained convolutional network across the mammogram computing a per-pixel prediction. The generated heatmap preserves the size of the original mammogram (with some zero-padding) and can be presented side to side to the original mammogram as a CAD system. In case this heatmap is noisy (predictions changes abruptly from pixel to pixel) we could use a median or gaussian filter to smooth it out.% We do not evaluate the network on the entire mammogram (or per patient), we limit ourselves to show the results.
+		\hline
+		\end{tabular}
+		\caption{Available hardware for experiments}
+	\end{table}
+	% We did our experiments in x computers from A3-401
 
 	\subsection{Software}
 	We use Caffe~\cite{Jia2014} to train the networks and Python to develop any other tools (image retrieval and augmentation, model evaluation, figure generation, etc.).
 
+	\subsection{Implementation details}
+	Python, libraries used,etc.
 
-\section{Implementation}
+	\section{Regularization}
+Dropout and l2-norm
+Other options: batch normalization
 
+\section{Evaluation}
 
-\section{Implementation details}
-What library I used,
-
-\section{Evaluation metrics}
-
-\section{Presentation of results}
+\subsection{Post-processing}
 Probabilities vs UNcorrected threshold vs Threshold and cluster extent correction vs threshold-free cluster enhancement vs, show different results at different thresholds
 data is smooth, 
 
@@ -120,10 +123,10 @@ we could also present a heatmap with the different probabilities in each pixel o
 
 % Background is thresholded at zero and shown in black
 
-% Masses are 12.2mm + 4.5mm std . 2 cm holds 96% of masses. 1.5 holds 73 % of masses.
+	\subsection{Evaluation}
+	When dividing the data set we make sure \textit{all} image patches obtained from the same patient are assigned to either the training set or test set (not distributed) to avoid any possible overfit to the test set. Given that our data is unbalanced, with far more negative than positive examples, we use PRAUC (see Section~\ref{subsec:Classification}) to choose between models for hyperparameter selection and as an overall performance metric. Other metrics are also reported for completeness. 
 
-% 70/15/15 is a good split.
+	We could also evaluate the network on all augmentations of an image and output the average prediction; in theory, this would give us better results. For simplicity, we do not apply it for model selection.
 
-\section{Regularization}
-Dropout and l2-norm
-Other options: batch normalization
+	For detection of lesions on entire mammograms we slide the trained convolutional network across the mammogram computing a per-pixel prediction. The generated heatmap preserves the size of the original mammogram (with some zero-padding) and can be presented side to side to the original mammogram as a CAD system. In case this heatmap is noisy (predictions changes abruptly from pixel to pixel) we could use a median or gaussian filter to smooth it out.% We do not evaluate the network on the entire mammogram (or per patient), we limit ourselves to show the results.
+	\subsection{Evaluation metrics}

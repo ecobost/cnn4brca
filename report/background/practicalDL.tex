@@ -117,7 +117,7 @@ We perform some simple tests to make sure training works properly.
 
 	\item Train the network (without regularization) in 10-40 examples to check that the loss function becomes zero. If the network is unable to overfit a tiny subset of data, flexibilize the model.~\cite{Ng2014}.
 
-	\item During training, the loss function evaluated on training examples decreases monotonically~\footnote{Because of momentum and regularization it could also increase slightly before decreasing.}. If not, check for implementation errors, reduce the learning rate or augment momentum~\cite{Karpathy2015}.
+	\item During training, the loss function evaluated on training examples decreases monotonically~\footnote{Because of momentum and regularization it could increase slightly before decreasing.}. If not, check for implementation errors, reduce the learning rate or augment momentum~\cite{Karpathy2015}.
 
 	\item Monitor the loss function during training to identify underfitting, characterized by high training loss and high validation loss, and overfiting, characterized by low training loss and high validation loss~\cite{Ng2014}.
 \end{itemize}
@@ -172,9 +172,9 @@ In practice, it is common to have very few examples of one class compared to the
 
 \begin{comment}
 \paragraph{All convolutional networks}
-The research community has been moving towards discarding pooling layers and using all convolutional networks; interpreted as letting the network learn the pooling operation. We offer a couple of guidelines for implementing all convolutional networks.  
+The research community has been moving towards replacing pooling layers and using convolutional filters as pooling operations. We offer a couple of guidelines for implementing all convolutional networks.  
 \begin{itemize}
-	\item Replace each pooling layer with a convolutional layer with as many feature maps as the previous layer and filter size $2\times 2$ with stride $2$ for normal pooling or $3\times 3$ with stride $2$ for overlapping pooling~\cite{Springenberg2014}. 
+	\item Change each pooling layer with a convolutional layer with as many feature maps as the previous layer and filter size $2\times 2$ with stride $2$ for normal pooling or $3\times 3$ with stride $2$ for overlapping pooling~\cite{Springenberg2014}. 
 
 	\item For small data sets pooling layers also work as a regularizer because they reduce the number of learnable parameters and replacing them with convolutional layers may not be convenient~\cite{Karpathy2015}.
 \end{itemize}

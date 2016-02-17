@@ -220,16 +220,19 @@
 \citation{Tang2009}
 \citation{Sahiner1996}
 \citation{Lo1995}
+\citation{Lo1998}
 \citation{Gurcan2002}
 \citation{Gurcan2002}
 \citation{Ge2006}
-\citation{Agarwal2015}
+\citation{Arevalo2016}
+\citation{Dubrovina2015}
+\citation{Petersen2014}
 \@writefile{toc}{\contentsline {paragraph}{Software}{26}{section*.29}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.7}Convolutional Networks in Breast Cancer Research}{26}{section.2.7}}
 \newlabel{sec:BreastCancerConvNets}{{2.7}{26}{Convolutional Networks in Breast Cancer Research}{section.2.7}{}}
 \citation{Wei1995}
 \citation{Sahiner1996}
-\@writefile{toc}{\contentsline {paragraph}{Summary}{27}{section*.30}}
+\@writefile{toc}{\contentsline {paragraph}{Overview}{27}{section*.30}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.7.1}Detection of breast masses}{27}{subsection.2.7.1}}
 \citation{Lo1995}
 \citation{Lo1998}
@@ -244,7 +247,7 @@
 \citation{Arevalo2016}
 \citation{Dubrovina2015}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.7.3}Diagnosis of breast masses}{29}{subsection.2.7.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.7.4}Tissue segmentation}{30}{subsection.2.7.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7.4}Tissue segmentation}{29}{subsection.2.7.4}}
 \citation{Sahiner1996}
 \citation{Lo1995}
 \citation{Lo1998}
@@ -267,19 +270,19 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{ch:Model}{{3}{33}{Solution Model}{chapter.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Operationalization}{33}{section.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Task definition}{33}{subsection.3.1.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Database}{33}{subsection.3.1.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Task definition}{33}{section.3.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Data set}{33}{section.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Database}{33}{subsection.3.2.1}}
 \citation{Moreira2012}
+\citation{Zheng2012}
 \citation{Zheng2012}
 \@writefile{toc}{\contentsline {paragraph}{Decision}{34}{section*.31}}
 \@writefile{toc}{\contentsline {paragraph}{Alternatives}{34}{section*.32}}
-\citation{Zheng2012}
 \citation{Lo1998}
 \citation{Sickles2013}
 \citation{Sahiner1996}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}BCDR-DM}{35}{subsection.3.1.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Image retrieval}{35}{subsection.3.1.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}BCDR-DM}{35}{subsection.3.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Image retrieval/Preprocessing}{35}{subsection.3.2.3}}
 \@writefile{toc}{\contentsline {paragraph}{Image dimensions}{35}{section*.33}}
 \citation{Ciresan2013}
 \@writefile{toc}{\contentsline {paragraph}{Cropping}{36}{section*.34}}
@@ -289,34 +292,36 @@
 \@writefile{toc}{\contentsline {paragraph}{Label information}{37}{section*.38}}
 \@writefile{toc}{\contentsline {paragraph}{Image enhancement}{37}{section*.39}}
 \@writefile{toc}{\contentsline {paragraph}{Data augmentation}{37}{section*.41}}
+\@writefile{toc}{\contentsline {paragraph}{Resizing}{37}{section*.42}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Example of constrast adjustment techniques}}{38}{figure.caption.40}}
 \newlabel{fig:PreprocessingTechniques}{{3.1}{38}{Example of constrast adjustment techniques}{figure.caption.40}{}}
-\@writefile{toc}{\contentsline {paragraph}{Resizing}{38}{section*.42}}
 \@writefile{toc}{\contentsline {paragraph}{Storage}{38}{section*.44}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Data set}{38}{subsection.3.2.4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Example of resizing schemes}}{39}{figure.caption.43}}
 \newlabel{fig:ResizingInterps}{{3.2}{39}{Example of resizing schemes}{figure.caption.43}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Training}{40}{section.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Data set}{40}{subsection.3.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Hardware}{40}{subsection.3.2.2}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Available hardware for experiments\relax }}{40}{table.caption.45}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Architecture}{40}{subsection.3.2.3}}
-\newlabel{tab:convNetArchitecture}{{\caption@xref {tab:convNetArchitecture}{ on input line 71}}{40}{Architecture}{table.caption.46}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Selected convolutional network architecture}}{40}{table.caption.46}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}Data augmentation}{40}{subsection.3.2.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.6}Data division}{40}{subsection.3.2.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Model}{40}{section.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Architecture}{40}{subsection.3.3.1}}
+\newlabel{tab:convNetArchitecture}{{\caption@xref {tab:convNetArchitecture}{ on input line 60}}{40}{Architecture}{table.caption.45}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Selected convolutional network architecture}}{40}{table.caption.45}}
 \citation{Jia2014}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Evaluation}{41}{subsection.3.2.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}Software}{41}{subsection.3.2.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Implementation}{41}{section.3.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Implementation details}{41}{section.3.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Evaluation metrics}{41}{section.3.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.6}Presentation of results}{41}{section.3.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.7}Regularization}{42}{section.3.7}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}(Experiment's title)Detection vs diagnosis masses or microcalcifications.}{43}{chapter.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Training}{41}{section.3.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Hardware}{41}{subsection.3.4.1}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Available hardware for experiments\relax }}{41}{table.caption.46}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Software}{41}{subsection.3.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Implementation details}{41}{subsection.3.4.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Regularization}{41}{section.3.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Evaluation}{41}{section.3.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Post-processing}{41}{subsection.3.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Evaluation}{42}{subsection.3.6.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.3}Evaluation metrics}{42}{subsection.3.6.3}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Mass Segmentation}{43}{chapter.4}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:Experiment1}{{4}{43}{(Experiment's title)Detection vs diagnosis masses or microcalcifications}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Experiment}{43}{section.4.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Results}{43}{section.4.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Discussion}{43}{section.4.3}}
+\newlabel{ch:Experiment1}{{4}{43}{Mass Segmentation}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Results}{43}{section.4.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Discussion}{43}{section.4.2}}
 \bibstyle{acm}
 \bibdata{bibliography}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Conclusions}{44}{chapter.5}}
@@ -368,22 +373,23 @@
 \bibcite{Ng2014}{42}
 \bibcite{Oeffinger2015}{43}
 \bibcite{Ozgur2005}{44}
-\bibcite{Pisano2008}{45}
-\bibcite{Provost2000}{46}
-\bibcite{Rosenblatt1962}{47}
-\bibcite{Rumelhart1986}{48}
-\bibcite{Russakovsky2015}{49}
-\bibcite{Sahiner1996}{50}
-\bibcite{Schmidhuber2015}{51}
-\bibcite{Sickles2013}{52}
-\bibcite{Simonyan2014}{53}
-\bibcite{Skaane2007}{54}
-\bibcite{Springenberg2014}{55}
-\bibcite{Srivastava2014}{56}
-\bibcite{Taigman2014}{57}
-\bibcite{Tang2009}{58}
-\bibcite{Wei1995}{59}
-\bibcite{Werbos1974}{60}
-\bibcite{Widrow1960}{61}
-\bibcite{Zheng2012}{62}
+\bibcite{Petersen2014}{45}
+\bibcite{Pisano2008}{46}
+\bibcite{Provost2000}{47}
+\bibcite{Rosenblatt1962}{48}
+\bibcite{Rumelhart1986}{49}
+\bibcite{Russakovsky2015}{50}
+\bibcite{Sahiner1996}{51}
+\bibcite{Schmidhuber2015}{52}
+\bibcite{Sickles2013}{53}
+\bibcite{Simonyan2014}{54}
+\bibcite{Skaane2007}{55}
+\bibcite{Springenberg2014}{56}
+\bibcite{Srivastava2014}{57}
+\bibcite{Taigman2014}{58}
+\bibcite{Tang2009}{59}
+\bibcite{Wei1995}{60}
+\bibcite{Werbos1974}{61}
+\bibcite{Widrow1960}{62}
+\bibcite{Zheng2012}{63}
 \@writefile{toc}{\contentsline {chapter}{Bibliography}{50}{chapter*.47}}

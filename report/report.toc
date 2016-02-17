@@ -32,19 +32,19 @@
 \contentsline {paragraph}{Unbalanced data}{25}{section*.28}
 \contentsline {paragraph}{Software}{26}{section*.29}
 \contentsline {section}{\numberline {2.7}Convolutional Networks in Breast Cancer Research}{26}{section.2.7}
-\contentsline {paragraph}{Summary}{27}{section*.30}
+\contentsline {paragraph}{Overview}{27}{section*.30}
 \contentsline {subsection}{\numberline {2.7.1}Detection of breast masses}{27}{subsection.2.7.1}
 \contentsline {subsection}{\numberline {2.7.2}Detection of microcalcifications}{28}{subsection.2.7.2}
 \contentsline {subsection}{\numberline {2.7.3}Diagnosis of breast masses}{29}{subsection.2.7.3}
-\contentsline {subsection}{\numberline {2.7.4}Tissue segmentation}{30}{subsection.2.7.4}
+\contentsline {subsection}{\numberline {2.7.4}Tissue segmentation}{29}{subsection.2.7.4}
 \contentsline {chapter}{\numberline {3}Solution Model}{33}{chapter.3}
-\contentsline {section}{\numberline {3.1}Operationalization}{33}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Task definition}{33}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Database}{33}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.1}Task definition}{33}{section.3.1}
+\contentsline {section}{\numberline {3.2}Data set}{33}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Database}{33}{subsection.3.2.1}
 \contentsline {paragraph}{Decision}{34}{section*.31}
 \contentsline {paragraph}{Alternatives}{34}{section*.32}
-\contentsline {subsection}{\numberline {3.1.3}BCDR-DM}{35}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}Image retrieval}{35}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.2.2}BCDR-DM}{35}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Image retrieval/Preprocessing}{35}{subsection.3.2.3}
 \contentsline {paragraph}{Image dimensions}{35}{section*.33}
 \contentsline {paragraph}{Cropping}{36}{section*.34}
 \contentsline {paragraph}{Stride}{36}{section*.35}
@@ -53,23 +53,25 @@
 \contentsline {paragraph}{Label information}{37}{section*.38}
 \contentsline {paragraph}{Image enhancement}{37}{section*.39}
 \contentsline {paragraph}{Data augmentation}{37}{section*.41}
-\contentsline {paragraph}{Resizing}{38}{section*.42}
+\contentsline {paragraph}{Resizing}{37}{section*.42}
 \contentsline {paragraph}{Storage}{38}{section*.44}
-\contentsline {section}{\numberline {3.2}Training}{40}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Data set}{40}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Hardware}{40}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Architecture}{40}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Evaluation}{41}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Software}{41}{subsection.3.2.5}
-\contentsline {section}{\numberline {3.3}Implementation}{41}{section.3.3}
-\contentsline {section}{\numberline {3.4}Implementation details}{41}{section.3.4}
-\contentsline {section}{\numberline {3.5}Evaluation metrics}{41}{section.3.5}
-\contentsline {section}{\numberline {3.6}Presentation of results}{41}{section.3.6}
-\contentsline {section}{\numberline {3.7}Regularization}{42}{section.3.7}
-\contentsline {chapter}{\numberline {4}(Experiment's title)Detection vs diagnosis masses or microcalcifications.}{43}{chapter.4}
-\contentsline {section}{\numberline {4.1}Experiment}{43}{section.4.1}
-\contentsline {section}{\numberline {4.2}Results}{43}{section.4.2}
-\contentsline {section}{\numberline {4.3}Discussion}{43}{section.4.3}
+\contentsline {subsection}{\numberline {3.2.4}Data set}{38}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Data augmentation}{40}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Data division}{40}{subsection.3.2.6}
+\contentsline {section}{\numberline {3.3}Model}{40}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{40}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Training}{41}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Hardware}{41}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Software}{41}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Implementation details}{41}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Regularization}{41}{section.3.5}
+\contentsline {section}{\numberline {3.6}Evaluation}{41}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Post-processing}{41}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Evaluation}{42}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Evaluation metrics}{42}{subsection.3.6.3}
+\contentsline {chapter}{\numberline {4}Mass Segmentation}{43}{chapter.4}
+\contentsline {section}{\numberline {4.1}Results}{43}{section.4.1}
+\contentsline {section}{\numberline {4.2}Discussion}{43}{section.4.2}
 \contentsline {chapter}{\numberline {5}Conclusions}{44}{chapter.5}
 \contentsline {section}{\numberline {5.1}Future Work}{44}{section.5.1}
 \contentsline {chapter}{Bibliography}{50}{chapter*.47}

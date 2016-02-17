@@ -41,7 +41,7 @@ We choose four hyperparameters for this layer: number of feature maps, filter si
 
 \paragraph{ReLU layer} This layer performs an elementwise ReLU activation function to the volume in the previous layer, i.e., each value $z$ in the volume is passed through the nonlinearity $\max(0,z)$. It outputs a volume with the same dimensions of the previous one and has no parameters to learn. A ReLU layer (or any other activation function) usually follows a convolutional layer so it is sometimes considered part of it; we separate them for clarity. 
 
-\paragraph{Pooling layer} The pooling layer subsamples the volume in the previous layer reducing the size of its feature maps but keeping their number. Max pooling slides a fixed-sized windows (normally $2\times2$) with stride 2 (without overlapping) along each feature map and selects the maximum element on that space. This reduces each feature map dimension by half reducing the total number of activations by 75\%, e.g., a $4\times4$ feature map gets subsampled to a $2\times 2$ feature map where values are the maximum activation in each of the four quadrants of the original feature map. Pooling is applied to each feature map separately. A popular variant of max pooling uses $3\times 3$ windows with stride 2, allowing for some overlapping.
+\paragraph{Pooling layer} The pooling layer subsamples the volume in the previous layer reducing the size of its feature maps but keeping their number. Max pooling slides a fixed-sized windows (normally $2\times2$) with stride 2 (without overlapping) along each feature map and selects the maximum element on that space. This reduces each feature map dimension by half reducing the total number of activations by 75\%, e.g., a $4\times4$ feature map gets subsampled to a $2\times 2$ feature map where values are the maximum activation in each of the four quadrants of the original feature map. Pooling is applied to each feature map separately. A popular variant of max pooling uses $3\times 3$ windows with stride 2, allowing for overlapping.
 
 \paragraph{Fully connected layer} A fully connected layer is a convolutional layer with $w\times h$ filters where $w$ and $h$ are the spatial dimensions of the volume in the previous layer and no zero-padding, i.e., filters cover the entire volume, resulting in feature maps with size $1 \times 1$. The output layer of a convolutional network is always fully connected with as many feature maps as possible classes.% We interpret the scores of the output layer like those of regular neural networks as the (unnormalized log) probability of $x$ belonging to class $k$.  
 
@@ -69,14 +69,16 @@ Figure~\ref{fig:ConvNetExample} shows a convolutional network with different kin
 	\label{fig:ConvNetExample}
 \end{figure}
 
-Lately, simpler convolutional network architectures have emerged. The All Convolutional Net~\cite{Springenberg2014} is a network formed solely by convolutional layers: we replace pooling layers by convolutional layers with larger strides. This greatly increases the number of parameters so it is inappropiate for small data sets. \emph{Transfer learning} is a related trend where we train a convolutional network on data from a specific domain and later reuse it to extract image features in a different domain or as an initialized network to fine-tune with the new data.
+Lately, simpler convolutional network architectures have emerged. The All Convolutional Net~\cite{Springenberg2014} is a network formed solely by convolutional layers: we replace pooling layers with convolutional layers with the same filter size, stride and number of feature maps; it learns the pooling operation.
+% This greatly increases the number of parameters so it is inappropiate for small data sets.
+\emph{Transfer learning} is a related trend where we train a convolutional network on data from a specific domain and later reuse it to extract image features in a different domain or as an initial network to fine-tune with new data.
 
 The loss function for a multiclass convolutional network is similar to that for a regular neural network (Eq.~\ref{eq:ANNRegularizedLossFunction}) except that, in this case, the convolutional network defines the vector score $h_\Theta(x)$.
 \begin{equation}
 	L(\Theta) = -\frac{1}{m} \sum_{i=1}^m \log \left ( \frac{ e^{h_\Theta(x^{(i)})_{y^{(i)}}} }{ \sum_{j=1}^K e^{ h_\Theta (x^{(i)})_j} } \right ) + \frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s^{(l)}}\sum_{j=1}^{s^{(l+1)}} \left(\Theta^{(l)}_{ij}\right)^2
 	\label{eq:ConvNetLossFunction}
 \end{equation}
-This function is differentiable with respect to $\Theta$, thus, we can train the entire convolutional network via gradient descent. We use backpropagation to calculate the gradient of the loss function.
+This function is differentiable with respect to $\Theta$, thus, we can train the entire network via gradient descent. We calculate the gradient of the loss function with backpropagation.% We use backpropagation to calculate the gradient of the loss function.
 
 \begin{comment}
 In this section we revised the standard features and training of current convolutional networks. For an in depth review of convolutional networks, see \cite{Karpathy2015}. For a complete overview of the history and state of deep learning, see \cite{Schmidhuber2015}. Section~\ref{sec:PracticalDL} gives some practical advice for choosing hyperparameters and training deep architectures.
