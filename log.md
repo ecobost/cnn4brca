@@ -20,6 +20,7 @@ Log with activities and questions arising during every week
 	Answer: For model selection IOU is going to try to maximize the intersection and minimize the union as the union is waaay bigger (because objects are small), it will probably try to minimize the union more prediciting less positive labels and it may lose sensitivity (for the sake of specificity). Not sure about this, though, seems like F-1 is gonna do the same.
 2. Should I leave Section 2.7 citations as "[23] trained ..." or write "Ge et al. trained"?
 3. For background, should I cite all articles where a netwrok appear, if for example they reported something twice.
+4. In the solution model, should I write all alternatives, say what I chose, and explain why I choose the one i chose or just say what I chose?
 
 
 ## Jan 25 - Feb 11

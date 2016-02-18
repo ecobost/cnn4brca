@@ -25,26 +25,25 @@
 \BOOKMARK [0][-]{chapter.3}{Solution Model}{}% 25
 \BOOKMARK [1][-]{section.3.1}{Task definition}{chapter.3}% 26
 \BOOKMARK [1][-]{section.3.2}{Data set}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.2.1}{Database}{section.3.2}% 28
-\BOOKMARK [2][-]{subsection.3.2.2}{BCDR-DM}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.1}{Database II}{section.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.2.2}{Database I}{section.3.2}% 29
 \BOOKMARK [2][-]{subsection.3.2.3}{Image retrieval/Preprocessing}{section.3.2}% 30
-\BOOKMARK [2][-]{subsection.3.2.4}{Data set}{section.3.2}% 31
-\BOOKMARK [2][-]{subsection.3.2.5}{Data augmentation}{section.3.2}% 32
-\BOOKMARK [2][-]{subsection.3.2.6}{Data division}{section.3.2}% 33
-\BOOKMARK [1][-]{section.3.3}{Model}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.3.1}{Architecture}{section.3.3}% 35
-\BOOKMARK [1][-]{section.3.4}{Training}{chapter.3}% 36
-\BOOKMARK [2][-]{subsection.3.4.1}{Hardware}{section.3.4}% 37
-\BOOKMARK [2][-]{subsection.3.4.2}{Software}{section.3.4}% 38
-\BOOKMARK [2][-]{subsection.3.4.3}{Implementation details}{section.3.4}% 39
-\BOOKMARK [1][-]{section.3.5}{Regularization}{chapter.3}% 40
-\BOOKMARK [1][-]{section.3.6}{Evaluation}{chapter.3}% 41
-\BOOKMARK [2][-]{subsection.3.6.1}{Post-processing}{section.3.6}% 42
-\BOOKMARK [2][-]{subsection.3.6.2}{Evaluation}{section.3.6}% 43
-\BOOKMARK [2][-]{subsection.3.6.3}{Evaluation metrics}{section.3.6}% 44
-\BOOKMARK [0][-]{chapter.4}{Mass Segmentation}{}% 45
-\BOOKMARK [1][-]{section.4.1}{Results}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.2}{Discussion}{chapter.4}% 47
-\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 48
-\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 49
-\BOOKMARK [0][-]{chapter*.47}{Bibliography}{}% 50
+\BOOKMARK [2][-]{subsection.3.2.4}{Data augmentation}{section.3.2}% 31
+\BOOKMARK [2][-]{subsection.3.2.5}{Data division}{section.3.2}% 32
+\BOOKMARK [1][-]{section.3.3}{Model}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.3.1}{Architecture}{section.3.3}% 34
+\BOOKMARK [1][-]{section.3.4}{Training}{chapter.3}% 35
+\BOOKMARK [2][-]{subsection.3.4.1}{Hardware}{section.3.4}% 36
+\BOOKMARK [2][-]{subsection.3.4.2}{Software}{section.3.4}% 37
+\BOOKMARK [2][-]{subsection.3.4.3}{Regularization}{section.3.4}% 38
+\BOOKMARK [2][-]{subsection.3.4.4}{Implementation details}{section.3.4}% 39
+\BOOKMARK [1][-]{section.3.5}{Evaluation}{chapter.3}% 40
+\BOOKMARK [2][-]{subsection.3.5.1}{Post-processing}{section.3.5}% 41
+\BOOKMARK [2][-]{subsection.3.5.2}{Evaluation}{section.3.5}% 42
+\BOOKMARK [2][-]{subsection.3.5.3}{Evaluation metrics}{section.3.5}% 43
+\BOOKMARK [0][-]{chapter.4}{Mass Segmentation}{}% 44
+\BOOKMARK [1][-]{section.4.1}{Results}{chapter.4}% 45
+\BOOKMARK [1][-]{section.4.2}{Discussion}{chapter.4}% 46
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 47
+\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 48
+\BOOKMARK [0][-]{chapter*.47}{Bibliography}{}% 49

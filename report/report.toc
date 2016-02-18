@@ -40,38 +40,37 @@
 \contentsline {chapter}{\numberline {3}Solution Model}{33}{chapter.3}
 \contentsline {section}{\numberline {3.1}Task definition}{33}{section.3.1}
 \contentsline {section}{\numberline {3.2}Data set}{33}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Database}{33}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.1}Database II}{33}{subsection.3.2.1}
 \contentsline {paragraph}{Decision}{34}{section*.31}
 \contentsline {paragraph}{Alternatives}{34}{section*.32}
-\contentsline {subsection}{\numberline {3.2.2}BCDR-DM}{35}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Image retrieval/Preprocessing}{35}{subsection.3.2.3}
-\contentsline {paragraph}{Image dimensions}{35}{section*.33}
+\contentsline {subsection}{\numberline {3.2.2}Database I}{35}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Image retrieval/Preprocessing}{36}{subsection.3.2.3}
+\contentsline {paragraph}{Image dimensions}{36}{section*.33}
 \contentsline {paragraph}{Cropping}{36}{section*.34}
 \contentsline {paragraph}{Stride}{36}{section*.35}
-\contentsline {paragraph}{Background}{36}{section*.36}
-\contentsline {paragraph}{Assigning labels}{36}{section*.37}
+\contentsline {paragraph}{Background}{37}{section*.36}
+\contentsline {paragraph}{Assigning labels}{37}{section*.37}
 \contentsline {paragraph}{Label information}{37}{section*.38}
-\contentsline {paragraph}{Image enhancement}{37}{section*.39}
-\contentsline {paragraph}{Data augmentation}{37}{section*.41}
-\contentsline {paragraph}{Resizing}{37}{section*.42}
-\contentsline {paragraph}{Storage}{38}{section*.44}
-\contentsline {subsection}{\numberline {3.2.4}Data set}{38}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Data augmentation}{40}{subsection.3.2.5}
-\contentsline {subsection}{\numberline {3.2.6}Data division}{40}{subsection.3.2.6}
-\contentsline {section}{\numberline {3.3}Model}{40}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{40}{subsection.3.3.1}
+\contentsline {paragraph}{Image enhancement}{38}{section*.39}
+\contentsline {paragraph}{Data augmentation}{39}{section*.41}
+\contentsline {paragraph}{Resizing}{39}{section*.42}
+\contentsline {paragraph}{Storage}{39}{section*.44}
+\contentsline {subsection}{\numberline {3.2.4}Data augmentation}{39}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Data division}{39}{subsection.3.2.5}
+\contentsline {section}{\numberline {3.3}Model}{39}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{39}{subsection.3.3.1}
 \contentsline {section}{\numberline {3.4}Training}{41}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Hardware}{41}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Software}{41}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Implementation details}{41}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}Regularization}{41}{section.3.5}
-\contentsline {section}{\numberline {3.6}Evaluation}{41}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Post-processing}{41}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Evaluation}{42}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Evaluation metrics}{42}{subsection.3.6.3}
-\contentsline {chapter}{\numberline {4}Mass Segmentation}{43}{chapter.4}
-\contentsline {section}{\numberline {4.1}Results}{43}{section.4.1}
-\contentsline {section}{\numberline {4.2}Discussion}{43}{section.4.2}
-\contentsline {chapter}{\numberline {5}Conclusions}{44}{chapter.5}
-\contentsline {section}{\numberline {5.1}Future Work}{44}{section.5.1}
-\contentsline {chapter}{Bibliography}{50}{chapter*.47}
+\contentsline {subsection}{\numberline {3.4.2}Software}{42}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Regularization}{42}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Implementation details}{42}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}Evaluation}{42}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Post-processing}{42}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Evaluation}{42}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Evaluation metrics}{43}{subsection.3.5.3}
+\contentsline {chapter}{\numberline {4}Mass Segmentation}{44}{chapter.4}
+\contentsline {section}{\numberline {4.1}Results}{44}{section.4.1}
+\contentsline {section}{\numberline {4.2}Discussion}{44}{section.4.2}
+\contentsline {chapter}{\numberline {5}Conclusions}{45}{chapter.5}
+\contentsline {section}{\numberline {5.1}Future Work}{45}{section.5.1}
+\contentsline {chapter}{Bibliography}{51}{chapter*.47}

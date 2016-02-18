@@ -1,38 +1,18 @@
 \chapter{Solution Model}
 \label{ch:Model}
-We document here design decisions, its rationale and implemetation notes.
 
-%We document here how we tranform/reduce the breast cancer detection and diagnosis task into a machine learning task able to be taken by convolutional networks, i.e., how we produce a data set with $m$ inputs $x^{(i)} \in \mathbb{R}^n$ and $m$ corresponding labels $y^{(i)}$. We use this notation throughout this section. 
+% We [outline|describe|introduce] our [proposed] [solution|model], [justify] design decisions and [implementation details| detail implementation| document implementation details].
+In this chapter, we describe our solution, justify design decisions and detail implementation.
 
 \section{Task definition}
-Segment lesions (tumors or all massses) (benign and malignant or only malignant) from normal tissue. Masses or microcalcifications.
-%We use digital mammograms to detect breast masses and produce a valid image segmentation.
-
+We segment digital mammograms into two separate regions: breast mass (benign or malignant) and general tissue.
+Breast area is previously separated from the background by simple thresholding.
+In particular, we train a convolutional network to estimate the probability of each pixel belonging to a mass and use these values to generate a valid segmentation.
+%The breast area is separated from the background by simple thresholding.
+%Background and breast area are separated using thresholded to zero.
 
 \section{Data set}
-
-	\subsection{Database}
-	\input{model/database}
-
-	\subsection{BCDR-DM}
-	Yet to write
-% Files and how are they organized. Data available per case and per mammogram. How are boundaries written. formats, etc.
-% 159 calcifications, 36 micro, 11 micro+calcif, thus 108 micro or calcif. 106 nodule, 20 nodule+ calcific, 11 nodule + micro
-	
-	\subsection{Image retrieval/Preprocessing}
-	\input{model/imageRetrieval} 
-% Images will not be zero-centered , normalized or whitened. global contrast
-
-	\subsection{Data set}
-	Yet to write
-% We have x number of images with x positives and negatives. Resunmied in Table...
-	
-	\subsection{Data augmentation}
-	Rotations and flipping of original big images
-
-
-	\subsection{Data division}
-	70/15/15 is a good split. stratified per patient, this total number of patients in each set and this total number of mammograms (after augmentation) and this total number of lesions.
+\input{model/dataset}
 
 \section{Model}
 	\subsection{Architecture}
@@ -91,12 +71,12 @@ Segment lesions (tumors or all massses) (benign and malignant or only malignant)
 	\subsection{Software}
 	We use Caffe~\cite{Jia2014} to train the networks and Python to develop any other tools (image retrieval and augmentation, model evaluation, figure generation, etc.).
 
-	\subsection{Implementation details}
-	Python, libraries used,etc.
-
-	\section{Regularization}
+	\subsection{Regularization}
 Dropout and l2-norm
 Other options: batch normalization
+
+	\subsection{Implementation details}
+	Python, libraries used,etc.
 
 \section{Evaluation}
 
@@ -130,3 +110,4 @@ we could also present a heatmap with the different probabilities in each pixel o
 
 	For detection of lesions on entire mammograms we slide the trained convolutional network across the mammogram computing a per-pixel prediction. The generated heatmap preserves the size of the original mammogram (with some zero-padding) and can be presented side to side to the original mammogram as a CAD system. In case this heatmap is noisy (predictions changes abruptly from pixel to pixel) we could use a median or gaussian filter to smooth it out.% We do not evaluate the network on the entire mammogram (or per patient), we limit ourselves to show the results.
 	\subsection{Evaluation metrics}
+F1-score AUc and those things are calculated only over breast tissue and lessions.
