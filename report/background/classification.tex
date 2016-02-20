@@ -32,9 +32,10 @@ A popular way to avoid overfitting (and underfitting) is to use a flexible model
 \end{equation}
 where $||\cdot||_2$ is the euclidean norm of a vector. In addition to reducing training error, minimizing the regularized loss function will shrinken the parameters $\theta$ hopefully setting some of them to zero and simplifying $h(x)$. The \emph{regularization strength} $\lambda$ regulates the tradeoff between less training error and less regularization error. \emph{$l_1$-norm regularization} or \emph{lasso} is similar to $l_2$-norm regularization except that it shrinks the $l_1$-norm of $\theta$ instead of the $l_2$-norm.
 
-To evaluate the performance of a classifier we use a separate set of examples (a test set) that should have not been used for training or validation. Classification accuracy is the standard performance measure in machine learning. \emph{Accuracy} measures the proportion of test set examples correctly classified. Its compliment, \emph{error rate}, measures the proportion of test set examples incorrectly classified. Accuracy, nonetheless, is inappropiate for \emph{unbalanced data sets}, data sets that have many more examples of one class than the other~\footnote{Cancer data sets are often unbalanced as most examples belong to the negative class (no cancer) than the positive class (cancer)}. A classifier that always predicts the predominant class regardless of the input will have high accuracy, it will be right most of the time, even though it is a bad model for the problem.
+%\subsection{Evaluation metrics}
+We evaluate the performance of a classifier on a separate set of examples, a test set, that should have not been used for training or validation. The standard performance measure in machine learning is classification accuracy; \emph{accuracy} measures the proportion of test set examples correctly classified. Its compliment, \emph{error rate}, measures the proportion of test set examples incorrectly classified. Accuracy, nonetheless, is inappropiate for \emph{unbalanced data sets}, data sets that have many more examples of one class than the other~\footnote{Cancer data sets are often unbalanced as most examples belong to the negative class (no cancer) than the positive class (cancer)}. A classifier that always predicts the predominant class regardless of the input is highly accurate (it is right most of the time) even though it is a bad model for the problem.
 
-In unbalanced data sets, we use metrics based on the confusion matrix of the classifier to evaluate its quality. A \emph{confusion matrix} is a matrix that summarizes the results of a classifier in the test set (Tab.~\ref{tab:ConfusionMatrix}).
+In unbalanced data sets, we use metrics based on the confusion matrix of the classifier. A \emph{confusion matrix} summarizes the results of a classifier in the test set (Tab.~\ref{tab:ConfusionMatrix}).
 \begin{table}[h]
 	\centering
 	\begin{tabular}{cc|c|c|}
@@ -72,7 +73,7 @@ Sensitivity and specificity are preferred to present results in medical diagnosi
 The \emph{threshold} of a classifier is the probability at and over which an example is classified as positive. It regulates the trade-off between sensitivity and specificity (or similarly precision and recall): a classifier with a low threshold is prone to classify examples as positive but will potentially produce many false positives thus having high sensitivity but low specificity and viceversa for high thresholds. The \emph{precision-recall curve} of a classifier is a plot of its precision (on the y axis) against its recall (on the x axis) as the threshold varies (Fig.~\ref{fig:AUCandPRAUC}). The \emph{receiver operating characteristic curve} plots sensitivity (also called true positive rate) against 1-specificity (also called false positive rate) as the threshold varies (Fig.~\ref{fig:AUCandPRAUC}). The \emph{area under the precision-recall curve} PRAUC and the \emph{area under the receiver operating characteristic curve} AUC summarize the performance of the classifier over all possible thresholds and are used for model selection; they range from 0 to 1 with higher being better. As with previous metrics, AUC is preferred for medical diagnosis while PRAUC is mostly used in machine learning. 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width = 0.8\textwidth]{plots/AUCandPRAUC.png}
+	\includegraphics[width = 0.83\textwidth]{plots/AUCandPRAUC.png}
 	\caption[Sample ROC and PR curves]{A sample receiver operating characteristic curve (left) and precision-recall curve (right). Each algorithm is evaluated on different thresholds and the points produced are used to obtain the curves. Image courtesy of~\cite{Davis2006}}
 	\label{fig:AUCandPRAUC}
 \end{figure}
@@ -93,4 +94,4 @@ Using F1 I'll probably predict less positives, sensitivity is going to go slight
 Other diagonal, the algorithm will learn negatives pretty well, so the one that predicts less positives(f1) probably isn{t learning much (it is predicting all negative).
 \end{comment}
 
-Finally, we point out that this section is a compendium of basic concepts in machine learning and lefts aside many subtleties of practical machine learning. Notation and content is mostly based on materials from Stanford's Machine Learning course~\cite{Ng2014}.
+Finally, we point out that this section is a compendium of basic concepts in machine learning and leaves aside many subtleties of practical machine learning. Notation and content is mostly based on materials from Stanford's Machine Learning course~\cite{Ng2014}.

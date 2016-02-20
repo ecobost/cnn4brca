@@ -66,7 +66,15 @@ Because many parameters need to be estimated, deep neural networks are susceptib
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width = 0.68\textwidth]{plots/dropout.png}
+	\begin{subfigure}{0.3\textwidth}
+                \includegraphics[width=\textwidth]{plots/dropout1.png}
+		\caption{Standard neural network}
+        \end{subfigure}
+	~
+	\begin{subfigure}{0.3\textwidth}
+                \includegraphics[width=\textwidth]{plots/dropout2.png}
+		\caption{After applying dropout}
+        \end{subfigure}
 	\caption[Example of Dropout]{Dropout applied to a simple neural network. Crossed units are dropped. Image courtesy of~\cite{Srivastava2014}.}
 	\label{fig:Dropout}
 \end{figure}

@@ -13,7 +13,8 @@ This work was continued by Gurcan et al.~\cite{Gurcan2002} who selected an optim
 Until this point, researchers used few data to train networks (2 to 3 layers, less than 10 thousand parameters) without modern features to classify preselected regions.
 Recently, Arevalo et al.~\cite{Arevalo2016} diagnosed breast masses with a bigger convolutional network (4 layers, 3.4 million parameters) that incorporates many deep learning advances; it outperformed hand-crafted and image-based features.
 Lastly, Dubrovina et al.~\cite{Dubrovina2015} trained a convolutional network to perform segmentation of different breast tissues; despite the small network and data set, results were promising.
-To the best of the author knowledge, this is the only attempt to use supervised convolutional networks for mammographic segmentation~\footnote{Petersen et al.~\cite{Petersen2014} segment breast tissue using a convolutional network trained with unlabelled data.}. These last studies are the most relevant to this thesis.
+To the best of the author knowledge, this is the only attempt to use supervised convolutional networks for mammographic segmentation~\footnote{Petersen et al.~\cite{Petersen2014} segmented breast tissue using a convolutional autoencoder.}.
+These last studies are the most relevant to this thesis.
 
 In summary, convolutional networks have been used sporadically for breast cancer detection and diagnosis but they have not been used for lesion segmentation or trained with big data sets of digital mammograms. 
 %We apply insights from these works to train end-to-end all convolutional networks for lesion segmentation in digital mammograms.
@@ -323,8 +324,7 @@ This work showed that convolutional networks outperform image-based and hand-cra
 - Many convolutional networks are trained with segments of different scales and all results from different networks is used in the FC layers
 - not clear whether they do segmentation or scoring for healthy and diseased. It looks like it is scoring.
 - 0.65 AUC
-- http://deep-learning.compute.dtu.dk/wp-content/uploads/2014/08/poster_Diao.pdf.
-- https://books.google.com.mx/books?id=z-MkBAAAQBAJ&pg=PA88&lpg=PA88&dq=Breast+Tissue+Segmentation+and+Mammographic+Risk+Scoring+Using+Deep+Learning&source=bl&ots=uOf2-bXKqT&sig=OKtt2L67KN8qhZJR1Fs27FB28G4&hl=en&sa=X&ved=0ahUKEwjuzqHr8_XKAhXBPj4KHSraAd4Q6AEIUDAI#v=onepage&q=Breast%20Tissue%20Segmentation%20and%20Mammographic%20Risk%20Scoring%20Using%20Deep%20Learning&f=false
+- looks a bit more like transfer learning, the network learns general features form mammograms, and then a fine-tuned classifier is trained on top of it.
 \end{comment}
 %Peterson2014 trained a convolutional network with unlabelled data to perform breast segmentation, i.e., separate between background, pectoral muscle and breast tissue. the network was trained in xxx digitized mammograms with xxx.. A classifier was trained on top of this network to predict the pixel scores. Details of the architecture are not provided. It does, though get to XX% IOU, digitized mammograms.
 

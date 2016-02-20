@@ -1,19 +1,10 @@
 %We document the retrieval, enhancement, labelling and augmentation of [the|our] data set [used for the experiments].
 % We document how we retrieve, enhance, label and augment our data set.
 We document the retrieval, enhancement, labelling and augmentation of our data set.
-	
-	\subsection{Database II}
-	\input{model/database}
 
-	\subsection{Database I}
-There are many publicly available mammography databases and many more which are private. Given the size of the expected network architecture and the data thirst of convolutional networks we focus only on the bigger databases. We also need pixel-level labels, i.e., lesions to be marked on each mammogram; this is generally made by expert radiologists drawing the boundaries of the lessions in the mammograms.
-% Do I need to have perfect image segmentation?. Maybe not.
-Furthermore, we prefer to have good contrast resolution, the number of gray colors represented per pixel, and good spatial resolution, the area represented per pixel: at least 12-bit images ($10^12 = 4048$ gray values per pixel) with 0.1-0.15 mm maximum pixel size. Greater constrast resolution means that more brightness values are captured per pixel while greater spatial resolution means that hopefully more detail is included in the image. Most mammography databases including all described below satisfy these conditions.
-
-	The Breast Cancer Digital Repository (BCDR-DM) consists of 3.6K digital mammograms from 724 patients; this number was obtained from its website (\url{bcdr.eu/information/about}) which also states the database is still in construction and it is expected to have mammograms from 2000 to 3000 patients. Mammograms are 14-bit images with good spatial resolution~\footnote{The webpage does not explicitly states the image's spatial resolution but judging by the size of the entire images it is good enough.}. Each lesion outline is marked in the image along with its assesment and other relevant clinical data. They also have a fairly big repository of digitised film mammograms called BCDR-FM (3.7K) but at lower resolutions.
-% Only has 270 patients(various studies), total 1K images, segmentations are found on image but no acces tfiles. Frick. Ask em for the other maybe.
-
+	\subsection{Database}
 We have decided to use digital over film mammograms. Digital mammograms are sharper and do not have marks, stamps or other artifacts present in digitised film mammograms. On the downside, because the technology is newer it may be harder to obtain big databases and given its higher resolution they are normally heavier in terms of disk space. We believe the network will be able to pick up better features from the higher quality images and that the size on disk will not be a trouble given the storage availability on current computers. A small number of examples in the database is a big problem and some alternatives are offered below in case the network is not able to learn with the available data. For these reasons, we have decided to use initially the BCDR-DM and INbreast databases.
+%BCDR
 %A small desciption is offered below.
 
 %	\subsubsection{BCDR-DM}
@@ -26,10 +17,15 @@ We have decided to use digital over film mammograms. Digital mammograms are shar
 % Images will not be zero-centered , normalized or whitened. global contrast
 % with global contrast stretching will make comparisons across patients not good, because if a pixel is very bright in one patient that is only important with respect to that patient and it may end up (by contrast stretching) having the same value that the pixel in another mammogram who wasn't as bright but was the brightest of the mammogram. i think this makes sense because masss are going ot be bright but only in relation to the patient, maybe one has very fatty tissue so all is white and others have very clear tissue.
 % Labels are background, lession and breast tissue. 
+% Or could I crop the figure closely to the background and then calculate over all spaces (nop). How do you backpropagate through this mask? Just assign perfect scores to evry position in your predictions that is background (check where is the background in the mask), that way it will be counted by normal gradient, but it will not contribute. I could add a layer at the end (or before the loss function), that sets the gradient to zero in the backwards pass if the position it is viewing is  a background pixel. that'll do it.
+% Or i could assume that anythong under the global mean won't be a mass and then during classification and during training just set them to black/treat them as background (this owuld be the equivalent ot train them and test them only on those pixels that are greater than the global means0). But maybe this then reduces the data se too much and I won't learn. More or less half the values are gonna go to zero. I would need to create a label where evrything below the global mena is background (0), any lession is (1) and any other breats tissue  is (0.5). Overcomplicated, better let the network also see some black patches maybe that help it. do get rid of backgorund, though.
+% Or look for clusters/connected components of values in the mammogram (after background reduction) and crop those (boundig box) and train on them, this way i don't need to send the big mammogram but just these cropped parts (in case there is not enough memory). Note: for components to be separated they have to be at least 128 pixels apart (because i have to preserve surroundig region, too). This is not gonna work, because the connected component is going to be the entire breast area, see some examples if you doubt it.
+% Or maybe just crop after background reduction to get rid of some parts that are not needed. Will I win a lot, though?. It looks like I won't. Don't do
 	
 	\subsection{Data augmentation}
-	Rotations and flipping of original big images
+	Rotations and flipping of original big images. the breast and cannals, and nipple may be very different at 90 and 270, flipping an 180 seem fine. Or maybe not.
 
 
 	\subsection{Data division}
 	70/15/15 is a good split. stratified per patient, this total number of patients in each set and this total number of mammograms (after augmentation) and this total number of lesions.
+% do alittle table with rows being percentage of data set, patients, mammograms, # of masses and columns being training, validation test.That way I syummarize all information. i can also add a total column, summing over all trainng and test set.

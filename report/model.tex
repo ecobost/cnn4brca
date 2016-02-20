@@ -4,6 +4,9 @@
 % We [outline|describe|introduce] our [proposed] [solution|model], [justify] design decisions and [implementation details| detail implementation| document implementation details].
 In this chapter, we describe our solution, justify design decisions and detail implementation.
 
+
+% An scheme of the solution is found there and we do it here...
+
 \section{Task definition}
 We segment digital mammograms into two separate regions: breast mass (benign or malignant) and general tissue.
 Breast area is previously separated from the background by simple thresholding.
@@ -74,6 +77,10 @@ In particular, we train a convolutional network to estimate the probability of e
 	\subsection{Regularization}
 Dropout and l2-norm
 Other options: batch normalization
+
+
+	\subsection{Hyperparameters}
+	Learning rate decay, dropout p, ...
 
 	\subsection{Implementation details}
 	Python, libraries used,etc.
