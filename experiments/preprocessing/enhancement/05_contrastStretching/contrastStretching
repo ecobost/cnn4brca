@@ -129,3 +129,13 @@ pBIm = scipy.misc.toimage(pB, mode = 'F')
 pBIm = pBIm.resize((60,60), Image.LANCZOS)
 
 # Print compare bright vs bright and dark vs dark, see if i can find any difference.
+
+
+
+# Create an entire background reduced mammogram
+mammogramBRGlobal = mammogram.astype('float')
+mammogramBRGlobal -= globalMean
+mammogramBRGlobal[mammogramBRGlobal < 0] =0
+mammogramBRGlobal *= (255 / (globalMax-globalMean))
+scipy.misc.imsave("mammogramBRGlobal.png",mammogramBRGlobal)
+
