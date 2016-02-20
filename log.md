@@ -3,9 +3,27 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Feb 18 - Feb 24
+### Activities
+* Writing Section 3.1
+
+### To do
+* Write chapter 3 (Solution Model)
+* Ready database
+* Install TensorFlow (CTS/Laptop)
+* Write network in Tensorflow/Keras
+* Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)
+* Ask for institutional email
+
+### Questions
+1.
+
+
+
 ## Feb 12 - Feb 17
 ### Activities
 * Writing section 2.6 and 2.7
+* Writing Section 3.1
 
 ### To do
 * Write chapter 3 (Solution Model)
@@ -19,8 +37,11 @@ Log with activities and questions arising during every week
 1. Is IOU fine for unbalanced data sets?
 	Answer: For model selection IOU is going to try to maximize the intersection and minimize the union as the union is waaay bigger (because objects are small), it will probably try to minimize the union more prediciting less positive labels and it may lose sensitivity (for the sake of specificity). Not sure about this, though, seems like F-1 is gonna do the same.
 2. Should I leave Section 2.7 citations as "[23] trained ..." or write "Ge et al. trained"?
+	Answer: Say names
 3. For background, should I cite all articles where a netwrok appear, if for example they reported something twice.
+	Answer: No
 4. In the solution model, should I write all alternatives, say what I chose, and explain why I choose the one i chose or just say what I chose?
+	Answer: Just what you chose and justify why. Maybe an alternative but only slightly.
 
 
 ## Jan 25 - Feb 11
@@ -39,7 +60,7 @@ Log with activities and questions arising during every week
 ### Questions
 1. Which post-processing should I use? Gaussian smoothing, cluster-based enhancement, fully connected CRFs or a combination?
 2. Which evaluation metric should I use? Accuracy, F1-score, PRAUC, ROC, IOU, Dice?
-	Answer: IOU
+	Answer: IOU. F1-score in second place.
 3. Should I cite Agarwal2015 (unpublished Stanford report)?
 	Answer: No.
 
