@@ -5,6 +5,7 @@ Log with activities and questions arising during every week
 
 ## Feb 18 - Feb 24
 ### Activities
+* Writing Section 2.6 (Added databases)
 * Writing Section 3.1
 
 ### To do
@@ -16,7 +17,7 @@ Log with activities and questions arising during every week
 * Ask for institutional email
 
 ### Questions
-1.
+1. Should I leave on the database part in Breast cancer or better just delete it and degrade mammograms and maybe put BCDR info in Model/Data set/Database
 
 
 

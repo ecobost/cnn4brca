@@ -17,33 +17,35 @@
 \BOOKMARK [1][-]{section.2.4}{Image Segmentation}{chapter.2}% 17
 \BOOKMARK [1][-]{section.2.5}{Practical Deep Learning}{chapter.2}% 18
 \BOOKMARK [1][-]{section.2.6}{Breast Cancer}{chapter.2}% 19
-\BOOKMARK [1][-]{section.2.7}{Convolutional Networks in Breast Cancer Research}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.7.1}{Detection of breast masses}{section.2.7}% 21
-\BOOKMARK [2][-]{subsection.2.7.2}{Detection of microcalcifications}{section.2.7}% 22
-\BOOKMARK [2][-]{subsection.2.7.3}{Diagnosis of breast masses}{section.2.7}% 23
-\BOOKMARK [2][-]{subsection.2.7.4}{Tissue segmentation}{section.2.7}% 24
-\BOOKMARK [0][-]{chapter.3}{Solution Model}{}% 25
-\BOOKMARK [1][-]{section.3.1}{Task definition}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.2}{Data set}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.2.1}{Database}{section.3.2}% 28
-\BOOKMARK [2][-]{subsection.3.2.2}{Image retrieval/Preprocessing}{section.3.2}% 29
-\BOOKMARK [2][-]{subsection.3.2.3}{Data augmentation}{section.3.2}% 30
-\BOOKMARK [2][-]{subsection.3.2.4}{Data division}{section.3.2}% 31
-\BOOKMARK [1][-]{section.3.3}{Model}{chapter.3}% 32
-\BOOKMARK [2][-]{subsection.3.3.1}{Architecture}{section.3.3}% 33
-\BOOKMARK [1][-]{section.3.4}{Training}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.4.1}{Hardware}{section.3.4}% 35
-\BOOKMARK [2][-]{subsection.3.4.2}{Software}{section.3.4}% 36
-\BOOKMARK [2][-]{subsection.3.4.3}{Regularization}{section.3.4}% 37
-\BOOKMARK [2][-]{subsection.3.4.4}{Hyperparameters}{section.3.4}% 38
-\BOOKMARK [2][-]{subsection.3.4.5}{Implementation details}{section.3.4}% 39
-\BOOKMARK [1][-]{section.3.5}{Evaluation}{chapter.3}% 40
-\BOOKMARK [2][-]{subsection.3.5.1}{Post-processing}{section.3.5}% 41
-\BOOKMARK [2][-]{subsection.3.5.2}{Evaluation}{section.3.5}% 42
-\BOOKMARK [2][-]{subsection.3.5.3}{Evaluation metrics}{section.3.5}% 43
-\BOOKMARK [0][-]{chapter.4}{Mass Segmentation}{}% 44
-\BOOKMARK [1][-]{section.4.1}{Results}{chapter.4}% 45
-\BOOKMARK [1][-]{section.4.2}{Discussion}{chapter.4}% 46
-\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 47
-\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 48
-\BOOKMARK [0][-]{chapter*.45}{Bibliography}{}% 49
+\BOOKMARK [2][-]{subsection.2.6.1}{Mammograms}{section.2.6}% 20
+\BOOKMARK [2][-]{subsection.2.6.2}{Mammographic databases}{section.2.6}% 21
+\BOOKMARK [1][-]{section.2.7}{Convolutional Networks in Breast Cancer Research}{chapter.2}% 22
+\BOOKMARK [2][-]{subsection.2.7.1}{Detection of breast masses}{section.2.7}% 23
+\BOOKMARK [2][-]{subsection.2.7.2}{Detection of microcalcifications}{section.2.7}% 24
+\BOOKMARK [2][-]{subsection.2.7.3}{Diagnosis of breast masses}{section.2.7}% 25
+\BOOKMARK [2][-]{subsection.2.7.4}{Tissue segmentation}{section.2.7}% 26
+\BOOKMARK [0][-]{chapter.3}{Solution Model}{}% 27
+\BOOKMARK [1][-]{section.3.1}{Task definition}{chapter.3}% 28
+\BOOKMARK [1][-]{section.3.2}{Data set}{chapter.3}% 29
+\BOOKMARK [2][-]{subsection.3.2.1}{Database}{section.3.2}% 30
+\BOOKMARK [2][-]{subsection.3.2.2}{Image retrieval/Preprocessing}{section.3.2}% 31
+\BOOKMARK [2][-]{subsection.3.2.3}{Data augmentation}{section.3.2}% 32
+\BOOKMARK [2][-]{subsection.3.2.4}{Data division}{section.3.2}% 33
+\BOOKMARK [1][-]{section.3.3}{Model}{chapter.3}% 34
+\BOOKMARK [2][-]{subsection.3.3.1}{Architecture}{section.3.3}% 35
+\BOOKMARK [1][-]{section.3.4}{Training}{chapter.3}% 36
+\BOOKMARK [2][-]{subsection.3.4.1}{Hardware}{section.3.4}% 37
+\BOOKMARK [2][-]{subsection.3.4.2}{Software}{section.3.4}% 38
+\BOOKMARK [2][-]{subsection.3.4.3}{Regularization}{section.3.4}% 39
+\BOOKMARK [2][-]{subsection.3.4.4}{Hyperparameters}{section.3.4}% 40
+\BOOKMARK [2][-]{subsection.3.4.5}{Implementation details}{section.3.4}% 41
+\BOOKMARK [1][-]{section.3.5}{Evaluation}{chapter.3}% 42
+\BOOKMARK [2][-]{subsection.3.5.1}{Post-processing}{section.3.5}% 43
+\BOOKMARK [2][-]{subsection.3.5.2}{Evaluation}{section.3.5}% 44
+\BOOKMARK [2][-]{subsection.3.5.3}{Evaluation metrics}{section.3.5}% 45
+\BOOKMARK [0][-]{chapter.4}{Mass Segmentation}{}% 46
+\BOOKMARK [1][-]{section.4.1}{Results}{chapter.4}% 47
+\BOOKMARK [1][-]{section.4.2}{Discussion}{chapter.4}% 48
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 49
+\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 50
+\BOOKMARK [0][-]{chapter*.44}{Bibliography}{}% 51

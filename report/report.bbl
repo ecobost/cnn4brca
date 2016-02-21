@@ -253,11 +253,23 @@
 \newblock A logical calculus of the ideas immanent in nervous activity.
 \newblock {\em Bulletin of Mathematical Biophysics 5\/} (1943), 115--133.
 
-\bibitem{Moreira2012}
-{\sc Moreira, I.~C., Amaral, I., Domingues, I., Cardoso, A., Cardoso, M.~J.,
-  and Cardoso, J.~S.}
-\newblock Inbreast: Toward a full-field digital mammographic database.
-\newblock {\em Academic Radiology 19}, 2 (2012), 236--248.
+\bibitem{Moura2013b}
+{\sc Moura, D.~C., and Guevara~López, M.~A.}
+\newblock An evaluation of image descriptors combined with clinical data for
+  breast cancer diagnosis.
+\newblock {\em International Journal of Computer Assisted Radiology and Surgery
+  8}, 4 (2013), 561--574.
+
+\bibitem{Moura2013a}
+{\sc Moura, D.~C., López~Guevara, M.~A., Cunha, P., González~de Posada, N.,
+  Ramos-Pollan, R., Ramos, I., Pinheiro~Loureiro, J., Moreira, I.~C.,
+  Ferreira~Araújo, B.~M., and Cardoso~Fernandes, T.}
+\newblock {\em Progress in Pattern Recognition, Image Analysis, Computer
+  Vision, and Applications: 18th Iberoamerican Congress, CIARP 2013, Havana,
+  Cuba, November 20-23, 2013, Proceedings, Part I}.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013,
+  ch.~Benchmarking Datasets for Breast Cancer Computer-Aided Diagnosis
+  ({CAD}x), pp.~326--333.
 
 \bibitem{NCI2012}
 {\sc {National Cancer Institute}}.
@@ -422,13 +434,5 @@
 \newblock Adaptive switching circuits.
 \newblock In {\em 1960 {IRE} {WESCON} Convention Record, Part 4\/} (New York,
   1960), {IRE}, pp.~96--104.
-
-\bibitem{Zheng2012}
-{\sc Zheng, B., Sumkin, J.~H., Zuley, M.~L., Lederman, D., Wang, X., and Gur,
-  D.}
-\newblock Computer-aided detection of breast masses depicted on full-field
-  digital mammograms: a performance assessment.
-\newblock {\em The British Journal of Radiology 85}, 1014 (2012), e153--e161.
-\newblock PMID: 21343322.
 
 \end{thebibliography}

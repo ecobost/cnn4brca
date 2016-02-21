@@ -11,9 +11,9 @@
 
 The \emph{cancer stage} depends on the size of the tumor and whether the cancer cells have spread to neighboring tissue or other parts of the body. It is expressed as a Roman numeral ranging from 0 through IV; stage I cancer is considered \emph{early-stage breast cancer} and stage IV cancer is considered \emph{advanced}. Stage 0 describes non-invasive breast cancers, also known as \emph{carcinoma in situ}. Stage I, II and III describe invasive breast cancer, i.e., cancer has invaded normal, surrounding breast tissue. Stage IV is used to describe metastatic cancer, i.e., it has spread beyond nearby tissue to other organs of the body.
 
-%\subsection{Mammograms}
-\subsubsection{Mammograms}
-A \emph{mammogram} is an x-ray image of the breast. Radiologists use \emph{screening mammograms} (normally composed of two mammograms of each breast) to check for breast cancer signs on women who lack symptoms of the disease. If an abnormality is found, a \emph{diagnostic mammogram} is ordered, these are detailed x-ray pictures of the suspicious region~\cite{NCI2014}. A standard mammogram is shown in Figure~\ref{fig:normalMammogram}.
+\subsection{Mammograms}
+%\subsubsection{Mammograms}
+A \emph{mammogram} is an x-ray image of the breast. Radiologists use \emph{screening mammograms} (normally composed of two mammograms of each breast) to check for breast cancer signs on women who lack symptoms of the disease. If an abnormality is found, a \emph{diagnostic mammogram} is ordered; these are detailed x-ray pictures of the suspicious region~\cite{NCI2014}. A standard mammogram is shown in Figure~\ref{fig:normalMammogram}.
 
 \begin{figure}[h]
 	\centering
@@ -54,22 +54,32 @@ Diagnosis: Find malignant lesions
 	\label{fig:breastCancerSigns}
 \end{figure}
 
-Conventional mammography uses film to record x-ray images of the breast. \emph{Digital mammography}, on the other hand, uses digital receptors to convert the x-rays into electrical signals and stores the image electronically. Digital mammograms offer a clearer picture of the breast and can be digitally manipulated and shared between health care providers.
+%Conventional mammography uses film to record x-ray images of the breast. \emph{Digital mammography}, on the other hand, uses digital receptors that convert x-rays into electrical signals and stores the image electronically. 
+Conventional mammography records mammograms in film; \emph{digital mammography}, on the other hand, converts x-rays into electrical signals and stores images electronically.
+Digital mammograms offer a clearer picture of the breast and ease manipulation and sharing between health care providers.
 % However, researchers still debate whether [[its|their] use over| they] [surpass| improve on|outperform|[offers|have] an advantage over|are more effective than|benefit] film mammograms [in|for] [identifying breast cancer|breast cancer detection].
-However, researchers still debate whether they offer an advantage over film mammograms~\cite{Kerlikowske2011, Pisano2008, Skaane2007}. Digital mammography is steadily becoming the standard for breast cancer screening. Figure~\ref{fig:normalMammogram} is, in fact, a digital mammogram.
-\emph{Digital tomosynthesis}, also called three-dimensional mammography, is a new technology that produces 3-dimensional x-ray images of the breast and is expected to improve the efficacy of regular 2-d mammograms. Studies comparing the two techniques have not yet been published~\cite{NCI2014}.
+Although researchers still debate whether they offer an advantage over film mammograms~\cite{Kerlikowske2011, Pisano2008, Skaane2007}, digital mammography has become standard in breast cancer screening. Figure~\ref{fig:normalMammogram} is, in fact, a digital mammogram.
 
-\emph{Computer-aided detection} or \emph{CAD} systems inspect mammograms using computer algorithms: detection (CADe) looks for any lesion while diagnosis (CADx) focuses on malignant lesions.
-They assist radiologists during mammography screening signaling suspicious areas and offering relevant information; however, whether accuracy improves is questioned~\cite{Lehman2015}.
-% their value has been challenged
+\emph{Digital tomosynthesis} is a new technology that produces three-dimensional x-ray images of the breast and is expected to improve the efficacy of 2-d mammograms. Studies comparing the two techniques have not yet been published~\cite{NCI2014}.
+
+\emph{Computer-aided detection (CAD)} systems assist radiologists during screening signaling suspicious areas and displaying relevant information. Detection or CADe looks for any type of lesion while diagnosis or CADx focuses on malignant lesions. Whether their use improves accuracy has been challenged~\cite{Lehman2015}.
+
+% option: Delete this, downgrade mammograms to subsubsection and add the bcdr info in the solution/data set/database part. Maybe also leave the first paragraph in here as part of mammograms subsection, only change it to say "Mammography databases are important"
+% option: do not add anything
+\subsection{Mammographic databases}
+Databases are essential to mammographic image analysis; researchers use annotated data from previous patients---mammograms, segmentations and clinical features---to train and evaluate their models. Lesions are manually segmented to produce pixel-wise labels. Contrast resolution, the number of gray values per pixel, and spatial resolution, breast area per pixel, dictate the quality of a digital mammogram: 12-bit images ($2^{12} = 4048$ gray values) with pixel size of at most 0.1mm are prefered. Many publicly available databases, including those described below, satisfy these conditions.
+
+The Digital Database for Screening Mammography (DDSM)~\cite{Heath2001} is the most popular database used for CAD development. It is composed of around 10.5K digitized film mammograms from 2620 patients. Mammograms are either 12-bit or 16-bit images with 0.05 mm spatial resolution. Lesion segmentations are provided along with its type, assesment, subtlety and malignancy. Patient data is also provided.
+%Type is mass, microcalcification, assesment (1-5) in BIRADs, subtlety(1-5) and 
+
+The BancoWeb database~\cite{Nepomuceno2011} consists of around 1.5K digitized film mammograms from 300 Brazilian patients. Mammograms are 12-bit images with 0.075 or 0.15 mm pixel size. Although few lesions are segmented, this repository may be useful to assess performance in Latin American patients. Its current state is unknown.
+
+The Breast Cancer Digital Repository (BCDR-DM)~\cite{Moura2013a, Moura2013b} consists of around 1.2K digital mammograms from 237 patients. Mammograms are 8-bit images with 0.07mm spatial resolution. Lesion segmentations are provided along with its assesment, texture  and shape features and relevant clinical data.
 
 \begin{comment}
-\subsection{Mammography databases}
-\label{sec:BrCaDB}
-\input{background/databases}
+Another small digital mammogram repository is called INbreast~\cite{Moreira2012}. It consists of 410 digital mammograms from 115 patients. Each mammogram is a 14-bit image with 0.7 mm spatial resolution. Lesion boundaries are accurately marked and its information is also included. This could be used in conjunction with the BCDR-DM repository.
 
-% option: Adding mammography data bases as a subsection of breast cancer and upgrade mammograms as a subsection too. Make mammography databases small.
-% option: do not add anything
+Finally,~\cite{Zheng2012} used a private repository of around 6.5K digital mammograms obtained from 1120 patients. Specifics of contrast and spatial resolution are not provided but they are most probably good enough. Lesions are marked (with a circle) on the mammograms and lesion and patient information is provided. Even though this is a private repository of the University of Pittsburgh, if needed, we could ask them for access to it. This may not be plausible given the complications of sharing personal (granted anonymized) information and the size of the database.
 \end{comment}
 
 This section was written using information from the National Cancer Institute. We recommend to visit its website (\url{www.cancer.gov}) for further details.

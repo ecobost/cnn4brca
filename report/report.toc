@@ -30,28 +30,29 @@
 \contentsline {paragraph}{Unbalanced data}{23}{section*.24}
 \contentsline {paragraph}{Software}{23}{section*.25}
 \contentsline {section}{\numberline {2.6}Breast Cancer}{24}{section.2.6}
-\contentsline {subsubsection}{Mammograms}{25}{section*.27}
-\contentsline {section}{\numberline {2.7}Convolutional Networks in Breast Cancer Research}{26}{section.2.7}
-\contentsline {paragraph}{Overview}{26}{section*.30}
+\contentsline {subsection}{\numberline {2.6.1}Mammograms}{25}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Mammographic databases}{26}{subsection.2.6.2}
+\contentsline {section}{\numberline {2.7}Convolutional Networks in Breast Cancer Research}{27}{section.2.7}
+\contentsline {paragraph}{Overview}{27}{section*.29}
 \contentsline {subsection}{\numberline {2.7.1}Detection of breast masses}{27}{subsection.2.7.1}
 \contentsline {subsection}{\numberline {2.7.2}Detection of microcalcifications}{28}{subsection.2.7.2}
 \contentsline {subsection}{\numberline {2.7.3}Diagnosis of breast masses}{29}{subsection.2.7.3}
-\contentsline {subsection}{\numberline {2.7.4}Tissue segmentation}{29}{subsection.2.7.4}
+\contentsline {subsection}{\numberline {2.7.4}Tissue segmentation}{30}{subsection.2.7.4}
 \contentsline {chapter}{\numberline {3}Solution Model}{33}{chapter.3}
 \contentsline {section}{\numberline {3.1}Task definition}{33}{section.3.1}
 \contentsline {section}{\numberline {3.2}Data set}{33}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Database}{33}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Image retrieval/Preprocessing}{33}{subsection.3.2.2}
-\contentsline {paragraph}{Image dimensions}{34}{section*.31}
-\contentsline {paragraph}{Cropping}{34}{section*.32}
-\contentsline {paragraph}{Stride}{34}{section*.33}
-\contentsline {paragraph}{Background}{35}{section*.34}
-\contentsline {paragraph}{Assigning labels}{35}{section*.35}
-\contentsline {paragraph}{Label information}{35}{section*.36}
-\contentsline {paragraph}{Image enhancement}{35}{section*.37}
-\contentsline {paragraph}{Data augmentation}{36}{section*.39}
-\contentsline {paragraph}{Resizing}{37}{section*.40}
-\contentsline {paragraph}{Storage}{37}{section*.42}
+\contentsline {paragraph}{Image dimensions}{34}{section*.30}
+\contentsline {paragraph}{Cropping}{34}{section*.31}
+\contentsline {paragraph}{Stride}{34}{section*.32}
+\contentsline {paragraph}{Background}{35}{section*.33}
+\contentsline {paragraph}{Assigning labels}{35}{section*.34}
+\contentsline {paragraph}{Label information}{35}{section*.35}
+\contentsline {paragraph}{Image enhancement}{35}{section*.36}
+\contentsline {paragraph}{Data augmentation}{36}{section*.38}
+\contentsline {paragraph}{Resizing}{37}{section*.39}
+\contentsline {paragraph}{Storage}{37}{section*.41}
 \contentsline {subsection}{\numberline {3.2.3}Data augmentation}{38}{subsection.3.2.3}
 \contentsline {subsection}{\numberline {3.2.4}Data division}{38}{subsection.3.2.4}
 \contentsline {section}{\numberline {3.3}Model}{38}{section.3.3}
@@ -71,4 +72,4 @@
 \contentsline {section}{\numberline {4.2}Discussion}{41}{section.4.2}
 \contentsline {chapter}{\numberline {5}Conclusions}{42}{chapter.5}
 \contentsline {section}{\numberline {5.1}Future Work}{42}{section.5.1}
-\contentsline {chapter}{Bibliography}{48}{chapter*.45}
+\contentsline {chapter}{Bibliography}{48}{chapter*.44}
