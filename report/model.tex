@@ -110,6 +110,8 @@ we could also present a heatmap with the different probabilities in each pixel o
 
 % Background is thresholded at zero and shown in black
 
+% Background is not counted to calculate the metrics. We use a mask to sum values only over the spaces that were a breast mass previously.
+
 	\subsection{Evaluation}
 	When dividing the data set we make sure \textit{all} image patches obtained from the same patient are assigned to either the training set or test set (not distributed) to avoid any possible overfit to the test set. Given that our data is unbalanced, with far more negative than positive examples, we use PRAUC (see Section~\ref{subsec:Classification}) to choose between models for hyperparameter selection and as an overall performance metric. Other metrics are also reported for completeness. 
 

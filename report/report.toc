@@ -42,19 +42,13 @@
 \contentsline {section}{\numberline {3.1}Task definition}{33}{section.3.1}
 \contentsline {section}{\numberline {3.2}Data set}{33}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Database}{33}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Image retrieval/Preprocessing}{33}{subsection.3.2.2}
-\contentsline {paragraph}{Image dimensions}{34}{section*.30}
-\contentsline {paragraph}{Cropping}{34}{section*.31}
-\contentsline {paragraph}{Stride}{34}{section*.32}
-\contentsline {paragraph}{Background}{35}{section*.33}
-\contentsline {paragraph}{Assigning labels}{35}{section*.34}
-\contentsline {paragraph}{Label information}{35}{section*.35}
-\contentsline {paragraph}{Image enhancement}{35}{section*.36}
-\contentsline {paragraph}{Data augmentation}{36}{section*.38}
-\contentsline {paragraph}{Resizing}{37}{section*.39}
-\contentsline {paragraph}{Storage}{37}{section*.41}
-\contentsline {subsection}{\numberline {3.2.3}Data augmentation}{38}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Data division}{38}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.2}Data division}{33}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Image dimensions}{34}{subsection.3.2.3}
+\contentsline {paragraph}{Resizing}{35}{section*.31}
+\contentsline {subsection}{\numberline {3.2.4}Background}{36}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Labels}{36}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Image enhancement}{37}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Data augmentation}{38}{subsection.3.2.7}
 \contentsline {section}{\numberline {3.3}Model}{38}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Architecture}{38}{subsection.3.3.1}
 \contentsline {section}{\numberline {3.4}Training}{39}{section.3.4}
@@ -72,4 +66,4 @@
 \contentsline {section}{\numberline {4.2}Discussion}{41}{section.4.2}
 \contentsline {chapter}{\numberline {5}Conclusions}{42}{chapter.5}
 \contentsline {section}{\numberline {5.1}Future Work}{42}{section.5.1}
-\contentsline {chapter}{Bibliography}{48}{chapter*.44}
+\contentsline {chapter}{Bibliography}{48}{chapter*.36}

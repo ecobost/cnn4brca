@@ -60,21 +60,28 @@ Digital mammograms offer a clearer picture of the breast and ease manipulation a
 % However, researchers still debate whether [[its|their] use over| they] [surpass| improve on|outperform|[offers|have] an advantage over|are more effective than|benefit] film mammograms [in|for] [identifying breast cancer|breast cancer detection].
 Although researchers still debate whether they offer an advantage over film mammograms~\cite{Kerlikowske2011, Pisano2008, Skaane2007}, digital mammography has become standard in breast cancer screening. Figure~\ref{fig:normalMammogram} is, in fact, a digital mammogram.
 
-\emph{Digital tomosynthesis} is a new technology that produces three-dimensional x-ray images of the breast and is expected to improve the efficacy of 2-d mammograms. Studies comparing the two techniques have not yet been published~\cite{NCI2014}.
+\emph{Digital tomosynthesis} is a new technology that produces three-dimensional x-ray images of the breast and is expected to improve the efficacy of mammograms. Studies comparing the two techniques have not yet been published~\cite{NCI2014}.
 
 \emph{Computer-aided detection (CAD)} systems assist radiologists during screening signaling suspicious areas and displaying relevant information. Detection or CADe looks for any type of lesion while diagnosis or CADx focuses on malignant lesions. Whether their use improves accuracy has been challenged~\cite{Lehman2015}.
 
 % option: Delete this, downgrade mammograms to subsubsection and add the bcdr info in the solution/data set/database part. Maybe also leave the first paragraph in here as part of mammograms subsection, only change it to say "Mammography databases are important"
 % option: do not add anything
 \subsection{Mammographic databases}
-Databases are essential to mammographic image analysis; researchers use annotated data from previous patients---mammograms, segmentations and clinical features---to train and evaluate their models. Lesions are manually segmented to produce pixel-wise labels. Contrast resolution, the number of gray values per pixel, and spatial resolution, breast area per pixel, dictate the quality of a digital mammogram: 12-bit images ($2^{12} = 4048$ gray values) with pixel size of at most 0.1mm are prefered. Many publicly available databases, including those described below, satisfy these conditions.
+%Databases are essential to mammographic image analysis;
+%annotated
+Researchers use data from previous patients---mammograms, segmentations and clinical features\textemdash to train and evaluate their models. 
+%Databases offer pixel-wise labelled mammograms, lesions are segmented by expert radiologists.
+%For this purpose, lesions are manually segmented to produce pixel-wise labels.
+\emph{Contrast resolution}, the number of gray values per pixel, and \emph{spatial resolution}, breast area per pixel, dictate the quality of a digital mammogram: 12-bit images ($2^{12} = 4048$ gray values) with pixel size of at most 0.1mm are prefered. Many publicly available databases, including those described below, satisfy these conditions.
 
-The Digital Database for Screening Mammography (DDSM)~\cite{Heath2001} is the most popular database used for CAD development. It is composed of around 10.5K digitized film mammograms from 2620 patients. Mammograms are either 12-bit or 16-bit images with 0.05 mm spatial resolution. Lesion segmentations are provided along with its type, assesment, subtlety and malignancy. Patient data is also provided.
+The Digital Database for Screening Mammography (DDSM)~\cite{Heath2001} is the most popular database used for CAD development. It is composed of around 10.5K digitized film mammograms from 2620 patients. Mammograms are either 12-bit or 16-bit images with 0.05 mm spatial resolution. Lesion segmentations are provided along with its type, assesment, subtlety and malignancy.%Patient data is also provided.
 %Type is mass, microcalcification, assesment (1-5) in BIRADs, subtlety(1-5) and 
 
 The BancoWeb database~\cite{Nepomuceno2011} consists of around 1.5K digitized film mammograms from 300 Brazilian patients. Mammograms are 12-bit images with 0.075 or 0.15 mm pixel size. Although few lesions are segmented, this repository may be useful to assess performance in Latin American patients. Its current state is unknown.
 
-The Breast Cancer Digital Repository (BCDR-DM)~\cite{Moura2013a, Moura2013b} consists of around 1.2K digital mammograms from 237 patients. Mammograms are 8-bit images with 0.07mm spatial resolution. Lesion segmentations are provided along with its assesment, texture  and shape features and relevant clinical data.
+Lastly, the Breast Cancer Digital Repository (BCDR-DM)~\cite{Moura2013a, Moura2013b} consists of around 1.2K digital mammograms from 237 patients. Mammograms are 8-bit images with 0.07mm spatial resolution.
+Lesion segmentations are provided as well as their assesment, hand-crafted texture and shape features and relevant clinical data.
+%It provides lesion segmentations and assesments, hand-crafted texture and shape features and relevant clinical data
 
 \begin{comment}
 Another small digital mammogram repository is called INbreast~\cite{Moreira2012}. It consists of 410 digital mammograms from 115 patients. Each mammogram is a 14-bit image with 0.7 mm spatial resolution. Lesion boundaries are accurately marked and its information is also included. This could be used in conjunction with the BCDR-DM repository.
