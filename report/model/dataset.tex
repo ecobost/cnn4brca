@@ -9,7 +9,6 @@ We select x digital mammograms from x patients. Theya are 8-bit images with 0.07
 % Files and how are they organized. Data available per case and per mammogram. How are boundaries written. formats, etc.
 
 Digital mammograms have higher image quality and lack any marks, stamps or other scanning artifacts present in digitized film mammograms; this allows us to pick up better features and eases segmentation. Although the number of mammograms is small, training on overlapping patches and data augmentation, allows learning.
-% 159 calcifications, 36 micro, 11 micro+calcif, thus 108 micro or calcif. 106 nodule, 20 nodule+ calcific, 11 nodule + micro
 
 
 \subsection{Data division}
@@ -22,10 +21,10 @@ Digital mammograms have higher image quality and lack any marks, stamps or other
 		&\textbf{Training} & \textbf{Validation} & \textbf{Test} & \textbf{Total}\\
 		\hline 
 		\textbf{Percentage of data set}	&70	&15	&15	&100\\
-		\textbf{Number of patients} &x&x&x&x\\
-		\textbf{Number of mammograms} &x&x&x&x\\
-		\textbf{Number of masses} &x&x&x&x\\
-		\textbf{After augmentation} &x&x&x&x\\
+		\textbf{Number of patients} &43&10&10&63\\
+		\textbf{Number of mammograms} &180&38&38&256\\
+		\textbf{Number of masses} &97&21&21&139\\
+		\textbf{Mammograms (after augmentation)} &1440&304&38&1782\\
 		\hline
 	\end{tabular}
 	\caption[Data set summary]{Data set summary}
@@ -33,6 +32,9 @@ Digital mammograms have higher image quality and lack any marks, stamps or other
 
 \subsection{Image dimensions}
 We decided to hold xbyx cm to hold an entire mass.
+
+% Masses are 12.2mm + 4.5mm std . 2 cm holds 96% of masses. 1.5 holds 73 % of masses
+That's hwta they say and also by visual inspection ins ome triaing examples
 
 
 We use square image patches because they are common in practice and simplify data augmentation. To define the size we have to consider two aspects: keeping a manageable input size for the network (in pixels) and capturing the entire lesion in the image patch (in mm).
@@ -56,6 +58,7 @@ When sliding the window starting from the upper left corner of the original imag
 
 \paragraph{Resizing}
 We have to resize the images to achieve the desired patch size. There is a couple of decisions to take in this part: the type of interpolation to use and whether image enhancement should be performed before or after resizing. After some experiments neither decisions proved to be very important for the resulting image patches. We choose the Lanczos interpolation recommended for downsizing in the PILLOW Python Image Library. Enhancements are executed on each particular patch before being scaled to their final size. Figure~\ref{fig:ResizingInterps} shows the effect of using the Bicubic or Lanczos interpolation scheme for resizing both before and after enhancement. Results are similar under all configurations.
+% Make sure you store them when resized as a single channel grayscale image, maybe png. Otherwise it will be stored as color image.
 
 \begin{figure}
 	\centering
@@ -102,9 +105,16 @@ In theory we want to perform classification on the raw images (without any prepr
 We use background reduction plus normalization because it increases the signal to noise ratio, i.e., highlights lesions over normal breast tissue. On the downside, it also highlights dense structures (which could increase false positives) and may destroy important texture information by blending it with the background; using normalization only could produce better results. Unpreprocessed images seem too noisy and histogram equalization is too destructive for our purposes.
 
 % Global contrast normalization makes comparisons across patients not good, because if a pixel is very bright in one patient that is only important with respect to that patient and it may end up (by contrast stretching) having the same value that the pixel in another mammogram who wasn't as bright but was the brightest of the mammogram. i think this makes sense because masss are going ot be bright but only in relation to the patient, maybe one has very fatty tissue so all is white and others have very clear tissue.
+% You need zero-center so the gradients are computed properly.
+% substracting bythe global mean counts as normalization (per-channel mean substraction), maybe i can subtract global mean and linearly stretch to -1 and 1. (Then to show the image i multiply by 127 and sum 127). Will it be the same result if I do contrast enhancement and then mean-center by subtracting 127 (now the range is -127 to 127). Make the calculus with constants. i think this is part of training.
+
+% Try leaky relu (with alpha = 0.1), thay always give (slightly) better results, they don't kill the gradient in R- and are not zero-centered either.
+
+% Idea: Look for a function that looks like a line, like a non-linear line. Becaus ewe want it to not zaturate on either side and to be zero-centered. something like x+sin(x), or 5x+xsin(x) this will be quasilinear but with change. that's exactly what i had in mind, but i don't think it will work. maybe somehting that grows to infinity but slowly sigmoid-shaped but it grows to infinty. also, what about reinitializing some neurons at random and retraining them. 
 
 %TODO: Is feature normalization needed? It does put everything on -1 to 1 range (instead of 0-256, 0-2048, etc.). if it doesn't affect the results better do it
-% Images will not be zero-centered , normalized or whitened. global contrast
+
+% show a figure with the original mammogram and what it wil look like after all this, and its labels.
 	
 \subsection{Data augmentation}
 Rotations and flipping of original big images. the breast and cannals, and nipple may be very different at 90 and 270, flipping an 180 seem fine. Or maybe not.

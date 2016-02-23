@@ -5,8 +5,9 @@ Log with activities and questions arising during every week
 
 ## Feb 18 - Feb 24
 ### Activities
-* Writing Section 2.6 (Added databases)
-* Writing Section 3.1
+* Writing Section 2.6.2, adding to 2.5
+* Preprocessing database
+* Writing Section 3.2
 
 ### To do
 * Write chapter 3 (Solution Model)
@@ -17,7 +18,10 @@ Log with activities and questions arising during every week
 * Ask for institutional email
 
 ### Questions
-1. Should I leave on the database part in Breast cancer or better just delete it and degrade mammograms and maybe put BCDR info in Model/Data set/Database
+1. Should I leave on the database part in Breast cancer or better just delete it and degrade mammograms and maybe put BCDR info in Model/Data set/Database?
+	Answer: Leave it there.
+2. Should I try to fit a simple model and a more advanced model (ADAM, batchnorm, leaky relus) or should I go directly for the best model?
+	Answer: Best model.
 
 
 

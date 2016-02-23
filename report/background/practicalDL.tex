@@ -66,6 +66,7 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item The learning rate $\alpha$ is ``the single most important hyperparameter and one should always make sure that it has been tuned''~\cite{Bengio2012}. It ranges from $10^{-6}$ to $10^{0}$. Use a log scale to draw new values ($\alpha = 10^{unif(-6, 0)}$ where $unif(a,b)$ is the continous uniform distribution)~\cite{Karpathy2015}.
 %0.01: Bengio, 2012 says that the optimal learning rate is close to the highest learning rate that does not cause divergence.
+% If your loss doen't decrease, learning rate is too low, if it explodes, too high.
 
 	\item The regularization strength $\lambda$ is usually data (and loss function) dependant. It ranges from $10^{-3}$ to $10^4$. Search in log scale ($\lambda = 10^{unif(-3, 4)}$).
 %1
@@ -95,12 +96,14 @@ In this section we collect guidelines for building as well as efficiently traini
 	\item Use mini-batches rather than the entire training set to compute the gradient of the loss function. Mini-batches allows us to make more updates, more frequently resulting in faster convergence and better test results~\cite{Bengio2012}.
 
 	\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. NAG is a modified version of gradient descent that works better for certain architectures~\cite{Bengio2012b}. Stochastic Gradient Descent with Momentum (SGD+Momentum) is also a viable option~\cite{Karpathy2015}.
-% May need to crossvalidate the momentum if using NAG 
+% I could use ADAM(http://arxiv.org/pdf/1412.6980v8.pdf), too. No need to learn any more parameters, probably not need learning rate decay. https://www.youtube.com/watch?v=hd_KFJ5ktUc
 
 	\item Use dropout as a complement to $l_2$-norm regularization. Dropout improves results but may slow network convergence~\cite{Krizhevsky2012}.
+	%Inverted dropout may be better
 
 	\item Store network parameters regularly during training. This allows us to inspect the network at different stages, retrain one or select the one with the best validation error~\cite{Bengio2014}.
-	%\item Use the validation or test error to select the best parameters for the network from those stored~\cite{Bengio2014}. 
+	%\item Use the validation or test error to select the best parameters for the network from those stored~\cite{Bengio2014}.
+% add batch normalization?. see https://youtu.be/gYpoJMlgyXA min 55, lots of details. 14 times fewer training steps.
 
 	\item Stop training if the validation error has not improved since the last learning rate reduction: gradient descent may not have converged but the validation error will start to increase (overfit)~\cite{Bengio2012}.
 
