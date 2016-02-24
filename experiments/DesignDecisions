@@ -10,20 +10,21 @@ Mammograms
 Division
 	70% training, 15% val, 15% test
 	70% training, 10% val, 20% test
-Cropping
-	Cropping to breast area to not have lots of black space (smaller images)
-	No cropping
 Enhancement
 	Global background reduction + contrast stretching
 	Global contrast stretching/No enhancement	
 	Local contrast stretching
 	local background reduction + contrast
 Receptive field(size in cms and pixels)
-	2cm in 112x112 pixels
-	2cm in 96x96
+	2cm in 112x112 pixels (or as many pixels as the input volume to the network)
+Cropping
+	Cropping to breast area to not have lots of black space (smaller images)
+	No cropping
 Downsampling interpolation (images and labels)
 	LANCZOS filter from PILLOW
 	BICUBIC filter form PILLOW
+Label downsampling
+	Keep them at same dimensions than downsampled image (further downsampling to 			match the output of the network can be done during training)
 Augmentation
 	Flipped and rotations 0,90,180,270 (8). Test set not augmented
 	Flipped and rotations 0,180 (4). Test set not augmented
@@ -35,12 +36,19 @@ Storage
 --Model
 ConvNet architecture
 	The one starting at 112 (2.8M parameters) (arch #11)
+	The one starting at 80 (2.8M parameters) (arch #18)
 	The one starting at 96 (1.6M parameters) (arch #12)
-	The one starting at 128 (4.6M params) (arch #8)
+	The one with new features (2.6M parameters) (arch #17)
+Modern features/trends not adopted
+	7x7 average pooling filters instead of fully connected
+	4x4 conv filters, stride 2, padding 1, to get rid of pooling
+	deeper architecture
+	more feature maps 
+	no dropout (just batchnorm)
 
 --Training
 Local zero-mean center each image
-	Before training
+	Before training (subtract the mean intensity across the preprocessed image)
 	Leave as is
 Activation function
 	LeakyRelu
@@ -49,9 +57,9 @@ Update Rule
 	Adam
 	NAG
 Pooling
-	Overlapping Max-Pooling
-	Convolutional overlapping pooling
 	Non-overlapping max-pooling
+	Convolutional overlapping pooling (4x4 pooling, stride 2, padding 1)
+	Overlapping max-pooling
 First layer Conv-Pooling
 	6x6 filter stride 2 padding 2
 	4x4 filter stride 2 padding 1
@@ -62,6 +70,11 @@ Regularization
 	Dropout + BatchNorm + Regularization
 Software
 	Tensorflow
-	Caffe
+	Keras
 Learning rate
-	Biggest not divergent and halve when converged
+	Biggest not causing divergence and halve when converged
+
+---Post-processing
+Upsampling
+	Downsample the labels (PILLOW Image.NEAREST)
+	Upsample the image with a bilinear/deconvolutional layer at end of network

@@ -5,9 +5,9 @@ In this section we collect guidelines for building as well as efficiently traini
 \begin{itemize}
 	\item Crop images to contain only the relevant regions, denoise, enhance and resize them to maintain the input size fixed and manageable.
 
-	\item Zero-center each image feature (the raw pixels) by subtracting its mean across all training images. Optionally, normalize each zero-centered feature to range from $[-1 \dots 1]$ by dividing them by its standard deviation~\cite{Karpathy2015}.
+	\item Zero-center each image feature (the raw pixels) by subtracting its mean across all training images. Optionally, normalize each zero-centered feature to range from $[-1 \dots 1]$ by dividing them by its standard deviation~\cite{Karpathy2016}.
 
-	\item Test data should not be used to calculate any statistic used for preprocessing. Furthermore, the same statistics (calculated from training data) should be used to preprocess test data~\cite{Karpathy2015}.
+	\item Test data should not be used to calculate any statistic used for preprocessing. Furthermore, the same statistics (calculated from training data) should be used to preprocess test data~\cite{Karpathy2016}.
 \end{itemize}
 
 
@@ -19,19 +19,19 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Although, theoretically, neural networks with a single hidden layer are universal approximators provided they have enough units ($\mathcal{O}(2^n)$ where $n$ is the size of the input), practically, deeper architectures produce better results using less units overall. This holds for convolutional networks~\cite{Bengio2014}.
 
-	\item Use at least 8 layers (not counting pooling or ReLU layers) for big data sets, use less layers or transfer learning for small data sets. ``You should use as big of a neural network as your computational budget allows, and use other regularization techniques to control overfitting.''~\cite{Karpathy2015}
+	\item Use at least 8 layers (not counting pooling or ReLU layers) for big data sets, use less layers or transfer learning for small data sets. ``You should use as big of a neural network as your computational budget allows, and use other regularization techniques to control overfitting.''~\cite{Karpathy2016}
 
-	\item Use 2-3 \texttt{CONV -> RELU} pairs before pooling (N above)~\cite{Karpathy2015}. Pooling is a destructive operation, placing two convolutional layers together allows them to detect more complex features.
+	\item Use 2-5 \texttt{CONV -> RELU} pairs before pooling (N above)~\cite{Karpathy2016}. Pooling is a destructive operation, placing two convolutional layers together allows them to detect more complex features.
 
-	\item Use 1-5 \texttt{[CONV -> RELU]+ -> POOL} blocks (M above). This hyperparameter regulates the representational power of the architecture. The exact number depends on the complexity of the features in the data and the computational resources available. It also defines how much the volume is subsampled.
+	\item Use 1-8 \texttt{[CONV -> RELU]+ -> POOL} blocks (M above). This hyperparameter regulates the representational power of the architecture. The exact number depends on the complexity of the features in the data and the computational resources available. It also defines how much the volume is subsampled.
 
-	\item Use less than 3 \texttt{FC -> RELU} pairs before the output layer (K above)~\cite{Karpathy2015}. The volume that arrives to fully connected layers is already complex, adding many layers only increases the number of parameters and risks overfitting.
+	\item Use less than 3 \texttt{FC -> RELU} pairs before the output layer (K above)~\cite{Karpathy2016}. The volume that arrives to fully connected layers is already complex, adding many layers only increases the number of parameters and risks overfitting.
 
-	\item The number of feature maps per convolutional layer controls the number of features detected at that layer---similar to the number of units per layer in a regular neural network. A common pattern is to start with a small amount of feature maps and increase them layer by layer~\cite{Simonyan2014}. %The reasoning is that at higher layers there are more complex features to learn and moreover as the feature maps become smaller (via pooling) it is computationally feasible to have more of them.
+	\item The number of filters per convolutional layer controls the number of features detected at that layer---similar to the number of units per layer in a regular neural network. A common pattern is to start with a small amount of filters and increase them layer by layer~\cite{Simonyan2014}. %The reasoning is that at higher layers there are more complex features to learn and moreover as the feature maps become smaller (via pooling) it is computationally feasible to have more of them.
 
-	\item The number of feature maps per fully connected layer decreases layer by layer\footnote{The number of units in a convolutional layer is the number of units in a feature map times the number of feature maps.}. For instance, for a convolutional network with ten possible classes and two fully connected layers, if the last convolutional layer produces a volume of size $8 \times 8 \times 512$ (8192 units), the first fully connected layer could have size $1 \times 1 \times 2048$ and the second--- the output---layer $1\times 1\times 10$.
+	\item The number of filters per fully connected layer decreases layer by layer\footnote{The number of units in a convolutional layer is the number of units in a feature map times the number of feature maps.}. For instance, for a convolutional network with ten possible classes and two fully connected layers, if the last convolutional layer produces a volume of size $8 \times 8 \times 512$ (8192 units), the first fully connected layer could have size $1 \times 1 \times 2048$ and the second--- the output---layer $1\times 1\times 10$.
 
-	\item Use $3\times 3$ filters with stride 1 and zero-padding 1 or $5 \times 5$ filters with stride 1 and zero-padding 2. This preserves the spatial dimensions of the volume and works better in practice~\cite{Springenberg2014}. If the input size is too big, use a bigger filter in the first convolutional layer~\cite{Karpathy2015}.
+	\item Use $3\times 3$ filters with stride 1 and zero-padding 1 or $5 \times 5$ filters with stride 1 and zero-padding 2. This preserves the spatial dimensions of the volume and works better in practice~\cite{Springenberg2014}. If the input size is too big, use a bigger filter in the first convolutional layer~\cite{Karpathy2016}.
 	
 	\item Use $2\times2$ pooling with stride 2. This pooling and the overlapping version presented in Section~\ref{sec:ConvNets} produce similar results~\cite{Krizhevsky2012}.
 %krizhevsky says overlapping is slightly better. so does dieleman but it slows thing down.
@@ -51,11 +51,11 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Search for the best combination of hyperparameters rather than each individually.
 
-	\item Train each combination of hyperparameters for 1-2 epochs to narrow the search space; then, train for more epochs on these ranges~\cite{Karpathy2015}. Explore further when the best value for a hyperparameter is found in the limit of the range.~\cite{Bengio2012}.
+	\item Train each combination of hyperparameters for 1-2 epochs to narrow the search space; then, train for more epochs on these ranges~\cite{Karpathy2016}. Explore further when the best value for a hyperparameter is found in the limit of the range.~\cite{Bengio2012}.
 
-	\item Partial convergence is sufficient to assess hyperparameters~\cite{Karpathy2015}.
+	\item Partial convergence is sufficient to assess hyperparameters~\cite{Karpathy2016}.
 
-	\item Hyperparameters related to the convolutional architecture, e.g., number of layers, number of feature maps and filter sizes are set manually (as explained above) rather than using a validation set.
+	\item Hyperparameters related to the convolutional architecture, e.g., number of layers, number of filters and filter sizes are set manually (as explained above) rather than using a validation set.
 
 	\item Several hyperparameters are set: initial learning rate $\alpha$, learning rate decay schedule, regularization strength $\lambda$, momentum $\mu$, probability of keeping a unit active in dropout $p$, mini-batch size and type of image preprocessing.
 
@@ -64,17 +64,17 @@ In this section we collect guidelines for building as well as efficiently traini
 	\item Set $\alpha$, $\lambda$ and optionally the type of preprocessing using a validation set. Other hyperparameters can be set to a sensible default. 
 %The learning rate schedule and training epochs are set using heuristics. 
 
-	\item The learning rate $\alpha$ is ``the single most important hyperparameter and one should always make sure that it has been tuned''~\cite{Bengio2012}. It ranges from $10^{-6}$ to $10^{0}$. Use a log scale to draw new values ($\alpha = 10^{unif(-6, 0)}$ where $unif(a,b)$ is the continous uniform distribution)~\cite{Karpathy2015}.
+	\item The learning rate $\alpha$ is ``the single most important hyperparameter and one should always make sure that it has been tuned''~\cite{Bengio2012}. It ranges from $10^{-6}$ to $10^{0}$. Use a log scale to draw new values ($\alpha = 10^{unif(-6, 0)}$ where $unif(a,b)$ is the continous uniform distribution)~\cite{Karpathy2016}.
 %0.01: Bengio, 2012 says that the optimal learning rate is close to the highest learning rate that does not cause divergence.
 % If your loss doen't decrease, learning rate is too low, if it explodes, too high.
 
 	\item The regularization strength $\lambda$ is usually data (and loss function) dependant. It ranges from $10^{-3}$ to $10^4$. Search in log scale ($\lambda = 10^{unif(-3, 4)}$).
 %1
-	\item Halve the learning rate every time the validation error stops improving or choose a fixed number of epochs by observing when the validation error stops decreasing in a similar network~\cite{Krizhevsky2012}.
+	\item Divide the learning rate by 10 every time the validation error stops improving or choose a fixed number of epochs by observing when the validation error stops decreasing in a similar network~\cite{Krizhevsky2012, He2015b}.
 
-	\item Use $\mu=0.9$. If using a validation set try values in \{0.5, 0.9, 0.95, 0.99\}~\cite{Karpathy2015}.
+	\item Use $\mu=0.9$. If using a validation set try values in \{0.5, 0.9, 0.95, 0.99\}~\cite{Karpathy2016}.
 
-	\item Use 0.9-1 probability $p$ of retaining a unit in the input layer, 0.65-0.85 in the first 2-4 convolutional layers and 0.5 in the last convolutional layers and all fully connected layers~\cite{Srivastava2014}. Less dropout is used on the first layers because they have less parameters~\cite{Karpathy2015}.
+	\item Use 0.9-1 probability $p$ of retaining a unit in the input layer, 0.65-0.85 in the first 2-4 convolutional layers and 0.5 in the last convolutional layers and all fully connected layers~\cite{Srivastava2014}. Less dropout is used on the first layers because they have less parameters~\cite{Karpathy2016}.
 % Maybe don't use dropout in the input layer, because putting a zero there has a meaning(black), maybe the advantage of dropout in cinvolutional layers is just that it adds noise to the input.
 
 	\item Use mini-batch size of 64 or 32. A larger batch size requires more memory and training time. Test performance is unaffected~\cite{Bengio2012}.
@@ -91,11 +91,11 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Multiply the number of examples by 25-100 to estimate the maximum number of parameters that could be learned (assuming data augmentation). Groups have learned up to 40M parameters from as little as 60K training examples~\cite{Dieleman2015, Springenberg2014}.
 
-	\item Weight initialization is vital for convergence. Initialize each filter weight as a value from a normal distribution $\mathcal{N}(\mu = 0, \sigma = \sqrt{2/n_{in}})$ where $n_{in}$ is the number of connections to the filter (9 for a $3\times 3$ filter)~\cite{He2015}. In code, \texttt{w = randn()*sqrt(2/nIn)} where \texttt{randn()} returns values drawn from a standard normal distribution. Initialize biases likewise.
+	\item Weight initialization is vital for convergence. Initialize each filter weight as a value from a normal distribution $\mathcal{N}(\mu = 0, \sigma = \sqrt{2/n_{in}})$ where $n_{in}$ is the number of connections to the filter (9 for a $3\times 3$ filter)~\cite{He2015a}. In code, \texttt{w = randn()*sqrt(2/nIn)} where \texttt{randn()} returns values drawn from a standard normal distribution. Initialize biases likewise.
 
 	\item Use mini-batches rather than the entire training set to compute the gradient of the loss function. Mini-batches allows us to make more updates, more frequently resulting in faster convergence and better test results~\cite{Bengio2012}.
 
-	\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. NAG is a modified version of gradient descent that works better for certain architectures~\cite{Bengio2012b}. Stochastic Gradient Descent with Momentum (SGD+Momentum) is also a viable option~\cite{Karpathy2015}.
+	\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. NAG is a modified version of gradient descent that works better for certain architectures~\cite{Bengio2012b}. Stochastic Gradient Descent with Momentum (SGD+Momentum) is also a viable option~\cite{Karpathy2016}.
 % I could use ADAM(http://arxiv.org/pdf/1412.6980v8.pdf), too. No need to learn any more parameters, probably not need learning rate decay. https://www.youtube.com/watch?v=hd_KFJ5ktUc
 
 	\item Use dropout as a complement to $l_2$-norm regularization. Dropout improves results but may slow network convergence~\cite{Krizhevsky2012}.
@@ -114,13 +114,13 @@ In this section we collect guidelines for building as well as efficiently traini
 \paragraph{Sanity checks}
 We perform some simple tests to make sure training works properly.
 \begin{itemize}
-	\item After weight initialization, run a test on a small set of examples to assert that the network predicts similar scores for every class, the loss function without regularization equals $-\log(1/K)$ and adding regularization increases the loss~\cite{Karpathy2015}.
+	\item After weight initialization, run a test on a small set of examples to assert that the network predicts similar scores for every class, the loss function without regularization equals $-\log(1/K)$ and adding regularization increases the loss~\cite{Karpathy2016}.
 
-	\item Run a gradient check if backpropagation seems faulty. Gradient checks compare the analytic gradient obtained via backpropagation with a numerical gradient obtained via a finite difference approximation~\cite{Karpathy2015}.
+	\item Run a gradient check if backpropagation seems faulty. Gradient checks compare the analytic gradient obtained via backpropagation with a numerical gradient obtained via a finite difference approximation~\cite{Karpathy2016}.
 
 	\item Train the network (without regularization) in 10-40 examples to check that the loss function becomes zero. If the network is unable to overfit a tiny subset of data, flexibilize the model.~\cite{Ng2014}.
 
-	\item During training, the loss function evaluated on training examples decreases monotonically~\footnote{Because of momentum and regularization it could increase slightly before decreasing.}. If not, check for implementation errors, reduce the learning rate or augment momentum~\cite{Karpathy2015}.
+	\item During training, the loss function evaluated on training examples decreases monotonically~\footnote{Because of momentum and regularization it could increase slightly before decreasing.}. If not, check for implementation errors, reduce the learning rate or augment momentum~\cite{Karpathy2016}.
 
 	\item Monitor the loss function during training to identify underfitting, characterized by high training loss and high validation loss, and overfiting, characterized by low training loss and high validation loss~\cite{Ng2014}.
 \end{itemize}
@@ -130,7 +130,7 @@ Given that the network is already trained, using the validation set to choose th
 
 \begin{itemize}
 
-	\item For big input images, use smaller mini-batches to avoid overloading the GPU memory~\cite{Karpathy2015}.
+	\item For big input images, use smaller mini-batches to avoid overloading the GPU memory~\cite{Karpathy2016}.
 
 	\item Set the post-processing technique using the validation set. Conditional random fields are specially effective for refining convolutional network scores~\cite{Chen2015}.
 
@@ -179,18 +179,18 @@ The research community has been moving towards replacing pooling layers and usin
 \begin{itemize}
 	\item Change each pooling layer with a convolutional layer with as many feature maps as the previous layer and filter size $2\times 2$ with stride $2$ for normal pooling or $3\times 3$ with stride $2$ for overlapping pooling~\cite{Springenberg2014}. 
 
-	\item For small data sets pooling layers also work as a regularizer because they reduce the number of learnable parameters and replacing them with convolutional layers may not be convenient~\cite{Karpathy2015}.
+	\item For small data sets pooling layers also work as a regularizer because they reduce the number of learnable parameters and replacing them with convolutional layers may not be convenient~\cite{Karpathy2016}.
 \end{itemize}
 
 \paragraph{Transfer learning}
 When we have a small data set we could use a pretrained convolutional network either as a feature extractor for the new examples or to provide initializations for the new convolutional network, this is called transfer learning. We offer some tips for using a pretrained model specifically for mammographic images.
 
 \begin{itemize}
-	\item Using a convolutional network pretrained in natural images, such as the ImageNet database, CIFAR-10, CIFAR-100, etc., may not work for mammographic images because features useful for one kind of classification are not very useful for the other. Nonetheless, given that features become more specific at higher layers, we could discard the higher layers of the network and use only the cropped network~\cite{Karpathy2015}.
+	\item Using a convolutional network pretrained in natural images, such as the ImageNet database, CIFAR-10, CIFAR-100, etc., may not work for mammographic images because features useful for one kind of classification are not very useful for the other. Nonetheless, given that features become more specific at higher layers, we could discard the higher layers of the network and use only the cropped network~\cite{Karpathy2016}.
  
-	\item Depending on the amount of data that we have we could: (1) add some fully connected layers on top of the pretrained network and train only these new layers, (2) add some convoutional and fully connected layers and train these new layers or (3) add convolutional and/or fully connected layers and train the entire network~\cite{Karpathy2015}.
+	\item Depending on the amount of data that we have we could: (1) add some fully connected layers on top of the pretrained network and train only these new layers, (2) add some convoutional and fully connected layers and train these new layers or (3) add convolutional and/or fully connected layers and train the entire network~\cite{Karpathy2016}.
 
-	\item When training on a pretrained model or fine-tuning use an smaller learning rate than when training a network from scratch. Using a small learning rate assures that we do not disturb very much the already good network parameters.~\cite{Karpathy2015}.
+	\item When training on a pretrained model or fine-tuning use an smaller learning rate than when training a network from scratch. Using a small learning rate assures that we do not disturb very much the already good network parameters.~\cite{Karpathy2016}.
 \end{itemize}
 \end{comment}
 

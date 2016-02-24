@@ -4,47 +4,45 @@ The top-level auxiliary file: report.aux
 The style file: acm.bst
 Database file #1: bibliography.bib
 Warning--I didn't find a database entry for "Ciresan2013"
-Warning--can't use both author and editor fields in Moura2013a
-Warning--can't use both author and editor fields in Petersen2014
-You've used 63 entries,
+You've used 64 entries,
             2253 wiz_defined-function locations,
-            975 strings with 20180 characters,
-and the built_in function-call counts, 24598 in all, are:
-= -- 2233
-> -- 1610
+            979 strings with 20174 characters,
+and the built_in function-call counts, 25003 in all, are:
+= -- 2265
+> -- 1651
 < -- 0
-+ -- 659
-- -- 590
-* -- 2107
-:= -- 4159
-add.period$ -- 215
-call.type$ -- 63
-change.case$ -- 475
++ -- 673
+- -- 603
+* -- 2144
+:= -- 4236
+add.period$ -- 219
+call.type$ -- 64
+change.case$ -- 484
 chr.to.int$ -- 0
-cite$ -- 65
-duplicate$ -- 736
-empty$ -- 1674
-format.name$ -- 590
-if$ -- 4968
+cite$ -- 64
+duplicate$ -- 749
+empty$ -- 1695
+format.name$ -- 603
+if$ -- 5044
 int.to.chr$ -- 0
-int.to.str$ -- 63
-missing$ -- 57
-newline$ -- 341
-num.names$ -- 132
-pop$ -- 478
+int.to.str$ -- 64
+missing$ -- 56
+newline$ -- 347
+num.names$ -- 138
+pop$ -- 481
 preamble$ -- 1
-purify$ -- 417
+purify$ -- 423
 quote$ -- 0
-skip$ -- 458
+skip$ -- 465
 stack$ -- 0
-substring$ -- 1130
+substring$ -- 1135
 swap$ -- 198
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 240
-warning$ -- 2
-while$ -- 178
-width$ -- 65
-write$ -- 694
-(There were 3 warnings)
+type$ -- 248
+warning$ -- 0
+while$ -- 182
+width$ -- 66
+write$ -- 705
+(There was 1 warning)

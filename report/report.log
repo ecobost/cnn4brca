@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  23 FEB 2016 03:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  24 FEB 2016 03:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -933,7 +933,7 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 75.
  [21] [22] [23])
 (./background/breastcancer.tex
-<plots/breastAnatomy.png, id=725, 419.5675pt x 454.69875pt>
+<plots/breastAnatomy.png, id=727, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
@@ -943,14 +943,14 @@ Package pdftex.def Info: plots/breastAnatomy.png used on input line 7.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[24] <plots/normalMammogram.jpg, id=740, 2492.31125pt x 3267.20625pt>
+[24] <plots/normalMammogram.jpg, id=742, 2492.31125pt x 3267.20625pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
 Package pdftex.def Info: plots/normalMammogram.jpg used on input line 20.
 (pdftex.def)             Requested size: 111.65701pt x 146.36984pt.
  [25 <./plots/breastAnatomy.png> <./plots/normalMammogram.jpg>]
-<plots/breastMicrocalcification.jpg, id=751, 338.26375pt x 338.26375pt>
+<plots/breastMicrocalcification.jpg, id=753, 338.26375pt x 338.26375pt>
 File: plots/breastMicrocalcification.jpg Graphic file (type jpg)
 
 <use plots/breastMicrocalcification.jpg>
@@ -958,7 +958,7 @@ Package pdftex.def Info: plots/breastMicrocalcification.jpg used on input line
 47.
 (pdftex.def)             Requested size: 107.19318pt x 107.19366pt.
 
-<plots/breastMass.jpg, id=752, 430.60875pt x 431.6125pt>
+<plots/breastMass.jpg, id=754, 430.60875pt x 431.6125pt>
 File: plots/breastMass.jpg Graphic file (type jpg)
 
 <use plots/breastMass.jpg>
@@ -1046,7 +1046,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [33
 
 
-] [34] <plots/mcDiffResizings.png, id=865, 822.4326pt x 722.7pt>
+] [34] <plots/mcDiffResizings.png, id=867, 822.4326pt x 722.7pt>
 File: plots/mcDiffResizings.png Graphic file (type png)
 
 <use plots/mcDiffResizings.png>
@@ -1054,13 +1054,13 @@ Package pdftex.def Info: plots/mcDiffResizings.png used on input line 65.
 (pdftex.def)             Requested size: 357.3038pt x 313.97496pt.
  [35 <./plots/mcDiffResizings.png>]
 
-LaTeX Warning: Citation `Ciresan2013' on page 36 undefined on input line 85.
+LaTeX Warning: Citation `Ciresan2013' on page 36 undefined on input line 88.
 
-<plots/mcDiffPreprocessings.png, id=873, 863.225pt x 867.24pt>
+<plots/mcDiffPreprocessings.png, id=875, 863.225pt x 867.24pt>
 File: plots/mcDiffPreprocessings.png Graphic file (type png)
 
 <use plots/mcDiffPreprocessings.png>
-Package pdftex.def Info: plots/mcDiffPreprocessings.png used on input line 100.
+Package pdftex.def Info: plots/mcDiffPreprocessings.png used on input line 105.
 
 (pdftex.def)             Requested size: 312.63828pt x 314.08525pt.
  [36] [37 <./plots/mcDiffPreprocessings.png>])
@@ -1069,17 +1069,17 @@ LaTeX Warning: Reference `subsec:PracticalDL' on page 38 undefined on input lin
 e 23.
 
 [38]
-Underfull \hbox (badness 4608) in paragraph at lines 66--66
+Underfull \hbox (badness 4608) in paragraph at lines 69--69
 \OT1/ptm/m/n/12 96 cores, 1GB, 2.1
  []
 
 
-Underfull \hbox (badness 1675) in paragraph at lines 67--67
+Underfull \hbox (badness 1675) in paragraph at lines 70--70
 \OT1/ptm/m/n/12 384 cores, 2GB, 5.0
  []
 
 
-Overfull \hbox (2.19142pt too wide) in paragraph at lines 98--100
+Overfull \hbox (2.19142pt too wide) in paragraph at lines 101--103
 \OT1/ptm/m/n/12 Probabilities vs UN-cor-rected thresh-old vs Thresh-old and clu
 s-ter ex-tent cor-rec-tion vs threshold-
  []
@@ -1087,7 +1087,7 @@ s-ter ex-tent cor-rec-tion vs threshold-
 [39]
 
 LaTeX Warning: Reference `subsec:Classification' on page 40 undefined on input 
-line 123.
+line 126.
 
 ) (./experiment1.tex [40]
 Chapter 4.
@@ -1124,19 +1124,19 @@ statistics / performance /
  []
 
 [44] [45]
-Underfull \hbox (badness 1527) in paragraph at lines 275--280
+Underfull \hbox (badness 1527) in paragraph at lines 281--286
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  What you need
  to know about breast can-
  []
 
 
-Underfull \hbox (badness 3364) in paragraph at lines 282--287
+Underfull \hbox (badness 3364) in paragraph at lines 288--293
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  Mam-mo-grams.
   elec-tronic, March 2014.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--287
+Underfull \hbox (badness 10000) in paragraph at lines 288--293
 \OT1/ptm/m/n/12 Avail-able on-line on []$\OT1/pcr/m/n/12 cancer . gov / cancert
 opics / types / breast /
  []
@@ -1157,10 +1157,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 85.
  ) 
 Here is how much of TeX's memory you used:
- 8693 strings out of 495028
- 128847 string characters out of 6181498
- 217751 words of memory out of 5000000
- 11411 multiletter control sequences out of 15000+600000
+ 8695 strings out of 495028
+ 128870 string characters out of 6181498
+ 217782 words of memory out of 5000000
+ 11412 multiletter control sequences out of 15000+600000
  38202 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,10n,45p,1424b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1182,10 +1182,10 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (59 pages, 4090007 bytes).
+Output written on report.pdf (59 pages, 4089964 bytes).
 PDF statistics:
- 1083 PDF objects out of 1200 (max. 8388607)
- 965 compressed objects within 10 object streams
- 241 named destinations out of 1000 (max. 500000)
+ 1087 PDF objects out of 1200 (max. 8388607)
+ 969 compressed objects within 10 object streams
+ 242 named destinations out of 1000 (max. 500000)
  513 words of extra memory for PDF output out of 10000 (max. 10000000)
 

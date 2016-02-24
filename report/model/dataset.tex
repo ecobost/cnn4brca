@@ -71,6 +71,9 @@ We have to resize the images to achieve the desired patch size. There is a coupl
 We crop the images to the nearest non-zero pixel in x and y.
 
 
+% When cropping to breast area and reducing make sure the reduced area is a multiple of 16, or downsample first and make sure the to-be-cropped area is multiple of 16. This way we can recover exactly the input image by downsampling exactly by 16x. 
+
+
 Mammograms capture images of the breast against a black background which covers a good part of the mammogram. We delete any image patch which is 25\% or more black. No important information is lost in this process because the same part of the breast which appears in a deleted patch also appears on other image patches with less black background. A remaining question is how will the trained convolutional network react when presented with an all black input, for example, when slided across the background of a test mammogram. In practice, however, this is not relevant because it is clear that no lesion could occur outside the breast. 
 
 An alternative is to preserve all images and let the network learn that black images are negative examples but this seems rather wasteful.
@@ -91,6 +94,8 @@ We will use the type of lession (mass, clustered microcalcifications or normal) 
 % LeCun says convnets like to have many categories because they can identify better features early in the processing. Maybe it is better to have the same convnet for different lessions.
 
 Databases normally offer adittional information such as age of the patient, breast density, family clinical history, assesment of the subtlety and malignancy of the lesion, etc. This information could be used as complementary features before classification or as labels for the network. In this stage we use only the mammograms with the labels stated above (binary classification).
+
+% when downsampling the labels make sure every pixel in the smaller image is a valid label, downsample to the same size of the mammograms, (predicted segmentations which are way smaller are going to be upsampled 16x or 8x depending on the network that generated them)
 
 
 \subsection{Image enhancement}

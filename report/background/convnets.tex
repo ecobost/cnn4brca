@@ -20,7 +20,7 @@ The input layer is a volume ($\mathbb{R}^{h\times w \times c}$) that holds the i
 \begin{figure}[h]
 	\centering
 	\includegraphics[width = 0.73\textwidth]{plots/convNetVolumes.jpeg}
-	\caption[Illustration of a convolutional network]{Transformations computed by a convolutional network. Input layer is shown in pink, hidden layers are shown in blue and output layer is shown in green. The third layer has 5 feature maps of size $2\times3$ (width is listed first by convention). Image courtesy of~\cite{Karpathy2015}.}
+	\caption[Illustration of a convolutional network]{Transformations computed by a convolutional network. Input layer is shown in pink, hidden layers are shown in blue and output layer is shown in green. The third layer has 5 feature maps of size $2\times3$ (width is listed first by convention). Image courtesy of~\cite{Karpathy2016}.}
 	\label{fig:ConvNetVolumes}
 \end{figure}
 
@@ -34,11 +34,11 @@ We could think of each filter as looking for an specific feature on the input an
 \begin{figure}[h]
 	\centering
 	\includegraphics[width = 0.36\textwidth]{plots/convLayer.jpeg}
-	\caption[Convolutional layer applied to a volume]{Convolutional layer applied to a volume ($\mathbb{R}^{32\times 32\times 3}$). The resulting volume has five feature maps as shown by the units in the blue volume ($\mathbb{R}^{32\times 32\times 5}$). Five small filters slide accross the spatial dimensions ($32\times 32$) of the volume to produce the feature maps. Image courtesy of~\cite{Karpathy2015}.}
+	\caption[Convolutional layer applied to a volume]{Convolutional layer applied to a volume ($\mathbb{R}^{32\times 32\times 3}$). The resulting volume has five feature maps as shown by the units in the blue volume ($\mathbb{R}^{32\times 32\times 5}$). Five small filters slide accross the spatial dimensions ($32\times 32$) of the volume to produce the feature maps. Image courtesy of~\cite{Karpathy2016}.}
 	\label{fig:ConvLayer}
 \end{figure}
 
-We choose four hyperparameters for this layer: number of feature maps, filter size, stride (the number of places to shift the filter at each step) and amount of padding around the volume; these define the shape of the resulting volume. The number of feature maps depends on the amount of distinct features we wish to learn, the filter size is usually small ($3\times3$ to $9\times9$), stride is 1 and zero-padding is usually $\lfloor (f_s-1)/2\rfloor$ where $f_s$ is the filter size; the last one is needed to preserve the spatial dimensions of the volume in the previous layer.
+We choose four hyperparameters for this layer: number of filters, filter size, stride (the number of places to shift the filter at each step) and amount of padding around the volume; these define the shape of the resulting volume. The number of filters depends on the amount of distinct features we wish to learn, the filter size is usually small ($3\times3$ to $9\times9$), stride is 1 and zero-padding is usually $\lfloor (f_s-1)/2\rfloor$ where $f_s$ is the filter size; the last one is needed to preserve the spatial dimensions of the volume in the previous layer.
 
 \paragraph{ReLU layer} This layer performs an elementwise ReLU activation function to the volume in the previous layer, i.e., each value $z$ in the volume is passed through the nonlinearity $\max(0,z)$. It outputs a volume with the same dimensions of the previous one and has no parameters to learn. A ReLU layer (or any other activation function) usually follows a convolutional layer so it is sometimes considered part of it; we separate them for clarity. 
 
@@ -66,11 +66,11 @@ Figure~\ref{fig:ConvNetExample} shows a convolutional network with different kin
 \begin{figure}[h]
 	\centering
 	\includegraphics[width = 0.92\textwidth]{plots/convNetExample.jpeg}
-	\caption[Convolutional network in action]{Convolutional network with architecture \texttt{INPUT -> [[CONV -> RELU]*2 -> POOL]*3 -> FC}. The input image has size $32\times 32$. Each hidden layer uses 10 feature maps (shown as columns). Although the size of feature maps looks constant, each pooling layer reduces its dimensions by half (after the final pooling layer, feature maps have size $4\times 4$). We show final scores for the five most probable classes. Image courtesy of~\cite{Karpathy2015}.}
+	\caption[Convolutional network in action]{Convolutional network with architecture \texttt{INPUT -> [[CONV -> RELU]*2 -> POOL]*3 -> FC}. The input image has size $32\times 32$. Each hidden layer (a column) has 10 feature maps. Although the size of feature maps looks constant, each pooling layer reduces its dimensions by half (after the final pooling layer, feature maps have size $4\times 4$). We show final scores for the five most probable classes. Image courtesy of~\cite{Karpathy2016}.}
 	\label{fig:ConvNetExample}
 \end{figure}
 
-Lately, simpler convolutional network architectures have emerged. The All Convolutional Net~\cite{Springenberg2014} is a network formed solely by convolutional layers: we replace pooling layers with convolutional layers with the same filter size, stride and number of feature maps; it learns the pooling operation.
+Lately, simpler convolutional network architectures have emerged. The All Convolutional Net~\cite{Springenberg2014} is a network formed solely by convolutional layers: we replace pooling layers with convolutional layers with the same number of filters, filter size and stride; it learns the pooling operation.
 % This greatly increases the number of parameters so it is inappropiate for small data sets.
 \emph{Transfer learning} is a related trend where we train a convolutional network on data from a specific domain and later reuse it to extract image features in a different domain or as an initial network to fine-tune with new data.
 
@@ -82,5 +82,5 @@ The loss function for a multiclass convolutional network is similar to that for 
 This function is differentiable with respect to $\Theta$, thus, we can train the entire network via gradient descent. We calculate the gradient of the loss function with backpropagation.% We use backpropagation to calculate the gradient of the loss function.
 
 \begin{comment}
-In this section we revised the standard features and training of current convolutional networks. For an in depth review of convolutional networks, see \cite{Karpathy2015}. For a complete overview of the history and state of deep learning, see \cite{Schmidhuber2015}. Section~\ref{sec:PracticalDL} gives some practical advice for choosing hyperparameters and training deep architectures.
+In this section we revised the standard features and training of current convolutional networks. For an in depth review of convolutional networks, see \cite{Karpathy2016}. For a complete overview of the history and state of deep learning, see \cite{Schmidhuber2015}. Section~\ref{sec:PracticalDL} gives some practical advice for choosing hyperparameters and training deep architectures.
 \end{comment}

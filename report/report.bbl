@@ -160,7 +160,13 @@
   computerized detection of microcalcifications.
 \newblock {\em Academic Radiology 9}, 4 (2002), 420 -- 429.
 
-\bibitem{He2015}
+\bibitem{He2015b}
+{\sc He, K., Zhang, X., Ren, S., and Sun, J.}
+\newblock Deep residual learning for image recognition.
+\newblock {\em CoRR abs/1512.03385\/} (2015).
+\newblock Available online on \url{arxiv.org/abs/1512.03385}.
+
+\bibitem{He2015a}
 {\sc He, K., Zhang, X., Ren, S., and Sun, J.}
 \newblock Delving deep into rectifiers: Surpassing human-level performance on
   imagenet classification.
@@ -188,10 +194,10 @@
 \newblock Caffe: Convolutional architecture for fast feature embedding.
 \newblock {\em CoRR abs/1408.5093\/} (2014).
 
-\bibitem{Karpathy2015}
+\bibitem{Karpathy2016}
 {\sc Karpathy, A.}
 \newblock Convolutional neural networks for visual recognition course.
-\newblock online, May 2015.
+\newblock online, February 2016.
 \newblock Available on \url{cs231n.github.io}.
 
 \bibitem{Kerlikowske2011}
@@ -264,12 +270,12 @@
 {\sc Moura, D.~C., López~Guevara, M.~A., Cunha, P., González~de Posada, N.,
   Ramos-Pollan, R., Ramos, I., Pinheiro~Loureiro, J., Moreira, I.~C.,
   Ferreira~Araújo, B.~M., and Cardoso~Fernandes, T.}
-\newblock {\em Progress in Pattern Recognition, Image Analysis, Computer
-  Vision, and Applications: 18th Iberoamerican Congress, CIARP 2013, Havana,
-  Cuba, November 20-23, 2013, Proceedings, Part I}.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013,
-  ch.~Benchmarking Datasets for Breast Cancer Computer-Aided Diagnosis
-  ({CAD}x), pp.~326--333.
+\newblock Benchmarking datasets for breast cancer computer-aided diagnosis
+  ({CAD}x).
+\newblock In {\em Progress in Pattern Recognition, Image Analysis, Computer
+  Vision, and Applications: 18th Iberoamerican Congress, CIARP 2013\/} (Berlin,
+  Heidelberg, November 2013), J.~Ruiz-Shulcloper and G.~Sanniti~di Baja, Eds.,
+  Springer Berlin Heidelberg, pp.~326--333.
 
 \bibitem{NCI2012}
 {\sc {National Cancer Institute}}.
@@ -314,11 +320,11 @@
 
 \bibitem{Petersen2014}
 {\sc Petersen, K., Nielsen, M., Diao, P., Karssemeijer, N., and Lillholm, M.}
-\newblock {\em Breast Imaging: 12th International Workshop, IWDM 2014, Gifu
-  City, Japan, June 29 -- July 2, 2014. Proceedings}.
-\newblock Springer International Publishing, Cham, Switzerland, 2014,
-  ch.~Breast Tissue Segmentation and Mammographic Risk Scoring Using Deep
-  Learning, pp.~88--94.
+\newblock Breast tissue segmentation and mammographic risk scoring using deep
+  learning.
+\newblock In {\em Breast Imaging: 12th International Workshop, IWDM 2014\/}
+  (June 2014), H.~Fujita, T.~Hara, and C.~Muramatsu, Eds., Springer
+  International Publishing, pp.~88--94.
 
 \bibitem{Pisano2008}
 {\sc Pisano, E.~D., Hendrick, R., Yaffe, M.~J., Baum, J.~K., Acharyya, S.,
