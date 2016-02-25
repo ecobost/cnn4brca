@@ -29,13 +29,13 @@
 \BOOKMARK [1][-]{section.3.2}{Data set}{chapter.3}% 29
 \BOOKMARK [2][-]{subsection.3.2.1}{Database}{section.3.2}% 30
 \BOOKMARK [2][-]{subsection.3.2.2}{Data division}{section.3.2}% 31
-\BOOKMARK [2][-]{subsection.3.2.3}{Image dimensions}{section.3.2}% 32
-\BOOKMARK [2][-]{subsection.3.2.4}{Background}{section.3.2}% 33
-\BOOKMARK [2][-]{subsection.3.2.5}{Labels}{section.3.2}% 34
-\BOOKMARK [2][-]{subsection.3.2.6}{Image enhancement}{section.3.2}% 35
-\BOOKMARK [2][-]{subsection.3.2.7}{Data augmentation}{section.3.2}% 36
-\BOOKMARK [1][-]{section.3.3}{Model}{chapter.3}% 37
-\BOOKMARK [2][-]{subsection.3.3.1}{Architecture}{section.3.3}% 38
+\BOOKMARK [2][-]{subsection.3.2.3}{Image enhancement}{section.3.2}% 32
+\BOOKMARK [2][-]{subsection.3.2.4}{Resizing and cropping}{section.3.2}% 33
+\BOOKMARK [2][-]{subsection.3.2.5}{Data augmentation}{section.3.2}% 34
+\BOOKMARK [2][-]{subsection.3.2.6}{Storage}{section.3.2}% 35
+\BOOKMARK [1][-]{section.3.3}{Model}{chapter.3}% 36
+\BOOKMARK [2][-]{subsection.3.3.1}{Architecture}{section.3.3}% 37
+\BOOKMARK [2][-]{subsection.3.3.2}{Loss function}{section.3.3}% 38
 \BOOKMARK [1][-]{section.3.4}{Training}{chapter.3}% 39
 \BOOKMARK [2][-]{subsection.3.4.1}{Hardware}{section.3.4}% 40
 \BOOKMARK [2][-]{subsection.3.4.2}{Software}{section.3.4}% 41
@@ -51,4 +51,4 @@
 \BOOKMARK [1][-]{section.4.2}{Discussion}{chapter.4}% 51
 \BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 52
 \BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 53
-\BOOKMARK [0][-]{chapter*.36}{Bibliography}{}% 54
+\BOOKMARK [0][-]{chapter*.33}{Bibliography}{}% 54

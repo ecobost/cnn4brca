@@ -33,9 +33,9 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Use $3\times 3$ filters with stride 1 and zero-padding 1 or $5 \times 5$ filters with stride 1 and zero-padding 2. This preserves the spatial dimensions of the volume and works better in practice~\cite{Springenberg2014}. If the input size is too big, use a bigger filter in the first convolutional layer~\cite{Karpathy2016}.
 	
-	\item Use $2\times2$ pooling with stride 2. This pooling and the overlapping version presented in Section~\ref{sec:ConvNets} produce similar results~\cite{Krizhevsky2012}.
+	\item Use $2\times2$ pooling with stride 2. Overlapping max pooling may produce slightly better results but slows training and causes resizing headaches~\cite{Krizhevsky2012, Dieleman2015}.
 %krizhevsky says overlapping is slightly better. so does dieleman but it slows thing down.
-	\item Use square input images (width = height) with spatial dimensions divisible by 2. These should be divisible by 2 at least as many times as the number of pooling layers in the network.
+	\item Use square input images (width = height) with spatial dimensions divisible by 2 at least as many times as the number of pooling layers in the network.
 
 	\item Use number of parameters to measure the complexity of an architecture rather than number of layers or units.
 \end{itemize}
@@ -57,7 +57,7 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Hyperparameters related to the convolutional architecture, e.g., number of layers, number of filters and filter sizes are set manually (as explained above) rather than using a validation set.
 
-	\item Several hyperparameters are set: initial learning rate $\alpha$, learning rate decay schedule, regularization strength $\lambda$, momentum $\mu$, probability of keeping a unit active in dropout $p$, mini-batch size and type of image preprocessing.
+	\item Several hyperparameters are set: initial learning rate $\alpha$, learning rate decay schedule, regularization strength $\lambda$, momentum $\mu$, Adam hyperparameters ($\beta_1$, $\beta_2$ and $\epsilon$), probability of keeping a unit active in dropout $p$, mini-batch size and type of image preprocessing.
 
 	\item We could fit all hyperparameters using a validation set but, in practice, this is computationally unfeasible and results in overfitting to the validation data~\cite{Cawley2010}.
 
@@ -70,12 +70,15 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item The regularization strength $\lambda$ is usually data (and loss function) dependant. It ranges from $10^{-3}$ to $10^4$. Search in log scale ($\lambda = 10^{unif(-3, 4)}$).
 %1
-	\item Divide the learning rate by 10 every time the validation error stops improving or choose a fixed number of epochs by observing when the validation error stops decreasing in a similar network~\cite{Krizhevsky2012, He2015b}.
+	\item Divide the learning rate by 10 every time the validation error stops improving or every fixed number of epochs chosen by observing when it stops improving in a similar network~\cite{Krizhevsky2012, He2015b}.
 
 	\item Use $\mu=0.9$. If using a validation set try values in \{0.5, 0.9, 0.95, 0.99\}~\cite{Karpathy2016}.
 
+	\item Use $\beta_1 = 0.9$, $\beta_2 = 0.995$ and $\epsilon = 1 {\times} 10^{-6}$~\cite{Karpathy2016}.
+	% Tensorflow says epsilon of 1e-8 is way too small. Proposes up to epsilon = 1 but that may be only for big networks.
+
 	\item Use 0.9-1 probability $p$ of retaining a unit in the input layer, 0.65-0.85 in the first 2-4 convolutional layers and 0.5 in the last convolutional layers and all fully connected layers~\cite{Srivastava2014}. Less dropout is used on the first layers because they have less parameters~\cite{Karpathy2016}.
-% Maybe don't use dropout in the input layer, because putting a zero there has a meaning(black), maybe the advantage of dropout in cinvolutional layers is just that it adds noise to the input.
+% Don't use dropout in the input layer, because putting a zero there has a meaning(black), maybe the advantage of dropout in cinvolutional layers is just that it adds noise to the input.
 
 	\item Use mini-batch size of 64 or 32. A larger batch size requires more memory and training time. Test performance is unaffected~\cite{Bengio2012}.
 
@@ -95,15 +98,20 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Use mini-batches rather than the entire training set to compute the gradient of the loss function. Mini-batches allows us to make more updates, more frequently resulting in faster convergence and better test results~\cite{Bengio2012}.
 
-	\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. NAG is a modified version of gradient descent that works better for certain architectures~\cite{Bengio2012b}. Stochastic Gradient Descent with Momentum (SGD+Momentum) is also a viable option~\cite{Karpathy2016}.
-% I could use ADAM(http://arxiv.org/pdf/1412.6980v8.pdf), too. No need to learn any more parameters, probably not need learning rate decay. https://www.youtube.com/watch?v=hd_KFJ5ktUc
+	\item Use dropout~\cite{Krizhevsky2012} as a complement to $l_2$-norm regularization. Dropout improves results but may slow network convergence.
+	%Inverted dropout may be better. Also, how would this work with a single image. It should be different for every patch. Worst-case is dropout over every big image, seems wasteful. Or maybe I can drop some activations (from the volume not the filters) at random, this may work.
 
-	\item Use dropout as a complement to $l_2$-norm regularization. Dropout improves results but may slow network convergence~\cite{Krizhevsky2012}.
-	%Inverted dropout may be better
+	\item Use batch normalization~\cite{Ioffe2015}. It speeds convergence (used with higher learning rate and faster decay), improves results and reduces the need for dropout. %It learns two extra parameters per feature map.
+	%If my batch is a single image it will normalize over each feature map (mini-batch =1), not sure this is what is intended to do/will help. Although, it could learn to go back to normal. They only use mini-batches of size 32.
+	% See some details from 54 min here: https://www.youtube.com/watch?v=gYpoJMlgyXA&feature=youtu.be
+
+	\item Use leaky rectified linear units ($a = 0.1$) rather than simple rectified linear units. Leaky ReLUs slightly improve results at almost no cost~\cite{Xu2015}.
+
+	\item Use Adam~\cite{Kingma2014} to update weights. Adam incoporates momentum and per-parameter adaptive learning rates. Nesterov's Accelerated Gradient is also a viable option~\cite{Karpathy2016}.
+	%\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. NAG is a modified version of gradient descent that works better for certain architectures~\cite{Bengio2012b}. Stochastic Gradient Descent with Momentum (SGD+Momentum) is also a viable option.
 
 	\item Store network parameters regularly during training. This allows us to inspect the network at different stages, retrain one or select the one with the best validation error~\cite{Bengio2014}.
 	%\item Use the validation or test error to select the best parameters for the network from those stored~\cite{Bengio2014}.
-% add batch normalization?. see https://youtu.be/gYpoJMlgyXA min 55, lots of details. 14 times fewer training steps.
 
 	\item Stop training if the validation error has not improved since the last learning rate reduction: gradient descent may not have converged but the validation error will start to increase (overfit)~\cite{Bengio2012}.
 
@@ -174,12 +182,20 @@ In practice, it is common to have very few examples of one class compared to the
 \end{itemize}
 
 \begin{comment}
-\paragraph{All convolutional networks}
-The research community has been moving towards replacing pooling layers and using convolutional filters as pooling operations. We offer a couple of guidelines for implementing all convolutional networks.  
-\begin{itemize}
-	\item Change each pooling layer with a convolutional layer with as many feature maps as the previous layer and filter size $2\times 2$ with stride $2$ for normal pooling or $3\times 3$ with stride $2$ for overlapping pooling~\cite{Springenberg2014}. 
+% Rewrite this if implementing somehting like this
 
-	\item For small data sets pooling layers also work as a regularizer because they reduce the number of learnable parameters and replacing them with convolutional layers may not be convenient~\cite{Karpathy2016}.
+\paragraph{Current trends}
+The research community has been moving towards using convolutional networks composed of convolutional layers only. We offer a couple of guidelines for implementing all convolutional networks.  
+\begin{itemize}
+	\item Change each pooling layer with a convolutional layer with as many feature maps as the previous layer and filter size $2\times 2$ with stride $2$ for normal pooling or $4\times 4$ with stride $2$ for overlapping pooling~\cite{He2015b}. 
+	
+	\item Average each feature map in the output of the last convolutional layer to produce a single number per feature map and connect this to the output layer~{He2015b}. This replaces all the fully connected layers (except for the last one) by a single average pooling without parameters~\cite{He2015b}.
+
+	\item To take advantage of the reduction of parameters, increase the depth and number of filters per volume.
+	
+	\item Use convolutional pooling operations ot increase the amount of feature maps.
+
+	\item For small data sets pooling layers work as a regularizer because they reduce the number of learnable parameters and replacing them with convolutional layers may not be convenient~\cite{Karpathy2016}.
 \end{itemize}
 
 \paragraph{Transfer learning}

@@ -6,12 +6,12 @@ Log with activities and questions arising during every week
 ## Feb 18 - Feb 24
 ### Activities
 * Writing Section 2.6.2, adding to 2.5
-* Preprocessing database
+* Taking more desing decisions
 * Writing Section 3.2
 
 ### To do
-* Write chapter 3 (Solution Model)
 * Ready database
+* Write chapter 3 (Solution Model)
 * Install TensorFlow (CTS/Laptop)
 * Write network in Tensorflow/Keras
 * Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)

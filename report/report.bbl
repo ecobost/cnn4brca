@@ -62,12 +62,6 @@
 \newblock online, April 2014.
 \newblock Available on \url{youtu.be/JuimBuvEWBg}.
 
-\bibitem{Bengio2012b}
-{\sc Bengio, Y., Boulanger{-}Lewandowski, N., and Pascanu, R.}
-\newblock Advances in optimizing recurrent networks.
-\newblock {\em CoRR abs/1212.0901\/} (2012).
-\newblock Available online on \url{http://arxiv.org/abs/1212.0901}.
-
 \bibitem{Bergstra2012}
 {\sc Bergstra, J., and Bengio, Y.}
 \newblock Random search for hyper-parameter optimization.
@@ -188,6 +182,13 @@
 \newblock review, National Cancer Institute, Bethesda, MD, April 2014.
 \newblock Available online on \url{seer.cancer.gov/csr/1975_2011/}.
 
+\bibitem{Ioffe2015}
+{\sc Ioffe, S., and Szegedy, C.}
+\newblock Batch normalization: Accelerating deep network training by reducing
+  internal covariate shift.
+\newblock {\em CoRR abs/1502.03167\/} (2015).
+\newblock Available online on \url{arxiv.org/abs/1502.03167}.
+
 \bibitem{Jia2014}
 {\sc Jia, Y., Shelhamer, E., Donahue, J., Karayev, S., Long, J., Girshick,
   R.~B., Guadarrama, S., and Darrell, T.}
@@ -206,6 +207,12 @@
 \newblock Comparative effectiveness of digital versus film-screen mammography
   in community practice in the united states: A cohort study.
 \newblock {\em Annals of Internal Medicine 155}, 8 (2011), 493--502.
+
+\bibitem{Kingma2014}
+{\sc Kingma, D.~P., and Ba, J.}
+\newblock Adam: {A} method for stochastic optimization.
+\newblock {\em CoRR abs/1412.6980\/} (2014).
+\newblock Available online on \url{arxiv.org/abs/1412.6980}.
 
 \bibitem{Krizhevsky2012}
 {\sc Krizhevsky, A., Sutskever, I., and Hinton, G.~E.}
@@ -376,13 +383,6 @@
 \newblock Deep learning in neural networks: An overview.
 \newblock {\em Neural Networks 61}, 0 (2015), 85--117.
 
-\bibitem{Sickles2013}
-{\sc Sickles, E., D'Orsi, C., and Bassett, L.}
-\newblock {\em {ACR BI-RADS} Atlas, Breast Imaging Reporting and Data System},
-  5th~ed.
-\newblock American College of Radiology, Reston, VA, 2013, ch.~{ACR BI-RADS}
-  Mammography.
-
 \bibitem{Simonyan2014}
 {\sc Simonyan, K., and Zisserman, A.}
 \newblock Very deep convolutional networks for large-scale image recognition.
@@ -408,6 +408,13 @@
   Salakhutdinov, R.}
 \newblock Dropout: A simple way to prevent neural networks from overfitting.
 \newblock {\em Journal of Machine Learning Research 15\/} (2014), 1929--1958.
+
+\bibitem{Szegedy2014}
+{\sc Szegedy, C., Liu, W., Jia, Y., Sermanet, P., Reed, S., Anguelov, D.,
+  Erhan, D., Vanhoucke, V., and Rabinovich, A.}
+\newblock Going deeper with convolutions.
+\newblock {\em CoRR abs/1409.4842\/} (2014).
+\newblock Available online on \url{http://arxiv.org/abs/1409.4842}.
 
 \bibitem{Taigman2014}
 {\sc Taigman, Y., Yang, M., Ranzato, M., and Wolf, L.}
@@ -440,5 +447,12 @@
 \newblock Adaptive switching circuits.
 \newblock In {\em 1960 {IRE} {WESCON} Convention Record, Part 4\/} (New York,
   1960), {IRE}, pp.~96--104.
+
+\bibitem{Xu2015}
+{\sc Xu, B., Wang, N., Chen, T., and Li, M.}
+\newblock Empirical evaluation of rectified activations in convolutional
+  network.
+\newblock {\em CoRR abs/1505.00853\/} (2015).
+\newblock Available online on \url{arxiv.org/abs/1505.00853}.
 
 \end{thebibliography}

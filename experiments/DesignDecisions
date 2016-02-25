@@ -15,16 +15,20 @@ Enhancement
 	Global contrast stretching/No enhancement	
 	Local contrast stretching
 	local background reduction + contrast
-Receptive field(size in cms and pixels)
-	2cm in 112x112 pixels (or as many pixels as the input volume to the network)
-Cropping
-	Cropping to breast area to not have lots of black space (smaller images)
-	No cropping
+Image size
+	Reduced for 2cm to fit into 112 x 112 pixels (or as many pixels as the input
+		volume to the network). Train on entire images
+	Cut 112 x 112 patches (or as many pixels as the input volume) equivalent to
+		2cm x 2cm. Roughly 1M patches. This will take advantage of smaller
+		mini-batches/ more frequent updates, batchnorm, dropout (this may 
+		work in both) and less memory use (bigger input volume and newer
+		architectures could be used). Train on patches. 
 Downsampling interpolation (images and labels)
 	LANCZOS filter from PILLOW
 	BICUBIC filter form PILLOW
-Label downsampling
-	Keep them at same dimensions than downsampled image (further downsampling to 			match the output of the network can be done during training)
+Cropping
+	Cropping to breast area to not have lots of black space (smaller images)
+	No cropping
 Augmentation
 	Flipped and rotations 0,90,180,270 (8). Test set not augmented
 	Flipped and rotations 0,180 (4). Test set not augmented
@@ -32,6 +36,13 @@ Storage
 	Store all augmented images and its augmented labels
 	Store originals and sample an image and a data augmentation for every
 		training batch
+Label storage
+	Store one version at same size than downsampled image (~1100x1100) and one
+		version that matches dimension of output of the network (~70x70)
+	Only keep the big version (further downsampling can be done during training)
+Folders
+	Mammograms and their augmentations in the same folders and create list with
+		all their names (180x8 names). Labels names are generated with suffix
 
 --Model
 ConvNet architecture
@@ -45,6 +56,12 @@ Modern features/trends not adopted
 	deeper architecture
 	more feature maps 
 	no dropout (just batchnorm)
+Upsampling
+	Downsample the labels (PILLOW Image.NEAREST)
+	Upsample the image with a bilinear/deconvolutional layer at end of network
+Loss function
+	Logistic loss
+	Hinge/SVM loss
 
 --Training
 Local zero-mean center each image
@@ -75,6 +92,8 @@ Learning rate
 	Biggest not causing divergence and halve when converged
 
 ---Post-processing
-Upsampling
-	Downsample the labels (PILLOW Image.NEAREST)
-	Upsample the image with a bilinear/deconvolutional layer at end of network
+Post-processing
+	?
+Evaluation metric
+	IOU
+	F1-score

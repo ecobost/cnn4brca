@@ -50,8 +50,12 @@ Using the advice in Section~\ref{subsec:PracticalDL} we decided to use a simple 
 
 	In case the input was size $64 \times 64$ pixels we could replace use a $3 \times 3$ filter with stride 1 in the first convolutional layer and leave everything else unchanged. For an all convolutional architecture we could replace all pooling layers by a $5 \times 5$ filter  with stride 2 and use input images of size of $113 \times 113$ or $129 \times 129$.
 
-	% Convolutional overlapping pooling. all convolutional networks do add a lot of params. i am wrong.
-% Masses are 12.2mm + 4.5mm std . 2 cm holds 96% of masses. 1.5 holds 73 % of masses
+%subsection{Linear upsampling}
+% For interpolations, see http://paulbourke.net/miscellaneous/interpolation/ y las definiciones de bilinear y bicubic above
+
+\subsection{Loss function}
+We downsample the labels rather than adding an upsampling layer. The loss function sums over all pixels in the breast area
+% How do you backpropagate through this mask? Just assign perfect scores to evry position in your predictions that is background (check where is the background in the mask), that way it will be counted by normal gradient, but it will not contribute. I could add a layer at the end (or before the loss function), that sets the gradient to zero in the backwards pass if the position it is viewing is  a background pixel. that'll do it.
 
 \section{Training}
 %Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
@@ -77,14 +81,11 @@ Using the advice in Section~\ref{subsec:PracticalDL} we decided to use a simple 
 	We use Caffe~\cite{Jia2014} to train the networks and Python to develop any other tools (image retrieval and augmentation, model evaluation, figure generation, etc.).
 
 	\subsection{Regularization}
-Dropout and l2-norm
-Other options: batch normalization (man, it appears to be good, speeds learning, no need to choose small learning rate, no need for dropout)
+Dropout and l2-norm, batch normalization
 
 
 	\subsection{Hyperparameters}
 	Learning rate decay, dropout p, ...
-	%Use leaky RELUs, ADAM and batch normalization for more advanced results
-	% Dropout is important
 	%0.1 learning rate divided by 2 when convergence
 
 	\subsection{Implementation details}
@@ -105,11 +106,6 @@ Threshold free cluster enhancement (see module 29 in introduction to fmri)
 Choose a threshold and delete any clusters less than x...
 
 we could also present a heatmap with the different probabilities in each pixel of the image, for instance on mammograms we could present a grayscale image of whether a lesion is present.
-
-%Upsampling can be done using ndimage.zoom or scipy.misc.imresize or Image.resize (http://stackoverflow.com/questions/13242382/resampling-a-numpy-array-representing-an-image) and the cubic interpolation is almost certainly differentiable.
-% write a zero-padding function, i will need it if i do manual upsampling(instead of a python function) or if the network learn it  and when calculating gradients in any case
-% For interpolations, see http://paulbourke.net/miscellaneous/interpolation/ y las definiciones de bilinear y bicubic above
-% for training the option is to downsample the ground truth, to add a bilinear layer as part of the network or to add a learnable layer as part of the network
 
 % CRFs: public available implementation of (Krahenbuhl & Koltun)
 % For the figure draw a random one  of 100x100 with a little signal in there and apply all corrections.

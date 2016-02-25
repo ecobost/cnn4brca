@@ -2,7 +2,6 @@
 \emph{Image segmentation} is the process of labelling each pixel in an image according to the object to which it belongs (Fig~\ref{fig:imageSegmentation}).
 We can segment an image by training a classifier on small patches, sliding it across bigger images to obtain per-pixel predictions and assigning each pixel to its highest predicted class.
 %~\footnote{For classification, we average score vectors across pixels to obtain a single vector for the bigger image.}
-
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.26\textwidth}
@@ -18,8 +17,9 @@ We can segment an image by training a classifier on small patches, sliding it ac
 	\label{fig:imageSegmentation}
 \end{figure}
 
-Convolutional networks automatically behave this way when presented with a bigger image than those used for training, albeit, due to subsampling in the pooling layers, they produce a coarse segmentation that needs to be upsampled to match the size of the original image.
-For instance, a convolutional network trained with $32\times 32$ images and two pooling layers (that reduce the input by a factor of 4) acts as a $32 \times 32$ filter with stride 4 in big images, so for a $256 \times 256$ image it will produce a $64 \times 64$ segmentation~\footnote{Padding the original image by $\lfloor (f_s-1)/2\rfloor = 15$ where $f_s = 32$ is the filter size} that needs to be upsampled by a factor of 4 to recover the original dimensions.
+Adding zero-padding to each fully connected layer~\footnote{As with convolutional layers, padding the input volume by $\lfloor (f_s-1)/2\rfloor$ where $f_s$ is the filter size.} creates a convolutional network that is able to segment images of any size, albeit, due to subsampling in the pooling layers, produces a coarse segmentation that needs to be upsampled to match the size of the original image.
+%Convolutional networks automatically behave this way when presented with a bigger image than those used for training, albeit, due to subsampling in the pooling layers, they produce a coarse segmentation that needs to be upsampled to match the size of the original image.
+For instance, a convolutional network trained with $32\times 32$ images and two pooling layers (that reduce the input by a factor of 4) acts as a $32 \times 32$ filter with stride 4 in big images, so for a $256 \times 256$ image it will produce a $64 \times 64$ segmentation that needs to be upsampled by a factor of 4 to recover the original dimensions.
 \begin{comment}
 We could also set a stride of 4 in the first (converted) fully connected layer to get score matrices of size $3\times 3$ for each 9 non-overlapping $32\times 32$ partitions of the original image. It works exactly as if we applied the convolutional network to the original image at a stride of 32 but does all computations in just one pass.
 if we augment the stride of the firs fully connected layer we can compute coarser segmentations or
