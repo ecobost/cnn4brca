@@ -55,7 +55,9 @@ Using the advice in Section~\ref{subsec:PracticalDL} we decided to use a simple 
 
 \subsection{Loss function}
 We downsample the labels rather than adding an upsampling layer. The loss function sums over all pixels in the breast area
-% How do you backpropagate through this mask? Just assign perfect scores to evry position in your predictions that is background (check where is the background in the mask), that way it will be counted by normal gradient, but it will not contribute. I could add a layer at the end (or before the loss function), that sets the gradient to zero in the backwards pass if the position it is viewing is  a background pixel. that'll do it.
+% How do you backpropagate through this mask? Just assign perfect scores to evry position in your predictions that is background (check where is the background in the mask), that way it will be counted by normal gradient, but it will not contribute. I could add a layer at the end (or before the loss function), that sets the gradient to zero in the backwards pass if the position it is viewing is  a background pixel. that'll do it. If yu do judt kill the gradients of thebackground errors, try to report the loss function withouth those values, too, otherwise it will always overestimate the error. 
+% If i Just multiply by the mask i can weight losses diferently.
+% Make sure you count over everything that is  not backgorund and not just over everythingthat is 127, otherwise you may not count the lesion
 
 \section{Training}
 %Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
