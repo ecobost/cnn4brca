@@ -1,11 +1,3 @@
-- In PracticalDL add something about segmentation and get rid of anything not useful
-
-- Make some pretraining decisions
-	- Size of the receptive field
-	- Architecture of the network
-	- Whether to do upsampling as part of the network or after
-	- Type of preprocessing.
-
 - Prepare the database (images and ground truth, only in training)
 	- Preprocess 
 	- Cut black space
@@ -16,8 +8,12 @@
 - Instalar TensorFlow en CTS/laptop
 	- Correr algún experimento de prueba (MNIST)
 
-- Crear el DB en CTS
-	Escoger como organizar imagenes y labels
+- Make some pretraining decisions
+	- Whether to do upsampling as part of the network or after
+	- Type of preprocessing.
+
+- Crear red en Tensorflow
+	-Hacer pruebas iniciales
 
 - Pasar datos a A3
 	- git clone
@@ -25,8 +21,7 @@
 
 - Instalar TensorFlow en A3
 
-- Correr experimentos
-	- Escoger arcquitectura
+- Correr experimento final
 
 
 
