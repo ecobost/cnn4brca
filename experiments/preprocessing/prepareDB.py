@@ -64,7 +64,7 @@ with open(input_filename, newline = '') as csv_file, \
 		elif bbox[2] + lacked_width <= label.width:
 			bbox[2] += lacked_width
 		else:
-			# Just drop some valid columns
+			# Drop some valid columns
 			bbox[0] += (network_subsampling - lacked_width)
 
 		if bbox[1] - lacked_height >= 0:
@@ -72,7 +72,7 @@ with open(input_filename, newline = '') as csv_file, \
 		elif bbox[3] + lacked_height <= label.height:
 			bbox[3] += lacked_height
 		else:
-			# Just drop some valid rows
+			# Drop some valid rows
 			bbox[1] += (network_subsampling - lacked_height)
 
 		mammogram = mammogram.crop(bbox)
@@ -89,36 +89,33 @@ with open(input_filename, newline = '') as csv_file, \
 		label_v1 = label
 		small_label_v1 = small_label
 
-#TODO: Fix that rotating it augments the dimension of the image, even the 180 one
-# and even in small images
+		mammogram_v2 = mammogram_v1.transpose(Image.ROTATE_90)
+		label_v2 = label_v1.transpose(Image.ROTATE_90)
+		small_label_v2 = small_label_v1.transpose(Image.ROTATE_90)
 
-		mammogram_v2 = mammogram_v1.rotate(90, expand = True)
-		label_v2 = label_v1.rotate(90, expand = True)
-		small_label_v2 = small_label_v1.rotate(90, expand = True)
+		mammogram_v3 = mammogram_v1.transpose(Image.ROTATE_180)
+		label_v3 = label_v1.transpose(Image.ROTATE_180)
+		small_label_v3 = small_label_v1.transpose(Image.ROTATE_180)
 
-		mammogram_v3 = mammogram_v1.rotate(180, expand = True)
-		label_v3 = label_v1.rotate(180, expand = True)
-		small_label_v3 = small_label_v1.rotate(180, expand = True)
+		mammogram_v4 = mammogram_v1.transpose(Image.ROTATE_270)
+		label_v4 = label_v1.transpose(Image.ROTATE_270)
+		small_label_v4 = small_label_v1.transpose(Image.ROTATE_270)
 
-		mammogram_v4 = mammogram_v1.rotate(270, expand = True)
-		label_v4 = label_v1.rotate(270, expand = True)
-		small_label_v4 = small_label_v1.rotate(270, expand = True)
+		mammogram_v5 = mammogram.transpose(Image.FLIP_LEFT_RIGHT)
+		label_v5 = label.transpose(Image.FLIP_LEFT_RIGHT)
+		small_label_v5 = small_label.transpose(Image.FLIP_LEFT_RIGHT)
 
-		mammogram_v5 = ImageOps.mirror(mammogram)
-		label_v5 = ImageOps.mirror(label)
-		small_label_v5 = ImageOps.mirror(small_label)
+		mammogram_v6 = mammogram_v5.transpose(Image.ROTATE_90)
+		label_v6 = label_v5.transpose(Image.ROTATE_90)
+		small_label_v6 = small_label_v5.transpose(Image.ROTATE_90)
 
-		mammogram_v6 = mammogram_v5.rotate(90, expand = True)
-		label_v6 = label_v5.rotate(90, expand = True)
-		small_label_v6 = small_label_v5.rotate(90, expand = True)
+		mammogram_v7 = mammogram_v5.transpose(Image.ROTATE_180)
+		label_v7 = label_v5.transpose(Image.ROTATE_180)
+		small_label_v7 = small_label_v5.transpose(Image.ROTATE_180)
 
-		mammogram_v7 = mammogram_v5.rotate(180, expand = True)
-		label_v7 = label_v5.rotate(180, expand = True)
-		small_label_v7 = small_label_v5.rotate(180, expand = True)
-
-		mammogram_v8 = mammogram_v5.rotate(270, expand = True)
-		label_v8 = label_v5.rotate(270, expand = True)
-		small_label_v8 = small_label_v5.rotate(270, expand = True)
+		mammogram_v8 = mammogram_v5.transpose(Image.ROTATE_270)
+		label_v8 = label_v5.transpose(Image.ROTATE_270)
+		small_label_v8 = small_label_v5.transpose(Image.ROTATE_270)
 
 		# Save images (verbose)
 		mammogram_v1.save(basename + "_v1.png")
