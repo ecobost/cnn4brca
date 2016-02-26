@@ -44,6 +44,8 @@ Also according to Alvarez it seems to help.
 % Global contrast normalization makes comparisons across patients not good, because if a pixel is very bright in one patient that is only important with respect to that patient and it may end up (by contrast stretching) having the same value that the pixel in another mammogram who wasn't as bright but was the brightest of the mammogram. i think this makes sense because masss are going ot be bright but only in relation to the patient, maybe one has very fatty tissue so all is white and others have very clear tissue.
 % show a figure with the original mammogram and what it wil look like after all this, and its labels.
 
+Anything less thanthe global mean is set to zero and tghe rest is normalizaed to cover the entire 0-255 range
+
 \subsection{Resizing and cropping}
 A mass is usually this size
 % Masses are 12.2mm + 4.5mm std . 2 cm holds 96% of masses. 1.5 holds 73 % of masses
