@@ -3,6 +3,21 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Feb 25 - Mar 02
+### Activities
+* Preprocessing database
+* Writing Section 3.2
+
+### To do
+* Write chapter 3 (Solution Model)
+* Install TensorFlow (CTS/Laptop)
+* Write network in Tensorflow/Keras
+* Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)
+* Ask for institutional email
+
+### Questions
+1. 
+
 ## Feb 18 - Feb 24
 ### Activities
 * Writing Section 2.6.2, adding to 2.5
