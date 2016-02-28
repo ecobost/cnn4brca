@@ -18,7 +18,6 @@ Mammograms are ordered in a hierarchy
 			image_PPP_SSS_XXX_MMM.tif
 
 
-
 Some mammograms appear in more than one dataset (same patient and study in two places but with different lessions)
 
 ------ ORGANIZATION OF INFO ----------------
@@ -49,7 +48,7 @@ One lesion can appear in the two datasets once as a mass and once as a microcalc
 There are mammograms with no lesion as well as mammograms with more than one lession.
 
 2. bcdr_DDD_img.csv
-	It contains some clinical and bookeeping info. Same info as in outlines.
+	It contains some clinical and bookkeeping info. Same info as in outlines.
 		patient_id (same as PPP)
 		study_id (same as SSS)
 		series (same as XXX)

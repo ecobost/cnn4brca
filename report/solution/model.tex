@@ -1,0 +1,44 @@
+We describe our chosen architecture and loss function.
+
+\subsection{Architecture}
+Following the recommendations from Section~\ref{sec:PracticalDL}, we define a simple network with six convolutional layers and two fully connected layers.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{lccccr}
+	\hline
+	\textbf{Layer} & \textbf{Filter} & \textbf{Stride} &\textbf{Pad} & \textbf{Volume} & \textbf{Params} \\
+	\hline
+	\texttt{INPUT}	& -	& - & - & $112 \times 112 \times 1$ & -\\
+	\texttt{CONV -> LRELU} & $6 \times 6$ & 2 & 2 & $56 \times 56 \times 56$ & 2\,072\\
+	\texttt{CONV -> LRELU} & $3 \times 3$ & 1 & 1 & $56 \times 56 \times 56$ & 28\,280\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $28 \times 28 \times 56$ & -\\
+	\texttt{CONV -> LRELU} & $3 \times 3$ & 1 & 1 & $28 \times 28 \times 84$ & 42\,420\\
+	\texttt{CONV -> LRELU} & $3 \times 3$ & 1 & 1 & $28 \times 28 \times 84$ & 63\,588\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $14 \times 14 \times 84$ & -\\
+	\texttt{CONV -> LRELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 84\,784\\
+	\texttt{CONV -> LRELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 113\,008\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $7 \times 7 \times 128$ & -\\
+	\texttt{FC -> LRELU} & $7 \times 7$ & 1 & 3 & $1 \times 1 \times 448$ & 2\,459\,072\\
+	\texttt{FC -> SIGMOID} & $1 \times 1$ & 1 & 0 & $1 \times 1 \times 1$ & 449 \\
+	\hline
+	\end{tabular}
+	\label{tab:convNetArchitecture}
+	\caption[Selected convolutional network architecture]{Architecture of the network used for experiments. It shows the filter, stride and padding used in each layer as well as the resulting volume and the number of learnable parameters per layer.}
+\end{table}
+% total # of parameters: 2 793 673
+
+	The first convolutional layer uses a $5 \times 5$ filter with stride 2 (padding 2) to reduce the input spatial size from $127 \times 127$ to $64 \times 64$. After that all filters are $3 \times 3$ with stride 1 (padding 1), which preserves the spatial size and the pooling is $2\times 2$ stride 2 (padding 0) which reduces the spatial size by a half. This architecture has 4.63 million learnable parameters. 
+
+	In case the input was size $64 \times 64$ pixels we could replace use a $3 \times 3$ filter with stride 1 in the first convolutional layer and leave everything else unchanged. For an all convolutional architecture we could replace all pooling layers by a $5 \times 5$ filter  with stride 2 and use input images of size of $113 \times 113$ or $129 \times 129$.
+
+%	Leaky RELU
+
+%subsection{Linear upsampling}
+% For interpolations, see http://paulbourke.net/miscellaneous/interpolation/ y las definiciones de bilinear y bicubic above
+
+\subsection{Loss function}
+We downsample the labels rather than adding an upsampling layer. The loss function sums over all pixels in the breast area
+% How do you backpropagate through this mask? Just assign perfect scores to evry position in your predictions that is background (check where is the background in the mask), that way it will be counted by normal gradient, but it will not contribute. I could add a layer at the end (or before the loss function), that sets the gradient to zero in the backwards pass if the position it is viewing is  a background pixel. that'll do it. If yu do judt kill the gradients of thebackground errors, try to report the loss function withouth those values, too, otherwise it will always overestimate the error. 
+% If i Just multiply by the mask i can weight losses diferently.
+% Make sure you count over everything that is  not backgorund and not just over everythingthat is 127, otherwise you may not count the lesion

@@ -7,16 +7,17 @@ Log with activities and questions arising during every week
 ### Activities
 * Preprocessing database
 * Writing Section 3.2
+* Writing Section 3.3
 
 ### To do
-* Write chapter 3 (Solution Model)
 * Install TensorFlow (CTS/Laptop)
+* Write chapter 3 (Solution Model)
 * Write network in Tensorflow/Keras
 * Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)
 * Ask for institutional email
 
 ### Questions
-1. 
+1. Should I add code as appendix (prepareDB.py or network.py) or link to the github project or not do any?
 
 ## Feb 18 - Feb 24
 ### Activities

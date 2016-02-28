@@ -1,0 +1,89 @@
+\chapter{Solution}
+\label{ch:Model}
+
+% We [outline|describe|introduce] our [proposed] [solution|model], [justify] design decisions and [implementation details| detail implementation| document implementation details].
+In this chapter, we describe our solution, justify design decisions and detail implementation.
+
+
+% An scheme of the solution is found there and we do it here...
+
+\section{Task definition}
+We segment digital mammograms into two separate regions: breast mass (benign or malignant) and general tissue.
+Breast area is previously separated from the background by simple thresholding.
+In particular, we train a convolutional network to estimate the probability of each pixel belonging to a mass and use these values to generate a valid segmentation.
+%The breast area is separated from the background by simple thresholding.
+%Background and breast area are separated using thresholded to zero.
+
+\section{Data set}
+\input{solution/dataset}
+
+\section{Model}
+\input{solution/model}
+
+\section{Training}
+%Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
+
+	\subsection{Hardware}
+	Training deep neural networks is computationally intensive and requires equipment with powerful GPUs. We enlist here the resources available for this thesis.
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{cp{3.9cm}p{1.7cm}p{1.8cm}cc}
+		\hline
+		\textbf{PC}	& \textbf{GPU}	& \textbf{HD}	& \textbf{CPU}	& \textbf{RAM}	& \textbf{\#} \\
+		\hline
+		Personal	& Nvidia NVS 5400M \newline 96 cores, 1GB, 2.1 compatibility, 29 GB/s	& 57 GB \newline (36 free)	& i5-3210M \newline 2.5GHz	& 4 GB	& 1 \\
+		A4-401	& Nvidia Quadro K620 \newline 384 cores, 2GB, 5.0 compatibility, 29 GB/s & 240 GB \newline (230 free)	& i5-4570 \newline 3.2GHz	& 8 GB	& 27\\
+
+		\hline
+		\end{tabular}
+		\caption{Available hardware for experiments}
+	\end{table}
+	% We did our experiments in x computers from A3-401
+
+	\subsection{Software}
+	We use Caffe~\cite{Jia2014} to train the networks and Python to develop any other tools (image retrieval and augmentation, model evaluation, figure generation, etc.).
+
+	\subsection{Regularization}
+Dropout and l2-norm, batch normalization
+
+
+	\subsection{Hyperparameters}
+	Learning rate decay, dropout p, ...
+	%0.1 learning rate divided by 2 when convergence
+
+	\subsection{Implementation details}
+	Python, libraries used,etc.
+	Each picture was zero-mean centered, (do not subtract 127)
+
+\section{Evaluation}
+
+% Make sure the image inputted is grayscale, if not transform it, that way i can deal with color images, too.
+
+\subsection{Post-processing}
+Probabilities vs UNcorrected threshold vs Threshold and cluster extent correction vs threshold-free cluster enhancement vs, show different results at different thresholds
+data is smooth, 
+
+uncorrected threshold
+Present the probabilities of tumor on each pixel. anmd threshold it on a given prob nd delete any clusters less than x.
+Threshold free cluster enhancement (see module 29 in introduction to fmri)
+Choose a threshold and delete any clusters less than x...
+
+we could also present a heatmap with the different probabilities in each pixel of the image, for instance on mammograms we could present a grayscale image of whether a lesion is present.
+
+% CRFs: public available implementation of (Krahenbuhl & Koltun)
+% For the figure draw a random one  of 100x100 with a little signal in there and apply all corrections.
+
+% If using the threshold/ value under the cluster one, use the validation set t select pairs(threshold, total acceptable value)
+
+% Background is thresholded at zero and shown in black
+
+% Background is not counted to calculate the metrics. We use a mask to sum values only over the spaces that were a breast mass previously.
+
+	\subsection{Evaluation}
+	When dividing the data set we make sure \textit{all} image patches obtained from the same patient are assigned to either the training set or test set (not distributed) to avoid any possible overfit to the test set. Given that our data is unbalanced, with far more negative than positive examples, we use PRAUC (see Section~\ref{subsec:Classification}) to choose between models for hyperparameter selection and as an overall performance metric. Other metrics are also reported for completeness. 
+
+	We could also evaluate the network on all augmentations of an image and output the average prediction; in theory, this would give us better results. For simplicity, we do not apply it for model selection.
+
+	For detection of lesions on entire mammograms we slide the trained convolutional network across the mammogram computing a per-pixel prediction. The generated heatmap preserves the size of the original mammogram (with some zero-padding) and can be presented side to side to the original mammogram as a CAD system. In case this heatmap is noisy (predictions changes abruptly from pixel to pixel) we could use a median or gaussian filter to smooth it out.% We do not evaluate the network on the entire mammogram (or per patient), we limit ourselves to show the results.
+	\subsection{Evaluation metrics}
+F1-score AUc and those things are calculated only over breast tissue and lessions.

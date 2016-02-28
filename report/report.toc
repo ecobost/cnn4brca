@@ -38,31 +38,32 @@
 \contentsline {subsection}{\numberline {2.7.2}Detection of microcalcifications}{28}{subsection.2.7.2}
 \contentsline {subsection}{\numberline {2.7.3}Diagnosis of breast masses}{30}{subsection.2.7.3}
 \contentsline {subsection}{\numberline {2.7.4}Tissue segmentation}{30}{subsection.2.7.4}
-\contentsline {chapter}{\numberline {3}Solution Model}{33}{chapter.3}
+\contentsline {chapter}{\numberline {3}Solution}{33}{chapter.3}
 \contentsline {section}{\numberline {3.1}Task definition}{33}{section.3.1}
 \contentsline {section}{\numberline {3.2}Data set}{33}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Database}{33}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Data division}{34}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Image enhancement}{34}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Resizing and cropping}{34}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Data augmentation}{35}{subsection.3.2.5}
-\contentsline {subsection}{\numberline {3.2.6}Storage}{35}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.4}Resizing}{34}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Cropping}{34}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Data augmentation}{35}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Storage}{35}{subsection.3.2.7}
 \contentsline {section}{\numberline {3.3}Model}{35}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Architecture}{35}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{36}{subsection.3.3.1}
 \contentsline {subsection}{\numberline {3.3.2}Loss function}{36}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Training}{36}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Hardware}{36}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Software}{36}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.2}Software}{37}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}Regularization}{37}{subsection.3.4.3}
 \contentsline {subsection}{\numberline {3.4.4}Hyperparameters}{37}{subsection.3.4.4}
 \contentsline {subsection}{\numberline {3.4.5}Implementation details}{37}{subsection.3.4.5}
 \contentsline {section}{\numberline {3.5}Evaluation}{37}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Post-processing}{37}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}Evaluation}{37}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Evaluation metrics}{37}{subsection.3.5.3}
-\contentsline {chapter}{\numberline {4}Mass Segmentation}{38}{chapter.4}
-\contentsline {section}{\numberline {4.1}Results}{38}{section.4.1}
-\contentsline {section}{\numberline {4.2}Discussion}{38}{section.4.2}
-\contentsline {chapter}{\numberline {5}Conclusions}{39}{chapter.5}
-\contentsline {section}{\numberline {5.1}Future Work}{39}{section.5.1}
-\contentsline {chapter}{Bibliography}{46}{chapter*.33}
+\contentsline {subsection}{\numberline {3.5.3}Evaluation metrics}{38}{subsection.3.5.3}
+\contentsline {chapter}{\numberline {4}Mass Segmentation}{39}{chapter.4}
+\contentsline {section}{\numberline {4.1}Results}{39}{section.4.1}
+\contentsline {section}{\numberline {4.2}Discussion}{39}{section.4.2}
+\contentsline {chapter}{\numberline {5}Conclusions}{40}{chapter.5}
+\contentsline {section}{\numberline {5.1}Future Work}{40}{section.5.1}
+\contentsline {chapter}{Bibliography}{47}{chapter*.34}
