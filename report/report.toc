@@ -50,16 +50,17 @@
 \contentsline {subsection}{\numberline {3.2.7}Storage}{35}{subsection.3.2.7}
 \contentsline {section}{\numberline {3.3}Model}{35}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Architecture}{36}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Loss function}{36}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.2}Upsampling}{36}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Loss function}{36}{subsection.3.3.3}
 \contentsline {section}{\numberline {3.4}Training}{36}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Hardware}{36}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.1}Hardware}{37}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}Software}{37}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}Regularization}{37}{subsection.3.4.3}
 \contentsline {subsection}{\numberline {3.4.4}Hyperparameters}{37}{subsection.3.4.4}
 \contentsline {subsection}{\numberline {3.4.5}Implementation details}{37}{subsection.3.4.5}
 \contentsline {section}{\numberline {3.5}Evaluation}{37}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Post-processing}{37}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Evaluation}{37}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.2}Evaluation}{38}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}Evaluation metrics}{38}{subsection.3.5.3}
 \contentsline {chapter}{\numberline {4}Mass Segmentation}{39}{chapter.4}
 \contentsline {section}{\numberline {4.1}Results}{39}{section.4.1}

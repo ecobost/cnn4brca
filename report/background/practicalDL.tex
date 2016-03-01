@@ -101,11 +101,12 @@ In this section we collect guidelines for building as well as efficiently traini
 	\item Use dropout~\cite{Krizhevsky2012} as a complement to $l_2$-norm regularization. Dropout improves results but may slow network convergence.
 	%Inverted dropout may be better. Also, how would this work with a single image. It should be different for every patch. Worst-case is dropout over every big image, seems wasteful. Or maybe I can drop some activations (from the volume not the filters) at random, this may work.
 
-	\item Use batch normalization~\cite{Ioffe2015}. It speeds convergence (used with higher learning rate and faster decay), improves results and reduces the need for dropout. %It learns two extra parameters per feature map.
+	\item Batch normalize the output of each convolutional layer~\cite{Ioffe2015}. This speeds convergence (using higher learning rates and faster decay) and reduces the need for dropout. %It learns two extra parameters per feature map.
 	%If my batch is a single image it will normalize over each feature map (mini-batch =1), not sure this is what is intended to do/will help. Although, it could learn to go back to normal. They only use mini-batches of size 32.
 	% See some details from 54 min here: https://www.youtube.com/watch?v=gYpoJMlgyXA&feature=youtu.be
 
-	\item Use leaky rectified linear units ($a = 0.1$) rather than simple rectified linear units. Leaky ReLUs slightly improve results at almost no cost~\cite{Xu2015}.
+	\item Use leaky rectified linear units (\texttt{max(0.1x, x)}) rather than simple rectified linear units. Leaky ReLUs slightly improve results at almost no cost~\cite{Xu2015}.
+%($a = 0.1$)
 
 	\item Use Adam~\cite{Kingma2014} to update weights. Adam incoporates momentum and per-parameter adaptive learning rates. Nesterov's Accelerated Gradient is also a viable option~\cite{Karpathy2016}.
 	%\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. NAG is a modified version of gradient descent that works better for certain architectures~\cite{Bengio2012b}. Stochastic Gradient Descent with Momentum (SGD+Momentum) is also a viable option.

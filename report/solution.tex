@@ -21,45 +21,14 @@ In particular, we train a convolutional network to estimate the probability of e
 \input{solution/model}
 
 \section{Training}
-%Details about the practical decsiions taken to archotectures, and hyperparamters per experiments.
-
-	\subsection{Hardware}
-	Training deep neural networks is computationally intensive and requires equipment with powerful GPUs. We enlist here the resources available for this thesis.
-	\begin{table}[h]
-		\centering
-		\begin{tabular}{cp{3.9cm}p{1.7cm}p{1.8cm}cc}
-		\hline
-		\textbf{PC}	& \textbf{GPU}	& \textbf{HD}	& \textbf{CPU}	& \textbf{RAM}	& \textbf{\#} \\
-		\hline
-		Personal	& Nvidia NVS 5400M \newline 96 cores, 1GB, 2.1 compatibility, 29 GB/s	& 57 GB \newline (36 free)	& i5-3210M \newline 2.5GHz	& 4 GB	& 1 \\
-		A4-401	& Nvidia Quadro K620 \newline 384 cores, 2GB, 5.0 compatibility, 29 GB/s & 240 GB \newline (230 free)	& i5-4570 \newline 3.2GHz	& 8 GB	& 27\\
-
-		\hline
-		\end{tabular}
-		\caption{Available hardware for experiments}
-	\end{table}
-	% We did our experiments in x computers from A3-401
-
-	\subsection{Software}
-	We use Caffe~\cite{Jia2014} to train the networks and Python to develop any other tools (image retrieval and augmentation, model evaluation, figure generation, etc.).
-
-	\subsection{Regularization}
-Dropout and l2-norm, batch normalization
-
-
-	\subsection{Hyperparameters}
-	Learning rate decay, dropout p, ...
-	%0.1 learning rate divided by 2 when convergence
-
-	\subsection{Implementation details}
-	Python, libraries used,etc.
-	Each picture was zero-mean centered, (do not subtract 127)
+\input{solution/training}
 
 \section{Evaluation}
 
 % Make sure the image inputted is grayscale, if not transform it, that way i can deal with color images, too.
 
 \subsection{Post-processing}
+Make sure to say thatthe image was upsampled before post-processing (contrary to training where the labels are downsampled).
 Probabilities vs UNcorrected threshold vs Threshold and cluster extent correction vs threshold-free cluster enhancement vs, show different results at different thresholds
 data is smooth, 
 

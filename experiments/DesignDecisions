@@ -60,8 +60,8 @@ Upsampling
 	Downsample the labels (PILLOW Image.NEAREST)
 	Upsample the image with a bilinear/deconvolutional layer at end of network
 Loss function
-	Logistic loss
-	Hinge/SVM loss
+	Logistic loss summed over breast area only
+	Hinge/SVM loss summed over breast area only
 
 --Training
 Local zero-mean center each image

@@ -28,15 +28,15 @@ We divide patients in our data set into a training (70\%), validation (15\%) and
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{ccccc}
+	\begin{tabular}{lcccc}
 		\hline
 		&\textbf{Training} & \textbf{Validation} & \textbf{Test} & \textbf{Total}\\
 		\hline 
-		\textbf{Percentage of data set}	&70	&15	&15	&100\\
-		\textbf{Number of patients} &43&10&10&63\\
-		\textbf{Number of mammograms} &180&38&38&256\\
-		\textbf{Number of masses} &97&21&21&139\\
-		\textbf{Mammograms (after augmentation)} &1440&304&38&1782\\
+		Percentage of data set	&70	&15	&15	&100\\
+		Number of patients &43&10&10&63\\
+		Number of mammograms &180&38&38&256\\
+		Number of masses &97&21&21&139\\
+		Mammograms (after augmentation) &1440&304&38&1782\\
 		\hline
 	\end{tabular}
 	\caption[Data set summary]{Data set summary}
@@ -50,7 +50,7 @@ We zero any pixel below the mean pixel intensity of the image (calculated only o
 Background reduction plus contrast normalization highlights breast masses, which are brighter than normal breast tissue; normalizes images from patients with darker or lighter tissue and improves convergence~\cite{Arevalo2016}. However, it may destroy important texture information by blending it with the background or cause false positives by highlighting dense tissue.
 
 \subsection{Resizing}
-We downsample our images to hold a $2 \times 2$ cm area into $112 \times 112$ pixels---roughly a 2.5 factor.
+We resize our images to hold a $2 \times 2$ cm area into $112 \times 112$ pixels---roughly a 2.5 downsampling factor.
 %We use Lanczos interpolation for mammograms and nearest neighbor interpolation for labels; both present in PILLOW, the Python Image Library.
 We resize them with PILLOW, the Python Image Library, using Lanczos interpolation for mammograms and nearest neighbor interpolation for labels (Fig.~\ref{subfig:Preprocessingc}).
 

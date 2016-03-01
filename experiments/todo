@@ -1,16 +1,7 @@
-- Prepare the database (images and ground truth, only in training)
-	- Preprocess 
-	- Cut black space
-	- Reduce (Ground labels more if not using upsampling layer)
-
 - Aprender TensorFlow
 
 - Instalar TensorFlow en CTS/laptop
 	- Correr algún experimento de prueba (MNIST)
-
-- Make some pretraining decisions
-	- Whether to do upsampling as part of the network or after
-	- Type of preprocessing.
 
 - Crear red en Tensorflow
 	-Hacer pruebas iniciales
