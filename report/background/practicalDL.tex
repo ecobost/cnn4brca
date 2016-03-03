@@ -10,8 +10,6 @@ In this section we collect guidelines for building as well as efficiently traini
 	\item Test data should not be used to calculate any statistic used for preprocessing. Furthermore, the same statistics (calculated from training data) should be used to preprocess test data~\cite{Karpathy2016}.
 \end{itemize}
 
-
-
 \paragraph{Convolutional network architecture} Designing convolutional networks involves many decisions, we provide recommendations for the architecture and sensible values for related hyperparameters.
 
 \begin{itemize}
@@ -90,6 +88,9 @@ In this section we collect guidelines for building as well as efficiently traini
 \paragraph{Training} Convolutional networks have millions of parameters and require careful training. We offer general advice and list some commonly used techniques.
 
 \begin{itemize}
+	%\item Store your images as binary hdf5 files if big data. This allows fster fetcjhing during training.If small data sets, JSON is fine~cite{Karpathy2016}
+% https://github.com/jcjohnson/torch-rnn/blob/master/scripts/preprocess.py
+
 	\item Shuffle training examples before each epoch to ensure that examples in every mini-batch are sampled independently~\cite{Bengio2012}.
 
 	\item Multiply the number of examples by 25-100 to estimate the maximum number of parameters that could be learned (assuming data augmentation). Groups have learned up to 40M parameters from as little as 60K training examples~\cite{Dieleman2015, Springenberg2014}.
@@ -103,7 +104,6 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Batch normalize the output of each convolutional layer~\cite{Ioffe2015}. This speeds convergence (using higher learning rates and faster decay) and reduces the need for dropout. %It learns two extra parameters per feature map.
 	%If my batch is a single image it will normalize over each feature map (mini-batch =1), not sure this is what is intended to do/will help. Although, it could learn to go back to normal. They only use mini-batches of size 32.
-	% See some details from 54 min here: https://www.youtube.com/watch?v=gYpoJMlgyXA&feature=youtu.be
 
 	\item Use leaky rectified linear units (\texttt{max(0.1x, x)}) rather than simple rectified linear units. Leaky ReLUs slightly improve results at almost no cost~\cite{Xu2015}.
 %($a = 0.1$)
@@ -138,15 +138,14 @@ We perform some simple tests to make sure training works properly.
 Given that the network is already trained, using the validation set to choose the best techniques is virtually free.% Here we account for some details about this additional steps.
 
 \begin{itemize}
-
 	\item For big input images, use smaller mini-batches to avoid overloading the GPU memory~\cite{Karpathy2016}.
 
 	\item Set the post-processing technique using the validation set. Conditional random fields are specially effective for refining convolutional network scores~\cite{Chen2015}.
 
 	\item Use bilinear interpolation for upsampling~\cite{Chen2015}. If the upsampling factor is greater than 16, use a learnable upsampling layer or skip layers~\cite{Long2015}.
+% This is called a convolutional transpose 3x3, stride 2, learnable. Learned upsampling.
 
 	\item Set the segmentation threshold using the validation set; this hyperparameter is equivalent to the threshold used in classification.
-
 \end{itemize}
 
 \paragraph{Data augmentation} We reduce overfitting in image data by applying label-preserving transformations to the original images to generate additional examples. Transformations include rotations, translations, horizontal and vertical reflections, crops, zooms and jittering (adding noise to the colors).  The network receives different views of the object and learns invariant features; for instance, if we present images of books at different rotations, we expect it to learn to identify a book on any orientation.
@@ -165,7 +164,7 @@ Given that the network is already trained, using the validation set to choose th
 	\item Optionally, use data augmentation at test time: present the network with different versions of the image and average its predictions~\cite{Krizhevsky2012}.
 \end{itemize}
 
-% Need some sources for this section. I've read it all around.
+% Need more sources for this section. I've read it all around.
 \paragraph{Unbalanced data}
 In practice, it is common to have very few examples of one class compared to the rest. Managing unbalanced data sets is still an open problem.%We offer advice to deal with unbalanced classes.using standard convolutional networks.
 \begin{itemize}
@@ -194,9 +193,11 @@ The research community has been moving towards using convolutional networks comp
 
 	\item To take advantage of the reduction of parameters, increase the depth and number of filters per volume.
 	
-	\item Use convolutional pooling operations ot increase the amount of feature maps.
+	\item Increase the amount of feature maps when using convolutional pooling operations.
+	
+	\item Use 1x1 'bottleneck' filters to reduce the volume depth in 2, then a 3x3 filter for the convolution then a 1x1 to restore the volume depth, produces less parameters and more nonlinearities.
 
-	\item For small data sets pooling layers work as a regularizer because they reduce the number of learnable parameters and replacing them with convolutional layers may not be convenient~\cite{Karpathy2016}.
+	\item For small data sets pooling layers work as a regularizer because they reduce the number of learnable parameters and replacing them with convolutional layers may not be convenient~\cite{Karpathy2016}.	
 \end{itemize}
 
 \paragraph{Transfer learning}
@@ -214,14 +215,13 @@ When we have a small data set we could use a pretrained convolutional network ei
 \paragraph{Software} We shortly describe four of the most popular packages for deep learning. All have similar capabilities and are available to the public (open-source).
 
 \begin{itemize}
-	\item Tensorflow~\cite{Abadi2015} is a Python/C++ library released by Google that supports automatic differentiation on data flow graphs---neural networks, included---, training on clusters of CPUs and GPUs, graph visualization and easy deployment in multiple platforms. It has been quickly adopted by the deep learning community.
-	\item Caffe~\cite{Jia2014}: Caffe is a mature deep learning framework developed in C++/CUDA by the Berkeley Vision and Learning Center (BVLC) and community contributors. It offers a Python, Matlab and command line interface; reference models and tutorials; and very fast code with easy GPU activation.
-	\item Theano~\cite{Bergstra2010, Bastien2012}: Theano is a Python library developed in Python/CUDA at the University of Montreal. It is tightly integrated with NumPy, performs symbolic automatic differentiation and uses the GPU to efficiently evaluate mathematical expressions involving multidimensional arrays.
-	\item Torch7~\cite{Collobert2011}: Torch is a scientific computing framework developed in C/Lua/CUDA at the IDIAP Research Institute. It offers multidimensional arrays (tensors), automatic differentiation, a command line and Lua interface, GPU support and easy building of complex neural network architectures.
-%	\item Cuda-ConvNet2~\cite{Krizhevsky2014}: Cuda-ConvNet2 is a highly optimized convolutional network library developed in C++/CUDA by Alex Krizhevsky. It offers different off-the-shelf configurations for convolutional networks, a command line interface and multi-GPU training.
+	\item Tensorflow~\cite{Abadi2015} is a Python/C++ library released by Google that supports automatic differentiation on data flow graphs---neural networks, included---, distributed training on clusters of CPUs and GPUs, graph visualization and easy deployment in multiple platforms. It has been quickly adopted by the deep learning community.
+	\item Theano~\cite{Bergstra2010, Bastien2012}: Theano is a Python library developed in Python/CUDA at the University of Montreal that performs symbolic differentiation on computational graphs. It is tightly integrated with NumPy and uses the GPU to evaluate mathematical expressions involving multidimensional arrays.
+	\item Torch~\cite{Collobert2011}: Torch is a scientific computing framework developed in C/Lua/CUDA at the IDIAP Research Institute. It offers multidimensional arrays (tensors), automatic differentiation, a command line and Lua interface, GPU support and easy building of complex neural network architectures.
+	\item Caffe~\cite{Jia2014}: Caffe is a deep learning framework developed in C++/CUDA by the Berkeley Vision and Learning Center (BVLC) and community contributors. It offers a Python, Matlab and command line interface; reference models and tutorials; and fast code with easy GPU activation.
+%	\item Keras is a high-level wrapper which uses Theano or Tensorflow as back-end and lets you define graphs and standard deep learning models without getting into low-level details.
 \end{itemize}
 
 \bigskip
 
 We acknowledge that mammographic data is different from regular image segmentation data: labelling is imperfect, image sizes and ratio change, images are bigger, quality varies, objects of interest are small in relation to the background, data sets are smaller, texture is uniform across the image, among others. Therefore, some of the advice given above may prove counterproductive. Whenever possible, design decisions should be based on data and compiled results.
-%Deep Learning (Bengio Lecture): (https://www.youtube.com/watch?v=JuimBuvEWBg)

@@ -8,12 +8,15 @@ Log with activities and questions arising during every week
 * Preprocessing database
 * Writing Section 3.2
 * Writing Section 3.3
+* Watching cs231n lectures/ updating knowledge
+* Installing Tensorflow (Laptop/CTS)
+* Reading Tensorflow tutorials
 
 ### To do
-* Install TensorFlow (CTS/Laptop)
-* Write chapter 3 (Solution Model)
-* Write network in Tensorflow/Keras
+* Read Tensorflow tutorials
+* Write network in Tensorflow
 * Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)
+* Write chapter 3 (Solution Model)
 * Ask for institutional email
 
 ### Questions

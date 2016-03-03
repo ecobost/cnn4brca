@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  29 FEB 2016 18:43
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  2 MAR 2016 22:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -924,13 +924,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [17 <./plots/convNetExample.jpeg>]) (./background/practicalDL.tex [18 <./plots/
 segmentationImage.png> <./plots/segmentationTruth.png>] [19] [20]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 75.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 75.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
  [21] [22] [23])
 (./background/breastcancer.tex
 <plots/breastAnatomy.png, id=741, 419.5675pt x 454.69875pt>
@@ -1105,13 +1105,8 @@ mogram_enhanced.png (PNG copy)> <./plots/mammogram_resized.png (PNG copy)> <./p
 lots/mammogram_v1.png (PNG copy)> <./plots/label.png (PNG copy)> <./plots/label
 _enhanced.png (PNG copy)> <./plots/label_resized.png (PNG copy)> <./plots/label
 _v1.png (PNG copy)>]) (./solution/training.tex
-Underfull \hbox (badness 4608) in paragraph at lines 11--11
-\OT1/ptm/m/n/12 96 cores, 1GB, 2.1
- []
-
-
-Underfull \hbox (badness 1675) in paragraph at lines 12--12
-\OT1/ptm/m/n/12 384 cores, 2GB, 5.0
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+[]\OT1/ptm/m/n/12 Xeon
  []
 
 [36]) [37]
@@ -1212,7 +1207,7 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (58 pages, 7712545 bytes).
+Output written on report.pdf (58 pages, 7712602 bytes).
 PDF statistics:
  1107 PDF objects out of 1200 (max. 8388607)
  986 compressed objects within 10 object streams
