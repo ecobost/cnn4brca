@@ -20,6 +20,7 @@ Following recommendations from Section~\ref{sec:PracticalDL}, we define a simple
 	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $7 \times 7 \times 112$ & -\\
 	\texttt{FC -> Leaky RELU} & $7 \times 7$ & 1 & 3 & $7 \times 7 \times 448$ & 2\,459\,072\\
 	\texttt{FC -> SIGMOID} & $1 \times 1$ & 1 & 0 & $7 \times 7 \times 1$ & 449 \\
+%	\texttt{BICUBIC} & - & - & - & 112 \times 112 \times 1 & -\\
 	\hline
 	\end{tabular}
 	\caption[Selected convolutional network architecture]{Architecture of the network used for experiments. It shows the filter size, stride and padding in each layer as well as the resulting volume and number of learnable parameters per layer.}
@@ -36,7 +37,10 @@ This architecture defines 2.79 million parameters. %2 793 673
 
 \subsection{Upsampling}
 To simplify the architecture, we downsample our labels to match the produced segmentations rather than adding an upsampling layer at the end of the network.
+% Could automatically resize using tf.imageresize_bilinear or bicubic
+% change in design decisions and in the layer architecture table above
 
 \subsection{Loss function}
-We compute the sigmoid loss function for each pixel in the produced segmentation and sum over all pixels in the breast area, i.e., gradients accumulate for pixels in the breast area. Background is ignored.
-% I can weight the losses for different labels differently using the mask (multiplied by the output).
+We compute the logistic loss function for each pixel in the produced segmentation and average over all pixels in the breast area, i.e., gradients accumulate over pixels in the breast area (breast tissue and masses) while background is ignored.
+%We compute the logistic loss function for each pixel in the produced segmentation and sum over all pixels in the breast area, i.e., gradients accumulate over pixels in the breast area but background is ignored. This amounts to using a weighted loss function where breast area (breast tissue and masses) has weight one and background has weight zero.
+% I can weight the losses for breast tissue and breast masses differently using the mask (multiplied by the loss function). To calculate a proper weight, you would have to estimate the prior of a loss being from mass(~0.2) or from area (0.8) and multiply masses by .8 and tissue by 0.2, for instance. Or just decrease the weight of breats tissue, thus masses at 1 and tissue at 0.2 or 0.1 (remember there are images with not a single mass, so mass is quite improbable).

@@ -3,6 +3,21 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Mar 03 - Mar 09
+### Activities
+* Reading Tensorflow tutorials
+
+### To do
+* Write network in Tensorflow
+* Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)
+* Write chapter 3 (Solution Model)
+* Ask for institutional email
+
+### Questions
+
+
+
+
 ## Feb 25 - Mar 02
 ### Activities
 * Preprocessing database
@@ -20,7 +35,10 @@ Log with activities and questions arising during every week
 * Ask for institutional email
 
 ### Questions
-1. Should I add code as appendix (prepareDB.py or network.py) or link to the github project or not do any?
+1. Should I add code as appendix (prepareDB.py or tensorflow.py) or link to the github project or not do any?
+
+
+
 
 ## Feb 18 - Feb 24
 ### Activities

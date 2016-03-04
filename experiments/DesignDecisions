@@ -58,10 +58,13 @@ Modern features/trends not adopted
 	no dropout (just batchnorm)
 Upsampling
 	Downsample the labels (PILLOW Image.NEAREST)
-	Upsample the image with a bilinear/deconvolutional layer at end of network
+	Upsample the produced output with bicubic interpolation at end of network
+	Upsample the produced output with deconvolutional layer at end of network
+	Upsample the produced output with bilinear interpolation at end of network.
 Loss function
+	Logistic loss averaged over breast area only
 	Logistic loss summed over breast area only
-	Hinge/SVM loss summed over breast area only
+	Hinge/SVM loss averaged over breast area only
 
 --Training
 Local zero-mean center each image
