@@ -26,12 +26,23 @@ tf.image.per_image_whitening()
 
 # Check this answer for reading images
 http://stackoverflow.com/questions/34340489/tensorflow-read-images-with-labels?rq=1
+filename_queue = string_input_producer #give it all filenames in csv format (or maybe just the name of the image and then construct the label name from there), it will automatically shuffle them between every epoch and cycle thrugh them, then read em with.
+image_filename, label_filename = tf.decode_csv(filename_queue.dequeue(), [[""], [""]])
+string_image = tf.read_file(imageFilename)
+string_label = tf.read_file(labelFilename)
+image = tf.image.decode_png(string_image)
+label = tf.image.decode_png(string_label)
+return image, label
 
 For loading, maybe load all names in a list and do a nextIMage that retursn a tuple image, label
 next image will take care of reshuffling and lading
 
 # automatically resize
-tf.image.resize_bilinear(
+tf.image.resize_bilinear()
+
+# summarize images and labels
+# write a summarize function that uses tf.histogram_summary and tf.scalar_summary (sparsity see cifar model) in activations after relu and maybe in weight gradients (histogram to see if all are positive in the first and penultimate layer maybe) and maybe first layer filters (not so often though, maybe not), summarize the training and val loss, too. Summarize the reduce_mean of (predicitions) to see whether they start at around 0.5 and decrease (because there is not many positives)
+	
 
 # How to write somethings (rather than how they say to)
 optimizer = tf.train.ADAMOptimizer
@@ -46,7 +57,7 @@ with Session as sess:
 		sess.run(optimizer.minimize(loss))
 		summary_str = sess.run(tf.merge_all_summaries, feed_dict=feed_dict)
 
-
+tf.train.suffle_batch
 
 # Tests
 % 112 x 112 with no background (sanity checks)

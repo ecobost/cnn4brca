@@ -8,7 +8,8 @@ Mammograms
 	Digital from BCDR
 	Film from DDSM
 Division
-	70% training, 15% val, 15% test
+	75% training, 10% val, 15% test
+	70% training, 15% val, 15% test  (return 3,78,305 and 306)	
 	70% training, 10% val, 20% test
 Enhancement
 	Global background reduction + contrast stretching
@@ -46,13 +47,15 @@ Folders
 
 --Model
 ConvNet architecture
-	The one starting at 112 (2.8M parameters) (arch #11)
-	The one starting at 80 (2.8M parameters) (arch #18)
-	The one starting at 96 (1.6M parameters) (arch #12)
-	The one with new features (2.6M parameters) (arch #17)
+	VGG-like starting at 112 (2.9M parameters) (arch #27)
+	ResNet-like with 1-3-5-2 architecture (1.4M parameters) (arch #24)
+	ResNet-like 1-2-4-1 architecture with bottleneck (0.3M parameters) (arch #25)
+	VGG-like starting at 112 with bottleneck (1M parameters) (arch#27)
+	ResNet-like 1-2-4-1 architecture (0.9M parameters) (arch #25)
 Modern features/trends not adopted
+	Bottleneck architecture (reduces parameters by a factor of 0.36 but augments memory requirements by a factor of 1.5)
 	7x7 average pooling filters instead of fully connected
-	4x4 conv filters, stride 2, padding 1, to get rid of pooling
+	3x3/4x4 conv filters, stride 2, padding 1, to get rid of pooling
 	deeper architecture
 	more feature maps 
 	no dropout (just batchnorm)
@@ -78,10 +81,11 @@ Update Rule
 	NAG
 Pooling
 	Non-overlapping max-pooling
-	Convolutional overlapping pooling (4x4 pooling, stride 2, padding 1)
+	Convolutional overlapping pooling (3x3 pooling, stride 2, padding 1.5/1)
 	Overlapping max-pooling
 First layer Conv-Pooling
 	6x6 filter stride 2 padding 2
+	5x5 filter stride 2 padding 1.5/2
 	4x4 filter stride 2 padding 1
 Batch size
 	One entire image per batch

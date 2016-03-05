@@ -35,6 +35,8 @@ Learning rate decay, dropout p, ...
 ADAM
 %Although the gradient rule can be seen as stochastic gradient descen because it uses a single image to compute the gradients it  can also be seen as stochastic radient descent given that it sums the gradients produced by applying the network in different spatial positions.
 
+% Training a convnet with filter size 112x112 (CONV->SIGMOID) is equivalent to training a linear classifier and could be used as a baseline. 12.5K parameters.
+
 \subsection{Implementation details}
 Upsampling
 % If using an upsampling layer, maybe use a simple deconv layer, but change its weights in the forward pass to be the weights needed for bilinear interpolation (or set its weights to always be those for bilinear interpolation), that way gradient descent can take care of it in the backward pass
