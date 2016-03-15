@@ -1,3 +1,59 @@
+# Written by: Erick Cobos T (a01184857@itesm.mx)
+# Date: 15-March-2016
+
+"""TensorFlow implementation of the convolutional network described in Chapter 3 of the thesis report.
+
+It loads each mammogram and its label to memory, computes the function described by the convolutional network, and produces a segmentation of the same size as the original mammogram. The network outputs a heatmap of the probability of mass accross the mammogram.
+
+The network uses separate lists of (preprocessed and augmented) mammograms for training and validation. Labels have value 0 for background, 127 for breast tissue and 255 for breast masses. 
+
+The design is loosely based on the examples offered in the TensorFlow tutorials. It uses all available CPUs and a single GPU (if available) in one machine. It is not distributed.
+
+See code for details.
+"""
+import tensorflow as tf
+import csv
+
+"""
+Pseudo-code
+Declare some constants
+Create queue of image and labels filenames (for trainnig and validation) (create a function)
+Define the model
+	Create each layer(maybe with a function)
+Define the loss for the model
+Define the optimization
+Add summaries
+Start session and initialize variables, writer and queues
+for epochs number of epochs
+	Create a new batch (with a single image) 
+		Zero-mean the image
+	Prepare the feed
+	Train the network
+
+	every epochsSave
+		Checkpoint (saver, global_step)
+	every epochsToSummary
+		Write all summaries
+"""
+
+# TODO: Create the filename queues, see if it works
+# TODO: Create the preprocessing image queues (nextBatch)
+# TODO: Create the model
+# TODO: Check its graph in Tensorboard
+
+# Set some parameters
+training_dir = "" # Path to the training directory where results are saved
+training_path = "" # Path to the csv file holding the image and label filenames
+val_file = ""
+#
+
+# If called as 'python3 model.py' run the main method.
+if __name__ == "__main__"	
+	main()
+
+
+
+"""
 % wight initialization
 tf.random_normal(mean = 0, std = ...)
 %For biases maybe tf.fill (0.1,..)
@@ -102,6 +158,8 @@ sess.run(train_step, feed_dict = feed)
 
 # For eval, define it in the same model or use a scope as in rnn/ptb/ptb_word_lm
 
+# Define l2 norm as element'wise square plus reduce?sum, or as tr(AtxA)
+
 # Tests
 % Tensorboard graph definition looks fine?
 % 112 x 112 with no background (sanity checks)
@@ -113,3 +171,4 @@ sess.run(train_step, feed_dict = feed)
 % biggest possible image (1579x1305)
 %  if failed (biggest image only for testing)
 
+"""

@@ -3,13 +3,29 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
-## Mar 03 - Mar 09
+
+## Mar 10 - Mar 16
+### Activities
+* Spoke with Dr. Garrido
+* Writing Tensorflow implementation
+
+
+### To do
+* Write network in Tensorflow
+* Ask for a computer in A3-401 (Dr. Parra) or the cluster of CPUs (Dr. Nolazco)
+* Write chapter 3 (Solution Model)
+* Ask for institutional email
+
+### Questions
+
+
+## Mar 04 - Mar 09
 ### Activities
 * Reading Tensorflow tutorials
 
 ### To do
 * Write network in Tensorflow
-* Ask for a computer in A3-401 or somewhere else (maybe ask Dr. Garrido)
+* Ask for a computer in A3-401 (Dr. Parra) or the cluster of CPUs (Dr. Nolazco)
 * Write chapter 3 (Solution Model)
 * Ask for institutional email
 
@@ -18,7 +34,7 @@ Log with activities and questions arising during every week
 
 
 
-## Feb 25 - Mar 02
+## Feb 25 - Mar 03
 ### Activities
 * Preprocessing database
 * Writing Section 3.2
