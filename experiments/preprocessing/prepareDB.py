@@ -10,7 +10,7 @@ from PIL import Image, ImageStat, ImageOps
 
 # Set some parameters
 input_filename = "bcdr_d01_img.csv"	# Name of input .csv
-output_filename = "validation.csv"	# Produced .csv (stores filenames of images)
+output_filename = "val.csv"		# Produced .csv (stores filenames of images)
 downsampling_factor = (112 * 0.007)/2 	# Scaling factor for an image with 0.007 cm
 					# per pixel (spatial resolution) to get a
 					# 2x2 cm area in 112 x 112 pixels
