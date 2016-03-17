@@ -7,23 +7,129 @@ It loads each mammogram and its label to memory, computes the function described
 
 The network uses separate lists of (preprocessed and augmented) mammograms for training and validation. Labels have value 0 for background, 127 for breast tissue and 255 for breast masses. 
 
-The design is loosely based on the examples offered in the TensorFlow tutorials. It uses all available CPUs and a single GPU (if available) in one machine. It is not distributed.
+The design follows guidelines from the TensorFlow tutorials. It uses all available CPUs and a single GPU (if available) in one machine. It is not distributed.
 
-See code for details.
+See specific methods for details.
 """
+
 import tensorflow as tf
-import csv
 
-"""
-Pseudo-code
-Declare some constants
-Create queue of image and labels filenames (for trainnig and validation) (create a function)
+# Set some parameters
+working_dir = "./"	# Directory where search starts and results are written.
+training_dir = "training/"	# Training folder
+val_dir = "val/"	# Validation folder
+training_csv = "training.csv"	# File with image and label filenames for training
+val_csv = "val.csv"	# File with image and label filenames for validation
+
+
+def read_csv(csv_filename):
+	""" Reads csv files and creates a never-ending suffling queue of filenames.
+	
+	Args:
+		csv_filename: A string. File with image and label filenames. 
+
+	Returns:
+		A queue with strings. Each string is a csv record in the form
+		'image_filename,label_filename,smallLabel_filename'
+	"""
+	with open(csv_filename) as f:
+	    lines = f.read().splitlines()
+
+	filename_queue = tf.train.string_input_producer(lines)
+	return filename_queue
+
+
+def new_example(filename_queue, data_dir):
+	""" Creates a single new example: an image and its label segmentation.
+	
+	Dequeues and decodes one csv record, loads images (.png) in	memory, whitens 
+	them and returns them.
+
+	Args:
+		filename_queue: A queue with strings. Each string is a csv record in the
+			form 'image_filename,label_filename,smallLabel_filename'
+		data_dir: A string. Path to the data directory.
+
+	Returns:
+		image: A 3D Tensor of size [image_height, image_width, image_channels]
+		label: A 3D Tensor of size [image_height, image_width, image_channels]
+	"""
+	# Reading csv file
+	csv_record = filename_queue.dequeue()
+	image_filename, label_filename, _ = tf.decode_csv(csv_record,
+									  [[""], [""], [""]])
+	
+	# Reading image
+	image_content = tf.read_file(data_dir + image_filename)
+	label_content = tf.read_file(data_dir + label_filename)
+	image = tf.image.decode_png(image_content)
+	label = tf.image.decode_png(label_content)
+
+	# Preprocessing (image whitening)
+	image = tf.image.per_image_whitening(image)
+	
+	#tf.image_summary('images', images)
+	return image, label
+
+
+def create_example_queue(filename_queue, data_dir="./", queue_capacity=5):
+	""" Creates a FIFO queue with examples: (image, label) tuples.
+
+	Creates a FIFO queue and adds a single-thread QueueRunner object to the graph
+	to perform prefetching operations.
+
+	Note:
+		We can not use tf.train.batch()/shuffle_batch() to automatically create 
+		this queue because our images differ in size.
+
+	Args:
+		filename_queue: A queue with strings. Each string is a csv record in the
+			form 'image_filename,label_filename,smallLabel_filename'
+		data_dir: A string. Path to the data directory.
+		queue_capacity: An integer. Maximum amount of examples that may be 
+			stored in the queue.
+
+	Returns:
+		A queue with (image, label) tuples.
+	"""
+	# Processing new example
+	image, label = new_example(filename_queue, data_dir)
+	
+	# Creating queue
+	example_queue = tf.FIFOQueue(queue_capacity, [image.dtype, label.dtype])
+	enqueue_op = example_queue.enqueue((image, label))
+
+	# Creating queue_runner
+	queue_runner = tf.train.QueueRunner(example_queue, [enqueue_op])
+	tf.train.add_queue_runner(queue_runner)
+
+	return example_queue 
+
+
+def train():
+	""" Creates and trains a convolutional network for image segmentation. """
+	# Create a suffling queue with image and label filenames
+	filename_queue = read_csv(working_dir + training_dir + training_csv)
+	val_filename_queue = read_csv(working_dir + val_dir + val_csv)
+
+	# Create an example queue. 
+	# Queues prefetch data. If not needed, use new_example() directly.
+	example_queue = create_example_queue(filename_queue, working_dir+training_dir)
+	val_example_queue = create_example_queue(val_filename_queue, 
+							     working_dir+val_dir)
+
+	# Create model
+
+
+# TODO: Create the model
+# TODO: Check its graph in Tensorboard
+"""Pseudo-code
 Define the model
 	Create each layer(maybe with a function)
 Define the loss for the model
 Define the optimization
-Add summaries
-Start session and initialize variables, writer and queues
+Add summaries (images, too)
+Start session: where session, variables initialization, threads/coordinator, queuerunners, summary writer and everything else is started,
 for epochs number of epochs
 	Create a new batch (with a single image) 
 		Zero-mean the image
@@ -34,23 +140,38 @@ for epochs number of epochs
 		Checkpoint (saver, global_step)
 	every epochsToSummary
 		Write all summaries
-"""
+""" 
 
-# TODO: Create the filename queues, see if it works
-# TODO: Create the preprocessing image queues (nextBatch)
-# TODO: Create the model
-# TODO: Check its graph in Tensorboard
 
-# Set some parameters
-training_dir = "" # Path to the training directory where results are saved
-training_path = "" # Path to the csv file holding the image and label filenames
-val_file = ""
-#
+def test():
+	"""For rapid testing"""
+	filename_queue = read_csv(working_dir + training_dir + training_csv)
+
+	example_queue = create_example_queue(filename_queue, working_dir+training_dir)
+
+	example = example_queue.dequeue()
+
+	# Launch the graph.
+	sess = tf.Session()
+	coord = tf.train.Coordinator()
+
+	# Start all queue_runners
+	threads = tf.train.start_queue_runners(sess, coord = coord)
+
+	# ALL EVALUATIONS HERE
+	res = sess.run(example)
+	  
+	# When done, ask the threads to stop.
+	coord.request_stop()
+	coord.join(threads)
+	sess.close()
+
+	return res
 
 # If called as 'python3 model.py' run the main method.
-if __name__ == "__main__"	
-	main()
-
+if __name__ == "__main__":	
+	passim.
+	#TODO: train()
 
 
 """
@@ -58,8 +179,6 @@ if __name__ == "__main__"
 tf.random_normal(mean = 0, std = ...)
 %For biases maybe tf.fill (0.1,..)
 
-%Zero-mean image
-tf.image.per_image_whitening()
 
 % Define some tf.constants for the weights before multiplying.
 %Have somwtrhing lik
@@ -82,21 +201,6 @@ tf.image.per_image_whitening()
 % lossPerPixel = weightMask *( labelMask*log(tata) + (1-labelMask))
 % loss = tf.reduce_sum(loss)/tf.reduce_sum(breastTissue + breastMass)
 
-
-# Check this answer for reading images
-http://stackoverflow.com/questions/34340489/tensorflow-read-images-with-labels?rq=1
-#Actually, it ays exactly how to do it here: https://www.tensorflow.org/versions/r0.7/how_tos/reading_data/index.html#reading-data
-with open('training.csv', 'r') as f:
-    lines = f.readlines()
-filename_queue = string_input_producer(lines) #give it all filenames as tensor strings in csv format, it will automatically shuffle them between every epoch and cycle thrugh them, then read em with.
-image_filename, label_filename = tf.decode_csv(filename_queue.dequeue(), [[""], [""]]) # I could decode this with Python
-string_image = tf.read_file(imageFilename)
-string_label = tf.read_file(labelFilename)
-image = tf.image.decode_png(string_image)
-label = tf.image.decode_png(string_label)
-return image, label
-Preprocessing
-Here I could directly use image, label or use tf.batch with capacity 5 to prefetch a number of examples (5) (create an example_queue). If i don't use this, will it be slower (maybe it creates a example queue no matter what)?. Time how long does sess.run([image, label]) takes with and without it. for 100 steps for instance. I would alos have to do something else so the threads in the background have time to reload. maybe just do marix multiplications.
 
 # automatically resize
 tf.image.resize_bilinear()
@@ -139,8 +243,8 @@ with Session as sess:
 	tf.train.start_queue_runners(sess) # Needed for queues
 	for i in steps
 		
-
-		sess.run(optimizer.minimize(loss))
+		feed = {x: batch_xs, y_: batch_ys}
+		sess.run(optimizer.minimize(loss), feed_dict = feed)
 
 		summary_str = sess.run(tf.merge_all_summaries(), feed_dict=feed_dict)
 		summary_writer.add_summary(summary_str, step)
@@ -154,14 +258,20 @@ sess.run(train_step, feed_dict = feed)
 
 #Multiple CPU is used automatically. Multiple GPU needs for me to do data parallelism (see cifar tutorial).
 
-#If possible, make it so it can use variable batch_sizes (for inference in various images), by not defining batch_size as a constant. If i need it I could do batch_size = tf.shape(input)[0], and levaing the first dimension (the batch_size) in placeholder as None.
-
 # For eval, define it in the same model or use a scope as in rnn/ptb/ptb_word_lm
 
 # Define l2 norm as element'wise square plus reduce?sum, or as tr(AtxA)
 
-# Tests
-% Tensorboard graph definition looks fine?
+
+"""
+
+# Tests:
+# Filenames are shuffled
+# Both queues (filename and example) work fine.
+# Images are read and preprocessed correctly
+
+"""
+# Graph definition in Tensorboard looks okay.
 % 112 x 112 with no background (sanity checks)
 % See whether numbers become so small (because they always predict no) that gradients vanish (if so, I need to change the cost function)
 % 112 x 112 with background
@@ -170,5 +280,4 @@ sess.run(train_step, feed_dict = feed)
 % large image (1000x1000) (to test memory)
 % biggest possible image (1579x1305)
 %  if failed (biggest image only for testing)
-
 """
