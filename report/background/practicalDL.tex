@@ -95,7 +95,7 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Multiply the number of examples by 25-100 to estimate the maximum number of parameters that could be learned (assuming data augmentation). Groups have learned up to 40M parameters from as little as 60K training examples~\cite{Dieleman2015, Springenberg2014}.
 
-	\item Weight initialization is vital for convergence. Initialize each filter weight as a value from a normal distribution $\mathcal{N}(\mu = 0, \sigma = \sqrt{2/n_{in}})$ where $n_{in}$ is the number of connections to the filter (9 for a $3\times 3$ filter)~\cite{He2015a}. In code, \texttt{w = randn()*sqrt(2/nIn)} where \texttt{randn()} returns values drawn from a standard normal distribution. Initialize biases likewise.
+	\item Weight initialization is vital for convergence. Initialize each filter weight as a value from a normal distribution $\mathcal{N}(\mu = 0, \sigma = \sqrt{2/n_{in}})$ where $n_{in}$ is the number of connections to the filter (90 for a $3\times 3$ filter with depth $10$)~\cite{He2015a}. In code, \texttt{w = randn()*sqrt(2/nIn)} where \texttt{randn()} returns values drawn from a standard normal distribution. Initialize biases to zero.
 
 	\item Use mini-batches rather than the entire training set to compute the gradient of the loss function. Mini-batches allows us to make more updates, more frequently resulting in faster convergence and better test results~\cite{Bengio2012}.
 
@@ -142,7 +142,7 @@ Given that the network is already trained, using the validation set to choose th
 
 	\item Set the post-processing technique using the validation set. Conditional random fields are specially effective for refining convolutional network scores~\cite{Chen2015}.
 
-	\item Use bilinear interpolation for upsampling~\cite{Chen2015}. If the upsampling factor is greater than 16, use a learnable upsampling layer or skip layers~\cite{Long2015}.
+	\item Use bilinear (or bicubic) interpolation for upsampling~\cite{Chen2015}. If the upsampling factor is greater than 16, use a learnable upsampling layer or skip layers~\cite{Long2015}.
 % This is called a convolutional transpose 3x3, stride 2, learnable. Learned upsampling.
 
 	\item Set the segmentation threshold using the validation set; this hyperparameter is equivalent to the threshold used in classification.

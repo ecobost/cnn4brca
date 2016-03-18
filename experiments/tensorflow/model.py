@@ -1,6 +1,5 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
-# Date: 15-March-2016
-
+# Date: 17-March-2016
 """TensorFlow implementation of the convolutional network described in Chapter 3 of the thesis report.
 
 It loads each mammogram and its label to memory, computes the function described by the convolutional network, and produces a segmentation of the same size as the original mammogram. The network outputs a heatmap of the probability of mass accross the mammogram.
@@ -13,6 +12,7 @@ See specific methods for details.
 """
 
 import tensorflow as tf
+import math
 
 # Set some parameters
 working_dir = "./"	# Directory where search starts and results are written.
@@ -51,8 +51,8 @@ def new_example(filename_queue, data_dir):
 		data_dir: A string. Path to the data directory.
 
 	Returns:
-		image: A 3D Tensor of size [image_height, image_width, image_channels]
-		label: A 3D Tensor of size [image_height, image_width, image_channels]
+		image: A 3D tensor of size [image_height, image_width, image_channels]
+		label: A 3D tensor of size [image_height, image_width, image_channels]
 	"""
 	# Reading csv file
 	csv_record = filename_queue.dequeue()
@@ -85,9 +85,9 @@ def create_example_queue(filename_queue, data_dir="./", queue_capacity=5):
 	Args:
 		filename_queue: A queue with strings. Each string is a csv record in the
 			form 'image_filename,label_filename,smallLabel_filename'
-		data_dir: A string. Path to the data directory.
+		data_dir: A string. Path to the data directory. Default is ./
 		queue_capacity: An integer. Maximum amount of examples that may be 
-			stored in the queue.
+			stored in the queue. Default is 5.
 
 	Returns:
 		A queue with (image, label) tuples.
@@ -103,8 +103,142 @@ def create_example_queue(filename_queue, data_dir="./", queue_capacity=5):
 	queue_runner = tf.train.QueueRunner(example_queue, [enqueue_op])
 	tf.train.add_queue_runner(queue_runner)
 
-	return example_queue 
+	return example_queue
 
+
+def model(image, in_training)
+	""" A fully convolutional network for image segmentation.
+
+	The architecture is modelled on the VGG-16 network but smaller. It has
+	approximately 2.9 million parameters.
+
+	Architecture:
+		INPUT -> [[CONV -> Leaky RELU]*2 -> MAXPOOL]*2 -> [CONV -> Leaky RELU]*3
+		-> MAXPOOL -> FC -> Leaky RELU -> FC -> SIGMOID -> BICUBIC
+	Input size: 112 x 112
+	Downsampling size (before BICUBIC): 7 x 7 
+	Output size: 112 x 112 (16x upsampling)
+
+	See Section 3.3 of the thesis report for further details.
+
+	Args:
+		image: A 3D tensor. The input image
+		in_training: A boolean. If true, computations are performed in training
+		mode (...). Set to False for validation/ evaluation.
+
+	Returns:
+		A 3D tensor. The predicted segmentation for the input image.
+	"""
+	def initialize_weights(shape):
+		""" Initializes filter weights with random values.
+
+		Values are drawn from a normal distribution with zero mean and standard
+		deviation = sqrt(2/n_in) where n_in is the number of connections to the 
+		filter: 90 for a 3x3 filter with depth 10 for instance.
+		"""
+		n_in = shape[0] * shape[1] * shape[2]
+		values = tf.random_normal(shape, 0, math.sqrt(2/n_in))
+		return values
+
+	def conv_op(input, filter_shape, strides, name='conv'):
+		""" Creates filters and biases and performs the convolution."""
+		filter = tf.Variable(initialize_weights(filter_shape), name='weights')
+		biases = tf.Variable(tf.zeros([filter_shape[3]]), name='biases')
+
+		w_times_x = tf.nn.conv2d(input, filter, strides, padding='SAME')
+		output = tf.nn.bias_add(w_times_x, biases, name=name)
+		return output
+
+	def leaky_relu(x, alpha=0.1, name='leaky_relu'):
+		""" Leaky ReLU activation function."""
+		return tf.maximum(alpha * x, x, name=name)
+
+	def dropout(x, keep_prob, name='dropout'):
+		""" If training, performs dropout. Otherwise, returns original."""
+		output = tf.nn.dropout(x, keep_prob, name=name) if in_training else x
+		return output
+
+	def conv_layer(input, filter_shape, strides=[1, 1, 1, 1], keep_prob=1):
+		""" Adds a convolutional layer to the graph. 
+	
+		Creates filters and biases, computes the convolutions, passes the
+		output through a leaky ReLU activation function and applies dropout.
+		Equivalent to calling conv_op()->leaky_relu()->dropout().
+
+		Args:
+			input: A tensor of floats with shape [batch_size, input_height,
+				input_width, input_depth]. The input volume.
+			filter_shape: A list of 4 integers with shape [filter_height,
+				filter_width, input_depth, output_depth]. This determine 
+				the size and number of filters of the convolution.
+			strides: A list of 4 integers. The amount of stride in the four
+				dimensions of the input.
+			keep_prob: A float. Probability of dropout in the layer.
+			
+		Returns:
+			A tensor of floats with shape [batch_size, output_height, 
+			output_width, output_depth]. The product of the convolutional
+			layer.	
+		"""
+		conv = conv_op(input, filter_shape, strides) 
+		relu = leaky_relu(conv)
+		output = dropout(relu, keep_prob)
+		return output
+	
+	def sigmoid(x):
+		return x
+
+
+	batch = tf.expand_dims(image, 0) # Batch with a single image
+	
+	# conv1 -> conv2 -> pool1
+	with tf.name_scope('conv1'):
+		conv1 = conv_layer(batch, [6, 6, 1, 56], [1, 2, 2, 1], keep_prob=0.8)
+	with tf.name_scope('conv2'):
+		conv2 = conv_layer(conv1, [3, 3, 56, 56], keep_prob=0.8)
+	with tf.name_scope('pool1'):
+		pool1 = tf.nn.max_pool(conv2, [1, 2, 2, 1], [1, 2, 2, 1], 'SAME')
+
+	# conv3 -> conv4 -> pool2
+	with tf.name_scope('conv3'):
+		conv3 = conv_layer(pool1, [3, 3, 56, 84], keep_prob=0.8)
+	with tf.name_scope('conv4'):
+		conv4 = conv_layer(conv3, [3, 3, 84, 84], keep_prob=0.8)
+	with tf.name_scope('pool2'):
+		pool2 = tf.nn.max_pool(conv4, [1, 2, 2, 1], [1, 2, 2, 1], 'SAME')
+
+	# conv5 -> conv6 -> conv7 -> pool3
+	with tf.name_scope('conv5'):
+		conv5 = conv_layer(pool2, [3, 3, 84, 112], keep_prob=0.8)
+	with tf.name_scope('conv6'):
+		conv6 = conv_layer(conv5, [3, 3, 112, 112], keep_prob=0.8)
+	with tf.name_scope('conv7'):
+		conv7 = conv_layer(conv6, [3, 3, 112, 112], keep_prob=0.8)
+	with tf.name_scope('pool3'):
+		pool3 = tf.nn.max_pool(conv7, [1, 2, 2, 1], [1, 2, 2, 1], 'SAME')
+	
+	# fc1 -> fc2
+	# FC layers implemented as size-preserving convolutional layers
+	with tf.name_scope('fc1'):
+		conv = conv_layer(pool3, [7, 7, 112, 448], keep_prob=0.8)
+	with tf.name_scope('fc2'):
+		conv = conv_op(fc1, [1, 1, 448, 1])
+		fc2 = sigmoid(activations)
+
+	# upsampling
+	with tf.name_scope('upsampling'):
+		new_dimensions = tf.shape(fc2)[1:3] * 16
+		output = tf.image.resize_bicubic(fc2, new_dimensions, name='upsampling')
+	
+	prediction = tf.squeeze(output) # Unwrap segmentation
+
+	return prediction
+
+#TODO: Implement sigmoid
+#TODO: Set the right keep_probs
+#TODO: check it works
+#TODO: Maybe define a max_pool function (won't really win much), slightly clearer.
+	
 
 def train():
 	""" Creates and trains a convolutional network for image segmentation. """
@@ -112,13 +246,35 @@ def train():
 	filename_queue = read_csv(working_dir + training_dir + training_csv)
 	val_filename_queue = read_csv(working_dir + val_dir + val_csv)
 
-	# Create an example queue. 
-	# Queues prefetch data. If not needed, use new_example() directly.
+	# Create a queue to prefetch examples. If unnecessary, use new_example()
 	example_queue = create_example_queue(filename_queue, working_dir+training_dir)
 	val_example_queue = create_example_queue(val_filename_queue, 
 							     working_dir+val_dir)
 
-	# Create model
+	# Create the computation graph
+
+	# Variables that may change between executions: feeded to the graph every run.
+	image = tf.placeholder(tf.float32) # x
+	label = tf.placeholder(tf.float32) # y
+	in_training = tf.placeholder(tf.boolean, shape = []) # True if training.
+
+	# Define the model 
+	prediction = model(image, in_training)
+
+	# Compute the loss
+	#loss = logistic_loss(image, label)
+
+	# Set optimization parameters
+	#globalStep = tf.Variable(0, name="global_step",trainable=False)
+
+	# Summaries
+
+
+	# Start training
+	
+	
+	
+	
 
 
 # TODO: Create the model
@@ -175,9 +331,7 @@ if __name__ == "__main__":
 
 
 """
-% wight initialization
-tf.random_normal(mean = 0, std = ...)
-%For biases maybe tf.fill (0.1,..)
+
 
 
 % Define some tf.constants for the weights before multiplying.
@@ -202,14 +356,6 @@ tf.random_normal(mean = 0, std = ...)
 % loss = tf.reduce_sum(loss)/tf.reduce_sum(breastTissue + breastMass)
 
 
-# automatically resize
-tf.image.resize_bilinear()
-
-# use name_scope
-with tf.name_scope("conv1") as scope:
-	...
-	conv1 = tf.nn.relu(..., name = scope.name)
-
 # If I am gonna decrease the learning rate evry x number of steps I can do it with tf.train.exponential_decay() (it's not really exponential)
 
 # summarize images and labels
@@ -219,13 +365,14 @@ with tf.name_scope("conv1") as scope:
 # you cna use merge_summary (instead of merge_all_summaries) to merge only a subset and save them to file.
 # maybe put all sumarries in a single fuinction that returns the string with all sumaries, and then write it in the main loop. Or just when defining the graph put all sumaries in asingle function and then during trainng call tf.merge all summarie snormally.
 
+#Use nextImage when training
 
-# To save checkpoints (see Tensorflow Mechanics 101/ Tensorbord: visualizations how to)
+# To save checkpoints (see Tensorflow Mechanics 101/ Tensorbord: visualizations how to). Or here: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/models/image/cifar10/cifar10_train.py
 saver = tf.train.Saver()
 saver.save(sess, "tmp/model.ckpt", global_step = global_step)
 
 
-# Check the MNIST example to see where to define global_step
+# Check the MNIST example to see where to define global_step (in the training function.
 
 
 # <Maybe the main is a call to model = myCOnv(opts, session), model.train and model.eval (as in the Word2vec example). It is build a class myCOnv that has parameters for everything it needs, and then I just call it for it to run the code.
@@ -261,7 +408,10 @@ sess.run(train_step, feed_dict = feed)
 # For eval, define it in the same model or use a scope as in rnn/ptb/ptb_word_lm
 
 # Define l2 norm as element'wise square plus reduce?sum, or as tr(AtxA)
-
+# What about this:https://github.com/tensorflow/tensorflow/blob/r0.7/tensorflow/models/image/mnist/convolutional.py
+  # L2 regularization for the fully connected parameters.
+  regularizers = (tf.nn.l2_loss(fc1_weights) + tf.nn.l2_loss(fc1_biases) +
+                  tf.nn.l2_loss(fc2_weights) + tf.nn.l2_loss(fc2_biases))
 
 """
 
