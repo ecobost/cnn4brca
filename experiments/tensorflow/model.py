@@ -1,6 +1,6 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
 # Date: 17-March-2016
-"""TensorFlow implementation of the convolutional network described in Chapter 3 of the thesis report.
+""" TensorFlow implementation of the convolutional network described in Chapter 3 of the thesis report.
 
 It loads each mammogram and its label to memory, computes the function described by the convolutional network, and produces a segmentation of the same size as the original mammogram. The network outputs a heatmap of the probability of mass accross the mammogram.
 
@@ -106,7 +106,7 @@ def create_example_queue(filename_queue, data_dir="./", queue_capacity=5):
 	return example_queue
 
 
-def model(image, in_training)
+def model(image, drop):
 	""" A fully convolutional network for image segmentation.
 
 	The architecture is modelled on the VGG-16 network but smaller. It has
@@ -123,11 +123,10 @@ def model(image, in_training)
 
 	Args:
 		image: A 3D tensor. The input image
-		in_training: A boolean. If true, computations are performed in training
-		mode (...). Set to False for validation/ evaluation.
+		drop: A boolean. If True, dropout is active.
 
 	Returns:
-		A 3D tensor. The predicted segmentation for the input image.
+		A 2D tensor. The predicted segmentation for the input image.
 	"""
 	def initialize_weights(shape):
 		""" Initializes filter weights with random values.
@@ -154,8 +153,8 @@ def model(image, in_training)
 		return tf.maximum(alpha * x, x, name=name)
 
 	def dropout(x, keep_prob, name='dropout'):
-		""" If training, performs dropout. Otherwise, returns original."""
-		output = tf.nn.dropout(x, keep_prob, name=name) if in_training else x
+		""" During training, performs dropout. Otherwise, returns original."""
+		output = tf.nn.dropout(x, keep_prob, name=name) if drop else x
 		return output
 
 	def conv_layer(input, filter_shape, strides=[1, 1, 1, 1], keep_prob=1):
@@ -184,18 +183,15 @@ def model(image, in_training)
 		relu = leaky_relu(conv)
 		output = dropout(relu, keep_prob)
 		return output
-	
-	def sigmoid(x):
-		return x
 
 
 	batch = tf.expand_dims(image, 0) # Batch with a single image
 	
 	# conv1 -> conv2 -> pool1
 	with tf.name_scope('conv1'):
-		conv1 = conv_layer(batch, [6, 6, 1, 56], [1, 2, 2, 1], keep_prob=0.8)
+		conv1 = conv_layer(batch, [6, 6, 1, 56], [1, 2, 2, 1], keep_prob=0.9)
 	with tf.name_scope('conv2'):
-		conv2 = conv_layer(conv1, [3, 3, 56, 56], keep_prob=0.8)
+		conv2 = conv_layer(conv1, [3, 3, 56, 56], keep_prob=0.9)
 	with tf.name_scope('pool1'):
 		pool1 = tf.nn.max_pool(conv2, [1, 2, 2, 1], [1, 2, 2, 1], 'SAME')
 
@@ -209,21 +205,21 @@ def model(image, in_training)
 
 	# conv5 -> conv6 -> conv7 -> pool3
 	with tf.name_scope('conv5'):
-		conv5 = conv_layer(pool2, [3, 3, 84, 112], keep_prob=0.8)
+		conv5 = conv_layer(pool2, [3, 3, 84, 112], keep_prob=0.7)
 	with tf.name_scope('conv6'):
-		conv6 = conv_layer(conv5, [3, 3, 112, 112], keep_prob=0.8)
+		conv6 = conv_layer(conv5, [3, 3, 112, 112], keep_prob=0.7)
 	with tf.name_scope('conv7'):
-		conv7 = conv_layer(conv6, [3, 3, 112, 112], keep_prob=0.8)
+		conv7 = conv_layer(conv6, [3, 3, 112, 112], keep_prob=0.7)
 	with tf.name_scope('pool3'):
 		pool3 = tf.nn.max_pool(conv7, [1, 2, 2, 1], [1, 2, 2, 1], 'SAME')
 	
 	# fc1 -> fc2
 	# FC layers implemented as size-preserving convolutional layers
 	with tf.name_scope('fc1'):
-		conv = conv_layer(pool3, [7, 7, 112, 448], keep_prob=0.8)
+		fc1 = conv_layer(pool3, [7, 7, 112, 448], keep_prob=0.6)
 	with tf.name_scope('fc2'):
-		conv = conv_op(fc1, [1, 1, 448, 1])
-		fc2 = sigmoid(activations)
+		conv = conv_op(fc1, [1, 1, 448, 1], [1, 1, 1, 1])
+		fc2 = tf.sigmoid(conv)
 
 	# upsampling
 	with tf.name_scope('upsampling'):
@@ -234,11 +230,10 @@ def model(image, in_training)
 
 	return prediction
 
-#TODO: Implement sigmoid
-#TODO: Set the right keep_probs
-#TODO: check it works
-#TODO: Maybe define a max_pool function (won't really win much), slightly clearer.
-	
+#TODO: Check the graph and change names if needed
+#TODO: Check all works
+#TODO: Check it works for bigger images.
+#TODO: Change in_training to 'drop' because that's what it does.
 
 def train():
 	""" Creates and trains a convolutional network for image segmentation. """
@@ -256,10 +251,10 @@ def train():
 	# Variables that may change between executions: feeded to the graph every run.
 	image = tf.placeholder(tf.float32) # x
 	label = tf.placeholder(tf.float32) # y
-	in_training = tf.placeholder(tf.boolean, shape = []) # True if training.
+	drop = tf.placeholder(tf.boolean, shape = []) # Perform dropout (Yes/No).
 
 	# Define the model 
-	prediction = model(image, in_training)
+	prediction = model(image, drop)
 
 	# Compute the loss
 	#loss = logistic_loss(image, label)
@@ -269,16 +264,11 @@ def train():
 
 	# Summaries
 
+	
+	# start session
+#	init = start()
 
 	# Start training
-	
-	
-	
-	
-
-
-# TODO: Create the model
-# TODO: Check its graph in Tensorboard
 """Pseudo-code
 Define the model
 	Create each layer(maybe with a function)
@@ -301,39 +291,35 @@ for epochs number of epochs
 
 def test():
 	"""For rapid testing"""
-	filename_queue = read_csv(working_dir + training_dir + training_csv)
 
-	example_queue = create_example_queue(filename_queue, working_dir+training_dir)
+	# Test images
+	image = tf.image.decode_png(tf.read_file("smallMammogram.png"))
+	label = tf.image.decode_png(tf.read_file("smallLabel.png"))
+	image = tf.image.per_image_whitening(image)
 
-	example = example_queue.dequeue()
+	# Define the model 
+	prediction = model(image, False)
 
 	# Launch the graph.
 	sess = tf.Session()
-	coord = tf.train.Coordinator()
+	sess.run(tf.initialize_all_variables())
 
-	# Start all queue_runners
-	threads = tf.train.start_queue_runners(sess, coord = coord)
+	# Create graph here so i can chek it
 
 	# ALL EVALUATIONS HERE
-	res = sess.run(example)
-	  
-	# When done, ask the threads to stop.
-	coord.request_stop()
-	coord.join(threads)
+	res = sess.run(prediction)
+
 	sess.close()
 
 	return res
 
 # If called as 'python3 model.py' run the main method.
 if __name__ == "__main__":	
-	passim.
+	pass
 	#TODO: train()
 
 
 """
-
-
-
 % Define some tf.constants for the weights before multiplying.
 %Have somwtrhing lik
 % breasttissue = (tf.equals(127) float32)
@@ -364,8 +350,6 @@ if __name__ == "__main__":
 # Maybe accumulate the loss function over every batch that is not printed and then print and average, that way it is probbaly smoother, or just log/summarize the loss for every batch. A batch is an image in our case
 # you cna use merge_summary (instead of merge_all_summaries) to merge only a subset and save them to file.
 # maybe put all sumarries in a single fuinction that returns the string with all sumaries, and then write it in the main loop. Or just when defining the graph put all sumaries in asingle function and then during trainng call tf.merge all summarie snormally.
-
-#Use nextImage when training
 
 # To save checkpoints (see Tensorflow Mechanics 101/ Tensorbord: visualizations how to). Or here: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/models/image/cifar10/cifar10_train.py
 saver = tf.train.Saver()
@@ -400,11 +384,6 @@ with Session as sess:
 feed = {x: batch_xs, y_: batch_ys}
 sess.run(train_step, feed_dict = feed)
 
-
-#You can use tf.Session(config=tf.ConfigProto(log_device_placement=True)) to check where are operations run (CPU or GPU) or use Tensorboard.
-
-#Multiple CPU is used automatically. Multiple GPU needs for me to do data parallelism (see cifar tutorial).
-
 # For eval, define it in the same model or use a scope as in rnn/ptb/ptb_word_lm
 
 # Define l2 norm as element'wise square plus reduce?sum, or as tr(AtxA)
@@ -419,6 +398,8 @@ sess.run(train_step, feed_dict = feed)
 # Filenames are shuffled
 # Both queues (filename and example) work fine.
 # Images are read and preprocessed correctly
+# Inference works alright for 112 x 112 images
+# Dropout works fine
 
 """
 # Graph definition in Tensorboard looks okay.
