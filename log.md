@@ -3,6 +3,21 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Mar 17 - Mar 30
+### Activities
+* Spoke with Dr. Parra
+* Writing Tensorflow implementation
+
+
+### To do
+* Write network in Tensorflow
+* Install Tensorflow in computers at A3-301
+* Run experiments
+* Write Section 3.2(Model) and 3.3(Training)
+* Ask for institutional email
+
+### Questions
+
 
 ## Mar 10 - Mar 16
 ### Activities
@@ -52,6 +67,7 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Should I add code as appendix (prepareDB.py or tensorflow.py) or link to the github project or not do any?
+	Answer: Put a link to Github
 
 
 

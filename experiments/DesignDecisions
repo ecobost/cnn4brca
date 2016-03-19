@@ -17,13 +17,11 @@ Enhancement
 	Local contrast stretching
 	local background reduction + contrast
 Image size
-	Reduced for 2cm to fit into 112 x 112 pixels (or as many pixels as the input
-		volume to the network). Train on entire images
+	Reduced for 2cm to fit into 112 x 112 pixels (or as many pixels as the input 			volume to the network). Train on entire images
 	Cut 112 x 112 patches (or as many pixels as the input volume) equivalent to
 		2cm x 2cm. Roughly 1M patches. This will take advantage of smaller
-		mini-batches/ more frequent updates, batchnorm, dropout (this may 
-		work in both) and less memory use (bigger input volume and newer
-		architectures could be used). Train on patches. 
+		mini-batches/ more frequent updates, batchnorm and less memory use
+		(bigger input volume and newer architectures could be used).
 Downsampling interpolation (images and labels)
 	LANCZOS filter from PILLOW
 	BICUBIC filter form PILLOW
@@ -60,10 +58,13 @@ Modern features/trends not adopted
 	more feature maps 
 	no dropout (just batchnorm)
 Upsampling
-	Downsample the labels (PILLOW Image.NEAREST)
 	Upsample the produced output with bicubic interpolation at end of network
 	Upsample the produced output with deconvolutional layer at end of network
+	Downsample the labels (PILLOW Image.NEAREST)
 	Upsample the produced output with bilinear interpolation at end of network.
+Last layer activation
+	Sigmoid
+	2-way Softmax
 Loss function
 	Logistic loss averaged over breast area only
 	Logistic loss summed over breast area only
