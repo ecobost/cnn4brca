@@ -40,6 +40,9 @@ This architecture defines 2.91 million parameters. %2 906 681
 
 % A second architecture modelled on the ResNet~\cite{}, winner of the 2015 ImageNet competition is also used for experiments (Tab~\cite{}).
 
+\subsection{Dropout}
+We use dropout after all lleaky ReLU layers with probabilities in 0.9, 0.9, 0.8, 0.8, 0.7, 0.7, 0.7 and 0.6.
+
 \subsection{Upsampling}
 To simplify the architecture, we downsample our labels to match the produced segmentations rather than adding an upsampling layer at the end of the network.
 % Could automatically resize using tf.imageresize_bilinear or bicubic
@@ -49,3 +52,6 @@ To simplify the architecture, we downsample our labels to match the produced seg
 We compute the logistic loss function for each pixel in the produced segmentation and average over all pixels in the breast area, i.e., gradients accumulate over pixels in the breast area (breast tissue and masses) while background is ignored.
 %We compute the logistic loss function for each pixel in the produced segmentation and sum over all pixels in the breast area, i.e., gradients accumulate over pixels in the breast area but background is ignored. This amounts to using a weighted loss function where breast area (breast tissue and masses) has weight one and background has weight zero.
 % I can weight the losses for breast tissue and breast masses differently using the mask (multiplied by the loss function). To calculate a proper weight, you would have to estimate the prior of a loss being from mass(~0.2) or from area (0.8) and multiply masses by .8 and tissue by 0.2, for instance. Or just decrease the weight of breats tissue, thus masses at 1 and tissue at 0.2 or 0.1 (remember there are images with not a single mass, so mass is quite improbable).
+
+\subsection{Code}
+We implement this model using TensorFlow~\cite{abadi2014}. Code is freely accesible in Github: github.com/ecobost/cnn4brca
