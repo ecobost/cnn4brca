@@ -234,9 +234,6 @@ def model(image, drop):
 
 	return prediction
 
-#TODO: Check all works
-#TODO: Check it works for bigger images.
-
 def train():
 	""" Creates and trains a convolutional network for image segmentation. """
 	# Create a suffling queue with image and label filenames
@@ -275,7 +272,7 @@ def train():
 	#globalStep = tf.Variable(0, name="global_step",trainable=False)
 
 	# Summaries
-#TODO: Define summary directory (if single file maybe not needed)
+	#TODO: Define summary directory (if single file maybe not needed)
 
 	
 	# start session
@@ -301,18 +298,19 @@ for epochs number of epochs
 def test():
 	"""For rapid testing"""
 	# Test images
-	image = tf.decode_png(tf.read("smallMammogram.png"))
-	label = tf.decode_png(tf.read("smallLabel.png"))
+	image = tf.decode_png(tf.read("mediumMammogram.png"))
+	label = tf.decode_png(tf.read("mediumLabel.png"))
+#TODO: Check it works for bigger images.
 
 	#Model
-	prediction = model(image, drop)
+	prediction = model(image, False)
 
 	# Launch the graph.
 	sess = tf.Session()
 	sess.run(tf.initialize_all_variables())
 
 	# EVALUATIONS
-	res = "Good to go!"
+	res = sess.run(prediction)
 
 	sess.close()
 
