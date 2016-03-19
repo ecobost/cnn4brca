@@ -142,7 +142,7 @@ Given that the network is already trained, using the validation set to choose th
 
 	\item Set the post-processing technique using the validation set. Conditional random fields are specially effective for refining convolutional network scores~\cite{Chen2015}.
 
-	\item Use bilinear (or bicubic) interpolation for upsampling~\cite{Chen2015}. If the upsampling factor is greater than 16, use a learnable upsampling layer or skip layers~\cite{Long2015}.
+	\item Use bicubic (or bilinear) interpolation for upsampling~\cite{Chen2015}. If the upsampling factor is greater than 16, use a learnable upsampling layer or skip layers~\cite{Long2015}.
 % This is called a convolutional transpose 3x3, stride 2, learnable. Learned upsampling.
 
 	\item Set the segmentation threshold using the validation set; this hyperparameter is equivalent to the threshold used in classification.

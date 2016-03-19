@@ -35,7 +35,7 @@ def read_csv(csv_filename):
 	with open(csv_filename) as f:
 	    lines = f.read().splitlines()
 
-	filename_queue = tf.train.string_input_producer(lines)
+	filename_queue = tf.train.string_input_producer(lines, name='filename_queue')
 	return filename_queue
 
 
@@ -54,19 +54,21 @@ def new_example(filename_queue, data_dir):
 		image: A 3D tensor of size [image_height, image_width, image_channels]
 		label: A 3D tensor of size [image_height, image_width, image_channels]
 	"""
-	# Reading csv file
-	csv_record = filename_queue.dequeue()
-	image_filename, label_filename, _ = tf.decode_csv(csv_record,
-									  [[""], [""], [""]])
+	with tf.name_scope('decode_image'):
+		# Reading csv file
+		csv_record = filename_queue.dequeue()
+		image_filename, label_filename, _ = tf.decode_csv(csv_record,
+										  [[""], [""], [""]])
 	
-	# Reading image
-	image_content = tf.read_file(data_dir + image_filename)
-	label_content = tf.read_file(data_dir + label_filename)
-	image = tf.image.decode_png(image_content)
-	label = tf.image.decode_png(label_content)
+		# Reading image
+		image_content = tf.read_file(data_dir + image_filename)
+		label_content = tf.read_file(data_dir + label_filename)
+		image = tf.image.decode_png(image_content)
+		label = tf.image.decode_png(label_content)
 
-	# Preprocessing (image whitening)
-	image = tf.image.per_image_whitening(image)
+	with tf.name_scope('whitening'):
+		# Preprocessing (image whitening)
+		image = tf.image.per_image_whitening(image)
 	
 	#tf.image_summary('images', images)
 	return image, label
@@ -94,17 +96,17 @@ def create_example_queue(filename_queue, data_dir="./", queue_capacity=5):
 	"""
 	# Processing new example
 	image, label = new_example(filename_queue, data_dir)
-	
-	# Creating queue
-	example_queue = tf.FIFOQueue(queue_capacity, [image.dtype, label.dtype])
-	enqueue_op = example_queue.enqueue((image, label))
 
-	# Creating queue_runner
-	queue_runner = tf.train.QueueRunner(example_queue, [enqueue_op])
-	tf.train.add_queue_runner(queue_runner)
+	with tf.name_scope('example_queue'):
+		# Creating queue
+		example_queue = tf.FIFOQueue(queue_capacity, [image.dtype, label.dtype])
+		enqueue_op = example_queue.enqueue((image, label))
+
+		# Creating queue_runner
+		queue_runner = tf.train.QueueRunner(example_queue, [enqueue_op])
+		tf.train.add_queue_runner(queue_runner)
 
 	return example_queue
-
 
 def model(image, drop):
 	""" A fully convolutional network for image segmentation.
@@ -139,22 +141,24 @@ def model(image, drop):
 		values = tf.random_normal(shape, 0, math.sqrt(2/n_in))
 		return values
 
-	def conv_op(input, filter_shape, strides, name='conv'):
+	def conv_op(input, filter_shape, strides):
 		""" Creates filters and biases and performs the convolution."""
 		filter = tf.Variable(initialize_weights(filter_shape), name='weights')
 		biases = tf.Variable(tf.zeros([filter_shape[3]]), name='biases')
 
 		w_times_x = tf.nn.conv2d(input, filter, strides, padding='SAME')
-		output = tf.nn.bias_add(w_times_x, biases, name=name)
+		output = tf.nn.bias_add(w_times_x, biases)
 		return output
 
-	def leaky_relu(x, alpha=0.1, name='leaky_relu'):
+	def leaky_relu(x, alpha=0.1):
 		""" Leaky ReLU activation function."""
-		return tf.maximum(alpha * x, x, name=name)
+		with tf.name_scope('leaky_relu'):
+			output = tf.maximum(tf.mul(alpha, x), x)
+		return output
 
-	def dropout(x, keep_prob, name='dropout'):
+	def dropout(x, keep_prob):
 		""" During training, performs dropout. Otherwise, returns original."""
-		output = tf.nn.dropout(x, keep_prob, name=name) if drop else x
+		output = tf.nn.dropout(x, keep_prob) if drop else x
 		return output
 
 	def conv_layer(input, filter_shape, strides=[1, 1, 1, 1], keep_prob=1):
@@ -224,16 +228,14 @@ def model(image, drop):
 	# upsampling
 	with tf.name_scope('upsampling'):
 		new_dimensions = tf.shape(fc2)[1:3] * 16
-		output = tf.image.resize_bicubic(fc2, new_dimensions, name='upsampling')
+		output = tf.image.resize_bicubic(fc2, new_dimensions)
 	
 	prediction = tf.squeeze(output) # Unwrap segmentation
 
 	return prediction
 
-#TODO: Check the graph and change names if needed
 #TODO: Check all works
 #TODO: Check it works for bigger images.
-#TODO: Change in_training to 'drop' because that's what it does.
 
 def train():
 	""" Creates and trains a convolutional network for image segmentation. """
@@ -243,18 +245,28 @@ def train():
 
 	# Create a queue to prefetch examples. If unnecessary, use new_example()
 	example_queue = create_example_queue(filename_queue, working_dir+training_dir)
-	val_example_queue = create_example_queue(val_filename_queue, 
+	val_example_queue = create_example_queue(val_filename_queue,
 							     working_dir+val_dir)
 
 	# Create the computation graph
 
 	# Variables that may change between executions: feeded to the graph every run.
-	image = tf.placeholder(tf.float32) # x
-	label = tf.placeholder(tf.float32) # y
-	drop = tf.placeholder(tf.boolean, shape = []) # Perform dropout (Yes/No).
+	image = tf.placeholder(tf.float32, name='image') # x
+	label = tf.placeholder(tf.float32, name='label') # y
+	drop = tf.placeholder(tf.bool, shape=[], name='drop') # Perform dropout? (T/F)
 
 	# Define the model 
 	prediction = model(image, drop)
+
+	# Launch the graph.
+	sess = tf.Session()
+	sess.run(tf.initialize_all_variables())
+
+	# Create graph for TensorBoard
+	summary_writer = tf.train.SummaryWriter(working_dir)
+	summary_writer.add_graph(sess.graph_def)
+
+	sess.close()
 
 	# Compute the loss
 	#loss = logistic_loss(image, label)
@@ -263,6 +275,7 @@ def train():
 	#globalStep = tf.Variable(0, name="global_step",trainable=False)
 
 	# Summaries
+#TODO: Define summary directory (if single file maybe not needed)
 
 	
 	# start session
@@ -270,15 +283,12 @@ def train():
 
 	# Start training
 """Pseudo-code
-Define the model
-	Create each layer(maybe with a function)
 Define the loss for the model
 Define the optimization
 Add summaries (images, too)
-Start session: where session, variables initialization, threads/coordinator, queuerunners, summary writer and everything else is started,
+Start session: where session, variables initialization, threads/coordinator, queuerunners, summary writer and everything else is started, create the summary here, too.
 for epochs number of epochs
 	Create a new batch (with a single image) 
-		Zero-mean the image
 	Prepare the feed
 	Train the network
 
@@ -288,26 +298,21 @@ for epochs number of epochs
 		Write all summaries
 """ 
 
-
 def test():
 	"""For rapid testing"""
-
 	# Test images
-	image = tf.image.decode_png(tf.read_file("smallMammogram.png"))
-	label = tf.image.decode_png(tf.read_file("smallLabel.png"))
-	image = tf.image.per_image_whitening(image)
+	image = tf.decode_png(tf.read("smallMammogram.png"))
+	label = tf.decode_png(tf.read("smallLabel.png"))
 
-	# Define the model 
-	prediction = model(image, False)
+	#Model
+	prediction = model(image, drop)
 
 	# Launch the graph.
 	sess = tf.Session()
 	sess.run(tf.initialize_all_variables())
 
-	# Create graph here so i can chek it
-
-	# ALL EVALUATIONS HERE
-	res = sess.run(prediction)
+	# EVALUATIONS
+	res = "Good to go!"
 
 	sess.close()
 
@@ -316,7 +321,7 @@ def test():
 # If called as 'python3 model.py' run the main method.
 if __name__ == "__main__":	
 	pass
-	#TODO: train()
+	#TODO: Call train()/main()
 
 
 """
@@ -400,15 +405,15 @@ sess.run(train_step, feed_dict = feed)
 # Images are read and preprocessed correctly
 # Inference works alright for 112 x 112 images
 # Dropout works fine
+# Graph definition in Tensorboard looks okay.
 
 """
-# Graph definition in Tensorboard looks okay.
-% 112 x 112 with no background (sanity checks)
-% See whether numbers become so small (because they always predict no) that gradients vanish (if so, I need to change the cost function)
-% 112 x 112 with background
+% Loss/Gradients in 112 x 112 with no background (sanity checks)
+% Loss in 112 x 112 with background
 % medium image(300x300) with no background (sanity checks, including overfitting one with a single image)
 % medium image with background
 % large image (1000x1000) (to test memory)
 % biggest possible image (1579x1305)
 %  if failed (biggest image only for testing)
+% See whether numbers become so small (because they always predict no) that gradients vanish (if so, I need to change the cost function)
 """
