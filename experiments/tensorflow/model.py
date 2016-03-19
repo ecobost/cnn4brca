@@ -1,12 +1,19 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
 # Date: 17-March-2016
-""" TensorFlow implementation of the convolutional network described in Chapter 3 of the thesis report.
+""" TensorFlow implementation of the convolutional network described in Ch. 3 of
+the thesis report.
 
-It loads each mammogram and its label to memory, computes the function described by the convolutional network, and produces a segmentation of the same size as the original mammogram. The network outputs a heatmap of the probability of mass accross the mammogram.
+It loads each mammogram and its label to memory, computes the function described
+by the network, and produces a segmentation of the same size as the original 
+mammogram. The network outputs a heatmap of the probability of mass accross the
+mammogram.
 
-The network uses separate lists of (preprocessed and augmented) mammograms for training and validation. Labels have value 0 for background, 127 for breast tissue and 255 for breast masses. 
+The network uses separate lists of (preprocessed and augmented) mammograms for
+training and validation. Labels have value 0 for background, 127 for breast
+tissue and 255 for breast masses. 
 
-The design follows guidelines from the TensorFlow tutorials. It uses all available CPUs and a single GPU (if available) in one machine. It is not distributed.
+The design follows examples from the TensorFlow tutorials. It uses all available
+CPUs and a single GPU (if available) in one machine. It is not distributed.
 
 See specific methods for details.
 """
@@ -17,16 +24,16 @@ import math
 # Set some parameters
 working_dir = "./"	# Directory where search starts and results are written.
 training_dir = "training/"	# Training folder
-val_dir = "val/"	# Validation folder
-training_csv = "training.csv"	# File with image and label filenames for training
-val_csv = "val.csv"	# File with image and label filenames for validation
+val_dir = "val/"    # Validation folder
+training_csv = "training.csv"	# File with image and label filenames (training)
+val_csv = "val.csv"	# File with image and label filenames (validation)
 
 
 def read_csv(csv_filename):
 	""" Reads csv files and creates a never-ending suffling queue of filenames.
 	
 	Args:
-		csv_filename: A string. File with image and label filenames. 
+	    csv_filename: A string. File with image and label filenames. 
 
 	Returns:
 		A queue with strings. Each string is a csv record in the form
@@ -42,7 +49,7 @@ def read_csv(csv_filename):
 def new_example(filename_queue, data_dir):
 	""" Creates a single new example: an image and its label segmentation.
 	
-	Dequeues and decodes one csv record, loads images (.png) in	memory, whitens 
+	Dequeues and decodes one csv record, loads images (.png)in memory, whitens 
 	them and returns them.
 
 	Args:
@@ -58,7 +65,7 @@ def new_example(filename_queue, data_dir):
 		# Reading csv file
 		csv_record = filename_queue.dequeue()
 		image_filename, label_filename, _ = tf.decode_csv(csv_record,
-										  [[""], [""], [""]])
+														  [[""], [""], [""]])
 	
 		# Reading image
 		image_content = tf.read_file(data_dir + image_filename)
@@ -77,8 +84,8 @@ def new_example(filename_queue, data_dir):
 def create_example_queue(filename_queue, data_dir="./", queue_capacity=5):
 	""" Creates a FIFO queue with examples: (image, label) tuples.
 
-	Creates a FIFO queue and adds a single-thread QueueRunner object to the graph
-	to perform prefetching operations.
+	Creates a FIFO queue and adds a single-thread QueueRunner object to the
+	graph to perform prefetching operations.
 
 	Note:
 		We can not use tf.train.batch()/shuffle_batch() to automatically create 
@@ -89,7 +96,7 @@ def create_example_queue(filename_queue, data_dir="./", queue_capacity=5):
 			form 'image_filename,label_filename,smallLabel_filename'
 		data_dir: A string. Path to the data directory. Default is ./
 		queue_capacity: An integer. Maximum amount of examples that may be 
-			stored in the queue. Default is 5.
+		stored in the queue. Default is 5.
 
 	Returns:
 		A queue with (image, label) tuples.
@@ -164,24 +171,23 @@ def model(image, drop):
 	def conv_layer(input, filter_shape, strides=[1, 1, 1, 1], keep_prob=1):
 		""" Adds a convolutional layer to the graph. 
 	
-		Creates filters and biases, computes the convolutions, passes the
-		output through a leaky ReLU activation function and applies dropout.
-		Equivalent to calling conv_op()->leaky_relu()->dropout().
+		Creates filters and biases, computes the convolutions, passes the output
+		through a leaky ReLU activation function and applies dropout. Equivalent
+		to calling conv_op()->leaky_relu()->dropout().
 
 		Args:
 			input: A tensor of floats with shape [batch_size, input_height,
 				input_width, input_depth]. The input volume.
-			filter_shape: A list of 4 integers with shape [filter_height,
-				filter_width, input_depth, output_depth]. This determine 
-				the size and number of filters of the convolution.
+			filter_shape: A list of 4 integers with shape [filter_height, 
+			filter_width, input_depth, output_depth]. This determines the size
+			and number of filters of the convolution.
 			strides: A list of 4 integers. The amount of stride in the four
 				dimensions of the input.
 			keep_prob: A float. Probability of dropout in the layer.
 			
 		Returns:
-			A tensor of floats with shape [batch_size, output_height, 
-			output_width, output_depth]. The product of the convolutional
-			layer.	
+			A tensor of floats with shape [batch_size, output_height,
+			output_width, output_depth]. The product of the convolutional layer.
 		"""
 		conv = conv_op(input, filter_shape, strides) 
 		relu = leaky_relu(conv)
@@ -189,7 +195,7 @@ def model(image, drop):
 		return output
 
 
-	batch = tf.expand_dims(image, 0) # Batch with a single image
+	batch = tf.expand_dims(image, 0)	# Batch with a single image
 	
 	# conv1 -> conv2 -> pool1
 	with tf.name_scope('conv1'):
@@ -230,7 +236,7 @@ def model(image, drop):
 		new_dimensions = tf.shape(fc2)[1:3] * 16
 		output = tf.image.resize_bicubic(fc2, new_dimensions)
 	
-	prediction = tf.squeeze(output) # Unwrap segmentation
+	prediction = tf.squeeze(output)	# Unwrap segmentation
 
 	return prediction
 
@@ -241,16 +247,17 @@ def train():
 	val_filename_queue = read_csv(working_dir + val_dir + val_csv)
 
 	# Create a queue to prefetch examples. If unnecessary, use new_example()
-	example_queue = create_example_queue(filename_queue, working_dir+training_dir)
-	val_example_queue = create_example_queue(val_filename_queue,
-							     working_dir+val_dir)
+	example_queue = create_example_queue(filename_queue,
+										 working_dir + training_dir)
+	val_example_queue = create_example_queue(val_filename_queue, 
+											 working_dir + val_dir)
 
 	# Create the computation graph
 
-	# Variables that may change between executions: feeded to the graph every run.
-	image = tf.placeholder(tf.float32, name='image') # x
-	label = tf.placeholder(tf.float32, name='label') # y
-	drop = tf.placeholder(tf.bool, shape=[], name='drop') # Perform dropout? (T/F)
+	# Variables that may change between runs: feeded to the graph every time.
+	image = tf.placeholder(tf.float32, name='image')	# x
+	label = tf.placeholder(tf.float32, name='label')	# y
+	drop = tf.placeholder(tf.bool, shape=[], name='drop')	# Dropout? (T/F)
 
 	# Define the model 
 	prediction = model(image, drop)
@@ -266,10 +273,12 @@ def train():
 	sess.close()
 
 	# Compute the loss
+#TODO: Compute loss
 	#loss = logistic_loss(image, label)
 
 	# Set optimization parameters
 	#globalStep = tf.Variable(0, name="global_step",trainable=False)
+	#adam, learning rate, etc. (maybe this could come as input to train)
 
 	# Summaries
 	#TODO: Define summary directory (if single file maybe not needed)
@@ -293,14 +302,14 @@ for epochs number of epochs
 		Checkpoint (saver, global_step)
 	every epochsToSummary
 		Write all summaries
-""" 
-
+"""
 def test():
 	"""For rapid testing"""
 	# Test images
-	image = tf.decode_png(tf.read("mediumMammogram.png"))
-	label = tf.decode_png(tf.read("mediumLabel.png"))
-#TODO: Check it works for bigger images.
+	image = tf.image.decode_png(tf.read_file("smallMammogram.png"))
+	#label = tf.image.decode_png(tf.read_file("smallLabel.png"))
+	image = tf.image.per_image_whitening(image)
+
 
 	#Model
 	prediction = model(image, False)
@@ -404,14 +413,10 @@ sess.run(train_step, feed_dict = feed)
 # Inference works alright for 112 x 112 images
 # Dropout works fine
 # Graph definition in Tensorboard looks okay.
+# Inference works alright for big images (tested with 1305x1579 in desktop)
 
 """
-% Loss/Gradients in 112 x 112 with no background (sanity checks)
+% Loss/Gradients in 112 x 112 with no background
 % Loss in 112 x 112 with background
-% medium image(300x300) with no background (sanity checks, including overfitting one with a single image)
-% medium image with background
-% large image (1000x1000) (to test memory)
-% biggest possible image (1579x1305)
-%  if failed (biggest image only for testing)
 % See whether numbers become so small (because they always predict no) that gradients vanish (if so, I need to change the cost function)
 """
