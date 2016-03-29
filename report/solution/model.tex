@@ -21,7 +21,7 @@ We model our architecture on a VGG network~\cite{Simonyan2014}, winner of the 20
 	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 113\,008\\
 	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $7 \times 7 \times 112$ & -\\
 	\texttt{FC -> Leaky RELU} & $7 \times 7$ & 1 & 3 & $7 \times 7 \times 448$ & 2\,459\,072\\
-	\texttt{FC -> SIGMOID} & $1 \times 1$ & 1 & 0 & $7 \times 7 \times 1$ & 449 \\
+	\texttt{FC} & $1 \times 1$ & 1 & 0 & $7 \times 7 \times 1$ & 449 \\
 	\texttt{BICUBIC} & - & - & - & $112 \times 112 \times 1$ & -\\
 	\hline
 	\end{tabular}
@@ -30,9 +30,12 @@ We model our architecture on a VGG network~\cite{Simonyan2014}, winner of the 20
 \end{table}
 
 
-	The first convolutional layer reduces the spatial dimensions of the input from $112 \times 112$ to $56 \times 56$; this reduces the number of parameters and memory requirements of the network. Subsequent convolutional layers preserve the dimensions of its input volume relegating subsampling to pooling layers. 
+	The first convolutional layer reduces the spatial dimensions of the input from $112 \times 112$ to $56 \times 56$; this reduces the number of parameters and memory requirements of the network. Subsequent convolutional layers preserve the dimensions of its input volume relegating subsampling to pooling layers.
+% The produced segmentation (a logit heatmap), is upsampled...
+% It produces a heatmap of logits that is upsampled...
 Finally, produced segmentations are upsampled by a factor of 16 to recover the dimensions of the original image (Sec.~\ref{sec:Segmentation}).
-%Produced segmentations are 16 times smaller than the original images 
+%Produced segmentations are 16 times smaller than the original images
+% Produced segmentations are logits
 
 This architecture defines 2.91 million parameters. %2 906 681
 

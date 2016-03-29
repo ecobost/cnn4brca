@@ -49,7 +49,7 @@ def read_csv(csv_filename):
 def new_example(filename_queue, data_dir):
 	""" Creates a single new example: an image and its label segmentation.
 	
-	Dequeues and decodes one csv record, loads images (.png)in memory, whitens 
+	Dequeues and decodes one csv record, loads images (.png) in memory, whitens 
 	them and returns them.
 
 	Args:
@@ -58,8 +58,8 @@ def new_example(filename_queue, data_dir):
 		data_dir: A string. Path to the data directory.
 
 	Returns:
-		image: A 3D tensor of size [image_height, image_width, image_channels]
-		label: A 3D tensor of size [image_height, image_width, image_channels]
+		image: A 3D tensor of floats [image_height, image_width, image_channels]
+		label: A 2D tensor of integers [image_height, image_width]
 	"""
 	with tf.name_scope('decode_image'):
 		# Reading csv file
@@ -69,9 +69,12 @@ def new_example(filename_queue, data_dir):
 	
 		# Reading image
 		image_content = tf.read_file(data_dir + image_filename)
-		label_content = tf.read_file(data_dir + label_filename)
 		image = tf.image.decode_png(image_content)
+		
+		# Reading label
+		label_content = tf.read_file(data_dir + label_filename)
 		label = tf.image.decode_png(label_content)
+		label = tf.squeeze(label) # Unwrap label
 
 	with tf.name_scope('whitening'):
 		# Preprocessing (image whitening)
@@ -135,7 +138,7 @@ def model(image, drop):
 		drop: A boolean. If True, dropout is active.
 
 	Returns:
-		A 2D tensor. The predicted segmentation for the input image.
+		A 2D tensor. The predicted segmentation: a logit heatmap.
 	"""
 	def initialize_weights(shape):
 		""" Initializes filter weights with random values.
@@ -228,9 +231,8 @@ def model(image, drop):
 	with tf.name_scope('fc1'):
 		fc1 = conv_layer(pool3, [7, 7, 112, 448], keep_prob=0.6)
 	with tf.name_scope('fc2'):
-		conv = conv_op(fc1, [1, 1, 448, 1], [1, 1, 1, 1])
-		fc2 = tf.sigmoid(conv)
-
+		fc2 = conv_op(fc1, [1, 1, 448, 1], [1, 1, 1, 1])
+		
 	# upsampling
 	with tf.name_scope('upsampling'):
 		new_dimensions = tf.shape(fc2)[1:3] * 16
@@ -239,8 +241,45 @@ def model(image, drop):
 	prediction = tf.squeeze(output)	# Unwrap segmentation
 
 	return prediction
+	
+def logistic_loss(prediction, label):
+	""" Logistic loss function averaged over pixels in the breast area.
+	
+	Pixels in the background are ignored.
+	
+	Args:
+		prediction: A 2D tensor of floats. The predicted heatmap of logits.
+		label: A 2D tensor of integers. Possible labels are 0 (background), 127
+			(breast tissue) and 255 (breast mass).
 
-def train():
+	Returns:
+		A float. The loss.
+	"""
+	with tf.name_scope('logistic_loss'):
+		# Generate binary masks.
+		mass = tf.to_float(tf.equal(label, 255))
+		breast_area = tf.to_float(tf.greater(label, 0))
+
+		# Compute loss per pixel
+		pixel_loss = tf.nn.sigmoid_cross_entropy_with_logits(prediction, mass)
+	
+		# Weight the errors (1 for pixels in breast area, zero otherwise)
+		weighted_loss = tf.mul(pixel_loss, breast_area)
+	
+		# Average over pixels in the breast area
+		loss = tf.reduce_sum(weighted_loss)/tf.reduce_sum(breast_area)
+
+	return loss
+	
+def train(loss):
+	""" Sets the optimizer fo the convolutional network """
+	global_step = tf.Variable(0, name="global_step", trainable=False)
+	optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+	train_op = optimizer.minimize(loss, global_step=global_step)
+	return train_op
+	#TODO: Define training
+
+def main():
 	""" Creates and trains a convolutional network for image segmentation. """
 	# Create a suffling queue with image and label filenames
 	filename_queue = read_csv(working_dir + training_dir + training_csv)
@@ -256,29 +295,19 @@ def train():
 
 	# Variables that may change between runs: feeded to the graph every time.
 	image = tf.placeholder(tf.float32, name='image')	# x
-	label = tf.placeholder(tf.float32, name='label')	# y
+	label = tf.placeholder(tf.uint8, name='label')	# y
 	drop = tf.placeholder(tf.bool, shape=[], name='drop')	# Dropout? (T/F)
 
-	# Define the model 
+	# Define the model
 	prediction = model(image, drop)
-
-	# Launch the graph.
-	sess = tf.Session()
-	sess.run(tf.initialize_all_variables())
-
-	# Create graph for TensorBoard
-	summary_writer = tf.train.SummaryWriter(working_dir)
-	summary_writer.add_graph(sess.graph_def)
-
-	sess.close()
-
+	#probs = tf.nn.softmax(prediction) #Maybe uncomment and save this in memory
+	
 	# Compute the loss
-#TODO: Compute loss
-	#loss = logistic_loss(image, label)
+	loss = logistic_loss(prediction, label)
+	#TODO: Add regularization loss
 
 	# Set optimization parameters
-	#globalStep = tf.Variable(0, name="global_step",trainable=False)
-	#adam, learning rate, etc. (maybe this could come as input to train)
+	train_op = train(loss)
 
 	# Summaries
 	#TODO: Define summary directory (if single file maybe not needed)
@@ -288,8 +317,23 @@ def train():
 #	init = start()
 
 	# Start training
+
+
+#Tests
+	# Launch the graph.
+	sess = tf.Session()
+	sess.run(tf.initialize_all_variables())
+
+	# Create graph for TensorBoard
+#	summary_writer = tf.train.SummaryWriter(working_dir)
+#	summary_writer.add_graph(sess.graph_def)
+
+	sess.close()
+
+	
+	
+	
 """Pseudo-code
-Define the loss for the model
 Define the optimization
 Add summaries (images, too)
 Start session: where session, variables initialization, threads/coordinator, queuerunners, summary writer and everything else is started, create the summary here, too.
@@ -306,20 +350,24 @@ for epochs number of epochs
 def test():
 	"""For rapid testing"""
 	# Test images
-	image = tf.image.decode_png(tf.read_file("smallMammogram.png"))
-	#label = tf.image.decode_png(tf.read_file("smallLabel.png"))
+	image = tf.image.decode_png(tf.read_file("mediumMammogram.png"))
+	label = tf.image.decode_png(tf.read_file("mediumLabel.png"))
+	label = tf.squeeze(label)
 	image = tf.image.per_image_whitening(image)
 
 
-	#Model
+	# Model
 	prediction = model(image, False)
+	
+	# Loss
+	loss = logistic_loss(prediction, label)
 
 	# Launch the graph.
 	sess = tf.Session()
 	sess.run(tf.initialize_all_variables())
 
 	# EVALUATIONS
-	res = sess.run(prediction)
+	res= sess.run(loss)
 
 	sess.close()
 
@@ -332,30 +380,6 @@ if __name__ == "__main__":
 
 
 """
-% Define some tf.constants for the weights before multiplying.
-%Have somwtrhing lik
-% breasttissue = (tf.equals(127) float32)
-% breastmass = (tf.equals(255) float32)
-% background = (tf.equals(0) float32)
-% weightMask = breasttissueweight* breasttissue + breastmassWeight* brestWeight + backgorund*backgroundWeight
-% labelMask = breastMass
-%
-%% Or simpler option
-%% weightMask = tf.greaterthan(0)
-%% labelMask = tf.equal()
-%
-%%% Or as above but ignoring background
-%%% breastissue =...
-%%% breastMass = ...
-%%% weightMask = breasttissue*breastWeight + breastMass*massWeight
-%%% labelMask = breastMass
-%
-% lossPerPixel = weightMask *( labelMask*log(tata) + (1-labelMask))
-% loss = tf.reduce_sum(loss)/tf.reduce_sum(breastTissue + breastMass)
-
-
-# If I am gonna decrease the learning rate evry x number of steps I can do it with tf.train.exponential_decay() (it's not really exponential)
-
 # summarize images and labels
 # write a summarize function that uses tf.histogram_summary and tf.scalar_summary (sparsity see cifar model) in activations after relu and maybe in weight gradients (histogram to see if all are positive in the first and penultimate layer maybe) and maybe first layer filters (not so often though, maybe not), summarize the training and val loss, too. Summarize the reduce_mean of (predicitions) to see whether they start at around 0.5 and decrease (because there is not many positives)
 # Summarize only every number of operations, loss should probably be reported every time.
@@ -367,12 +391,6 @@ if __name__ == "__main__":
 saver = tf.train.Saver()
 saver.save(sess, "tmp/model.ckpt", global_step = global_step)
 
-
-# Check the MNIST example to see where to define global_step (in the training function.
-
-
-# <Maybe the main is a call to model = myCOnv(opts, session), model.train and model.eval (as in the Word2vec example). It is build a class myCOnv that has parameters for everything it needs, and then I just call it for it to run the code.
-	
 
 # How to write somethings (rather than how they say to)
 optimizer = tf.train.ADAMOptimizer
