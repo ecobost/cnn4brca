@@ -271,13 +271,14 @@ def logistic_loss(prediction, label):
 
 	return loss
 	
-def train(loss):
+def train(loss, learning_rate):
 	""" Sets the optimizer fo the convolutional network """
 	global_step = tf.Variable(0, name="global_step", trainable=False)
-	optimizer = tf.train.GradientDescentOptimizer(learning_rate)
+	optimizer = tf.train.ADAMOptimizer(learning_rate)
 	train_op = optimizer.minimize(loss, global_step=global_step)
+	#beta_1, beta_2, epsilon, mu
 	return train_op
-	#TODO: Define training
+#TODO: Define training	
 
 def main():
 	""" Creates and trains a convolutional network for image segmentation. """
@@ -304,10 +305,11 @@ def main():
 	
 	# Compute the loss
 	loss = logistic_loss(prediction, label)
+	reg_loss = regularization_loss(lambda=1)
 	#TODO: Add regularization loss
 
 	# Set optimization parameters
-	train_op = train(loss)
+	train_op = train(loss, learning_rate=0.01)
 
 	# Summaries
 	#TODO: Define summary directory (if single file maybe not needed)
@@ -319,7 +321,7 @@ def main():
 	# Start training
 
 
-#Tests
+#For tests
 	# Launch the graph.
 	sess = tf.Session()
 	sess.run(tf.initialize_all_variables())
@@ -329,9 +331,6 @@ def main():
 #	summary_writer.add_graph(sess.graph_def)
 
 	sess.close()
-
-	
-	
 	
 """Pseudo-code
 Define the optimization
@@ -375,11 +374,24 @@ def test():
 
 # If called as 'python3 model.py' run the main method.
 if __name__ == "__main__":	
-	pass
-	#TODO: Call train()/main()
+	main()
 
+# Tests:
+# Filenames are shuffled
+# Both queues (filename and example) work fine.
+# Images are read and preprocessed correctly
+# Inference works alright for 112 x 112 images
+# Dropout works fine
+# Graph definition in Tensorboard looks okay.
+# Inference works alright for big images (tested with 1305x1579 in desktop)
+# Loss in 112x112 and big images works.
 
 """
+Check gradients all around
+See whether numbers become so small (because they always predict no) that gradients vanish (if so, I need to change the cost function)
+"""
+
+""" Notes
 # summarize images and labels
 # write a summarize function that uses tf.histogram_summary and tf.scalar_summary (sparsity see cifar model) in activations after relu and maybe in weight gradients (histogram to see if all are positive in the first and penultimate layer maybe) and maybe first layer filters (not so often though, maybe not), summarize the training and val loss, too. Summarize the reduce_mean of (predicitions) to see whether they start at around 0.5 and decrease (because there is not many positives)
 # Summarize only every number of operations, loss should probably be reported every time.
@@ -422,19 +434,4 @@ sess.run(train_step, feed_dict = feed)
   regularizers = (tf.nn.l2_loss(fc1_weights) + tf.nn.l2_loss(fc1_biases) +
                   tf.nn.l2_loss(fc2_weights) + tf.nn.l2_loss(fc2_biases))
 
-"""
-
-# Tests:
-# Filenames are shuffled
-# Both queues (filename and example) work fine.
-# Images are read and preprocessed correctly
-# Inference works alright for 112 x 112 images
-# Dropout works fine
-# Graph definition in Tensorboard looks okay.
-# Inference works alright for big images (tested with 1305x1579 in desktop)
-
-"""
-% Loss/Gradients in 112 x 112 with no background
-% Loss in 112 x 112 with background
-% See whether numbers become so small (because they always predict no) that gradients vanish (if so, I need to change the cost function)
 """
