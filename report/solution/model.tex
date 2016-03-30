@@ -22,7 +22,7 @@ We model our architecture on a VGG network~\cite{Simonyan2014}, winner of the 20
 	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $7 \times 7 \times 112$ & -\\
 	\texttt{FC -> Leaky RELU} & $7 \times 7$ & 1 & 3 & $7 \times 7 \times 448$ & 2\,459\,072\\
 	\texttt{FC} & $1 \times 1$ & 1 & 0 & $7 \times 7 \times 1$ & 449 \\
-	\texttt{BICUBIC} & - & - & - & $112 \times 112 \times 1$ & -\\
+	\texttt{BILINEAR} & - & - & - & $112 \times 112 \times 1$ & -\\
 	\hline
 	\end{tabular}
 	\caption[Selected convolutional network architecture]{Architecture of the network used for experiments. It shows the filter size, stride and padding in each layer as well as the resulting volume and number of learnable parameters per layer.}

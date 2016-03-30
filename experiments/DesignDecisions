@@ -1,4 +1,6 @@
-Here I document each decision taken and its possible alternatives. The first one is the one I took, the others are ordered according to what I believe would be the next best.
+Here I document each decision taken and its possible alternatives. The first one
+is the one I took, the others are ordered according to what I believe would be 
+the next best.
 
 -- Data set
 Lesions
@@ -19,9 +21,9 @@ Enhancement
 Image size
 	Reduced for 2cm to fit into 112 x 112 pixels (or as many pixels as the input 			volume to the network). Train on entire images
 	Cut 112 x 112 patches (or as many pixels as the input volume) equivalent to
-		2cm x 2cm. Roughly 1M patches. This will take advantage of smaller
-		mini-batches/ more frequent updates, batchnorm and less memory use
-		(bigger input volume and newer architectures could be used).
+		2cm x 2cm. Roughly 1M patches. This will take advantage of smaller mini-
+		batches/ more frequent updates, batchnorm and less memory use (bigger 
+		input volume and newer architectures could be used).
 Downsampling interpolation (images and labels)
 	LANCZOS filter from PILLOW
 	BICUBIC filter form PILLOW
@@ -33,7 +35,7 @@ Augmentation
 	Flipped and rotations 0,180 (4). Test set not augmented
 Storage
 	Store all augmented images and its augmented labels
-	Store originals and sample an image and a data augmentation for every
+	Store originals and sample an image and a data augmentation for every 
 		training batch
 Label storage
 	Store one version at same size than downsampled image (~1100x1100) and one
@@ -51,17 +53,18 @@ ConvNet architecture
 	VGG-like starting at 112 with bottleneck (1M parameters) (arch#27)
 	ResNet-like 1-2-4-1 architecture (0.9M parameters) (arch #25)
 Modern features/trends not adopted
-	Bottleneck architecture (reduces parameters by a factor of 0.36 but augments memory requirements by a factor of 1.5)
+	Bottleneck architecture (reduces parameters by a factor of 0.36 but augments
+		memory requirements by a factor of 1.5)
 	7x7 average pooling filters instead of fully connected
 	3x3/4x4 conv filters, stride 2, padding 1, to get rid of pooling
 	deeper architecture
 	more feature maps 
 	no dropout (just batchnorm)
 Upsampling
-	Upsample the produced output with bicubic interpolation at end of network
+	Upsample the produced output with bilinear interpolation at end of network. I 
+		would like to use bicubic but gradient is not implemented in tensorflow
 	Upsample the produced output with deconvolutional layer at end of network
 	Downsample the labels (PILLOW Image.NEAREST)
-	Upsample the produced output with bilinear interpolation at end of network.
 Last layer activation
 	Sigmoid
 	2-way Softmax

@@ -1,5 +1,5 @@
 In this section we collect guidelines for building as well as efficiently training deep convolutional networks; while they are specific to this thesis, they may prove useful in similar projects. Deep learning is a fast-changing field so these recommendations may soon outdate.
-% Some of these details are taken care by the software(either as a defualt or optional feature) and some are qyuite new and need to be taken care manually. 
+% Some of these details are taken care by the software(either as a defualt or optional feature) and some are quite new and need to be taken care manually. 
 
 \paragraph{Image preprocessing} Convolutional networks handle raw image data, but some level of preprocessing speeds training and improves performance.
 \begin{itemize}
@@ -55,7 +55,7 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Hyperparameters related to the convolutional architecture, e.g., number of layers, number of filters and filter sizes are set manually (as explained above) rather than using a validation set.
 
-	\item Several hyperparameters are set: initial learning rate $\alpha$, learning rate decay schedule, regularization strength $\lambda$, momentum $\mu$, Adam hyperparameters ($\beta_1$, $\beta_2$ and $\epsilon$), probability of keeping a unit active in dropout $p$, mini-batch size and type of image preprocessing.
+	\item Several hyperparameters are set: initial learning rate $\alpha$, learning rate decay schedule, regularization strength $\lambda$, Adam hyperparameters ($\beta_1$, $\beta_2$ and $\epsilon$), probability of keeping a unit active in dropout $p$, mini-batch size and type of image preprocessing.
 
 	\item We could fit all hyperparameters using a validation set but, in practice, this is computationally unfeasible and results in overfitting to the validation data~\cite{Cawley2010}.
 
@@ -70,7 +70,7 @@ In this section we collect guidelines for building as well as efficiently traini
 %1
 	\item Divide the learning rate by 10 every time the validation error stops improving or every fixed number of epochs chosen by observing when it stops improving in a similar network~\cite{Krizhevsky2012, He2015b}.
 
-	\item Use $\mu=0.9$. If using a validation set try values in \{0.5, 0.9, 0.95, 0.99\}~\cite{Karpathy2016}.
+	%\item Use $\mu=0.9$. If using a validation set try values in \{0.5, 0.9, 0.95, 0.99\}~\cite{Karpathy2016}.% For NAG.
 
 	\item Use $\beta_1 = 0.9$, $\beta_2 = 0.995$ and $\epsilon = 1 {\times} 10^{-6}$~\cite{Karpathy2016}.
 	% Tensorflow says epsilon of 1e-8 is way too small. Proposes up to epsilon = 1 but that may be only for big networks.
@@ -82,7 +82,6 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Choose among standard preprocessing techniques by (qualitatively) inspecting results on images from the validation set. If none seems superior, fit it along $\alpha$ and $\lambda$% other hyperparameters.
 \end{itemize}
-
 
 
 \paragraph{Training} Convolutional networks have millions of parameters and require careful training. We offer general advice and list some commonly used techniques.
@@ -99,17 +98,15 @@ In this section we collect guidelines for building as well as efficiently traini
 
 	\item Use mini-batches rather than the entire training set to compute the gradient of the loss function. Mini-batches allows us to make more updates, more frequently resulting in faster convergence and better test results~\cite{Bengio2012}.
 
-	\item Use dropout~\cite{Krizhevsky2012} as a complement to $l_2$-norm regularization. Dropout improves results but may slow network convergence.
-	%Inverted dropout may be better. Also, how would this work with a single image. It should be different for every patch. Worst-case is dropout over every big image, seems wasteful. Or maybe I can drop some activations (from the volume not the filters) at random, this may work.
+	\item Use (inverted) dropout~\cite{Krizhevsky2012} as a complement to $l_2$-norm regularization. Dropout improves results but may slow network convergence.
 
 	\item Batch normalize the output of each convolutional layer~\cite{Ioffe2015}. This speeds convergence (using higher learning rates and faster decay) and reduces the need for dropout. %It learns two extra parameters per feature map.
 	%If my batch is a single image it will normalize over each feature map (mini-batch =1), not sure this is what is intended to do/will help. Although, it could learn to go back to normal. They only use mini-batches of size 32.
 
 	\item Use leaky rectified linear units (\texttt{max(0.1x, x)}) rather than simple rectified linear units. Leaky ReLUs slightly improve results at almost no cost~\cite{Xu2015}.
-%($a = 0.1$)
 
 	\item Use Adam~\cite{Kingma2014} to update weights. Adam incoporates momentum and per-parameter adaptive learning rates. Nesterov's Accelerated Gradient is also a viable option~\cite{Karpathy2016}.
-	%\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. NAG is a modified version of gradient descent that works better for certain architectures~\cite{Bengio2012b}. Stochastic Gradient Descent with Momentum (SGD+Momentum) is also a viable option.
+	%\item Use Nesterov's Accelerated Gradient (NAG) to update the weights. NAG is a modified version of gradient descent that works better for certain architectures~\cite{Bengio2012b}.
 
 	\item Store network parameters regularly during training. This allows us to inspect the network at different stages, retrain one or select the one with the best validation error~\cite{Bengio2014}.
 	%\item Use the validation or test error to select the best parameters for the network from those stored~\cite{Bengio2014}.
@@ -153,7 +150,7 @@ Given that the network is already trained, using the validation set to choose th
 % Lo liked rotation and horizontal flipping
 
 \begin{itemize}
-	\item Exploit invariances you expect in the data set, e.g., galaxies are rotation-invariant because in space there is no up or down~\cite{Dieleman2015}.% but trees are not as we rarely see an upside down tree.
+	\item Exploit invariances you expect in the data set, e.g., galaxies are rotation-invariant because in space there is no up or down~\cite{Dieleman2015}.
 
 	\item Be careful to preserve the original label of the image. Applying many transformations may cause the image to lose its meaning. 
 
@@ -176,7 +173,8 @@ In practice, it is common to have very few examples of one class compared to the
 
 	\item Avoid oversampling, repeating examples from the rare class, and undersampling, discarding examples from the dominant class, because they do not add any information to the data set.
 
-	\item If rare examples are insufficient for learning, augment them more or balance each mini-batch via stratified sampling; the latter is oversampling.%data replication (oversampling).% Augmentation differs from replication in that it enriches the data set with invariant images but proportion of classes remains unchanged.
+	\item If rare examples are insufficient for learning, augment them more or balance each mini-batch via stratified sampling; the latter is oversampling.
+% Augmentation differs from replication in that it enriches the data set with invariant images but proportion of classes remains unchanged.
 
 %	\item One of the preferred methods to learn with unbalanced data sets is to use a modified loss function which gives a higher weight to errors in the rare class so that during training errors in the rare class will produce higher learning in the network parameters. Specific knowledge of the domain is required to estimate the cost of each class of error.
 \end{itemize}
