@@ -17,10 +17,13 @@ CPUs and a single GPU (if available) in one machine. It is not distributed.
 
 See specific methods for details.
 """
+#TODO: Add how to call python3 model.py, python3 model.py xx or enter python3 and call model.train(xx) where xx is anything that will return True when evaluated.
+#TODO: Summaries are collected in the graph when the model is created, the program won't run two times in the same interactive python terminal, either restart the python terminal (quit() and re-enter python3) or call tf.reset_default-graph() to clear the summaries.
 
 import tensorflow as tf
 import math
 import os.path
+import time
 
 # Set some parameters
 training_dir = "training"	# Path to folder with training data
@@ -70,11 +73,13 @@ def new_example(filename_queue, data_dir):
 														  [[""], [""], [""]])
 	
 		# Reading image
-		image_content = tf.read_file(os.path.join(data_dir, image_filename))
+		image_path = data_dir + os.path.sep + image_filename
+		image_content = tf.read_file(image_path)
 		image = tf.image.decode_png(image_content)
 		
 		# Reading label
-		label_content = tf.read_file(os.path.join(data_dir, label_filename))
+		label_path = data_dir + os.path.sep + label_filename
+		label_content = tf.read_file(label_path)
 		label = tf.image.decode_png(label_content)
 		label = tf.squeeze(label) # Unwrap label
 
@@ -273,9 +278,13 @@ def logistic_loss(prediction, label):
 
 	return loss
 	
-def regularization_loss(lambda)
-#TODO: Define this
+#TODO: Define this. check tf.GraphKeys and tf.Graph.addtocolection
+def regularization_loss(lamda):
 	pass
+	
+def log(message):
+	""" Simple log function."""
+	print("[{}] {}".format(time.ctime(), message))
 	
 def train(restore_variables=False):
 	""" Creates and trains a convolutional network for image segmentation. 
@@ -312,60 +321,75 @@ def train(restore_variables=False):
 	global_step = tf.Variable(0, name='global_step', trainable=False)
 	optimizer = tf.train.AdamOptimizer(learning_rate=0.01, beta1=0.9, 
 									   beta2=0.995, epsilon=1e-06)
-	train_op = optimizer.minimize(loss, global_step=global_step) # I could call this below
+	train_op = optimizer.minimize(loss, global_step=global_step)
 	
-	#TODO: Decide whether to call tf.op.run() or run(init_op) (ops defined inside for loops are fine?)
-
 	# Saver and summaries
 	saver = tf.train.Saver()
-	summaries = tf.merge_all_summaries() #I could call this below
+	summaries = tf.merge_all_summaries()
 	
 	# Launch the graph
 	with tf.Session() as sess:
 		# Initialize variables
 		if restore_variables:
-			saver.restore(tf.train.latest_checkpoint())
+			saver.restore(sess, tf.train.latest_checkpoint(checkpoint_dir))
 		else:
 			tf.initialize_all_variables().run()
 			
 		# Create summary writer
+		run_path = os.path.join(summary_dir, "run{}".format(global_step.eval()))
+		#summary_writer = tf.train.SummaryWriter(summary_path, sess.graph_def)
+		summary_writer = tf.train.SummaryWriter(summary_dir)#, sess.graph_def)
 		
-		#TODO: Fix here
-		run_path = os.path.join(summary_dir, "run_{}".format(global_step.eval()))
-		summary_writer = tf.train.SummaryWriter(summary_path, sess.graph_def)
+		#TODO: Do i need to add_graph, afrter quit() again, i.e., if i restore vars
+		#TODO: Decide whther I create many runs or go with a single one. 
 		
 		# Start queues
-		tf.train.start_queue_runners()
+		#tf.train.start_queue_runners()
 		
-		for i in range(20)
-			# Train
+
+		# Initial log
+		log("Start training")
 		
-			# Evaluate results
+		-
+		for i in range(10):
+
+			#TODO: Eval after or before train_op
+			#TODO: Eval and summary in different ifs? Yes
+			#TODO: How often to log (every time I eval, maybe more often)
 			
-			# Write summaries every 10 steps
+			# Evaluate model
 			if i%10 == 0:
-				#Run validation, summarize validation, too.
-				#compute loss buy hand and add it manually with tf.scalar...
-				#Maybe do the same for training. Nop, for training rather define the moving average directly and report it, in here calculate the moving average by hand and create a tf.scalar_summary here. So maybe I can also do the same for training_loss. Use the same scalar_summary for both losses
-				
-#TODO: How do I do this? Maybe i need to define merge_all summaries above, so it doesn't tries to merge the newer tf.scalar_summary, and add tf.scalar_summary manually using add_summaryq 
-				
-				# Do a versionwith only train and val_loss 
-				tf.scalar_summary
-				tf.scalar_summary
-				tf.merge_all_summaries (then i have to run this)
-				
-				# check wehther merge _all summaries will get the summaries from a
-				# constant that is not in the graph
-				
-				# Use tf.add_summary(...., global_step.eval()
+				#eval, write summary and log training and eval_loss
+			
+			# Write summaries 
+			if i%10 == 0:
+				pass
 				
 		
-			# Write checkpoint
-			if i%100 == 0:
+				val_summary = tf.scalar_summary("name", val_loss)
+			
+				summary_writer.add_summary(summaries.eval(), global_step.eval())
+				summary_writer.add_summary(val_summary.eval(), global_step.eval())
+				
+			# Write checkpoint	
+			if i%10 == 0:
 				checkpoint_path = os.path.join(checkpoint_dir, 'model')
 				saver.save(sess, checkpoint_path, global_step.eval())
+			
+			# Train
+			train_op.run()
 
+#TODO: Decide where this
+		summary_writer.close() #flush anything left
+		#saver.close()
+		#queue_runners.stop Maybe send a coordinator to tf.Session()
+			
+
+				
+				
+				
+				
+#TODO: Refactor so model is not called everytime train is called (thus the model and summary is created once and later calls to train (with restore_variables on) can be done from inside the same terminal.
 #TODO: Add summaries in other parts of the graph
 
 	
@@ -406,9 +430,13 @@ def test():
 
 	return res1
 	
-# If called as 'python3 model.py', train the network from scratch.
-if __name__ == "__main__":	
-	train()
+#If called as 'python3 model.py', train the network from scratch.
+if __name__ == "__main__":
+	#train()
+	print(len(sys.argv))
+#TODO: if len(sys.argv) > 1: train(True/sys.argv[1]) else: train(False)
+# or train(len(sys.argv) > 1) or train(True) if len(sys.argv) > 1) else train(False)
+
 
 # Tests:
 # Filenames are shuffled
@@ -429,15 +457,9 @@ See whether numbers become so small (because they always predict no) that gradie
 """ Notes
 # summarize images and labels
 # write a summarize function that uses tf.histogram_summary and tf.scalar_summary (sparsity see cifar model) in activations after relu and maybe in weight gradients (histogram to see if all are positive in the first and penultimate layer maybe) and maybe first layer filters (not so often though, maybe not), summarize the training and val loss, too. Summarize the reduce_mean of (predicitions) to see whether they start at around 0.5 and decrease (because there is not many positives)
-# Summarize only every number of operations, loss should probably be reported every time.
-# Maybe accumulate the loss function over every batch that is not printed and then print and average, that way it is probbaly smoother, or just log/summarize the loss for every batch. A batch is an image in our case
+# Maybe accumulate the loss function over every batch that is not printed and then print and average/moving average, that way it is probbaly smoother, or just log/summarize the loss for every batch. A batch is an image in our case
 # you cna use merge_summary (instead of merge_all_summaries) to merge only a subset and save them to file.
 # maybe put all sumarries in a single fuinction that returns the string with all sumaries, and then write it in the main loop. Or just when defining the graph put all sumaries in asingle function and then during trainng call tf.merge all summarie snormally.
-
-# To save checkpoints (see Tensorflow Mechanics 101/ Tensorbord: visualizations how to). Or here: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/models/image/cifar10/cifar10_train.py
-saver = tf.train.Saver()
-saver.save(sess, "tmp/model.ckpt", global_step = global_step)
-
 
 with Session as sess:
 	sess.run(tf.initiallize_all_variables)
