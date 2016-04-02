@@ -3,6 +3,19 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Mar 31 - Apr 06
+### Activities
+* Writing Tensorflow implementation
+* Run sanity checks and initial tests
+
+### To do
+* Install Tensorflow in computers at A3-301
+* Run experiments
+* Write Section 3.2(Model) and 3.3(Training)
+* Ask for institutional email
+
+### Questions
+
 ## Mar 17 - Mar 30
 ### Activities
 * Spoke with Dr. Parra

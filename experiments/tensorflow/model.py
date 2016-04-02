@@ -17,7 +17,7 @@ CPUs and a single GPU (if available) in one machine. It is not distributed.
 
 See specific methods for details.
 """
-#TODO: Add how to call python3 model.py, python3 model.py xx or enter python3 and call model.train(xx) where xx is anything that will return True when evaluated.
+#TODO: Add how to call python3 model.py for scratch training or python3 model.py arg where arg is any argument to restore_variables from latest_checkpoint. You could also enter an interactive Pythion interface and call train(False) or train(True), respectively.
 #TODO: Summaries are collected in the graph when the model is created, the program won't run two times in the same interactive python terminal, either restart the python terminal (quit() and re-enter python3) or call tf.reset_default-graph() to clear the summaries.
 
 import tensorflow as tf
@@ -30,7 +30,7 @@ training_dir = "training"	# Path to folder with training data
 val_dir = "val"	# Path to folder with validation data
 summary_dir = "summary"	# Folder to store event/summary files
 checkpoint_dir = "checkpoint"	# Folder to store model checkpoints
-training_csv = "training.csv"	# File with image and label filenames (training)
+training_csv = "small_training.csv"	# File with image and label filenames (training)
 val_csv = "val.csv"	# File with image and label filenames (validation)
 #TODO: Define training_steps/max_steps, summary_steps, checkpoint_steps
 
@@ -91,7 +91,7 @@ def new_example(filename_queue, data_dir):
 	return image, label
 
 
-def create_example_queue(filename_queue, data_dir=".", queue_capacity=5):
+def create_example_queue(filename_queue, data_dir=".", capacity=5):
 	""" Creates a FIFO queue with examples: (image, label) tuples.
 
 	Creates a FIFO queue and adds a single-thread QueueRunner object to the
@@ -105,8 +105,8 @@ def create_example_queue(filename_queue, data_dir=".", queue_capacity=5):
 		filename_queue: A queue with strings. Each string is a csv record in the
 			form 'image_filename,label_filename,smallLabel_filename'
 		data_dir: A string. Path to the data directory. Default is "."
-		queue_capacity: An integer. Maximum amount of examples that may be 
-		stored in the queue. Default is 5.
+		capacity: An integer. Maximum amount of examples that may be stored in 
+			the queue. Default is 5.
 
 	Returns:
 		A queue with (image, label) tuples.
@@ -116,7 +116,7 @@ def create_example_queue(filename_queue, data_dir=".", queue_capacity=5):
 
 	with tf.name_scope('example_queue'):
 		# Creating queue
-		example_queue = tf.FIFOQueue(queue_capacity, [image.dtype, label.dtype])
+		example_queue = tf.FIFOQueue(capacity, [image.dtype, label.dtype])
 		enqueue_op = example_queue.enqueue((image, label))
 
 		# Creating queue_runner
@@ -282,10 +282,17 @@ def logistic_loss(prediction, label):
 def regularization_loss(lamda):
 	pass
 	
-def log(message):
+def log(*messages):
 	""" Simple log function."""
-	print("[{}] {}".format(time.ctime(), message))
+	formatted_time = "[{}]".format(time.ctime())
+	print(formatted_time, *messages)
 	
+def my_scalar_summary(tag, value):
+	""" Manually creates an scalar summary. Not added to the graph"""
+	float_value = float(value)
+	summary_value = tf.Summary.Value(tag=tag, simple_value=float_value)
+	return tf.Summary(value=[summary_value])
+		
 def train(restore_variables=False):
 	""" Creates and trains a convolutional network for image segmentation. 
 	
@@ -304,6 +311,8 @@ def train(restore_variables=False):
 	# Create a queue to prefetch examples. If unnecessary, use new_example()
 	example_queue = create_example_queue(filename_queue, training_dir)
 	val_example_queue = create_example_queue(val_filename_queue, val_dir)
+	example = example_queue.dequeue(name='example')
+	val_example = val_example_queue.dequeue(name='val_example')
 
 	# Variables that may change between runs: feeded to the graph every time.
 	image = tf.placeholder(tf.float32, name='image')	# x
@@ -312,20 +321,26 @@ def train(restore_variables=False):
 
 	# Define the model
 	prediction = model(image, drop)
-	#probs = tf.nn.softmax(prediction)
 	
 	# Compute the loss
 	loss = logistic_loss(prediction, label) #+ regularization_loss(lambda=1)
 	
 	# Set optimization parameters
 	global_step = tf.Variable(0, name='global_step', trainable=False)
-	optimizer = tf.train.AdamOptimizer(learning_rate=0.01, beta1=0.9, 
+	optimizer = tf.train.AdamOptimizer(learning_rate=0.0001, beta1=0.9, 
 									   beta2=0.995, epsilon=1e-06)
 	train_op = optimizer.minimize(loss, global_step=global_step)
 	
 	# Saver and summaries
 	saver = tf.train.Saver()
 	summaries = tf.merge_all_summaries()
+	summary_writer = tf.train.SummaryWriter(summary_dir)
+		
+	#TODO: Add coordinator (if needed). Maybe above as saver(), summaries and coordinator. If deleted, delete qrs from start:-queue_runners, too
+	coord = tf.train.Coordinator()
+	
+	# Initial log
+	log("Start training.")
 	
 	# Launch the graph
 	with tf.Session() as sess:
@@ -334,108 +349,134 @@ def train(restore_variables=False):
 			saver.restore(sess, tf.train.latest_checkpoint(checkpoint_dir))
 		else:
 			tf.initialize_all_variables().run()
+			summary_writer.add_graph(sess.graph_def)
 			
-		# Create summary writer
-		run_path = os.path.join(summary_dir, "run{}".format(global_step.eval()))
-		#summary_writer = tf.train.SummaryWriter(summary_path, sess.graph_def)
-		summary_writer = tf.train.SummaryWriter(summary_dir)#, sess.graph_def)
-		
-		#TODO: Do i need to add_graph, afrter quit() again, i.e., if i restore vars
-		#TODO: Decide whther I create many runs or go with a single one. 
+		# Uncomment this to create different folders after every restore.
+		#run_path = os.path.join(summary_dir, "run{}".format(global_step.eval()))
+		#summary_writer = tf.train.SummaryWriter(run_path, sess.graph_def)
 		
 		# Start queues
-		#tf.train.start_queue_runners()
+		qrs = tf.train.start_queue_runners(coord=coord)
 		
-
-		# Initial log
-		log("Start training")
-		
-		-
-		for i in range(10):
-
-			#TODO: Eval after or before train_op
-			#TODO: Eval and summary in different ifs? Yes
-			#TODO: How often to log (every time I eval, maybe more often)
-			
-			# Evaluate model
-			if i%10 == 0:
-				#eval, write summary and log training and eval_loss
-			
-			# Write summaries 
-			if i%10 == 0:
-				pass
-				
-		
-				val_summary = tf.scalar_summary("name", val_loss)
-			
-				summary_writer.add_summary(summaries.eval(), global_step.eval())
-				summary_writer.add_summary(val_summary.eval(), global_step.eval())
-				
-			# Write checkpoint	
-			if i%10 == 0:
-				checkpoint_path = os.path.join(checkpoint_dir, 'model')
-				saver.save(sess, checkpoint_path, global_step.eval())
-			
+		# Training loop
+		step = global_step.eval()
+		for i in range(3):
 			# Train
-			train_op.run()
+			train_image, train_label = sess.run(example)
+			feed_dict = {image: train_image, label: train_label, drop: True}
+			#train_loss, _ = sess.run([loss, train_op], feed_dict)
+			train_loss = 3.2
+			step += 1
+			
+			# Report loss (calculated before the training step)
+			loss_summary = my_scalar_summary('training_loss', train_loss)
+			summary_writer.add_summary(loss_summary, step-1)
+			log("Training loss:", train_loss, "Step:", step-1)
+			
+			# Write summaries
+			if step%25 == 0 or step == 1:
+				summary_writer.add_summary(summaries.eval(), step)
+				log("Updated summaries. Step:", step)
+			"""
+			# Evaluate model
+			if step%25 == 0 or step == 1:
+				log("Evaluating model")
+				
+				# Average loss over 4 val images
+				val_loss = 0
+				for j in range(4):
+					val_image, val_label = sess.run(val_example)
+					one_loss = loss.eval({image: val_image, label: val_label,
+										  drop: False})
+					val_loss += (one_loss / 4)
 
-#TODO: Decide where this
+				# Report validation loss	
+				loss_summary = tf.scalar_summary('val_loss', val_loss)
+				summary_writer.add_summary(loss_summary.eval(), step)
+				log("Validation loss:", val_loss, "Step:", step)
+
+			# Write checkpoint	
+			if step%100 == 0 or step == 1:
+				checkpoint_path = os.path.join(checkpoint_dir, 'model')
+				saver.save(sess, checkpoint_path, step)
+			"""
+
+		# Maybe report final training_loss (with final training update) Maybe not
+#TODO: Decide where this here or one tab less. do I need to be in the session maybe yes. I could leave it in the session.
 		summary_writer.close() #flush anything left
 		#saver.close()
-		#queue_runners.stop Maybe send a coordinator to tf.Session()
-			
+		coord.request_stop()
+		coord.join(qrs)
 
-				
-				
-				
-				
+	# Final log
+	log("End training")			
 #TODO: Refactor so model is not called everytime train is called (thus the model and summary is created once and later calls to train (with restore_variables on) can be done from inside the same terminal.
-#TODO: Add summaries in other parts of the graph
+#TODO: Add summaries in other parts of the graph (image, activations, gradients)
+#TODO: Change drop to True in training
 
-	
-"""Pseudo-code
-for epochs number of epochs
-	Create a new batch (with a single image) 
-	Prepare the feed
-	Train the network
-
-	every epochsSave
-		Checkpoint (saver, global_step)
-	every epochsToSummary
-		Write all summaries
-"""
 def test():
 	"""For rapid testing"""
-	# Test images
-	image = tf.image.decode_png(tf.read_file("mediumMammogram.png"))
-	label = tf.image.decode_png(tf.read_file("mediumLabel.png"))
-	label = tf.squeeze(label)
-	image = tf.image.per_image_whitening(image)
+	# Create a suffling queue with image and label filenames
+	filename_queue = read_csv(os.path.join(training_dir, training_csv))
 
-
-	# Model
-	prediction = model(image, False)
+	# Create a queue to prefetch examples. If unnecessary, use new_example()
+	example_queue = create_example_queue(filename_queue, training_dir, capacity=2)
+	example = example_queue.dequeue()
 	
-	# Loss
-	loss = logistic_loss(prediction, label)
+	# To feed
+	image = tf.placeholder(tf.float32, name='image')	# x
+	label = tf.placeholder(tf.uint8, name='label')	# y
+	
+	x = tf.add(image, 0.0)
+	uintone = tf.constant(1,dtype = tf.uint8)
+	y = 1 * label
+	
+	# Coordinator
+	coord = tf.train.Coordinator()
 
 	# Launch the graph.
 	with tf.Session() as sess:
-		tf.initialize_all_variables().run()
-		res1 = graph_def
-#		sess.run(tf.initialize_all_variables())
+	
+		qrs = tf.train.start_queue_runners(coord=coord)
 
-		# EVALUATIONS
-		#res1,res2 = sess.run([prediction, loss])
+		# Does not work. dequeue twice
+		# res1, res2 = [x.eval() for x in example]
 
-	return res1
+		# Does not work. Dequeues two examples
+		#res1 = example[0].eval()
+		#res2 = example[1].eval()
+		
+		# Does not work. Calls dequeue twice. example contains two tensors which when evaluated will call dequeue twice. example[0] and example[1] need to be evaluated in the same run otherwise they will generate diferent examples.
+		#r1, r2 = example
+		#res1 = r1.eval()
+		#res2 = r2.eval()
+	
+		# Works. Evaluates concurrectly I guess
+		#res1,res2 = sess.run([example[0], example[1]])
+	
+		# Does not work. Two different ones
+		#res1, res2 = sess.run([x,y], {image: example[0].eval(), 
+		#							  label: example[1].eval()})
+		
+		# Works
+		res1,res2 = sess.run(example)
+		
+		# Does not work
+		#res1, res2 = example.run()
+		
+		print("All right")
+	
+		#Stop threads
+		coord.request_stop()
+		coord.join(qrs)
+
+	return res1, res2
 	
 #If called as 'python3 model.py', train the network from scratch.
 if __name__ == "__main__":
-	#train()
-	print(len(sys.argv))
+	train()
 #TODO: if len(sys.argv) > 1: train(True/sys.argv[1]) else: train(False)
-# or train(len(sys.argv) > 1) or train(True) if len(sys.argv) > 1) else train(False)
+# or train(len(sys.argv) > 1) or train(True) if len(sys.argv) > 1 else train(False)
 
 
 # Tests:
@@ -447,9 +488,11 @@ if __name__ == "__main__":
 # Graph definition in Tensorboard looks okay.
 # Inference works alright for big images (tested with 1305x1579 in desktop)
 # Loss in 112x112 and big images works.
+# Summaries work fine
+# 
 
 """
-check summaries and check restore works fine.
+Check restore works fine.
 Check gradients all around
 See whether numbers become so small (because they always predict no) that gradients vanish (if so, I need to change the cost function)
 """
@@ -457,27 +500,7 @@ See whether numbers become so small (because they always predict no) that gradie
 """ Notes
 # summarize images and labels
 # write a summarize function that uses tf.histogram_summary and tf.scalar_summary (sparsity see cifar model) in activations after relu and maybe in weight gradients (histogram to see if all are positive in the first and penultimate layer maybe) and maybe first layer filters (not so often though, maybe not), summarize the training and val loss, too. Summarize the reduce_mean of (predicitions) to see whether they start at around 0.5 and decrease (because there is not many positives)
-# Maybe accumulate the loss function over every batch that is not printed and then print and average/moving average, that way it is probbaly smoother, or just log/summarize the loss for every batch. A batch is an image in our case
 # you cna use merge_summary (instead of merge_all_summaries) to merge only a subset and save them to file.
-# maybe put all sumarries in a single fuinction that returns the string with all sumaries, and then write it in the main loop. Or just when defining the graph put all sumaries in asingle function and then during trainng call tf.merge all summarie snormally.
-
-with Session as sess:
-	sess.run(tf.initiallize_all_variables)
-	summary_writer = tf.train.SummaryWriter(FLAGS.train_dir)
-	summary_writer.add_graph(sess.graph_def)
-	
-	tf.train.start_queue_runners(sess) # Needed for queues
-	for i in steps
-		
-		feed = {x: batch_xs, y_: batch_ys}
-		sess.run(optimizer.minimize(loss), feed_dict = feed)
-
-		summary_str = sess.run(tf.merge_all_summaries(), feed_dict=feed_dict)
-		summary_writer.add_summary(summary_str, step)
-
-# Create the feed before the sess.run
-feed = {x: batch_xs, y_: batch_ys}
-sess.run(train_step, feed_dict = feed)
 
 # Define l2 norm as element'wise square plus reduce?sum, or as tr(AtxA)
 # What about this:https://github.com/tensorflow/tensorflow/blob/r0.7/tensorflow/models/image/mnist/convolutional.py
