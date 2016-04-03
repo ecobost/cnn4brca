@@ -1,5 +1,5 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
-# Date: 17-March-2016
+# Date: March-2016
 """ TensorFlow implementation of the convolutional network described in Ch. 3 of
 the thesis report.
 
@@ -18,7 +18,7 @@ CPUs and a single GPU (if available) in one machine. It is not distributed.
 See specific methods for details.
 """
 #TODO: Add how to call python3 model.py for scratch training or python3 model.py arg where arg is any argument to restore_variables from latest_checkpoint. You could also enter an interactive Pythion interface and call train(False) or train(True), respectively.
-#TODO: Summaries are collected in the graph when the model is created and tf.merge_all_summaries() reads this summaries to write them. the program won't run two times in the same interactive python terminal, either restart the python terminal (quit() and re-enter python3) or call tf.reset_default-graph() to clear the summaries. To run the program restart the file, quit and enter the python terminal or simply use it from the ubuntu console as a script (explained above)
+#TODO: Summaries are collected in the graph when the model is created and tf.merge_all_summaries() reads this summaries to write them. the program won't run two times in the same interactive python terminal, either restart the python terminal (quit() and re-enter python3) or call tf.reset_default-graph() to clear the summaries. To run the program restart the file, quit and enter the python terminal or simply use it from the ubuntu console as a script (explained above). To run the model in an interactive python import the module, and call train(True) or False depending on restore-variable. If you want to run it twice in the same console clear the graph first with ... 
 
 import tensorflow as tf
 import math
@@ -26,106 +26,91 @@ import os.path
 import time
 import sys
 
-# Set some parameters
-training_dir = "training"	# Path to folder with training data
-val_dir = "val"	# Path to folder with validation data
-summary_dir = "summary"	# Folder to store event/summary files
-checkpoint_dir = "checkpoint"	# Folder to store model checkpoints
-training_csv = "small_training.csv"	# File with image and label filenames (training)
-val_csv = "val.csv"	# File with image and label filenames (validation)
-#TODO: Define training_steps, summary_steps, eval_steps, checkpoint_steps, learing_rate, lambda.
+# Set some paths 
+training_dir = "training"	# Folder with training data
+val_dir = "val"	# Folder with validation data
+training_csv = os.path.join(training_dir, "training.csv")	# csv file with
+														# filenames for training
+val_csv = os.path.join(val_dir, "val.csv")	# csv file with filenames for 
+											# validation
+summary_dir = "summary"	# Folder for event/summary files
+checkpoint_dir = "checkpoint"	# Folder for model checkpoints
 
-def read_csv(csv_filename):
-	""" Reads csv files and creates a never-ending suffling queue of filenames.
+# Set some hyperparameters
+#TODO: Define training_steps, summary_steps, val_steps, checkpoint_steps, (maybe only training_steps, the others are not that important), learning_rate, lambda/weight_decay.
+
+def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
+	""" Creates an example queue and returns a new example: (image, label).
+	
+	Reads the csv file, creates a never-ending suffling queue of filenames,
+	dequeues and decodes a csv record, loads an image and label in memory,
+	whitens the image, creates a FIFO queue for examples, adds a single-thread
+	QueueRunner object to the graph to perform prefetching operations and 
+	dequeues an example.
+	
+	Uses queues to improve performance (as recommended in the tutorials). We can
+	not use tf.train.batch() to automatically create the example queue because
+	our images differ in size.
 	
 	Args:
-	    csv_filename: A string. Path to file with image and label filenames. 
-
-	Returns:
-		A queue with strings. Each string is a csv record in the form
-		'image_filename,label_filename,smallLabel_filename'
-	"""
-	with open(csv_filename) as f:
-	    lines = f.read().splitlines()
-
-	filename_queue = tf.train.string_input_producer(lines, name='filename_queue')
-	return filename_queue
-
-
-def new_example(filename_queue, data_dir):
-	""" Creates a single new example: an image and its label segmentation.
+		csv_path: A string. Path to csv file with image and label filenames.
+			Each record is expected to be in the form:
+			'image_filename,label_filename,smallLabel_filename'
+		data_dir: A string. Path to the data directory. Default is "."
+		capacity: An integer. Maximum amount of examples that may be stored in 
+			the example queue. Default is 5.
+		name: A string. Name for the produced examples. Default is 'new_example'
 	
-	Dequeues and decodes one csv record, loads images (.png) in memory, whitens 
-	them and returns them.
-
-	Args:
-		filename_queue: A queue with strings. Each string is a csv record in the
-			form 'image_filename,label_filename,smallLabel_filename'
-		data_dir: A string. Path to the data directory.
-
 	Returns:
-		image: A 3D tensor of floats [image_height, image_width, image_channels]
-		label: A 2D tensor of integers [image_height, image_width]
+		An (image, label) tuple where image is a tensor of floats with shape
+		[image_height, image_width, image_channels] and label is a tensor of
+		integers with shape [image_height, image_width]
 	"""
+	with tf.name_scope('filename_queue'):
+		# Read csv file
+		with open(csv_path) as f:
+			lines = f.read().splitlines()
+			
+		# Create never-ending shuffling queue of filenames
+		filename_queue = tf.train.string_input_producer(lines)
+	
 	with tf.name_scope('decode_image'):
-		# Reading csv file
+		# Decode a csv record
 		csv_record = filename_queue.dequeue()
 		image_filename, label_filename, _ = tf.decode_csv(csv_record,
 														  [[""], [""], [""]])
 	
-		# Reading image
+		# Load image
 		image_path = data_dir + os.path.sep + image_filename
 		image_content = tf.read_file(image_path)
 		image = tf.image.decode_png(image_content)
 		
-		# Reading label
+		# Load label image
 		label_path = data_dir + os.path.sep + label_filename
 		label_content = tf.read_file(label_path)
 		label = tf.image.decode_png(label_content)
 		label = tf.squeeze(label) # Unwrap label
 
 	with tf.name_scope('whitening'):
-		# Preprocessing (image whitening)
+		# Preprocess image (whitening)
 		image = tf.image.per_image_whitening(image)
 	
-	#tf.image_summary('images', images)
-	return image, label
-
-
-def create_example_queue(filename_queue, data_dir=".", capacity=5):
-	""" Creates a FIFO queue with examples: (image, label) tuples.
-
-	Creates a FIFO queue and adds a single-thread QueueRunner object to the
-	graph to perform prefetching operations.
-
-	Note:
-		We can not use tf.train.batch()/shuffle_batch() to automatically create 
-		this queue because our images differ in size.
-
-	Args:
-		filename_queue: A queue with strings. Each string is a csv record in the
-			form 'image_filename,label_filename,smallLabel_filename'
-		data_dir: A string. Path to the data directory. Default is "."
-		capacity: An integer. Maximum amount of examples that may be stored in 
-			the queue. Default is 5.
-
-	Returns:
-		A queue with (image, label) tuples.
-	"""
-	# Processing new example
-	image, label = new_example(filename_queue, data_dir)
-
+	#TODO: Add summaries to the graph (image, activations, gradients, ...)
+	#tf.image_summary('images', image)
+		
 	with tf.name_scope('example_queue'):
-		# Creating queue
+		# Create example queue
 		example_queue = tf.FIFOQueue(capacity, [image.dtype, label.dtype])
 		enqueue_op = example_queue.enqueue((image, label))
 
-		# Creating queue_runner
+		# Create queue_runner
 		queue_runner = tf.train.QueueRunner(example_queue, [enqueue_op])
 		tf.train.add_queue_runner(queue_runner)
-
-	return example_queue
-
+		
+	example = example_queue.dequeue(name=name)
+			
+	return example
+	
 def model(image, drop):
 	""" A fully convolutional network for image segmentation.
 
@@ -281,9 +266,11 @@ def logistic_loss(prediction, label):
 	
 def regularization_loss(lamda):
 	"""l2-norm regularization loss from all collected losses."""
-#TODO: Define this. check tf.GraphKeys.REGULARIZATION_LOSSES and tf.add_to_collection, tf.get_collection(). Maybe add weights to WEIGHTS and l2-norm em here. that way I can choose the kind of regularization. Space is no problem, even if storing a copy (I don't think they do) it will only add 40 MB
+#TODO: Define this. check tf.GraphKeys.REGULARIZATION_LOSSES and tf.add_to_collection, tf.get_collection(). Add weights to WEIGHTS (in creation) and l2-norm em here. that way I can choose the kind of regularization.
 	with tf.name_scope("regularization_loss"):
 		loss = 0
+		# for weights in tf.getcollection(tf.GraphKeys.WEIGHTS):
+		#  loss += tf.nn.l2_norm(weights)
 	return loss
 	
 def log(*messages):
@@ -308,15 +295,9 @@ def train(restore_variables=False):
 			previous execution. Default to False.
 	
 	"""
-	# Create a suffling queue with image and label filenames
-	filename_queue = read_csv(os.path.join(training_dir, training_csv))
-	val_filename_queue = read_csv(os.path.join(val_dir, val_csv))
-
-	# Create a queue to prefetch examples. If unnecessary, use new_example()
-	example_queue = create_example_queue(filename_queue, training_dir)
-	val_example_queue = create_example_queue(val_filename_queue, val_dir)
-	example = example_queue.dequeue(name='example')
-	val_example = val_example_queue.dequeue(name='val_example')
+	# Create example queue and get a new example
+	example = new_example(training_csv, training_dir, name='example')
+	val_example = new_example(val_csv, val_dir, name='val_example')
 
 	# Variables that may change between runs: feeded to the graph every time.
 	image = tf.placeholder(tf.float32, name='image')	# x
@@ -327,7 +308,7 @@ def train(restore_variables=False):
 	prediction = model(image, drop)
 	
 	# Compute the loss
-	loss = logistic_loss(prediction, label) #+ regularization_loss(lambda=1)
+	loss = logistic_loss(prediction, label) #+ lambda * regularization_loss()
 	
 	# Set optimization parameters
 	global_step = tf.Variable(0, name='global_step', trainable=False)
@@ -364,12 +345,11 @@ def train(restore_variables=False):
 		log("Start training at step", step)
 		
 		# Training loop
-		for i in range(120):
+		for i in range(1):
 			# Train
-			#train_image, train_label = sess.run(example)
-			#feed_dict = {image: train_image, label: train_label, drop: True}
-			#train_loss, _ = sess.run([loss, train_op], feed_dict)
-			train_loss = 0.2
+			train_image, train_label = sess.run(example)
+			feed_dict = {image: train_image, label: train_label, drop: True}
+			train_loss, _ = sess.run([loss, train_op], feed_dict)
 			step += 1
 			
 			# Report loss (calculated before the training step)
@@ -401,9 +381,9 @@ def train(restore_variables=False):
 			
 			# Write checkpoint	
 			if step%100 == 0:
-				checkpoint_path = os.path.join(checkpoint_dir, 'model')
-				saver.save(sess, checkpoint_path, step)
-				log("Checkpoint saved. Step:", step)
+				checkpoint_name = os.path.join(checkpoint_dir, 'model')
+				checkpoint_path = saver.save(sess, checkpoint_name, step)
+				log("Checkpoint saved at:", checkpoint_path)
 			
 		# Final log
 		log("Done!")
@@ -413,20 +393,12 @@ def train(restore_variables=False):
 		coord.join(queue_runners)
 		
 	# Flush and close the summary writer
-	summary_writer.close() 
+	summary_writer.close()
 	
-			
-#TODO: Refactor so model is not called everytime train is called (thus the model and summary is created once and later calls to train (with restore_variables on) can be done from inside the same terminal.
-#TODO: Add summaries in other parts of the graph (image, activations, gradients)
-
+	
 def test():
 	"""For rapid testing"""
-	# Create a suffling queue with image and label filenames
-	filename_queue = read_csv(os.path.join(training_dir, training_csv))
-
-	# Create a queue to prefetch examples. If unnecessary, use new_example()
-	example_queue = create_example_queue(filename_queue, training_dir, capacity=2)
-	example = example_queue.dequeue()
+	example = new_example(os.path.join(training_dir, training_csv), training_dir, capacity = 2, name = 'new_example')
 	
 	# To feed
 	image = tf.placeholder(tf.float32, name='image')	# x
@@ -469,12 +441,15 @@ def test():
 		# Does not work
 		#res1, res2 = example.run()
 		
+		summary_writer = tf.train.SummaryWriter(summary_dir, sess.graph_def)
+		summary_writer.close() 
+		
 		print("All right")
 	
 		#Stop threads
 		coord.request_stop()
 		coord.join(qrs)
-
+		
 	return res1, res2
 	
 # Trains a model from scratch if called without arguments (python3 model.py)
@@ -493,10 +468,7 @@ if __name__ == "__main__":
 # Loss in 112x112 and big images works.
 # Summaries work fine
 # Checkpoint works fine
-
-"""
-Validation
-"""
+# Validation works fine
 
 """ Notes
 # summarize images and labels
@@ -508,5 +480,4 @@ Validation
   # L2 regularization for the fully connected parameters.
   regularizers = (tf.nn.l2_loss(fc1_weights) + tf.nn.l2_loss(fc1_biases) +
                   tf.nn.l2_loss(fc2_weights) + tf.nn.l2_loss(fc2_biases))
-
 """
