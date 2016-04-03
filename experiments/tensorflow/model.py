@@ -18,12 +18,13 @@ CPUs and a single GPU (if available) in one machine. It is not distributed.
 See specific methods for details.
 """
 #TODO: Add how to call python3 model.py for scratch training or python3 model.py arg where arg is any argument to restore_variables from latest_checkpoint. You could also enter an interactive Pythion interface and call train(False) or train(True), respectively.
-#TODO: Summaries are collected in the graph when the model is created, the program won't run two times in the same interactive python terminal, either restart the python terminal (quit() and re-enter python3) or call tf.reset_default-graph() to clear the summaries.
+#TODO: Summaries are collected in the graph when the model is created and tf.merge_all_summaries() reads this summaries to write them. the program won't run two times in the same interactive python terminal, either restart the python terminal (quit() and re-enter python3) or call tf.reset_default-graph() to clear the summaries. To run the program restart the file, quit and enter the python terminal or simply use it from the ubuntu console as a script (explained above)
 
 import tensorflow as tf
 import math
 import os.path
 import time
+import sys
 
 # Set some parameters
 training_dir = "training"	# Path to folder with training data
@@ -32,7 +33,7 @@ summary_dir = "summary"	# Folder to store event/summary files
 checkpoint_dir = "checkpoint"	# Folder to store model checkpoints
 training_csv = "small_training.csv"	# File with image and label filenames (training)
 val_csv = "val.csv"	# File with image and label filenames (validation)
-#TODO: Define training_steps/max_steps, summary_steps, checkpoint_steps
+#TODO: Define training_steps, summary_steps, eval_steps, checkpoint_steps, learing_rate, lambda.
 
 def read_csv(csv_filename):
 	""" Reads csv files and creates a never-ending suffling queue of filenames.
@@ -278,9 +279,12 @@ def logistic_loss(prediction, label):
 
 	return loss
 	
-#TODO: Define this. check tf.GraphKeys and tf.Graph.addtocolection
 def regularization_loss(lamda):
-	pass
+	"""l2-norm regularization loss from all collected losses."""
+#TODO: Define this. check tf.GraphKeys.REGULARIZATION_LOSSES and tf.add_to_collection, tf.get_collection(). Maybe add weights to WEIGHTS and l2-norm em here. that way I can choose the kind of regularization. Space is no problem, even if storing a copy (I don't think they do) it will only add 40 MB
+	with tf.name_scope("regularization_loss"):
+		loss = 0
+	return loss
 	
 def log(*messages):
 	""" Simple log function."""
@@ -288,7 +292,7 @@ def log(*messages):
 	print(formatted_time, *messages)
 	
 def my_scalar_summary(tag, value):
-	""" Manually creates an scalar summary. Not added to the graph"""
+	""" Manually creates an scalar summary that is not added to the graph."""
 	float_value = float(value)
 	summary_value = tf.Summary.Value(tag=tag, simple_value=float_value)
 	return tf.Summary(value=[summary_value])
@@ -331,22 +335,19 @@ def train(restore_variables=False):
 									   beta2=0.995, epsilon=1e-06)
 	train_op = optimizer.minimize(loss, global_step=global_step)
 	
-	# Saver and summaries
-	saver = tf.train.Saver()
+	# Get a summary writer, saver and coordinator
 	summaries = tf.merge_all_summaries()
 	summary_writer = tf.train.SummaryWriter(summary_dir)
-		
-	#TODO: Add coordinator (if needed). Maybe above as saver(), summaries and coordinator. If deleted, delete qrs from start:-queue_runners, too
+	saver = tf.train.Saver()
 	coord = tf.train.Coordinator()
-	
-	# Initial log
-	log("Start training.")
-	
+
 	# Launch the graph
 	with tf.Session() as sess:
 		# Initialize variables
 		if restore_variables:
-			saver.restore(sess, tf.train.latest_checkpoint(checkpoint_dir))
+			checkpoint_path = tf.train.latest_checkpoint(checkpoint_dir)
+			saver.restore(sess, checkpoint_path)
+			log("Variables restored from:", checkpoint_path)
 		else:
 			tf.initialize_all_variables().run()
 			summary_writer.add_graph(sess.graph_def)
@@ -355,17 +356,20 @@ def train(restore_variables=False):
 		#run_path = os.path.join(summary_dir, "run{}".format(global_step.eval()))
 		#summary_writer = tf.train.SummaryWriter(run_path, sess.graph_def)
 		
-		# Start queues
-		qrs = tf.train.start_queue_runners(coord=coord)
+		# Start queue runners
+		queue_runners = tf.train.start_queue_runners(coord=coord)
+				
+		# Initial log
+		step = global_step.eval()
+		log("Start training at step", step)
 		
 		# Training loop
-		step = global_step.eval()
-		for i in range(3):
+		for i in range(120):
 			# Train
-			train_image, train_label = sess.run(example)
-			feed_dict = {image: train_image, label: train_label, drop: True}
+			#train_image, train_label = sess.run(example)
+			#feed_dict = {image: train_image, label: train_label, drop: True}
 			#train_loss, _ = sess.run([loss, train_op], feed_dict)
-			train_loss = 3.2
+			train_loss = 0.2
 			step += 1
 			
 			# Report loss (calculated before the training step)
@@ -376,8 +380,8 @@ def train(restore_variables=False):
 			# Write summaries
 			if step%25 == 0 or step == 1:
 				summary_writer.add_summary(summaries.eval(), step)
-				log("Updated summaries. Step:", step)
-			"""
+				log("Summaries written. Step:", step)
+				
 			# Evaluate model
 			if step%25 == 0 or step == 1:
 				log("Evaluating model")
@@ -391,28 +395,29 @@ def train(restore_variables=False):
 					val_loss += (one_loss / 4)
 
 				# Report validation loss	
-				loss_summary = tf.scalar_summary('val_loss', val_loss)
-				summary_writer.add_summary(loss_summary.eval(), step)
+				loss_summary = my_scalar_summary('val_loss', val_loss)
+				summary_writer.add_summary(loss_summary, step)
 				log("Validation loss:", val_loss, "Step:", step)
-
+			
 			# Write checkpoint	
-			if step%100 == 0 or step == 1:
+			if step%100 == 0:
 				checkpoint_path = os.path.join(checkpoint_dir, 'model')
 				saver.save(sess, checkpoint_path, step)
-			"""
-
-		# Maybe report final training_loss (with final training update) Maybe not
-#TODO: Decide where this here or one tab less. do I need to be in the session maybe yes. I could leave it in the session.
-		summary_writer.close() #flush anything left
-		#saver.close()
+				log("Checkpoint saved. Step:", step)
+			
+		# Final log
+		log("Done!")
+		
+		# Stop queue runners
 		coord.request_stop()
-		coord.join(qrs)
-
-	# Final log
-	log("End training")			
+		coord.join(queue_runners)
+		
+	# Flush and close the summary writer
+	summary_writer.close() 
+	
+			
 #TODO: Refactor so model is not called everytime train is called (thus the model and summary is created once and later calls to train (with restore_variables on) can be done from inside the same terminal.
 #TODO: Add summaries in other parts of the graph (image, activations, gradients)
-#TODO: Change drop to True in training
 
 def test():
 	"""For rapid testing"""
@@ -472,13 +477,11 @@ def test():
 
 	return res1, res2
 	
-#If called as 'python3 model.py', train the network from scratch.
+# Trains a model from scratch if called without arguments (python3 model.py)
+# Otherwise, restores variables from the latest checkpoint.
 if __name__ == "__main__":
-	train()
-#TODO: if len(sys.argv) > 1: train(True/sys.argv[1]) else: train(False)
-# or train(len(sys.argv) > 1) or train(True) if len(sys.argv) > 1 else train(False)
-
-
+	train(len(sys.argv) > 1)
+	
 # Tests:
 # Filenames are shuffled
 # Both queues (filename and example) work fine.
@@ -489,12 +492,10 @@ if __name__ == "__main__":
 # Inference works alright for big images (tested with 1305x1579 in desktop)
 # Loss in 112x112 and big images works.
 # Summaries work fine
-# 
+# Checkpoint works fine
 
 """
-Check restore works fine.
-Check gradients all around
-See whether numbers become so small (because they always predict no) that gradients vanish (if so, I need to change the cost function)
+Validation
 """
 
 """ Notes
