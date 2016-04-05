@@ -5,39 +5,65 @@ the thesis report.
 
 It loads each mammogram and its label to memory, computes the function described
 by the network, and produces a segmentation of the same size as the original 
-mammogram. The network outputs a heatmap of the probability of mass accross the
-mammogram.
+mammogram. The network outputs a heatmap of logits indicating the probability of
+mass accross the mammogram. The network uses separate lists of (preprocessed and
+augmented) mammograms for training and validation. Labels have value 0 for
+background, 127 for breast tissue and 255 for breast masses.
 
-The network uses separate lists of (preprocessed and augmented) mammograms for
-training and validation. Labels have value 0 for background, 127 for breast
-tissue and 255 for breast masses. 
+Software design follows examples from the TensorFlow tutorials. It uses all
+available CPUs and a single GPU (if available) in one machine, i.e., it is not
+distributed.
 
-The design follows examples from the TensorFlow tutorials. It uses all available
-CPUs and a single GPU (if available) in one machine. It is not distributed.
+See specific methods for implementation details.
 
-See specific methods for details.
+Example:
+	To train a network from scratch:
+		$ python3 model.py
+
+	To resume training (restoring variables from the latest checkpoint):
+		$ python3 model.py arg
+	where arg is any argument.
+	
+	You can also load the module in a python3 terminal and run
+		>>> model.main(restore_variables)
+	where restore_variables is a boolean signaling whether you want to resume
+	training (True) or start from scratch (False) (default).
+	
+Note:
+	To run main() more than once in the same Python terminal you will need to
+	reset the Tensorflow graph (tf.reset_default-graph()) to clear previous
+	events.
 """
-#TODO: Add how to call python3 model.py for scratch training or python3 model.py arg where arg is any argument to restore_variables from latest_checkpoint. You could also enter an interactive Pythion interface and call train(False) or train(True), respectively.
-#TODO: Summaries are collected in the graph when the model is created and tf.merge_all_summaries() reads this summaries to write them. the program won't run two times in the same interactive python terminal, either restart the python terminal (quit() and re-enter python3) or call tf.reset_default-graph() to clear the summaries. To run the program restart the file, quit and enter the python terminal or simply use it from the ubuntu console as a script (explained above). To run the model in an interactive python import the module, and call train(True) or False depending on restore-variable. If you want to run it twice in the same console clear the graph first with ... 
-
 import tensorflow as tf
 import math
 import os.path
 import time
 import sys
 
-# Set some paths 
-training_dir = "training"	# Folder with training data
-val_dir = "val"	# Folder with validation data
-training_csv = os.path.join(training_dir, "training.csv")	# csv file with
-														# filenames for training
-val_csv = os.path.join(val_dir, "val.csv")	# csv file with filenames for 
-											# validation
-summary_dir = "summary"	# Folder for event/summary files
-checkpoint_dir = "checkpoint"	# Folder for model checkpoints
+# Set some training parameters
+TRAINING_STEPS = 3
+LEARNING_RATE = 1e-3
+LAMBDA = 1e-1
 
-# Set some hyperparameters
-#TODO: Define training_steps, summary_steps, val_steps, checkpoint_steps, (maybe only training_steps, the others are not that important), learning_rate, lambda/weight_decay.
+# Set some paths 
+training_dir = "training" 
+"""string: Folder with training data."""
+
+val_dir = "val"
+"""string: Folder with validation data."""
+
+training_csv = os.path.join(training_dir, "training.csv")
+"""string: Path to csv file with image and label filenames for training."""
+
+val_csv = os.path.join(val_dir, "val.csv")
+"""string: Path to csv file with image and label filenames for validation."""
+
+summary_dir = "summary"
+"""string: Folder to store summary files."""
+
+checkpoint_dir = "checkpoint"
+"""string: Folder to store model checkpoints."""
+
 
 def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
 	""" Creates an example queue and returns a new example: (image, label).
@@ -95,9 +121,6 @@ def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
 		# Preprocess image (whitening)
 		image = tf.image.per_image_whitening(image)
 	
-	#TODO: Add summaries to the graph (image, activations, gradients, ...)
-	#tf.image_summary('images', image)
-		
 	with tf.name_scope('example_queue'):
 		# Create example queue
 		example_queue = tf.FIFOQueue(capacity, [image.dtype, label.dtype])
@@ -142,15 +165,22 @@ def model(image, drop):
 		"""
 		n_in = shape[0] * shape[1] * shape[2]
 		values = tf.random_normal(shape, 0, math.sqrt(2/n_in))
+		
 		return values
 
 	def conv_op(input, filter_shape, strides):
 		""" Creates filters and biases and performs the convolution."""
+		# Create filter and biases
 		filter = tf.Variable(initialize_weights(filter_shape), name='weights')
 		biases = tf.Variable(tf.zeros([filter_shape[3]]), name='biases')
-
+		
+		# Add weights to the weights collection (for regularization)
+		tf.add_to_collection(tf.GraphKeys.WEIGHTS, filter)
+		
+		# Perform 2-d convolution
 		w_times_x = tf.nn.conv2d(input, filter, strides, padding='SAME')
 		output = tf.nn.bias_add(w_times_x, biases)
+		
 		return output
 
 	def leaky_relu(x, alpha=0.1):
@@ -185,9 +215,15 @@ def model(image, drop):
 			A tensor of floats with shape [batch_size, output_height,
 			output_width, output_depth]. The product of the convolutional layer.
 		"""
+		# conv -> relu -> dropout
 		conv = conv_op(input, filter_shape, strides) 
 		relu = leaky_relu(conv)
 		output = dropout(relu, keep_prob)
+		
+		# Summarize activations
+		scope = tf.get_default_graph()._name_stack[0] # No easier way
+		tf.histogram_summary(scope + '/activations', output)
+		
 		return output
 
 
@@ -223,8 +259,9 @@ def model(image, drop):
 	# FC layers implemented as size-preserving convolutional layers
 	with tf.name_scope('fc1'):
 		fc1 = conv_layer(pool3, [7, 7, 112, 448], keep_prob=0.6)
-	with tf.name_scope('fc2'):
+	with tf.name_scope('fc2') as scope:
 		fc2 = conv_op(fc1, [1, 1, 448, 1], [1, 1, 1, 1])
+		tf.histogram_summary(scope + 'activations', fc2)
 		
 	# upsampling
 	with tf.name_scope('upsampling'):
@@ -264,17 +301,47 @@ def logistic_loss(prediction, label):
 
 	return loss
 	
-def regularization_loss(lamda):
-	"""l2-norm regularization loss from all collected losses."""
-#TODO: Define this. check tf.GraphKeys.REGULARIZATION_LOSSES and tf.add_to_collection, tf.get_collection(). Add weights to WEIGHTS (in creation) and l2-norm em here. that way I can choose the kind of regularization.
+def regularization_loss():
+	""" Calculates the l2 regularization loss from the collected weights."""
 	with tf.name_scope("regularization_loss"):
-		loss = 0
-		# for weights in tf.getcollection(tf.GraphKeys.WEIGHTS):
-		#  loss += tf.nn.l2_norm(weights)
+		# Compute the (halved and squared) l2-norm of each weight matrix
+		weights = tf.get_collection(tf.GraphKeys.WEIGHTS)
+		l2_losses = [tf.nn.l2_loss(x) for x in weights]
+		
+		# Add all regularization losses
+		loss = tf.add_n(l2_losses)
+		
 	return loss
 	
+def train(loss, learning_rate):
+	""" Sets up an ADAM optimizer, computes gradients and updates variables.
+	
+	Args:
+		loss: A float. The loss function to minimize.
+		learning_rate: A float. The learning rate for ADAM.
+	
+	Returns:
+		train_op: The operation to run for training.
+		global_step: The current number of training steps made by the optimizer.
+	"""
+	# Set optimization parameters
+	global_step = tf.Variable(0, name='global_step', trainable=False)
+	optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate, beta1=0.9, 
+									   beta2=0.995, epsilon=1e-06)
+	
+	# Compute and apply gradients		   
+	gradients = optimizer.compute_gradients(loss)
+	train_op = optimizer.apply_gradients(gradients, global_step=global_step)
+	
+	# Summarize gradients
+	for gradient, variable in gradients:
+		if gradient:
+			tf.histogram_summary(variable.op.name + '/gradients', gradient)
+
+	return train_op, global_step
+	
 def log(*messages):
-	""" Simple log function."""
+	""" Simple logging function."""
 	formatted_time = "[{}]".format(time.ctime())
 	print(formatted_time, *messages)
 	
@@ -284,11 +351,11 @@ def my_scalar_summary(tag, value):
 	summary_value = tf.Summary.Value(tag=tag, simple_value=float_value)
 	return tf.Summary(value=[summary_value])
 		
-def train(restore_variables=False):
+def main(restore_variables=False):
 	""" Creates and trains a convolutional network for image segmentation. 
 	
-	This is the main file of the module. It creates an example queue, defines a
-	model, loss function and summaries, and trains the model.
+	It creates an example queue; defines a model, loss function and optimizer;
+	and trains the model.
 	
 	Args:
 		restore_variables: A boolean. Whether to restore variables from a 
@@ -308,13 +375,11 @@ def train(restore_variables=False):
 	prediction = model(image, drop)
 	
 	# Compute the loss
-	loss = logistic_loss(prediction, label) #+ lambda * regularization_loss()
-	
-	# Set optimization parameters
-	global_step = tf.Variable(0, name='global_step', trainable=False)
-	optimizer = tf.train.AdamOptimizer(learning_rate=0.0001, beta1=0.9, 
-									   beta2=0.995, epsilon=1e-06)
-	train_op = optimizer.minimize(loss, global_step=global_step)
+	empirical_loss = logistic_loss(prediction, label)
+	loss = empirical_loss + LAMBDA * regularization_loss()
+		
+	# Set an optimizer
+	train_op, global_step = train(loss, learning_rate=LEARNING_RATE)
 	
 	# Get a summary writer, saver and coordinator
 	summaries = tf.merge_all_summaries()
@@ -342,48 +407,55 @@ def train(restore_variables=False):
 				
 		# Initial log
 		step = global_step.eval()
-		log("Start training at step", step)
+		log("Starting training @", step)
 		
 		# Training loop
-		for i in range(1):
+		for i in range(TRAINING_STEPS):
 			# Train
 			train_image, train_label = sess.run(example)
 			feed_dict = {image: train_image, label: train_label, drop: True}
-			train_loss, _ = sess.run([loss, train_op], feed_dict)
+			train_logistic_loss, train_loss, _ = sess.run([empirical_loss, loss,
+														   train_op], feed_dict)
 			step += 1
 			
-			# Report loss (calculated before the training step)
-			loss_summary = my_scalar_summary('training_loss', train_loss)
-			summary_writer.add_summary(loss_summary, step-1)
-			log("Training loss:", train_loss, "Step:", step-1)
+			# Report losses (calculated before the training step)
+			logistic_loss_summary = my_scalar_summary('training/logistic_loss',
+											 		  train_logistic_loss)
+			summary_writer.add_summary(logistic_loss_summary, step - 1)
+			loss_summary = my_scalar_summary('training/loss', train_loss)
+			summary_writer.add_summary(loss_summary, step - 1)		
+			log("Training loss @", step - 1, train_logistic_loss, "(logistic)",
+				train_loss, "(total)")
 			
 			# Write summaries
 			if step%25 == 0 or step == 1:
-				summary_writer.add_summary(summaries.eval(), step)
-				log("Summaries written. Step:", step)
-				
+				summary_str = summaries.eval(feed_dict)
+				summary_writer.add_summary(summary_str, step)
+				log("Summaries written @", step)
+			
 			# Evaluate model
 			if step%25 == 0 or step == 1:
 				log("Evaluating model")
 				
 				# Average loss over 4 val images
 				val_loss = 0
-				for j in range(4):
+				num_images = 4
+				for j in range(num_images):
 					val_image, val_label = sess.run(val_example)
-					one_loss = loss.eval({image: val_image, label: val_label,
-										  drop: False})
-					val_loss += (one_loss / 4)
+					feed_dict ={image: val_image, label: val_label, drop: False}
+					one_loss = empirical_loss.eval(feed_dict)
+					val_loss += (one_loss / num_images)
 
 				# Report validation loss	
-				loss_summary = my_scalar_summary('val_loss', val_loss)
+				loss_summary = my_scalar_summary('val/logistic_loss', val_loss)
 				summary_writer.add_summary(loss_summary, step)
-				log("Validation loss:", val_loss, "Step:", step)
+				log("Validation loss @", step, ":", val_loss)
 			
 			# Write checkpoint	
 			if step%100 == 0:
 				checkpoint_name = os.path.join(checkpoint_dir, 'model')
 				checkpoint_path = saver.save(sess, checkpoint_name, step)
-				log("Checkpoint saved at:", checkpoint_path)
+				log("Checkpoint saved in:", checkpoint_path)
 			
 		# Final log
 		log("Done!")
@@ -395,67 +467,10 @@ def train(restore_variables=False):
 	# Flush and close the summary writer
 	summary_writer.close()
 	
-	
-def test():
-	"""For rapid testing"""
-	example = new_example(os.path.join(training_dir, training_csv), training_dir, capacity = 2, name = 'new_example')
-	
-	# To feed
-	image = tf.placeholder(tf.float32, name='image')	# x
-	label = tf.placeholder(tf.uint8, name='label')	# y
-	
-	x = tf.add(image, 0.0)
-	uintone = tf.constant(1,dtype = tf.uint8)
-	y = 1 * label
-	
-	# Coordinator
-	coord = tf.train.Coordinator()
-
-	# Launch the graph.
-	with tf.Session() as sess:
-	
-		qrs = tf.train.start_queue_runners(coord=coord)
-
-		# Does not work. dequeue twice
-		# res1, res2 = [x.eval() for x in example]
-
-		# Does not work. Dequeues two examples
-		#res1 = example[0].eval()
-		#res2 = example[1].eval()
-		
-		# Does not work. Calls dequeue twice. example contains two tensors which when evaluated will call dequeue twice. example[0] and example[1] need to be evaluated in the same run otherwise they will generate diferent examples.
-		#r1, r2 = example
-		#res1 = r1.eval()
-		#res2 = r2.eval()
-	
-		# Works. Evaluates concurrectly I guess
-		#res1,res2 = sess.run([example[0], example[1]])
-	
-		# Does not work. Two different ones
-		#res1, res2 = sess.run([x,y], {image: example[0].eval(), 
-		#							  label: example[1].eval()})
-		
-		# Works
-		res1,res2 = sess.run(example)
-		
-		# Does not work
-		#res1, res2 = example.run()
-		
-		summary_writer = tf.train.SummaryWriter(summary_dir, sess.graph_def)
-		summary_writer.close() 
-		
-		print("All right")
-	
-		#Stop threads
-		coord.request_stop()
-		coord.join(qrs)
-		
-	return res1, res2
-	
 # Trains a model from scratch if called without arguments (python3 model.py)
-# Otherwise, restores variables from the latest checkpoint.
+# Otherwise, restores variables from the latest checkpoint in checkpoint_dir.
 if __name__ == "__main__":
-	train(len(sys.argv) > 1)
+	main(len(sys.argv) > 1)
 	
 # Tests:
 # Filenames are shuffled
@@ -469,15 +484,4 @@ if __name__ == "__main__":
 # Summaries work fine
 # Checkpoint works fine
 # Validation works fine
-
-""" Notes
-# summarize images and labels
-# write a summarize function that uses tf.histogram_summary and tf.scalar_summary (sparsity see cifar model) in activations after relu and maybe in weight gradients (histogram to see if all are positive in the first and penultimate layer maybe) and maybe first layer filters (not so often though, maybe not), summarize the training and val loss, too. Summarize the reduce_mean of (predicitions) to see whether they start at around 0.5 and decrease (because there is not many positives)
-# you cna use merge_summary (instead of merge_all_summaries) to merge only a subset and save them to file.
-
-# Define l2 norm as element'wise square plus reduce?sum, or as tr(AtxA)
-# What about this:https://github.com/tensorflow/tensorflow/blob/r0.7/tensorflow/models/image/mnist/convolutional.py
-  # L2 regularization for the fully connected parameters.
-  regularizers = (tf.nn.l2_loss(fc1_weights) + tf.nn.l2_loss(fc1_biases) +
-                  tf.nn.l2_loss(fc2_weights) + tf.nn.l2_loss(fc2_biases))
-"""
+# Regularization works fine
