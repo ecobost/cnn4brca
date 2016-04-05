@@ -42,8 +42,8 @@ import sys
 
 # Set some training parameters
 TRAINING_STEPS = 3
-LEARNING_RATE = 1e-3
-LAMBDA = 1e-1
+LEARNING_RATE = 1e-4
+LAMBDA = 1e-3
 
 # Set some paths 
 training_dir = "training" 
@@ -424,8 +424,8 @@ def main(restore_variables=False):
 			summary_writer.add_summary(logistic_loss_summary, step - 1)
 			loss_summary = my_scalar_summary('training/loss', train_loss)
 			summary_writer.add_summary(loss_summary, step - 1)		
-			log("Training loss @", step - 1, train_logistic_loss, "(logistic)",
-				train_loss, "(total)")
+			log("Training loss @", step - 1, ":", train_logistic_loss,
+				"(logistic)", train_loss, "(total)")
 			
 			# Write summaries
 			if step%25 == 0 or step == 1:
