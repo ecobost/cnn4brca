@@ -4,7 +4,7 @@
 """ Quick script to eval images using a trained network
 Example:
 	>>> import eval
-	>>> prediction = eval.inference("my_image.png")
+	>>> prediction = eval.evaluate("my_image.png", "my_label.png")
 
 Note:
 	Call tf.reset_default_graph() to run it twice in the same python terminal.
@@ -16,7 +16,6 @@ import scipy.misc
 import numpy as np
 
 checkpoint_dir = "checkpoint/run3"
-threshold = -1
 
 def load_image(image_path):
 	""" Load png image as tensor and whiten it."""
@@ -25,15 +24,8 @@ def load_image(image_path):
 	image = tf.image.per_image_whitening(image)
 	return image
 	
-def load_label(label_path):
-	"""Load png label as tensor"""
-	label_content = tf.read_file(label_path)
-	label = tf.image.decode_png(label_content)
-	label = tf.squeeze(label) # Unwrap label
-	return image
-	
-def post(logits, label):
-	"""Creates segementation assigning everything over the threshold a value of 
+def post(logits, label, threshold):
+	"""Creates segmentation assigning everything over the threshold a value of 
 	255, anythig equals to background in label as 0 and anythign else 127. 
 	
 	Using the label may seem like cheating but the background part of the label 
@@ -45,36 +37,38 @@ def post(logits, label):
 	thresholded[label == 0] = 0
 	return thresholded
 	
-def IOU(segmentation, label)
+def IOU(segmentation, label):
 	"""Intersection over union"""
-	intersection = (segmentation == 255) and (label == 255)
-	union = (segmentation == 255) or (label == 255)
+	intersection = np.logical_and(segmentation == 255, label == 255)
+	union = np.logical_or(segmentation == 255, label == 255)
 	iou = np.sum(intersection)/np.sum(union)
 	return iou
 	
-def inference(image_path, label_path):
-	""" Loads network, reads image and returns IOU measure."""
+def evaluate(image_path, label_path):
+	""" Loads network, reads image and returns IOU."""
 	# Load image and label
 	image = load_image(image_path)
 	label = scipy.misc.imread(label_path)
 	
 	# Define the model
-	prediction = model.model(image, False)
+	prediction = model.model(image, drop=False)
 	
 	# Get a saver
 	saver = tf.train.Saver()
 
 	# Launch the graph
 	with tf.Session() as sess:
-		# Initialize variables
+		# Restore variables
 		checkpoint_path = tf.train.latest_checkpoint(checkpoint_dir)
 		saver.restore(sess, checkpoint_path)
 		model.log("Variables restored from:", checkpoint_path)
-				
+	
 		logits = prediction.eval()
 		
-		segmentation = post(logits, label)
+		segmentation = post(logits, label, threshold = -1)
 		
 		iou = IOU(segmentation, label)
+		
+		print("iou =", iou)
 		
 	return iou

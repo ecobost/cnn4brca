@@ -41,11 +41,11 @@ import time
 import sys
 
 # Set some training parameters
-TRAINING_STEPS = 3
+TRAINING_STEPS = 500
 LEARNING_RATE = 1e-4
 LAMBDA = 1e-3
 
-# Set some paths 
+# Set some paths
 training_dir = "training" 
 """string: Folder with training data."""
 
@@ -439,12 +439,12 @@ def main(restore_variables=False):
 				
 				# Average loss over 4 val images
 				val_loss = 0
-				num_images = 4
-				for j in range(num_images):
+				number_of_images = 4
+				for j in range(number_of_images):
 					val_image, val_label = sess.run(val_example)
 					feed_dict ={image: val_image, label: val_label, drop: False}
 					one_loss = empirical_loss.eval(feed_dict)
-					val_loss += (one_loss / num_images)
+					val_loss += (one_loss / number_of_images)
 
 				# Report validation loss	
 				loss_summary = my_scalar_summary('val/logistic_loss', val_loss)
