@@ -3,6 +3,19 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Apr 07 - Apr 13
+### Activities
+* Install CUDA and Tensorflow in computers in A3-301
+* Modify model to run in TF 0.8.0
+
+### To do
+* Install Tensorflow in computers at A3-301
+* Run experiments
+* Write Section 3.2(Model) and 3.3(Training)
+* Ask for institutional email
+
+### Questions
+
 ## Mar 31 - Apr 06
 ### Activities
 * Writing Tensorflow implementation

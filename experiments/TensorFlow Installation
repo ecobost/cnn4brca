@@ -1,4 +1,4 @@
-Install Tensorflow with no GPU support (personal use)
+CPU ONLY (no GPU) 
 See tensorflow.org/versions/r0.7/get_started/os_setup.html for details
 
 1. Make sure you have pip3
@@ -7,14 +7,60 @@ See tensorflow.org/versions/r0.7/get_started/os_setup.html for details
 2. Install Tensorflow (CPU-only)
 	sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp34-none-linux_x86_64.whl
 
-3. (Optionally) Enable GPU support (see webpage)
-
-4. Test the system 
+3. Test the system 
 	Open python3 
 		import tensorflow as tf
-		... (see webpage)
+		hello = tf.constant('Hello, Tensorflow!')
+		sess = tf.Session()
+		print(sess.run(hello))
 	From terminal
 		python3 /usr/local/lib/python3.4/dist-packages/tensorflow/models/image/mnist/convolutional.py
+
+
+CPU+GPU
+See tensorflow.org/versions/r0.7/get_started/os_setup.html for detailsecho
+
+1. Update system using Software Updater	
+2. Install CUDA toolkit
+	2.1 Download .deb(network) from developer.nvidia.com/cuda-downloads
+	2.2 Install
+		sudo dpkg -i cuda-repo-ubuntu1504-7-5-local_7.5-18_amd64.deb
+		sudo apt-get update
+		sudo apt-get install cuda
+		sudo nvidia-xconfig
+	2.3 Add runtime libraries to paths
+		echo /usr/local/cuda/lib64 | sudo tee -a /etc/ld.so.conf.d/cuda.conf
+		sudo ldconfig
+		sudo gedit /etc/environment
+			Manually add /usr/local/cuda/bin to the PATH variable
+		echo CUDA_HOME=/usr/local/cuda | sudo tee -a /etc/environment
+	2.4 Restart. If it shows a black screen with "starting version 219" move to 
+		a terminal (Ctrl+Alt+F1) and run sudo nvidia-xconfig
+	2.5 (Optional) Verify installation
+		cat /proc/driver/nvidia/version (shows version of driver)
+		cuda-install-samples-7.5.sh ~/Desktop
+		cd ~/Desktop/NVIDIA_CUDA-7.5_Samples
+		make
+		bin/x86_64/linux/release/deviceQuery (shows info of the GPU)
+		bin/x86_64/linux/release/bandwidthTest (shows bandwidth info)
+3. Install cuDNN
+	1. Download .tgz from developer.nvidia.com/cudnn
+	2. Move files to cuda folder
+		tar xvfz cudnn-7.0-linux-x64-v4.0-prod.tgz
+		sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+		sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
+		sudo ldconfig
+4. Get pip3
+	sudo apt-get install python3-pip python3-dev
+5. Install Tensorflow
+	sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0rc0-cp34-cp34m-linux_x86_64.whl
+6. Test installation
+	python3
+		>>> import tensorflow as tf #(shows that all cuda libraries load fine)
+		>>> hello = tf.constant('Sup!')
+		>>> sess = tf.Session() #(shows it recognizes the GPU)
+		>>> print(sess.run(hello)) #(prints 'Sup!')
+	(Optionally) python3 /usr/local/lib/python3.4/dist-packages/tensorflow/models/image/mnist/convolutional.py
 	
-
-
+	
+Good to go!
