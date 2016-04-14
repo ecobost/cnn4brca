@@ -1,7 +1,7 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
-# Date: April-2016
+# Date: March-2016
 """ TensorFlow implementation of the convolutional network described in Ch. 3 of
-the thesis report. Works for Tensorflow 0.8.0rc0
+the thesis report. Works for Tensorflow 0.7.1
 
 It loads each mammogram and its label to memory, computes the function described
 by the network, and produces a segmentation of the same size as the original 
@@ -41,7 +41,7 @@ import time
 import sys
 
 # Set some training parameters
-TRAINING_STEPS = 30
+TRAINING_STEPS = 500
 LEARNING_RATE = 1e-4
 LAMBDA = 1e-3
 
@@ -191,7 +191,7 @@ def model(image, drop):
 
 	def dropout(x, keep_prob):
 		""" During training, performs dropout. Otherwise, returns original."""
-		output = tf.cond(drop, lambda: tf.nn.dropout(x, keep_prob), lambda: x)		
+		output = tf.nn.dropout(x, keep_prob) if drop else x
 		return output
 
 	def conv_layer(input, filter_shape, strides=[1, 1, 1, 1], keep_prob=1):
@@ -221,7 +221,7 @@ def model(image, drop):
 		output = dropout(relu, keep_prob)
 		
 		# Summarize activations
-		scope = tf.get_default_graph()._name_stack # No easier way
+		scope = tf.get_default_graph()._name_stack[0] # No easier way
 		tf.histogram_summary(scope + '/activations', output)
 		
 		return output
@@ -335,7 +335,7 @@ def train(loss, learning_rate):
 	
 	# Summarize gradients
 	for gradient, variable in gradients:
-		if gradient is not None:
+		if gradient:
 			tf.histogram_summary(variable.op.name + '/gradients', gradient)
 
 	return train_op, global_step
@@ -369,7 +369,7 @@ def main(restore_variables=False):
 	# Variables that may change between runs: feeded to the graph every time.
 	image = tf.placeholder(tf.float32, name='image')	# x
 	label = tf.placeholder(tf.uint8, name='label')	# y
-	drop = tf.placeholder(tf.bool, shape=(), name='drop')	# Dropout? (T/F)
+	drop = tf.placeholder(tf.bool, shape=[], name='drop')	# Dropout? (T/F)
 
 	# Define the model
 	prediction = model(image, drop)
@@ -396,7 +396,7 @@ def main(restore_variables=False):
 			log("Variables restored from:", checkpoint_path)
 		else:
 			tf.initialize_all_variables().run()
-			summary_writer.add_graph(sess.graph)
+			summary_writer.add_graph(sess.graph_def)
 			
 		# Uncomment this to create different folders after every restore.
 		#run_path = os.path.join(summary_dir, "run{}".format(global_step.eval()))
@@ -459,14 +459,14 @@ def main(restore_variables=False):
 			
 		# Final log
 		log("Done!")
-
+		
 		# Stop queue runners
 		coord.request_stop()
 		coord.join(queue_runners)
 		
 	# Flush and close the summary writer
 	summary_writer.close()
-
+	
 # Trains a model from scratch if called without arguments (python3 model.py)
 # Otherwise, restores variables from the latest checkpoint in checkpoint_dir.
 if __name__ == "__main__":
