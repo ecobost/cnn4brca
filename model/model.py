@@ -41,7 +41,7 @@ import time
 import sys
 
 # Set some training parameters
-TRAINING_STEPS = 30
+TRAINING_STEPS = 100 # There are 1568 examples in the training set
 LEARNING_RATE = 1e-4
 LAMBDA = 1e-3
 
@@ -91,6 +91,11 @@ def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
 		An (image, label) tuple where image is a tensor of floats with shape
 		[image_height, image_width, image_channels] and label is a tensor of
 		integers with shape [image_height, image_width]
+		
+	Note:
+		Pre-fetching was commented out because a single example uses around
+		30 Mb of GPU memory and it produces no improvement in time. Otherwise 
+		and given our small GPUs (2 GB), the model would not fit in memory.
 	"""
 	with tf.name_scope('filename_queue'):
 		# Read csv file
@@ -121,6 +126,7 @@ def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
 		# Preprocess image (whitening)
 		image = tf.image.per_image_whitening(image)
 	
+	""" Pre-fetching is not done because of GPU memory limitations (2 GB)
 	with tf.name_scope('example_queue'):
 		# Create example queue
 		example_queue = tf.FIFOQueue(capacity, [image.dtype, label.dtype])
@@ -131,6 +137,8 @@ def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
 		tf.train.add_queue_runner(queue_runner)
 		
 	example = example_queue.dequeue(name=name)
+	"""
+	example = image, label
 			
 	return example
 	

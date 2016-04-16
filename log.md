@@ -3,9 +3,19 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Apr 14 - Apr 20
+### Activities
+* Install CUDA and Tensorflow 0.8.0 in computers in A3-401
+* Modify model to run inside 2GB GPUs
+
+### To do
+* Run hyperparamter search
+* Write Section 3.2(Model) and 3.3(Training)
+* Ask for institutional email
+
 ## Apr 07 - Apr 13
 ### Activities
-* Install CUDA and Tensorflow in computers in A3-301
+* Install CUDA and Tensorflow in computers in A3-401
 * Modify model to run in TF 0.8.0
 
 ### To do
@@ -22,7 +32,7 @@ Log with activities and questions arising during every week
 * Run sanity checks and initial tests
 
 ### To do
-* Install Tensorflow in computers at A3-301
+* Install Tensorflow in computers at A3-401
 * Run experiments
 * Write Section 3.2(Model) and 3.3(Training)
 * Ask for institutional email
@@ -37,7 +47,7 @@ Log with activities and questions arising during every week
 
 ### To do
 * Write network in Tensorflow
-* Install Tensorflow in computers at A3-301
+* Install Tensorflow in computers at A3-401
 * Run experiments
 * Write Section 3.2(Model) and 3.3(Training)
 * Ask for institutional email

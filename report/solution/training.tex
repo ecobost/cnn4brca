@@ -39,8 +39,18 @@ ADAM
 
 \subsection{Implementation details}
 Upsampling
-% If using an upsampling layer, maybe use a simple deconv layer, but change its weights in the forward pass to be the weights needed for bilinear interpolation (or set its weights to always be those for bilinear interpolation), that way gradient descent can take care of it in the backward pass
-% For interpolations, see http://paulbourke.net/miscellaneous/interpolation/ y las definiciones de bilinear y bicubic above
+
 Loss function backprop weight mask
 % Create the mask when you zero-mean the image (may not work).
 Weight initialization
+
+\subsection{Memory and time usage}
+A3-401 (Quadro K600)
+
+CPU-only (tested in Worker 3) 100 in 8 minutes (queue)
+GPU-with-X-server-on (tested in Worker1): 100 in 1.7 minutes (crashes) (no queue)
+GPU-with-X-server-off (tested in Worker1/tty1): 100 in 1.7 minutes (no queue)
+
+1916 with 5
+1865 with 3 
+1754 with 0 (leaky or relu)
