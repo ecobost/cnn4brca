@@ -41,7 +41,7 @@ import time
 import sys
 
 # Set some training parameters
-TRAINING_STEPS = 100 # There are 1568 examples in the training set
+TRAINING_STEPS = 1568*2 # There are 1568 examples in the training set
 LEARNING_RATE = 1e-4
 LAMBDA = 1e-3
 
@@ -455,7 +455,7 @@ def main(restore_variables=False):
 				log("Validation loss @", step, ":", val_loss)
 			
 			# Write checkpoint	
-			if step%200 == 0:
+			if step%200 == 0 or step == TRAINING_STEPS:
 				checkpoint_name = os.path.join(checkpoint_dir, 'model')
 				checkpoint_path = saver.save(sess, checkpoint_name, step)
 				log("Checkpoint saved in:", checkpoint_path)
