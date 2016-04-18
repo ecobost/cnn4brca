@@ -431,18 +431,18 @@ def main(restore_variables=False):
 				"(logistic)", train_loss, "(total)")
 			
 			# Write summaries
-			if step%25 == 0 or step == 1:
+			if step%50 == 0 or step == 1:
 				summary_str = summaries.eval(feed_dict)
 				summary_writer.add_summary(summary_str, step)
 				log("Summaries written @", step)
 			
 			# Evaluate model
-			if step%25 == 0 or step == 1:
+			if step%50 == 0 or step == 1:
 				log("Evaluating model")
 				
-				# Average loss over 4 val images
+				# Average loss over 5 val images
 				val_loss = 0
-				number_of_images = 4
+				number_of_images = 5
 				for j in range(number_of_images):
 					val_image, val_label = sess.run(val_example)
 					feed_dict ={image: val_image, label: val_label, drop: False}
@@ -455,7 +455,7 @@ def main(restore_variables=False):
 				log("Validation loss @", step, ":", val_loss)
 			
 			# Write checkpoint	
-			if step%100 == 0:
+			if step%200 == 0:
 				checkpoint_name = os.path.join(checkpoint_dir, 'model')
 				checkpoint_path = saver.save(sess, checkpoint_name, step)
 				log("Checkpoint saved in:", checkpoint_path)
