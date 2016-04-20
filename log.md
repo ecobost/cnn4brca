@@ -7,6 +7,7 @@ Log with activities and questions arising during every week
 ### Activities
 * Install CUDA and Tensorflow 0.8.0 in computers in A3-401
 * Modify model to run inside 2GB GPUs
+* Do the slides for the Research congress
 
 ### To do
 * Run hyperparamter search

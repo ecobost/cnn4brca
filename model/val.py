@@ -18,7 +18,7 @@ import numpy as np
 checkpoint_dir = "checkpoint/run3"
 csv_path = "val/small_val.csv"
 data_dir = "val/"
-number_of_thresholds = 3
+number_of_thresholds = 1
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -33,15 +33,35 @@ def post(logits, label, threshold):
 	thresholded[label == 0] = 0
 	return thresholded
 	
-def IOU(segmentation, label):
-	"""Intersection over union"""
-	intersection = np.logical_and(segmentation == 255, label == 255)
-	union = np.logical_or(segmentation == 255, label == 255)
-	iou = np.sum(intersection)/(np.sum(union) + 1e-7)
-	return iou
+def metrics(segmentation, label):
+	"""Returns an array with different metrics for the given image and label."""
+	epsilon = 1e-7 # To avoid division by zero
+	
+	# Confusion matrix (only over breast area)
+	true_positive = np.sum(np.logical_and(segmentation == 255, label == 255))
+	false_positive = np.sum(np.logical_and(segmentation == 255, label != 255))
+	true_negative = np.sum(np.logical_and(segmentation == 127, label == 127))
+	false_negative = np.sum(np.logical_and(segmentation == 127, label != 127))
+	
+	# Evaluation metrics
+	accuracy = (true_positive + true_negative) / (true_positive + true_negative 
+									+ false_positive + false_negative + epsilon)
+	sensitivity = true_positive / (true_positive + false_negative + epsilon)
+	specificity = true_negative / (false_positive + true_negative + epsilon)
+	precision = true_positive / (true_positive + false_positive + epsilon)
+	recall = sensitivity
+	iou = true_positive / (true_positive + false_positive + false_negative + 
+						   epsilon)
+	f1 = (2 * precision * recall) / (precision + recall + epsilon)
+	g_mean = np.sqrt(sensitivity * specificity)
+		
+	metrics = [iou, f1, g_mean, accuracy, sensitivity, specificity, precision,
+			   recall]
+
+	return np.array(metrics)
 	
 def main():
-	""" Loads network, reads image and returns IOU."""
+	""" Loads network, reads image and returns mean metrics."""
 	# Read csv file
 	with open(csv_path) as f:
 		lines = f.read().splitlines()
@@ -72,7 +92,7 @@ def main():
 			
 			# Reset reader and iou_accum
 			csv_reader = csv.reader(lines)
-			iou_accum = 0
+			metric_accum = np.zeros(8)
 			
 			# For every example
 			for row in csv_reader:
@@ -91,16 +111,19 @@ def main():
 				segmentation = post(logits, label, threshold)
 				
 				# Calculate iou				
-				iou_accum += IOU(segmentation, label)
+				metric_accum += metrics(segmentation, label)
 			
 			# Calculate mean iou
 			number_of_examples = csv_reader.line_num
-			iou = iou_accum/number_of_examples
+			metrics = metric_accum/number_of_examples
 			
-			# Report iou
-			model.log("IOU:", iou)
-			
-	return iou
+			# Report metrics
+			metric_names = ['IOU', 'F1-score', 'G-mean', 'Accuracy',
+						   'Sensitivity', 'Specificity', 'Precision', 'Recall']
+			for metric, name in zip(metric_names, metrics):
+				model.log(name, ':', metric)
+				
+	return metrics, metric_names
 	
 if __name__ == "__main__":
 	main()
