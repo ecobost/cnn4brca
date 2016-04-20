@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{Breast Cancer}{3}{0}{1}
+\beamer@sectionintoc {2}{Machine Learning}{5}{0}{2}
+\beamer@sectionintoc {3}{Our work}{8}{0}{3}
