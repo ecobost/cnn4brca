@@ -1,7 +1,7 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
 # Date: April-2016
 """ TensorFlow implementation of the convolutional network described in Ch. 3 of
-the thesis report. Works for Tensorflow 0.8.0rc0
+the thesis report. Works for Tensorflow 0.8.0
 
 It loads each mammogram and its label to memory, computes the function described
 by the network, and produces a segmentation of the same size as the original 
