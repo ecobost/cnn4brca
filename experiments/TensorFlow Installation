@@ -24,7 +24,7 @@ See tensorflow.org/versions/r0.7/get_started/os_setup.html for detailsecho
 2. Install CUDA toolkit
 	2.1 Download .deb(network) from developer.nvidia.com/cuda-downloads
 	2.2 Install
-		sudo dpkg -i cuda-repo-ubuntu1504-7-5-local_7.5-18_amd64.deb
+		sudo dpkg -i cuda-repo-ubuntu1504_7.5-18_amd64.deb
 		sudo apt-get update
 		sudo apt-get install cuda
 		sudo nvidia-xconfig
