@@ -16,9 +16,9 @@ import scipy.misc
 import numpy as np
 
 checkpoint_dir = "checkpoint/run3"
-csv_path = "val/small_val.csv"
+csv_path = "val/val.csv"
 data_dir = "val/"
-number_of_thresholds = 20
+number_of_thresholds = 1
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -72,7 +72,7 @@ def main():
 	whitened = tf.image.per_image_whitening(expanded)
 	
 	# Define the model
-	prediction = model.model(whitened, drop=False)
+	prediction = model.model(whitened, drop=tf.constant(False))
 		
 	# Get a saver
 	saver = tf.train.Saver()
@@ -88,7 +88,7 @@ def main():
 			# Get random threshold 
 			probability = 10 ** np.random.uniform(-3, 0)
 			threshold = np.log(probability) - np.log(1 - probability) # prob2logit
-			model.log("Threshold", i, ":", threshold,  "(", probability, ")")
+			print("Threshold {}: {} ({})".format(i, threshold, probability))
 			
 			# Reset reader and metric_accum
 			csv_reader = csv.reader(lines)
@@ -115,14 +115,14 @@ def main():
 			
 			# Calculate mean iou
 			number_of_examples = csv_reader.line_num
-			metrics = metric_accum/number_of_examples
+			mean_metrics = metric_accum/number_of_examples
 			
 			# Report metrics
 			metric_names = ['IOU', 'F1-score', 'G-mean', 'Accuracy',
 						   'Sensitivity', 'Specificity', 'Precision', 'Recall']
-			for metric, name in zip(metric_names, metrics):
-				model.log(name, ':', metric)
-			print("")
+			for name, metric in zip(metric_names, mean_metrics):
+				print("{}: {}".format(name, metric))
+			print('')
 				
 		# Logistic loss (same for any threshold)
 		label = tf.placeholder(tf.uint8, name='label')
@@ -136,7 +136,7 @@ def main():
 			
 			loss_accum += loss.eval({image:im, label:lbl})
 			
-		model.log("Logistic loss: ", loss_accum/csv_reader.line_num)
+		print("Logistic loss: ", loss_accum/csv_reader.line_num)
 				
 	return metrics, metric_names,
 	
