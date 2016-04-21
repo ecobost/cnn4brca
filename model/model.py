@@ -41,7 +41,7 @@ import time
 import sys
 
 # Set some training parameters
-TRAINING_STEPS = 1568*2 # There are 1568 examples in the training set
+TRAINING_STEPS = 1440*2 # There are 1440 examples in the training set
 LEARNING_RATE = 1e-4
 LAMBDA = 1e-3
 
