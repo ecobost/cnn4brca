@@ -3,11 +3,24 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
-## Apr 14 - Apr 20
+## Apr 25 - Apr 27
+### Activities
+* Run hyperparameter search
+* Get hyperparameter figures
+
+### To do
+* Train best network
+* Write Section 3.2(Model) and 3.3(Training)
+* Ask for institutional email
+
+
+
+## Apr 14 - Apr 22
 ### Activities
 * Install CUDA and Tensorflow 0.8.0 in computers in A3-401
 * Modify model to run inside 2GB GPUs
 * Do the slides for the Research congress
+* Expose in research congress
 
 ### To do
 * Run hyperparamter search

@@ -7,6 +7,7 @@
 	
 	Example:
 		$ python3 val.py
+		$ python3 val.py | tee run1/eval
 """
 
 import tensorflow as tf
@@ -15,10 +16,10 @@ import csv
 import scipy.misc
 import numpy as np
 
-checkpoint_dir = "checkpoint/run3"
+checkpoint_dir = "run1"
 csv_path = "val/val.csv"
 data_dir = "val/"
-number_of_thresholds = 1
+number_of_thresholds = 30
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 

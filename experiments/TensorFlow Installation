@@ -32,7 +32,7 @@ See tensorflow.org/versions/r0.7/get_started/os_setup.html for detailsecho
 		echo /usr/local/cuda/lib64 | sudo tee -a /etc/ld.so.conf.d/cuda.conf
 		sudo ldconfig
 		sudo gedit /etc/environment
-			Manually add /usr/local/cuda/bin to the PATH variable
+			Manually add :/usr/local/cuda/bin to the PATH variable
 		echo CUDA_HOME=/usr/local/cuda | sudo tee -a /etc/environment
 	2.4 Restart. If it shows a black screen with "starting version 219" move to 
 		a terminal (Ctrl+Alt+F1) and run sudo nvidia-xconfig
@@ -57,9 +57,9 @@ See tensorflow.org/versions/r0.7/get_started/os_setup.html for detailsecho
 6. Test installation
 	python3
 		>>> import tensorflow as tf #(shows that all cuda libraries load fine)
-		>>> hello = tf.constant('Sup!')
+		>>> h = tf.constant('Sup!')
 		>>> sess = tf.Session() #(shows it recognizes the GPU)
-		>>> print(sess.run(hello)) #(prints 'Sup!')
+		>>> sess.run(h) #(prints 'Sup!')
 	(Optionally) python3 /usr/local/lib/python3.4/dist-packages/tensorflow/models/image/mnist/convolutional.py
 	
 	
