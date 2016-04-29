@@ -54,18 +54,19 @@
 \contentsline {subsection}{\numberline {3.3.3}Upsampling}{36}{subsection.3.3.3}
 \contentsline {subsection}{\numberline {3.3.4}Loss function}{36}{subsection.3.3.4}
 \contentsline {subsection}{\numberline {3.3.5}Code}{37}{subsection.3.3.5}
-\contentsline {section}{\numberline {3.4}Training}{37}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Hardware}{37}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Software}{37}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Regularization}{37}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Hyperparameters}{38}{subsection.3.4.4}
-\contentsline {subsection}{\numberline {3.4.5}Optimization rule}{38}{subsection.3.4.5}
-\contentsline {subsection}{\numberline {3.4.6}Implementation details}{38}{subsection.3.4.6}
-\contentsline {subsection}{\numberline {3.4.7}Memory and time usage}{38}{subsection.3.4.7}
-\contentsline {section}{\numberline {3.5}Evaluation}{38}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Post-processing}{38}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Evaluation}{38}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Evaluation metrics}{39}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.4}Hyperparameter selection}{37}{section.3.4}
+\contentsline {section}{\numberline {3.5}Training}{37}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Hardware}{37}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Software}{37}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Regularization}{38}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Hyperparameters}{38}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}Optimization rule}{38}{subsection.3.5.5}
+\contentsline {subsection}{\numberline {3.5.6}Implementation details}{38}{subsection.3.5.6}
+\contentsline {subsection}{\numberline {3.5.7}Memory and time usage}{38}{subsection.3.5.7}
+\contentsline {section}{\numberline {3.6}Evaluation}{38}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Post-processing}{38}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Evaluation}{38}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Evaluation metrics}{39}{subsection.3.6.3}
 \contentsline {chapter}{\numberline {4}Mass Segmentation}{40}{chapter.4}
 \contentsline {section}{\numberline {4.1}Results}{40}{section.4.1}
 \contentsline {section}{\numberline {4.2}Discussion}{40}{section.4.2}

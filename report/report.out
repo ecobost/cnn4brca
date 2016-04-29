@@ -40,21 +40,22 @@
 \BOOKMARK [2][-]{subsection.3.3.3}{Upsampling}{section.3.3}% 40
 \BOOKMARK [2][-]{subsection.3.3.4}{Loss function}{section.3.3}% 41
 \BOOKMARK [2][-]{subsection.3.3.5}{Code}{section.3.3}% 42
-\BOOKMARK [1][-]{section.3.4}{Training}{chapter.3}% 43
-\BOOKMARK [2][-]{subsection.3.4.1}{Hardware}{section.3.4}% 44
-\BOOKMARK [2][-]{subsection.3.4.2}{Software}{section.3.4}% 45
-\BOOKMARK [2][-]{subsection.3.4.3}{Regularization}{section.3.4}% 46
-\BOOKMARK [2][-]{subsection.3.4.4}{Hyperparameters}{section.3.4}% 47
-\BOOKMARK [2][-]{subsection.3.4.5}{Optimization rule}{section.3.4}% 48
-\BOOKMARK [2][-]{subsection.3.4.6}{Implementation details}{section.3.4}% 49
-\BOOKMARK [2][-]{subsection.3.4.7}{Memory and time usage}{section.3.4}% 50
-\BOOKMARK [1][-]{section.3.5}{Evaluation}{chapter.3}% 51
-\BOOKMARK [2][-]{subsection.3.5.1}{Post-processing}{section.3.5}% 52
-\BOOKMARK [2][-]{subsection.3.5.2}{Evaluation}{section.3.5}% 53
-\BOOKMARK [2][-]{subsection.3.5.3}{Evaluation metrics}{section.3.5}% 54
-\BOOKMARK [0][-]{chapter.4}{Mass Segmentation}{}% 55
-\BOOKMARK [1][-]{section.4.1}{Results}{chapter.4}% 56
-\BOOKMARK [1][-]{section.4.2}{Discussion}{chapter.4}% 57
-\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 58
-\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 59
-\BOOKMARK [0][-]{chapter*.34}{Bibliography}{}% 60
+\BOOKMARK [1][-]{section.3.4}{Hyperparameter selection}{chapter.3}% 43
+\BOOKMARK [1][-]{section.3.5}{Training}{chapter.3}% 44
+\BOOKMARK [2][-]{subsection.3.5.1}{Hardware}{section.3.5}% 45
+\BOOKMARK [2][-]{subsection.3.5.2}{Software}{section.3.5}% 46
+\BOOKMARK [2][-]{subsection.3.5.3}{Regularization}{section.3.5}% 47
+\BOOKMARK [2][-]{subsection.3.5.4}{Hyperparameters}{section.3.5}% 48
+\BOOKMARK [2][-]{subsection.3.5.5}{Optimization rule}{section.3.5}% 49
+\BOOKMARK [2][-]{subsection.3.5.6}{Implementation details}{section.3.5}% 50
+\BOOKMARK [2][-]{subsection.3.5.7}{Memory and time usage}{section.3.5}% 51
+\BOOKMARK [1][-]{section.3.6}{Evaluation}{chapter.3}% 52
+\BOOKMARK [2][-]{subsection.3.6.1}{Post-processing}{section.3.6}% 53
+\BOOKMARK [2][-]{subsection.3.6.2}{Evaluation}{section.3.6}% 54
+\BOOKMARK [2][-]{subsection.3.6.3}{Evaluation metrics}{section.3.6}% 55
+\BOOKMARK [0][-]{chapter.4}{Mass Segmentation}{}% 56
+\BOOKMARK [1][-]{section.4.1}{Results}{chapter.4}% 57
+\BOOKMARK [1][-]{section.4.2}{Discussion}{chapter.4}% 58
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 59
+\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 60
+\BOOKMARK [0][-]{chapter*.34}{Bibliography}{}% 61
