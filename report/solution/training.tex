@@ -2,15 +2,16 @@ We offer details about the hardware and software used for experiments, regulariz
 
 \subsection{Hardware}
 Training deep neural networks is computationally intensive and requires equipment with powerful GPUs. We enlist here the resources available for this thesis.
+We performed all our training in:
 \begin{table}[h]
 	\centering
 	\begin{tabular}{cp{3.8cm}p{1.7cm}p{1.8cm}cc}
 	\hline
 	\textbf{PC}	& \textbf{GPU}	& \textbf{HD}	& \textbf{CPU}	& \textbf{RAM}	& \textbf{\#} \\
 	\hline
-	Personal	& Nvidia NVS 5400M \newline 96 cores, 1GB, compute capability 2.1 & 57 GB \newline (30 free)	& i5-3210M \newline 2.5GHz	& 4 GB	& 1 \\
+	%Personal	& Nvidia NVS 5400M \newline 96 cores, 1GB, compute capability 2.1 & 57 GB \newline (30 free)	& i5-3210M \newline 2.5GHz	& 4 GB	& 1 \\
 	A4-401	& Nvidia Quadro K620 \newline 384 cores, 2GB, compute capability 5.0 & 240 GB \newline (230 free)	& i5-4570 \newline 3.2GHz	& 8 GB	& 27\\
-	HP-Z400	& AMD Gallium 0.4  & 240 GB \newline (230 free)	& Xeon W3530 \newline 2.8GHz	& 2 GB	& 2\\
+	%HP-Z400	& AMD Gallium 0.4  & 240 GB \newline (230 free)	& Xeon W3530 \newline 2.8GHz	& 2 GB	& 2\\
 	\hline
 	\end{tabular}
 	\caption{Available hardware for experiments}
@@ -21,18 +22,11 @@ We did our experiments in x computers from A3-401
 We use Tensorflow to train the networks and Python to develop any other tools (image retrieval and augmentation, model evaluation, figure generation, etc.).
 Python3, PILLOW, libraries used,etc.
 code available at:
-
-\subsection{Regularization}
-Each picture was zero-mean centered, (do not subtract 127)
-Dropout and l2-norm, batch normalization
-
-
-\subsection{Hyperparameters}
-Learning rate decay, dropout p, ...
-0.1 learning rate divided by 10 when convergence
+We implement this model using TensorFlow~\cite{Abadi2015}. Code is freely accesible in Github: github.com/ecobost/cnn4brca. See the Readme there for details.
 
 \subsection{Optimization rule}
 ADAM
+0.1 learning rate divided by 10 when convergence
 %Although the gradient rule can be seen as stochastic gradient descen because it uses a single image to compute the gradients it  can also be seen as stochastic radient descent given that it sums the gradients produced by applying the network in different spatial positions.
 
 % Training a convnet with filter size 112x112 (CONV->SIGMOID) is equivalent to training a linear classifier and could be used as a baseline. 12.5K parameters.
@@ -46,7 +40,8 @@ Weight initialization
 
 \subsection{Memory and time usage}
 A3-401 (Quadro K600)
-
 CPU-only (tested in Worker 3) 100 in 6 minutes (queue)
 GPU-with-X-server-off (tested in Worker1/tty1): 100 in 1.5 minutes (no queue)
 network does not fit in GPU memory.
+Didn't fit in memory, around 2GB, epochs took around a couple of hours in CPU-only
+Models in Experiment 1 and 2 did this, models in experiment 3 didi this.

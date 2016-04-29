@@ -1,0 +1,23 @@
+None, but using CRFs could yield better results.
+
+Say that the logits out of the network were transformed intoprobabilities via softmax
+Probabilities vs UNcorrected threshold vs Threshold and cluster extent correction vs threshold-free cluster enhancement vs, show different results at different thresholds
+data is smooth, 
+
+uncorrected threshold
+Present the probabilities of tumor on each pixel. anmd threshold it on a given prob nd delete any clusters less than x.
+Threshold free cluster enhancement (see module 29 in introduction to fmri)
+Choose a threshold and delete any clusters less than x...
+
+we could also present a heatmap with the different probabilities in each pixel of the image, for instance on mammograms we could present a grayscale image of whether a lesion is present.
+
+% CRFs: public available implementation of (Krahenbuhl & Koltun)
+% For the figure draw a random one  of 100x100 with a little signal in there and apply all corrections.
+
+% Python implementation of CRF: https://pystruct.github.io/auto_examples/image_segmentation.html
+
+% If using the threshold/ value under the cluster one, use the validation set t select pairs(threshold, total acceptable value)
+
+% Background is thresholded at zero and shown in black
+
+% Background is not counted to calculate the metrics. We use a mask to sum values only over the spaces that were a breast mass previously.
