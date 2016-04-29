@@ -7,7 +7,7 @@
 	
 	Example:
 		$ python3 val.py
-		$ python3 val.py | tee run1/eval
+		$ python3 val.py | tee run31/eval
 """
 
 import tensorflow as tf
@@ -16,10 +16,10 @@ import csv
 import scipy.misc
 import numpy as np
 
-checkpoint_dir = "run1"
+checkpoint_dir = "run31"
 csv_path = "val/val.csv"
 data_dir = "val/"
-number_of_thresholds = 30
+number_of_thresholds = 10
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -85,11 +85,29 @@ def main():
 		saver.restore(sess, checkpoint_path)
 		model.log("Variables restored from:", checkpoint_path)
 		
+		# Get random thresholds (with probs in 10^unif(-3, 0) range)
+		#probs = 10 ** np.random.uniform(-3, 0, number_of_thresholds) 
+		#thresholds = np.log(probs) - np.log(1 - probs) # prob2logit
+		
+		# Get random thresholds (possible range estimated from a random example)
+		rand_index = np.random.randint(len(lines))
+		rand_line = lines[rand_index]
+		for row in csv.reader([rand_line]):
+			# Read image
+			image_path = data_dir + row[0]
+			im = scipy.misc.imread(image_path)
+		
+			# Get prediction
+			logits = prediction.eval({image: im})
+			
+			# Some valid thresholds
+			thresholds = np.linspace(logits.min(), logits.max(),
+									 number_of_thresholds)
+			probs = 1/(1 + np.exp(-thresholds))
+		
+		# Validate each threshold
 		for i in range(number_of_thresholds):
-			# Get random threshold 
-			probability = 10 ** np.random.uniform(-3, 0)
-			threshold = np.log(probability) - np.log(1 - probability) # prob2logit
-			print("Threshold {}: {} ({})".format(i, threshold, probability))
+			print("Threshold {}: {} ({})".format(i, thresholds[i], probs[i]))
 			
 			# Reset reader and metric_accum
 			csv_reader = csv.reader(lines)
@@ -109,7 +127,7 @@ def main():
 				logits = prediction.eval({image: im})
 			
 				# Post-process prediction
-				segmentation = post(logits, label, threshold)
+				segmentation = post(logits, label, thresholds[i])
 				
 				# Calculate iou				
 				metric_accum += metrics(segmentation, label)
