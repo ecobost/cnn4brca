@@ -3,16 +3,16 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
-## Apr 25 - Apr 27
+## Apr 25 - Apr 28
 ### Activities
 * Run hyperparameter search
 * Get hyperparameter figures
 
 ### To do
+* Refine hyperparameter search
+* Write Model and Results
 * Train best network
-* Write Section 3.2(Model) and 3.3(Training)
 * Ask for institutional email
-
 
 
 ## Apr 14 - Apr 22
@@ -27,6 +27,7 @@ Log with activities and questions arising during every week
 * Write Section 3.2(Model) and 3.3(Training)
 * Ask for institutional email
 
+
 ## Apr 07 - Apr 13
 ### Activities
 * Install CUDA and Tensorflow in computers in A3-401
@@ -38,7 +39,6 @@ Log with activities and questions arising during every week
 * Write Section 3.2(Model) and 3.3(Training)
 * Ask for institutional email
 
-### Questions
 
 ## Mar 31 - Apr 06
 ### Activities
@@ -51,13 +51,11 @@ Log with activities and questions arising during every week
 * Write Section 3.2(Model) and 3.3(Training)
 * Ask for institutional email
 
-### Questions
 
 ## Mar 17 - Mar 30
 ### Activities
 * Spoke with Dr. Parra
 * Writing Tensorflow implementation
-
 
 ### To do
 * Write network in Tensorflow
@@ -66,22 +64,17 @@ Log with activities and questions arising during every week
 * Write Section 3.2(Model) and 3.3(Training)
 * Ask for institutional email
 
-### Questions
-
 
 ## Mar 10 - Mar 16
 ### Activities
 * Spoke with Dr. Garrido
 * Writing Tensorflow implementation
 
-
 ### To do
 * Write network in Tensorflow
 * Ask for a computer in A3-401 (Dr. Parra) or the cluster of CPUs (Dr. Nolazco)
 * Write chapter 3 (Solution Model)
 * Ask for institutional email
-
-### Questions
 
 
 ## Mar 04 - Mar 09
@@ -93,10 +86,6 @@ Log with activities and questions arising during every week
 * Ask for a computer in A3-401 (Dr. Parra) or the cluster of CPUs (Dr. Nolazco)
 * Write chapter 3 (Solution Model)
 * Ask for institutional email
-
-### Questions
-
-
 
 
 ## Feb 25 - Mar 03
@@ -120,8 +109,6 @@ Log with activities and questions arising during every week
 	Answer: Put a link to Github
 
 
-
-
 ## Feb 18 - Feb 24
 ### Activities
 * Writing Section 2.6.2, adding to 2.5
@@ -141,7 +128,6 @@ Log with activities and questions arising during every week
 	Answer: Leave it there.
 2. Should I try to fit a simple model and a more advanced model (ADAM, batchnorm, leaky relus) or should I go directly for the best model?
 	Answer: Best model.
-
 
 
 ## Feb 12 - Feb 17
@@ -199,8 +185,6 @@ Log with activities and questions arising during every week
 ### To do
 * Ask for institutional email.
 
-### Questions
-1. 
 
 ## Jun 24 - Jul 1
 ### Activities
@@ -217,6 +201,7 @@ Log with activities and questions arising during every week
 ### Questions
 1. Should I try to get more digital mammograms or just go with film?.
 	Answer: Enough digital mammograms, work with wath you have. If needed, ask Dr. Tamez.
+
 
 ## Jun 18 - Jun 23
 ### Activities
@@ -255,6 +240,7 @@ Log with activities and questions arising during every week
 1. Is the unbalanced data thing needed or does the network learns by its own?. May i be overkilling it? 
 	Answer: Train normally, cross-validate the threshold
 
+
 ## Jun 3 - Jun 10
 ### Activities
 * Write PracticalDL section
@@ -269,12 +255,11 @@ Log with activities and questions arising during every week
 ### Questions
 1. Use NAG or SGD+Momentum?
 	Answer: NAG
-
 2. Use Bioinformatics account or create another one?.
 	Answer: Bioinformatics
-
 3. Is there a standard way to report convolutional network architectures (Krizhevsky style or Karpathy style or a table as in Striving for simplicity)?.
 	Answer: No. Image if small, Table if big.
+
 
 ## May 27- Jun 2
 ### Activities
@@ -294,10 +279,8 @@ Log with activities and questions arising during every week
 ### Questions
 1. Naming: Should I use loss or cost function?.
 	Answer: Loss
-
 2. How to obtain the small training images from the big images. Random sampling, crop without overlapping, with overlapping.? How to measure performance?. What are the labels?.
 	Answer: Patches not needed. Labels are 1 in lesion, 0 in no lesion.
-
 
 
 ## May 25 - May 26
@@ -318,17 +301,12 @@ Log with activities and questions arising during every week
 ### Questions
 1. Should I preserve a test set just for the final step (in December) or is it ok to use all data for the preprocessing choosing and then all data for the small vs big and all that?. 
 	Answer: Separate a test set right at the beginning. Treat preprocessing as a hyperparameter to fit. For transfer leraning and big vs small you can use the entire dataset but shuffle the test set to be different. 
-
 2. Validation or 5-fold crossvalidation?
 	Answer: Validation. If validation set is too small, then 5-fold.
-
 3. When checking for different preprocessings, fit all hyperparameters or only a subset or none at all?
 	Answer:	Fit learning rate and regularization. All other hyperparameters would be set to standard (including the network architecture). 
-
 4. mxn o nxd for the name of dimensions?
 	Answer: mxn. m examples of n dimensions.
-
 5. Is it a binary classification(cancer/no cancer) or 3 classes (micro/mass/nothing) or something else(detection).
 	Answer: Image segmentation. Lesion vs. background.
-
 6. Which forms of image enhancement should I use?. No preprocessing or global contrast stretching?
