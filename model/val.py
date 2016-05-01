@@ -19,7 +19,7 @@ import numpy as np
 checkpoint_dir = "run31"
 csv_path = "val/val.csv"
 data_dir = "val/"
-number_of_thresholds = 10
+number_of_thresholds = 20
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -89,10 +89,10 @@ def main():
 		#probs = 10 ** np.random.uniform(-3, 0, number_of_thresholds) 
 		#thresholds = np.log(probs) - np.log(1 - probs) # prob2logit
 		
-		# Get random thresholds (possible range estimated from a random example)
+		# Get random thresholds (range estimated from a random example)
 		rand_index = np.random.randint(len(lines))
 		rand_line = lines[rand_index]
-		for row in csv.reader([rand_line]):
+		for row in csv.reader([rand_line]): 
 			# Read image
 			image_path = data_dir + row[0]
 			im = scipy.misc.imread(image_path)
@@ -100,10 +100,13 @@ def main():
 			# Get prediction
 			logits = prediction.eval({image: im})
 			
-			# Some valid thresholds
-			thresholds = np.linspace(logits.min(), logits.max(),
-									 number_of_thresholds)
-			probs = 1/(1 + np.exp(-thresholds))
+			# Minimum and maximum predicted probability
+			min_prob = 1/ (1 + np.exp(-logits.min()))
+			max_prob = 1/ (1 + np.exp(-logits.max()))
+			
+			# Get thresholds in (min_prob, max_prob) range
+			probs = np.linspace(min_prob, max_prob, number_of_thresholds)
+			thresholds = np.log(probs) - np.log(1 - probs) #prob2logit
 		
 		# Validate each threshold
 		for i in range(number_of_thresholds):
