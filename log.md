@@ -3,6 +3,17 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Apr 29 - May 4
+### Activities
+* Run refined hyperparameter search
+* Write hyperparameter results in thesis
+
+### To do
+* Write Model and Results
+* Train best network
+* Ask for institutional email
+
+
 ## Apr 25 - Apr 28
 ### Activities
 * Run hyperparameter search
