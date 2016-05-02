@@ -6,11 +6,11 @@ Log with activities and questions arising during every week
 ## Apr 29 - May 4
 ### Activities
 * Run refined hyperparameter search
+* Train best network
 * Write hyperparameter results in thesis
 
 ### To do
-* Write Model and Results
-* Train best network
+* Write results from the best network
 * Ask for institutional email
 
 
