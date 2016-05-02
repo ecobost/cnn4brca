@@ -2,12 +2,14 @@
 # Date: April 2016
 """ Calculate IOU measure for different thresholds (for cross-validation)
 
-	Probabilities sampled at random from 10^unif(-3,0), thresholds are the logit
-	corresponding to this probability.
+	We use linearly spaced probabilities in the range between the smallest and 
+	largest possible predicted probability (as estimated by the predictions on 
+	a random example). Thresholds are the logits corresponding to these
+	probabilities.
 	
 	Example:
 		$ python3 val.py
-		$ python3 val.py | tee run31/eval
+		$ python3 val.py | tee eval
 """
 
 import tensorflow as tf
@@ -16,7 +18,7 @@ import csv
 import scipy.misc
 import numpy as np
 
-checkpoint_dir = "run31"
+checkpoint_dir = "checkpoint"
 csv_path = "val/val.csv"
 data_dir = "val/"
 number_of_thresholds = 20
