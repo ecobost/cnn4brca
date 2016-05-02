@@ -142,9 +142,9 @@ def model(image, drop):
 
 	Architecture:
 		INPUT -> [[CONV -> Leaky RELU]*2 -> MAXPOOL]*2 -> [CONV -> Leaky RELU]*3
-		-> MAXPOOL -> FC -> Leaky RELU -> FC -> SIGMOID -> BICUBIC
+		-> MAXPOOL -> FC -> Leaky RELU -> FC -> SIGMOID -> BILINEAR
 	Input size: 112 x 112
-	Downsampling size (before BICUBIC): 7 x 7 
+	Downsampling size (before BILINEAR): 7 x 7 
 	Output size: 112 x 112 (16x upsampling)
 
 	See Section 3.3 of the thesis report for further details.

@@ -4,9 +4,9 @@
 the thesis report. Works for Tensorflow 0.8.0
 
 It loads each mammogram and its label to memory, computes the function described
-by the network, and produces a segmentation of the same size as the original 
+by the network and produces a segmentation of the same size as the original 
 mammogram. The network outputs a heatmap of logits indicating the probability of
-mass accross the mammogram. The network uses separate lists of (preprocessed and
+mass accross the mammogram. It uses separate lists of (preprocessed and 
 augmented) mammograms for training and validation. Labels have value 0 for
 background, 127 for breast tissue and 255 for breast masses.
 
@@ -31,7 +31,7 @@ Example:
 	
 Note:
 	To run main() more than once in the same Python terminal you will need to
-	reset the Tensorflow graph (tf.reset_default-graph()) to clear previous
+	reset the Tensorflow graph (tf.reset_default_graph()) to clear previous
 	events.
 """
 import tensorflow as tf
@@ -74,9 +74,9 @@ def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
 	QueueRunner object to the graph to perform prefetching operations and 
 	dequeues an example.
 	
-	Uses queues to improve performance (as recommended in the tutorials). We can
-	not use tf.train.batch() to automatically create the example queue because
-	our images differ in size.
+	Uses queues to improve performance (as recommended in the tutorials). We 
+	could not use tf.train.batch() to automatically create the example queue 
+	because	our images differ in size.
 	
 	Args:
 		csv_path: A string. Path to csv file with image and label filenames.
@@ -137,14 +137,14 @@ def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
 def model(image, drop):
 	""" A fully convolutional network for image segmentation.
 
-	The architecture is modelled on the VGG-16 network but smaller. It has
-	approximately 2.9 million parameters.
+	The architecture is modelled as a small VGG-16 network. It has approximately
+	2.9 million parameters.
 
 	Architecture:
 		INPUT -> [[CONV -> Leaky RELU]*2 -> MAXPOOL]*2 -> [CONV -> Leaky RELU]*3
-		-> MAXPOOL -> FC -> Leaky RELU -> FC -> SIGMOID -> BICUBIC
+		-> MAXPOOL -> FC -> Leaky RELU -> FC -> SIGMOID -> BILINEAR
 	Input size: 112 x 112
-	Downsampling size (before BICUBIC): 7 x 7 
+	Downsampling size (before BILINEAR): 7 x 7 
 	Output size: 112 x 112 (16x upsampling)
 
 	See Section 3.3 of the thesis report for further details.
