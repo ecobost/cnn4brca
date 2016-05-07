@@ -3,13 +3,24 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## May 5 - May 11
+### Activities
+* Write Chapter 3 in thesis
+* Write results from Experiment 1 in thesis.
+
+### To do
+* Change loss function for experiment 2
+* Run Experiment 2 hyperparameter search
+* Ask for institutional email
+
+
 ## Apr 29 - May 4
 ### Activities
 * Run refined hyperparameter search
 * Train best network
-* Write hyperparameter results in thesis
 
 ### To do
+* Write hyperparameter results in thesis
 * Write results from the best network
 * Ask for institutional email
 
