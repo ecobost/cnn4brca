@@ -1,0 +1,9 @@
+Given the unsatisfactory results from our first experiment, we modify our model to tackle a possible cause: class imbalance. Architecture and regularization are preserved as described in Sections~\ref{subsec:Architecture1} and~\ref{subsec:Regularization1}.
+
+\subsection{Loss function}
+We compute the logistic loss function on each pixel in the image, weight the losses over masses by 9 and normal breast tissue by 1 and average over all pixels in the breast area---background is ignored. Assigning a higher value to errors on breast masses forces the network to invest more resources in correctly classifying masses---hopefully learning better features for this task.
+%---to avoid costly errors. 
+This technique balances the total sum of losses from the common class (normal breast tissue) with that of the rare class (breast masses) and is often used to fight class imbalance~\cite{Provost2000}.
+
+\subsection{Hyperparameter search}
+We trained 30 networks with combinations of $\alpha = 10^{unif(-6, -1)}$ and $\lambda = 10^{unif(-4, 1)}$. We later refined our search ranges to $\alpha = 10^{unif()}$ and $\lambda = 10^{unif()}$ and train 15 networks on them...

@@ -1,48 +1,35 @@
-We offer details about the hardware and software used for experiments, regularization methods, hyperparameters and implementation notes.
+We offer details about the learning stage of our experiments.
+% including hardware, software and optimization algorithms and other implementation notes.
 
 \subsection{Hardware}
-Training deep neural networks is computationally intensive and requires equipment with powerful GPUs. We enlist here the resources available for this thesis.
-We performed all our training in:
+%Training neural networks is computationally intensive and requires equipment with powerful GPUs. 
+We performed our experiments in 15 machines with the following specifications:
 \begin{table}[h]
 	\centering
-	\begin{tabular}{cp{3.8cm}p{1.7cm}p{1.8cm}cc}
+	\begin{tabular}{cp{3.8cm}p{1.8cm}cc}
 	\hline
-	\textbf{PC}	& \textbf{GPU}	& \textbf{HD}	& \textbf{CPU}	& \textbf{RAM}	& \textbf{\#} \\
+	\textbf{Location}	& \textbf{GPU}	& \textbf{CPU} &\textbf{HD}	& \textbf{RAM}\\
 	\hline
-	%Personal	& Nvidia NVS 5400M \newline 96 cores, 1GB, compute capability 2.1 & 57 GB \newline (30 free)	& i5-3210M \newline 2.5GHz	& 4 GB	& 1 \\
-	A4-401	& Nvidia Quadro K620 \newline 384 cores, 2GB, compute capability 5.0 & 240 GB \newline (230 free)	& i5-4570 \newline 3.2GHz	& 8 GB	& 27\\
-	%HP-Z400	& AMD Gallium 0.4  & 240 GB \newline (230 free)	& Xeon W3530 \newline 2.8GHz	& 2 GB	& 2\\
+	%Personal	& Nvidia NVS 5400M \newline 96 cores, 1GB, compute capability 2.1 & i5-3210M \newline 2.5GHz & 57 GB & 4 GB\\
+	A4-401 & Nvidia Quadro K620 \newline 384 cores, 2GB, compute capability 5.0 & i5-4570 \newline 3.2GHz	& 240 GB & 8 GB\\
 	\hline
 	\end{tabular}
 	\caption{Available hardware for experiments}
 \end{table}
-We did our experiments in x computers from A3-401
+
+Each computer was used independently to train networks, i.e., not distributed. Although we designed our models to be small enough to fit in the GPU memory, big images surpassed this storage limit causing errors; thus, we decided to train our networks only with the CPU. Training times ranged from 1.5 to 2 hours per epoch (1440 images).
 
 \subsection{Software}
-We use Tensorflow to train the networks and Python to develop any other tools (image retrieval and augmentation, model evaluation, figure generation, etc.).
-Python3, PILLOW, libraries used,etc.
-code available at:
-We implement this model using TensorFlow~\cite{Abadi2015}. Code is freely accesible in Github: github.com/ecobost/cnn4brca. See the Readme there for details.
+Models were implemented and trained using TensorFlow (v.8)~\cite{Abadi2015}. Tools for image retrieval, augmentation, evaluation and similar tasks were implemented in Python3.
+Code, as well as trained models, are freely accesible at: \url{github.com/ecobost/cnn4brca}.
 
-\subsection{Optimization rule}
-ADAM
-0.1 learning rate divided by 10 when convergence
-%Although the gradient rule can be seen as stochastic gradient descen because it uses a single image to compute the gradients it  can also be seen as stochastic radient descent given that it sums the gradients produced by applying the network in different spatial positions.
+\subsection{Initialization}
+Weights for the incoming connections to a unit are drawn from a normal distribution with zero mean and $\sqrt{2/n_{in}}$ standard deviation where $n_{in}$ is the number of connections. Biases are initialized to zero.
 
-% Training a convnet with filter size 112x112 (CONV->SIGMOID) is equivalent to training a linear classifier and could be used as a baseline. 12.5K parameters.
+\subsection{Optimization}
+We use ADAM ($\beta_1 = 0.9$, $\beta_2 = 0.995$ and $\epsilon = 10^{-6}$) for optimization.
+%, i.e., we perform stochastic gradient descent (with momentum and per-parameter adaptive learning rate).
+Each parameter update uses the information from only a single training example but given that the loss is a weighted average over all pixels in the image, gradients are as rich as if we were performing mini-batch gradient descent with a batch composed of all image patches for which the network produced a prediction.
 
-\subsection{Implementation details}
-Upsampling
-
-Loss function backprop weight mask
-% Create the mask when you zero-mean the image (may not work).
-Weight initialization
-
-\subsection{Memory and time usage}
-A3-401 (Quadro K600)
-CPU-only (tested in Worker 3) 100 in 6 minutes (queue)
-GPU-with-X-server-off (tested in Worker1/tty1): 100 in 1.5 minutes (no queue)
-network does not fit in GPU memory.
-Didn't fit in memory, around 2GB, epochs took around a couple of hours in CPU-only
-Models in Experiment 1 and 2 did this, models in experiment 3 didi this.
-14h/10 epochs
+The final model for the first experiment was trained for 50 epochs. The learning rate was divided by 10 after convergence at 30 epochs and then again at 40 epochs. 
+% Any early stopping thing here

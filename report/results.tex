@@ -1,18 +1,24 @@
 \chapter{Results}
 \label{ch:results}
-%Choose what is this experiment: The network could be slided across an image. Options: (1) a network for detection of microcalcification and one for masses (and slide both across and plot their results with differerent colors) (2) a network for diagnosis of microcalc and one for masses(slide them both) and (3) one that detects micro+mass vs non-lession (stanford guys did bad with this one) and (4) one that detects any lession(micro+mass+other) vs no lession and (5) one that also detects more than one network but has multiple output. 
-	Task selected. Architecture selected. Hyperparameters selected. results and discussion.
-We do this as described in chapter 3.
+We show the results of the different experiments and discuss their implications.
 
 \section{Experiment 1}
-
 \subsection{Hyperparameter search}
-The best resulting alpha and lambda where closer to the bottom of their range. Lambda in range 0-0.15 and alpha in range 0.000001 to 0.0001. Add plots.
-For val loss as long as alpha is small it will go down, no matter whether lambda is big or not but a big lambda makes it converge to all negative values.
-try alpha in 10unif(-6, -4), lambda in 10 unif(-5, -1)
+After running the first batch of hyperparameter search, the best $\lambda$ and $\alpha$ values appear closer to the bottom of the search range with the best lambda ranging from 0-0.15 and the best alpha in 0.000001 to 0.0001 (Fig.~\ref{fig:hs1}).
+
+figures
+
+% Discussion: Divergenece and it can be also observed that lambda is not as important as alpha.
+After refining the search range we obtained a better idea of which values could work. 
+
+figures
+
+Finally, we chose to train a network with $\alpha = 0.000004$ and $\lambda = 0.0008$.
 
 \subsection{Evaluation}
-The best performing architecture had that and that
+We show the validation logistic loss and training loss.
+
+threshold with 0.133 in validation set (still don't know in test set).
 
 \subsection{Qualitatiuve results}
 images of actual segmentations in the test set
