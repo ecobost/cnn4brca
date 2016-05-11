@@ -57,6 +57,7 @@ Modern features/trends not adopted
 		memory requirements by a factor of 1.5)
 	7x7 average pooling filters instead of fully connected
 	3x3/4x4 conv filters, stride 2, padding 1, to get rid of pooling
+	Replace pooling with dilated convolutions (in further convolutions)
 	deeper architecture
 	more feature maps 
 	no dropout (just batchnorm)
