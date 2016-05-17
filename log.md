@@ -3,6 +3,18 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## May 12 - May 18
+### Activities
+* Write code to test models in test set
+* Run hyperparameter search for Experiment 2
+* Write hyperparameter search result for Exp 2
+
+### To do
+* Train best Experiment 2 model
+* Write results for Experiment 2 in Chapter 4
+* Ask for institutional email
+
+
 ## May 5 - May 11
 ### Activities
 * Write Chapter 3 in thesis
