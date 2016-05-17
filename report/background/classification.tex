@@ -8,7 +8,7 @@ A \emph{classifier} takes as input a vector of \emph{features} $x \in \mathbb{R}
 
 The \emph{loss function} $L(\theta)$ of a classifier measures the amount of error the classifier incurs in for a particular choice of parameters $\theta$. This function could be formulated in many ways. A \emph{least-squares loss function} for a binary classifier (such as logistic regression) is presented in Equation~\ref{eq:LossFunction}:
 \begin{equation}
-	L(\theta) = \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2
+	L(\theta) = \frac{1}{2m}\sum_{i=1}^m(y^{(i)} - h_\theta(x^{(i)}))^2
 	\label{eq:LossFunction}
 \end{equation}
 where $m$ is the number of training examples, $y \in \{0,1\}$ is the real class of example $x$ and $h_\theta(x) \in \mathbb{R}$ is the output of the classifier for input $x$ with parameters $\theta$, this represents the probability that $x$ belongs to the positive class 1. We introduce another (rather more complex) loss function in the next section.
@@ -27,7 +27,7 @@ The model representation $h(x)$ needs to be chosen carefully. If we have an over
 
 A popular way to avoid overfitting (and underfitting) is to use a flexible model trained with regularization. \emph{Regularization} modifies the loss function to penalize the complexity of the model, forcing the learning stage to choose parameters that minimize both the training error of the classifier and the complexity of the model. Equation~\ref{eq:l2NormRegularization} shows the least-squares loss function with \emph{$l_2$-norm regularization}:
 \begin{equation}
-	L(\theta) =  \frac{1}{2m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})^2 + \frac{\lambda}{2m} ||\theta||_2
+	L(\theta) =  \frac{1}{2m}\sum_{i=1}^m(y^{(i)} - h_\theta(x^{(i)}))^2 + \frac{\lambda}{2m} ||\theta||_2
 	\label{eq:l2NormRegularization}
 \end{equation}
 where $||\cdot||_2$ is the euclidean norm of a vector. In addition to reducing training error, minimizing the regularized loss function will shrinken the parameters $\theta$ hopefully setting some of them to zero and simplifying $h(x)$. The \emph{regularization strength} $\lambda$ regulates the tradeoff between less training error and less regularization error. \emph{$l_1$-norm regularization} or \emph{lasso} is similar to $l_2$-norm regularization except that it shrinks the $l_1$-norm of $\theta$ instead of the $l_2$-norm.
