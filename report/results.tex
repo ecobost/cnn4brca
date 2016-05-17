@@ -4,24 +4,74 @@ We show the results of the different experiments and discuss their implications.
 
 \section{Experiment 1}
 \subsection{Hyperparameter search}
-After running the first batch of hyperparameter search, the best $\lambda$ and $\alpha$ values appear closer to the bottom of the search range with the best lambda ranging from 0-0.15 and the best alpha in 0.000001 to 0.0001 (Fig.~\ref{fig:hs1}).
-
-figures
+After the first hyperparameter search, we found that the best $\alpha$ and $\lambda$ values appear in the bottom of the search range with good $\alpha$s ranging from 0.000001 to 0.0001 and $\lambda$s ranging from 0 to 0.15 (Fig.~\ref{fig:Hs1}).
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs1_alpha.png}
+         \caption{IOU vs $\alpha$}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs1_lambda.png}
+         \caption{IOU vs $\lambda$}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs1_pcolor.png}
+         \caption{IOU (color) vs $\alpha$ (x) vs $\lambda$ (y)}
+	\end{subfigure}
+	\caption[First hyperparameter search for Experiment 1]{Results of the first search of hyperparameters. High IOU is better.}
+	 \label{fig:Hs1}
+\end{figure}
 
 % Discussion: Divergenece and it can be also observed that lambda is not as important as alpha.
-After refining the search range we obtained a better idea of which values could work. 
+After refining the search range we had a better idea of which combinations produced the best results (Fig.~\ref{fig:Hs2}).
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs2_alpha.png}
+         \caption{IOU vs $\alpha$}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs2_lambda.png}
+         \caption{IOU vs $\lambda$}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs2_trisurface.png}
+         \caption{IOU (z) vs $\alpha$ (x) vs $\lambda$ (y)}
+	\end{subfigure}
+	\caption[Second hyperparameter search for Experiment 1]{Results of the second search of hyperparameters. High IOU is better.}
+	 \label{fig:Hs2}
+\end{figure}
 
-figures
-
-Finally, we chose to train a network with $\alpha = 0.000004$ and $\lambda = 0.0008$.
+With this results, we chose to train a network with $\alpha = 0.000004$ and $\lambda = 0.0008$.
 
 \subsection{Evaluation}
-We show the validation logistic loss and training loss.
+After training the network, we used the validation set to select the best threshold: a 0.8 probability threshold (equivalent to 0.602 logit) produced the best IOU (0.133) in the validation set.
 
-threshold with 0.133 in validation set (still don't know in test set).
+The test set results are summarized in Table~\ref{tab:Results1}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{cccccccc}
+	\hline
+	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
+	\hline
+	0.022 & 0.031 & 0.038 & 0.975 & 0.028 & 0.982 & 0.040 & 0.028\\
+	\hline
+	\end{tabular}
+	\caption[Results for Experiment 1]{Test results for the trained network (Sec~\ref{sec:Experiment1}).}
+	\label{tab:Results1}
+\end{table}
 
-\subsection{Qualitatiuve results}
-images of actual segmentations in the test set
+\subsection{Qualitative results}
+We show the prediction and produced segmentation for some test examples.
+
+%Images of original mammogram and label and predicitions (logits) and final segmentation
 
 \section{Experiment 2}
 \subsection{Hyperparameter search}
