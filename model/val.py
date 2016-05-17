@@ -1,6 +1,6 @@
 # Written by: Erick Cobos T. (a01184587@itesm.mx)
 # Date: April 2016
-""" Calculate IOU measure for different thresholds (for cross-validation)
+""" Calculate evaluation metrics for different thresholds (for cross-validation)
 
 	We use linearly spaced probabilities in the range between the smallest and 
 	largest possible predicted probability (as estimated by the predictions on 
