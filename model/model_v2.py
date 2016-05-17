@@ -1,14 +1,17 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
-# Date: April-2016
-""" TensorFlow implementation of the convolutional network described in Ch. 3 of
-the thesis report. Works for Tensorflow 0.8.0
+# Date: May-2016
+""" TensorFlow implementation of the convolutional network described in Ch. 3
+(Experiment 2) of the thesis report. Works for Tensorflow 0.8.0
 
 It loads each mammogram and its label to memory, computes the function described
 by the network and produces a segmentation of the same size as the original 
 mammogram. The network outputs a heatmap of logits indicating the probability of
 mass accross the mammogram. It uses separate lists of (preprocessed and 
 augmented) mammograms for training and validation. Labels have value 0 for
-background, 127 for breast tissue and 255 for breast masses.
+background, 127 for breast tissue and 255 for breast masses. It uses a weighted 
+loss function where errors commited on breast masses are weighted by 0.9, errors
+on normal breast tissue are weighted by 0.1 and errors on background are 
+ignored (weighted by 0).
 
 Software design follows examples from the TensorFlow tutorials. It uses all
 available CPUs and a single GPU (if available) in one machine, i.e., it is not
@@ -275,7 +278,9 @@ def model(image, drop):
 def logistic_loss(prediction, label):
 	""" Logistic loss function averaged over pixels in the breast area.
 	
-	Pixels in the background are ignored.
+	Losses are weighted depending on the tissue where they occur: losses on 
+	masses are weighted by 0.9, on normal tissue by 0.1 and on the background by
+	0 (ignored).
 	
 	Args:
 		prediction: A 2D tensor of floats. The predicted heatmap of logits.
@@ -288,13 +293,15 @@ def logistic_loss(prediction, label):
 	with tf.name_scope('logistic_loss'):
 		# Generate binary masks.
 		mass = tf.to_float(tf.equal(label, 255))
-		breast_area = tf.to_float(tf.greater(label, 0))
-
+		tissue = tf.to_float(tf.equal(label, 127))
+		breast_area = mass + tissue
+		
 		# Compute loss per pixel
 		pixel_loss = tf.nn.sigmoid_cross_entropy_with_logits(prediction, mass)
 	
-		# Weight the errors (1 for pixels in breast area, zero otherwise)
-		weighted_loss = tf.mul(pixel_loss, breast_area)
+		# Weight the errors
+		weighted_loss = 0.9 * tf.mul(pixel_loss, mass)
+		weighted_loss += 0.1 * tf.mul(pixel_loss, tissue)
 	
 		# Average over pixels in the breast area
 		loss = tf.reduce_sum(weighted_loss)/tf.reduce_sum(breast_area)
