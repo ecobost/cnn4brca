@@ -69,13 +69,38 @@ The test set results are summarized in Table~\ref{tab:Results1}
 \end{table}
 
 \subsection{Qualitative results}
-We show the prediction and produced segmentation for some test examples.
+We show the prediction and produced segmentation for some test examples.% in appendix A
 
 %Images of original mammogram and label and predicitions (logits) and final segmentation
 
 \section{Experiment 2}
 \subsection{Hyperparameter search}
+Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bottom of the search range (Fig.~\ref{fig:Hs4}), however, performance is more robust to small changes. We show results only for the networks with the fifteen lowest $\alpha$s as bigger values caused training to diverge.
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs4_alpha.png}
+         \caption{IOU vs $\alpha$}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs4_lambda.png}
+         \caption{IOU vs $\lambda$}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs4_pcolor.png}
+         \caption{IOU (color) vs $\alpha$ (x) vs $\lambda$ (y)}
+	\end{subfigure}
+	\caption[Hyperparameter search for Experiment 2]{Results of the hyperparameter search. High IOU is better.}
+	 \label{fig:Hs4}
+\end{figure}
+
+With this results we selected $\alpha = 0.00003$ and $\lambda = 0.002$ to train our network.
+
 \subsection{Evaluation}
+
 \subsection{Qualitative results}
 
 
