@@ -31,5 +31,5 @@ We use ADAM ($\beta_1 = 0.9$, $\beta_2 = 0.995$ and $\epsilon = 10^{-6}$) for op
 %, i.e., we perform stochastic gradient descent (with momentum and per-parameter adaptive learning rate).
 Each parameter update uses the information from only a single training example but given that the loss is a weighted average over all pixels in the image, gradients are as rich as if we were performing mini-batch gradient descent with a batch composed of all image patches for which the network produced a prediction.
 
-The final model for the first experiment was trained for 50 epochs. The learning rate was divided by 10 after convergence at 30 epochs and then again at 40 epochs. 
+The final model for the first experiment was trained for 50 epochs. The learning rate was divided by 10 after convergence at 30 epochs and then again at 40 epochs. For the second experiment, the model was trained for 50 epochs; learning rate was divided by 10 at epoch 30. Networks had converged by the time we stopped training.
 % Any early stopping thing here

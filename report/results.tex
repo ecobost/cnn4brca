@@ -100,6 +100,19 @@ Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bot
 With this results we selected $\alpha = 0.00003$ and $\lambda = 0.002$ to train our network.
 
 \subsection{Evaluation}
+We obtained the best IOU in the validation set (0.133) with threshold 0.6; test set results are summarized below (Tab.~\ref{tab:Results2}).
+\begin{table}[h]
+	\centering
+	\begin{tabular}{cccccccc}
+	\hline
+	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
+	\hline
+	 0.028 & 0.041 & 0.071 & 0.967 & 0.046 & 0.973 & 0.052 & 0.046\\
+	\hline
+	\end{tabular}
+	\caption[Results for Experiment 2]{Test results for the trained network (Sec~\ref{sec:Experiment2}).}
+	\label{tab:Results2}
+\end{table}
 
 \subsection{Qualitative results}
 

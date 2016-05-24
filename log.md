@@ -3,6 +3,19 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## May 19 - May 25
+### Activities
+* Train best Experiment 2 model
+* Write results for Experiment 2 in Chapter 4
+
+### To do
+* Write code for model 3
+* Ask for institutional email
+
+### Questions
+1. Should I try using a Resnet-like model with dilated convolutions?
+2. Should I try a simpler model with less parameters (maybe in exchange for more memory usage)?
+
 ## May 12 - May 18
 ### Activities
 * Write code to test models in test set
