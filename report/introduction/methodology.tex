@@ -6,7 +6,7 @@ We carried out various tasks to achieve the proposed objectives and test our hyp
 A thorough review of the published work using the databases and resources available in the institution. By the end of this task, a complete theoretical background was obtained and reported. It also helped identify gaps in the literature and refine the scope of the project.
 	\item \textbf{Database processing}
 
-We looked for a mammographic database adept to our research, asked permission and developped tools to store, preprocess and label the images.
+We looked for a mammographic database adept to our research, asked permission and developped tools to store, label and preprocess the images.
 	\item \textbf{Software review}
 
 Once we had a clear idea of what experiments will be executed, we found and learned-to-use appropiate software. 
@@ -19,22 +19,23 @@ We will train a standard convolutional networks with fixed parameters for the de
 \end{comment}
 	\item \textbf{Model selection}
 
-We performed simple experiments to determine the best parameters for the final model. Using these insights and the current literature on convolutional networks, we selected image preprocessing techniques, a network architecture and its features, training and regularization procedures, and evaluation metrics.
+Using insights from the current literature on convolutional networks and medical image analysi, we selected image preprocessing techniques, a network architecture, training and regularization procedures, evaluation metrics and postprocessing techniques for our experiments.
 	\item \textbf{Experiments}
-
-We trained the chosen convolutional network on our mammographic database. We performed crossvalidation to adjust the most important learning parameters and use regularization to avoid possible overfitting. We answered two research questions: is the performance of the convolutional network considerably improved by parameter tuning and, more importantly, is this a good performance?.
-	\item YET TO WRITE
-
+	
+We trained the chosen convolutional networks on our mammographic database. We performed crossvalidation to adjust the most important learning parameters and use regularization to avoid possible overfitting. We answered two research questions: is the performance of the convolutional network considerably improved by parameter tuning and, more importantly, is this a good performance?.
+	
 \begin{comment}
 	\item \textbf{Alternative convolutional networks}
 
 We will train a linear classifier, probably rectified linear units, on the features obtained from a convolutional network trained on the ImageNet database, i.e., we will use an already trained convolutional network instead of one trained specifically in mammograms. We will also use an all convolutional network of a size relative to the best arhcitecture up to that point. We want to answer two questions: can we use an already trained convolutional network to classify mammograms and do using an all convolutional network affects significatively the results?
+\end{comment}
 
 	\item \textbf{Gathering results}
 
-Produce results on the test set and elaborate figures and tables. This could be obtained directly from software output or from further program executions.
-	\item \textbf{Reporting results}
+We evaluated our final models on the test set and elaborated figures and tables to present the results.
 
-Write the thesis and any article or technical guide which may result from this work. Both this and the previous step were carried on along the execution of the project, benefiting from the supervisors' feedback.
-\end{comment}
+	\item \textbf{Reporting results}
+	
+We revised and wrote the final draft of this thesis.
 \end{enumerate}
+%Many of this stages were carried on in parallel during the execution of the project, benefiting from the supervisors' feedback.
