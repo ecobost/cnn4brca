@@ -464,10 +464,4 @@
 \newblock {\em CoRR abs/1505.00853\/} (2015).
 \newblock Available online on \url{arxiv.org/abs/1505.00853}.
 
-\bibitem{Yu2016}
-{\sc Yu, F., and Koltun, V.}
-\newblock Multi-scale context aggregation by dilated convolutions.
-\newblock {\em CoRR abs/1511.07122\/} (2016).
-\newblock Available online on \url{arxiv.org/abs/1511.07122}.
-
 \end{thebibliography}
