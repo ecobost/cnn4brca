@@ -3,7 +3,7 @@ We describe the network architecture, loss function and hyperparameter search fo
 \subsection{Architecture}
 \label{subsec:Architecture1}
 %Following recommendations from Section~\ref{sec:PracticalDL}, we define a network with seven convolutional layers and two fully connected layers (Tab.~\ref{tab:convNetArchitecture}). 
-We model our architecture on a VGG network~\cite{Simonyan2014}, winner of the 2014 ImageNet competition~(Tab.~\ref{tab:convNetArchitecture}).
+We model our architecture on a VGG network~\cite{Simonyan2014}, winner of the 2014 ImageNet competition~(Tab.~\ref{tab:convNetArchitecture1}).
 \begin{table}[h]
 	\centering
 	\begin{tabular}{lccccr}
@@ -23,17 +23,19 @@ We model our architecture on a VGG network~\cite{Simonyan2014}, winner of the 20
 	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $7 \times 7 \times 112$ & -\\
 	\texttt{FC -> Leaky RELU} & $7 \times 7$ & 1 & 3 & $7 \times 7 \times 448$ & 2\,459\,072\\
 	\texttt{FC} & $1 \times 1$ & 1 & 0 & $7 \times 7 \times 1$ & 449 \\
-	\texttt{BILINEAR} & - & - & - & $112 \times 112 \times 1$ & -\\
+	\texttt{BILINEAR (x16)} & - & - & - & $112 \times 112 \times 1$ & -\\
 	\hline
 	\end{tabular}
-	\caption[Selected convolutional network architecture]{Architecture of the network used for experiments. It shows the filter size, stride and padding in each layer as well as the resulting volume and number of learnable parameters per layer.}
-	\label{tab:convNetArchitecture}
+	\caption[Selected convolutional network architecture]{Architecture of the network used for experiments. It shows the filter size, stride, padding, resulting volume and number of learnable parameters per layer.}
+	\label{tab:convNetArchitecture1}
 \end{table}
 
 	Each image is whitened (zero-mean centered and divided by its standard deviation) individually before being input. The first convolutional layer reduces the spatial dimensions of the input from $112 \times 112$ to $56 \times 56$ to cut the number of parameters and memory requirements of the network. Subsequent convolutional layers preserve the dimensions of its input volume relegating subsampling to pooling layers. Finally, the volume is upsampled by a factor of 16 to recover the dimensions of the original image (Sec.~\ref{sec:Segmentation}). The network outputs a heatmap of logits with the same size as the input image.
 %We produce a heatmap of logits rather than probabilities to improve numerical stability.
 
 	This architecture defines 2.91 million parameters. %2 906 681
+	
+	%108 752 632 float numbers
 
 \subsection{Regularization}
 \label{subsec:Regularization1}

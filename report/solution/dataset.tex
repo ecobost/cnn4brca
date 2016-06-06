@@ -50,7 +50,7 @@ We zero any pixel below the mean pixel intensity of the image (calculated only o
 Background reduction plus contrast normalization highlights breast masses, which are brighter than normal breast tissue; normalizes images from patients with darker or lighter tissue and improves convergence~\cite{Arevalo2016}. However, it may destroy important texture information by blending it with the background or cause false positives by highlighting dense tissue.
 
 \subsection{Resizing}
-We resize our images to hold a $2 \times 2$ cm area into $112 \times 112$ pixels---roughly a 2.5 downsampling factor.
+We resize our images to hold a $2 \times 2$ cm area into $112 \times 112$ pixels~\footnote{We use $128 \times 128$ for Experiment 3.}.---roughly a 2.5 downsampling factor
 %We use Lanczos interpolation for mammograms and nearest neighbor interpolation for labels; both present in PILLOW, the Python Image Library.
 We resize them with PILLOW, the Python Image Library, using Lanczos interpolation for mammograms and nearest neighbor interpolation for labels (Fig.~\ref{subfig:Preprocessingc}).
 
@@ -61,7 +61,7 @@ Lanczos interpolation is a high quality downsampling filter recommended by PILLO
 
 \subsection{Cropping}
 We calculate the bounding box of the breast area in the label image and crop the mammogram and the label to delete unnecesary black spaces (Fig.~\ref{subfig:Preprocessingd}). 
-Because our network downsamples images by a factor of 16 to later upsample them by the same factor, we make sure the dimensions of the cropped image are multiples of 16 (cropping a slighlty bigger area if needed) to recover the exact dimensions after upsampling.
+Because our networks downsample images by a factor of 16 to later upsample them by the same factor, we make sure the dimensions of the cropped image are multiples of 16 (cropping a slighlty bigger area if needed) to recover the exact dimensions after upsampling.
 
 \begin{figure}[h]
 	\centering
