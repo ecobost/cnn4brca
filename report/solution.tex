@@ -32,7 +32,5 @@ In particular, we train a convolutional network to estimate the probability of e
 \section{Evaluation}
 \input{solution/evaluation}
 
-\begin{comment}
 \section{Summary}
-In this chapter, we provide a thorough description of our experiments and the parameters used for each experiment. Database was preprocessed using that and thata. Experiment 1 does that and that, Experiment 2 does that and that. We hope the description is detailed enough to allow for replication of results
-\end{comment}
+Mammograms from the BCDR-D01 database were enhanced, resized and divided to obtain our data set. An architecture based on the VGG network (9 layers, 2.9M parameters) was used for the first experiments, one of which used a weighted loss function to fight class imbalance. A different architecture based on the Residual network (10 layers, 0.9M parameters) was used for the last experiment. We performed hyperparameter search to fine tune the learning rate and regularization parameter of each network; other hyperparameters were set manually. Networks were written in TensorFlow and optimized using ADAM. Using a validation set, we selected a threshold to produce the final segmentation from the heatmap of predictions. Many different performance metrics are reported.
