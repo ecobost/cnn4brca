@@ -3,6 +3,17 @@ Written by: Erick Cobos T. (a01184587@itesm.mx)
 
 Log with activities and questions arising during every week
 
+## Jun 2 - Jun 8
+### Activities
+* Write Experiment 3 in Ch 3
+* Write code for Experiment 3
+* Run Experiment 3 Hyperparameter search
+
+### To do
+* Run Experiment 3
+* Ask for institutional email
+
+
 ## May 19 - May 25
 ### Activities
 * Train best Experiment 2 model
@@ -14,7 +25,9 @@ Log with activities and questions arising during every week
 
 ### Questions
 1. Should I try using a Resnet-like model with dilated convolutions?
+	Answer: Sure :)
 2. Should I try a simpler model with less parameters (maybe in exchange for more memory usage)?
+
 
 ## May 12 - May 18
 ### Activities
