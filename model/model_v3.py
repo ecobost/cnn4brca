@@ -1,7 +1,7 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
 # Date: Jun-2016
 """ TensorFlow implementation of the convolutional network described in Ch. 3
-(Experiment 3) of the thesis report. Works for Tensorflow 0.8.0
+(Experiment 3) of the thesis report. Works for Tensorflow 0.9.0
 
 It loads each mammogram and its label to memory, computes the function described
 by the network and produces a segmentation of the same size as the original 
@@ -286,7 +286,7 @@ def model(image, drop):
 		conv9 = dropout(relu, keep_prob=0.6)
 		
 	with tf.name_scope('fc'):
-		fc = atrous_conv_op(fc, [8, 8, 256, 1], dilation=4)
+		fc = atrous_conv_op(conv9, [8, 8, 256, 1], dilation=4)
 		
 	with tf.name_scope('upsampling'):
 		new_dimensions = tf.shape(fc)[1:3] * 4
@@ -496,7 +496,7 @@ def main(restore_variables=False):
 				log("Validation loss @", step, ":", val_loss)
 			
 			# Write checkpoint	
-			if step%200 == 0 or step == TRAINING_STEPS:
+			if step%200 == 0 or i == (TRAINING_STEPS - 1):
 				checkpoint_name = os.path.join(checkpoint_dir, 'model')
 				checkpoint_path = saver.save(sess, checkpoint_name, step)
 				log("Checkpoint saved in:", checkpoint_path)

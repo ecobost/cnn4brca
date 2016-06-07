@@ -11,11 +11,11 @@ Note:
 	Otherwise, restore will not work.
 """
 import tensorflow as tf
-import model
+import model_v3 as model
 import scipy.misc
 import numpy as np
 
-checkpoint_dir = "checkpoint/run3"
+checkpoint_dir = "checkpoint"
 
 def load_image(image_path):
 	""" Load png image as tensor and whiten it."""
@@ -45,30 +45,35 @@ def IOU(segmentation, label):
 	return iou
 	
 def evaluate(image_path, label_path):
-	""" Loads network, reads image and returns IOU."""
+	""" Loads network, reads images, saves prediction and segmentation as .png
+		and reports IOU."""
 	# Load image and label
 	image = load_image(image_path)
 	label = scipy.misc.imread(label_path)
 	
 	# Define the model
-	prediction = model.model(image, drop=False)
+	prediction = model.model(image, drop=tf.constant(False))
 	
 	# Get a saver
 	saver = tf.train.Saver()
 
-	# Launch the graph
-	with tf.Session() as sess:
+	# Use CPU-only. To enable GPU, delete this and call with tf.Session() as ...
+	config = tf.ConfigProto(device_count={'GPU':0})
+	
+	# Launch graph
+	with tf.Session(config=config) as sess:
 		# Restore variables
 		checkpoint_path = tf.train.latest_checkpoint(checkpoint_dir)
 		saver.restore(sess, checkpoint_path)
 		model.log("Variables restored from:", checkpoint_path)
 	
 		logits = prediction.eval()
+		scipy.misc.imsave("prediction.png", logits)
 		
-		segmentation = post(logits, label, threshold = -1)
+		segmentation = post(logits, label, threshold = 0)
+		scipy.misc.imsave("segmentation.png", segmentation)
 		
 		iou = IOU(segmentation, label)
-		
 		print("iou =", iou)
 		
-	return iou
+	return iou, logits, segmentation

@@ -80,8 +80,11 @@ def main():
 	# Get a saver
 	saver = tf.train.Saver()
 
-	# Launch the graph
-	with tf.Session() as sess:
+	# Use CPU-only. To enable GPU, delete this and call with tf.Session() as ...
+	config = tf.ConfigProto(device_count={'GPU':0})
+	
+	# Launch graph
+	with tf.Session(config=config) as sess:
 		# Restore variables
 		checkpoint_path = tf.train.latest_checkpoint(checkpoint_dir)
 		saver.restore(sess, checkpoint_path)
