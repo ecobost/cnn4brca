@@ -7,9 +7,9 @@ Log with activities and questions arising during every week
 ### Activities
 * Write Experiment 3 in Ch 3
 * Write code for Experiment 3
-* Run Experiment 3 Hyperparameter search
 
 ### To do
+* Run Experiment 3 Hyperparameter search
 * Run Experiment 3
 * Ask for institutional email
 
