@@ -131,25 +131,25 @@ with open(input_filename, newline = '') as csv_file, \
 
 		# Save filenames to csv (verbose)
 		output_file.write(basename + "_v1.png" + "," + 
-				basename + label_suffix + "_v1.png" + "," + "\n")
+				basename + label_suffix + "_v1.png" + "\n")
 
 		output_file.write(basename + "_v2.png" + "," +
-				basename + label_suffix + "_v2.png" + "," + "\n")
+				basename + label_suffix + "_v2.png" + "\n")
 
 		output_file.write(basename + "_v3.png" + "," +
-				basename + label_suffix + "_v3.png" + "," + "\n")
+				basename + label_suffix + "_v3.png" + "\n")
 
 		output_file.write(basename + "_v4.png" + "," +
-				basename + label_suffix + "_v4.png" + "," + "\n")
+				basename + label_suffix + "_v4.png" + "\n")
 
 		output_file.write(basename + "_v5.png" + "," +
-				basename + label_suffix + "_v5.png" + "," + "\n")
+				basename + label_suffix + "_v5.png" + "\n")
 
 		output_file.write(basename + "_v6.png" + "," +
-				basename + label_suffix + "_v6.png" + "," + "\n")
+				basename + label_suffix + "_v6.png" + "\n")
 
 		output_file.write(basename + "_v7.png" + "," +
-				basename + label_suffix + "_v7.png" + "," + "\n")
+				basename + label_suffix + "_v7.png" + "\n")
 
 		output_file.write(basename + "_v8.png" + "," +
-				basename + label_suffix + "_v8.png" + "," + "\n")
+				basename + label_suffix + "_v8.png" + "\n")
