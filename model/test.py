@@ -9,7 +9,7 @@
 """
 
 import tensorflow as tf
-import model_v1 as model
+import model_v3 as model
 import csv
 import scipy.misc
 import numpy as np
