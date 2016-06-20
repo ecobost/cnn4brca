@@ -45,8 +45,8 @@ import sys
 
 # Set some training parameters
 TRAINING_STEPS = 1440*2 # There are 1440 examples in the training set
-LEARNING_RATE = 1e-4
-LAMBDA = 1e-3
+LEARNING_RATE = 0.0000015654
+LAMBDA = 0.26921
 
 # Set some paths
 training_dir = "training" 
@@ -425,7 +425,9 @@ def main(restore_variables=False):
 	# Get a summary writer, saver and coordinator
 	summaries = tf.merge_all_summaries()
 	summary_writer = tf.train.SummaryWriter(summary_dir)
+	if not os.path.exists(summary_dir): os.makedirs(summary_dir)
 	saver = tf.train.Saver()
+	if not os.path.exists(checkpoint_dir): os.makedirs(checkpoint_dir)
 	coord = tf.train.Coordinator()
 
 	# Use CPU-only. To enable GPU, delete this and call with tf.Session() as ...
