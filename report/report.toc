@@ -81,7 +81,11 @@
 \contentsline {subsection}{\numberline {4.2.1}Hyperparameter search}{44}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Evaluation}{44}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}Qualitative results}{45}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Discussion}{45}{section.4.3}
+\contentsline {section}{\numberline {4.3}Experiment 3}{45}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Hyperparameter search}{45}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Evaluation}{45}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Qualitative results}{45}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Discussion}{45}{section.4.4}
 \contentsline {chapter}{\numberline {5}Conclusions}{46}{chapter.5}
 \contentsline {section}{\numberline {5.1}Future Work}{46}{section.5.1}
-\contentsline {chapter}{Bibliography}{53}{chapter*.41}
+\contentsline {chapter}{Bibliography}{53}{chapter*.43}

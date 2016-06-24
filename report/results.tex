@@ -73,6 +73,8 @@ We show the prediction and produced segmentation for some test examples.% in app
 
 %Images of original mammogram and label and predicitions (logits) and final segmentation
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Experiment 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experiment 2}
 \subsection{Hyperparameter search}
 Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bottom of the search range (Fig.~\ref{fig:Hs4}), however, performance is more robust to small changes. We show results only for the networks with the fifteen lowest $\alpha$s as bigger values caused training to diverge.
@@ -115,6 +117,53 @@ We obtained the best IOU in the validation set (0.133) with threshold 0.6; test 
 \end{table}
 
 \subsection{Qualitative results}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EXPERIMENT 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experiment 3}
+\subsection{Hyperparameter search}
+As with previous experiments the best $\alpha$ and $\lambda$ values appear closer to the bottom of the search range (Fig.~\ref{fig:Hs5}). We chose to use $\alpha = 0.00004$ and $\lambda = 0.00007$ for our final network.
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs5_alpha.png}
+         \caption{IOU vs $\alpha$}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs5_lambda.png}
+         \caption{IOU vs $\lambda$}
+	\end{subfigure}
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+                \includegraphics[width=\textwidth]{plots/hs5_pcolor.png}
+         \caption{IOU (color) vs $\alpha$ (x) vs $\lambda$ (y)}
+	\end{subfigure}
+	\caption[Hyperparameter search for Experiment 3]{Results of the hyperparameter search. High IOU is better.}
+	 \label{fig:Hs5}
+\end{figure}
+
+\subsection{Evaluation}
+%After training, we selected the threshold of ... probability (equivalent to ... logit) which produced an .... IOu in the validation set.
+
+The test set results are summarized in Table~\ref{tab:Results1}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{cccccccc}
+	\hline
+	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
+	\hline
+	- & - & - & - & - & - & - & -\\
+	\hline
+	\end{tabular}
+	\caption[Results for Experiment 1]{Test results for the trained network (Sec~\ref{sec:Experiment1}).}
+	\label{tab:Results1}
+\end{table}
+
+\subsection{Qualitative results}
+
 
 
 \section{Discussion}
