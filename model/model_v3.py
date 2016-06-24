@@ -45,8 +45,8 @@ import sys
 
 # Set some training parameters
 TRAINING_STEPS = 1440*2 # There are 1440 examples in the training set
-LEARNING_RATE = 0.0000015654
-LAMBDA = 0.26921
+LEARNING_RATE = 1e-5
+LAMBDA = 1e-4
 
 # Set some paths
 training_dir = "training" 
