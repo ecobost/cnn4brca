@@ -52,7 +52,7 @@ After refining the search range we had a better idea of which combinations produ
 With this results, we chose to train a network with $\alpha = 0.000004$ and $\lambda = 0.0008$.
 
 \subsection{Evaluation}
-After training the network, we used the validation set to select the best threshold: a 0.8 probability threshold (equivalent to 0.602 logit) produced the best IOU (0.133) in the validation set.
+After training the network, we used the validation set to select the best threshold: a 0.8 probability threshold (equivalent to 1.386 logit) produced the best IOU (0.133) in the validation set.
 
 The test set results are summarized in Table~\ref{tab:Results1}
 \begin{table}[h]
@@ -102,7 +102,7 @@ Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bot
 With this results we selected $\alpha = 0.00003$ and $\lambda = 0.002$ to train our network.
 
 \subsection{Evaluation}
-We obtained the best IOU in the validation set (0.133) with threshold 0.6; test set results are summarized below (Tab.~\ref{tab:Results2}).
+We obtained the best IOU in the validation set (0.133) with threshold probability 0.65 (logit 0.619); test set results are summarized below (Tab.~\ref{tab:Results2}).
 \begin{table}[h]
 	\centering
 	\begin{tabular}{cccccccc}
