@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{Lesion segmentation}{3}{0}{1}
+\beamer@sectionintoc {2}{Convolutional networks}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Classification}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Segmentation}{8}{0}{2}
+\beamer@sectionintoc {3}{Work done}{9}{0}{3}
+\beamer@sectionintoc {4}{Future work}{19}{0}{4}
