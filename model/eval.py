@@ -4,7 +4,7 @@
 """ Quick script to eval images using a trained network
 Example:
 	>>> import eval
-	>>> prediction = eval.evaluate("my_image.png", "my_label.png")
+	>>> iou, logits, segmentation = eval.evaluate("my_image.png", "my_label.png")
 
 Note:
 	Call tf.reset_default_graph() to run it twice in the same python terminal.
