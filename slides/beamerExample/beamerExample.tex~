@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Reference: en.wikibooks.org/wiki/LaTeX/Presentations
+%
+% An example of use of beamer. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer}
+
+% Packages and commands
+\newcommand{\source}[1]{\vskip0pt plus 1filll \scriptsize #1}
+
+% Theme config
+\usetheme{Madrid}
+\usecolortheme{seahorse} %beaver for red
+
+% Title information
+\title[Short title]{Long title}
+\subtitle[Short subtitle]{Long subtitle}
+\author[Cobos, Author] {Erick Cobos\inst{1} \and Second Author\inst{2}}
+\date[CONFERENCE]{Long Conference Name, Year}
+\institute[Short University Name]{
+	\inst{1} Department 1 \\ University 1
+	\and
+	\inst{2} Department 2 \\ University 2
+}
+\subject{Subject}
+
+% Put table of content before every section
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\begin{document}
+	\begin{frame}
+		\titlepage
+	\end{frame}
+
+	% Section
+	\section[Short section]{Section}
+	\begin{frame}
+		\frametitle{Frame title}
+		\framesubtitle{Frame subtitle}
+		Content
+		\begin{equation}
+			W = W -\alpha\frac{\partial J}{\partial W}
+		\end{equation}
+		\source{Cobos et al., 2016}
+	\end{frame}
+
+	\subsection[Short subsection]{Subsection}
+	\begin{frame}
+		\frametitle{Simple animations}
+		Content
+		\pause
+
+		More content
+
+		\begin{itemize}[<+->]
+			\item Item 1
+			\item Item 2
+		\end{itemize}
+	\end{frame}
+\end{document}
