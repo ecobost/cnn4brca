@@ -1,5 +1,5 @@
 # Written by: Erick Cobos T. (a01184587@itesm.mx)
-# Date: May 2016
+# Date: July 2016
 
 """ Calculate evaluation metrics on the test set and record all segmentations
 
@@ -17,7 +17,7 @@ import numpy as np
 checkpoint_dir = "checkpoint"
 csv_path = "test/test.csv"
 data_dir = "test/"
-threshold_as_prob = 0.5
+threshold_as_prob = 0.6
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -32,15 +32,21 @@ def post(logits, label, threshold):
 	thresholded[label == 0] = 0
 	return thresholded
 	
-def metrics(segmentation, label):
-	"""Returns an array with different metrics for the given image and label."""
-	epsilon = 1e-7 # To avoid division by zero
-	
+def compute_confusion_matrix(segmentation, label):
+	"""Confusion matrix for a mammogram: # of pixels in each category."""
 	# Confusion matrix (only over breast area)
 	true_positive = np.sum(np.logical_and(segmentation == 255, label == 255))
 	false_positive = np.sum(np.logical_and(segmentation == 255, label != 255))
 	true_negative = np.sum(np.logical_and(segmentation == 127, label == 127))
 	false_negative = np.sum(np.logical_and(segmentation == 127, label != 127))
+	
+	cm_values = [true_positive, false_positive, true_negative, false_negative]
+	
+	return np.array(cm_values)
+	
+def compute_metrics(true_positive, false_positive, true_negative, false_negative):
+	"""Array with different metrics from the given confusion matrix values."""
+	epsilon = 1e-7 # To avoid division by zero
 	
 	# Evaluation metrics
 	accuracy = (true_positive + true_negative) / (true_positive + true_negative 
@@ -87,9 +93,9 @@ def main():
 		threshold = np.log(threshold_as_prob) - np.log(1 - threshold_as_prob)
 		print("Threshold: {} ({})".format(threshold, threshold_as_prob))
 			
-		# Reset reader and metric_accum
+		# Initialize reader and accums
 		csv_reader = csv.reader(lines)
-		metric_accum = np.zeros(8)
+		confusion_matrix = np.zeros(4) # tp, fp, tn, fn
 		
 		# For every example in test set
 		for row in csv_reader:
@@ -107,23 +113,23 @@ def main():
 			# Post-process prediction
 			segmentation = post(logits, label, threshold)
 			
-			# Calculate iou				
-			metric_accum += metrics(segmentation, label)
+			# Accumulate confusion matrix values
+			#if label.max() == 255: # only if the mammogram had a mass
+			confusion_matrix += compute_confusion_matrix(segmentation, label)
 			
 			# Write prediction and segmentation to memory
-			prediction_path = image_path[:-4] + '_logits.png' 
-			segmentation_path = image_path[:-4] + '_segmentation.png'
-			scipy.misc.imsave(prediction_path, logits)
-			scipy.misc.imsave(segmentation_path, segmentation)
+			#prediction_path = image_path[:-4] + '_logits.png' 
+			#segmentation_path = image_path[:-4] + '_segmentation.png'
+			#scipy.misc.imsave(prediction_path, logits)
+			#scipy.misc.imsave(segmentation_path, segmentation)
 		
-		# Calculate mean iou
-		number_of_examples = csv_reader.line_num
-		mean_metrics = metric_accum/number_of_examples
+		# Calculate metrics
+		metrics = compute_metrics(*confusion_matrix)
 		
 		# Report metrics
 		metric_names = ['IOU', 'F1-score', 'G-mean', 'Accuracy',
 					   'Sensitivity', 'Specificity', 'Precision', 'Recall']
-		for name, metric in zip(metric_names, mean_metrics):
+		for name, metric in zip(metric_names, metrics):
 			print("{}: {}".format(name, metric))
 		print('')
 				
@@ -141,7 +147,7 @@ def main():
 			
 		print("Logistic loss: ", loss_accum/csv_reader.line_num)
 				
-	return metrics, metric_names,
+	return metrics, metric_names
 	
 if __name__ == "__main__":
 	main()
