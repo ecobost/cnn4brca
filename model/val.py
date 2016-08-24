@@ -126,6 +126,7 @@ def main():
 			# Reset reader and metric_accum
 			csv_reader = csv.reader(lines)
 			confusion_matrix = np.zeros(4) # tp, fp, tn, fn
+			confusion_matrix2 = np.zeros(4) # tp, fp, tn, fn
 			
 			# For every example
 			for row in csv_reader:
@@ -144,17 +145,19 @@ def main():
 				segmentation = post(logits, label, thresholds[i])
 				
 				# Accumulate confusion matrix values
-				#if label.max() == 255: # only if the mammogram had a mass
 				confusion_matrix += compute_confusion_matrix(segmentation, label)
-			
+				if label.max() == 255: # only if the mammogram had a mass
+					confusion_matrix2 = compute_confusion_matrix(segmentation, label)
+						
 			# Calculate metrics
 			metrics = compute_metrics(*confusion_matrix)
+			metrics2 = compute_metrics(*confusion_matrix2)
 			
 			# Report metrics
 			metric_names = ['IOU', 'F1-score', 'G-mean', 'Accuracy',
 						   'Sensitivity', 'Specificity', 'Precision', 'Recall']
-			for name, metric in zip(metric_names, metrics):
-				print("{}: {}".format(name, metric))
+			for name, metric, metric2 in zip(metric_names, metrics, metrics2):
+				print("{}: {} / {}".format(name, metric, metric2))
 			print('')
 				
 		# Logistic loss (same for any threshold)
