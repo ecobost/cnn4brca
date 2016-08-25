@@ -21,7 +21,7 @@ import numpy as np
 checkpoint_dir = "checkpoint"
 csv_path = "val/val.csv"
 data_dir = "val/"
-number_of_thresholds = 20
+number_of_thresholds = 25
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -100,9 +100,10 @@ def main():
 		#probs = 10 ** np.random.uniform(-3, 0, number_of_thresholds)
 		
 		# Get probabilities uniformly distributed between zero and 1
-		#probs = np.linspace(0.001, 0.999, 20)
+		probs = np.linspace(0.001, 0.999, number_of_thresholds)
 		
 		# Get random probabilities estimated from an example
+		"""
 		rand_index = np.random.randint(len(lines))
 		rand_line = lines[rand_index]
 		for row in csv.reader([rand_line]): 
@@ -119,7 +120,7 @@ def main():
 			
 			# Get thresholds in (min_prob, max_prob) range
 			probs = np.linspace(min_prob, max_prob, number_of_thresholds)
-			
+		"""	
 		# Transform probabilities to logits (thresholds)
 		thresholds = np.log(probs) - np.log(1 - probs) #prob2logit
 		
