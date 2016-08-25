@@ -96,11 +96,13 @@ def main():
 		saver.restore(sess, checkpoint_path)
 		model.log("Variables restored from:", checkpoint_path)
 		
-		# Get random thresholds (with probs in 10^unif(-3, 0) range)
-		#probs = 10 ** np.random.uniform(-3, 0, number_of_thresholds) 
-		#thresholds = np.log(probs) - np.log(1 - probs) # prob2logit
+		# Get random probs in 10^unif(-3, 0) range
+		#probs = 10 ** np.random.uniform(-3, 0, number_of_thresholds)
 		
-		# Get random thresholds (range estimated from a random example)
+		# Get probabilities uniformly distributed between zero and 1
+		#probs = np.linspace(0.001, 0.999, 20)
+		
+		# Get random probabilities estimated from an example
 		rand_index = np.random.randint(len(lines))
 		rand_line = lines[rand_index]
 		for row in csv.reader([rand_line]): 
@@ -117,7 +119,9 @@ def main():
 			
 			# Get thresholds in (min_prob, max_prob) range
 			probs = np.linspace(min_prob, max_prob, number_of_thresholds)
-			thresholds = np.log(probs) - np.log(1 - probs) #prob2logit
+			
+		# Transform probabilities to logits (thresholds)
+		thresholds = np.log(probs) - np.log(1 - probs) #prob2logit
 		
 		# Validate each threshold
 		for i in range(number_of_thresholds):
