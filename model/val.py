@@ -152,7 +152,7 @@ def main():
 				# Accumulate confusion matrix values
 				confusion_matrix += compute_confusion_matrix(segmentation, label)
 				if label.max() == 255: # only if the mammogram had a mass
-					confusion_matrix2 = compute_confusion_matrix(segmentation, label)
+					confusion_matrix2 += compute_confusion_matrix(segmentation, label)
 						
 			# Calculate metrics
 			metrics = compute_metrics(*confusion_matrix)
