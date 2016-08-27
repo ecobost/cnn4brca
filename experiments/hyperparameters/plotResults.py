@@ -21,7 +21,7 @@ iou = np.array([0.015, 0.015, 0.073, 0.015, 0.13, 0.17, 0.019, 0.015, 0.085, 0.0
 # Hyperparameter search 2
 alpha = np.array([1.04E-006, 1.11E-006, 1.42E-006, 1.54E-006, 1.82E-006, 2.15E-006, 2.22E-006, 3.15E-006, 3.57E-006, 7.23E-006, 1.03E-005, 1.25E-005, 1.95E-005, 5.75E-005, 7.02E-005])
 lambda_ = np.array([3.01E-003, 3.39E-004, 2.15E-003, 2.18E-003, 3.77E-002, 1.27E-002, 5.42E-004, 4.32E-004, 3.88E-002, 5.01E-003, 7.40E-005, 1.82E-005, 3.29E-002, 4.44E-003, 1.16E-005])
-iou = np.array([0.124, 0.099, 0.101, 0.108, 0.117, 0.114, 0.124, 0.119, 0.12, 0.118, 0.117, 0.117, 0.077, 0.084, 0.115])
+iou = np.array([0.318, 0.219, 0.182, 0.227, 0.246, 0.262, 0.292, 0.275, 0.266, 0.283, 0.244, 0.259, 0.111, 0.148, 0.253])
 
 # Hyperparameter search 4 (First 17 only)
 alpha = np.array([2.37E-006, 2.93E-006, 3.12E-006, 4.64E-006, 1.12E-005, 2.11E-005, 2.13E-005, 5.92E-005, 1.49E-004, 3.23E-004, 4.52E-004, 5.44E-004, 7.01E-004, 7.13E-004, 1.69E-003, 4.92E-003, 9.73E-003])
@@ -52,7 +52,7 @@ plt.show()
 #xs, ys = np.meshgrid(np.linspace(alpha.min(), alpha.max()), np.linspace(lambda_.min(), lambda_.max()))
 #xs, ys = np.meshgrid(alpha, lambda_) 
 #xs, ys = np.meshgrid(alpha, lambda_[order[0:-5]]) # Discard 5 highest lambdas
-xs, ys = np.meshgrid(np.logspace(-6, -1), np.logspace(-4, 1))
+xs, ys = np.meshgrid(np.logspace(-6, -4), np.logspace(-5, -1))
 zs = griddata((alpha, lambda_), iou, (xs, ys), method = 'nearest')
 plt.pcolor(xs, ys, zs, cmap = cm.gray)
 plt.xlabel('Alpha')
