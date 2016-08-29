@@ -26,7 +26,7 @@ After the first hyperparameter search, we found that the best $\alpha$ and $\lam
 	 \label{fig:Hs1}
 \end{figure}
 
-% Discussion: Divergenece and it can be also observed that lambda is not as important as alpha.
+% Discussion: Divergenece and it can be also observed that lambda is not as important as alpha. Highest alpha causes divergence, highest lambda causes convergence to a single point.
 After refining the search range we had a better idea of which combinations produced the best results (Fig.~\ref{fig:Hs2}).
 \begin{figure}[h]
 	\centering
@@ -49,10 +49,10 @@ After refining the search range we had a better idea of which combinations produ
 	 \label{fig:Hs2}
 \end{figure}
 
-With this results, we chose to train a network with $\alpha = 0.000004$ and $\lambda = 0.0008$.
+With this results, we chose to train a network with $\alpha = 3 \times 10^{-6}$ and $\lambda = 5 \times 10^{-4}$.
 
 \subsection{Evaluation}
-After training the network, we used the validation set to select the best threshold: a 0.8 probability threshold (equivalent to 1.386 logit) produced the best IOU (0.133) in the validation set.
+After training the network, we used the validation set to select the best threshold: 0.86 probability, which produced the best IOU (0.35) in the validation set.
 
 The test set results are summarized in Table~\ref{tab:Results1}
 \begin{table}[h]
@@ -61,7 +61,7 @@ The test set results are summarized in Table~\ref{tab:Results1}
 	\hline
 	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
 	\hline
-	0.022 & 0.031 & 0.038 & 0.975 & 0.028 & 0.982 & 0.040 & 0.028\\
+	- & - & - & - & - & - & - & -\\
 	\hline
 	\end{tabular}
 	\caption[Results for Experiment 1]{Test results for the trained network (Sec~\ref{sec:Experiment1}).}
@@ -77,7 +77,7 @@ We show the prediction and produced segmentation for some test examples.% in app
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Experiment 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experiment 2}
 \subsection{Hyperparameter search}
-Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bottom of the search range (Fig.~\ref{fig:Hs4}), however, performance is more robust to small changes. We show results only for the networks with the fifteen lowest $\alpha$s as bigger values caused training to diverge.
+Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bottom of the search range (Fig.~\ref{fig:Hs4}), however, performance is more robust to small changes. We show results discarding networks with the ten highest $\alpha$s or ten highest $\lambda$s as bigger values caused training to diverge.
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.32\textwidth}
@@ -99,17 +99,17 @@ Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bot
 	 \label{fig:Hs4}
 \end{figure}
 
-With this results we selected $\alpha = 0.00003$ and $\lambda = 0.002$ to train our network.
+With this results we selected $\alpha = 2 \times 10^{-5}$ and $\lambda = 2 \times 10^{-3}$ to train our network.
 
 \subsection{Evaluation}
-We obtained the best IOU in the validation set (0.133) with threshold probability 0.65 (logit 0.619); test set results are summarized below (Tab.~\ref{tab:Results2}).
+We obtained the best IOU in the validation set (0.36) with threshold probability 0.72; test set results are summarized below (Tab.~\ref{tab:Results2}).
 \begin{table}[h]
 	\centering
 	\begin{tabular}{cccccccc}
 	\hline
 	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
 	\hline
-	 0.028 & 0.041 & 0.071 & 0.967 & 0.046 & 0.973 & 0.052 & 0.046\\
+	 - & - & - & - & - & - & - & -\\
 	\hline
 	\end{tabular}
 	\caption[Results for Experiment 2]{Test results for the trained network (Sec~\ref{sec:Experiment2}).}
@@ -123,7 +123,7 @@ We obtained the best IOU in the validation set (0.133) with threshold probabilit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EXPERIMENT 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experiment 3}
 \subsection{Hyperparameter search}
-As with previous experiments the best $\alpha$ and $\lambda$ values appear closer to the bottom of the search range (Fig.~\ref{fig:Hs5}). We chose to use $\alpha = 0.00004$ and $\lambda = 0.00007$ for our final network.
+As with previous experiments the best $\alpha$ and $\lambda$ values appear closer to the bottom of the search range (Fig.~\ref{fig:Hs5}). We chose to use $\alpha = 4 \times 10^{-5}$ and $\lambda = 4 \times 10^{-4}$ for our final network.
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.32\textwidth}
@@ -146,6 +146,7 @@ As with previous experiments the best $\alpha$ and $\lambda$ values appear close
 \end{figure}
 
 \subsection{Evaluation}
+\begin{comment}
 After training, 0.6 probability threshold (logit 0.405) was selected using the validation set (IOU on validation set achieved 0.149). Test set results are summarized in Table~\ref{tab:Results1}
 \begin{table}[h]
 	\centering
@@ -161,7 +162,7 @@ After training, 0.6 probability threshold (logit 0.405) was selected using the v
 \end{table}
 
 \subsection{Qualitative results}
-
+\end{comment}
 
 
 \section{Discussion}
