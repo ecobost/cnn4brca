@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  7 JUL 2016 16:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  29 AUG 2016 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1112,47 +1112,47 @@ Package pdftex.def Info: plots/segmentation.png used on input line 30.
 )) (./results.tex [41 <./plots/logits.png (PNG copy)> <./plots/segmentation.png
  (PNG copy)>] [42]
 Chapter 4.
-<plots/hs1_alpha.png, id=1073, 1600.98125pt x 921.4425pt>
+<plots/hs1_alpha.png, id=1073, 1399.1472pt x 760.2804pt>
 File: plots/hs1_alpha.png Graphic file (type png)
 
 <use plots/hs1_alpha.png>
 Package pdftex.def Info: plots/hs1_alpha.png used on input line 12.
-(pdftex.def)             Requested size: 142.92424pt x 82.25136pt.
+(pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs1_lambda.png, id=1074, 1603.9925pt x 923.45pt>
+<plots/hs1_lambda.png, id=1074, 1399.1472pt x 760.2804pt>
 File: plots/hs1_lambda.png Graphic file (type png)
 
 <use plots/hs1_lambda.png>
 Package pdftex.def Info: plots/hs1_lambda.png used on input line 17.
-(pdftex.def)             Requested size: 142.92424pt x 82.27556pt.
+(pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs1_pcolor.png, id=1075, 1486.55376pt x 910.40125pt>
+<plots/hs1_pcolor.png, id=1075, 586.8324pt x 442.2924pt>
 File: plots/hs1_pcolor.png Graphic file (type png)
 
 <use plots/hs1_pcolor.png>
 Package pdftex.def Info: plots/hs1_pcolor.png used on input line 22.
-(pdftex.def)             Requested size: 142.92424pt x 87.51698pt.
+(pdftex.def)             Requested size: 142.92424pt x 107.71806pt.
 
-<plots/hs2_alpha.png, id=1077, 1641.13126pt x 936.49875pt>
+<plots/hs2_alpha.png, id=1077, 1399.1472pt x 760.2804pt>
 File: plots/hs2_alpha.png Graphic file (type png)
 
 <use plots/hs2_alpha.png>
 Package pdftex.def Info: plots/hs2_alpha.png used on input line 35.
-(pdftex.def)             Requested size: 142.92424pt x 81.5519pt.
+(pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs2_lambda.png, id=1078, 1629.08624pt x 943.525pt>
+<plots/hs2_lambda.png, id=1078, 1399.1472pt x 760.2804pt>
 File: plots/hs2_lambda.png Graphic file (type png)
 
 <use plots/hs2_lambda.png>
 Package pdftex.def Info: plots/hs2_lambda.png used on input line 40.
-(pdftex.def)             Requested size: 142.92424pt x 82.76842pt.
+(pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs2_trisurface.png, id=1079, 1333.98375pt x 880.28876pt>
+<plots/hs2_trisurface.png, id=1079, 1399.1472pt x 760.2804pt>
 File: plots/hs2_trisurface.png Graphic file (type png)
 
 <use plots/hs2_trisurface.png>
 Package pdftex.def Info: plots/hs2_trisurface.png used on input line 45.
-(pdftex.def)             Requested size: 142.92424pt x 94.30682pt.
+(pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1163,26 +1163,26 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [43
 
  <./plots/hs1_alpha.png> <./plots/hs1_lambda.png> <./plots/hs1_pcolor.png>]
-<plots/hs4_alpha.png, id=1091, 1614.03pt x 924.45375pt>
+<plots/hs4_alpha.png, id=1091, 1399.1472pt x 760.2804pt>
 File: plots/hs4_alpha.png Graphic file (type png)
 
 <use plots/hs4_alpha.png>
 Package pdftex.def Info: plots/hs4_alpha.png used on input line 85.
-(pdftex.def)             Requested size: 142.92424pt x 81.85718pt.
+(pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs4_lambda.png, id=1092, 1614.03pt x 941.5175pt>
+<plots/hs4_lambda.png, id=1092, 1399.1472pt x 760.2804pt>
 File: plots/hs4_lambda.png Graphic file (type png)
 
 <use plots/hs4_lambda.png>
 Package pdftex.def Info: plots/hs4_lambda.png used on input line 90.
-(pdftex.def)             Requested size: 142.92424pt x 83.3681pt.
+(pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs4_pcolor.png, id=1093, 1501.61pt x 939.51pt>
+<plots/hs4_pcolor.png, id=1093, 1399.1472pt x 760.2804pt>
 File: plots/hs4_pcolor.png Graphic file (type png)
 
 <use plots/hs4_pcolor.png>
 Package pdftex.def Info: plots/hs4_pcolor.png used on input line 95.
-(pdftex.def)             Requested size: 142.92424pt x 89.41206pt.
+(pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1295,7 +1295,7 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (65 pages, 8401366 bytes).
+Output written on report.pdf (65 pages, 8383088 bytes).
 PDF statistics:
  1323 PDF objects out of 1440 (max. 8388607)
  1163 compressed objects within 12 object streams
