@@ -9,7 +9,7 @@
 """
 
 import tensorflow as tf
-import model_v3 as model
+import model_v2 as model
 import csv
 import scipy.misc
 import numpy as np
@@ -17,7 +17,7 @@ import numpy as np
 checkpoint_dir = "checkpoint"
 csv_path = "test/test.csv"
 data_dir = "test/"
-threshold_as_prob = 0.6
+threshold_as_prob = 0.72
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -96,6 +96,7 @@ def main():
 		# Initialize reader and accums
 		csv_reader = csv.reader(lines)
 		confusion_matrix = np.zeros(4) # tp, fp, tn, fn
+		confusion_matrix2 = np.zeros(4) # tp, fp, tn, fn
 		
 		# For every example in test set
 		for row in csv_reader:
@@ -114,8 +115,9 @@ def main():
 			segmentation = post(logits, label, threshold)
 			
 			# Accumulate confusion matrix values
-			#if label.max() == 255: # only if the mammogram had a mass
 			confusion_matrix += compute_confusion_matrix(segmentation, label)
+			if label.max() == 255: # only if the mammogram had a mass
+					confusion_matrix2 += compute_confusion_matrix(segmentation, label)
 			
 			# Write prediction and segmentation to memory
 			#prediction_path = image_path[:-4] + '_logits.png' 
@@ -125,12 +127,13 @@ def main():
 		
 		# Calculate metrics
 		metrics = compute_metrics(*confusion_matrix)
+		metrics2 = compute_metrics(*confusion_matrix2)
 		
 		# Report metrics
 		metric_names = ['IOU', 'F1-score', 'G-mean', 'Accuracy',
 					   'Sensitivity', 'Specificity', 'Precision', 'Recall']
-		for name, metric in zip(metric_names, metrics):
-			print("{}: {}".format(name, metric))
+		for name, metric, metric2 in zip(metric_names, metrics, metrics2):
+			print("{}: {} / {}".format(name, metric, metric2))
 		print('')
 				
 		# Logistic loss (same for any threshold)
