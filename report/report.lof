@@ -11,11 +11,13 @@
 \contentsline {figure}{\numberline {2.9}{\ignorespaces A digital mammogram}}{25}{figure.caption.27}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Signs of possible breast cancer}}{26}{figure.caption.28}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Preprocessing pipeline}}{36}{figure.caption.31}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Post-processing pipeline}}{41}{figure.caption.35}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the solution}}{34}{figure.caption.30}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Preprocessing pipeline}}{37}{figure.caption.32}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Post-processing pipeline}}{42}{figure.caption.36}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces First hyperparameter search for Experiment 1}}{43}{figure.caption.36}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Second hyperparameter search for Experiment 1}}{44}{figure.caption.37}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Hyperparameter search for Experiment 2}}{44}{figure.caption.39}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Hyperparameter search for Experiment 3}}{45}{figure.caption.41}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Second hyperparameter search for Experiment 1}}{43}{figure.caption.37}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Qualitative results for Experiment 1}}{44}{figure.caption.39}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Hyperparameter search for Experiment 2}}{45}{figure.caption.40}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Qualitative results for Experiment 2}}{46}{figure.caption.42}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Hyperparameter search for Experiment 3}}{46}{figure.caption.43}
 \addvspace {10\p@ }

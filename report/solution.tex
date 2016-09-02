@@ -2,9 +2,13 @@
 \label{ch:Model}
 
 % We [outline|describe|introduce] our [proposed] [solution|model], [justify] design decisions and [implementation details| detail implementation| document implementation details].
-In this chapter, we describe our experiments, justify design decisions and detail our implementation.
-
-% An scheme of the solution is found there and we do it here...
+In this chapter, we describe our experiments, justify design decisions and detail our implementation. A high-level overview of our solution is provided in Fig.~\ref{fig:overview}. 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{plots/overview.pdf}
+	\caption[Overview of the solution]{Overview of our solution. We divide the database into training, validation and test images, preprocess them, train a convolutional network with the training set (we select hyperparameters $\alpha$ and $\lambda$ using the validation set) and evaluate our model in the test set. This is repeated for each experiment.}
+	\label{fig:overview}
+\end{figure}
 
 \section{Task definition}
 We segment digital mammograms into two separate regions: breast mass (benign or malignant) and general tissue.

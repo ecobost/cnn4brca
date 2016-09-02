@@ -4,30 +4,7 @@ We show the results of the different experiments and discuss their implications.
 
 \section{Experiment 1}
 \subsection{Hyperparameter search}
-After the first hyperparameter search, we found that the best $\alpha$ and $\lambda$ values appear in the bottom of the search range with good $\alpha$s ranging from 0.000001 to 0.0001 and $\lambda$s ranging from 0 to 0.15 (Fig.~\ref{fig:Hs1}).
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs1_alpha.png}
-         \caption{IOU vs $\alpha$}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs1_lambda.png}
-         \caption{IOU vs $\lambda$}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs1_pcolor.png}
-         \caption{IOU (color) vs $\alpha$ (x) vs $\lambda$ (y)}
-	\end{subfigure}
-	\caption[First hyperparameter search for Experiment 1]{Results of the first search of hyperparameters. High IOU is better.}
-	 \label{fig:Hs1}
-\end{figure}
-
-% Discussion: Divergenece and it can be also observed that lambda is not as important as alpha. Highest alpha causes divergence, highest lambda causes convergence to a single point.
-After refining the search range we had a better idea of which combinations produced the best results (Fig.~\ref{fig:Hs2}).
+After the first hyperparameter search, we found that the best $\alpha$ and $\lambda$ values appear in the bottom of the search range with good $\alpha$s ranging from 0.000001 to 0.0001 and $\lambda$s ranging from 0 to 0.15. After refining the search range we had a better idea of which combinations produced the best results (Fig.~\ref{fig:Hs2}).
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.32\textwidth}
@@ -48,6 +25,7 @@ After refining the search range we had a better idea of which combinations produ
 	\caption[Second hyperparameter search for Experiment 1]{Results of the second search of hyperparameters. High IOU is better.}
 	 \label{fig:Hs2}
 \end{figure}
+% Discussion: Divergenece and it can be also observed that lambda is not as important as alpha. Highest alpha causes divergence, highest lambda causes convergence to a single point.
 
 With this results, we chose to train a network with $\alpha = 3 \times 10^{-6}$ and $\lambda = 5 \times 10^{-4}$.
 
@@ -69,9 +47,50 @@ The test set results are summarized in Table~\ref{tab:Results1}
 \end{table}
 
 \subsection{Qualitative results}
-We show the prediction and produced segmentation for some test examples.% in appendix A
+We show the prediction and produced segmentation for a couple of test examples (Fig.~\ref{fig:qualitative1}).
+\begin{figure}[h]
+\centering
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/mammogram_ex1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/label_ex1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.16\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/logits_ex1_v1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/segmentation_ex1_v1.png}
+	\end{subfigure}%img_251_334_1_LCC.png
+	\\
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/mammogram_ex2.png}
+		\caption{Original mammogram}
+	\end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/label_ex2.png}
+		\caption{Label}
+	\end{subfigure}
+	\begin{subfigure}{0.16\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/logits_ex2_v1.png}
+		\caption{Prediction}
+	\end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/segmentation_ex2_v1.png}
+		\caption{Segmentation}
+	\end{subfigure}% img_108_146_1_RCC.png
+	\caption[Qualitative results for Experiment 1]{Sample results for Experiment 1. Original mammogram (a), expected label (b), logit predictions (c) produced by the network and final segmentation (d) using threshold probability 0.86 selected using the validation set}
+	\label{fig:qualitative1}
+\end{figure}		
 
-%Images of original mammogram and label and predicitions (logits) and final segmentation
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Experiment 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,7 +117,6 @@ Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bot
 	\caption[Hyperparameter search for Experiment 2]{Results of the hyperparameter search. High IOU is better.}
 	 \label{fig:Hs4}
 \end{figure}
-
 With this results we selected $\alpha = 2 \times 10^{-5}$ and $\lambda = 2 \times 10^{-3}$ to train our network.
 
 \subsection{Evaluation}
@@ -109,7 +127,7 @@ We obtained the best IOU in the validation set (0.36) with threshold probability
 	\hline
 	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
 	\hline
-	 0.117 & 0.21 & 0.493 & 0.981 & 0.246 & 0.989 & 0.184 & 0.246\\
+	 0.117 & 0.21 & 0.493 & 0.981 & 0.246 & 0.989 & 0.184 & 0.246 \\
 	\hline
 	\end{tabular}
 	\caption[Results for Experiment 2]{Test results for the trained network (Sec~\ref{sec:Experiment2}).}
@@ -117,6 +135,49 @@ We obtained the best IOU in the validation set (0.36) with threshold probability
 \end{table}
 
 \subsection{Qualitative results}
+We present some sample predictions for the same test examples used above (Fig.~\ref{fig:qualitative2})
+\begin{figure}[h]
+\centering
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/mammogram_ex1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/label_ex1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.16\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/logits_ex1_v2.png}
+	\end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/segmentation_ex1_v2.png}
+	\end{subfigure}%img_251_334_1_LCC.png
+	\\
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/mammogram_ex2.png}
+		\caption{Original}
+	\end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/label_ex2.png}
+		\caption{Label}
+	\end{subfigure}
+	\begin{subfigure}{0.16\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/logits_ex2_v2.png}
+		\caption{Prediction}
+	\end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\centering
+			\includegraphics[height = 5cm]{plots/segmentation_ex2_v2.png}
+		\caption{Segmentation}
+	\end{subfigure}% img_108_146_1_RCC.png
+	\caption[Qualitative results for Experiment 2]{Sample results for Experiment 2. Original mammogram (a), expected label (b), logit predictions (c) produced by the network and final segmentation (d) using threshold probability 0.86 selected using the validation set}
+	\label{fig:qualitative2}
+\end{figure}		
 
 
 

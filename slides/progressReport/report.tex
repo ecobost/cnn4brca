@@ -1,9 +1,10 @@
 % Written by: Erick Cobos T
-% Date: 7-July-2016
+% Date: 02-September-2016
 
 \documentclass{beamer}
 
 \usepackage{subcaption}
+\usepackage{verbatim}
 
 
 % To add sources at end
@@ -79,8 +80,8 @@
 	\section[Convolutional networks]{Convolutional networks}
 	\subsection[Classification]{Classification}
 	\begin{frame}
-		\vspace{30pt}
 		\frametitle{Convolutional networks}
+		Learnable filters: spatially local and simple in early layers, global and complex in deeper layers.
 		\begin{figure}[h]
 			\centering
 			\begin{subfigure}{0.4\textwidth}
@@ -193,6 +194,14 @@
 	\end{frame}
 	
 	\begin{frame}
+		\frametitle{Overview of the solution}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=\textwidth]{plots/overview.pdf}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
 		\frametitle{Database preprocessing}
 		\begin{figure}[h]
 		\centering
@@ -264,6 +273,8 @@
 	
 	\begin{frame}
 		\frametitle{Experiment 1}
+		Modelled on a VGG network, winner of the 2014 ImageNet.
+		% Say that it is like the Vgg-Net
 		\footnotesize
 		\begin{table}[h]
 			\centering
@@ -296,13 +307,13 @@
 			\hline
 			\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
 			\hline
-			0.022 & 0.031 & 0.038 & 0.975 & 0.028 & 0.982 & 0.040 & 0.028\\
+			0.109 & 0.197 & 0.49 & 0.98 & 0.243 & 0.987 & 0.165 & 0.243 \\
 			\hline
 			\end{tabular}
 		\end{table}
 
 	\end{frame}
-	
+
 	\begin{frame}
 		\frametitle{Qualitative results}
 		\begin{figure}[h]
@@ -315,14 +326,14 @@
 				\centering
 					\includegraphics[height=3.5cm]{plots/label_ex1.png}
 			\end{subfigure}
-			\begin{subfigure}{0.17\textwidth}
+			\begin{subfigure}{0.16\textwidth}
 				\centering
 					\includegraphics[height=3.5cm]{plots/logits_ex1_v1.png}
 			\end{subfigure}
 			\begin{subfigure}{0.22\textwidth}
 				\centering
 					\includegraphics[height=3.5cm]{plots/segmentation_ex1_v1.png}
-			\end{subfigure}% img_108_146_1_RCC.png
+			\end{subfigure}%img_251_334_1_LCC.png
 			\\
 			\begin{subfigure}{0.25\textwidth}
 				\centering
@@ -334,7 +345,7 @@
 					\includegraphics[height = 3.5cm]{plots/label_ex2.png}
 				\caption{Label}
 			\end{subfigure}
-			\begin{subfigure}{0.17\textwidth}
+			\begin{subfigure}{0.16\textwidth}
 				\centering
 					\includegraphics[height = 3.5cm]{plots/logits_ex2_v1.png}
 				\caption{Prediction}
@@ -343,13 +354,13 @@
 				\centering
 					\includegraphics[height = 3.5cm]{plots/segmentation_ex2_v1.png}
 				\caption{Segmentation}
-			\end{subfigure}%img_251_334_1_LCC.png
+			\end{subfigure}% img_108_146_1_RCC.png
 		\end{figure}		
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Experiment 2}
-		Weighted loss function.
+		To combat class imbalance, we use a loss function that weights errors over breast masses higher than errors over breast tissue. Architecture as in Experiment 1.
 		
 		\scriptsize
 		\begin{table}[h]
@@ -358,7 +369,7 @@
 			\hline
 			\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
 			\hline
-			 0.028 & 0.041 & 0.071 & 0.967 & 0.046 & 0.973 & 0.052 & 0.046\\
+			 0.117 & 0.21 & 0.493 & 0.981 & 0.246 & 0.989 & 0.184 & 0.246\\
 			\hline
 			\end{tabular}
 		\end{table}
@@ -376,14 +387,14 @@
 				\centering
 					\includegraphics[height=3.5cm]{plots/label_ex1.png}
 			\end{subfigure}
-			\begin{subfigure}{0.17\textwidth}
+			\begin{subfigure}{0.16\textwidth}
 				\centering
 					\includegraphics[height=3.5cm]{plots/logits_ex1_v2.png}
 			\end{subfigure}
 			\begin{subfigure}{0.22\textwidth}
 				\centering
 					\includegraphics[height=3.5cm]{plots/segmentation_ex1_v2.png}
-			\end{subfigure}% img_108_146_1_RCC.png
+			\end{subfigure}%img_251_334_1_LCC.png
 			\\
 			\begin{subfigure}{0.25\textwidth}
 				\centering
@@ -395,7 +406,7 @@
 					\includegraphics[height = 3.5cm]{plots/label_ex2.png}
 				\caption{Label}
 			\end{subfigure}
-			\begin{subfigure}{0.17\textwidth}
+			\begin{subfigure}{0.16\textwidth}
 				\centering
 					\includegraphics[height = 3.5cm]{plots/logits_ex2_v2.png}
 				\caption{Prediction}
@@ -404,12 +415,13 @@
 				\centering
 					\includegraphics[height = 3.5cm]{plots/segmentation_ex2_v2.png}
 				\caption{Segmentation}
-			\end{subfigure}%img_251_334_1_LCC.png
+			\end{subfigure}% img_108_146_1_RCC.png
 		\end{figure}		
 	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Experiment 3}
+		Modelled on the Residual network, winner of the 2015 ImageNet. Deeper, fewer parameters and better resolution (4x).
 		\footnotesize
 		\begin{table}[h]
 			\centering
@@ -440,12 +452,12 @@
 			\hline
 			\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
 			\hline
-			0.089 & 0.121 & 0.219 & 0.974 & 0.185 & 0.979 & 0.121 & 0.185\\
+			- & - & - & - & - & - & - & -\\
 			\hline
 			\end{tabular}
 		\end{table}
 	\end{frame}
-	
+\begin{comment}
 	\begin{frame}
 		\frametitle{Qualitative results}
 		\begin{figure}[h]
@@ -458,7 +470,7 @@
 				\centering
 					\includegraphics[height=3.5cm]{plots/label_ex1.png}
 			\end{subfigure}
-			\begin{subfigure}{0.17\textwidth}
+			\begin{subfigure}{0.16\textwidth}
 				\centering
 					\includegraphics[height=3.5cm]{plots/logits_ex1_v3.png}
 			\end{subfigure}
@@ -477,7 +489,7 @@
 					\includegraphics[height = 3.5cm]{plots/label_ex2.png}
 				\caption{Label}
 			\end{subfigure}
-			\begin{subfigure}{0.17\textwidth}
+			\begin{subfigure}{0.16\textwidth}
 				\centering
 					\includegraphics[height = 3.5cm]{plots/logits_ex2_v3.png}
 				\caption{Prediction}
@@ -489,10 +501,10 @@
 			\end{subfigure}%img_251_334_1_LCC.png
 		\end{figure}		
 	\end{frame}
-	
+\end{comment}
 	\begin{frame}
 		\frametitle{Writing the thesis}
-		65 pages...
+		65 pages and counting...
 	\end{frame}
 	
 	
@@ -500,8 +512,9 @@
 	\begin{frame}
 		\frametitle{Future work}
 		\begin{itemize}
-			\item Write the thesis
-			\item ?
+			\item Finish and report Experiment 3
+			\item Train some network without whitening and all data
+			\item Write thesis
 		\end{itemize}
 	\end{frame}
 
