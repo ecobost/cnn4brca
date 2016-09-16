@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  2 SEP 2016 18:29
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  15 SEP 2016 19:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1127,23 +1127,24 @@ File: plots/tensorflow.png Graphic file (type png)
 <use plots/tensorflow.png>
 Package pdftex.def Info: plots/tensorflow.png used on input line 272.
 (pdftex.def)             Requested size: 160.8792pt x 131.13676pt.
- <plots/github.png, id=400, 341.275pt x 61.22874pt>
+
+<plots/github.png, id=400, 581.17125pt x 91.34125pt>
 File: plots/github.png Graphic file (type png)
-
-<use plots/github.png>
+ <use plots/github.png>
 Package pdftex.def Info: plots/github.png used on input line 272.
-(pdftex.def)             Requested size: 160.8792pt x 28.86345pt.
- <plots/code.png, id=401, 778.91pt x 811.03pt>
-File: plots/code.png Graphic file (type png)
+(pdftex.def)             Requested size: 160.8792pt x 25.28546pt.
 
-<use plots/code.png>
+<plots/code.png, id=401, 778.91pt x 811.03pt>
+File: plots/code.png Graphic file (type png)
+ <use plots/code.png>
 Package pdftex.def Info: plots/code.png used on input line 272.
 (pdftex.def)             Requested size: 171.14764pt x 178.20439pt.
  [12
 
  <./plots/tensorflow.png> <./plots/github.png> <./plots/code.png>] [13
 
-] <plots/mammogram_ex1.png, id=460, 3340.48pt x 4099.315pt>
+]
+<plots/mammogram_ex1.png, id=460, 3340.48pt x 4099.315pt>
 File: plots/mammogram_ex1.png Graphic file (type png)
 
 <use plots/mammogram_ex1.png>
@@ -1310,7 +1311,7 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmtt9.pfb>
-Output written on report.pdf (20 pages, 10310710 bytes).
+Output written on report.pdf (20 pages, 10313271 bytes).
 PDF statistics:
  703 PDF objects out of 1000 (max. 8388607)
  604 compressed objects within 7 object streams
