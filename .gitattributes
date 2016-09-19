@@ -1,3 +1,2 @@
-report/* linguist-documentation=true
-slides/* linguist-documentation=true
-proposal/* linguist-documentation=true
+docs/* linguist-documentation
+report/* linguist-documentation
