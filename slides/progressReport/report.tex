@@ -12,14 +12,14 @@
 
 % Theme config
 \usetheme{Madrid}
-\usecolortheme{seahorse} %beaver for red
+\usecolortheme{seahorse} %beaver for red, seahorse for blue
 
 
 % Title information
-\title[Progress report]{Segmentation of Breast Cancer Masses in Digital Mammograms: A Convolutional Network}
-\subtitle[Short subtitle]{Progress Report}
+\title[Progress Report]{Segmentation of Breast Cancer Masses in Digital Mammograms: A Convolutional Network}
+\subtitle[Report]{Progress Report}
 \author[Cobos] {Erick Cobos\inst{1}}
-\date[July, 2016]{July, 2016}
+\date[September, 2016]{September, 2016}
 \institute[Tec de Monterrey]{
 	\inst{1} Centro de Sistemas Intelligentes \\ Tecnologico de Monterrey
 }
@@ -31,7 +31,7 @@
 
 	\begin{frame}
 		\titlepage
-		% Informal talk
+		% the objective of this talk is to report the progress of my thesis, explain what I have been doing it, why I choose to do what I'm doing, what i'm still left to do and receive feedback from the commitee.
 	\end{frame}
 		
 	% Table of contents
@@ -39,11 +39,39 @@
 		\frametitle{Table of Contents}
 		\tableofcontents[currentsection]
     \end{frame}
+    
+    \section[Introduction]{Introduction}
+    \begin{frame}
+		\frametitle{Thesis objective}
+			The main goal is to segment breast cancer lesions using convolutional networks, an end-to-end learnable model.
+		
+		\begin{itemize}
+			\item Obtain and process the mammographic database. %to make it available for future research on campus.
+			\item Develop software to handle the database and train new deep learning models.
+			\item Train modern, fine-tuned convolutional networks.% to perform lesion segmentation.
+			\item Test the viability of convolutional networks for breast cancer research.
+			\item Propose ideas for future research in the area.
+		\end{itemize}
+	\end{frame}
 
-	
-	\section[Lesion segmentation]{Lesion segmentation}
+    \section[Lesion Segmentation]{Lesion Segmentation}
+    \begin{frame}
+     	\frametitle{Why breast cancer}
+     		Breast cancer is the most commonly diagnosed cancer among women.
+     		
+     		For women, death rates are the second highest of any cancer. However, survival rate when detected early is close to 100\%.
+     		
+     		On-going project at the institution.
+    \end{frame}
+%Cancer es un término que se usa para describir varias enfermedades distintas donde celulas anomalas se dividen sin control produciendo tuimores y eventualmente invadiendo tejido cercano. Breast cancer es cuando se genera en tejidos del seno.
+%Besides skin cancer, breast cancer is one of the most commonly diagnosed cancer among American women.  Just under 30% of cancers in women are breast cancers. 
+%About 1 in 8 U.S., UK women will develop invasive breast cancer.
+%Death rates higher than those for any other cancer, besides lung cancer.
+%People in the campus have been wporking on this already.
+
+    
 	\begin{frame}
-		\frametitle{The task}
+		\frametitle{Breast cancer signs}
 		Masses vs. microcalcifications
 		\begin{figure}[h]
 			\centering
@@ -58,7 +86,8 @@
 
 		Detection vs. diagnosis
 	\end{frame}
-		
+% Mammography is the main tool. we focus on this and this.
+	
 	\begin{frame}
 		\frametitle{Lesion segmentation}
 		\begin{figure}[h]
@@ -78,6 +107,20 @@
 	
 	
 	\section[Convolutional networks]{Convolutional networks}
+	\begin{frame}
+	\frametitle{Why convolutional networks?}
+		\begin{itemize}
+			\item Convnets have showed great results in image classification tasks.
+			\item Convnets learn which features are important for the classification. 
+	 		\item We don’t need experts to carefully handcraft and select features.
+		\end{itemize}
+		\vfill
+		Cons: Need processing power, data.
+	\end{frame}
+% From 2012 to now they have been used everywhere become standard in image processing, if there is a breakthrough in computer vision, most probably is donde with convnets.
+% ImageNet (super-human ability) They can be used as is for image segmentation.
+% Everything is learned, end-to-end
+
 	\subsection[Classification]{Classification}
 	\begin{frame}
 		\frametitle{Convolutional networks}
@@ -130,13 +173,12 @@
 			\includegraphics[width=\textwidth]{plots/resNet.png}
 		\end{figure}
 		
-		Deeper, no pooling layers, no fully-connected layers, no dropout, all 3x3 kernels, batch normalization, residual connections,...
+		Deeper, no pooling layers, no fully-connected layers, no dropout, all 3x3 kernels, batch normalization, residual connections, attention, memory...
 		\source{[He et al., 2015]}
 		% VGG-net and ResNet-like/other things
 		% Deeper, no pooling, no fc, no dropout, batchnorm, residual connections
 		% all 3x3 convolutions
 	\end{frame}
-	
 
 	\subsection[Segmentation]{Segmentation}
 	\begin{frame}
@@ -153,8 +195,10 @@
 			\end{subfigure}
 		\end{figure}
 		\source{[Longet al., 2015], [Yu and Koltun, 2016]}
-		% Explain how kernels are moved along ot produce a full result
+		% Explain how kernels are moved along to produce a full result
 	\end{frame}
+	% Traditional way. Image visión, specialized techniques. Handcrafted features made by experts But it is hard to design this, and it takes time to maintain, and you need expertise: end-to-end, learn from data, not done by hand. Pipeline
+	% Completely automatic, single step v. pipeline.
 
 
 	\section[Work done]{Work done}
@@ -191,14 +235,6 @@
 		\end{figure}
 		\source{[Arevalo et al., 2016], [Dubrovina et al.,2015]}
 		% What has been done in breast cancer, Wrote background, examples and accuracies
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Overview of the solution}
-		\begin{figure}[ht]
-			\centering
-			\includegraphics[width=\textwidth]{plots/overview.pdf}
-		\end{figure}
 	\end{frame}
 	
 	\begin{frame}
@@ -272,6 +308,14 @@
 	\end{frame}
 	
 	\begin{frame}
+	\frametitle{Overview of the solution}
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[width=\textwidth]{plots/overview.pdf}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
 		\frametitle{Experiment 1}
 		Modelled on a VGG network, winner of the 2014 ImageNet.
 		% Say that it is like the Vgg-Net
@@ -326,7 +370,7 @@
 				\centering
 					\includegraphics[height=3.5cm]{plots/label_ex1.png}
 			\end{subfigure}
-			\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}{0.17\textwidth}
 				\centering
 					\includegraphics[height=3.5cm]{plots/logits_ex1_v1.png}
 			\end{subfigure}
@@ -345,7 +389,7 @@
 					\includegraphics[height = 3.5cm]{plots/label_ex2.png}
 				\caption{Label}
 			\end{subfigure}
-			\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}{0.17\textwidth}
 				\centering
 					\includegraphics[height = 3.5cm]{plots/logits_ex2_v1.png}
 				\caption{Prediction}
@@ -387,7 +431,7 @@
 				\centering
 					\includegraphics[height=3.5cm]{plots/label_ex1.png}
 			\end{subfigure}
-			\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}{0.17\textwidth}
 				\centering
 					\includegraphics[height=3.5cm]{plots/logits_ex1_v2.png}
 			\end{subfigure}
@@ -406,7 +450,7 @@
 					\includegraphics[height = 3.5cm]{plots/label_ex2.png}
 				\caption{Label}
 			\end{subfigure}
-			\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}{0.17\textwidth}
 				\centering
 					\includegraphics[height = 3.5cm]{plots/logits_ex2_v2.png}
 				\caption{Prediction}
@@ -470,7 +514,7 @@
 				\centering
 					\includegraphics[height=3.5cm]{plots/label_ex1.png}
 			\end{subfigure}
-			\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}{0.17\textwidth}
 				\centering
 					\includegraphics[height=3.5cm]{plots/logits_ex1_v3.png}
 			\end{subfigure}
@@ -489,7 +533,7 @@
 					\includegraphics[height = 3.5cm]{plots/label_ex2.png}
 				\caption{Label}
 			\end{subfigure}
-			\begin{subfigure}{0.16\textwidth}
+			\begin{subfigure}{0.17\textwidth}
 				\centering
 					\includegraphics[height = 3.5cm]{plots/logits_ex2_v3.png}
 				\caption{Prediction}
@@ -508,19 +552,21 @@
 	\end{frame}
 	
 	
-	\section[Future work]{Future work}
+	\section[Conclusion]{Conclusion}
 	\begin{frame}
 		\frametitle{Future work}
 		\begin{itemize}
-			\item Finish and report Experiment 3
-			\item Train some network without whitening and all data
+			\item Train networks with increasing number of examples
+			\item Train simpler network with all data
 			\item Write thesis
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}[c]
 		\begin{center}
-		\Huge Questions
+			\begin{figure}
+				\includegraphics[width=0.25\textwidth]{plots/questions.png}
+			\end{figure}
 		\end{center}
 	\end{frame}
 

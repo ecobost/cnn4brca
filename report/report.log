@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  2 SEP 2016 18:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  19 SEP 2016 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report
+**report.tex
 (./report.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -1157,54 +1157,66 @@ File: plots/mammogram_ex1.png Graphic file (type png)
 
 <use plots/mammogram_ex1.png>
 Package pdftex.def Info: plots/mammogram_ex1.png used on input line 55.
-(pdftex.def)             Requested size: 104.2878pt x 128.0374pt.
+(pdftex.def)             Requested size: 115.90932pt x 142.26378pt.
+
+Overfull \hbox (4.2523pt too wide) in paragraph at lines 55--56
+ [][] 
+ []
 
 <plots/label_ex1.png, id=1091, 529.98pt x 1027.84pt>
 File: plots/label_ex1.png Graphic file (type png)
  <use plots/label_ex1.png>
 Package pdftex.def Info: plots/label_ex1.png used on input line 59.
-(pdftex.def)             Requested size: 66.0128pt x 128.0374pt.
+(pdftex.def)             Requested size: 73.34756pt x 142.26378pt.
 
 <plots/logits_ex1_v1.png, id=1092, 381.5856pt x 740.0448pt>
 File: plots/logits_ex1_v1.png Graphic file (type png)
 
 <use plots/logits_ex1_v1.png>
 Package pdftex.def Info: plots/logits_ex1_v1.png used on input line 63.
-(pdftex.def)             Requested size: 66.01572pt x 128.0374pt.
+(pdftex.def)             Requested size: 73.3521pt x 142.26378pt.
+
+Overfull \hbox (1.88998pt too wide) in paragraph at lines 63--64
+ [][] 
+ []
 
 <plots/segmentation_ex1_v1.png, id=1093, 529.98pt x 1027.84pt>
 File: plots/segmentation_ex1_v1.png Graphic file (type png)
 
 <use plots/segmentation_ex1_v1.png>
 Package pdftex.def Info: plots/segmentation_ex1_v1.png used on input line 67.
-(pdftex.def)             Requested size: 66.0128pt x 128.0374pt.
+(pdftex.def)             Requested size: 73.34756pt x 142.26378pt.
 
 <plots/mammogram_ex2.png, id=1094, 3340.48pt x 4099.315pt>
 File: plots/mammogram_ex2.png Graphic file (type png)
 
 <use plots/mammogram_ex2.png>
 Package pdftex.def Info: plots/mammogram_ex2.png used on input line 72.
-(pdftex.def)             Requested size: 104.2878pt x 128.0374pt.
+(pdftex.def)             Requested size: 115.90932pt x 142.26378pt.
+
+Overfull \hbox (4.2523pt too wide) in paragraph at lines 72--73
+ [][] 
+ []
 
 <plots/label_ex2.png, id=1095, 562.1pt x 1429.34pt>
 File: plots/label_ex2.png Graphic file (type png)
  <use plots/label_ex2.png>
 Package pdftex.def Info: plots/label_ex2.png used on input line 77.
-(pdftex.def)             Requested size: 50.34665pt x 128.0374pt.
+(pdftex.def)             Requested size: 55.93883pt x 142.26378pt.
 
 <plots/logits_ex2_v1.png, id=1096, 404.712pt x 1029.1248pt>
 File: plots/logits_ex2_v1.png Graphic file (type png)
 
 <use plots/logits_ex2_v1.png>
 Package pdftex.def Info: plots/logits_ex2_v1.png used on input line 82.
-(pdftex.def)             Requested size: 50.34802pt x 128.0374pt.
+(pdftex.def)             Requested size: 55.94295pt x 142.26378pt.
 
 <plots/segmentation_ex2_v1.png, id=1097, 562.1pt x 1429.34pt>
 File: plots/segmentation_ex2_v1.png Graphic file (type png)
 
 <use plots/segmentation_ex2_v1.png>
 Package pdftex.def Info: plots/segmentation_ex2_v1.png used on input line 87.
-(pdftex.def)             Requested size: 50.34665pt x 128.0374pt.
+(pdftex.def)             Requested size: 55.93883pt x 142.26378pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1297,34 +1309,34 @@ File: plots/segmentation_ex2_v2.png Graphic file (type png)
 <use plots/segmentation_ex2_v2.png>
 Package pdftex.def Info: plots/segmentation_ex2_v2.png used on input line 175.
 (pdftex.def)             Requested size: 55.93883pt x 142.26378pt.
-
+ [44 <./plots/mammogram_ex1.png (PNG copy)> <./plots/label_ex1.png (PNG copy)> 
+<./plots/logits_ex1_v1.png> <./plots/segmentation_ex1_v1.png (PNG copy)> <./plo
+ts/mammogram_ex2.png (PNG copy)> <./plots/label_ex2.png (PNG copy)> <./plots/lo
+gits_ex2_v1.png> <./plots/segmentation_ex2_v1.png (PNG copy)>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<plots/hs5_alpha.png, id=1118, 1399.1472pt x 760.2804pt>
+<plots/hs5_alpha.png, id=1126, 1399.1472pt x 760.2804pt>
 File: plots/hs5_alpha.png Graphic file (type png)
 
 <use plots/hs5_alpha.png>
 Package pdftex.def Info: plots/hs5_alpha.png used on input line 192.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs5_lambda.png, id=1119, 1399.1472pt x 760.2804pt>
+<plots/hs5_lambda.png, id=1127, 1399.1472pt x 760.2804pt>
 File: plots/hs5_lambda.png Graphic file (type png)
 
 <use plots/hs5_lambda.png>
 Package pdftex.def Info: plots/hs5_lambda.png used on input line 197.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs5_pcolor.png, id=1120, 1399.1472pt x 760.2804pt>
+<plots/hs5_pcolor.png, id=1128, 1399.1472pt x 760.2804pt>
 File: plots/hs5_pcolor.png Graphic file (type png)
 
 <use plots/hs5_pcolor.png>
 Package pdftex.def Info: plots/hs5_pcolor.png used on input line 202.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
- [44 <./plots/mammogram_ex1.png (PNG copy)> <./plots/label_ex1.png (PNG copy)> 
-<./plots/logits_ex1_v1.png> <./plots/segmentation_ex1_v1.png (PNG copy)> <./plo
-ts/mammogram_ex2.png (PNG copy)> <./plots/label_ex2.png (PNG copy)> <./plots/lo
-gits_ex2_v1.png> <./plots/segmentation_ex2_v1.png (PNG copy)>]
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1398,7 +1410,7 @@ Here is how much of TeX's memory you used:
  11569 multiletter control sequences out of 15000+600000
  39750 words of font info for 85 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,10n,45p,1424b,505s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,45p,1428b,505s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1417,7 +1429,7 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (66 pages, 12587602 bytes).
+Output written on report.pdf (66 pages, 12587257 bytes).
 PDF statistics:
  1346 PDF objects out of 1440 (max. 8388607)
  1173 compressed objects within 12 object streams
