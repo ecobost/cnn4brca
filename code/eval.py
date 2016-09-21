@@ -1,10 +1,10 @@
 # Written by: Erick Cobos T. (a01184587@itesm.mx)
-# Date: April 2016
+# Date: August 2016
 
 """ Quick script to eval images using a trained network
 Example:
 	>>> import eval
-	>>> iou, logits, segmentation = eval.evaluate("my_image.png", "my_label.png")
+	>>> iou, prediction, segmentation = eval.evaluate("my_image.png", "my_label.png")
 
 Note:
 	Call tf.reset_default_graph() to run it twice in the same python terminal.
@@ -14,8 +14,11 @@ import tensorflow as tf
 import model_v3 as model
 import scipy.misc
 import numpy as np
+import matplotlib.pyplot as plt
 
 checkpoint_dir = "checkpoint"
+threshold_as_prob = 0.5
+threshold = np.log(threshold_as_prob) - np.log(1 - threshold_as_prob)
 
 def load_image(image_path):
 	""" Load png image as tensor and whiten it."""
@@ -69,8 +72,9 @@ def evaluate(image_path, label_path):
 	
 		logits = prediction.eval()
 		scipy.misc.imsave("prediction.png", logits)
+		plt.imsave("prediction_jet.png", logits, cmap=plt.get_cmap('nipy_spectral'))
 		
-		segmentation = post(logits, label, threshold = 0)
+		segmentation = post(logits, label, threshold)
 		scipy.misc.imsave("segmentation.png", segmentation)
 		
 		iou = IOU(segmentation, label)
