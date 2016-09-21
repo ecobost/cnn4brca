@@ -505,7 +505,7 @@
 			\hline
 			\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
 			\hline
-			- & - & - & - & - & - & - & -\\
+			0.153 & 0.266 & 0.504 & 0.985 & 0.256 & 0.993 & 0.277 & 0.256\\
 			\hline
 			\end{tabular}
 		\end{table}
@@ -554,6 +554,45 @@
 			\end{subfigure}%img_251_334_1_LCC.png
 		\end{figure}		
 	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Setting threshold with G-mean}
+		Threshold before (0.9 probability) was chosen on the validation set using IOU as metric. Using G-mean, the chosen threshold would be 0.1
+		
+		\scriptsize
+		\begin{table}[h]
+			\centering
+			\begin{tabular}{cccccccc}
+			\hline
+			\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
+			\hline
+			0.054 & 0.103 & 0.842 & 0.852 & 0.831 & 0.852 & 0.055 & 0.831\\
+			\hline
+			\end{tabular}
+		\end{table}
+		
+		\begin{figure}[h]
+		\centering
+			\begin{subfigure}{0.24\textwidth}
+				\centering
+					\includegraphics[height=4cm]{plots/label_ex1.png}
+			\end{subfigure}
+			\begin{subfigure}{0.24\textwidth}
+				\centering
+					\includegraphics[height=4cm]{plots/segmentation_ex1_v3_zeropointone.png}
+			\end{subfigure}
+			\begin{subfigure}{0.24\textwidth}
+				\centering
+					\includegraphics[height=4cm]{plots/label_ex2.png}
+			\end{subfigure}
+			\begin{subfigure}{0.24\textwidth}
+				\centering
+					\includegraphics[height=4cm]{plots/segmentation_ex2_v3_zeropointone.png}
+			\end{subfigure}
+		\end{figure}
+		
+		
+	\end{frame}
 
 	\begin{frame}
 		\frametitle{Writing the thesis}
@@ -579,7 +618,7 @@
 	\begin{frame}
 		\frametitle{Conclusion}
 		\begin{itemize}
-			\item A convolutional network can be used as an end-to-end trainable system to perform segmentation of mammograms.
+			\item Convolutional networks can be used as an end-to-end trainable system to perform segmentation of mammograms.
 			\item Advances in segmentation of real-life images translate to mammographic images. 
 			\item Fine-tuning is necessary to find a good local minimum.
 			\item Different architectures can improve results, although small variations are not as important.

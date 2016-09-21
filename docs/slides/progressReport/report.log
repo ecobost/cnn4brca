@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  20 SEP 2016 19:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  21 SEP 2016 01:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1296,12 +1296,12 @@ File: plots/logits_ex1_v3.png Graphic file (type png)
 Package pdftex.def Info: plots/logits_ex1_v3.png used on input line 556.
 (pdftex.def)             Requested size: 51.83418pt x 99.58464pt.
 
-<plots/segmentation_ex1_v3.png, id=670, 626.34pt x 1638.12pt>
+<plots/segmentation_ex1_v3.png, id=670, 610.28pt x 1172.38pt>
 File: plots/segmentation_ex1_v3.png Graphic file (type png)
 
 <use plots/segmentation_ex1_v3.png>
 Package pdftex.def Info: plots/segmentation_ex1_v3.png used on input line 556.
-(pdftex.def)             Requested size: 38.07574pt x 99.58464pt.
+(pdftex.def)             Requested size: 51.8312pt x 99.58464pt.
 File: plots/mammogram_ex2.png Graphic file (type png)
  <use plots/mammogram_ex2.png>
 Package pdftex.def Info: plots/mammogram_ex2.png used on input line 556.
@@ -1319,12 +1319,12 @@ File: plots/logits_ex2_v3.png Graphic file (type png)
 Package pdftex.def Info: plots/logits_ex2_v3.png used on input line 556.
 (pdftex.def)             Requested size: 38.07346pt x 99.58464pt.
 
-<plots/segmentation_ex2_v3.png, id=672, 610.28pt x 1172.38pt>
+<plots/segmentation_ex2_v3.png, id=672, 626.34pt x 1638.12pt>
 File: plots/segmentation_ex2_v3.png Graphic file (type png)
 
 <use plots/segmentation_ex2_v3.png>
 Package pdftex.def Info: plots/segmentation_ex2_v3.png used on input line 556.
-(pdftex.def)             Requested size: 51.8312pt x 99.58464pt.
+(pdftex.def)             Requested size: 38.07574pt x 99.58464pt.
 
 Overfull \vbox (1.0987pt too high) detected at line 556
  []
@@ -1333,26 +1333,54 @@ Overfull \vbox (1.0987pt too high) detected at line 556
 
  <./plots/logits_ex1_v3.png> <./plots/segmentation_ex1_v3.png (PNG copy)> <./pl
 ots/logits_ex2_v3.png> <./plots/segmentation_ex2_v3.png (PNG copy)>]
-[22
+File: plots/label_ex1.png Graphic file (type png)
 
-] <plots/workplan.png, id=726, 1174.3875pt x 159.59625pt>
+<use plots/label_ex1.png>
+Package pdftex.def Info: plots/label_ex1.png used on input line 595.
+(pdftex.def)             Requested size: 58.67805pt x 113.81102pt.
+
+<plots/segmentation_ex1_v3_zeropointone.png, id=701, 610.28pt x 1172.38pt>
+File: plots/segmentation_ex1_v3_zeropointone.png Graphic file (type png)
+
+<use plots/segmentation_ex1_v3_zeropointone.png>
+Package pdftex.def Info: plots/segmentation_ex1_v3_zeropointone.png used on inp
+ut line 595.
+(pdftex.def)             Requested size: 59.24364pt x 113.81102pt.
+File: plots/label_ex2.png Graphic file (type png)
+ <use plots/label_ex2.png>
+Package pdftex.def Info: plots/label_ex2.png used on input line 595.
+(pdftex.def)             Requested size: 44.75449pt x 113.81102pt.
+
+<plots/segmentation_ex2_v3_zeropointone.png, id=702, 626.34pt x 1638.12pt>
+File: plots/segmentation_ex2_v3_zeropointone.png Graphic file (type png)
+
+<use plots/segmentation_ex2_v3_zeropointone.png>
+Package pdftex.def Info: plots/segmentation_ex2_v3_zeropointone.png used on inp
+ut line 595.
+(pdftex.def)             Requested size: 43.51376pt x 113.81102pt.
+ [22
+
+ <./plots/segmentation_ex1_v3_zeropointone.png (PNG copy)> <./plots/segmentatio
+n_ex2_v3_zeropointone.png (PNG copy)>] [23
+
+] <plots/workplan.png, id=754, 1174.3875pt x 159.59625pt>
 File: plots/workplan.png Graphic file (type png)
 
 <use plots/workplan.png>
-Package pdftex.def Info: plots/workplan.png used on input line 577.
+Package pdftex.def Info: plots/workplan.png used on input line 616.
 (pdftex.def)             Requested size: 325.17949pt x 44.18985pt.
- [23
+ [24
 
- <./plots/workplan.png>] [24
+ <./plots/workplan.png>] [25
 
 ]
-<plots/questions.png, id=778, 501.875pt x 702.625pt>
+<plots/questions.png, id=807, 501.875pt x 702.625pt>
 File: plots/questions.png Graphic file (type png)
  <use plots/questions.png>
-Package pdftex.def Info: plots/questions.png used on input line 601.
+Package pdftex.def Info: plots/questions.png used on input line 640.
 (pdftex.def)             Requested size: 85.57382pt x 119.79846pt.
 
-[25
+[26
 
  <./plots/questions.png>]
 \tf@nav=\write6
@@ -1364,11 +1392,11 @@ Package pdftex.def Info: plots/questions.png used on input line 601.
 \tf@snm=\write8
 \openout8 = `report.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 603.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 603.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 642.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 642.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 603.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 603.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 642.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 642.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 74B8C616700B75C24EA21C2304AD5FAD;372.
 
@@ -1376,13 +1404,13 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 603.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 642.
  ) 
 Here is how much of TeX's memory you used:
- 17225 strings out of 495028
- 321845 string characters out of 6181498
- 393982 words of memory out of 5000000
- 19919 multiletter control sequences out of 15000+600000
+ 17239 strings out of 495028
+ 322326 string characters out of 6181498
+ 393981 words of memory out of 5000000
+ 19929 multiletter control sequences out of 15000+600000
  14223 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  49i,16n,63p,391b,639s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1393,10 +1421,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on report.pdf (25 pages, 10802462 bytes).
+Output written on report.pdf (26 pages, 10819521 bytes).
 PDF statistics:
- 846 PDF objects out of 1000 (max. 8388607)
- 733 compressed objects within 8 object streams
- 66 named destinations out of 1000 (max. 500000)
- 370 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 875 PDF objects out of 1000 (max. 8388607)
+ 759 compressed objects within 8 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 380 words of extra memory for PDF output out of 10000 (max. 10000000)
 
