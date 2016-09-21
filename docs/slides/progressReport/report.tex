@@ -56,7 +56,7 @@
 
     \section[Lesion Segmentation]{Lesion Segmentation}
     \begin{frame}
-     	\frametitle{Why breast cancer}
+     	\frametitle{Why breast cancer?}
      		Breast cancer is the most commonly diagnosed cancer among women.
      		
      		For women, death rates are the second highest of any cancer. However, survival rate when detected early is close to 100\%.
@@ -142,11 +142,14 @@
 			\end{subfigure}
 		\end{figure}
 		\source{[Karpathy et al., 2016]}
-		% Explain kernels and hierarchichal features
+		
 	\end{frame}
+	% Explain kernels and hierarchichal features )ever more complex features).
+	% hierarchical learning features and spatial invariance
+	% Justificacion pooling: para que la red agregue infpormacion de diferentes lugares y vaya viendo cada vez espacios mas grandes, bigger receptive field, para aunmentar la invarianza de la ubicacion de lo que estas viendo so it recognizes it nomatter where it is and for efficiency porque redes grandes no entran en menmoria
 		
 	\begin{frame}
-		\frametitle{What have they done}
+		\frametitle{Object classification}
 		\vspace{30pt}
 		\begin{figure}[h]
 			\centering
@@ -186,15 +189,21 @@
 		Solved by upsampling, deconvolution or dilated convolutions.
 		\begin{figure}[h]
 			\centering
-			\begin{subfigure}{0.45\textwidth}
-				\includegraphics[width=\textwidth]{plots/fcn.png}
+			\begin{subfigure}{0.47\textwidth}
+				\begin{subfigure}{\textwidth}
+					\includegraphics[width=\textwidth]{plots/fcn.png}
+				\end{subfigure}
+				\par \bigskip
+				\begin{subfigure}{\textwidth}
+					\includegraphics[width=\textwidth]{plots/dilated.png}
+				\end{subfigure}
 			\end{subfigure}
 			~
 			\begin{subfigure}{0.5\textwidth}
 				\includegraphics[width=\textwidth]{plots/segmentationComparison.png}
 			\end{subfigure}
 		\end{figure}
-		\source{[Longet al., 2015], [Yu and Koltun, 2016]}
+		\source{[Long et al., 2015], [Yu and Koltun, 2016]}
 		% Explain how kernels are moved along to produce a full result
 	\end{frame}
 	% Traditional way. Image visión, specialized techniques. Handcrafted features made by experts But it is hard to design this, and it takes time to maintain, and you need expertise: end-to-end, learn from data, not done by hand. Pipeline
@@ -501,7 +510,7 @@
 			\end{tabular}
 		\end{table}
 	\end{frame}
-\begin{comment}
+
 	\begin{frame}
 		\frametitle{Qualitative results}
 		\begin{figure}[h]
@@ -545,10 +554,10 @@
 			\end{subfigure}%img_251_334_1_LCC.png
 		\end{figure}		
 	\end{frame}
-\end{comment}
+
 	\begin{frame}
 		\frametitle{Writing the thesis}
-		65 pages and counting...
+		60 pages and counting...
 	\end{frame}
 	
 	
@@ -557,8 +566,29 @@
 		\frametitle{Future work}
 		\begin{itemize}
 			\item Train networks with increasing number of examples
-			\item Train simpler network with all data
+			\item Train simpler networks with no preprocessing or bell and whistles
+			\item Train a final network with all data
 			\item Write thesis
+			\item Prepare thesis defense
+		\end{itemize}
+		\begin{figure}
+			\includegraphics[width=0.95\textwidth]{plots/workplan.png}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Conclusion}
+		\begin{itemize}
+			\item A convolutional network can be used as an end-to-end trainable system to perform segmentation of mammograms.
+			\item Advances in segmentation of real-life images translate to mammographic images. 
+			\item Fine-tuning is necessary to find a good local minimum.
+			\item Different architectures can improve results, although small variations are not as important.
+			\item Training medium networks is feasible with the available resources.
+		\end{itemize}
+		Yet to answer:
+		\begin{itemize}
+			\item Is the bottleneck for learning the network architecture or the amount of data?
+			\item Are convolutional networks a good option for future research?
 		\end{itemize}
 	\end{frame}
 

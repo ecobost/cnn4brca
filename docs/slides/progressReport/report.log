@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  19 SEP 2016 17:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  20 SEP 2016 19:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report.tex
+**report
 (./report.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -971,20 +971,20 @@ Package pdftex.def Info: plots/convNetExample.jpeg used on input line 146.
 File: plots/imageNetLogo.png Graphic file (type png)
 
 <use plots/imageNetLogo.png>
-Package pdftex.def Info: plots/imageNetLogo.png used on input line 167.
+Package pdftex.def Info: plots/imageNetLogo.png used on input line 170.
 (pdftex.def)             Requested size: 342.2953pt x 61.89278pt.
 
 <plots/imageNetAdvances.png, id=291, 313.17pt x 147.04938pt>
 File: plots/imageNetAdvances.png Graphic file (type png)
 
 <use plots/imageNetAdvances.png>
-Package pdftex.def Info: plots/imageNetAdvances.png used on input line 167.
+Package pdftex.def Info: plots/imageNetAdvances.png used on input line 170.
 (pdftex.def)             Requested size: 119.80544pt x 56.25404pt.
 
 <plots/alexnet.png, id=292, 652.68843pt x 218.31563pt>
 File: plots/alexnet.png Graphic file (type png)
  <use plots/alexnet.png>
-Package pdftex.def Info: plots/alexnet.png used on input line 167.
+Package pdftex.def Info: plots/alexnet.png used on input line 170.
 (pdftex.def)             Requested size: 205.37926pt x 68.69649pt.
 
 [9
@@ -993,7 +993,7 @@ Package pdftex.def Info: plots/alexnet.png used on input line 167.
 >] <plots/resNet.png, id=320, 1606.0pt x 741.77126pt>
 File: plots/resNet.png Graphic file (type png)
  <use plots/resNet.png>
-Package pdftex.def Info: plots/resNet.png used on input line 181.
+Package pdftex.def Info: plots/resNet.png used on input line 184.
 (pdftex.def)             Requested size: 342.2953pt x 158.09685pt.
 
 [10
@@ -1002,52 +1002,57 @@ Package pdftex.def Info: plots/resNet.png used on input line 181.
 File: plots/fcn.png Graphic file (type png)
 
 <use plots/fcn.png>
-Package pdftex.def Info: plots/fcn.png used on input line 199.
-(pdftex.def)             Requested size: 154.03183pt x 79.04172pt.
+Package pdftex.def Info: plots/fcn.png used on input line 208.
+(pdftex.def)             Requested size: 160.8792pt x 82.55486pt.
+ <plots/dilated.png, id=347, 938.50626pt x 305.14pt>
+File: plots/dilated.png Graphic file (type png)
 
-<plots/segmentationComparison.png, id=347, 840.13875pt x 830.10126pt>
+<use plots/dilated.png>
+Package pdftex.def Info: plots/dilated.png used on input line 208.
+(pdftex.def)             Requested size: 160.8792pt x 52.30612pt.
+
+<plots/segmentationComparison.png, id=348, 840.13875pt x 830.10126pt>
 File: plots/segmentationComparison.png Graphic file (type png)
 
 <use plots/segmentationComparison.png>
-Package pdftex.def Info: plots/segmentationComparison.png used on input line 19
-9.
+Package pdftex.def Info: plots/segmentationComparison.png used on input line 20
+8.
 (pdftex.def)             Requested size: 171.14764pt x 169.09521pt.
  [11
 
- <./plots/fcn.png> <./plots/segmentationComparison.png>] <plots/arevalo.png, id
-=374, 1478.52374pt x 351.3125pt>
+ <./plots/fcn.png> <./plots/dilated.png> <./plots/segmentationComparison.png>]
+<plots/arevalo.png, id=375, 1478.52374pt x 351.3125pt>
 File: plots/arevalo.png Graphic file (type png)
-
-<use plots/arevalo.png>
-Package pdftex.def Info: plots/arevalo.png used on input line 238.
+ <use plots/arevalo.png>
+Package pdftex.def Info: plots/arevalo.png used on input line 247.
 (pdftex.def)             Requested size: 164.30028pt x 39.03581pt.
 
-<plots/arevaloResults.png, id=375, 1265.72874pt x 706.64pt>
+<plots/arevaloResults.png, id=376, 1265.72874pt x 706.64pt>
 File: plots/arevaloResults.png Graphic file (type png)
 
 <use plots/arevaloResults.png>
-Package pdftex.def Info: plots/arevaloResults.png used on input line 238.
+Package pdftex.def Info: plots/arevaloResults.png used on input line 247.
 (pdftex.def)             Requested size: 164.30028pt x 91.72624pt.
 
-<plots/dubrovina1.png, id=376, 1266.7325pt x 268.00125pt>
+<plots/dubrovina1.png, id=377, 1266.7325pt x 268.00125pt>
 File: plots/dubrovina1.png Graphic file (type png)
 
 <use plots/dubrovina1.png>
-Package pdftex.def Info: plots/dubrovina1.png used on input line 238.
+Package pdftex.def Info: plots/dubrovina1.png used on input line 247.
 (pdftex.def)             Requested size: 164.30028pt x 34.75958pt.
 
-<plots/dubrovina2.png, id=377, 1260.71pt x 377.41pt>
+<plots/dubrovina2.png, id=378, 1260.71pt x 377.41pt>
 File: plots/dubrovina2.png Graphic file (type png)
 
 <use plots/dubrovina2.png>
-Package pdftex.def Info: plots/dubrovina2.png used on input line 238.
+Package pdftex.def Info: plots/dubrovina2.png used on input line 247.
 (pdftex.def)             Requested size: 164.30028pt x 49.18019pt.
 
-<plots/dubrovinaResults.png, id=378, 1321.93875pt x 439.6425pt>
+<plots/dubrovinaResults.png, id=379, 1321.93875pt x 439.6425pt>
 File: plots/dubrovinaResults.png Graphic file (type png)
 
 <use plots/dubrovinaResults.png>
-Package pdftex.def Info: plots/dubrovinaResults.png used on input line 238.
+Package pdftex.def Info: plots/dubrovinaResults.png used on input line 247.
 (pdftex.def)             Requested size: 164.30028pt x 54.63988pt.
  [12
 
@@ -1055,65 +1060,65 @@ Package pdftex.def Info: plots/dubrovinaResults.png used on input line 238.
 /plots/dubrovina2.png> <./plots/dubrovinaResults.png>]
 File: plots/mammogram.png Graphic file (type png)
  <use plots/mammogram.png>
-Package pdftex.def Info: plots/mammogram.png used on input line 287.
+Package pdftex.def Info: plots/mammogram.png used on input line 296.
 (pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
 
-<plots/mammogram_enhanced.png, id=406, 3340.48pt x 4099.315pt>
+<plots/mammogram_enhanced.png, id=407, 3340.48pt x 4099.315pt>
 File: plots/mammogram_enhanced.png Graphic file (type png)
 
 <use plots/mammogram_enhanced.png>
-Package pdftex.def Info: plots/mammogram_enhanced.png used on input line 287.
+Package pdftex.def Info: plots/mammogram_enhanced.png used on input line 296.
 (pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
 
-<plots/mammogram_resized.png, id=407, 1309.89375pt x 1607.00375pt>
+<plots/mammogram_resized.png, id=408, 1309.89375pt x 1607.00375pt>
 File: plots/mammogram_resized.png Graphic file (type png)
 
 <use plots/mammogram_resized.png>
-Package pdftex.def Info: plots/mammogram_resized.png used on input line 287.
+Package pdftex.def Info: plots/mammogram_resized.png used on input line 296.
 (pdftex.def)             Requested size: 81.1686pt x 99.58464pt.
 
-<plots/mammogram_v1.png, id=408, 562.1pt x 1429.34pt>
+<plots/mammogram_v1.png, id=409, 562.1pt x 1429.34pt>
 File: plots/mammogram_v1.png Graphic file (type png)
 
 <use plots/mammogram_v1.png>
-Package pdftex.def Info: plots/mammogram_v1.png used on input line 287.
+Package pdftex.def Info: plots/mammogram_v1.png used on input line 296.
 (pdftex.def)             Requested size: 39.16232pt x 99.58464pt.
 
-Overfull \hbox (1.50964pt too wide) in paragraph at lines 287--287
+Overfull \hbox (1.50964pt too wide) in paragraph at lines 296--296
  [][] 
  []
 
 File: plots/label.png Graphic file (type png)
 <use plots/label.png>
-Package pdftex.def Info: plots/label.png used on input line 287.
+Package pdftex.def Info: plots/label.png used on input line 296.
 (pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
 
-<plots/label_enhanced.png, id=409, 3340.48pt x 4099.315pt>
+<plots/label_enhanced.png, id=410, 3340.48pt x 4099.315pt>
 File: plots/label_enhanced.png Graphic file (type png)
 
 <use plots/label_enhanced.png>
-Package pdftex.def Info: plots/label_enhanced.png used on input line 287.
+Package pdftex.def Info: plots/label_enhanced.png used on input line 296.
 (pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
 
-<plots/label_resized.png, id=410, 1309.89375pt x 1607.00375pt>
+<plots/label_resized.png, id=411, 1309.89375pt x 1607.00375pt>
 File: plots/label_resized.png Graphic file (type png)
 
 <use plots/label_resized.png>
-Package pdftex.def Info: plots/label_resized.png used on input line 287.
+Package pdftex.def Info: plots/label_resized.png used on input line 296.
 (pdftex.def)             Requested size: 81.1686pt x 99.58464pt.
 
-<plots/label_v1.png, id=411, 562.1pt x 1429.34pt>
+<plots/label_v1.png, id=412, 562.1pt x 1429.34pt>
 File: plots/label_v1.png Graphic file (type png)
  <use plots/label_v1.png>
-Package pdftex.def Info: plots/label_v1.png used on input line 287.
+Package pdftex.def Info: plots/label_v1.png used on input line 296.
 (pdftex.def)             Requested size: 39.16232pt x 99.58464pt.
 
-Overfull \hbox (1.50964pt too wide) in paragraph at lines 287--287
+Overfull \hbox (1.50964pt too wide) in paragraph at lines 296--296
  [][] 
  []
 
 
-Overfull \vbox (8.0987pt too high) detected at line 287
+Overfull \vbox (8.0987pt too high) detected at line 296
  []
 
 [13
@@ -1121,93 +1126,93 @@ Overfull \vbox (8.0987pt too high) detected at line 287
  <./plots/mammogram_enhanced.png (PNG copy)> <./plots/mammogram_resized.png (PN
 G copy)> <./plots/mammogram_v1.png (PNG copy)> <./plots/label_enhanced.png (PNG
  copy)> <./plots/label_resized.png (PNG copy)> <./plots/label_v1.png (PNG copy)
->] <plots/tensorflow.png, id=447, 358.33875pt x 292.09125pt>
+>] <plots/tensorflow.png, id=448, 358.33875pt x 292.09125pt>
 File: plots/tensorflow.png Graphic file (type png)
 
 <use plots/tensorflow.png>
-Package pdftex.def Info: plots/tensorflow.png used on input line 308.
+Package pdftex.def Info: plots/tensorflow.png used on input line 317.
 (pdftex.def)             Requested size: 160.8792pt x 131.13676pt.
- <plots/github.png, id=448, 690.58pt x 106.3975pt>
+ <plots/github.png, id=449, 690.58pt x 106.3975pt>
 File: plots/github.png Graphic file (type png)
 
 <use plots/github.png>
-Package pdftex.def Info: plots/github.png used on input line 308.
+Package pdftex.def Info: plots/github.png used on input line 317.
 (pdftex.def)             Requested size: 160.8792pt x 24.78586pt.
- <plots/code.png, id=449, 778.91pt x 811.03pt>
+ <plots/code.png, id=450, 778.91pt x 811.03pt>
 File: plots/code.png Graphic file (type png)
 
 <use plots/code.png>
-Package pdftex.def Info: plots/code.png used on input line 308.
+Package pdftex.def Info: plots/code.png used on input line 317.
 (pdftex.def)             Requested size: 171.14764pt x 178.20439pt.
  [14
 
  <./plots/tensorflow.png> <./plots/github.png> <./plots/code.png>] <plots/overv
-iew.pdf, id=477, 843.15pt x 318.18875pt>
+iew.pdf, id=478, 843.15pt x 318.18875pt>
 File: plots/overview.pdf Graphic file (type pdf)
 
 <use plots/overview.pdf>
-Package pdftex.def Info: plots/overview.pdf used on input line 316.
+Package pdftex.def Info: plots/overview.pdf used on input line 325.
 (pdftex.def)             Requested size: 342.2953pt x 129.17645pt.
  [15
 
  <./plots/overview.pdf>] [16
 
 ]
-<plots/mammogram_ex1.png, id=546, 3340.48pt x 4099.315pt>
+<plots/mammogram_ex1.png, id=547, 3340.48pt x 4099.315pt>
 File: plots/mammogram_ex1.png Graphic file (type png)
 
 <use plots/mammogram_ex1.png>
-Package pdftex.def Info: plots/mammogram_ex1.png used on input line 403.
+Package pdftex.def Info: plots/mammogram_ex1.png used on input line 412.
 (pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
 
-<plots/label_ex1.png, id=547, 529.98pt x 1027.84pt>
+<plots/label_ex1.png, id=548, 529.98pt x 1027.84pt>
 File: plots/label_ex1.png Graphic file (type png)
  <use plots/label_ex1.png>
-Package pdftex.def Info: plots/label_ex1.png used on input line 403.
+Package pdftex.def Info: plots/label_ex1.png used on input line 412.
 (pdftex.def)             Requested size: 51.34329pt x 99.58464pt.
 
-<plots/logits_ex1_v1.png, id=548, 381.5856pt x 740.0448pt>
+<plots/logits_ex1_v1.png, id=549, 381.5856pt x 740.0448pt>
 File: plots/logits_ex1_v1.png Graphic file (type png)
 
 <use plots/logits_ex1_v1.png>
-Package pdftex.def Info: plots/logits_ex1_v1.png used on input line 403.
+Package pdftex.def Info: plots/logits_ex1_v1.png used on input line 412.
 (pdftex.def)             Requested size: 51.34297pt x 99.58464pt.
 
-<plots/segmentation_ex1_v1.png, id=549, 529.98pt x 1027.84pt>
+<plots/segmentation_ex1_v1.png, id=550, 529.98pt x 1027.84pt>
 File: plots/segmentation_ex1_v1.png Graphic file (type png)
 
 <use plots/segmentation_ex1_v1.png>
-Package pdftex.def Info: plots/segmentation_ex1_v1.png used on input line 403.
+Package pdftex.def Info: plots/segmentation_ex1_v1.png used on input line 412.
 (pdftex.def)             Requested size: 51.34329pt x 99.58464pt.
 
-<plots/mammogram_ex2.png, id=550, 3340.48pt x 4099.315pt>
+<plots/mammogram_ex2.png, id=551, 3340.48pt x 4099.315pt>
 File: plots/mammogram_ex2.png Graphic file (type png)
 
 <use plots/mammogram_ex2.png>
-Package pdftex.def Info: plots/mammogram_ex2.png used on input line 403.
+Package pdftex.def Info: plots/mammogram_ex2.png used on input line 412.
 (pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
 
-<plots/label_ex2.png, id=551, 562.1pt x 1429.34pt>
+<plots/label_ex2.png, id=552, 562.1pt x 1429.34pt>
 File: plots/label_ex2.png Graphic file (type png)
  <use plots/label_ex2.png>
-Package pdftex.def Info: plots/label_ex2.png used on input line 403.
+Package pdftex.def Info: plots/label_ex2.png used on input line 412.
 (pdftex.def)             Requested size: 39.16232pt x 99.58464pt.
 
-<plots/logits_ex2_v1.png, id=552, 404.712pt x 1029.1248pt>
+<plots/logits_ex2_v1.png, id=553, 404.712pt x 1029.1248pt>
 File: plots/logits_ex2_v1.png Graphic file (type png)
 
 <use plots/logits_ex2_v1.png>
-Package pdftex.def Info: plots/logits_ex2_v1.png used on input line 403.
+Package pdftex.def Info: plots/logits_ex2_v1.png used on input line 412.
 (pdftex.def)             Requested size: 39.1582pt x 99.58464pt.
 
-<plots/segmentation_ex2_v1.png, id=553, 562.1pt x 1429.34pt>
+<plots/segmentation_ex2_v1.png, id=554, 562.1pt x 1429.34pt>
 File: plots/segmentation_ex2_v1.png Graphic file (type png)
 
 <use plots/segmentation_ex2_v1.png>
-Package pdftex.def Info: plots/segmentation_ex2_v1.png used on input line 403.
+Package pdftex.def Info: plots/segmentation_ex2_v1.png used on input line 412.
 (pdftex.def)             Requested size: 39.16232pt x 99.58464pt.
 
-Overfull \vbox (1.0987pt too high) detected at line 403
+Overfull \vbox (1.0987pt too high) detected at line 412
  []
 
 [17
@@ -1221,51 +1226,51 @@ _ex2_v1.png> <./plots/segmentation_ex2_v1.png (PNG copy)>] [18
 File: plots/mammogram_ex1.png Graphic file (type png)
 
 <use plots/mammogram_ex1.png>
-Package pdftex.def Info: plots/mammogram_ex1.png used on input line 464.
+Package pdftex.def Info: plots/mammogram_ex1.png used on input line 473.
 (pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
 File: plots/label_ex1.png Graphic file (type png)
  <use plots/label_ex1.png>
-Package pdftex.def Info: plots/label_ex1.png used on input line 464.
+Package pdftex.def Info: plots/label_ex1.png used on input line 473.
 (pdftex.def)             Requested size: 51.34329pt x 99.58464pt.
 
-<plots/logits_ex1_v2.png, id=609, 381.5856pt x 740.0448pt>
+<plots/logits_ex1_v2.png, id=610, 381.5856pt x 740.0448pt>
 File: plots/logits_ex1_v2.png Graphic file (type png)
 
 <use plots/logits_ex1_v2.png>
-Package pdftex.def Info: plots/logits_ex1_v2.png used on input line 464.
+Package pdftex.def Info: plots/logits_ex1_v2.png used on input line 473.
 (pdftex.def)             Requested size: 51.34297pt x 99.58464pt.
 
-<plots/segmentation_ex1_v2.png, id=610, 529.98pt x 1027.84pt>
+<plots/segmentation_ex1_v2.png, id=611, 529.98pt x 1027.84pt>
 File: plots/segmentation_ex1_v2.png Graphic file (type png)
 
 <use plots/segmentation_ex1_v2.png>
-Package pdftex.def Info: plots/segmentation_ex1_v2.png used on input line 464.
+Package pdftex.def Info: plots/segmentation_ex1_v2.png used on input line 473.
 (pdftex.def)             Requested size: 51.34329pt x 99.58464pt.
 File: plots/mammogram_ex2.png Graphic file (type png)
  <use plots/mammogram_ex2.png>
-Package pdftex.def Info: plots/mammogram_ex2.png used on input line 464.
+Package pdftex.def Info: plots/mammogram_ex2.png used on input line 473.
 (pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
 File: plots/label_ex2.png Graphic file (type png)
 
 <use plots/label_ex2.png>
-Package pdftex.def Info: plots/label_ex2.png used on input line 464.
+Package pdftex.def Info: plots/label_ex2.png used on input line 473.
 (pdftex.def)             Requested size: 39.16232pt x 99.58464pt.
 
-<plots/logits_ex2_v2.png, id=611, 404.712pt x 1029.1248pt>
+<plots/logits_ex2_v2.png, id=612, 404.712pt x 1029.1248pt>
 File: plots/logits_ex2_v2.png Graphic file (type png)
 
 <use plots/logits_ex2_v2.png>
-Package pdftex.def Info: plots/logits_ex2_v2.png used on input line 464.
+Package pdftex.def Info: plots/logits_ex2_v2.png used on input line 473.
 (pdftex.def)             Requested size: 39.1582pt x 99.58464pt.
 
-<plots/segmentation_ex2_v2.png, id=612, 562.1pt x 1429.34pt>
+<plots/segmentation_ex2_v2.png, id=613, 562.1pt x 1429.34pt>
 File: plots/segmentation_ex2_v2.png Graphic file (type png)
 
 <use plots/segmentation_ex2_v2.png>
-Package pdftex.def Info: plots/segmentation_ex2_v2.png used on input line 464.
+Package pdftex.def Info: plots/segmentation_ex2_v2.png used on input line 473.
 (pdftex.def)             Requested size: 39.16232pt x 99.58464pt.
 
-Overfull \vbox (1.0987pt too high) detected at line 464
+Overfull \vbox (1.0987pt too high) detected at line 473
  []
 
 [19
@@ -1274,17 +1279,80 @@ Overfull \vbox (1.0987pt too high) detected at line 464
 ots/logits_ex2_v2.png> <./plots/segmentation_ex2_v2.png (PNG copy)>]
 [20
 
-] [21
+]
+File: plots/mammogram_ex1.png Graphic file (type png)
+ <use plots/mammogram_ex1.png>
+Package pdftex.def Info: plots/mammogram_ex1.png used on input line 556.
+(pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
+File: plots/label_ex1.png Graphic file (type png)
+ <use plots/label_ex1.png>
+Package pdftex.def Info: plots/label_ex1.png used on input line 556.
+(pdftex.def)             Requested size: 51.34329pt x 99.58464pt.
 
-] [22
+<plots/logits_ex1_v3.png, id=669, 439.4016pt x 844.1136pt>
+File: plots/logits_ex1_v3.png Graphic file (type png)
 
-] <plots/questions.png, id=718, 501.875pt x 702.625pt>
-File: plots/questions.png Graphic file (type png)
+<use plots/logits_ex1_v3.png>
+Package pdftex.def Info: plots/logits_ex1_v3.png used on input line 556.
+(pdftex.def)             Requested size: 51.83418pt x 99.58464pt.
 
-<use plots/questions.png>
-Package pdftex.def Info: plots/questions.png used on input line 571.
-(pdftex.def)             Requested size: 85.57382pt x 119.79846pt.
+<plots/segmentation_ex1_v3.png, id=670, 626.34pt x 1638.12pt>
+File: plots/segmentation_ex1_v3.png Graphic file (type png)
+
+<use plots/segmentation_ex1_v3.png>
+Package pdftex.def Info: plots/segmentation_ex1_v3.png used on input line 556.
+(pdftex.def)             Requested size: 38.07574pt x 99.58464pt.
+File: plots/mammogram_ex2.png Graphic file (type png)
+ <use plots/mammogram_ex2.png>
+Package pdftex.def Info: plots/mammogram_ex2.png used on input line 556.
+(pdftex.def)             Requested size: 81.14671pt x 99.58464pt.
+File: plots/label_ex2.png Graphic file (type png)
+
+<use plots/label_ex2.png>
+Package pdftex.def Info: plots/label_ex2.png used on input line 556.
+(pdftex.def)             Requested size: 39.16232pt x 99.58464pt.
+
+<plots/logits_ex2_v3.png, id=671, 450.9648pt x 1179.4464pt>
+File: plots/logits_ex2_v3.png Graphic file (type png)
+
+<use plots/logits_ex2_v3.png>
+Package pdftex.def Info: plots/logits_ex2_v3.png used on input line 556.
+(pdftex.def)             Requested size: 38.07346pt x 99.58464pt.
+
+<plots/segmentation_ex2_v3.png, id=672, 610.28pt x 1172.38pt>
+File: plots/segmentation_ex2_v3.png Graphic file (type png)
+
+<use plots/segmentation_ex2_v3.png>
+Package pdftex.def Info: plots/segmentation_ex2_v3.png used on input line 556.
+(pdftex.def)             Requested size: 51.8312pt x 99.58464pt.
+
+Overfull \vbox (1.0987pt too high) detected at line 556
+ []
+
+[21
+
+ <./plots/logits_ex1_v3.png> <./plots/segmentation_ex1_v3.png (PNG copy)> <./pl
+ots/logits_ex2_v3.png> <./plots/segmentation_ex2_v3.png (PNG copy)>]
+[22
+
+] <plots/workplan.png, id=726, 1174.3875pt x 159.59625pt>
+File: plots/workplan.png Graphic file (type png)
+
+<use plots/workplan.png>
+Package pdftex.def Info: plots/workplan.png used on input line 577.
+(pdftex.def)             Requested size: 325.17949pt x 44.18985pt.
  [23
+
+ <./plots/workplan.png>] [24
+
+]
+<plots/questions.png, id=778, 501.875pt x 702.625pt>
+File: plots/questions.png Graphic file (type png)
+ <use plots/questions.png>
+Package pdftex.def Info: plots/questions.png used on input line 601.
+(pdftex.def)             Requested size: 85.57382pt x 119.79846pt.
+
+[25
 
  <./plots/questions.png>]
 \tf@nav=\write6
@@ -1296,11 +1364,11 @@ Package pdftex.def Info: plots/questions.png used on input line 571.
 \tf@snm=\write8
 \openout8 = `report.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 573.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 573.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 603.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 603.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 573.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 573.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 603.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 603.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 74B8C616700B75C24EA21C2304AD5FAD;372.
 
@@ -1308,16 +1376,16 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 573.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 603.
  ) 
 Here is how much of TeX's memory you used:
- 17187 strings out of 495028
- 321002 string characters out of 6181498
+ 17225 strings out of 495028
+ 321845 string characters out of 6181498
  393982 words of memory out of 5000000
- 19891 multiletter control sequences out of 15000+600000
+ 19919 multiletter control sequences out of 15000+600000
  14223 words of font info for 53 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 49i,16n,63p,395b,639s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,16n,63p,391b,639s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texli
@@ -1325,10 +1393,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on report.pdf (23 pages, 10318780 bytes).
+Output written on report.pdf (25 pages, 10802462 bytes).
 PDF statistics:
- 784 PDF objects out of 1000 (max. 8388607)
- 682 compressed objects within 7 object streams
- 62 named destinations out of 1000 (max. 500000)
- 340 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 846 PDF objects out of 1000 (max. 8388607)
+ 733 compressed objects within 8 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 370 words of extra memory for PDF output out of 10000 (max. 10000000)
 

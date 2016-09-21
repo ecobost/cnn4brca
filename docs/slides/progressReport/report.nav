@@ -55,15 +55,19 @@
 \headcommand {\beamer@framepages {20}{20}}
 \headcommand {\slideentry {4}{0}{11}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\sectionentry {5}{Conclusion}{22}{Conclusion}{0}}
-\headcommand {\beamer@sectionpages {12}{21}}
-\headcommand {\beamer@subsectionpages {12}{21}}
-\headcommand {\slideentry {5}{0}{12}{22/22}{}{0}}
+\headcommand {\slideentry {4}{0}{12}{22/22}{}{0}}
 \headcommand {\beamer@framepages {22}{22}}
+\headcommand {\sectionentry {5}{Conclusion}{23}{Conclusion}{0}}
+\headcommand {\beamer@sectionpages {12}{22}}
+\headcommand {\beamer@subsectionpages {12}{22}}
 \headcommand {\slideentry {5}{0}{13}{23/23}{}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\beamer@partpages {1}{23}}
-\headcommand {\beamer@subsectionpages {22}{23}}
-\headcommand {\beamer@sectionpages {22}{23}}
-\headcommand {\beamer@documentpages {23}}
-\headcommand {\def \inserttotalframenumber {23}}
+\headcommand {\slideentry {5}{0}{14}{24/24}{}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {5}{0}{15}{25/25}{}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\beamer@partpages {1}{25}}
+\headcommand {\beamer@subsectionpages {23}{25}}
+\headcommand {\beamer@sectionpages {23}{25}}
+\headcommand {\beamer@documentpages {25}}
+\headcommand {\def \inserttotalframenumber {25}}
