@@ -67,7 +67,7 @@ checkpoint_dir = "checkpoint"
 """string: Folder to store model checkpoints."""
 
 
-def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
+def new_example(csv_path, data_dir="."):
 	""" Creates an example queue and returns a new example: (image, label).
 	
 	Reads the csv file, creates a never-ending suffling queue of filenames,
@@ -133,20 +133,8 @@ def new_example(csv_path, data_dir=".", capacity=5, name='new_example'):
 		# Whiten the image (zero-center and unit variance)
 		whitened_image = tf.image.per_image_whitening(rotated_image)
 		whitened_label = tf.squeeze(rotated_label) # not whiten, just unwrap it
-	
-	with tf.name_scope('example_queue'):
-		# Create example queue
-		dtypes = [whitened_image.dtype, whitened_label.dtype]
-		example_queue = tf.FIFOQueue(capacity, dtypes)
-		enqueue_op = example_queue.enqueue((whitened_image, whitened_label))
-
-		# Create queue_runner
-		queue_runner = tf.train.QueueRunner(example_queue, [enqueue_op])
-		tf.train.add_queue_runner(queue_runner)
-		
-	example = example_queue.dequeue(name=name)
-			
-	return example
+				
+	return whitened_image, whitened_label
 	
 def model(image, drop):
 	""" A fully convolutional network for image segmentation.
@@ -469,8 +457,8 @@ def main(restore_variables=False):
 			previous execution. Default to False.
 	
 	"""
-	#TODO: Maybe read and split the csv file here and the call new example to do the dequeing
-	# Create example queue and get a new example
+	#TODO: Read val and train different, proaly can't do it because i have to separate by patients and not only by examples
+	# Create an example queue and get a new example
 	example = new_example(training_csv, training_dir, name='example')
 	val_example = new_example(val_csv, val_dir, name='val_example')
 
@@ -489,13 +477,12 @@ def main(restore_variables=False):
 	# Set an optimizer
 	train_op, global_step = train(loss, learning_rate=LEARNING_RATE)
 	
-	# Get a summary writer, saver and coordinator
+	# Get a summary writer and saver
 	summaries = tf.merge_all_summaries()
 	summary_writer = tf.train.SummaryWriter(summary_dir)
 	if not os.path.exists(summary_dir): os.makedirs(summary_dir)
 	saver = tf.train.Saver()
 	if not os.path.exists(checkpoint_dir): os.makedirs(checkpoint_dir)
-	coord = tf.train.Coordinator()
 
 	# Use CPU-only. To enable GPU, delete this and call with tf.Session() as ...
 	config = tf.ConfigProto(device_count={'GPU':0})
@@ -512,7 +499,7 @@ def main(restore_variables=False):
 			summary_writer.add_graph(sess.graph)
 		
 		# Start queue runners
-		queue_runners = tf.train.start_queue_runners(coord=coord)
+		queue_runners = tf.train.start_queue_runners()
 				
 		# Initial log
 		step = global_step.eval()
@@ -568,10 +555,6 @@ def main(restore_variables=False):
 			
 		# Final log
 		log("Done!")
-
-		# Stop queue runners
-		coord.request_stop()
-		coord.join(queue_runners)
 		
 	# Flush and close the summary writer
 	summary_writer.close()
