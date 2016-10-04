@@ -36,7 +36,7 @@ def compute_FROC(logits, label, num_thresholds=NUM_THRESHOLDS):
 	""" Computes the number of correctly localized lesions (TPs) and incorrect 
 		localizations (FPs) at different thresholds for the given image."""	
 	# Get thresholds
-	probs = np.linspace(1, 0, num_thresholds) # uniformly distributed
+	probs = np.linspace(0.9999, 0.0001, num_thresholds) # uniformly distributed
 	thresholds = np.log(probs) - np.log(1 - probs) #prob2logit
 	
 	# Initialize containers
@@ -71,8 +71,8 @@ def compute_FROC(logits, label, num_thresholds=NUM_THRESHOLDS):
 			FPs[threshold] += num_FPs
 			
 			# Force FPs to be non-decreasing
-			#if FPs[threshold] < FPs[threshold - 1]: 
-			#	FPs[threshold] = FPs[threshold -1]
+			if FPs[threshold] < FPs[threshold - 1]: 
+				FPs[threshold] = FPs[threshold -1]
 
 	return FPs, TPs, num_lesions
 	
@@ -136,7 +136,7 @@ def main():
 	# Compute final metrics
 	sensitivity = TPs/num_lesions
 	FP_per_image = FPs/num_normal_images
-	sensitivity_at_1_FP = np.interp(1, sensitivity, FP_per_image)
+	sensitivity_at_1_FP = np.interp(1, FP_per_image, sensitivity)
 			
 	# Report metrics
 	print('Sensitivity')
