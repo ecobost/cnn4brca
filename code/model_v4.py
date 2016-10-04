@@ -117,7 +117,7 @@ def new_example(csv_path, data_dir="."):
 		label_content = tf.read_file(label_path)
 		label = tf.image.decode_png(label_content)
 		
-	with tf.name_scope('augmentation'):
+	with tf.name_scope('augment_image'):
 		# Mirror the image (horizontal flip) with 0.5 chance
 		flip_prob = tf.random_uniform([])
 		flipped_image = tf.cond(tf.less(flip_prob, 0.5), lambda: image,
@@ -130,6 +130,7 @@ def new_example(csv_path, data_dir="."):
 		rotated_image = tf.image.rot90(flipped_image, number_of_rot90s)
 		rotated_label = tf.image.rot90(flipped_label, number_of_rot90s)
 		
+	with tf.name_scope('whiten_image'):		
 		# Whiten the image (zero-center and unit variance)
 		whitened_image = tf.image.per_image_whitening(rotated_image)
 		whitened_label = tf.squeeze(rotated_label) # not whiten, just unwrap it
