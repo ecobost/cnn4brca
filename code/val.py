@@ -1,27 +1,23 @@
 # Written by: Erick Cobos T. (a01184587@itesm.mx)
 # Date: April 2016
-""" Calculate evaluation metrics for different thresholds (for cross-validation)
+""" Calculate FROC curve in the validation set.
 
-	We use linearly spaced probabilities in the range between the smallest and 
-	largest possible predicted probability (as estimated by the predictions on 
-	a random example). Thresholds are the logits corresponding to these
-	probabilities.
-	
 	Example:
 		$ python3 val.py
-		$ python3 val.py | tee eval
 """
 
 import tensorflow as tf
-import model_v3 as model
+import model_v4 as model
 import csv
 import scipy.misc
 import numpy as np
+from scipy import ndimage
 
 checkpoint_dir = "checkpoint"
 csv_path = "val/val.csv"
 data_dir = "val/"
-number_of_thresholds = 25
+NUM_THRESHOLDS = 50
+ACCEPTANCE_RATIO = 0.1
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -36,46 +32,58 @@ def post(logits, label, threshold):
 	thresholded[label == 0] = 0
 	return thresholded
 	
-def compute_confusion_matrix(segmentation, label):
-	"""Confusion matrix for a mammogram: # of pixels in each category."""
-	# Confusion matrix (only over breast area)
-	true_positive = np.sum(np.logical_and(segmentation == 255, label == 255))
-	false_positive = np.sum(np.logical_and(segmentation == 255, label != 255))
-	true_negative = np.sum(np.logical_and(segmentation == 127, label == 127))
-	false_negative = np.sum(np.logical_and(segmentation == 127, label != 127))
+def compute_FROC(logits, label, num_thresholds=NUM_THRESHOLDS):
+	""" Computes the number of correctly localized lesions (TPs) and incorrect 
+		localizations (FPs) at different thresholds for the given image."""	
+	# Get thresholds
+	probs = np.linspace(1, 0, num_thresholds) # uniformly distributed
+	thresholds = np.log(probs) - np.log(1 - probs) #prob2logit
 	
-	cm_values = [true_positive, false_positive, true_negative, false_negative]
+	# Initialize containers
+	TPs = np.zeros(num_thresholds)
+	FPs = np.zeros(num_thresholds)
+	num_lesions = 0
 	
-	return np.array(cm_values)
-	
-def compute_metrics(true_positive, false_positive, true_negative, false_negative):
-	"""Array with different metrics from the given confusion matrix values."""
-	epsilon = 1e-7 # To avoid division by zero
-	
-	# Evaluation metrics
-	accuracy = (true_positive + true_negative) / (true_positive + true_negative 
-									+ false_positive + false_negative + epsilon)
-	sensitivity = true_positive / (true_positive + false_negative + epsilon)
-	specificity = true_negative / (false_positive + true_negative + epsilon)
-	precision = true_positive / (true_positive + false_positive + epsilon)
-	recall = sensitivity
-	iou = true_positive / (true_positive + false_positive + false_negative + 
-						   epsilon)
-	f1 = (2 * precision * recall) / (precision + recall + epsilon)
-	g_mean = np.sqrt(sensitivity * specificity)
+	# Over each image
+	for threshold in range(num_thresholds):
+		# Create segmentation
+		segmentation = post(logits, label, thresholds[threshold])
 		
-	metrics = [iou, f1, g_mean, accuracy, sensitivity, specificity, precision,
-			   recall]
+		if label.max() == 255: # if the image had lesions
+			# Find lesions
+			structure_mask = [[1,1,1], [1,1,1], [1,1,1]]
+			lesions, num_lesions = ndimage.label(label == 255, structure_mask)
+			
+			# Add 1 to TP if lesion correctly identified
+			for lesion_id in range(1, num_lesions + 1):
+				lesion_area = (lesions == lesion_id).sum()
+				overlap_area = np.logical_and(lesions == lesion_id,
+											  segmentation == 255).sum()						  
+				if (overlap_area / lesion_area) >= ACCEPTANCE_RATIO:
+					TPs[threshold] += 1
+			
+		else: # no lesions
+			# Find all FPs
+			structure_mask = [[1,1,1], [1,1,1], [1,1,1]]
+			_, num_FPs = ndimage.label(segmentation == 255, structure_mask)
+			
+			# Assign them to the current threshold
+			FPs[threshold] += num_FPs
+			
+			# Force FPs to be non-decreasing
+			#if FPs[threshold] < FPs[threshold - 1]: 
+			#	FPs[threshold] = FPs[threshold -1]
 
-	return np.array(metrics)
+	return FPs, TPs, num_lesions
 	
 def main():
 	""" Loads network, reads image and returns mean metrics."""
 	# Read csv file
 	with open(csv_path) as f:
 		lines = f.read().splitlines()
+	csv_reader = csv.reader(lines)
 		
-	# Image as placeholder.
+	# Image as placeholder
 	image = tf.placeholder(tf.float32, name='image')
 	expanded = tf.expand_dims(image, 2)
 	whitened = tf.image.per_image_whitening(expanded)
@@ -83,7 +91,7 @@ def main():
 	# Define the model
 	prediction = model.model(whitened, drop=tf.constant(False))
 		
-	# Get a saver
+	# Get a saver to load the model
 	saver = tf.train.Saver()
 
 	# Use CPU-only. To enable GPU, delete this and call with tf.Session() as ...
@@ -96,90 +104,49 @@ def main():
 		saver.restore(sess, checkpoint_path)
 		model.log("Variables restored from:", checkpoint_path)
 		
-		# Get random probs in 10^unif(-3, 0) range
-		#probs = 10 ** np.random.uniform(-3, 0, number_of_thresholds)
+		# Intialize some variables
+		FPs = np.zeros(NUM_THRESHOLDS) # accumulates FPs over images
+		TPs = np.zeros(NUM_THRESHOLDS) # acumulates TPs over images
+		num_lesions = 0
+		num_normal_images = 0 # images with no lesions
 		
-		# Get probabilities uniformly distributed between zero and 1
-		probs = np.linspace(0.001, 0.999, number_of_thresholds)
-		
-		# Get random probabilities estimated from an example
-		"""
-		rand_index = np.random.randint(len(lines))
-		rand_line = lines[rand_index]
-		for row in csv.reader([rand_line]): 
-			# Read image
+		# For every example
+		for row in csv_reader:
+			# Read paths
 			image_path = data_dir + row[0]
+			label_path = data_dir + row[1]
+
+			# Read image and label
 			im = scipy.misc.imread(image_path)
+			label = scipy.misc.imread(label_path)
 		
 			# Get prediction
 			logits = prediction.eval({image: im})
 			
-			# Minimum and maximum predicted probability
-			min_prob = 1/ (1 + np.exp(-logits.min()))
-			max_prob = 1/ (1 + np.exp(-logits.max()))
+			# Compute TP and FP over all thresholds
+			im_FPs, im_TPs, im_lesions = compute_FROC(logits, label)
 			
-			# Get thresholds in (min_prob, max_prob) range
-			probs = np.linspace(min_prob, max_prob, number_of_thresholds)
-		"""	
-		# Transform probabilities to logits (thresholds)
-		thresholds = np.log(probs) - np.log(1 - probs) #prob2logit
-		
-		# Validate each threshold
-		for i in range(number_of_thresholds):
-			print("Threshold {}: {} ({})".format(i, thresholds[i], probs[i]))
+			# Accumulate output
+			FPs += im_FPs
+			TPs += im_TPs
+			num_lesions += im_lesions
+			if im_lesions == 0:
+				num_normal_images += 1		
+					
+	# Compute final metrics
+	sensitivity = TPs/num_lesions
+	FP_per_image = FPs/num_normal_images
+	sensitivity_at_1_FP = np.interp(1, sensitivity, FP_per_image)
 			
-			# Reset reader and metric_accum
-			csv_reader = csv.reader(lines)
-			confusion_matrix = np.zeros(4) # tp, fp, tn, fn
-			confusion_matrix2 = np.zeros(4) # tp, fp, tn, fn
-			
-			# For every example
-			for row in csv_reader:
-				# Read paths
-				image_path = data_dir + row[0]
-				label_path = data_dir + row[1]
-
-				# Read image and label
-				im = scipy.misc.imread(image_path)
-				label = scipy.misc.imread(label_path)
-			
-				# Get prediction
-				logits = prediction.eval({image: im})
-			
-				# Post-process prediction
-				segmentation = post(logits, label, thresholds[i])
+	# Report metrics
+	print('Sensitivity')
+	print(sensitivity)
+	print('FP/image')
+	print(FP_per_image)
+	print('Sensitivity at 1 FP')
+	print(sensitivity_at_1_FP)
 				
-				# Accumulate confusion matrix values
-				confusion_matrix += compute_confusion_matrix(segmentation, label)
-				if label.max() == 255: # only if the mammogram had a mass
-					confusion_matrix2 += compute_confusion_matrix(segmentation, label)
-						
-			# Calculate metrics
-			metrics = compute_metrics(*confusion_matrix)
-			metrics2 = compute_metrics(*confusion_matrix2)
-			
-			# Report metrics
-			metric_names = ['IOU', 'F1-score', 'G-mean', 'Accuracy',
-						   'Sensitivity', 'Specificity', 'Precision', 'Recall']
-			for name, metric, metric2 in zip(metric_names, metrics, metrics2):
-				print("{}: {} / {}".format(name, metric, metric2))
-			print('')
-				
-		# Logistic loss (same for any threshold)
-		label = tf.placeholder(tf.uint8, name='label')
-		loss = model.logistic_loss(prediction, label)
-		
-		csv_reader = csv.reader(lines)
-		loss_accum = 0
-		for row in csv_reader:
-			im = scipy.misc.imread(data_dir + row[0])
-			lbl = scipy.misc.imread(data_dir + row[1])
-			
-			loss_accum += loss.eval({image:im, label:lbl})
-			
-		print("Logistic loss: ", loss_accum/csv_reader.line_num)
-				
-	return metrics, metric_names
+	return sensitivity, FP_per_image
 	
 if __name__ == "__main__":
 	main()
