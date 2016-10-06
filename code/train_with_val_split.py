@@ -256,3 +256,6 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 # Trains a model from scratch
 if __name__ == "__main__":
 	train()
+	
+	# Opt: Compute FROC
+	#os.system('python3 compute_FROC.py ' + MODEL_DIR +  ' ' + MODEL_DIR + os.path.sep + 'val.csv')

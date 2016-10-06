@@ -147,17 +147,18 @@ def main(data_dir=DATA_DIR, num_thresholds=NUM_THRESHOLDS,
 	sensitivity_at_1_FP = np.interp(1, FP_per_image, sensitivity)
 			
 	# Report metrics
-	print('Sensitivity = ')
+	print('Sensitivity: ')
 	print(sensitivity)
-	print('FP/image = ')
+	print('FP/image: ')
 	print(FP_per_image)
-	print('Sensitivity at 1 FP = ', sensitivity_at_1_FP)
+	print('Sensitivity at 1 FP: ', sensitivity_at_1_FP)
 	
 	# Write results to file
 	with open(model_dir + os.path.sep + 'FROC', 'w') as f:
-		f.write('Sensitivity = \n' + str(sensitivity) + '\n')
-		f.write('FP/image = \n' + str(FP_per_image) + '\n')
-		f.write('Sensitivity at 1 FP = ' + str(sensitivity_at_1_FP))	
+		f.write('csv: ' + csv_path + '\n')
+		f.write('Sensitivity: \n' + str(sensitivity) + '\n')
+		f.write('FP/image: \n' + str(FP_per_image) + '\n')
+		f.write('Sensitivity at 1 FP: ' + str(sensitivity_at_1_FP))	
 					
 	return sensitivity, FP_per_image, sensitivity_at_1_FP
 	
