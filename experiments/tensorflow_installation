@@ -1,27 +1,6 @@
-CPU ONLY (no GPU) 
-See tensorflow.org/versions/r0.7/get_started/os_setup.html for details
-
-1. Make sure you have pip3
-	sudo apt-get install python3-pip python3-dev
-
-2. Install Tensorflow (CPU-only)
-	sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.9.0-cp34-cp34m-linux_x86_64.whl
-
-3. Test the system 
-	Open python3 
-		import tensorflow as tf
-		hello = tf.constant('Hello, Tensorflow!')
-		sess = tf.Session()
-		print(sess.run(hello))
-	From terminal
-		python3 /usr/local/lib/python3.4/dist-packages/tensorflow/models/image/mnist/convolutional.py
-
-
-CPU+GPU
-See tensorflow.org/versions/r0.7/get_started/os_setup.html for detailsecho
-
 1. Update system using Software Updater	
-2. Install CUDA toolkit
+
+2. Install CUDA toolkit (if using GPU)
 	2.1 Download .deb(network) from developer.nvidia.com/cuda-downloads
 	2.2 Install
 		sudo dpkg -i cuda-repo-ubuntu1504_7.5-18_amd64.deb
@@ -43,24 +22,29 @@ See tensorflow.org/versions/r0.7/get_started/os_setup.html for detailsecho
 		make
 		bin/x86_64/linux/release/deviceQuery (shows info of the GPU)
 		bin/x86_64/linux/release/bandwidthTest (shows bandwidth info)
-3. Install cuDNN
+		
+3. Install cuDNN (if using GPU)
 	1. Download .tgz from developer.nvidia.com/cudnn
 	2. Move files to cuda folder
 		tar xvfz cudnn-7.0-linux-x64-v4.0-prod.tgz
 		sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 		sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
 		sudo ldconfig
-4. Get pip3
-	sudo apt-get install python3-pip python3-dev
-5. Install Tensorflow
-	sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.9.0-cp34-cp34m-linux_x86_64.whl
+		
+4. Get pip3/scipy
+	sudo apt-get install python3-pip python3-dev python3-numpy python3-scipy python3-matplotlib
+	
+5. Install TensorFlow (Ubuntu/Linux 64-bit, CPU only, Python 3.5)*
+	sudo pip3 install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0-cp35-cp35m-linux_x86_64.whl
+	
 6. Test installation
 	python3
-		>>> import tensorflow as tf #(shows that all cuda libraries load fine)
-		>>> hello = tf.constant('Sup!')
-		>>> sess = tf.Session() #(shows it recognizes the GPU)
-		>>> print(sess.run(hello)) #(prints 'Sup!')
-	(Optionally) python3 /usr/local/lib/python3.4/dist-packages/tensorflow/models/image/mnist/convolutional.py
-	
+		import tensorflow as tf #(shows that all cuda libraries load fine)
+		hello = tf.constant('Sup!')
+		sess = tf.Session() #(shows it recognizes the GPU)
+		print(sess.run(hello)) #(prints 'Sup!')
+	(Optionally) python3 /usr/local/lib/python3.4/dist-packages/tensorflow/models/image/mnist/convolutional.py	
 	
 Good to go!
+
+* See https://www.tensorflow.org/versions/master/get_started/os_setup.html for other TensorFlow configurations (or current version)
