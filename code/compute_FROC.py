@@ -1,9 +1,11 @@
 # Written by: Erick Cobos T. (a01184587@itesm.mx)
-# Date: April 2016
+# Date: September 2016
 """ Calculate FROC curve in the validation set.
 
 	Example:
-		$ python3 val.py
+		$ python3 compute_FROC.py model_dir csv_path
+	where model_dir is the name of the folder where the checkpoint is and 
+	csv_path is the path to the csv with image, label filenames.
 """
 
 import tensorflow as tf
@@ -12,12 +14,13 @@ import csv
 import scipy.misc
 import numpy as np
 from scipy import ndimage
+import sys
+import os
 
-checkpoint_dir = "checkpoint"
-csv_path = "val/val.csv"
-data_dir = "val/"
+DATA_DIR = "data"
 NUM_THRESHOLDS = 50
 ACCEPTANCE_RATIO = 0.1
+
 
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 
@@ -32,7 +35,7 @@ def post(logits, label, threshold):
 	thresholded[label == 0] = 0
 	return thresholded
 	
-def compute_FROC(logits, label, num_thresholds=NUM_THRESHOLDS):
+def compute_FROC(logits, label, num_thresholds):
 	""" Computes the number of correctly localized lesions (TPs) and incorrect 
 		localizations (FPs) at different thresholds for the given image."""	
 	# Get thresholds
@@ -58,10 +61,10 @@ def compute_FROC(logits, label, num_thresholds=NUM_THRESHOLDS):
 			for lesion_id in range(1, num_lesions + 1):
 				lesion_area = (lesions == lesion_id).sum()
 				overlap_area = np.logical_and(lesions == lesion_id,
-											  segmentation == 255).sum()						  
+											  segmentation == 255).sum()
 				if (overlap_area / lesion_area) >= ACCEPTANCE_RATIO:
 					TPs[threshold] += 1
-			
+
 		else: # no lesions
 			# Find all FPs
 			structure_mask = [[1,1,1], [1,1,1], [1,1,1]]
@@ -76,20 +79,24 @@ def compute_FROC(logits, label, num_thresholds=NUM_THRESHOLDS):
 
 	return FPs, TPs, num_lesions
 	
-def main():
+def main(data_dir=DATA_DIR, num_thresholds=NUM_THRESHOLDS, 
+		 acceptance_ratio=ACCEPTANCE_RATIO):
 	""" Loads network, reads image and returns mean metrics."""
+	# Model directory and path to the csv passed as arguments
+	model_dir = sys.argv[1]
+	csv_path = sys.argv[2]
+
 	# Read csv file
 	with open(csv_path) as f:
 		lines = f.read().splitlines()
 	csv_reader = csv.reader(lines)
-		
+	
 	# Image as placeholder
 	image = tf.placeholder(tf.float32, name='image')
-	expanded = tf.expand_dims(image, 2)
-	whitened = tf.image.per_image_whitening(expanded)
+	whitened = tf.image.per_image_whitening(tf.expand_dims(image, 2))
 	
 	# Define the model
-	prediction = model.model(whitened, drop=tf.constant(False))
+	prediction = model.forward(whitened, drop=tf.constant(False))
 		
 	# Get a saver to load the model
 	saver = tf.train.Saver()
@@ -97,24 +104,24 @@ def main():
 	# Use CPU-only. To enable GPU, delete this and call with tf.Session() as ...
 	config = tf.ConfigProto(device_count={'GPU':0})
 	
+	# Initialize some variables
+	FPs = np.zeros(NUM_THRESHOLDS) # accumulates FPs over images
+	TPs = np.zeros(NUM_THRESHOLDS) # acumulates TPs over images
+	num_normal_images = 0 # images with no lesions
+	num_lesions = 0
+	 
 	# Launch graph
 	with tf.Session(config=config) as sess:
 		# Restore variables
-		checkpoint_path = tf.train.latest_checkpoint(checkpoint_dir)
+		checkpoint_path = tf.train.latest_checkpoint(model_dir)
+		log("Restoring model from:", checkpoint_path)
 		saver.restore(sess, checkpoint_path)
-		model.log("Variables restored from:", checkpoint_path)
-		
-		# Intialize some variables
-		FPs = np.zeros(NUM_THRESHOLDS) # accumulates FPs over images
-		TPs = np.zeros(NUM_THRESHOLDS) # acumulates TPs over images
-		num_lesions = 0
-		num_normal_images = 0 # images with no lesions
 		
 		# For every example
 		for row in csv_reader:
 			# Read paths
-			image_path = data_dir + row[0]
-			label_path = data_dir + row[1]
+			image_path = data_dir + os.path.sep + row[0]
+			label_path = data_dir + os.path.sep + row[0]
 
 			# Read image and label
 			im = scipy.misc.imread(image_path)
@@ -124,7 +131,8 @@ def main():
 			logits = prediction.eval({image: im})
 			
 			# Compute TP and FP over all thresholds
-			im_FPs, im_TPs, im_lesions = compute_FROC(logits, label)
+			im_FPs, im_TPs, im_lesions = compute_FROC(logits, label, 
+										       num_thresholds, acceptance_ratio)
 			
 			# Accumulate output
 			FPs += im_FPs
@@ -139,14 +147,19 @@ def main():
 	sensitivity_at_1_FP = np.interp(1, FP_per_image, sensitivity)
 			
 	# Report metrics
-	print('Sensitivity')
+	print('Sensitivity = ')
 	print(sensitivity)
-	print('FP/image')
+	print('FP/image = ')
 	print(FP_per_image)
-	print('Sensitivity at 1 FP')
-	print(sensitivity_at_1_FP)
-				
-	return sensitivity, FP_per_image
+	print('Sensitivity at 1 FP = ', sensitivity_at_1_FP)
+	
+	# Write results to file
+	with open(model_dir + os.path.sep + 'FROC', 'w') as f:
+		f.write('Sensitivity = \n' + str(sensitivity) + '\n')
+		f.write('FP/image = \n' + str(FP_per_image) + '\n')
+		f.write('Sensitivity at 1 FP = ' + str(sensitivity_at_1_FP))	
+					
+	return sensitivity, FP_per_image, sensitivity_at_1_FP
 	
 if __name__ == "__main__":
 	main()

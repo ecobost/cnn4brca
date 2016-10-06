@@ -42,102 +42,7 @@ import os.path
 import time
 import sys
 
-# Set some training parameters
-TRAINING_STEPS = 163*8*5 # 163 mammograms (approx) * 8 augmentations * 5 epochs
-LEARNING_RATE = 4e-5
-LAMBDA = 4e-4
-
-# Set some paths
-training_dir = "training" 
-"""string: Folder with training data."""
-
-val_dir = "val"
-"""string: Folder with validation data."""
-
-training_csv = os.path.join(training_dir, "training.csv")
-"""string: Path to csv file with image and label filenames for training."""
-
-val_csv = os.path.join(val_dir, "val.csv")
-"""string: Path to csv file with image and label filenames for validation."""
-
-summary_dir = "summary"
-"""string: Folder to store summary files."""
-
-checkpoint_dir = "checkpoint"
-"""string: Folder to store model checkpoints."""
-
-
-def new_example(csv_path, data_dir="."):
-	""" Creates an example queue and returns a new example: (image, label).
-	
-	Reads the csv file, creates a never-ending suffling queue of filenames,
-	dequeues and decodes a csv record, loads an image and label in memory, 
-	augments the image, creates a FIFO queue for examples, adds a single-thread
-	QueueRunner object to the graph to perform prefetching operations and 
-	dequeues an example.
-	
-	Uses queues to improve performance (as recommended in the tutorials). We 
-	could not use tf.train.batch() to automatically create the example queue 
-	because	our images differ in size.
-	
-	Args:
-		csv_path: A string. Path to csv file with image and label filenames.
-			Each record is expected to be in the form:
-			'image_filename,label_filename'
-		data_dir: A string. Path to the data directory. Default is "."
-		capacity: An integer. Maximum amount of examples that may be stored in 
-			the example queue. Default is 5.
-		name: A string. Name for the produced examples. Default is 'new_example'
-	
-	Returns:
-		An (image, label) tuple where image is a tensor of floats with shape
-		[image_height, image_width, image_channels] and label is a tensor of
-		integers with shape [image_height, image_width]
-	"""
-	with tf.name_scope('filename_queue'):
-		# Read csv file
-		with open(csv_path) as f:
-			lines = f.read().splitlines()
-			
-		# Create never-ending shuffling queue of filenames
-		filename_queue = tf.train.string_input_producer(lines)
-	
-	with tf.name_scope('decode_image'):
-		# Decode a csv record
-		csv_record = filename_queue.dequeue()
-		image_filename, label_filename = tf.decode_csv(csv_record, [[""], [""]])
-	
-		# Load image
-		image_path = data_dir + os.path.sep + image_filename
-		image_content = tf.read_file(image_path)
-		image = tf.image.decode_png(image_content)
-		
-		# Load label image
-		label_path = data_dir + os.path.sep + label_filename
-		label_content = tf.read_file(label_path)
-		label = tf.image.decode_png(label_content)
-		
-	with tf.name_scope('augment_image'):
-		# Mirror the image (horizontal flip) with 0.5 chance
-		flip_prob = tf.random_uniform([])
-		flipped_image = tf.cond(tf.less(flip_prob, 0.5), lambda: image,
-								lambda: tf.image.flip_left_right(image))
-		flipped_label = tf.cond(tf.less(flip_prob, 0.5), lambda: label,
-								lambda: tf.image.flip_left_right(label))
-										
-		# Rotate image at 0, 90, 180 or 270 degrees
-		number_of_rot90s = tf.random_uniform([], maxval=4, dtype=tf.int32)
-		rotated_image = tf.image.rot90(flipped_image, number_of_rot90s)
-		rotated_label = tf.image.rot90(flipped_label, number_of_rot90s)
-		
-	with tf.name_scope('whiten_image'):		
-		# Whiten the image (zero-center and unit variance)
-		whitened_image = tf.image.per_image_whitening(rotated_image)
-		whitened_label = tf.squeeze(rotated_label) # not whiten, just unwrap it
-				
-	return whitened_image, whitened_label
-	
-def model(image, drop):
+def forward(image, drop):
 	""" A fully convolutional network for image segmentation.
 
 	The architecture is modelled as a small ResNet network. It has 0.9 million
@@ -364,7 +269,7 @@ def model(image, drop):
 
 	return prediction
 	
-def logistic_loss(prediction, label):
+def loss(prediction, label):
 	""" Logistic loss function averaged over pixels in the breast area.
 	
 	Losses are weighted depending on the tissue where they occur: losses on 
@@ -409,7 +314,7 @@ def regularization_loss():
 		
 	return loss
 	
-def train(loss, learning_rate):
+def update_weights(loss, learning_rate):
 	""" Sets up an ADAM optimizer, computes gradients and updates variables.
 	
 	Args:
@@ -435,132 +340,3 @@ def train(loss, learning_rate):
 			tf.histogram_summary(variable.op.name + '/gradients', gradient)
 
 	return train_op, global_step
-	
-def log(*messages):
-	""" Simple logging function."""
-	formatted_time = "[{}]".format(time.ctime())
-	print(formatted_time, *messages)
-	
-def my_scalar_summary(tag, value):
-	""" Manually creates an scalar summary that is not added to the graph."""
-	float_value = float(value)
-	summary_value = tf.Summary.Value(tag=tag, simple_value=float_value)
-	return tf.Summary(value=[summary_value])
-		
-def main(restore_variables=False):
-	""" Creates and trains a convolutional network for image segmentation. 
-	
-	It creates an example queue; defines a model, loss function and optimizer;
-	and trains the model.
-	
-	Args:
-		restore_variables: A boolean. Whether to restore variables from a 
-			previous execution. Default to False.
-	
-	"""
-	#TODO: Read val and train different, proaly can't do it because i have to separate by patients and not only by examples
-	# Create an example queue and get a new example
-	example = new_example(training_csv, training_dir, name='example')
-	val_example = new_example(val_csv, val_dir, name='val_example')
-
-	# Variables that may change between runs: feeded to the graph every time.
-	image = tf.placeholder(tf.float32, name='image')	# x
-	label = tf.placeholder(tf.uint8, name='label')	# y
-	drop = tf.placeholder(tf.bool, shape=(), name='drop')	# Dropout? (T/F)
-
-	# Define the model
-	prediction = model(image, drop)
-	
-	# Compute the loss
-	empirical_loss = logistic_loss(prediction, label)
-	loss = empirical_loss + LAMBDA * regularization_loss()
-		
-	# Set an optimizer
-	train_op, global_step = train(loss, learning_rate=LEARNING_RATE)
-	
-	# Get a summary writer and saver
-	summaries = tf.merge_all_summaries()
-	summary_writer = tf.train.SummaryWriter(summary_dir)
-	if not os.path.exists(summary_dir): os.makedirs(summary_dir)
-	saver = tf.train.Saver()
-	if not os.path.exists(checkpoint_dir): os.makedirs(checkpoint_dir)
-
-	# Use CPU-only. To enable GPU, delete this and call with tf.Session() as ...
-	config = tf.ConfigProto(device_count={'GPU':0})
-	
-	# Launch graph
-	with tf.Session(config=config) as sess:
-		# Initialize variables
-		if restore_variables:
-			checkpoint_path = tf.train.latest_checkpoint(checkpoint_dir)
-			saver.restore(sess, checkpoint_path)
-			log("Variables restored from:", checkpoint_path)
-		else:
-			tf.initialize_all_variables().run()
-			summary_writer.add_graph(sess.graph)
-		
-		# Start queue runners
-		queue_runners = tf.train.start_queue_runners()
-				
-		# Initial log
-		step = global_step.eval()
-		log("Starting training @", step)
-		
-		# Training loop
-		for i in range(TRAINING_STEPS):
-			# Train
-			train_image, train_label = sess.run(example)
-			feed_dict = {image: train_image, label: train_label, drop: True}
-			train_logistic_loss, train_loss, _ = sess.run([empirical_loss, loss,
-														   train_op], feed_dict)
-			step += 1
-			
-			# Report losses (calculated before the training step)
-			logistic_loss_summary = my_scalar_summary('training/logistic_loss',
-											 		  train_logistic_loss)
-			summary_writer.add_summary(logistic_loss_summary, step - 1)
-			loss_summary = my_scalar_summary('training/loss', train_loss)
-			summary_writer.add_summary(loss_summary, step - 1)		
-			log("Training loss @", step - 1, ":", train_logistic_loss,
-				"(logistic)", train_loss, "(total)")
-			
-			# Write summaries
-			if step%50 == 0 or step == 1:
-				summary_str = summaries.eval(feed_dict)
-				summary_writer.add_summary(summary_str, step)
-				log("Summaries written @", step)
-			
-			# Evaluate model
-			if step%100 == 0 or step == 1:
-				log("Evaluating model")
-				
-				# Average loss over 5 val images
-				val_loss = 0
-				number_of_images = 5
-				for j in range(number_of_images):
-					val_image, val_label = sess.run(val_example)
-					feed_dict ={image: val_image, label: val_label, drop: False}
-					one_loss = empirical_loss.eval(feed_dict)
-					val_loss += (one_loss / number_of_images)
-
-				# Report validation loss	
-				loss_summary = my_scalar_summary('val/logistic_loss', val_loss)
-				summary_writer.add_summary(loss_summary, step)
-				log("Validation loss @", step, ":", val_loss)
-			
-			# Write checkpoint	
-			if step%250 == 0 or i == (TRAINING_STEPS - 1):
-				checkpoint_name = os.path.join(checkpoint_dir, 'model')
-				checkpoint_path = saver.save(sess, checkpoint_name, step)
-				log("Checkpoint saved in:", checkpoint_path)
-			
-		# Final log
-		log("Done!")
-		
-	# Flush and close the summary writer
-	summary_writer.close()
-
-# Trains a model from scratch if called without arguments (python3 model.py)
-# Otherwise, restores variables from the latest checkpoint in checkpoint_dir.
-if __name__ == "__main__":
-	main(len(sys.argv) > 1)
