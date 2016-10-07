@@ -8,11 +8,12 @@
 	Example:
 		python3 train.py
 """
-import numpy as np
-import model_v4.py as model
 import tensorflow as tf
-import os
+import model_v4 as model
+import numpy as np
 import random
+import os
+from utils import log, read_csv_info
 
 # Set training parameters
 TRAINING_STEPS = 163*8*5 # 163 mammograms (approx) * 8 augmentations * 5 epochs
@@ -27,26 +28,7 @@ CSV_PATH = "training.csv" # path to csv file with image and label filenames
 VAL_CSV_PATH = None # path to validation set. If undefined, split training set
 NUM_VAL_PATIENTS = 10 # number of patients for validation set; used only if 
 					  # val_csv is not provided
-
-def read_csv_info(csv_path):
-	""" Reads the csv file and returns two lists: one with image filenames and 
-	one with label filenames."""
-	filenames = np.loadtxt(csv_path, dtype=bytes, delimiter=',').astype(str)
-	
-	return list(filenames[:, 0]), list(filenames[:, 1])
-	
-def create_filename_queue(image_filenames, label_filenames):
-	""" Creates a shuffling queue with (image, label) filename pairs."""
-	with tf.name_scope('filename_queue'):
-		# Transform input to tensors
-		image_filenames = tf.convert_to_tensor(image_filenames)
-		label_filenames = tf.convert_to_tensor(label_filenames)
-		
-		# Create never-ending shuffling queue of filenames
-		filename_queue = tf.train.slice_input_producer([image_filenames, 
-														label_filenames])
-	return filename_queue
-	
+					  
 def val_split(csv_path, num_val_patients, model_dir):
 	""" Divides the data set into training and validation set sampling 
 	num_val_patients patients at random."""
@@ -55,7 +37,7 @@ def val_split(csv_path, num_val_patients, model_dir):
 		lines = csv_file.read().splitlines()
 
 	# Get patients at random
-	val_patients = {}
+	val_patients = set()
 	while len(val_patients) < num_val_patients:
 		patient_name = random.choice(lines).split('/')[0]
 		val_patients.add(patient_name)
@@ -65,9 +47,9 @@ def val_split(csv_path, num_val_patients, model_dir):
 	training_lines = [l for l in lines if l.split('/')[0] not in val_patients]
 	
 	# Write training and val csvs to disk
-	with open(model_dir + os.path.sep + 'val.csv') as val_file:
+	with open(os.path.join(model_dir, 'val.csv'), 'w') as val_file:
 		val_file.write('\n'.join(val_lines))
-	with open(model_dir + os.path.sep + 'training.csv') as training_file:
+	with open(os.path.join(model_dir, 'training.csv'), 'w') as training_file:
 		training_file.write('\n'.join(training_lines))
 			
 	# Generate lists of filenames
@@ -76,8 +58,21 @@ def val_split(csv_path, num_val_patients, model_dir):
 	val_image_filenames = [line.split(',')[0] for line in val_lines]
 	val_label_filenames = [line.split(',')[1] for line in val_lines]
 	
-	return training_image_filenames, training_label_filenames, 
-		   val_image_filenames, val_label_filenames
+	return (training_image_filenames, training_label_filenames,
+			val_image_filenames, val_label_filenames)
+
+def next_filename(image_filenames, label_filenames):
+	""" Creates a shuffling queue with (image, label) filename pairs."""
+	with tf.name_scope('filename_queue'):
+		# Transform input to tensors
+		image_filenames = tf.convert_to_tensor(image_filenames)
+		label_filenames = tf.convert_to_tensor(label_filenames)
+		
+		# Create a never-ending, shuffling queue and return the next pair
+		next_filenames = tf.train.slice_input_producer([image_filenames,
+														label_filenames])
+		
+	return next_filenames
 
 def preprocess_example(image_filename, label_filename, data_dir):
 	""" Loads an image (and its label) and augments it.
@@ -126,17 +121,12 @@ def preprocess_example(image_filename, label_filename, data_dir):
 		whitened_label = tf.squeeze(rotated_label) # not whiten, just unwrap it
 				
 	return whitened_image, whitened_label
-
-def log(*messages):
-	""" Simple logging function."""
-	formatted_time = "[{}]".format(time.ctime())
-	print(formatted_time, *messages)
 		
 def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE, 
-		 lambda_=LAMBDA, resume_training=RESUME_TRAINING, csv_path=CSV_PATH, 
-		 model_dir=MODEL_DIR, val_csv_path=VAL_CSV_PATH, 
+		 lambda_=LAMBDA, resume_training=RESUME_TRAINING, data_dir = DATA_DIR,
+		 model_dir=MODEL_DIR, csv_path=CSV_PATH, val_csv_path=VAL_CSV_PATH, 
 		 num_val_patients = NUM_VAL_PATIENTS):
-	""" Reads training info and trains a convolutional network."""
+	""" Trains a convolutional network reporting results for a validation set"""
 	# Read csv file(s) with training info
 	if val_csv_path:
 		training_images, training_labels = read_csv_info(csv_path)
@@ -145,9 +135,9 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 		training_images, training_labels, val_images, val_labels = val_split(
 										  csv_path, num_val_patients, model_dir)
 	
-	# Create a never-ending shuffling queue of filenames
-	training_filenames = create_filename_queue(training_images, training_labels)
-	val_filenames = create_filename_queue(val_images, val_labels)
+	# Create an stream of filenames and return the next pair
+	training_filenames = next_filename(training_images, training_labels)
+	val_filenames = next_filename(val_images, val_labels)
 	
 	# Variables that change between runs: need to be feeded to the graph
 	image_filename = tf.placeholder(tf.string, name='image_filename')
@@ -165,7 +155,7 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 	loss = logistic_loss + lambda_ * model.regularization_loss()
 		
 	# Set an optimizer
-	train_op, global_step = update_weights(loss, learning_rate)
+	train_op, global_step = model.update_weights(loss, learning_rate)
 	
 	# Get a summary writer
 	if not os.path.exists(model_dir): os.makedirs(model_dir)
@@ -181,8 +171,8 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 	# Launch graph
 	with tf.Session(config=config) as sess:
 		# Initialize variables
-		if restore_variables:
-			checkpoint_path = tf.train.latest_checkpoint(checkpoint_dir)
+		if resume_training:
+			checkpoint_path = tf.train.latest_checkpoint(model_dir)
 			log("Restoring model from:", checkpoint_path)
 			saver.restore(sess, checkpoint_path)	
 		else:
@@ -199,9 +189,9 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 		# Training loop
 		for i in range(training_steps):
 			# Train
-			training_filename = training_filenames.dequeue().run()
-			feed_dict = {image_filename: training_filename[0], 
-						 label_filename: training_filename[1], drop: True}
+			filenames = sess.run(training_filenames)
+			feed_dict = {image_filename: filenames[0], 
+						 label_filename: filenames[1], drop: True}
 			train_logistic_loss, train_loss, _ = sess.run([logistic_loss, loss,
 														   train_op], feed_dict)
 			step += 1
@@ -211,7 +201,7 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 											  'training/loss'],
 								 			 [train_logistic_loss, train_loss], 
 								 			 collections=[])
-			summary_writer.add_summary(loss_summary, step - 1)
+			summary_writer.add_summary(loss_summary.eval(), step - 1)
 			log("Training loss @", step - 1, ":", train_logistic_loss,
 				"(logistic)", train_loss, "(total)")
 			
@@ -229,16 +219,16 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 				val_loss = 0
 				number_of_images = 5
 				for j in range(number_of_images):
-					val_filename = val_filenames.dequeue().run()
-					feed_dict ={image_filename: val_filename[0], 
-								label_filename: val_filename[1], drop: False}
+					filenames = sess.run(val_filenames)
+					feed_dict ={image_filename: filenames[0], 
+								label_filename: filenames[1], drop: False}
 					one_loss = logistic_loss.eval(feed_dict)
 					val_loss += (one_loss / number_of_images)
 
 				# Report validation loss	
 				loss_summary = tf.scalar_summary('val/logistic_loss', val_loss, 
 												 collections=[])
-				summary_writer.add_summary(loss_summary, step)
+				summary_writer.add_summary(loss_summary.eval(), step)
 				log("Validation loss @", step, ":", val_loss)
 			
 			# Write checkpoint	
@@ -257,5 +247,7 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 if __name__ == "__main__":
 	train()
 	
-	# Opt: Compute FROC
-	#os.system('python3 compute_FROC.py ' + MODEL_DIR +  ' ' + MODEL_DIR + os.path.sep + 'val.csv')
+	# Optionally: Compute FROC
+	log('Computing FROC')
+	os.system('python3 compute_FROC.py ' + MODEL_DIR +  ' ' +
+			   os.path.join(MODEL_DIR, 'val.csv'))

@@ -7,15 +7,13 @@
 	where model_dir is the name of the folder where the checkpoint is and 
 	csv_path is the path to the csv with image, label filenames.
 """
-
 import tensorflow as tf
 import model_v4 as model
-import csv
-import scipy.misc
 import numpy as np
 from scipy import ndimage
+import csv
+import os.path
 import sys
-import os
 
 DATA_DIR = "data"
 NUM_THRESHOLDS = 50
@@ -35,7 +33,7 @@ def post(logits, label, threshold):
 	thresholded[label == 0] = 0
 	return thresholded
 	
-def compute_FROC(logits, label, num_thresholds):
+def compute_FROC(logits, label, num_thresholds, acceptance_ratio):
 	""" Computes the number of correctly localized lesions (TPs) and incorrect 
 		localizations (FPs) at different thresholds for the given image."""	
 	# Get thresholds
@@ -114,18 +112,18 @@ def main(data_dir=DATA_DIR, num_thresholds=NUM_THRESHOLDS,
 	with tf.Session(config=config) as sess:
 		# Restore variables
 		checkpoint_path = tf.train.latest_checkpoint(model_dir)
-		log("Restoring model from:", checkpoint_path)
+		print("Restoring model from:", checkpoint_path)
 		saver.restore(sess, checkpoint_path)
 		
 		# For every example
 		for row in csv_reader:
 			# Read paths
-			image_path = data_dir + os.path.sep + row[0]
-			label_path = data_dir + os.path.sep + row[0]
+			image_path = os.path.join(data_dir, row[0])
+			label_path = os.path.join(data_dir, row[1])
 
 			# Read image and label
-			im = scipy.misc.imread(image_path)
-			label = scipy.misc.imread(label_path)
+			im = ndimage.imread(image_path)
+			label = ndimage.imread(label_path)
 		
 			# Get prediction
 			logits = prediction.eval({image: im})
@@ -154,7 +152,8 @@ def main(data_dir=DATA_DIR, num_thresholds=NUM_THRESHOLDS,
 	print('Sensitivity at 1 FP: ', sensitivity_at_1_FP)
 	
 	# Write results to file
-	with open(model_dir + os.path.sep + 'FROC', 'w') as f:
+	with open(os.path.join(model_dir, 'FROC'), 'w') as f:
+		f.write('Model: ' + checkpoint_path + '\n')
 		f.write('csv: ' + csv_path + '\n')
 		f.write('Sensitivity: \n' + str(sensitivity) + '\n')
 		f.write('FP/image: \n' + str(FP_per_image) + '\n')

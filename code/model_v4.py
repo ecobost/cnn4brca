@@ -38,9 +38,6 @@ Note:
 	events.
 """
 import tensorflow as tf
-import os.path
-import time
-import sys
 
 def forward(image, drop):
 	""" A fully convolutional network for image segmentation.

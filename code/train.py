@@ -5,9 +5,11 @@
 	Example:
 		python3 train.py
 """
-import model_v4.py as model
 import tensorflow as tf
-import os
+import model_v4 as model
+import numpy as np
+import os.path
+from utils import log, read_csv_info
 
 # Set training parameters
 TRAINING_STEPS = 163*8*5 # 163 mammograms (approx) * 8 augmentations * 5 epochs
@@ -19,14 +21,6 @@ RESUME_TRAINING = False
 DATA_DIR = "data" # folder with training data (images and labels)
 MODEL_DIR = "run116" # folder to store model checkpoints and summaries
 CSV_PATH = "training.csv" # path to csv file with image and label filenames
-
-
-def read_csv_info(csv_path):
-	""" Reads the csv file and returns two lists: one with image filenames and 
-	one with label filenames."""
-	filenames = np.loadtxt(csv_path, dtype=bytes, delimiter=',').astype(str)
-	
-	return list(filenames[:,0]), list(filenames[:,1])
 
 def new_example(image_filenames, label_filenames, data_dir):
 	""" Creates an example queue and returns a new example: (image, label).
@@ -58,14 +52,11 @@ def new_example(image_filenames, label_filenames, data_dir):
 		image_filenames = tf.convert_to_tensor(image_filenames)
 		label_filenames = tf.convert_to_tensor(label_filenames)
 		
-		# Create never-ending shuffling queue of filenames
-		filename_queue = tf.train.slice_input_producer([image_filenames, 
-														label_filenames])
+		# Create a never-ending, shuffling queue and return the next pair
+		image_filename, label_filename = tf.train.slice_input_producer(
+											 [image_filenames, label_filenames])
 	
 	with tf.name_scope('decode_image'):
-		# Dequeue next example
-		image_filename, label_filename = filename_queue.dequeue()
-	
 		# Load image
 		image_path = data_dir + os.path.sep + image_filename
 		image_content = tf.read_file(image_path)
@@ -93,19 +84,12 @@ def new_example(image_filenames, label_filenames, data_dir):
 		# Whiten the image (zero-center and unit variance)
 		whitened_image = tf.image.per_image_whitening(rotated_image)
 		whitened_label = tf.squeeze(rotated_label) # not whiten, just unwrap it
-		
-	#TODO: Test whether prefetching helps now that it doesn't do sess.run(example)
-				
+
 	return whitened_image, whitened_label
 
-def log(*messages):
-	""" Simple logging function."""
-	formatted_time = "[{}]".format(time.ctime())
-	print(formatted_time, *messages)
-	
 def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE, 
-		 lambda_=LAMBDA, resume_training=RESUME_TRAINING, csv_path=CSV_PATH, 
-		 model_dir=MODEL_DIR):
+		 lambda_=LAMBDA, resume_training=RESUME_TRAINING, data_dir = DATA_DIR,
+		 model_dir=MODEL_DIR, csv_path=CSV_PATH):
 	""" Creates and trains a convolutional network for image segmentation. 
 	
 	It creates an example queue; defines a model, loss function and optimizer;
@@ -117,7 +101,7 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 	
 	"""
 	# Read csv file with training info
-	image_filenames, label_filenames =  read_csv_info(csv_path)
+	image_filenames, label_filenames = read_csv_info(csv_path)
 		
 	# Shufle, augment and preprocess input
 	image, label = new_example(image_filenames, label_filenames, data_dir)
@@ -171,8 +155,8 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 			# Report losses (calculated before the training step)
 			loss_summary = tf.scalar_summary(['logistic_loss', 'loss'],
 											 [train_logistic_loss, train_loss], 
-											 collections = [])
-			summary_writer.add_summary(loss_summary, step - 1)	
+											 collections=[])
+			summary_writer.add_summary(loss_summary.eval(), step - 1)	
 			log("Training loss @", step - 1, ":", train_logistic_loss,
 				"(logistic)", train_loss, "(total)")
 			
