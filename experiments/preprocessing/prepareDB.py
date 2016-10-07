@@ -1,32 +1,33 @@
 # Written by: Erick M. Cobos T.
-# Date: 06-Jun-2016
-""" 
-Script to enhance (global background reduction + normalization), downsample 
-and augment the dataset. Newer version.
+# Date: October-2016
+""" Script to enhance (background reduction + normalization) and downsample 
+images in the data set.
+
+Note: At the end of the output csv file there may be an empty line. Remove if 
+necessary
 
 Example:
 	python3 prepareDB.py
 """
-
-# Load modules
 import csv
 from PIL import Image, ImageStat, ImageOps
 
 # Set some parameters
-input_filename = "bcdr_d01_img.csv"	# Name of input .csv
-output_filename = "training.csv"	# Produced .csv (stores filenames of images)
-downsampling_factor = (128 * 0.007)/2	# Scaling factor for an image with 0.007
-					# cm per pixel (spatial resolution) to get a 2x2 cm area in 
-					# 112 x 112 pixels
-label_suffix = "_label"	# Suffix of label images
-network_subsampling = 16	# How much will the network subsample the image.
-				# Ours subsamples it by afactor of 16 (4 pooling layers).
+input_filename = 'bcdr_d01_img.csv'	# name of input csv
+output_filename = 'data.csv' # name for the output csv (stores filenames)
+downsampling_factor = (128 * 0.007)/2 # scaling factor for an image with 0.007cm
+									  # per pixel (spatial resolution) to get a 
+									  # 2x2 cm area in 128 x 128 pixels
+image_suffix = '_image' # suffix for images
+label_suffix = '_label' # suffix for label images
+network_subsampling = 4 # amount of network subsampling: ours will subsample
+						# images by a factor of 4 (2 pooling layers).
 
 # Reading bcdr_d01_img.csv to get the image names
-with open(input_filename, newline = '') as csv_file, \
-     open(output_filename, 'w') as output_file:
-	reader = csv.reader(csv_file, skipinitialspace = True)
-	next(reader) # Skip header
+with open(input_filename, newline='') as input_file, \
+	 open(output_filename, 'w') as output_file:
+	reader = csv.reader(input_file, skipinitialspace=True)
+	next(reader) # skip header
 
 	# For each mammogram
 	for row in reader:
@@ -35,7 +36,7 @@ with open(input_filename, newline = '') as csv_file, \
 
 		# Load the mammogram and label
 		mammogram = Image.open(filename);
-		label = Image.open(basename + "_mask.png");
+		label = Image.open(basename + '_mask.png');
 
 		# Enhance it (global background reduction + normalization)
 		stat = ImageStat.Stat(mammogram, label)
@@ -51,9 +52,9 @@ with open(input_filename, newline = '') as csv_file, \
 		label = label.resize((new_width, new_height), Image.NEAREST)
 
 		# Crop the image to delete unnnecesary background. Make sure every
-		# dimension is divisible by 16 (our network subsampling factor)
-		bbox = label.getbbox() 	# bounding-box 4-tuple: upper-left x,
-					# upper-left y, lower-right x, lower-right y
+		# dimension is divisible by our network subsampling factor
+		bbox = label.getbbox() # bounding-box 4-tuple: upper-left x,
+							   # upper-left y, lower-right x, lower-right y
 		bbox = list(bbox)
 		new_width = abs(bbox[0] - bbox[2])
 		new_height = abs(bbox[1] - bbox[3])
@@ -79,77 +80,10 @@ with open(input_filename, newline = '') as csv_file, \
 		mammogram = mammogram.crop(bbox)
 		label = label.crop(bbox)
 
-		# Augment images (verbose)
-		mammogram_v1 = mammogram
-		label_v1 = label
-
-		mammogram_v2 = mammogram_v1.transpose(Image.ROTATE_90)
-		label_v2 = label_v1.transpose(Image.ROTATE_90)
-
-		mammogram_v3 = mammogram_v1.transpose(Image.ROTATE_180)
-		label_v3 = label_v1.transpose(Image.ROTATE_180)
-
-		mammogram_v4 = mammogram_v1.transpose(Image.ROTATE_270)
-		label_v4 = label_v1.transpose(Image.ROTATE_270)
-
-		mammogram_v5 = mammogram.transpose(Image.FLIP_LEFT_RIGHT)
-		label_v5 = label.transpose(Image.FLIP_LEFT_RIGHT)
-
-		mammogram_v6 = mammogram_v5.transpose(Image.ROTATE_90)
-		label_v6 = label_v5.transpose(Image.ROTATE_90)
-
-		mammogram_v7 = mammogram_v5.transpose(Image.ROTATE_180)
-		label_v7 = label_v5.transpose(Image.ROTATE_180)
-
-		mammogram_v8 = mammogram_v5.transpose(Image.ROTATE_270)
-		label_v8 = label_v5.transpose(Image.ROTATE_270)
-
-		# Save images (verbose)
-		mammogram_v1.save(basename + "_v1.png")
-		label_v1.save(basename + label_suffix + "_v1.png")
-
-		mammogram_v2.save(basename + "_v2.png")
-		label_v2.save(basename + label_suffix + "_v2.png")
-
-		mammogram_v3.save(basename + "_v3.png")
-		label_v3.save(basename + label_suffix + "_v3.png")
-
-		mammogram_v4.save(basename + "_v4.png")
-		label_v4.save(basename + label_suffix + "_v4.png")
-
-		mammogram_v5.save(basename + "_v5.png")
-		label_v5.save(basename + label_suffix + "_v5.png")
-
-		mammogram_v6.save(basename + "_v6.png")
-		label_v6.save(basename + label_suffix + "_v6.png")
-
-		mammogram_v7.save(basename + "_v7.png")
-		label_v7.save(basename + label_suffix + "_v7.png")
-
-		mammogram_v8.save(basename + "_v8.png")
-		label_v8.save(basename + label_suffix + "_v8.png")
-
-		# Save filenames to csv (verbose)
-		output_file.write(basename + "_v1.png" + "," + 
-				basename + label_suffix + "_v1.png" + "\n")
-
-		output_file.write(basename + "_v2.png" + "," +
-				basename + label_suffix + "_v2.png" + "\n")
-
-		output_file.write(basename + "_v3.png" + "," +
-				basename + label_suffix + "_v3.png" + "\n")
-
-		output_file.write(basename + "_v4.png" + "," +
-				basename + label_suffix + "_v4.png" + "\n")
-
-		output_file.write(basename + "_v5.png" + "," +
-				basename + label_suffix + "_v5.png" + "\n")
-
-		output_file.write(basename + "_v6.png" + "," +
-				basename + label_suffix + "_v6.png" + "\n")
-
-		output_file.write(basename + "_v7.png" + "," +
-				basename + label_suffix + "_v7.png" + "\n")
-
-		output_file.write(basename + "_v8.png" + "," +
-				basename + label_suffix + "_v8.png" + "\n")
+		# Save images 
+		mammogram.save(basename + image_suffix + ".png")
+		label.save(basename + label_suffix + ".png")
+		
+		# Save filenames to csv
+		output_file.write(basename + image_suffix + ".png" + "," + 
+						  basename + label_suffix + ".png" + "\n")
