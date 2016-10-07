@@ -86,6 +86,9 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 		 lambda_=LAMBDA, resume_training=RESUME_TRAINING, data_dir = DATA_DIR,
 		 model_dir=MODEL_DIR, csv_path=CSV_PATH):
 	""" Creates and trains a convolutional network for image segmentation."""
+	# Create model directory
+	if not os.path.exists(model_dir): os.makedirs(model_dir)
+	
 	# Read csv file with training info
 	image_filenames, label_filenames = read_csv_info(csv_path)
 		
@@ -103,7 +106,6 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 	train_op, global_step = model.update_weights(loss, learning_rate)
 	
 	# Get a summary writer
-	if not os.path.exists(model_dir): os.makedirs(model_dir)
 	summary_writer = tf.train.SummaryWriter(model_dir)
 	summaries = tf.merge_all_summaries()
 	

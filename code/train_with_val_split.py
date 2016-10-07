@@ -28,7 +28,7 @@ RESUME_TRAINING = False
 
 # Set some path
 DATA_DIR = "data" # folder with training data (images and labels)
-MODEL_DIR = "run116" # folder to store model checkpoints and summary files
+MODEL_DIR = "run119" # folder to store model checkpoints and summary files
 CSV_PATH = "data/training_1.csv" # path to csv file with image,label filenames
 VAL_CSV_PATH = None # path to validation set. If undefined, split training set
 NUM_VAL_PATIENTS = 10 # number of patients for validation set; used only if 
@@ -154,6 +154,9 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 		 model_dir=MODEL_DIR, csv_path=CSV_PATH, val_csv_path=VAL_CSV_PATH, 
 		 num_val_patients = NUM_VAL_PATIENTS):
 	""" Trains a convolutional network reporting results for a validation set"""
+	# Create model directory
+	if not os.path.exists(model_dir): os.makedirs(model_dir)
+	
 	# Read csv file(s) with training info
 	if val_csv_path:
 		training_images, training_labels = read_csv_info(csv_path)
@@ -185,7 +188,6 @@ def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE,
 	train_op, global_step = model.update_weights(loss, learning_rate)
 	
 	# Get a summary writer
-	if not os.path.exists(model_dir): os.makedirs(model_dir)
 	summary_writer = tf.train.SummaryWriter(model_dir)
 	summaries = tf.merge_all_summaries()
 	
