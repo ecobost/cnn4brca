@@ -1,6 +1,6 @@
 # Written by: Erick Cobos T
 # Date: October-2016
-""" Some utility functions """
+""" Some utility functions. """
 import numpy as np
 import time
 

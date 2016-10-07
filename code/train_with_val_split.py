@@ -1,19 +1,24 @@
 # Written by: Erick Cobos T.
 # Date: October 2016
-""" Trains the convolutional network with the provided data.
+""" Trains a convolutional network with training and validation sets.
 
 	If defined, uses VAL_CSV_PATH as the validation set; otherwise, splits the 
 	training set in training and validation.
-
+	
+	It uses all available CPUs and a single GPU (if available) in one machine, 
+	i.e., it is not distributed.
+	
 	Example:
-		python3 train.py
+		python3 train_with_val_split.py
 """
 import tensorflow as tf
-import model_v4 as model
 import numpy as np
 import random
 import os
 from utils import log, read_csv_info
+
+# Import network definition
+import model_v4 as model
 
 # Set training parameters
 TRAINING_STEPS = 163*8*5 # 163 mammograms (approx) * 8 augmentations * 5 epochs
@@ -22,16 +27,33 @@ LAMBDA = 4e-4
 RESUME_TRAINING = False
 
 # Set some path
-DATA_DIR = "data" # folder with training data (images and labels)
-MODEL_DIR = "run116" # folder to store model checkpoints and summary files
+DATA_DIR = "data" # directory with training data (images and labels)
+MODEL_DIR = "run116" # directory to store model checkpoints and summaries
 CSV_PATH = "training.csv" # path to csv file with image and label filenames
 VAL_CSV_PATH = None # path to validation set. If undefined, split training set
 NUM_VAL_PATIENTS = 10 # number of patients for validation set; used only if 
 					  # val_csv is not provided
+
 					  
 def val_split(csv_path, num_val_patients, model_dir):
-	""" Divides the data set into training and validation set sampling 
-	num_val_patients patients at random."""
+	""" Divides the data set into training and validation sets sampling patients
+	at random.
+	
+	Args:
+		csv_path: An string. Path to the csv with image and label filenames.
+			Records are expected as 'image_filename,label_filename'
+		num_val_patients: An integer. Number of patients for the validation set.
+		model_dir: An string. Path to the directory to store new csvs with 
+			training and validation info.
+			
+	Returns:
+		training_image_filenames: A list of strings. Filenames for training 
+			images.
+		training_label_filenames: A list of strings. Filenames for training 
+			labels.
+		val_image_filenames: A list of strings. Filenames for validation images.
+		val_label_filenames: A list of strings. Filenames for validation labels.
+	"""
 	# Read csv file
 	with open(csv_path) as csv_file:
 		lines = csv_file.read().splitlines()
@@ -62,7 +84,16 @@ def val_split(csv_path, num_val_patients, model_dir):
 			val_image_filenames, val_label_filenames)
 
 def next_filename(image_filenames, label_filenames):
-	""" Creates a shuffling queue with (image, label) filename pairs."""
+	""" Creates an infinite shuffling queue with (image, label) filename pairs
+	and returns the next example.
+	
+	Args:
+		image_filenames: A list of strings. Image filenames
+		label_filenames: A list of strings. Label filenames.
+		
+	Returns:
+		next_filenames: A tuple of strings. The next image, label pair
+	"""
 	with tf.name_scope('filename_queue'):
 		# Transform input to tensors
 		image_filenames = tf.convert_to_tensor(image_filenames)
@@ -78,18 +109,14 @@ def preprocess_example(image_filename, label_filename, data_dir):
 	""" Loads an image (and its label) and augments it.
 	
 	Args:
-		csv_path: A string. Path to csv file with image and label filenames.
-			Each record is expected to be in the form:
-			'image_filename,label_filename'
-		data_dir: A string. Path to the data directory. Default is "."
-		capacity: An integer. Maximum amount of examples that may be stored in 
-			the example queue. Default is 5.
-		name: A string. Name for the produced examples. Default is 'new_example'
+		image_filename: A string. Image filename
+		label_filename: A string. Label filename
+		data_dir: A string. Path to the data directory.
 	
 	Returns:
-		An (image, label) tuple where image is a tensor of floats with shape
-		[image_height, image_width, image_channels] and label is a tensor of
-		integers with shape [image_height, image_width]
+		whitened_image: A tensor of floats with shape [height, width, channels].
+			Image after preprocessing.
+		whitened_label: A tensor of floats with shape [height, width]. Label
 	"""
 	with tf.name_scope('decode_image'):
 		# Load image

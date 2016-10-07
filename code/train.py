@@ -1,15 +1,20 @@
 # Written by: Erick Cobos T.
 # Date: October 2016
-""" Trains the convolutional network with the provided data.
+""" Trains a convolutional network with the provided data.
 
+	It uses all available CPUs and a single GPU (if available) in one machine, 
+	i.e., it is not distributed.
+	
 	Example:
 		python3 train.py
 """
 import tensorflow as tf
-import model_v4 as model
 import numpy as np
 import os.path
 from utils import log, read_csv_info
+
+# Import network definition
+import model_v4 as model
 
 # Set training parameters
 TRAINING_STEPS = 163*8*5 # 163 mammograms (approx) * 8 augmentations * 5 epochs
@@ -18,34 +23,24 @@ LAMBDA = 4e-4
 RESUME_TRAINING = False
 
 # Set some paths
-DATA_DIR = "data" # folder with training data (images and labels)
-MODEL_DIR = "run116" # folder to store model checkpoints and summaries
+DATA_DIR = "data" # directory with training data (images and labels)
+MODEL_DIR = "run116" # directory to store model checkpoints and summaries
 CSV_PATH = "training.csv" # path to csv file with image and label filenames
 
+
 def new_example(image_filenames, label_filenames, data_dir):
-	""" Creates an example queue and returns a new example: (image, label).
-	
-	Creates a never-ending suffling queue of filenames, dequeues and decodes a 
-	csv record, loads an example (image and label) in memory and augments it.
-	
-	, creates a FIFO queue for examples, adds a single-thread
-	QueueRunner object to the graph to perform prefetching operations and 
-	dequeues an example.
-	
-	Uses queues to improve performance (as recommended in the tutorials). We 
-	could not use tf.train.batch() to automatically create the example queue 
-	because	our images differ in size.
+	""" Creates an infinite queue of filenames, augments and preprocess the 
+	image and returns a new example: (image, label) pair.
 	
 	Args:
-		csv_path: A string. Path to csv file with image and label filenames.
-			Each record is expected to be in the form:
-			'image_filename,label_filename'
-		data_dir: A string. Path to the data directory. Default is "."
+		image_filenames: A list of strings. Image filenames
+		label_filenames: A list of strings. Label filenames.
+		data_dir: A string. Path to the data directory.
 	
 	Returns:
-		An (image, label) tuple where image is a tensor of floats with shape
-		[image_height, image_width, image_channels] and label is a tensor of
-		integers with shape [image_height, image_width]
+		whitened_image: A tensor of floats with shape [height, width, channels].
+			Image after preprocessing.
+		whitened_label: A tensor of floats with shape [height, width]. Label
 	"""
 	with tf.name_scope('filename_queue'):
 		# Transform input to tensors
@@ -90,16 +85,7 @@ def new_example(image_filenames, label_filenames, data_dir):
 def train(training_steps = TRAINING_STEPS, learning_rate=LEARNING_RATE, 
 		 lambda_=LAMBDA, resume_training=RESUME_TRAINING, data_dir = DATA_DIR,
 		 model_dir=MODEL_DIR, csv_path=CSV_PATH):
-	""" Creates and trains a convolutional network for image segmentation. 
-	
-	It creates an example queue; defines a model, loss function and optimizer;
-	and trains the model.
-	
-	Args:
-		restore_variables: A boolean. Whether to restore variables from a 
-			previous execution. Default to False.
-	
-	"""
+	""" Creates and trains a convolutional network for image segmentation."""
 	# Read csv file with training info
 	image_filenames, label_filenames = read_csv_info(csv_path)
 		

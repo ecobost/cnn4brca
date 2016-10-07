@@ -1,72 +1,47 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
 # Date: Sep-2016
 """ TensorFlow implementation of the convolutional network described in Ch. 3
-(Experiment 4) of the thesis report. Works for Tensorflow 0.10.0
+(Experiment 4) of the thesis report.
 
-It loads each mammogram and its label to memory, computes the function described
-by the network and produces a segmentation of the same size as the original 
-mammogram. The network outputs a heatmap of logits indicating the probability of
-mass accross the mammogram. It uses separate lists of (preprocessed and 
-augmented) mammograms for training and validation. Labels have value 0 for
-background, 127 for breast tissue and 255 for breast masses. It uses a weighted 
-loss function where errors commited on breast masses are weighted by 0.9, errors
-on normal breast tissue are weighted by 0.1 and errors on background are 
-ignored (weighted by 0).
+The network outputs a heatmap of logits indicating the probability of mass 
+accross the mammogram. Labels have value 0 for background, 127 for breast tissue
+and 255 for breast masses (the positive class). The loss function weights errors
+on breast masses by 0.9, on normal breast tissue by 0.1 and on background by 0 
+(ignored).
 
-Software design follows examples from the TensorFlow tutorials. It uses all
-available CPUs and a single GPU (if available) in one machine, i.e., it is not
-distributed.
-
-See specific methods for implementation details.
-
-Example:
-	To train a network from scratch:
-		$ python3 model_v3.py
-
-	To resume training (restoring variables from the latest checkpoint):
-		$ python3 model_v3.py arg
-	where arg is any argument (--reload is recommeded).
-	
-	You can also load the module in a python3 terminal and run
-		>>> model.main(restore_variables)
-	where restore_variables is a boolean signaling whether you want to resume
-	training (True) or start from scratch (False) (default).
-	
-Note:
-	To run main() more than once in the same Python terminal you will need to
-	reset the Tensorflow graph (tf.reset_default_graph()) to clear previous
-	events.
+Works for Tensorflow 0.11.rc0
 """
 import tensorflow as tf
 
 def forward(image, drop):
-	""" A fully convolutional network for image segmentation.
+	""" A convolutional network for image segmentation.
 
-	The architecture is modelled as a small ResNet network. It has 0.9 million
-	parameters. It uses strided convolutions (instead of pooling) and dilated 
-	convolutions to aggregate content and obtain segmentations with good
-	resolution. 
+	Modelled as a small ResNet network (10 layers, 0.9 million parameters), uses
+	strided convolutions (instead of pooling) and dilated convolutions to 
+	aggregate content and obtain segmentations with good resolution. 
+	It also mirrors the image on the edges to avoid artifacts.
 
 	Input size: 128 x 128
 	Downsampling size (before BILINEAR): 32 x 32 
 	Output size: 128 x 128 (4x upsampling)
 
-	See Section 3.5 of the thesis report for details.
+	See Section 3.6 of the thesis report for further details.
 
 	Args:
-		image: A 3D tensor. The input image
+		image: A tensor with shape [height, width, channels]. The input image
 		drop: A boolean. If True, dropout is active.
 
 	Returns:
-		A 2D tensor. The predicted segmentation: a logit heatmap.
+		A tensor of floats with shape [height, width]: the predicted 
+		segmentation (a heatmap of logits).
 	"""
 	# Define some local functions
 	def initialize_weights(filter_shape):
 		""" Initializes filter weights with random values.
 
-		Values are drawn from a normal distribution with zero mean and standard
+		Values drawn from a normal distribution with zero mean and standard 
 		deviation = sqrt(2/n_in) where n_in is the number of connections to the 
-		filter: 90 for a 3x3 filter with depth 10 for instance.
+		filter, e.g., 90 for a 3x3 filter with depth 10.
 		"""
 		n_in = filter_shape[0] * filter_shape[1] * filter_shape[2]
 		values = tf.random_normal(filter_shape, 0, tf.sqrt(2/n_in))
@@ -74,8 +49,11 @@ def forward(image, drop):
 		return values
 
 	def pad_conv_input(input, filter_shape, strides):
-		""" Pads a batch mirroring the edges of each feature map."""
-
+		""" Pads a batch mirroring the edges of each feature map.
+		
+		Calculates the amount of padding needed to preserve spatial dimensions
+		and uses mirror padding on each feature map.
+		"""
 		# Calculate the amount of padding (as done when padding=SAME)
 		
 		# Proper way (works for any input, filter, stride combination)
@@ -87,7 +65,7 @@ def forward(image, drop):
 		#pad_height = (out_height - 1) * strides[1] + filter_shape[0] - in_height
 		#pad_width = (out_width - 1) * strides[2] + filter_shape[1] - in_width
 
-		# Easier way (works if height and width is divisible by their stride)
+		# Easier way (works if height and width are divisible by their stride)
 		pad_height = filter_shape[0] - strides[1]
 		pad_width = filter_shape[1] - strides[2]
 		
@@ -103,22 +81,7 @@ def forward(image, drop):
 		return padded_input
 
 	def conv_op(input, filter_shape, strides=[1, 1, 1, 1]):
-		""" Creates filters and biases, and performs a convolution.
-		
-		Args:
-			input: A tensor of floats with shape [batch_size, input_height,
-				input_width, input_depth]. The input volume.
-			filter_shape: A list of 4 integers with shape [filter_height, 
-				filter_width, input_depth, output_depth]. This determines the 
-				size and number of filters of the convolution.
-			strides: A list of 4 integers. The amount of stride in the four
-				dimensions of the input.
-			
-		Returns:
-			A tensor of floats with shape [batch_size, output_height,
-			output_width, output_depth]. The product of the convolutional 
-			operation.
-		"""
+		""" Creates filters and biases, and performs a convolution."""
 		# Create filter and biases
 		filter = tf.Variable(initialize_weights(filter_shape), name='weights')
 		biases = tf.Variable(tf.zeros([filter_shape[3]]), name='biases')
@@ -136,7 +99,7 @@ def forward(image, drop):
 		return output
 
 	def pad_atrous_input(input, filter_shape, dilation):
-		"""Pads a batch mirroring feature map's edges. For atrous convolution"""
+		"""Pads a batch for atrous convolution mirroring feature maps' edges."""
 		# Calculate the amount of padding (as done when padding=SAME)
 		pad_height = dilation * (filter_shape[0] - 1)
 		pad_width = dilation * (filter_shape[1] - 1)
@@ -152,24 +115,8 @@ def forward(image, drop):
 
 		return padded_input
 
-		
 	def atrous_conv_op(input, filter_shape, dilation):
-		""" Creates filters and biases, and performs a dilated convolution.
-		
-		Args:
-			input: A tensor of floats with shape [batch_size, input_height,
-				input_width, input_depth]. The input volume.
-			filter_shape: A list of 4 integers with shape [filter_height, 
-				filter_width, input_depth, output_depth]. This determines the 
-				size and number of filters of the convolution.
-			dilation: A positive integer. The amount of dilation in the spatial
-				dimensions of the volume.
-	
-		Returns:
-			A tensor of floats with shape [batch_size, output_height,
-			output_width, output_depth]. The product of the convolutional 
-			operation.
-		"""
+		""" Creates filters and biases, and performs a dilated convolution."""
 		# Create filter and biases
 		filter = tf.Variable(initialize_weights(filter_shape), name='weights')
 		biases = tf.Variable(tf.zeros([filter_shape[3]]), name='biases')
@@ -195,7 +142,7 @@ def forward(image, drop):
 
 	def dropout(x, keep_prob):
 		""" Performs dropout if training. Otherwise, returns original."""
-		output = tf.cond(drop, lambda: tf.nn.dropout(x, keep_prob), lambda: x)		
+		output = tf.cond(drop, lambda: tf.nn.dropout(x, keep_prob), lambda: x)	
 		return output
 		
 	# Create a batch with a single image
@@ -274,12 +221,13 @@ def loss(prediction, label):
 	0 (ignored).
 	
 	Args:
-		prediction: A 2D tensor of floats. The predicted heatmap of logits.
-		label: A 2D tensor of integers. Possible labels are 0 (background), 127
-			(breast tissue) and 255 (breast mass).
+		prediction: A tensor of floats with shape [height, width]. The predicted
+			heatmap of logits.
+		label: A tensor of integers with shape [height, width]. Labels are 0 
+			(background), 127 (breast tissue) and 255 (breast mass).
 
 	Returns:
-		A float. The loss.
+		A float: The loss.
 	"""
 	with tf.name_scope('logistic_loss'):
 		# Generate binary masks.
@@ -300,7 +248,11 @@ def loss(prediction, label):
 	return loss
 	
 def regularization_loss():
-	""" Calculates the l2 regularization loss from the collected weights."""
+	""" Calculates the l2 regularization loss from the collected weights.
+	
+	Returns:
+		A float: The loss
+	"""
 	with tf.name_scope("regularization_loss"):
 		# Compute the (halved and squared) l2-norm of each weight matrix
 		weights = tf.get_collection(tf.GraphKeys.WEIGHTS)
