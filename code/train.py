@@ -23,9 +23,9 @@ LAMBDA = 4e-4
 RESUME_TRAINING = False
 
 # Set some paths
-DATA_DIR = "data" # directory with training data (images and labels)
-MODEL_DIR = "run116" # directory to store model checkpoints and summaries
-CSV_PATH = "training.csv" # path to csv file with image and label filenames
+DATA_DIR = "data" # folder with training data (images and labels)
+MODEL_DIR = "run116" # folder to store model checkpoints and summaries
+CSV_PATH = "data/training_1.csv" # path to csv file with image,label filenames
 
 
 def new_example(image_filenames, label_filenames, data_dir):

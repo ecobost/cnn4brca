@@ -27,9 +27,9 @@ LAMBDA = 4e-4
 RESUME_TRAINING = False
 
 # Set some path
-DATA_DIR = "data" # directory with training data (images and labels)
-MODEL_DIR = "run116" # directory to store model checkpoints and summaries
-CSV_PATH = "training.csv" # path to csv file with image and label filenames
+DATA_DIR = "data" # folder with training data (images and labels)
+MODEL_DIR = "run116" # folder to store model checkpoints and summary files
+CSV_PATH = "data/training_1.csv" # path to csv file with image,label filenames
 VAL_CSV_PATH = None # path to validation set. If undefined, split training set
 NUM_VAL_PATIENTS = 10 # number of patients for validation set; used only if 
 					  # val_csv is not provided
