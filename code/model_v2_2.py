@@ -1,29 +1,34 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
-# Date: Sep-2016
+# Date: April-2016
+# Modified: October-2016
 """ TensorFlow implementation of the convolutional network described in Ch. 3
-(Experiment 4) of the thesis report.
+(Experiment 2) of the thesis report.
 
-The network outputs a heatmap of logits indicating the probability of mass 
+The network outputs a heatmap of logits indicating the probability of mass
 accross the mammogram. Labels have value 0 for background, 127 for breast tissue
-and 255 for breast masses (the positive class). The loss function weights errors
-on breast masses by 0.9, on normal breast tissue by 0.1 and on background by 0 
-(ignored).
+and 255 for breast masses.
+
+The only difference with model_v2 is that it uses a weighted loss function that 
+gives higher weights (0.9) to errors on breast masses compared to breast tissue
+(0.1) encouraging the network to learn better features to correctly distinguish
+lesions.
 
 Works for Tensorflow 0.11.rc0
 """
 import tensorflow as tf
 
 def forward(image, drop):
-	""" A convolutional network for image segmentation.
+	""" A fully convolutional network for image segmentation.
 
-	Modelled as a small ResNet network (10 layers, 0.9 million parameters), uses
-	strided convolutions (instead of pooling) and dilated convolutions to 
-	aggregate content and obtain segmentations with good resolution. 
-	It also mirrors the image on the edges to avoid artifacts.
+	The architecture is modelled as a small VGG-16 network. It has approximately
+	2.9 million parameters. Uses mirror padding to avoid artifacts
 
-	Input size: 128 x 128
-	Downsampling size (before BILINEAR): 32 x 32 
-	Output size: 128 x 128 (4x upsampling)
+	Architecture:
+		INPUT -> [[CONV -> Leaky RELU]*2 -> MAXPOOL]*2 -> [CONV -> Leaky RELU]*3
+		-> MAXPOOL -> FC -> Leaky RELU -> FC -> SIGMOID -> BILINEAR
+	Input size: 112 x 112
+	Downsampling size (before BILINEAR): 7 x 7 
+	Output size: 112 x 112 (16x upsampling)
 
 	Args:
 		image: A tensor with shape [height, width, channels]. The input image
@@ -33,13 +38,12 @@ def forward(image, drop):
 		prediction: A tensor of floats with shape [height, width]: the predicted 
 		segmentation (a heatmap of logits).
 	"""
-	# Define some local functions
 	def initialize_weights(filter_shape):
 		""" Initializes filter weights with random values.
 
-		Values drawn from a normal distribution with zero mean and standard 
+		Values are drawn from a normal distribution with zero mean and standard
 		deviation = sqrt(2/n_in) where n_in is the number of connections to the 
-		filter, e.g., 90 for a 3x3 filter with depth 10.
+		filter: 90 for a 3x3 filter with depth 10 for instance.
 		"""
 		n_in = filter_shape[0] * filter_shape[1] * filter_shape[2]
 		values = tf.random_normal(filter_shape, 0, tf.sqrt(2/n_in))
@@ -78,7 +82,7 @@ def forward(image, drop):
 
 		return padded_input
 
-	def conv_op(input, filter_shape, strides=[1, 1, 1, 1]):
+	def conv_op(input, filter_shape, strides):
 		""" Creates filters and biases, and performs a convolution."""
 		# Create filter and biases
 		filter = tf.Variable(initialize_weights(filter_shape), name='weights')
@@ -96,42 +100,6 @@ def forward(image, drop):
 		
 		return output
 
-	def pad_atrous_input(input, filter_shape, dilation):
-		"""Pads a batch for atrous convolution mirroring feature maps' edges."""
-		# Calculate the amount of padding (as done when padding=SAME)
-		pad_height = dilation * (filter_shape[0] - 1)
-		pad_width = dilation * (filter_shape[1] - 1)
-		
-		pad_top = pad_height // 2
-		pad_bottom = pad_height - pad_top
-		pad_left = pad_width // 2
-		pad_right = pad_width - pad_left 
-
-		# Pad mirroring edges of each feature map
-		padding = [[0, 0], [pad_top, pad_bottom], [pad_left, pad_right], [0, 0]]
-		padded_input = tf.pad(input, padding, 'SYMMETRIC')
-
-		return padded_input
-
-	def atrous_conv_op(input, filter_shape, dilation):
-		""" Creates filters and biases, and performs a dilated convolution."""
-		# Create filter and biases
-		filter = tf.Variable(initialize_weights(filter_shape), name='weights')
-		biases = tf.Variable(tf.zeros([filter_shape[3]]), name='biases')
-		
-		# Add weights to the weights collection (for regularization)
-		tf.add_to_collection(tf.GraphKeys.WEIGHTS, filter)
-
-		# Do mirror padding (to deal better with borders)
-		padded_input = pad_atrous_input(input, filter_shape, dilation)
-
-		# Perform dilated 2d convolution
-		w_times_x = tf.nn.atrous_conv2d(padded_input, filter, dilation,
-										padding='VALID')
-		output = tf.nn.bias_add(w_times_x, biases)
-
-		return output
-
 	def leaky_relu(x, alpha=0.1):
 		""" Leaky ReLU activation function."""
 		with tf.name_scope('leaky_relu'):
@@ -139,84 +107,91 @@ def forward(image, drop):
 		return output
 
 	def dropout(x, keep_prob):
-		""" Performs dropout if training. Otherwise, returns original."""
-		output = tf.cond(drop, lambda: tf.nn.dropout(x, keep_prob), lambda: x)	
+		""" During training, performs dropout. Otherwise, returns original."""
+		output = tf.cond(drop, lambda: tf.nn.dropout(x, keep_prob), lambda: x)		
 		return output
-		
-	# Create a batch with a single image
-	batch = tf.expand_dims(image, 0)	
+
+	def conv_layer(input, filter_shape, strides=[1, 1, 1, 1], keep_prob=1):
+		""" Adds a convolutional layer to the graph. 
 	
-	# Define the architecture
+		Creates filters and biases, computes the convolutions, passes the output
+		through a leaky ReLU activation function and applies dropout. Equivalent
+		to calling conv_op()->leaky_relu()->dropout().
+
+		Args:
+			input: A tensor of floats with shape [batch_size, input_height,
+				input_width, input_depth]. The input volume.
+			filter_shape: A list of 4 integers with shape [filter_height, 
+			filter_width, input_depth, output_depth]. This determines the size
+			and number of filters of the convolution.
+			strides: A list of 4 integers. The amount of stride in the four
+				dimensions of the input.
+			keep_prob: A float. Probability of dropout in the layer.
+			
+		Returns:
+			A tensor of floats with shape [batch_size, output_height,
+			output_width, output_depth]. The product of the convolutional layer.
+		"""
+		# conv -> relu -> dropout
+		conv = conv_op(input, filter_shape, strides) 
+		relu = leaky_relu(conv)
+		output = dropout(relu, keep_prob)
+		
+		# Summarize activations
+		scope = tf.get_default_graph()._name_stack # No easier way
+		tf.histogram_summary(scope + '/activations', output)
+		
+		return output
+
+	batch = tf.expand_dims(image, 0)	# batch with a single image
+	
+	# conv1 -> conv2 -> pool1
 	with tf.name_scope('conv1'):
-		conv = conv_op(batch, [6, 6, 1, 32], [1, 2, 2, 1]) 
-		relu = leaky_relu(conv)
-		conv1 = dropout(relu, keep_prob=0.9)
+		conv1 = conv_layer(batch, [6, 6, 1, 56], [1, 2, 2, 1], keep_prob=0.9)
 	with tf.name_scope('conv2'):
-		conv = conv_op(conv1, [3, 3, 32, 32]) 
-		relu = leaky_relu(conv)
-		conv2 = dropout(relu, keep_prob=0.9)
+		conv2 = conv_layer(conv1, [3, 3, 56, 56], keep_prob=0.9)
+	with tf.name_scope('pool1'):
+		pool1 = tf.nn.max_pool(conv2, [1, 2, 2, 1], [1, 2, 2, 1], 'SAME')
 
+	# conv3 -> conv4 -> pool2
 	with tf.name_scope('conv3'):
-		conv = conv_op(conv2, [3, 3, 32, 64], [1, 2, 2, 1]) 
-		relu = leaky_relu(conv)
-		conv3 = dropout(relu, keep_prob=0.8)
+		conv3 = conv_layer(pool1, [3, 3, 56, 84], keep_prob=0.8)
 	with tf.name_scope('conv4'):
-		conv = conv_op(conv3, [3, 3, 64, 64]) 
-		relu = leaky_relu(conv)
-		conv4 = dropout(relu, keep_prob=0.8)
+		conv4 = conv_layer(conv3, [3, 3, 84, 84], keep_prob=0.8)
+	with tf.name_scope('pool2'):
+		pool2 = tf.nn.max_pool(conv4, [1, 2, 2, 1], [1, 2, 2, 1], 'SAME')
 
+	# conv5 -> conv6 -> conv7 -> pool3
 	with tf.name_scope('conv5'):
-		conv = atrous_conv_op(conv4, [3, 3, 64, 128], dilation=2) 
-		relu = leaky_relu(conv)
-		conv5 = dropout(relu, keep_prob=0.7)
+		conv5 = conv_layer(pool2, [3, 3, 84, 112], keep_prob=0.7)
 	with tf.name_scope('conv6'):
-		conv = atrous_conv_op(conv5, [3, 3, 128, 128], dilation=2) 
-		relu = leaky_relu(conv)
-		conv6 = dropout(relu, keep_prob=0.7)
+		conv6 = conv_layer(conv5, [3, 3, 112, 112], keep_prob=0.7)
 	with tf.name_scope('conv7'):
-		conv = atrous_conv_op(conv6, [3, 3, 128, 128], dilation=2) 
-		relu = leaky_relu(conv)
-		conv7 = dropout(relu, keep_prob=0.7)
-	with tf.name_scope('conv8'):
-		conv = atrous_conv_op(conv7, [3, 3, 128, 128], dilation=2) 
-		relu = leaky_relu(conv)
-		conv8 = dropout(relu, keep_prob=0.7)
+		conv7 = conv_layer(conv6, [3, 3, 112, 112], keep_prob=0.7)
+	with tf.name_scope('pool3'):
+		pool3 = tf.nn.max_pool(conv7, [1, 2, 2, 1], [1, 2, 2, 1], 'SAME')
 	
-	with tf.name_scope('conv9'):
-		conv = atrous_conv_op(conv8, [3, 3, 128, 256], dilation=4) 
-		relu = leaky_relu(conv)
-		conv9 = dropout(relu, keep_prob=0.6)
+	# fc1 -> fc2
+	# FC layers implemented as size-preserving convolutional layers
+	with tf.name_scope('fc1'):
+		fc1 = conv_layer(pool3, [7, 7, 112, 448], keep_prob=0.6)
+	with tf.name_scope('fc2') as scope:
+		fc2 = conv_op(fc1, [1, 1, 448, 1], [1, 1, 1, 1])
+		tf.histogram_summary(scope + 'activations', fc2)
 		
-	with tf.name_scope('fc'):
-		fc = atrous_conv_op(conv9, [8, 8, 256, 1], dilation=4)
-		
+	# upsampling
 	with tf.name_scope('upsampling'):
-		new_dimensions = tf.shape(fc)[1:3] * 4
-		output = tf.image.resize_bilinear(fc, new_dimensions)
-		
-	# Summarize activations (verbose)
-	tf.histogram_summary('conv1/activations', conv1)
-	tf.histogram_summary('conv2/activations', conv2)
-	tf.histogram_summary('conv3/activations', conv3)
-	tf.histogram_summary('conv4/activations', conv4)
-	tf.histogram_summary('conv5/activations', conv5)
-	tf.histogram_summary('conv6/activations', conv6)
-	tf.histogram_summary('conv7/activations', conv7)
-	tf.histogram_summary('conv8/activations', conv8)
-	tf.histogram_summary('conv9/activations', conv9)
-	tf.histogram_summary('fc/activations', fc)
+		new_dimensions = tf.shape(fc2)[1:3] * 16
+		output = tf.image.resize_bilinear(fc2, new_dimensions)
 	
-	# Unwrap segmentation
-	prediction = tf.squeeze(output)	
+	prediction = tf.squeeze(output)	# Unwrap segmentation
 
 	return prediction
 	
 def loss(prediction, label):
 	""" Logistic loss function averaged over pixels in the breast area.
 	
-	Losses are weighted depending on the tissue where they occur: losses on 
-	masses are weighted by 0.9, on normal tissue by 0.1 and on the background by
-	0 (ignored).
+	Pixels in the background are ignored.
 	
 	Args:
 		prediction: A tensor of floats with shape [height, width]. The predicted

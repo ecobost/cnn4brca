@@ -1,7 +1,7 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
 # Date: Sep-2016
 """ TensorFlow implementation of the convolutional network described in Ch. 3
-(Experiment 4) of the thesis report.
+(Experiment 5) of the thesis report.
 
 The network outputs a heatmap of logits indicating the probability of mass 
 accross the mammogram. Labels have value 0 for background, 127 for breast tissue
@@ -16,7 +16,7 @@ import tensorflow as tf
 def forward(image, drop):
 	""" A convolutional network for image segmentation.
 
-	Modelled as a small ResNet network (10 layers, 0.9 million parameters), uses
+	Modelled as a small ResNet network (7 layers, 0.9 million parameters), uses
 	strided convolutions (instead of pooling) and dilated convolutions to 
 	aggregate content and obtain segmentations with good resolution. 
 	It also mirrors the image on the edges to avoid artifacts.
@@ -27,7 +27,7 @@ def forward(image, drop):
 
 	Args:
 		image: A tensor with shape [height, width, channels]. The input image
-		drop: A boolean. If True, dropout is active.
+		drop: A boolean. Un
 
 	Returns:
 		prediction: A tensor of floats with shape [height, width]: the predicted 
@@ -131,65 +131,29 @@ def forward(image, drop):
 		output = tf.nn.bias_add(w_times_x, biases)
 
 		return output
-
-	def leaky_relu(x, alpha=0.1):
-		""" Leaky ReLU activation function."""
-		with tf.name_scope('leaky_relu'):
-			output = tf.maximum(tf.mul(alpha, x), x)
-		return output
-
-	def dropout(x, keep_prob):
-		""" Performs dropout if training. Otherwise, returns original."""
-		output = tf.cond(drop, lambda: tf.nn.dropout(x, keep_prob), lambda: x)	
-		return output
 		
 	# Create a batch with a single image
 	batch = tf.expand_dims(image, 0)	
 	
 	# Define the architecture
 	with tf.name_scope('conv1'):
-		conv = conv_op(batch, [6, 6, 1, 32], [1, 2, 2, 1]) 
-		relu = leaky_relu(conv)
-		conv1 = dropout(relu, keep_prob=0.9)
+		conv1 = tf.nn.relu(conv_op(batch, [7, 7, 1, 32], [1, 2, 2, 1]))
 	with tf.name_scope('conv2'):
-		conv = conv_op(conv1, [3, 3, 32, 32]) 
-		relu = leaky_relu(conv)
-		conv2 = dropout(relu, keep_prob=0.9)
+		conv2 = tf.nn.relu(conv_op(conv1, [3, 3, 32, 32]))
 
 	with tf.name_scope('conv3'):
-		conv = conv_op(conv2, [3, 3, 32, 64], [1, 2, 2, 1]) 
-		relu = leaky_relu(conv)
-		conv3 = dropout(relu, keep_prob=0.8)
+		conv3 = tf.nn.relu(conv_op(conv2, [3, 3, 32, 64], [1, 2, 2, 1]))
 	with tf.name_scope('conv4'):
-		conv = conv_op(conv3, [3, 3, 64, 64]) 
-		relu = leaky_relu(conv)
-		conv4 = dropout(relu, keep_prob=0.8)
+		conv4 = tf.nn.relu(conv_op(conv3, [3, 3, 64, 64]))
 
 	with tf.name_scope('conv5'):
-		conv = atrous_conv_op(conv4, [3, 3, 64, 128], dilation=2) 
-		relu = leaky_relu(conv)
-		conv5 = dropout(relu, keep_prob=0.7)
+		conv5 = tf.nn.relu(atrous_conv_op(conv4, [3, 3, 64, 128], dilation=2)) 
 	with tf.name_scope('conv6'):
-		conv = atrous_conv_op(conv5, [3, 3, 128, 128], dilation=2) 
-		relu = leaky_relu(conv)
-		conv6 = dropout(relu, keep_prob=0.7)
-	with tf.name_scope('conv7'):
-		conv = atrous_conv_op(conv6, [3, 3, 128, 128], dilation=2) 
-		relu = leaky_relu(conv)
-		conv7 = dropout(relu, keep_prob=0.7)
-	with tf.name_scope('conv8'):
-		conv = atrous_conv_op(conv7, [3, 3, 128, 128], dilation=2) 
-		relu = leaky_relu(conv)
-		conv8 = dropout(relu, keep_prob=0.7)
-	
-	with tf.name_scope('conv9'):
-		conv = atrous_conv_op(conv8, [3, 3, 128, 256], dilation=4) 
-		relu = leaky_relu(conv)
-		conv9 = dropout(relu, keep_prob=0.6)
+		conv6 = tf.nn.relu(atrous_conv_op(conv5, [3, 3, 64, 128], dilation=2)) 
 		
 	with tf.name_scope('fc'):
-		fc = atrous_conv_op(conv9, [8, 8, 256, 1], dilation=4)
-		
+		fc = atrous_conv_op(conv6, [7, 7, 128, 1], dilation=3)
+	
 	with tf.name_scope('upsampling'):
 		new_dimensions = tf.shape(fc)[1:3] * 4
 		output = tf.image.resize_bilinear(fc, new_dimensions)

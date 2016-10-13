@@ -16,9 +16,8 @@ import scipy.misc
 import numpy as np
 import matplotlib.pyplot as plt
 
-checkpoint_dir = "checkpoint"
-threshold_as_prob = 0.5
-threshold = np.log(threshold_as_prob) - np.log(1 - threshold_as_prob)
+MODEL_DIR = "run1"
+THRESHOLD_PROB = 0.5
 
 def load_image(image_path):
 	""" Load png image as tensor and whiten it."""
@@ -47,15 +46,19 @@ def IOU(segmentation, label):
 	iou = np.sum(intersection)/np.sum(union)
 	return iou
 	
-def evaluate(image_path, label_path):
+def evaluate(image_path, label_path, threshold_prob=THRESHOLD_PROB, 
+			 model_dir=MODEL_DIR):
 	""" Loads network, reads images, saves prediction and segmentation as .png
 		and reports IOU."""
+	# Calculate threshold as logit	
+	threshold = np.log(threshold_prob) - np.log(1 - threshold_prob)
+	
 	# Load image and label
 	image = load_image(image_path)
 	label = scipy.misc.imread(label_path)
 	
 	# Define the model
-	prediction = model.model(image, drop=tf.constant(False))
+	prediction = model.forward(image, drop=tf.constant(False))
 	
 	# Get a saver
 	saver = tf.train.Saver()
@@ -66,9 +69,9 @@ def evaluate(image_path, label_path):
 	# Launch graph
 	with tf.Session(config=config) as sess:
 		# Restore variables
-		checkpoint_path = tf.train.latest_checkpoint(checkpoint_dir)
+		checkpoint_path = tf.train.latest_checkpoint(model_dir)
+		print("Restoring model from:", checkpoint_path)
 		saver.restore(sess, checkpoint_path)
-		model.log("Variables restored from:", checkpoint_path)
 	
 		logits = prediction.eval()
 		scipy.misc.imsave("prediction.png", logits)
