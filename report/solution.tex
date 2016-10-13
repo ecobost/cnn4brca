@@ -6,7 +6,8 @@ In this chapter, we describe our experiments, justify design decisions and detai
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\textwidth]{plots/overview.pdf}
-	\caption[Overview of the solution]{Overview of our solution. We divide the database into training, validation and test images, preprocess them, train a convolutional network with the training set (we select hyperparameters $\alpha$ and $\lambda$ using the validation set) and evaluate our model in the test set. This is repeated for each experiment.}
+	\caption[Overview of the solution]{Overview of our solution. We divide the database into training and test patients, preprocess the mammograms, train a convolutional network with the training set (we select hyperparameters $\alpha$ and $\lambda$ using part of the training set for validation) and evaluate our model in the test set. Each experiment tests different network and training configurations.}
+	%Experiment 1 and 3 repeat this for 5 folds while Experiment 2 uses a single fold
 	\label{fig:overview}
 \end{figure}
 

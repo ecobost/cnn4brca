@@ -378,11 +378,6 @@
 \newblock {\em IEEE Transactions on Medical Imaging 15}, 5 (October 1996),
   598--610.
 
-\bibitem{Schmidhuber2015}
-{\sc Schmidhuber, J.}
-\newblock Deep learning in neural networks: An overview.
-\newblock {\em Neural Networks 61}, 0 (2015), 85--117.
-
 \bibitem{Simonyan2014}
 {\sc Simonyan, K., and Zisserman, A.}
 \newblock Very deep convolutional networks for large-scale image recognition.
@@ -463,5 +458,11 @@
   network.
 \newblock {\em CoRR abs/1505.00853\/} (2015).
 \newblock Available online on \url{arxiv.org/abs/1505.00853}.
+
+\bibitem{Yu2016}
+{\sc Yu, F., and Koltun, V.}
+\newblock Multi-scale context aggregation by dilated convolutions.
+\newblock {\em CoRR abs/1511.07122\/} (2016).
+\newblock Available online on \url{arxiv.org/abs/1511.07122}.
 
 \end{thebibliography}

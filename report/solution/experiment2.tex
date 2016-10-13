@@ -1,10 +1,49 @@
-Given the unsatisfactory results from our first experiment, we modify our model to tackle a possible cause: class imbalance. Architecture and regularization are preserved as described in Sections~\ref{subsec:Architecture1} and~\ref{subsec:Regularization1}.
+We describe the network architecture, loss function and hyperparameter search for our first experiments.
+
+\subsection{Architecture}
+\label{subsec:Architecture1}
+%Following recommendations from Section~\ref{sec:PracticalDL}, we define a network with seven convolutional layers and two fully connected layers (Tab.~\ref{tab:convNetArchitecture}). 
+We model our architecture on a VGG network~\cite{Simonyan2014}, winner of the 2014 ImageNet competition~(Tab.~\ref{tab:convNetArchitecture1}).
+\begin{table}[h]
+	\centering
+	\begin{tabular}{lccccr}
+	\hline
+	\textbf{Layer} & \textbf{Filter} & \textbf{Stride} &\textbf{Pad} & \textbf{Volume} & \textbf{Parameters} \\
+	\hline
+	\texttt{INPUT}	& -	& - & - & $112 \times 112 \times 1$ & -\\
+	\texttt{CONV -> Leaky RELU} & $6 \times 6$ & 2 & 2 & $56 \times 56 \times 56$ & 2\,072\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $56 \times 56 \times 56$ & 28\,280\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $28 \times 28 \times 56$ & -\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $28 \times 28 \times 84$ & 42\,420\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $28 \times 28 \times 84$ & 63\,588\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $14 \times 14 \times 84$ & -\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 84\,784\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 113\,008\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 113\,008\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $7 \times 7 \times 112$ & -\\
+	\texttt{FC -> Leaky RELU} & $7 \times 7$ & 1 & 3 & $7 \times 7 \times 448$ & 2\,459\,072\\
+	\texttt{FC} & $1 \times 1$ & 1 & 0 & $7 \times 7 \times 1$ & 449 \\
+	\texttt{BILINEAR (x16)} & - & - & - & $112 \times 112 \times 1$ & -\\
+	\hline
+	\end{tabular}
+	\caption[Selected convolutional network architecture]{Architecture of the network used for experiments. It shows the filter size, stride, padding, resulting volume and number of learnable parameters per layer.}
+	\label{tab:convNetArchitecture1}
+\end{table}
+
+	Each image is whitened (zero-mean centered and divided by its standard deviation) individually before being input. The first convolutional layer reduces the spatial dimensions of the input from $112 \times 112$ to $56 \times 56$ to cut the number of parameters and memory requirements of the network. Subsequent convolutional layers preserve the dimensions of its input volume relegating subsampling to pooling layers. Finally, the volume is upsampled by a factor of 16 to recover the dimensions of the original image (Sec.~\ref{sec:Segmentation}). The network outputs a heatmap of logits with the same size as the input image.
+%We produce a heatmap of logits rather than probabilities to improve numerical stability.
+
+	This architecture defines 2.91 million parameters. %2 906 681
+	
+	%108 752 632 float numbers
+
+\subsection{Regularization}
+\label{subsec:Regularization1}
+We use dropout after every leaky ReLU layer with probability 0.9, 0.9, 0.8, 0.8, 0.7, 0.7, 0.7 and 0.6, respectively. We also use l2-norm regularization fitting $\lambda$ as explained below.
 
 \subsection{Loss function}
-\label{subsec:LossFunction2}
-We compute the logistic loss function on each pixel in the image, weight the losses over masses by 0.9 and normal breast tissue by 0.1 and average over all pixels in the breast area---background is ignored. Assigning a higher value to errors on breast masses forces the network to invest more resources in correctly classifying masses---hopefully learning better features for this task.
-%---to avoid costly errors. 
-This technique balances the total sum of losses from the common class (normal breast tissue) with that of the rare class (breast masses) and is often used to fight class imbalance~\cite{Provost2000}.
+We compute the logistic loss function for each pixel in the produced segmentation and average the loss over pixels in the breast area---background is ignored. This amounts to using a weighted loss function where errors in the breast tissue and masses are weighted by one and those in the background are weighted by zero.
+% I can weight the losses for breast tissue and breast masses differently using the mask (multiplied by the loss function). To calculate a proper weight, you would have to estimate the prior of a loss being from mass(~0.2) or from area (0.8) and multiply masses by .8 and tissue by 0.2, for instance. Or just decrease the weight of breats tissue, thus masses at 1 and tissue at 0.2 or 0.1 (remember there are images with not a single mass, so mass is quite improbable).
 
 \subsection{Hyperparameter search}
-We trained 30 networks with combinations of $\alpha = 10^{unif(-6, -1)}$ and $\lambda = 10^{unif(-4, 1)}$ for two epochs and results were evaluated by computing IOU in the validation set.
+We fit the learning rate and regulatization parameter simultaneously using random sampling. We trained 30 networks with combinations of $\alpha = 10^{unif(-6,0)}$ and $\lambda = 10^{unif(-3,3)}$. Later, we refined this ranges to $\alpha = 10^{unif(-6,-4)}$ and $\lambda = 10^{unif(-5,-1)}$ and trained 15 more networks. We train networks for two epochs, select the best threshold for each one, and evaluate them on the validation set. We use IOU as performance metric.

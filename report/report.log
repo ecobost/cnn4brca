@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  20 SEP 2016 19:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  13 OCT 2016 01:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report
+**report.tex
 (./report.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
@@ -766,7 +766,7 @@ Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 
-<plots/escudo-itesm.png, id=309, 60.5478pt x 28.04076pt>
+<plots/escudo-itesm.png, id=301, 60.5478pt x 28.04076pt>
 File: plots/escudo-itesm.png Graphic file (type png)
 
 <use plots/escudo-itesm.png>
@@ -843,106 +843,111 @@ Chapter 2.
 (./background/classification.tex [7
 
 ] [8] [9]
-<plots/AUCandPRAUC.png, id=616, 972.63374pt x 425.59pt>
+<plots/AUCandPRAUC.png, id=608, 972.63374pt x 425.59pt>
 File: plots/AUCandPRAUC.png Graphic file (type png)
 
 <use plots/AUCandPRAUC.png>
-Package pdftex.def Info: plots/AUCandPRAUC.png used on input line 76.
+Package pdftex.def Info: plots/AUCandPRAUC.png used on input line 78.
 (pdftex.def)             Requested size: 370.7021pt x 162.20642pt.
  [10 <./plots/AUCandPRAUC.png>])
 (./background/neuralnetworks.tex
-<plots/neuralNetwork.png, id=638, 970.62625pt x 589.20125pt>
+<plots/neuralNetwork.png, id=627, 970.62625pt x 589.20125pt>
 File: plots/neuralNetwork.png Graphic file (type png)
 
 <use plots/neuralNetwork.png>
-Package pdftex.def Info: plots/neuralNetwork.png used on input line 10.
+Package pdftex.def Info: plots/neuralNetwork.png used on input line 9.
 (pdftex.def)             Requested size: 415.36082pt x 252.13788pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [11] [12 <./plots/neuralNetwork.png>]
-<plots/dropout1.png, id=673, 333.245pt x 333.245pt>
+<plots/dropout1.png, id=661, 333.245pt x 333.245pt>
 File: plots/dropout1.png Graphic file (type png)
  <use plots/dropout1.png>
-Package pdftex.def Info: plots/dropout1.png used on input line 70.
+Package pdftex.def Info: plots/dropout1.png used on input line 69.
 (pdftex.def)             Requested size: 133.98978pt x 133.99226pt.
 
-<plots/dropout2.png, id=674, 333.245pt x 333.245pt>
+<plots/dropout2.png, id=662, 333.245pt x 333.245pt>
 File: plots/dropout2.png Graphic file (type png)
  <use plots/dropout2.png>
-Package pdftex.def Info: plots/dropout2.png used on input line 75.
+Package pdftex.def Info: plots/dropout2.png used on input line 74.
 (pdftex.def)             Requested size: 133.98978pt x 133.99226pt.
 )
 (./background/convnets.tex [13 <./plots/dropout1.png> <./plots/dropout2.png>]
-<plots/convNetVolumes.jpeg, id=691, 571.13374pt x 199.74625pt>
+<plots/convNetVolumes.jpeg, id=679, 571.13374pt x 199.74625pt>
 File: plots/convNetVolumes.jpeg Graphic file (type jpg)
 
 <use plots/convNetVolumes.jpeg>
-Package pdftex.def Info: plots/convNetVolumes.jpeg used on input line 22.
+Package pdftex.def Info: plots/convNetVolumes.jpeg used on input line 24.
 (pdftex.def)             Requested size: 326.03658pt x 114.02722pt.
  [14 <./plots/convNetVolumes.jpeg>]
-<plots/convLayer.jpeg, id=702, 465.74pt x 327.2225pt>
+<plots/convLayer.jpeg, id=691, 465.74pt x 327.2225pt>
 File: plots/convLayer.jpeg Graphic file (type jpg)
 
 <use plots/convLayer.jpeg>
-Package pdftex.def Info: plots/convLayer.jpeg used on input line 36.
+Package pdftex.def Info: plots/convLayer.jpeg used on input line 37.
 (pdftex.def)             Requested size: 160.78636pt x 112.96677pt.
  [15 <./plots/convLayer.jpeg>]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 53.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 54.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-<plots/convNetExample.jpeg, id=715, 1259.70625pt x 603.25375pt>
+<plots/convNetExample.jpeg, id=704, 1259.70625pt x 603.25375pt>
 File: plots/convNetExample.jpeg Graphic file (type jpg)
 
 <use plots/convNetExample.jpeg>
-Package pdftex.def Info: plots/convNetExample.jpeg used on input line 68.
+Package pdftex.def Info: plots/convNetExample.jpeg used on input line 69.
 (pdftex.def)             Requested size: 410.897pt x 196.77312pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16]) (./background/segmentation.tex
-<plots/segmentationImage.png, id=731, 294.09875pt x 371.3875pt>
+) (./background/segmentation.tex
+<plots/segmentationImage.png, id=711, 294.09875pt x 371.3875pt>
 File: plots/segmentationImage.png Graphic file (type png)
 
 <use plots/segmentationImage.png>
 Package pdftex.def Info: plots/segmentationImage.png used on input line 8.
 (pdftex.def)             Requested size: 116.12083pt x 146.63695pt.
 
-<plots/segmentationTruth.png, id=732, 294.09875pt x 371.3875pt>
+<plots/segmentationTruth.png, id=712, 294.09875pt x 371.3875pt>
 File: plots/segmentationTruth.png Graphic file (type png)
 
 <use plots/segmentationTruth.png>
 Package pdftex.def Info: plots/segmentationTruth.png used on input line 13.
 (pdftex.def)             Requested size: 116.12083pt x 146.63695pt.
+ [16]
+<plots/dilatedConv.png, id=728, 938.50626pt x 305.14pt>
+File: plots/dilatedConv.png Graphic file (type png)
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[17 <./plots/convNetExample.jpeg>]) (./background/practicalDL.tex [18 <./plots/
-segmentationImage.png> <./plots/segmentationTruth.png>] [19] [20] [21] [22]
-[23]) (./background/breastcancer.tex
-<plots/breastAnatomy.png, id=865, 419.5675pt x 454.69875pt>
+<use plots/dilatedConv.png>
+Package pdftex.def Info: plots/dilatedConv.png used on input line 36.
+(pdftex.def)             Requested size: 357.3038pt x 116.16856pt.
+ [17 <./plots/convNetExample.jpeg> <./plots/segmentationImage.png> <./plots/seg
+mentationTruth.png>]) [18 <./plots/dilatedConv.png>] (./background/practicalDL.
+tex [19] [20] [21] [22] [23])
+(./background/breastcancer.tex [24]
+<plots/breastAnatomy.png, id=869, 419.5675pt x 454.69875pt>
 File: plots/breastAnatomy.png Graphic file (type png)
 
 <use plots/breastAnatomy.png>
 Package pdftex.def Info: plots/breastAnatomy.png used on input line 7.
 (pdftex.def)             Requested size: 151.8519pt x 164.56563pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[24] <plots/normalMammogram.jpg, id=881, 2492.31125pt x 3267.20625pt>
+<plots/normalMammogram.jpg, id=874, 2492.31125pt x 3267.20625pt>
 File: plots/normalMammogram.jpg Graphic file (type jpg)
 
 <use plots/normalMammogram.jpg>
 Package pdftex.def Info: plots/normalMammogram.jpg used on input line 20.
 (pdftex.def)             Requested size: 111.65701pt x 146.36984pt.
- [25 <./plots/breastAnatomy.png> <./plots/normalMammogram.jpg>]
-<plots/breastMicrocalcification.jpg, id=892, 338.26375pt x 338.26375pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[25 <./plots/breastAnatomy.png>]
+<plots/breastMicrocalcification.jpg, id=886, 338.26375pt x 338.26375pt>
 File: plots/breastMicrocalcification.jpg Graphic file (type jpg)
 
 <use plots/breastMicrocalcification.jpg>
@@ -950,14 +955,14 @@ Package pdftex.def Info: plots/breastMicrocalcification.jpg used on input line
 47.
 (pdftex.def)             Requested size: 107.19318pt x 107.19366pt.
 
-<plots/breastMass.jpg, id=893, 430.60875pt x 431.6125pt>
+<plots/breastMass.jpg, id=887, 430.60875pt x 431.6125pt>
 File: plots/breastMass.jpg Graphic file (type jpg)
 
 <use plots/breastMass.jpg>
 Package pdftex.def Info: plots/breastMass.jpg used on input line 51.
 (pdftex.def)             Requested size: 107.19318pt x 107.44183pt.
- [26 <./plots/breastMicrocalcification.jpg> <./plots/breastMass.jpg>]) (./backg
-round/convnets4brca.tex [27] [28] [29] [30]
+ [26 <./plots/normalMammogram.jpg> <./plots/breastMicrocalcification.jpg> <./pl
+ots/breastMass.jpg>]) (./background/convnets4brca.tex [27] [28] [29] [30] [31]
 Underfull \hbox (badness 10000) in paragraph at lines 377--377
 []|\OT1/pcr/m/n/12 INPUT -> CONV -> SIGMOID ->
  []
@@ -1027,70 +1032,70 @@ Underfull \hbox (badness 10000) in paragraph at lines 384--384
 \OT1/pcr/m/n/12 POOL]*3 -> [FC -> RELU]*2
  []
 
-[31
+[32
 
-] [32])) (./solution.tex [33
+] [33])) (./solution.tex [34
 
 ]
 Chapter 3.
-<plots/overview.pdf, id=997, 843.15pt x 318.18875pt>
+<plots/overview.pdf, id=995, 843.15pt x 318.18875pt>
 File: plots/overview.pdf Graphic file (type pdf)
  <use plots/overview.pdf>
 Package pdftex.def Info: plots/overview.pdf used on input line 8.
 (pdftex.def)             Requested size: 446.62807pt x 168.55183pt.
 
-(./solution/dataset.tex [34
+(./solution/dataset.tex [35
 
- <./plots/overview.pdf>] [35]
-<plots/mammogram.png, id=1026, 3340.48pt x 4099.315pt>
+ <./plots/overview.pdf>] [36]
+<plots/mammogram.png, id=1024, 3340.48pt x 4099.315pt>
 File: plots/mammogram.png Graphic file (type png)
 
 <use plots/mammogram.png>
 Package pdftex.def Info: plots/mammogram.png used on input line 70.
 (pdftex.def)             Requested size: 115.90932pt x 142.26378pt.
 
-<plots/mammogram_enhanced.png, id=1027, 3340.48pt x 4099.315pt>
+<plots/mammogram_enhanced.png, id=1025, 3340.48pt x 4099.315pt>
 File: plots/mammogram_enhanced.png Graphic file (type png)
 
 <use plots/mammogram_enhanced.png>
 Package pdftex.def Info: plots/mammogram_enhanced.png used on input line 74.
 (pdftex.def)             Requested size: 115.90932pt x 142.26378pt.
 
-<plots/mammogram_resized.png, id=1028, 1309.89375pt x 1607.00375pt>
+<plots/mammogram_resized.png, id=1026, 1309.89375pt x 1607.00375pt>
 File: plots/mammogram_resized.png Graphic file (type png)
 
 <use plots/mammogram_resized.png>
 Package pdftex.def Info: plots/mammogram_resized.png used on input line 78.
 (pdftex.def)             Requested size: 115.94658pt x 142.26378pt.
 
-<plots/mammogram_v1.png, id=1029, 562.1pt x 1429.34pt>
+<plots/mammogram_v1.png, id=1027, 562.1pt x 1429.34pt>
 File: plots/mammogram_v1.png Graphic file (type png)
 
 <use plots/mammogram_v1.png>
 Package pdftex.def Info: plots/mammogram_v1.png used on input line 82.
 (pdftex.def)             Requested size: 55.93883pt x 142.26378pt.
 
-<plots/label.png, id=1030, 3340.48pt x 4099.315pt>
+<plots/label.png, id=1028, 3340.48pt x 4099.315pt>
 File: plots/label.png Graphic file (type png)
  <use plots/label.png>
 Package pdftex.def Info: plots/label.png used on input line 87.
 (pdftex.def)             Requested size: 115.90932pt x 142.26378pt.
 
-<plots/label_enhanced.png, id=1031, 3340.48pt x 4099.315pt>
+<plots/label_enhanced.png, id=1029, 3340.48pt x 4099.315pt>
 File: plots/label_enhanced.png Graphic file (type png)
 
 <use plots/label_enhanced.png>
 Package pdftex.def Info: plots/label_enhanced.png used on input line 93.
 (pdftex.def)             Requested size: 115.90932pt x 142.26378pt.
 
-<plots/label_resized.png, id=1032, 1309.89375pt x 1607.00375pt>
+<plots/label_resized.png, id=1030, 1309.89375pt x 1607.00375pt>
 File: plots/label_resized.png Graphic file (type png)
 
 <use plots/label_resized.png>
 Package pdftex.def Info: plots/label_resized.png used on input line 99.
 (pdftex.def)             Requested size: 115.94658pt x 142.26378pt.
 
-<plots/label_v1.png, id=1033, 562.1pt x 1429.34pt>
+<plots/label_v1.png, id=1031, 562.1pt x 1429.34pt>
 File: plots/label_v1.png Graphic file (type png)
  <use plots/label_v1.png>
 Package pdftex.def Info: plots/label_v1.png used on input line 105.
@@ -1099,50 +1104,57 @@ Package pdftex.def Info: plots/label_v1.png used on input line 105.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./solution/experiment1.tex
+) (./solution/experiment1.tex) (./solution/experiment2.tex [37]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[36] [37 <./plots/mammogram.png (PNG copy)> <./plots/mammogram_enhanced.png (PN
-G copy)> <./plots/mammogram_resized.png (PNG copy)> <./plots/mammogram_v1.png (
-PNG copy)> <./plots/label.png (PNG copy)> <./plots/label_enhanced.png (PNG copy
-)> <./plots/label_resized.png (PNG copy)> <./plots/label_v1.png (PNG copy)>])
-(./solution/experiment2.tex [38]) (./solution/experiment3.tex [39])
-(./solution/training.tex [40]) (./solution/evaluation.tex
-<plots/logits.png, id=1070, 562.1pt x 1429.34pt>
+[38 <./plots/mammogram.png (PNG copy)> <./plots/mammogram_enhanced.png (PNG cop
+y)> <./plots/mammogram_resized.png (PNG copy)> <./plots/mammogram_v1.png (PNG c
+opy)> <./plots/label.png (PNG copy)> <./plots/label_enhanced.png (PNG copy)> <.
+/plots/label_resized.png (PNG copy)> <./plots/label_v1.png (PNG copy)>])
+(./solution/experiment3.tex
+
+LaTeX Warning: Reference `subsec:LossFunction2' on page 39 undefined on input l
+ine 1.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[39]) (./solution/training.tex
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[40]) (./solution/evaluation.tex [41]
+<plots/logits.png, id=1064, 562.1pt x 1429.34pt>
 File: plots/logits.png Graphic file (type png)
  <use plots/logits.png>
 Package pdftex.def Info: plots/logits.png used on input line 24.
 (pdftex.def)             Requested size: 75.92595pt x 193.06161pt.
 
-<plots/segmentation.png, id=1071, 562.1pt x 1429.34pt>
+<plots/segmentation.png, id=1065, 562.1pt x 1429.34pt>
 File: plots/segmentation.png Graphic file (type png)
 
 <use plots/segmentation.png>
 Package pdftex.def Info: plots/segmentation.png used on input line 30.
 (pdftex.def)             Requested size: 75.92595pt x 193.06161pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-)) (./results.tex [41] [42 <./plots/logits.png (PNG copy)> <./plots/segmentatio
-n.png (PNG copy)>]
+)) (./results.tex [42 <./plots/logits.png (PNG copy)> <./plots/segmentation.png
+ (PNG copy)>] [43]
 Chapter 4.
-<plots/hs2_alpha.png, id=1083, 1399.1472pt x 760.2804pt>
+<plots/hs2_alpha.png, id=1077, 1399.1472pt x 760.2804pt>
 File: plots/hs2_alpha.png Graphic file (type png)
 
 <use plots/hs2_alpha.png>
 Package pdftex.def Info: plots/hs2_alpha.png used on input line 12.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs2_lambda.png, id=1084, 1399.1472pt x 760.2804pt>
+<plots/hs2_lambda.png, id=1078, 1399.1472pt x 760.2804pt>
 File: plots/hs2_lambda.png Graphic file (type png)
 
 <use plots/hs2_lambda.png>
 Package pdftex.def Info: plots/hs2_lambda.png used on input line 17.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs2_trisurface.png, id=1085, 1399.1472pt x 760.2804pt>
+<plots/hs2_trisurface.png, id=1079, 1399.1472pt x 760.2804pt>
 File: plots/hs2_trisurface.png Graphic file (type png)
 
 <use plots/hs2_trisurface.png>
@@ -1152,7 +1164,7 @@ Package pdftex.def Info: plots/hs2_trisurface.png used on input line 22.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<plots/mammogram_ex1.png, id=1090, 3340.48pt x 4099.315pt>
+<plots/mammogram_ex1.png, id=1084, 3340.48pt x 4099.315pt>
 File: plots/mammogram_ex1.png Graphic file (type png)
 
 <use plots/mammogram_ex1.png>
@@ -1163,13 +1175,13 @@ Overfull \hbox (4.2523pt too wide) in paragraph at lines 55--56
  [][] 
  []
 
-<plots/label_ex1.png, id=1091, 529.98pt x 1027.84pt>
+<plots/label_ex1.png, id=1085, 529.98pt x 1027.84pt>
 File: plots/label_ex1.png Graphic file (type png)
  <use plots/label_ex1.png>
 Package pdftex.def Info: plots/label_ex1.png used on input line 59.
 (pdftex.def)             Requested size: 73.34756pt x 142.26378pt.
 
-<plots/logits_ex1_v1.png, id=1092, 381.5856pt x 740.0448pt>
+<plots/logits_ex1_v1.png, id=1086, 381.5856pt x 740.0448pt>
 File: plots/logits_ex1_v1.png Graphic file (type png)
 
 <use plots/logits_ex1_v1.png>
@@ -1180,14 +1192,14 @@ Overfull \hbox (1.88998pt too wide) in paragraph at lines 63--64
  [][] 
  []
 
-<plots/segmentation_ex1_v1.png, id=1093, 529.98pt x 1027.84pt>
+<plots/segmentation_ex1_v1.png, id=1087, 529.98pt x 1027.84pt>
 File: plots/segmentation_ex1_v1.png Graphic file (type png)
 
 <use plots/segmentation_ex1_v1.png>
 Package pdftex.def Info: plots/segmentation_ex1_v1.png used on input line 67.
 (pdftex.def)             Requested size: 73.34756pt x 142.26378pt.
 
-<plots/mammogram_ex2.png, id=1094, 3340.48pt x 4099.315pt>
+<plots/mammogram_ex2.png, id=1088, 3340.48pt x 4099.315pt>
 File: plots/mammogram_ex2.png Graphic file (type png)
 
 <use plots/mammogram_ex2.png>
@@ -1198,20 +1210,20 @@ Overfull \hbox (4.2523pt too wide) in paragraph at lines 72--73
  [][] 
  []
 
-<plots/label_ex2.png, id=1095, 562.1pt x 1429.34pt>
+<plots/label_ex2.png, id=1089, 562.1pt x 1429.34pt>
 File: plots/label_ex2.png Graphic file (type png)
  <use plots/label_ex2.png>
 Package pdftex.def Info: plots/label_ex2.png used on input line 77.
 (pdftex.def)             Requested size: 55.93883pt x 142.26378pt.
 
-<plots/logits_ex2_v1.png, id=1096, 404.712pt x 1029.1248pt>
+<plots/logits_ex2_v1.png, id=1090, 404.712pt x 1029.1248pt>
 File: plots/logits_ex2_v1.png Graphic file (type png)
 
 <use plots/logits_ex2_v1.png>
 Package pdftex.def Info: plots/logits_ex2_v1.png used on input line 82.
 (pdftex.def)             Requested size: 55.94295pt x 142.26378pt.
 
-<plots/segmentation_ex2_v1.png, id=1097, 562.1pt x 1429.34pt>
+<plots/segmentation_ex2_v1.png, id=1091, 562.1pt x 1429.34pt>
 File: plots/segmentation_ex2_v1.png Graphic file (type png)
 
 <use plots/segmentation_ex2_v1.png>
@@ -1221,27 +1233,27 @@ Package pdftex.def Info: plots/segmentation_ex2_v1.png used on input line 87.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<plots/hs4_alpha.png, id=1099, 1399.1472pt x 760.2804pt>
+<plots/hs4_alpha.png, id=1093, 1399.1472pt x 760.2804pt>
 File: plots/hs4_alpha.png Graphic file (type png)
 
 <use plots/hs4_alpha.png>
 Package pdftex.def Info: plots/hs4_alpha.png used on input line 104.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs4_lambda.png, id=1100, 1399.1472pt x 760.2804pt>
+<plots/hs4_lambda.png, id=1094, 1399.1472pt x 760.2804pt>
 File: plots/hs4_lambda.png Graphic file (type png)
 
 <use plots/hs4_lambda.png>
 Package pdftex.def Info: plots/hs4_lambda.png used on input line 109.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs4_pcolor.png, id=1101, 1399.1472pt x 760.2804pt>
+<plots/hs4_pcolor.png, id=1095, 1399.1472pt x 760.2804pt>
 File: plots/hs4_pcolor.png Graphic file (type png)
 
 <use plots/hs4_pcolor.png>
 Package pdftex.def Info: plots/hs4_pcolor.png used on input line 114.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
- [43
+ [44
 
  <./plots/hs2_alpha.png> <./plots/hs2_lambda.png> <./plots/hs2_trisurface.png>]
 
@@ -1265,7 +1277,7 @@ File: plots/label_ex1.png Graphic file (type png)
 Package pdftex.def Info: plots/label_ex1.png used on input line 147.
 (pdftex.def)             Requested size: 73.34756pt x 142.26378pt.
 
-<plots/logits_ex1_v2.png, id=1113, 381.5856pt x 740.0448pt>
+<plots/logits_ex1_v2.png, id=1108, 381.5856pt x 740.0448pt>
 File: plots/logits_ex1_v2.png Graphic file (type png)
 
 <use plots/logits_ex1_v2.png>
@@ -1276,7 +1288,7 @@ Overfull \hbox (1.88998pt too wide) in paragraph at lines 151--152
  [][] 
  []
 
-<plots/segmentation_ex1_v2.png, id=1114, 529.98pt x 1027.84pt>
+<plots/segmentation_ex1_v2.png, id=1109, 529.98pt x 1027.84pt>
 File: plots/segmentation_ex1_v2.png Graphic file (type png)
 
 <use plots/segmentation_ex1_v2.png>
@@ -1296,41 +1308,41 @@ File: plots/label_ex2.png Graphic file (type png)
 Package pdftex.def Info: plots/label_ex2.png used on input line 165.
 (pdftex.def)             Requested size: 55.93883pt x 142.26378pt.
 
-<plots/logits_ex2_v2.png, id=1115, 404.712pt x 1029.1248pt>
+<plots/logits_ex2_v2.png, id=1110, 404.712pt x 1029.1248pt>
 File: plots/logits_ex2_v2.png Graphic file (type png)
 
 <use plots/logits_ex2_v2.png>
 Package pdftex.def Info: plots/logits_ex2_v2.png used on input line 170.
 (pdftex.def)             Requested size: 55.94295pt x 142.26378pt.
 
-<plots/segmentation_ex2_v2.png, id=1116, 562.1pt x 1429.34pt>
+<plots/segmentation_ex2_v2.png, id=1111, 562.1pt x 1429.34pt>
 File: plots/segmentation_ex2_v2.png Graphic file (type png)
 
 <use plots/segmentation_ex2_v2.png>
 Package pdftex.def Info: plots/segmentation_ex2_v2.png used on input line 175.
 (pdftex.def)             Requested size: 55.93883pt x 142.26378pt.
- [44 <./plots/mammogram_ex1.png (PNG copy)> <./plots/label_ex1.png (PNG copy)> 
+ [45 <./plots/mammogram_ex1.png (PNG copy)> <./plots/label_ex1.png (PNG copy)> 
 <./plots/logits_ex1_v1.png> <./plots/segmentation_ex1_v1.png (PNG copy)> <./plo
 ts/mammogram_ex2.png (PNG copy)> <./plots/label_ex2.png (PNG copy)> <./plots/lo
 gits_ex2_v1.png> <./plots/segmentation_ex2_v1.png (PNG copy)>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<plots/hs5_alpha.png, id=1126, 1399.1472pt x 760.2804pt>
+<plots/hs5_alpha.png, id=1120, 1399.1472pt x 760.2804pt>
 File: plots/hs5_alpha.png Graphic file (type png)
 
 <use plots/hs5_alpha.png>
 Package pdftex.def Info: plots/hs5_alpha.png used on input line 192.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs5_lambda.png, id=1127, 1399.1472pt x 760.2804pt>
+<plots/hs5_lambda.png, id=1121, 1399.1472pt x 760.2804pt>
 File: plots/hs5_lambda.png Graphic file (type png)
 
 <use plots/hs5_lambda.png>
 Package pdftex.def Info: plots/hs5_lambda.png used on input line 197.
 (pdftex.def)             Requested size: 142.92424pt x 77.65662pt.
 
-<plots/hs5_pcolor.png, id=1128, 1399.1472pt x 760.2804pt>
+<plots/hs5_pcolor.png, id=1122, 1399.1472pt x 760.2804pt>
 File: plots/hs5_pcolor.png Graphic file (type png)
 
 <use plots/hs5_pcolor.png>
@@ -1340,15 +1352,15 @@ Package pdftex.def Info: plots/hs5_pcolor.png used on input line 202.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./conclusions.tex [45 <./plots/hs4_alpha.png> <./plots/hs4_lambda.png> <./pl
-ots/hs4_pcolor.png>] [46 <./plots/logits_ex1_v2.png> <./plots/segmentation_ex1_
+) (./conclusions.tex [46 <./plots/hs4_alpha.png> <./plots/hs4_lambda.png> <./pl
+ots/hs4_pcolor.png>] [47 <./plots/logits_ex1_v2.png> <./plots/segmentation_ex1_
 v2.png (PNG copy)> <./plots/logits_ex2_v2.png> <./plots/segmentation_ex2_v2.png
  (PNG copy)> <./plots/hs5_alpha.png> <./plots/hs5_lambda.png> <./plots/hs5_pcol
 or.png>]
 Chapter 5.
-) (./report.bbl [47
+) (./report.bbl [48
 
-] [48
+] [49
 
 ]
 Underfull \hbox (badness 2261) in paragraph at lines 84--90
@@ -1374,13 +1386,13 @@ Underfull \hbox (badness 4441) in paragraph at lines 84--90
 statistics / performance /
  []
 
-[49] [50]
+[50] [51]
 Underfull \hbox (badness 1527) in paragraph at lines 288--293
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  What you need
  to know about breast can-
  []
 
-[51]
+[52]
 Underfull \hbox (badness 3364) in paragraph at lines 295--300
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  Mam-mo-grams.
   elec-tronic, March 2014.
@@ -1392,25 +1404,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 295--300
 opics / types / breast /
  []
 
-[52] [53]) [54] (./cv.tex)
+[53] [54]) [55] (./cv.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
- [55]
+ [56]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (./report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: F61D52B15AEDAA71FEC9CAC33CD76336;4829.
+(rerunfilecheck)             Checksum: B19BA46EB88634F348B6737FE46C2B97;4687.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 8933 strings out of 495028
- 133929 string characters out of 6181498
- 219133 words of memory out of 5000000
- 11569 multiletter control sequences out of 15000+600000
+ 8936 strings out of 495028
+ 133998 string characters out of 6181498
+ 219124 words of memory out of 5000000
+ 11572 multiletter control sequences out of 15000+600000
  39750 words of font info for 85 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 42i,10n,45p,1424b,505s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,45p,1426b,505s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -1429,10 +1448,10 @@ t/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (66 pages, 12587221 bytes).
+Output written on report.pdf (67 pages, 12608359 bytes).
 PDF statistics:
- 1346 PDF objects out of 1440 (max. 8388607)
- 1173 compressed objects within 12 object streams
- 283 named destinations out of 1000 (max. 500000)
- 839 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1341 PDF objects out of 1440 (max. 8388607)
+ 1165 compressed objects within 12 object streams
+ 282 named destinations out of 1000 (max. 500000)
+ 828 words of extra memory for PDF output out of 10000 (max. 10000000)
 
