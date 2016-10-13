@@ -11,11 +11,14 @@ Note:
 	Otherwise, restore will not work.
 """
 import tensorflow as tf
-import model_v3 as model
 import scipy.misc
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Import network definition
+import model_v3 as model
+
+# Set some parameters
 MODEL_DIR = "run1"
 THRESHOLD_PROB = 0.5
 
@@ -23,8 +26,8 @@ def load_image(image_path):
 	""" Load png image as tensor and whiten it."""
 	image_content = tf.read_file(image_path)
 	image = tf.image.decode_png(image_content)
-	image = tf.image.per_image_whitening(image)
-	return image
+	whitened_image = tf.image.per_image_whitening(image)
+	return whitened_image
 	
 def post(logits, label, threshold):
 	"""Creates segmentation assigning everything over the threshold a value of 

@@ -15,6 +15,8 @@ import tensorflow as tf
 import numpy as np
 import scipy.misc
 import csv
+import sys
+import os.path
 
 # Import network definition
 import model_v4 as model
@@ -126,8 +128,8 @@ def main(data_dir=DATA_DIR, threshold_prob=THRESHOLD_PROB):
 			label_path = os.path.join(data_dir, row[1])
 
 			# Read image and label
-			im = ndimage.imread(image_path)
-			label = ndimage.imread(label_path)
+			im = scipy.misc.imread(image_path)
+			label = scipy.misc.imread(label_path)
 		
 			# Get prediction
 			logits = prediction.eval({image: im})
@@ -155,8 +157,8 @@ def main(data_dir=DATA_DIR, threshold_prob=THRESHOLD_PROB):
 		csv_reader = csv.reader(lines)
 		loss_accum = 0
 		for row in csv_reader:
-			im = scipy.misc.imread(data_dir + row[0])
-			lbl = scipy.misc.imread(data_dir + row[1])
+			im = scipy.misc.imread(os.path.join(data_dir, row[0]))
+			lbl = scipy.misc.imread(os.path.join(data_dir, row[1]))
 			
 			loss_accum += loss.eval({image:im, label:lbl})
 			
