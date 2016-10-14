@@ -16,14 +16,15 @@ import tensorflow as tf
 def forward(image, drop):
 	""" A convolutional network for image segmentation.
 
-	Modelled as a small ResNet network (10 layers, 0.9 million parameters), uses
+	Modelled as a small ResNet network (10 layers, 894K parameters), uses 
 	strided convolutions (instead of pooling) and dilated convolutions to 
 	aggregate content and obtain segmentations with good resolution. 
 	It also mirrors the image on the edges to avoid artifacts.
 
-	Input size: 128 x 128
-	Downsampling size (before BILINEAR): 32 x 32 
-	Output size: 128 x 128 (4x upsampling)
+	Input size: 116 x 116
+	Downsampling size (before BILINEAR): 29 x 29
+	Output size: 116 x 116 (4x upsampling)
+	Effective receptive field: 228 x 228
 
 	Args:
 		image: A tensor with shape [height, width, channels]. The input image

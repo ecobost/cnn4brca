@@ -29,6 +29,7 @@ def forward(image, drop):
 	Input size: 112 x 112
 	Downsampling size (before BILINEAR): 7 x 7 
 	Output size: 112 x 112 (16x upsampling)
+	Effective receptive field: 184 x 184
 
 	Args:
 		image: A tensor with shape [height, width, channels]. The input image

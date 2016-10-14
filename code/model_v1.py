@@ -1,13 +1,11 @@
 # Written by: Erick Cobos T (a01184857@itesm.mx)
-# Date: Sep-2016
+# Date: Oct-2016
 """ TensorFlow implementation of the convolutional network described in Ch. 3
-(Experiment 5) of the thesis report.
+(Experiment 1) of the thesis report.
 
 The network outputs a heatmap of logits indicating the probability of mass 
 accross the mammogram. Labels have value 0 for background, 127 for breast tissue
-and 255 for breast masses (the positive class). The loss function weights errors
-on breast masses by 0.9, on normal breast tissue by 0.1 and on background by 0 
-(ignored).
+and 255 for breast masses (the positive class).
 
 Works for Tensorflow 0.11.rc0
 """
@@ -16,14 +14,14 @@ import tensorflow as tf
 def forward(image, drop):
 	""" A convolutional network for image segmentation.
 
-	Modelled as a small ResNet network (7 layers, 0.9 million parameters), uses
-	strided convolutions (instead of pooling) and dilated convolutions to 
-	aggregate content and obtain segmentations with good resolution. 
-	It also mirrors the image on the edges to avoid artifacts.
+	Small network (7 layers, 206 K parameters), uses strided convolutions to 
+	replace pooling and dilated convolutions in the last layers. It also mirrors
+	the image on the edges to avoid artifacts.
 
-	Input size: 128 x 128
-	Downsampling size (before BILINEAR): 32 x 32 
-	Output size: 128 x 128 (4x upsampling)
+	Input size: 52 x 52
+	Downsampling size (before BILINEAR): 13 x 13
+	Output size: 52 x 52 (4x upsampling)
+	Effective receptive field: 101 x 101
 
 	Args:
 		image: A tensor with shape [height, width, channels]. The input image
@@ -137,7 +135,7 @@ def forward(image, drop):
 	
 	# Define the architecture
 	with tf.name_scope('conv1'):
-		conv1 = tf.nn.relu(conv_op(batch, [7, 7, 1, 32], [1, 2, 2, 1]))
+		conv1 = tf.nn.relu(conv_op(batch, [5, 5, 1, 32], [1, 2, 2, 1]))
 	with tf.name_scope('conv2'):
 		conv2 = tf.nn.relu(conv_op(conv1, [3, 3, 32, 32]))
 
@@ -147,12 +145,12 @@ def forward(image, drop):
 		conv4 = tf.nn.relu(conv_op(conv3, [3, 3, 64, 64]))
 
 	with tf.name_scope('conv5'):
-		conv5 = tf.nn.relu(atrous_conv_op(conv4, [3, 3, 64, 128], dilation=2)) 
+		conv5 = tf.nn.relu(atrous_conv_op(conv4, [3, 3, 64, 96], dilation=2)) 
 	with tf.name_scope('conv6'):
-		conv6 = tf.nn.relu(atrous_conv_op(conv5, [3, 3, 64, 128], dilation=2)) 
+		conv6 = tf.nn.relu(atrous_conv_op(conv5, [3, 3, 64, 96], dilation=2)) 
 		
 	with tf.name_scope('fc'):
-		fc = atrous_conv_op(conv6, [7, 7, 128, 1], dilation=3)
+		fc = atrous_conv_op(conv6, [5, 5, 96, 1], dilation=3)
 	
 	with tf.name_scope('upsampling'):
 		new_dimensions = tf.shape(fc)[1:3] * 4
@@ -165,22 +163,17 @@ def forward(image, drop):
 	tf.histogram_summary('conv4/activations', conv4)
 	tf.histogram_summary('conv5/activations', conv5)
 	tf.histogram_summary('conv6/activations', conv6)
-	tf.histogram_summary('conv7/activations', conv7)
-	tf.histogram_summary('conv8/activations', conv8)
-	tf.histogram_summary('conv9/activations', conv9)
 	tf.histogram_summary('fc/activations', fc)
 	
 	# Unwrap segmentation
 	prediction = tf.squeeze(output)	
 
 	return prediction
-	
+
 def loss(prediction, label):
 	""" Logistic loss function averaged over pixels in the breast area.
 	
-	Losses are weighted depending on the tissue where they occur: losses on 
-	masses are weighted by 0.9, on normal tissue by 0.1 and on the background by
-	0 (ignored).
+	Pixels in the background are ignored.
 	
 	Args:
 		prediction: A tensor of floats with shape [height, width]. The predicted
@@ -194,15 +187,13 @@ def loss(prediction, label):
 	with tf.name_scope('logistic_loss'):
 		# Generate binary masks.
 		mass = tf.to_float(tf.equal(label, 255))
-		tissue = tf.to_float(tf.equal(label, 127))
-		breast_area = mass + tissue
-		
+		breast_area = tf.to_float(tf.greater(label, 0))
+
 		# Compute loss per pixel
 		pixel_loss = tf.nn.sigmoid_cross_entropy_with_logits(prediction, mass)
 	
-		# Weight the errors
-		weighted_loss = 0.9 * tf.mul(pixel_loss, mass)
-		weighted_loss += 0.1 * tf.mul(pixel_loss, tissue)
+		# Weight the errors (1 for pixels in breast area, zero otherwise)
+		weighted_loss = tf.mul(pixel_loss, breast_area)
 	
 		# Average over pixels in the breast area
 		loss = tf.reduce_sum(weighted_loss)/tf.reduce_sum(breast_area)
