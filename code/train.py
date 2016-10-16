@@ -17,7 +17,7 @@ from utils import log, read_csv_info
 import model_v4 as model
 
 # Set training parameters
-TRAINING_STEPS = 163*8*5 # 163 mammograms (approx) * 8 augmentations * 5 epochs
+TRAINING_STEPS = 205*8*30 # 205 mammograms (approx) * 8 augmentations * 5 epochs
 LEARNING_RATE = 4e-5
 LAMBDA = 4e-4
 RESUME_TRAINING = False

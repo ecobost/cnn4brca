@@ -147,7 +147,7 @@ def forward(image, drop):
 	with tf.name_scope('conv5'):
 		conv5 = tf.nn.relu(atrous_conv_op(conv4, [3, 3, 64, 96], dilation=2)) 
 	with tf.name_scope('conv6'):
-		conv6 = tf.nn.relu(atrous_conv_op(conv5, [3, 3, 64, 96], dilation=2)) 
+		conv6 = tf.nn.relu(atrous_conv_op(conv5, [3, 3, 96, 96], dilation=2)) 
 		
 	with tf.name_scope('fc'):
 		fc = atrous_conv_op(conv6, [5, 5, 96, 1], dilation=3)

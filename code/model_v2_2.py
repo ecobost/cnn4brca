@@ -192,7 +192,8 @@ def forward(image, drop):
 def loss(prediction, label):
 	""" Logistic loss function averaged over pixels in the breast area.
 	
-	Pixels in the background are ignored.
+	Errors are weighted according to where they occur: on masses by 0.9, on 
+	normal breast tissue by 0.1 and on the background by zero.
 	
 	Args:
 		prediction: A tensor of floats with shape [height, width]. The predicted
