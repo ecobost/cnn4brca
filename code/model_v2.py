@@ -6,7 +6,9 @@
 
 The network outputs a heatmap of logits indicating the probability of mass
 accross the mammogram. Labels have value 0 for background, 127 for breast tissue
-and 255 for breast masses.
+and 255 for breast masses. The loss function weights errors on breast masses by
+15, on normal breast tissue by 1 and on background by 0 (ignored) to encourage
+the network to learn better features to correctly distinguish lesions.
 
 Works for Tensorflow 0.11.rc0
 """
@@ -187,7 +189,8 @@ def forward(image, drop):
 def loss(prediction, label):
 	""" Logistic loss function averaged over pixels in the breast area.
 	
-	Pixels in the background are ignored.
+	Errors are weighted according to where they occur: on masses by 15, on 
+	normal breast tissue by 1 and on the background by zero (ignored).
 	
 	Args:
 		prediction: A tensor of floats with shape [height, width]. The predicted
@@ -201,13 +204,15 @@ def loss(prediction, label):
 	with tf.name_scope('logistic_loss'):
 		# Generate binary masks.
 		mass = tf.to_float(tf.equal(label, 255))
-		breast_area = tf.to_float(tf.greater(label, 0))
-
+		tissue = tf.to_float(tf.equal(label, 127))
+		breast_area = mass + tissue
+		
 		# Compute loss per pixel
 		pixel_loss = tf.nn.sigmoid_cross_entropy_with_logits(prediction, mass)
 	
-		# Weight the errors (1 for pixels in breast area, zero otherwise)
-		weighted_loss = tf.mul(pixel_loss, breast_area)
+		# Weight the errors
+		weighted_loss = 15 * tf.mul(pixel_loss, mass)
+		weighted_loss += 1 * tf.mul(pixel_loss, tissue)
 	
 		# Average over pixels in the breast area
 		loss = tf.reduce_sum(weighted_loss)/tf.reduce_sum(breast_area)
