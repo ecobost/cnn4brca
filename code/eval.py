@@ -20,7 +20,8 @@ import model_v3 as model
 
 # Set some parameters
 MODEL_DIR = "run1"
-THRESHOLD_PROB = 0.5
+THRESHOLD_PROB = 0.5 # to produce the final segmentation
+CMAP_NAME = 'nipy_spectral' # colormap to use to print the logit map
 
 def load_image(image_path):
 	""" Load png image as tensor and whiten it."""
@@ -77,8 +78,10 @@ def evaluate(image_path, label_path, threshold_prob=THRESHOLD_PROB,
 		saver.restore(sess, checkpoint_path)
 	
 		logits = prediction.eval()
-		scipy.misc.imsave("prediction.png", logits)
-		plt.imsave("prediction_jet.png", logits, cmap=plt.get_cmap('nipy_spectral'))
+		plt.imsave("logits.png", logits, cmap=plt.get_cmap(CMAP_NAME))
+		
+		probs = 1/(1 + np.exp(-predictions))
+		plt.imsave("probs.png", probs, cmap=plt.get_cmap(CMAP_NAME))
 		
 		segmentation = post(logits, label, threshold)
 		scipy.misc.imsave("segmentation.png", segmentation)
