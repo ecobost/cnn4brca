@@ -94,6 +94,12 @@
   performance evaluation.
 \newblock {\em J. Machine Learning Research 11\/} (August 2010), 2079--2107.
 
+\bibitem{Chakraborty2013}
+{\sc Chakraborty, D.~P.}
+\newblock A brief history of free-response receiver operating characteristic
+  paradigm data analysis.
+\newblock {\em Academic Radiology 20}, 7 (2013), 915 -- 919.
+
 \bibitem{Chen2015}
 {\sc Chen, L., Papandreou, G., Kokkinos, I., Murphy, K., and Yuille, A.~L.}
 \newblock Semantic image segmentation with deep convolutional nets and fully

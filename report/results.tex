@@ -2,228 +2,61 @@
 \label{ch:Results}
 We show the results of the different experiments and discuss their implications.
 
-\section{Experiment 1}
-\subsection{Hyperparameter search}
-After the first hyperparameter search, we found that the best $\alpha$ and $\lambda$ values appear in the bottom of the search range with good $\alpha$s ranging from 0.000001 to 0.0001 and $\lambda$s ranging from 0 to 0.15. After refining the search range we had a better idea of which combinations produced the best results (Fig.~\ref{fig:Hs2}).
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs2_alpha.png}
-         \caption{IOU vs $\alpha$}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs2_lambda.png}
-         \caption{IOU vs $\lambda$}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs2_trisurface.png}
-         \caption{IOU (z) vs $\alpha$ (x) vs $\lambda$ (y)}
-	\end{subfigure}
-	\caption[Second hyperparameter search for Experiment 1]{Results of the second search of hyperparameters. High IOU is better.}
-	 \label{fig:Hs2}
-\end{figure}
-% Discussion: Divergenece and it can be also observed that lambda is not as important as alpha. Highest alpha causes divergence, highest lambda causes convergence to a single point.
+\section{Hyperparameter Search}
+We list the selected learning rate and regularization parameter for the five folds of each experiment (Tab~\ref{tab:HSResults}).
 
-With this results, we chose to train a network with $\alpha = 3 \times 10^{-6}$ and $\lambda = 5 \times 10^{-4}$.
-
-\subsection{Evaluation}
-After training the network, we used the validation set to select the best threshold: 0.86 probability, which produced the best IOU (0.35) in the validation set.
-
-The test set results are summarized in Table~\ref{tab:Results1}
 \begin{table}[h]
 	\centering
-	\begin{tabular}{cccccccc}
-	\hline
-	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
-	\hline
-	0.109 & 0.197 & 0.49 & 0.98 & 0.243 & 0.987 & 0.165 & 0.243 \\
-	\hline
+	\setlength\tabcolsep{3.5pt}
+	\begin{tabular}{l*{10}{c}}
+		\hline
+		 & \multicolumn{2}{c}{\textbf{Fold 1}} & \multicolumn{2}{c}{\textbf{Fold 2}} &\multicolumn{2}{c}{\textbf{Fold 3}} &\multicolumn{2}{c}{\textbf{Fold 4}} &\multicolumn{2}{c}{\textbf{Fold 5}}\\
+		& \textbf{$\alpha$} & \textbf{$\lambda$} & \textbf{$\alpha$} & \textbf{$\lambda$} & \textbf{$\alpha$} & \textbf{$\lambda$} & \textbf{$\alpha$} & \textbf{$\lambda$} & \textbf{$\alpha$} & \textbf{$\lambda$}\\
+		\hline 
+		Exp. 1.1	&\sn{2}{-4}	&\sn{3}{-2}	&\sn{2}{-4}	&\sn{4}{-2}	&\sn{9}{-5}	&\sn{5}{-3}	&\sn{6}{-4}	&\sn{8}{-3}	&\sn{6}{-4}	&\sn{1}{-2}\\
+		Exp. 1.2	&\sn{4}{-4}	&\sn{9}{-2}	&\sn{4}{-4}	&\sn{5}{-2}	&\sn{4}{-4}	&\sn{7}{-3}	&\sn{3}{-4}	&\sn{5}{-3}	&\sn{6}{-4}	&\sn{3}{-2}\\
+		Exp. 1.3	&\sn{4}{-4}	&\sn{3}{-2}	&\sn{2}{-4}	&\sn{4}{-2}	&\sn{7}{-5}	&\sn{6}{-3}	&\sn{4}{-4}	&\sn{8}{-2}	&\sn{8}{-4}	&\sn{3}{-2}\\
+		Exp. 2		&\sn{1}{-5}	&\sn{4}{-4}	&\sn{5}{-5}	&\sn{4}{-3}	&\sn{5}{-5}	&\sn{1}{-3}	&\sn{1}{-5}	&\sn{2}{-4}	&\sn{5}{-5}	&\sn{2}{-4}\\
+		Exp. 3		&\sn{1}{-4}	&\sn{4}{-4}	&\sn{7}{-5}	&\sn{5}{-4}	&\sn{1}{-4}	&\sn{7}{-4}	&\sn{7}{-5}	&\sn{2}{-4}	&\sn{8}{-5}	&\sn{9}{-5}\\
+		\hline
 	\end{tabular}
-	\caption[Results for Experiment 1]{Test results for the trained network (Sec~\ref{sec:Experiment1}).}
-	\label{tab:Results1}
+	\caption[Hyperparameter search results]{Selected learning rate and regularization parameter configurations.}
+	\label{tab:HSResults}
 \end{table}
+% Discussion: Lambda is not as important as alpha. Highest alpha causes divergence, highest lambda causes convergence to a single point. In general, not so important.
 
-\subsection{Qualitative results}
-We show the prediction and produced segmentation for a couple of test examples (Fig.~\ref{fig:qualitative1}).
-\begin{figure}[h]
-\centering
-	\begin{subfigure}{0.25\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/mammogram_ex1.png}
-	\end{subfigure}
-	\begin{subfigure}{0.2\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/label_ex1.png}
-	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/logits_ex1_v1.png}
-	\end{subfigure}
-	\begin{subfigure}{0.2\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/segmentation_ex1_v1.png}
-	\end{subfigure}%img_251_334_1_LCC.png
-	\\
-	\begin{subfigure}{0.25\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/mammogram_ex2.png}
-		\caption{Original mammogram}
-	\end{subfigure}
-	\begin{subfigure}{0.2\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/label_ex2.png}
-		\caption{Label}
-	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/logits_ex2_v1.png}
-		\caption{Prediction}
-	\end{subfigure}
-	\begin{subfigure}{0.2\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/segmentation_ex2_v1.png}
-		\caption{Segmentation}
-	\end{subfigure}% img_108_146_1_RCC.png
-	\caption[Qualitative results for Experiment 1]{Sample results for Experiment 1. Original mammogram (a), expected label (b), logit predictions (c) produced by the network and final segmentation (d) using threshold probability 0.86 selected using the validation set}
-	\label{fig:qualitative1}
-\end{figure}		
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Experiment 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experiment 2}
-\subsection{Hyperparameter search}
-Similar to experiment 1, the best $\alpha$s and $\lambda$s were found in the bottom of the search range (Fig.~\ref{fig:Hs4}), however, performance is more robust to small changes. We show results discarding networks with the ten highest $\alpha$s or ten highest $\lambda$s as bigger values caused training to diverge.
-\begin{figure}[h]
+\section{Experiments}
+We show the FROC curves for each experiment and fold (Fig.~\ref{fig:FROCResults}).
+\begin{figure}
 	\centering
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs4_alpha.png}
-         \caption{IOU vs $\alpha$}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs4_lambda.png}
-         \caption{IOU vs $\lambda$}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs4_pcolor.png}
-         \caption{IOU (color) vs $\alpha$ (x) vs $\lambda$ (y)}
-	\end{subfigure}
-	\caption[Hyperparameter search for Experiment 2]{Results of the hyperparameter search. High IOU is better.}
-	 \label{fig:Hs4}
-\end{figure}
-With this results we selected $\alpha = 2 \times 10^{-5}$ and $\lambda = 2 \times 10^{-3}$ to train our network.
-
-\subsection{Evaluation}
-We obtained the best IOU in the validation set (0.36) with threshold probability 0.72; test set results are summarized below (Tab.~\ref{tab:Results2}).
-\begin{table}[h]
-	\centering
-	\begin{tabular}{cccccccc}
-	\hline
-	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
-	\hline
-	 0.117 & 0.21 & 0.493 & 0.981 & 0.246 & 0.989 & 0.184 & 0.246 \\
-	\hline
-	\end{tabular}
-	\caption[Results for Experiment 2]{Test results for the trained network (Sec~\ref{sec:Experiment2}).}
-	\label{tab:Results2}
-\end{table}
-
-\subsection{Qualitative results}
-We present some sample predictions for the same test examples used above (Fig.~\ref{fig:qualitative2})
-\begin{figure}[h]
-\centering
-	\begin{subfigure}{0.25\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/mammogram_ex1.png}
-	\end{subfigure}
-	\begin{subfigure}{0.2\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/label_ex1.png}
-	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/logits_ex1_v2.png}
-	\end{subfigure}
-	\begin{subfigure}{0.2\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/segmentation_ex1_v2.png}
-	\end{subfigure}%img_251_334_1_LCC.png
-	\\
-	\begin{subfigure}{0.25\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/mammogram_ex2.png}
-		\caption{Original}
-	\end{subfigure}
-	\begin{subfigure}{0.2\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/label_ex2.png}
-		\caption{Label}
-	\end{subfigure}
-	\begin{subfigure}{0.16\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/logits_ex2_v2.png}
-		\caption{Prediction}
-	\end{subfigure}
-	\begin{subfigure}{0.2\textwidth}
-		\centering
-			\includegraphics[height = 5cm]{plots/segmentation_ex2_v2.png}
-		\caption{Segmentation}
-	\end{subfigure}% img_108_146_1_RCC.png
-	\caption[Qualitative results for Experiment 2]{Sample results for Experiment 2. Original mammogram (a), expected label (b), logit predictions (c) produced by the network and final segmentation (d) using threshold probability 0.86 selected using the validation set}
-	\label{fig:qualitative2}
-\end{figure}		
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EXPERIMENT 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experiment 3}
-\subsection{Hyperparameter search}
-As with previous experiments the best $\alpha$ and $\lambda$ values appear closer to the bottom of the search range (Fig.~\ref{fig:Hs5}). We chose to use $\alpha = 4 \times 10^{-5}$ and $\lambda = 4 \times 10^{-4}$ for our final network.
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs5_alpha.png}
-         \caption{IOU vs $\alpha$}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs5_lambda.png}
-         \caption{IOU vs $\lambda$}
-	\end{subfigure}
-	\begin{subfigure}{0.32\textwidth}
-		\centering
-                \includegraphics[width=\textwidth]{plots/hs5_pcolor.png}
-         \caption{IOU (color) vs $\alpha$ (x) vs $\lambda$ (y)}
-	\end{subfigure}
-	\caption[Hyperparameter search for Experiment 3]{Results of the hyperparameter search. High IOU is better.}
-	 \label{fig:Hs5}
+		\includegraphics[width=\textwidth]{plots/FROC_curves.pdf}
+	\caption[FROC curves]{FROC curves for every experiment and fold. Each experiment appears in a different color. The solid line is the average FROC curve per experiment over all folds. FROC curves ffor each fold are drawn in dashed lines; each fold has a unique marker.}
+	\label{fig:FROCResults}
 \end{figure}
 
-\subsection{Evaluation}
-\begin{comment}
-After training, 0.6 probability threshold (logit 0.405) was selected using the validation set (IOU on validation set achieved 0.149). Test set results are summarized in Table~\ref{tab:Results1}
+We can use the sensitivity at a given number of false positives per image to have a single quantitative evaluation of the quality of the model (Tab~\ref{tab:SensitivityResults}).
 \begin{table}[h]
 	\centering
-	\begin{tabular}{cccccccc}
-	\hline
-	\textbf{IOU}	& \textbf{F1-score}	& \textbf{G-mean} &\textbf{Accuracy}	& \textbf{Sensitivity} & \textbf{Specificity} & \textbf{Precision} & \textbf{Recall}\\
-	\hline
-	0.089 & 0.121 & 0.219 & 0.974 & 0.185 & 0.979 & 0.121 & 0.185\\
-	\hline
+	\begin{tabular}{l*{6}{c}}
+		\hline
+		 & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} &\textbf{Fold 4} &\textbf{Fold 5} & \textbf{Average} \\
+		\hline 
+		Experiment 1.1	&0.09		&\textbf{0.29}	&0.28	&0.29	&0.38	&0.26\\
+		Experiment 1.2	&0.15		&0.28		&0.13		&0.26	&0.43	&0.25\\
+		Experiment 1.3	&0.12		&0.25		&-			&0.24	&0.38	&-\\
+		Experiment 2	&\textbf{0.21} &0.21	&\textbf{0.35}		&\textbf{0.30}	&0.41	&\textbf{0.29}\\
+		Experiment 3	&0.18		&0.21		&0.22		&0.26	&\textbf{0.48}	&0.27\\
+		\hline
 	\end{tabular}
-	\caption[Results for Experiment 3]{Test results for the trained network (Sec~\ref{sec:Experiment3}).}
-	\label{tab:Results3}
+	\caption[Sensitivity at 1 FP/image for the final models]{Sensitivity at 1 FP per image. Best model in each column is shown in bold.}
+	\label{tab:SensitivityResults}
 \end{table}
+% discussion: That there is a lot of variance depending on what fold you are in, this is mostly due to the examples in the test set than those in the training set as those in the training set
+% discussion: that x model is usually better
+% discussion: Effect on 1 of enhancement and weighted loss.
+% discussion: that using a weighted loss usually help converged into a higher range (rather than all being very negative close to zero, now predictions ranged from 0-1)
 
-\subsection{Qualitative results}
-\end{comment}
+To get a sense of the qualitative value of our results, we examined the output produced by each network in some chosen examples (Appendix~\ref{app:examples}).
 
 
 \section{Discussion}

@@ -31,44 +31,47 @@
 \BOOKMARK [1][-]{section.3.2}{Data set}{chapter.3}% 31
 \BOOKMARK [2][-]{subsection.3.2.1}{Database}{section.3.2}% 32
 \BOOKMARK [2][-]{subsection.3.2.2}{Data division}{section.3.2}% 33
-\BOOKMARK [2][-]{subsection.3.2.3}{Image enhancement}{section.3.2}% 34
+\BOOKMARK [2][-]{subsection.3.2.3}{Image enhancement \(Exp. 1.3 and Exp. 3\)}{section.3.2}% 34
 \BOOKMARK [2][-]{subsection.3.2.4}{Resizing}{section.3.2}% 35
 \BOOKMARK [2][-]{subsection.3.2.5}{Cropping}{section.3.2}% 36
 \BOOKMARK [2][-]{subsection.3.2.6}{Data augmentation}{section.3.2}% 37
 \BOOKMARK [2][-]{subsection.3.2.7}{Storage}{section.3.2}% 38
 \BOOKMARK [1][-]{section.3.3}{Experiment 1}{chapter.3}% 39
-\BOOKMARK [1][-]{section.3.4}{Experiment 2}{chapter.3}% 40
-\BOOKMARK [2][-]{subsection.3.4.1}{Architecture}{section.3.4}% 41
-\BOOKMARK [2][-]{subsection.3.4.2}{Regularization}{section.3.4}% 42
-\BOOKMARK [2][-]{subsection.3.4.3}{Loss function}{section.3.4}% 43
-\BOOKMARK [2][-]{subsection.3.4.4}{Hyperparameter search}{section.3.4}% 44
-\BOOKMARK [1][-]{section.3.5}{Experiment 3}{chapter.3}% 45
-\BOOKMARK [2][-]{subsection.3.5.1}{Architecture}{section.3.5}% 46
-\BOOKMARK [2][-]{subsection.3.5.2}{Regularization}{section.3.5}% 47
-\BOOKMARK [2][-]{subsection.3.5.3}{Hyperparameter search}{section.3.5}% 48
-\BOOKMARK [1][-]{section.3.6}{Training}{chapter.3}% 49
-\BOOKMARK [2][-]{subsection.3.6.1}{Hardware}{section.3.6}% 50
-\BOOKMARK [2][-]{subsection.3.6.2}{Software}{section.3.6}% 51
-\BOOKMARK [2][-]{subsection.3.6.3}{Initialization}{section.3.6}% 52
-\BOOKMARK [2][-]{subsection.3.6.4}{Optimization}{section.3.6}% 53
-\BOOKMARK [1][-]{section.3.7}{Evaluation}{chapter.3}% 54
-\BOOKMARK [2][-]{subsection.3.7.1}{Post-processing}{section.3.7}% 55
-\BOOKMARK [2][-]{subsection.3.7.2}{Segmentation}{section.3.7}% 56
-\BOOKMARK [2][-]{subsection.3.7.3}{Metrics}{section.3.7}% 57
-\BOOKMARK [1][-]{section.3.8}{Summary}{chapter.3}% 58
-\BOOKMARK [0][-]{chapter.4}{Results}{}% 59
-\BOOKMARK [1][-]{section.4.1}{Experiment 1}{chapter.4}% 60
-\BOOKMARK [2][-]{subsection.4.1.1}{Hyperparameter search}{section.4.1}% 61
-\BOOKMARK [2][-]{subsection.4.1.2}{Evaluation}{section.4.1}% 62
-\BOOKMARK [2][-]{subsection.4.1.3}{Qualitative results}{section.4.1}% 63
-\BOOKMARK [1][-]{section.4.2}{Experiment 2}{chapter.4}% 64
-\BOOKMARK [2][-]{subsection.4.2.1}{Hyperparameter search}{section.4.2}% 65
-\BOOKMARK [2][-]{subsection.4.2.2}{Evaluation}{section.4.2}% 66
-\BOOKMARK [2][-]{subsection.4.2.3}{Qualitative results}{section.4.2}% 67
-\BOOKMARK [1][-]{section.4.3}{Experiment 3}{chapter.4}% 68
-\BOOKMARK [2][-]{subsection.4.3.1}{Hyperparameter search}{section.4.3}% 69
-\BOOKMARK [2][-]{subsection.4.3.2}{Evaluation}{section.4.3}% 70
-\BOOKMARK [1][-]{section.4.4}{Discussion}{chapter.4}% 71
-\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 72
-\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 73
-\BOOKMARK [0][-]{chapter*.45}{Bibliography}{}% 74
+\BOOKMARK [2][-]{subsection.3.3.1}{Architecture}{section.3.3}% 40
+\BOOKMARK [2][-]{subsection.3.3.2}{Regularization}{section.3.3}% 41
+\BOOKMARK [2][-]{subsection.3.3.3}{Loss function}{section.3.3}% 42
+\BOOKMARK [2][-]{subsection.3.3.4}{Experiments}{section.3.3}% 43
+\BOOKMARK [1][-]{section.3.4}{Experiment 2}{chapter.3}% 44
+\BOOKMARK [2][-]{subsection.3.4.1}{Architecture}{section.3.4}% 45
+\BOOKMARK [2][-]{subsection.3.4.2}{Regularization}{section.3.4}% 46
+\BOOKMARK [2][-]{subsection.3.4.3}{Loss function}{section.3.4}% 47
+\BOOKMARK [2][-]{subsection.3.4.4}{Experiments}{section.3.4}% 48
+\BOOKMARK [1][-]{section.3.5}{Experiment 3}{chapter.3}% 49
+\BOOKMARK [2][-]{subsection.3.5.1}{Architecture}{section.3.5}% 50
+\BOOKMARK [2][-]{subsection.3.5.2}{Regularization}{section.3.5}% 51
+\BOOKMARK [2][-]{subsection.3.5.3}{Loss function}{section.3.5}% 52
+\BOOKMARK [2][-]{subsection.3.5.4}{Experiments}{section.3.5}% 53
+\BOOKMARK [1][-]{section.3.6}{Training}{chapter.3}% 54
+\BOOKMARK [2][-]{subsection.3.6.1}{Hardware}{section.3.6}% 55
+\BOOKMARK [2][-]{subsection.3.6.2}{Software}{section.3.6}% 56
+\BOOKMARK [2][-]{subsection.3.6.3}{Initialization}{section.3.6}% 57
+\BOOKMARK [2][-]{subsection.3.6.4}{Hyperparameter search}{section.3.6}% 58
+\BOOKMARK [2][-]{subsection.3.6.5}{Optimization}{section.3.6}% 59
+\BOOKMARK [1][-]{section.3.7}{Evaluation}{chapter.3}% 60
+\BOOKMARK [2][-]{subsection.3.7.1}{Post-processing}{section.3.7}% 61
+\BOOKMARK [2][-]{subsection.3.7.2}{Segmentation}{section.3.7}% 62
+\BOOKMARK [2][-]{subsection.3.7.3}{Metrics}{section.3.7}% 63
+\BOOKMARK [1][-]{section.3.8}{Summary}{chapter.3}% 64
+\BOOKMARK [0][-]{chapter.4}{Results}{}% 65
+\BOOKMARK [1][-]{section.4.1}{Hyperparameter Search}{chapter.4}% 66
+\BOOKMARK [1][-]{section.4.2}{Experiments}{chapter.4}% 67
+\BOOKMARK [1][-]{section.4.3}{Discussion}{chapter.4}% 68
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 69
+\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 70
+\BOOKMARK [0][-]{appendix.A}{Examples}{}% 71
+\BOOKMARK [1][-]{section.A.1}{Example 1}{appendix.A}% 72
+\BOOKMARK [1][-]{section.A.2}{Example 2}{appendix.A}% 73
+\BOOKMARK [1][-]{section.A.3}{Example 3}{appendix.A}% 74
+\BOOKMARK [1][-]{section.A.4}{Example 4}{appendix.A}% 75
+\BOOKMARK [1][-]{section.A.5}{Example 5}{appendix.A}% 76
+\BOOKMARK [0][-]{appendix*.55}{Bibliography}{}% 77

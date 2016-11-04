@@ -3,7 +3,7 @@ We offer details about the learning stage of our experiments.
 
 \subsection{Hardware}
 %Training neural networks is computationally intensive and requires equipment with powerful GPUs. 
-We performed our experiments in 15 machines with the following specifications:
+We performed our experiments in 30 machines with the following specifications:
 \begin{table}[h]
 	\centering
 	\begin{tabular}{cp{3.8cm}p{1.8cm}cc}
@@ -17,19 +17,23 @@ We performed our experiments in 15 machines with the following specifications:
 	\caption{Available hardware for experiments}
 \end{table}
 
-Each computer was used independently to train networks, i.e., not distributed. Although we designed our models to be small enough to fit in the GPU memory, big images surpassed this storage limit causing errors; thus, we decided to train our networks only with the CPU. Training times ranged from 1.5 to 2 hours per epoch (1440 images).
+Each computer was used independently to train networks (not distributed). Although we designed our models to be small enough to fit in the GPU memory, big images surpassed this storage limit causing errors; thus, we decided to train our networks only with the CPU. Training times ranged from 1 to 1.5 hours per 1000 examples.
 
 \subsection{Software}
-Models were implemented and trained using TensorFlow (v.8)~\cite{Abadi2015}. Tools for image retrieval, augmentation, evaluation and similar tasks were implemented in Python3.
+Models were implemented and trained using TensorFlow (v.11)~\cite{Abadi2015}. Tools for image retrieval, augmentation, evaluation and similar tasks were implemented in Python3.
 Code, as well as trained models, are freely accesible at: \url{github.com/ecobost/cnn4brca}.
 
 \subsection{Initialization}
 Weights for the incoming connections to a unit are drawn from a normal distribution with zero mean and $\sqrt{2/n_{in}}$ standard deviation where $n_{in}$ is the number of connections. Biases are initialized to zero.
+
+\subsection{Hyperparameter search}
+\label{subsec:Hyperparameters}
+We fit the learning rate and regulatization parameter simultaneously using random sampling. For each fold independently, we train 20 networks for five epochs (6\,520 examples) and select the best ($\alpha$, $\lambda$) combination using 20\% of the fold as a validation set. We use sensitivity at one false positive per image as performance metric.
 
 \subsection{Optimization}
 We use ADAM ($\beta_1 = 0.9$, $\beta_2 = 0.995$ and $\epsilon = 10^{-6}$) for optimization.
 %, i.e., we perform stochastic gradient descent (with momentum and per-parameter adaptive learning rate).
 Each parameter update uses the information from only a single training example but given that the loss is a weighted average over all pixels in the image, gradients are as rich as if we were performing mini-batch gradient descent with a batch composed of all image patches for which the network produced a prediction.
 
-We trained the final model for all experiments for 50 epochs. Learning rate was divided by 10 after convergence at 30 epochs and then again at 40 epochs. No early stopping was performed.
+We trained the final model for all experiments for 30 epochs (49\,200 examples). No early stopping was performed.
 % Any early stopping thing here

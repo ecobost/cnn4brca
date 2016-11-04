@@ -42,47 +42,53 @@
 \contentsline {section}{\numberline {2.8}Summary}{34}{section.2.8}
 \contentsline {chapter}{\numberline {3}Solution}{35}{chapter.3}
 \contentsline {section}{\numberline {3.1}Task definition}{35}{section.3.1}
-\contentsline {section}{\numberline {3.2}Data set}{35}{section.3.2}
+\contentsline {section}{\numberline {3.2}Data set}{36}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Database}{36}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Data division}{36}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Image enhancement}{36}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.3}Image enhancement (Exp. 1.3 and Exp. 3)}{36}{subsection.3.2.3}
 \contentsline {subsection}{\numberline {3.2.4}Resizing}{37}{subsection.3.2.4}
 \contentsline {subsection}{\numberline {3.2.5}Cropping}{37}{subsection.3.2.5}
 \contentsline {subsection}{\numberline {3.2.6}Data augmentation}{37}{subsection.3.2.6}
 \contentsline {subsection}{\numberline {3.2.7}Storage}{37}{subsection.3.2.7}
 \contentsline {section}{\numberline {3.3}Experiment 1}{37}{section.3.3}
-\contentsline {section}{\numberline {3.4}Experiment 2}{37}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Architecture}{38}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Regularization}{38}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Loss function}{39}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Hyperparameter search}{39}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}Experiment 3}{39}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Architecture}{39}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Regularization}{40}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Hyperparameter search}{40}{subsection.3.5.3}
-\contentsline {section}{\numberline {3.6}Training}{40}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Hardware}{40}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Software}{41}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Initialization}{41}{subsection.3.6.3}
-\contentsline {subsection}{\numberline {3.6.4}Optimization}{41}{subsection.3.6.4}
-\contentsline {section}{\numberline {3.7}Evaluation}{41}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}Post-processing}{41}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}Segmentation}{42}{subsection.3.7.2}
-\contentsline {subsection}{\numberline {3.7.3}Metrics}{42}{subsection.3.7.3}
-\contentsline {section}{\numberline {3.8}Summary}{42}{section.3.8}
-\contentsline {chapter}{\numberline {4}Results}{44}{chapter.4}
-\contentsline {section}{\numberline {4.1}Experiment 1}{44}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Hyperparameter search}{44}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Evaluation}{44}{subsection.4.1.2}
-\contentsline {subsection}{\numberline {4.1.3}Qualitative results}{44}{subsection.4.1.3}
-\contentsline {section}{\numberline {4.2}Experiment 2}{45}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Hyperparameter search}{45}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Evaluation}{45}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Qualitative results}{46}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Experiment 3}{46}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Hyperparameter search}{46}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Evaluation}{46}{subsection.4.3.2}
-\contentsline {section}{\numberline {4.4}Discussion}{46}{section.4.4}
-\contentsline {chapter}{\numberline {5}Conclusions}{48}{chapter.5}
-\contentsline {section}{\numberline {5.1}Future Work}{48}{section.5.1}
-\contentsline {chapter}{Bibliography}{55}{chapter*.45}
+\contentsline {subsection}{\numberline {3.3.1}Architecture}{38}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Regularization}{39}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Loss function}{39}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Experiments}{39}{subsection.3.3.4}
+\contentsline {subsubsection}{Experiment 1.1}{39}{section*.35}
+\contentsline {subsubsection}{Experiment 1.2}{39}{section*.36}
+\contentsline {subsubsection}{Experiment 1.3}{39}{section*.37}
+\contentsline {section}{\numberline {3.4}Experiment 2}{39}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Architecture}{40}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Regularization}{40}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Loss function}{40}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Experiments}{40}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}Experiment 3}{41}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Architecture}{41}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Regularization}{41}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Loss function}{41}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Experiments}{41}{subsection.3.5.4}
+\contentsline {section}{\numberline {3.6}Training}{42}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Hardware}{42}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Software}{42}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Initialization}{42}{subsection.3.6.3}
+\contentsline {subsection}{\numberline {3.6.4}Hyperparameter search}{42}{subsection.3.6.4}
+\contentsline {subsection}{\numberline {3.6.5}Optimization}{42}{subsection.3.6.5}
+\contentsline {section}{\numberline {3.7}Evaluation}{43}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Post-processing}{43}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Segmentation}{43}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}Metrics}{43}{subsection.3.7.3}
+\contentsline {section}{\numberline {3.8}Summary}{44}{section.3.8}
+\contentsline {chapter}{\numberline {4}Results}{45}{chapter.4}
+\contentsline {section}{\numberline {4.1}Hyperparameter Search}{45}{section.4.1}
+\contentsline {section}{\numberline {4.2}Experiments}{45}{section.4.2}
+\contentsline {section}{\numberline {4.3}Discussion}{45}{section.4.3}
+\contentsline {chapter}{\numberline {5}Conclusions}{47}{chapter.5}
+\contentsline {section}{\numberline {5.1}Future Work}{47}{section.5.1}
+\contentsline {chapter}{\numberline {A}Examples}{48}{appendix.A}
+\contentsline {section}{\numberline {A.1}Example 1}{49}{section.A.1}
+\contentsline {section}{\numberline {A.2}Example 2}{50}{section.A.2}
+\contentsline {section}{\numberline {A.3}Example 3}{51}{section.A.3}
+\contentsline {section}{\numberline {A.4}Example 4}{52}{section.A.4}
+\contentsline {section}{\numberline {A.5}Example 5}{53}{section.A.5}
+\contentsline {chapter}{Bibliography}{60}{appendix*.55}
