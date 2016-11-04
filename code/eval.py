@@ -80,7 +80,7 @@ def evaluate(image_path, label_path, threshold_prob=THRESHOLD_PROB,
 		logits = prediction.eval()
 		plt.imsave("logits.png", logits, cmap=plt.get_cmap(CMAP_NAME))
 		
-		probs = 1/(1 + np.exp(-predictions))
+		probs = 1/(1 + np.exp(-logits))
 		plt.imsave("probs.png", probs, cmap=plt.get_cmap(CMAP_NAME))
 		
 		segmentation = post(logits, label, threshold)
