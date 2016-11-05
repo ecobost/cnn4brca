@@ -3,7 +3,7 @@
 We show the results of the different experiments and discuss their implications.
 
 \section{Hyperparameter Search}
-We list the selected learning rate and regularization parameter for the five folds of each experiment (Tab~\ref{tab:HSResults}).
+We list the selected learning rate and regularization parameter for the five folds of each experiment (Tab~\ref{tab:HSResults}). Although hyperparameters were selected independently for every fold, in the same experiment they converge to similar values.
 
 \begin{table}[h]
 	\centering
@@ -26,7 +26,7 @@ We list the selected learning rate and regularization parameter for the five fol
 % Discussion: Lambda is not as important as alpha. Highest alpha causes divergence, highest lambda causes convergence to a single point. In general, not so important.
 
 \section{Experiments}
-We show the FROC curves for each experiment and fold (Fig.~\ref{fig:FROCResults}).
+Models perform similarly while commiting less than four false positives per image with experiment 1.1 (in red), 1.3 (in green) and 2 (in blue) slightly outperforming the others (Fig.~\ref{fig:FROCResults}). After that mark, Experiment 1.1 and 1.3 converge faster to a sensitivity of 1 and experiment 2 follows them with a slightly slower convergence. Performance varies significantly among different folds of the same experiment as noticed by the spread of the background curves. Comparing experiment 1.1, 1.2 and 1.3, we also notice that for the same network architecture using a weighted loss function either with or without enhancing mammograms worsens the performance.
 \begin{figure}
 	\centering
 		\includegraphics[width=\textwidth]{plots/FROC_curves.pdf}
@@ -34,7 +34,8 @@ We show the FROC curves for each experiment and fold (Fig.~\ref{fig:FROCResults}
 	\label{fig:FROCResults}
 \end{figure}
 
-We can use the sensitivity at a given number of false positives per image to have a single quantitative evaluation of the quality of the model (Tab~\ref{tab:SensitivityResults}).
+We analyze the sensitivity at one false positive per image (Tab~\ref{tab:SensitivityResults}) to have a single quantitative evaluation of the predictions made by each model. We choose a low number of false positives to analyze the performance when models are commiting few errors. We notice that performance is similar among different models but that experiment 2 outperforms simpler models. It is also clear that performance is also dependent on the training and test set used shown by the different average performance in each fold.
+%DiscussionÑ too small test sets. 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{l*{6}{c}}
@@ -43,9 +44,10 @@ We can use the sensitivity at a given number of false positives per image to hav
 		\hline 
 		Experiment 1.1	&0.09		&\textbf{0.29}	&0.28	&0.29	&0.38	&0.26\\
 		Experiment 1.2	&0.15		&0.28		&0.13		&0.26	&0.43	&0.25\\
-		Experiment 1.3	&0.12		&0.25		&-			&0.24	&0.38	&-\\
+		Experiment 1.3	&0.12		&0.25		&0.21			&0.24	&0.38	&0.24\\
 		Experiment 2	&\textbf{0.21} &0.21	&\textbf{0.35}		&\textbf{0.30}	&0.41	&\textbf{0.29}\\
 		Experiment 3	&0.18		&0.21		&0.22		&0.26	&\textbf{0.48}	&0.27\\
+		Average			&0.15		&0.25		&0.23			&0.27	&0.42&\\
 		\hline
 	\end{tabular}
 	\caption[Sensitivity at 1 FP/image for the final models]{Sensitivity at 1 FP per image. Best model in each column is shown in bold.}
@@ -55,12 +57,14 @@ We can use the sensitivity at a given number of false positives per image to hav
 % discussion: that x model is usually better
 % discussion: Effect on 1 of enhancement and weighted loss.
 % discussion: that using a weighted loss usually help converged into a higher range (rather than all being very negative close to zero, now predictions ranged from 0-1)
+% discussion: training with loss function is more stable, (ranges are not so low)
 
-To get a sense of the qualitative value of our results, we examined the output produced by each network in some chosen examples (Appendix~\ref{app:examples}).
-
+Finally, to get a sense of the qualitative value of our results, we examined the output produced by each network in some chosen examples (Appendix~\ref{app:examples}). Networks used for experiment 2 and 3 seem to outperform those from the first experiment, they perform well when the breast mass is easier to see in the mammogram and are less prone to signal chest muscle as a possible mass. The network from experiment 2 was specially impressive in signaling some of the more subtler lessions, while none of the other networks excelled at this task.
 
 \section{Discussion}
-We found that....
+We found that convolutional neural networks are a viable option for breast cancer lession segmentation. 
+
+More research is needed to confirm some of the insights from this work. 
 
 \begin{comment}
 \section{Summary}

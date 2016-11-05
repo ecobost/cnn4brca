@@ -82,13 +82,13 @@
 \contentsline {chapter}{\numberline {4}Results}{45}{chapter.4}
 \contentsline {section}{\numberline {4.1}Hyperparameter Search}{45}{section.4.1}
 \contentsline {section}{\numberline {4.2}Experiments}{45}{section.4.2}
-\contentsline {section}{\numberline {4.3}Discussion}{45}{section.4.3}
-\contentsline {chapter}{\numberline {5}Conclusions}{47}{chapter.5}
-\contentsline {section}{\numberline {5.1}Future Work}{47}{section.5.1}
-\contentsline {chapter}{\numberline {A}Examples}{48}{appendix.A}
-\contentsline {section}{\numberline {A.1}Example 1}{49}{section.A.1}
-\contentsline {section}{\numberline {A.2}Example 2}{50}{section.A.2}
-\contentsline {section}{\numberline {A.3}Example 3}{51}{section.A.3}
-\contentsline {section}{\numberline {A.4}Example 4}{52}{section.A.4}
-\contentsline {section}{\numberline {A.5}Example 5}{53}{section.A.5}
-\contentsline {chapter}{Bibliography}{60}{appendix*.55}
+\contentsline {section}{\numberline {4.3}Discussion}{47}{section.4.3}
+\contentsline {chapter}{\numberline {5}Conclusions}{48}{chapter.5}
+\contentsline {section}{\numberline {5.1}Future Work}{48}{section.5.1}
+\contentsline {chapter}{\numberline {A}Examples}{49}{appendix.A}
+\contentsline {section}{\numberline {A.1}Example 1}{50}{section.A.1}
+\contentsline {section}{\numberline {A.2}Example 2}{51}{section.A.2}
+\contentsline {section}{\numberline {A.3}Example 3}{52}{section.A.3}
+\contentsline {section}{\numberline {A.4}Example 4}{53}{section.A.4}
+\contentsline {section}{\numberline {A.5}Example 5}{54}{section.A.5}
+\contentsline {chapter}{Bibliography}{61}{appendix*.55}

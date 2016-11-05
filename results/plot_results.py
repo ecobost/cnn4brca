@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 # Set some params
 NUMBER_OF_POINTS = 102 # number of points used for the interpolation
-UPPER_LIMIT = 20 # the highest FP/image(highest value in x axis)
+UPPER_LIMIT = 16 # the highest FP/image(highest value in x axis)
 
 # Load sensitivity and FP/image results
 sensitivity = np.loadtxt('sensitivity.csv', delimiter=',') # 25 folds x 100 points
@@ -32,7 +32,7 @@ labels = ['Experiment 1.1', 'Experiment 1.2', 'Experiment 1.3', 'Experiment 2',
 # Plot all folds
 for i in range(25):
 	plt.plot(desired_fps, froc[i], color=colors[i//5], marker=markers[i%5],
-			 linestyle='dashed', linewidth=0.8, alpha=0.35)
+			 linestyle='dashed', linewidth=0.8, alpha=0.3)
 
 # Plot the averages FROC
 for i in range(5):

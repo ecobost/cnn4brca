@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  4 NOV 2016 05:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.8)  4 NOV 2016 20:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1138,35 +1138,32 @@ File: plots/FROC_curves.pdf Graphic file (type pdf)
 <use plots/FROC_curves.pdf>
 Package pdftex.def Info: plots/FROC_curves.pdf used on input line 32.
 (pdftex.def)             Requested size: 446.62807pt x 243.08534pt.
+ [45
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./conclusions.tex [45
-
-] [46 <./plots/FROC_curves.pdf>]
+] [46 <./plots/FROC_curves.pdf>])
+(./conclusions.tex [47]
 Chapter 5.
-) (./examples.tex [47
+) (./examples.tex [48
 
 ]
 Appendix A.
-[48
+[49
 
-] <plots/examples/mammogram_1.png, id=1178, 570.13pt x 1220.56pt>
+] <plots/examples/mammogram_1.png, id=1181, 570.13pt x 1220.56pt>
 File: plots/examples/mammogram_1.png Graphic file (type png)
 
 <use plots/examples/mammogram_1.png>
 Package pdftex.def Info: plots/examples/mammogram_1.png used on input line 12.
 (pdftex.def)             Requested size: 89.32425pt x 191.21487pt.
 
-<plots/examples/label_1.png, id=1179, 570.13pt x 1220.56pt>
+<plots/examples/label_1.png, id=1182, 570.13pt x 1220.56pt>
 File: plots/examples/label_1.png Graphic file (type png)
 
 <use plots/examples/label_1.png>
 Package pdftex.def Info: plots/examples/label_1.png used on input line 18.
 (pdftex.def)             Requested size: 89.32425pt x 191.21487pt.
 
-<plots/examples/example1_probs_1_1.png, id=1180, 410.4936pt x 878.8032pt>
+<plots/examples/example1_probs_1_1.png, id=1183, 410.4936pt x 878.8032pt>
 File: plots/examples/example1_probs_1_1.png Graphic file (type png)
 
 <use plots/examples/example1_probs_1_1.png>
@@ -1174,7 +1171,7 @@ Package pdftex.def Info: plots/examples/example1_probs_1_1.png used on input li
 ne 28.
 (pdftex.def)             Requested size: 87.09573pt x 186.45825pt.
 
-<plots/examples/example1_probs_1_2.png, id=1181, 410.4936pt x 878.8032pt>
+<plots/examples/example1_probs_1_2.png, id=1184, 410.4936pt x 878.8032pt>
 File: plots/examples/example1_probs_1_2.png Graphic file (type png)
 
 <use plots/examples/example1_probs_1_2.png>
@@ -1182,7 +1179,7 @@ Package pdftex.def Info: plots/examples/example1_probs_1_2.png used on input li
 ne 33.
 (pdftex.def)             Requested size: 87.09573pt x 186.45825pt.
 
-<plots/examples/example1_probs_1_3.png, id=1182, 410.4936pt x 878.8032pt>
+<plots/examples/example1_probs_1_3.png, id=1185, 410.4936pt x 878.8032pt>
 File: plots/examples/example1_probs_1_3.png Graphic file (type png)
 
 <use plots/examples/example1_probs_1_3.png>
@@ -1190,7 +1187,7 @@ Package pdftex.def Info: plots/examples/example1_probs_1_3.png used on input li
 ne 38.
 (pdftex.def)             Requested size: 87.09573pt x 186.45825pt.
 
-<plots/examples/example1_probs_2.png, id=1183, 555.0336pt x 1179.4464pt>
+<plots/examples/example1_probs_2.png, id=1186, 555.0336pt x 1179.4464pt>
 File: plots/examples/example1_probs_2.png Graphic file (type png)
 
 <use plots/examples/example1_probs_2.png>
@@ -1198,32 +1195,32 @@ Package pdftex.def Info: plots/examples/example1_probs_2.png used on input line
  43.
 (pdftex.def)             Requested size: 87.09573pt x 185.0619pt.
 
-<plots/examples/example1_probs_3.png, id=1184, 546.3612pt x 1172.9421pt>
+<plots/examples/example1_probs_3.png, id=1187, 546.3612pt x 1172.9421pt>
 File: plots/examples/example1_probs_3.png Graphic file (type png)
 
 <use plots/examples/example1_probs_3.png>
 Package pdftex.def Info: plots/examples/example1_probs_3.png used on input line
  48.
 (pdftex.def)             Requested size: 87.09573pt x 186.97656pt.
- [49 <./plots/examples/mammogram_1.png (PNG copy)> <./plots/examples/label_1.pn
+ [50 <./plots/examples/mammogram_1.png (PNG copy)> <./plots/examples/label_1.pn
 g (PNG copy)> <./plots/examples/example1_probs_1_1.png> <./plots/examples/examp
 le1_probs_1_2.png> <./plots/examples/example1_probs_1_3.png> <./plots/examples/
 example1_probs_2.png> <./plots/examples/example1_probs_3.png>]
-<plots/examples/mammogram_2.png, id=1194, 409.53pt x 991.705pt>
+<plots/examples/mammogram_2.png, id=1198, 409.53pt x 991.705pt>
 File: plots/examples/mammogram_2.png Graphic file (type png)
 
 <use plots/examples/mammogram_2.png>
 Package pdftex.def Info: plots/examples/mammogram_2.png used on input line 60.
 (pdftex.def)             Requested size: 89.32425pt x 216.29938pt.
 
-<plots/examples/label_2.png, id=1195, 409.53pt x 991.705pt>
+<plots/examples/label_2.png, id=1199, 409.53pt x 991.705pt>
 File: plots/examples/label_2.png Graphic file (type png)
 
 <use plots/examples/label_2.png>
 Package pdftex.def Info: plots/examples/label_2.png used on input line 66.
 (pdftex.def)             Requested size: 89.32425pt x 216.29938pt.
 
-<plots/examples/example2_probs_1_1.png, id=1196, 409.53pt x 989.6975pt>
+<plots/examples/example2_probs_1_1.png, id=1200, 409.53pt x 989.6975pt>
 File: plots/examples/example2_probs_1_1.png Graphic file (type png)
 
 <use plots/examples/example2_probs_1_1.png>
@@ -1231,7 +1228,7 @@ Package pdftex.def Info: plots/examples/example2_probs_1_1.png used on input li
 ne 76.
 (pdftex.def)             Requested size: 87.09573pt x 210.47028pt.
 
-<plots/examples/example2_probs_1_2.png, id=1197, 409.53pt x 991.705pt>
+<plots/examples/example2_probs_1_2.png, id=1201, 409.53pt x 991.705pt>
 File: plots/examples/example2_probs_1_2.png Graphic file (type png)
 
 <use plots/examples/example2_probs_1_2.png>
@@ -1239,7 +1236,7 @@ Package pdftex.def Info: plots/examples/example2_probs_1_2.png used on input li
 ne 81.
 (pdftex.def)             Requested size: 87.09573pt x 210.8972pt.
 
-<plots/examples/example2_probs_1_3.png, id=1198, 409.53pt x 991.705pt>
+<plots/examples/example2_probs_1_3.png, id=1202, 409.53pt x 991.705pt>
 File: plots/examples/example2_probs_1_3.png Graphic file (type png)
 
 <use plots/examples/example2_probs_1_3.png>
@@ -1247,7 +1244,7 @@ Package pdftex.def Info: plots/examples/example2_probs_1_3.png used on input li
 ne 86.
 (pdftex.def)             Requested size: 87.09573pt x 210.8972pt.
 
-<plots/examples/example2_probs_2.png, id=1199, 545.03625pt x 1322.9425pt>
+<plots/examples/example2_probs_2.png, id=1203, 545.03625pt x 1322.9425pt>
 File: plots/examples/example2_probs_2.png Graphic file (type png)
 
 <use plots/examples/example2_probs_2.png>
@@ -1255,18 +1252,18 @@ Package pdftex.def Info: plots/examples/example2_probs_2.png used on input line
  91.
 (pdftex.def)             Requested size: 87.09573pt x 211.39252pt.
 
-<plots/examples/example2_probs_3.png, id=1200, 545.03625pt x 1323.94624pt>
+<plots/examples/example2_probs_3.png, id=1204, 545.03625pt x 1323.94624pt>
 File: plots/examples/example2_probs_3.png Graphic file (type png)
 
 <use plots/examples/example2_probs_3.png>
 Package pdftex.def Info: plots/examples/example2_probs_3.png used on input line
  96.
 (pdftex.def)             Requested size: 87.09573pt x 211.5529pt.
- [50 <./plots/examples/mammogram_2.png> <./plots/examples/label_2.png> <./plots
+ [51 <./plots/examples/mammogram_2.png> <./plots/examples/label_2.png> <./plots
 /examples/example2_probs_1_1.png> <./plots/examples/example2_probs_1_2.png> <./
 plots/examples/example2_probs_1_3.png> <./plots/examples/example2_probs_2.png> 
 <./plots/examples/example2_probs_3.png>] <plots/examples/mammogram_3.png, id=12
-11, 425.59pt x 1007.765pt>
+14, 425.59pt x 1007.765pt>
 File: plots/examples/mammogram_3.png Graphic file (type png)
 
 <use plots/examples/mammogram_3.png>
@@ -1274,14 +1271,14 @@ Package pdftex.def Info: plots/examples/mammogram_3.png used on input line 108.
 
 (pdftex.def)             Requested size: 89.32425pt x 211.51387pt.
 
-<plots/examples/label_3.png, id=1212, 425.59pt x 1007.765pt>
+<plots/examples/label_3.png, id=1215, 425.59pt x 1007.765pt>
 File: plots/examples/label_3.png Graphic file (type png)
 
 <use plots/examples/label_3.png>
 Package pdftex.def Info: plots/examples/label_3.png used on input line 114.
 (pdftex.def)             Requested size: 89.32425pt x 211.51387pt.
 
-<plots/examples/example3_probs_1_1.png, id=1213, 306.4248pt x 724.8681pt>
+<plots/examples/example3_probs_1_1.png, id=1216, 306.4248pt x 724.8681pt>
 File: plots/examples/example3_probs_1_1.png Graphic file (type png)
 
 <use plots/examples/example3_probs_1_1.png>
@@ -1289,7 +1286,7 @@ Package pdftex.def Info: plots/examples/example3_probs_1_1.png used on input li
 ne 124.
 (pdftex.def)             Requested size: 87.09573pt x 206.02547pt.
 
-<plots/examples/example3_probs_1_2.png, id=1214, 306.4248pt x 724.8681pt>
+<plots/examples/example3_probs_1_2.png, id=1217, 306.4248pt x 724.8681pt>
 File: plots/examples/example3_probs_1_2.png Graphic file (type png)
 
 <use plots/examples/example3_probs_1_2.png>
@@ -1297,142 +1294,150 @@ Package pdftex.def Info: plots/examples/example3_probs_1_2.png used on input li
 ne 129.
 (pdftex.def)             Requested size: 87.09573pt x 206.02547pt.
 
-<plots/examples/example3_probs_2.png, id=1215, 416.2752pt x 971.3088pt>
+<plots/examples/example3_probs_1_3.png, id=1218, 306.4248pt x 724.8681pt>
+File: plots/examples/example3_probs_1_3.png Graphic file (type png)
+
+<use plots/examples/example3_probs_1_3.png>
+Package pdftex.def Info: plots/examples/example3_probs_1_3.png used on input li
+ne 134.
+(pdftex.def)             Requested size: 87.09573pt x 206.02547pt.
+
+<plots/examples/example3_probs_2.png, id=1219, 416.2752pt x 971.3088pt>
 File: plots/examples/example3_probs_2.png Graphic file (type png)
 
 <use plots/examples/example3_probs_2.png>
 Package pdftex.def Info: plots/examples/example3_probs_2.png used on input line
- 141.
+ 139.
 (pdftex.def)             Requested size: 87.09573pt x 203.21017pt.
 
-<plots/examples/example3_probs_3.png, id=1216, 407.6028pt x 968.418pt>
+<plots/examples/example3_probs_3.png, id=1220, 407.6028pt x 968.418pt>
 File: plots/examples/example3_probs_3.png Graphic file (type png)
 
 <use plots/examples/example3_probs_3.png>
 Package pdftex.def Info: plots/examples/example3_probs_3.png used on input line
- 146.
+ 144.
 (pdftex.def)             Requested size: 87.09573pt x 206.92023pt.
- [51 <./plots/examples/mammogram_3.png (PNG copy)> <./plots/examples/label_3.pn
+ [52 <./plots/examples/mammogram_3.png (PNG copy)> <./plots/examples/label_3.pn
 g (PNG copy)> <./plots/examples/example3_probs_1_1.png> <./plots/examples/examp
-le3_probs_1_2.png> <./plots/examples/example3_probs_2.png> <./plots/examples/ex
-ample3_probs_3.png>]
-<plots/examples/mammogram_4.png, id=1225, 469.755pt x 1220.56pt>
+le3_probs_1_2.png> <./plots/examples/example3_probs_1_3.png> <./plots/examples/
+example3_probs_2.png> <./plots/examples/example3_probs_3.png>]
+<plots/examples/mammogram_4.png, id=1230, 469.755pt x 1220.56pt>
 File: plots/examples/mammogram_4.png Graphic file (type png)
 
 <use plots/examples/mammogram_4.png>
-Package pdftex.def Info: plots/examples/mammogram_4.png used on input line 158.
+Package pdftex.def Info: plots/examples/mammogram_4.png used on input line 156.
 
 (pdftex.def)             Requested size: 89.32425pt x 232.07643pt.
 
-<plots/examples/label_4.png, id=1226, 469.755pt x 1220.56pt>
+<plots/examples/label_4.png, id=1231, 469.755pt x 1220.56pt>
 File: plots/examples/label_4.png Graphic file (type png)
 
 <use plots/examples/label_4.png>
-Package pdftex.def Info: plots/examples/label_4.png used on input line 164.
+Package pdftex.def Info: plots/examples/label_4.png used on input line 162.
 (pdftex.def)             Requested size: 89.32425pt x 232.07643pt.
 
-<plots/examples/example4_probs_1_1.png, id=1227, 338.2236pt x 878.8032pt>
+<plots/examples/example4_probs_1_1.png, id=1232, 338.2236pt x 878.8032pt>
 File: plots/examples/example4_probs_1_1.png Graphic file (type png)
 
 <use plots/examples/example4_probs_1_1.png>
 Package pdftex.def Info: plots/examples/example4_probs_1_1.png used on input li
-ne 174.
+ne 172.
 (pdftex.def)             Requested size: 87.09573pt x 226.2977pt.
 
-<plots/examples/example4_probs_1_2.png, id=1228, 338.2236pt x 878.8032pt>
+<plots/examples/example4_probs_1_2.png, id=1233, 338.2236pt x 878.8032pt>
 File: plots/examples/example4_probs_1_2.png Graphic file (type png)
 
 <use plots/examples/example4_probs_1_2.png>
 Package pdftex.def Info: plots/examples/example4_probs_1_2.png used on input li
-ne 179.
+ne 177.
 (pdftex.def)             Requested size: 87.09573pt x 226.2977pt.
 
-<plots/examples/example4_probs_1_3.png, id=1229, 338.2236pt x 878.8032pt>
+<plots/examples/example4_probs_1_3.png, id=1234, 338.2236pt x 878.8032pt>
 File: plots/examples/example4_probs_1_3.png Graphic file (type png)
 
 <use plots/examples/example4_probs_1_3.png>
 Package pdftex.def Info: plots/examples/example4_probs_1_3.png used on input li
-ne 184.
+ne 182.
 (pdftex.def)             Requested size: 87.09573pt x 226.2977pt.
 
-<plots/examples/example4_probs_2.png, id=1230, 450.9648pt x 1179.4464pt>
+<plots/examples/example4_probs_2.png, id=1235, 450.9648pt x 1179.4464pt>
 File: plots/examples/example4_probs_2.png Graphic file (type png)
 
 <use plots/examples/example4_probs_2.png>
 Package pdftex.def Info: plots/examples/example4_probs_2.png used on input line
- 189.
+ 187.
 (pdftex.def)             Requested size: 87.09573pt x 227.7865pt.
 
-<plots/examples/example4_probs_3.png, id=1231, 450.9648pt x 1170.774pt>
+<plots/examples/example4_probs_3.png, id=1236, 450.9648pt x 1170.774pt>
 File: plots/examples/example4_probs_3.png Graphic file (type png)
 
 <use plots/examples/example4_probs_3.png>
 Package pdftex.def Info: plots/examples/example4_probs_3.png used on input line
- 194.
+ 192.
 (pdftex.def)             Requested size: 87.09573pt x 226.1116pt.
- [52 <./plots/examples/mammogram_4.png (PNG copy)> <./plots/examples/label_4.pn
+ [53 <./plots/examples/mammogram_4.png (PNG copy)> <./plots/examples/label_4.pn
 g (PNG copy)> <./plots/examples/example4_probs_1_1.png> <./plots/examples/examp
 le4_probs_1_2.png> <./plots/examples/example4_probs_1_3.png> <./plots/examples/
 example4_probs_2.png> <./plots/examples/example4_probs_3.png>]
-<plots/examples/mammogram_5.png, id=1241, 469.755pt x 1059.96pt>
+<plots/examples/mammogram_5.png, id=1246, 469.755pt x 1059.96pt>
 File: plots/examples/mammogram_5.png Graphic file (type png)
 
 <use plots/examples/mammogram_5.png>
-Package pdftex.def Info: plots/examples/mammogram_5.png used on input line 206.
+Package pdftex.def Info: plots/examples/mammogram_5.png used on input line 204.
 
 (pdftex.def)             Requested size: 89.32425pt x 201.54005pt.
 
-<plots/examples/label_5.png, id=1242, 469.755pt x 1059.96pt>
+<plots/examples/label_5.png, id=1247, 469.755pt x 1059.96pt>
 File: plots/examples/label_5.png Graphic file (type png)
 
 <use plots/examples/label_5.png>
-Package pdftex.def Info: plots/examples/label_5.png used on input line 212.
+Package pdftex.def Info: plots/examples/label_5.png used on input line 210.
 (pdftex.def)             Requested size: 89.32425pt x 201.54005pt.
 
-<plots/examples/example5_probs_1_1.png, id=1243, 338.2236pt x 763.1712pt>
+<plots/examples/example5_probs_1_1.png, id=1248, 338.2236pt x 763.1712pt>
 File: plots/examples/example5_probs_1_1.png Graphic file (type png)
 
 <use plots/examples/example5_probs_1_1.png>
 Package pdftex.def Info: plots/examples/example5_probs_1_1.png used on input li
-ne 222.
+ne 220.
 (pdftex.def)             Requested size: 87.09573pt x 196.52168pt.
 
-<plots/examples/example5_probs_1_2.png, id=1244, 338.2236pt x 763.1712pt>
+<plots/examples/example5_probs_1_2.png, id=1249, 338.2236pt x 763.1712pt>
 File: plots/examples/example5_probs_1_2.png Graphic file (type png)
 
 <use plots/examples/example5_probs_1_2.png>
 Package pdftex.def Info: plots/examples/example5_probs_1_2.png used on input li
-ne 227.
+ne 225.
 (pdftex.def)             Requested size: 87.09573pt x 196.52168pt.
 
-<plots/examples/example5_probs_1_3.png, id=1245, 338.2236pt x 763.1712pt>
+<plots/examples/example5_probs_1_3.png, id=1250, 338.2236pt x 763.1712pt>
 File: plots/examples/example5_probs_1_3.png Graphic file (type png)
 
 <use plots/examples/example5_probs_1_3.png>
 Package pdftex.def Info: plots/examples/example5_probs_1_3.png used on input li
-ne 232.
+ne 230.
 (pdftex.def)             Requested size: 87.09573pt x 196.52168pt.
 
-<plots/examples/example5_probs_2.png, id=1246, 450.9648pt x 1017.5616pt>
+<plots/examples/example5_probs_2.png, id=1251, 450.9648pt x 1017.5616pt>
 File: plots/examples/example5_probs_2.png Graphic file (type png)
 
 <use plots/examples/example5_probs_2.png>
 Package pdftex.def Info: plots/examples/example5_probs_2.png used on input line
- 237.
+ 235.
 (pdftex.def)             Requested size: 87.09573pt x 196.52168pt.
 
-<plots/examples/example5_probs_3.png, id=1247, 450.9648pt x 1017.5616pt>
+<plots/examples/example5_probs_3.png, id=1252, 450.9648pt x 1017.5616pt>
 File: plots/examples/example5_probs_3.png Graphic file (type png)
 
 <use plots/examples/example5_probs_3.png>
 Package pdftex.def Info: plots/examples/example5_probs_3.png used on input line
- 242.
+ 240.
 (pdftex.def)             Requested size: 87.09573pt x 196.52168pt.
-) (./report.bbl [53 <./plots/examples/mammogram_5.png (PNG copy)> <./plots/exam
+) (./report.bbl [54 <./plots/examples/mammogram_5.png (PNG copy)> <./plots/exam
 ples/label_5.png (PNG copy)> <./plots/examples/example5_probs_1_1.png> <./plots
 /examples/example5_probs_1_2.png> <./plots/examples/example5_probs_1_3.png> <./
 plots/examples/example5_probs_2.png> <./plots/examples/example5_probs_3.png>] [
-54
+55
 
 ]
 Underfull \hbox (badness 2261) in paragraph at lines 84--90
@@ -1458,13 +1463,13 @@ Underfull \hbox (badness 4441) in paragraph at lines 84--90
 statistics / performance /
  []
 
-[55] [56]
+[56] [57]
 Underfull \hbox (badness 1527) in paragraph at lines 294--299
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  What you need
  to know about breast can-
  []
 
-[57]
+[58]
 Underfull \hbox (badness 3364) in paragraph at lines 301--306
 []\OT1/ptm/m/sc/12 National Can-cer In-sti-tute\OT1/ptm/m/n/12 .  Mam-mo-grams.
   elec-tronic, March 2014.
@@ -1476,9 +1481,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 301--306
 opics / types / breast /
  []
 
-[58] [59]) [60] (./cv.tex)
+[59] [60]) [61] (./cv.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 85.
- [61]
+ [62]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 85.
  (./report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 85.
@@ -1492,10 +1497,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 85.
  ) 
 Here is how much of TeX's memory you used:
- 9025 strings out of 495028
- 137553 string characters out of 6181498
+ 9031 strings out of 495028
+ 137749 string characters out of 6181498
  219018 words of memory out of 5000000
- 11624 multiletter control sequences out of 15000+600000
+ 11628 multiletter control sequences out of 15000+600000
  38202 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  42i,10n,45p,1422b,498s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1519,10 +1524,10 @@ rw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (72 pages, 7015138 bytes).
+Output written on report.pdf (73 pages, 7092932 bytes).
 PDF statistics:
- 1466 PDF objects out of 1728 (max. 8388607)
- 1226 compressed objects within 13 object streams
- 301 named destinations out of 1000 (max. 500000)
- 922 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1473 PDF objects out of 1728 (max. 8388607)
+ 1231 compressed objects within 13 object streams
+ 302 named destinations out of 1000 (max. 500000)
+ 927 words of extra memory for PDF output out of 10000 (max. 10000000)
 
