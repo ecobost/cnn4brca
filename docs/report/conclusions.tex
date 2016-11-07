@@ -1,0 +1,12 @@
+\chapter{Conclusions}
+\label{ch:Conclusions}
+We found that convolutional neural networks are a viable option for breast cancer lesion segmentation. We trained various models with different architectures and training configurations. Most showed promising results and opened the door to further research into refining them for deployment in real systems. 
+
+Although convolutional networks have been used for small tasks by breast cancer research groups, a correclty designed network trained with enough data could play a bigger role in current systems. We believe that advances in machine learning, a currently fast-moving field, and data collection of radiological images will soon bear fruit in breast cancer detection and encourage research in this area. 
+
+\section{Future Work}
+There are many possible avenues of improvement for the current work.
+
+Perhaps the most important issue that needs to be adressed is the lack of a large, high-quality mammographic data set. This could be collected directly in a medical instittution or by joining and standardizing smaller data sets. In any case, mammograms need to be curated to remove any noisy images. Chest muscle and big masses, which could be separated by visual inspection, could also be removed so the models can focus on classifying the subtler smaller lesions. Other kind of lesions should also be signaled and input to the network as positive examples to avoid sending wrong information to the network. Using a richer set of labels to, for instance, signal dense tissue or architectural distortions could also facilitate learning. Finally, using mammograms from different scanners and both digital and digitized will help the network learn invariant features and produce better results.
+
+Another possible research avenue is to develop a consistent way to evaluate this kind of models that takes into account the many favorable factors that we are looking for so we can clearly separate and work on the best models.
