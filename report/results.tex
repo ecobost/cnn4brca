@@ -3,8 +3,7 @@
 We show the results of the different experiments and discuss their implications.
 
 \section{Hyperparameter Search}
-We list the selected learning rate and regularization parameter for the five folds of each experiment (Tab~\ref{tab:HSResults}). Although hyperparameters were selected independently for every fold, in the same experiment they converge to similar values.
-
+We list the selected learning rate and regularization parameter for the five folds of each experiment (Tab~\ref{tab:HSResults}). Although hyperparameters were selected independently in each fold, they converge to similar values for the same experiment.
 \begin{table}[h]
 	\centering
 	\setlength\tabcolsep{3.5pt}
@@ -20,53 +19,68 @@ We list the selected learning rate and regularization parameter for the five fol
 		Exp. 3		&\sn{1}{-4}	&\sn{4}{-4}	&\sn{7}{-5}	&\sn{5}{-4}	&\sn{1}{-4}	&\sn{7}{-4}	&\sn{7}{-5}	&\sn{2}{-4}	&\sn{8}{-5}	&\sn{9}{-5}\\
 		\hline
 	\end{tabular}
-	\caption[Hyperparameter search results]{Selected learning rate and regularization parameter configurations.}
+	\caption[Selected hyperparameters]{Selected learning rate and regularization parameter configurations.}
 	\label{tab:HSResults}
 \end{table}
-% Discussion: Lambda is not as important as alpha. Highest alpha causes divergence, highest lambda causes convergence to a single point. In general, not so important.
 
 \section{Experiments}
-Models perform similarly while commiting less than four false positives per image with experiment 1.1 (in red), 1.3 (in green) and 2 (in blue) slightly outperforming the others (Fig.~\ref{fig:FROCResults}). After that mark, Experiment 1.1 and 1.3 converge faster to a sensitivity of 1 and experiment 2 follows them with a slightly slower convergence. Performance varies significantly among different folds of the same experiment as noticed by the spread of the background curves. Comparing experiment 1.1, 1.2 and 1.3, we also notice that for the same network architecture using a weighted loss function either with or without enhancing mammograms worsens the performance.
-\begin{figure}
+Models perform similarly while commiting few errors (Fig.~\ref{fig:FROCResults}): different models perform better at different false positive per image marks but overall diferences are small. Furthermore, performance varies significantly among different folds of the same experiment making inferences harder.
+\begin{figure}[h]
 	\centering
-		\includegraphics[width=\textwidth]{plots/FROC_curves.pdf}
-	\caption[FROC curves]{FROC curves for every experiment and fold. Each experiment appears in a different color. The solid line is the average FROC curve per experiment over all folds. FROC curves ffor each fold are drawn in dashed lines; each fold has a unique marker.}
+		\includegraphics[width=\textwidth]{plots/FROC_plus_std.pdf}
+	\caption[FROC curves]{Average FROC curves for every model. Shaded areas represent one standard error of the mean.}
 	\label{fig:FROCResults}
 \end{figure}
 
-We analyze the sensitivity at one false positive per image (Tab~\ref{tab:SensitivityResults}) to have a single quantitative evaluation of the predictions made by each model. We choose a low number of false positives to analyze the performance when models are commiting few errors. We notice that performance is similar among different models but that experiment 2 outperforms simpler models. It is also clear that performance is also dependent on the training and test set used shown by the different average performance in each fold.
-%DiscussionÑ too small test sets. 
+To better analyze our models we look at IOU as the probability threshold varies (Fig.~\ref{fig:IOUResults}): as expected, IOU starts at zero, increases gradually and decreases again as models go from predicting nothing as positive (low intersect) to predicting everything as positive (high union). Overall, curves for models 2 (yellow) and 3 (red) peak higher than those for other models, likely because they learn better feature representations. Model 1.1 (magenta), which is the only one that does not use a weighted function, performs better at lower thresholds because it only predicts low probabilities (less than 0.3); it is also the poorest performer, contrary to what the FROC curve may imply.
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=\textwidth]{plots/IOU_all_folds.pdf}
+	\caption[IOU curves]{IOU curves for every model and fold for varying probability thresholds. Experiments are drawn in different colors and markers are used to differentiate among folds.}
+	\label{fig:IOUResults}
+\end{figure}
+
+
+%The highest peak in each curve represents the best possible IOU that a model could achieve.
+%Peaks in each curve represent the best possible IOU that the model could achieve.
+The highest peak in each curve represents the best possible IOU that a model achieves in that fold. Although this number is not valid on its own as, beforehand, we ignore what threshold produces it, it is a good proxy for performance and could be used to compare between models. We list these values in Table~\ref{tab:PeakIOUResults}. Once more, models 2 and 3 outperform the simpler architecture with model 3 producing the best results. Comparing experiments 1.1, 1.2 and 1.3, we notice that adding a weighted loss function improves performance while enhancing the images has little effect and may even be detrimental.
+%The difference in average performance across folds (last row) shows that, even for the same model, some folds have better (or worse) results. 
+The difference in average performance across folds (last row) shows that results also depend on the specific fold used. 
+This variability would decrease if we used bigger test sets.
+%This difference shrinks for bigger test sets.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{l*{6}{c}}
 		\hline
-		 & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} &\textbf{Fold 4} &\textbf{Fold 5} & \textbf{Average} \\
+		 & \textbf{Fold 1} & \textbf{Fold 2} & \textbf{Fold 3} &\textbf{Fold 4} &\textbf{Fold 5} & \textbf{Average $\pm$ SEM} \\
 		\hline 
-		Experiment 1.1	&0.09		&\textbf{0.29}	&0.28	&0.29	&0.38	&0.26\\
-		Experiment 1.2	&0.15		&0.28		&0.13		&0.26	&0.43	&0.25\\
-		Experiment 1.3	&0.12		&0.25		&0.21			&0.24	&0.38	&0.24\\
-		Experiment 2	&\textbf{0.21} &0.21	&\textbf{0.35}		&\textbf{0.30}	&0.41	&\textbf{0.29}\\
-		Experiment 3	&0.18		&0.21		&0.22		&0.26	&\textbf{0.48}	&0.27\\
-		Average			&0.15		&0.25		&0.23			&0.27	&0.42&\\
+		Experiment 1.1	&0.03	&0.09	&0.21	&0.20	&0.10	&0.13 $\pm$ 0.03\\
+		Experiment 1.2	&0.04	&0.10	&0.21	&0.32	&0.12	&0.16 $\pm$ 0.04\\
+		Experiment 1.3	&0.02	&0.12	&0.27	&0.17	&0.18	&0.15 $\pm$ 0.04\\
+		Experiment 2	&0.11 	&0.10	&\textbf{0.32}	&0.37	&0.28	&0.24 $\pm$ 0.05\\
+		Experiment 3	&\textbf{0.17}	&\textbf{0.17}	&0.23	&\textbf{0.40}	&\textbf{0.40}	&0.27 $\pm$ 0.05\\
+		Average			&0.07		&0.11	&0.25	&0.29	&0.22 &\\
 		\hline
 	\end{tabular}
-	\caption[Sensitivity at 1 FP/image for the final models]{Sensitivity at 1 FP per image. Best model in each column is shown in bold.}
-	\label{tab:SensitivityResults}
+	\caption[Peak IOU values for the final models]{Best possible IOU for each experiment. Best model in each column is shown in bold. SEM stands for standard error of the mean.}
+	\label{tab:PeakIOUResults}
 \end{table}
-% discussion: That there is a lot of variance depending on what fold you are in, this is mostly due to the examples in the test set than those in the training set as those in the training set
-% discussion: that x model is usually better
-% discussion: Effect on 1 of enhancement and weighted loss.
-% discussion: that using a weighted loss usually help converged into a higher range (rather than all being very negative close to zero, now predictions ranged from 0-1)
-% discussion: training with loss function is more stable, (ranges are not so low)
 
-Finally, to get a sense of the qualitative value of our results, we examined the output produced by each network in some chosen examples (Appendix~\ref{app:examples}). Networks used for experiment 2 and 3 seem to outperform those from the first experiment, they perform well when the breast mass is easier to see in the mammogram and are less prone to signal chest muscle as a possible mass. The network from experiment 2 was specially impressive in signaling some of the more subtler lessions, while none of the other networks excelled at this task.
+Lastly, we examine predictions made by our models to get a sense of their qualitative value (Appendix~\ref{app:examples}).
+Models predict visually similar heatmaps but different models appear to produce better predictions for particular examples. Models 1.1, 1.3 and 3 are consistently good. On the downside, all models mark chest muscle with high probability and none is particularly good at localizing subtle lesions. It is also notable that model 1.1 is very conservative in its predictions while model 2 is quite more liberal, predicting large areas as probable masses.
 
 \section{Discussion}
-We found that convolutional neural networks are a viable option for breast cancer lession segmentation. 
+We found that convolutional networks are able to segment breast cancer masses as a single end-to-end model going from the original mammograms to a full-size prediction; this simplifies the complex pipeline of analysis used for current computer vision systems. We expect medical image analysis to benefit from adopting modern machine learning techniques to complement or replace more established systems. This work is a step in that direction and, to the best of the author knowledge, the first documented use of convolutional networks for breast cancer lesion segmentation.
 
-More research is needed to confirm some of the insights from this work. 
+Architectures with many layers and a high number of parameters produced the best results regardless of the exact details; however, overfitting started to show in some of our bigger models. Networks with sufficient power were able to learn the complex features needed for this task with realtive ease. Most networks were resilient to changes in th regularization hyperparameter with slightly more work needed to select a learning rate with good convergence properties. Furthermore, using a weighted loss function made training more stable by allowing the network to focus on correctly classifying masses rather than that; this also generated networks who gave predictions in  the complete zero to one range rather than only on the lower side of the scale. Most models did not benefit from enhancing the input images, producing better results for unpreprocessed images. We beleive complex networks benefit from details in the image that were sometimes lost in the preprocessing step. Lckily, This is encouraging given that the goal of this work was to get rid of as many possible steps. produce lesion segmentations in a single learnable step without need of expertise or particular care. And that goal was achieved.
 
-\begin{comment}
+This results agree with many of the positive results achieved in machine learning and medical imaging where convolutional networks as well as other deep learning models have shown succesful results. And some of the more succesful models have started to be deployed for public use both on commercial and medical settings.
+
+Tha main limitation of this work is the small size of our dataset which resulted in small test sets, which in turn gave performance estiomates with high variance difficulting conclusions and assignnig responability. It could also be said that the performance of the network is below that of other more complex systems used for this task, although it is hard to directly compare given the different ways metrics are computed. Both of this limitations could be solved usiung a bigger data set to provide more estable estimates of performance and give more examples for the network to learn. We attest here a proof-of-principle and it is succesful but more research is definitely neede both to confirm the insights obtained in this work and to implement a functional system that could be deployed in real systems. % the way we test things is also weird.
+
+A question left unanswered is whether convolutional networks will be able to exmploit the ability to see more data or whether we will need to enrich our data with other lesions or with breast density to. Given their succesful application inother data-rich setting we believe that convolutional networks are flexible enough to perform much better than presented here and we definitely encourage further work in this direction.
+
+The significance of this works relies on the promise that machine learning systems could improve the performance of current systems and the impact that a small percentage of benefit could have for millions of women. Having a system performing at human or super-human level, as some convolutional networks do in other computer vision tasks, could really improve the rate of detection, be helpful to radioogist and help people in places where it may be hard to get specialized medical attention. We expect machine learning systems to play a role in this quest.
+
 \section{Summary}
-Results for Experiment 1 and Experiment 2 were both equally poor. Experiment 3 produced average results. We believe that it is because of this and this. this could be done... or whatever.
-\end{comment}
+All models produced good results with complex architectures performing slightly better. Using a weighted loss function to give more weight to errors committed on breast masses helped both with training and results but using the simple form of image enhancement we use here did not. Results look promising but more research is needed before we can replace entire mammographic systems with a single convolutional network.

@@ -1,0 +1,42 @@
+We build a complex architecture to test whether we can benefit from the added flexibility.
+
+\subsection{Architecture}
+\label{subsec:Architecture1}
+%Following recommendations from Section~\ref{sec:PracticalDL}, we define a network with seven convolutional layers and two fully connected layers (Tab.~\ref{tab:convNetArchitecture}). 
+We model our architecture on a VGG network~\cite{Simonyan2014}, winner of the 2014 ImageNet competition~(Tab.~\ref{tab:convNetArchitecture1}).
+\begin{table}[h]
+	\centering
+	\begin{tabular}{lccccr}
+	\hline
+	\textbf{Layer} & \textbf{Filter} & \textbf{Stride} &\textbf{Pad} & \textbf{Volume} & \textbf{Parameters} \\
+	\hline
+	\texttt{INPUT}	& -	& - & - & $112 \times 112 \times 1$ & -\\
+	\texttt{CONV -> Leaky RELU} & $6 \times 6$ & 2 & 2 & $56 \times 56 \times 56$ & 2\,072\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $56 \times 56 \times 56$ & 28\,280\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $28 \times 28 \times 56$ & -\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $28 \times 28 \times 84$ & 42\,420\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $28 \times 28 \times 84$ & 63\,588\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $14 \times 14 \times 84$ & -\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 84\,784\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 113\,008\\
+	\texttt{CONV -> Leaky RELU} & $3 \times 3$ & 1 & 1 & $14 \times 14 \times 112$ & 113\,008\\
+	\texttt{MAXPOOL} & $2 \times 2$ & 2 & 0 & $7 \times 7 \times 112$ & -\\
+	\texttt{FC -> Leaky RELU} & $7 \times 7$ & 1 & 3 & $7 \times 7 \times 448$ & 2\,459\,072\\
+	\texttt{FC} & $1 \times 1$ & 1 & 0 & $7 \times 7 \times 1$ & 449 \\
+	\texttt{BILINEAR (x16)} & - & - & - & $112 \times 112 \times 1$ & -\\
+	\hline
+	\end{tabular}
+	\caption[Selected convolutional network architecture]{Architecture of the network used for experiments. It shows the filter size, stride, padding, resulting volume and number of learnable parameters per layer.}
+	\label{tab:convNetArchitecture1}
+\end{table}
+
+This network has an effective receptive field of $184 \times 184$ pixels ($2.9 \times 2.9$ cms) and defines $2\,906\,681$ parameters. %2 906 681 %108 752 632 float numbers
+
+\subsection{Regularization}
+We use dropout after every leaky ReLU layer with probability 0.9, 0.9, 0.8, 0.8, 0.7, 0.7, 0.7 and 0.6, respectively. We also use l2-norm regularization with $\lambda$ selected using a validation set.
+
+\subsection{Loss function}
+As explained in Sec~\ref{subsec:Experiment1_2}, we use a weighted logistic loss function with errors over breast mass pixels weighted by fifteen, over normal breast tissue by one and over the background by zero.
+
+\subsection{Experiments}
+We train a single network using input images with no enhancement. Results from this experiment are directly comparable to those in Experiment 1.2 which has the same configuration.

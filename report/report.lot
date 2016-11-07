@@ -9,7 +9,7 @@
 \contentsline {table}{\numberline {3.4}{\ignorespaces Convolutional network architecture for Experiment 3}}{41}{table.caption.39}
 \contentsline {table}{\numberline {3.5}{\ignorespaces Available hardware for experiments\relax }}{42}{table.caption.40}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Hyperparameter search results}}{45}{table.caption.42}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Sensitivity at 1 FP/image for the final models}}{46}{table.caption.44}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Selected hyperparameters}}{45}{table.caption.42}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Peak IOU values for the final models}}{46}{table.caption.45}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,0 +1,39 @@
+To investigate whether negative results are the product of a poorly chosen architecture we designed a different network that is deeper but has fewer parameters than the one used in the previous experiment.
+
+\subsection{Architecture}
+We model the architecture on the Residual network~\cite{He2015b}, winner of the 2015 ImageNet competition(Tab~\ref{tab:convNetArchitecture3}).
+\begin{table}[h]
+	\centering
+	\begin{tabular}{lcccccr}
+	\hline
+	\textbf{Layer} & \textbf{Filter} & \textbf{Stride} & \textbf{Pad} & \textbf{Dilation} & \textbf{Volume} & \textbf{Parameters} \\
+	\hline
+	\texttt{INPUT}	&- & -	& - & - & $116 \times 116 \times 1$ & -\\
+	\texttt{CONV -> LRELU}	& $6 \times 6$ & 2 & 2 & 1 & $58 \times 58 \times 32$ & 1\,184\\
+	\texttt{CONV -> LRELU}	& $3 \times 3$ & 1 & 1 & 1 & $58 \times 58 \times 32$ & 9\,248\\
+	\texttt{CONV -> LRELU}	& $3 \times 3$ & 2 & 1 & 1 & $29 \times 29 \times 64$ & 18\,496\\
+	\texttt{CONV -> LRELU}	& $3 \times 3$ & 1 & 1 & 1 & $29 \times 29 \times 64$ & 36\,928\\
+	\texttt{CONV -> LRELU}	& $3 \times 3$ & 1 & 2 & 2 & $29 \times 29 \times 128$ & 73\,856\\
+	\texttt{CONV -> LRELU}	& $3 \times 3$ & 1 & 2 & 2 & $29 \times 29 \times 128$ & 147\,584\\
+	\texttt{CONV -> LRELU}	& $3 \times 3$ & 1 & 2 & 2 & $29 \times 29 \times 128$ & 147\,584\\
+	\texttt{CONV -> LRELU}	& $3 \times 3$ & 1 & 2 & 2 & $29 \times 29 \times 128$ & 147\,584\\
+	\texttt{CONV -> LRELU}	& $3 \times 3$ & 1 & 4 & 4 & $29 \times 29 \times 256$ & 295\,168\\
+	\texttt{CONV}	& $8 \times 8$ & 1 & 14 & 4 & $29 \times 29 \times 1$ & 16\,385\\
+	\texttt{BILINEAR (x4)}		& - & - && - & $116 \times 116 \times 1$ & -\\
+	\hline
+	\end{tabular}
+	\caption[Convolutional network architecture for Experiment 3]{Architecture of the network used for experiments. It shows the filter size, stride, dilation and padding in each layer as well as the resulting volume and number of learnable parameters per layer. \texttt{LRELU} stands for leaky ReLU.}
+	\label{tab:convNetArchitecture3}
+\end{table}
+
+	 %We replace pooling by strided convolutions~\cite{Szegedy2014} or dilated convolutions~\cite{Chen2015}. Input images are whitened independently and passed to the network that produces the predicted segmentation. Because the volume is downsampled only by a factor of four before the upsampling layer, we are able to produce fine-grained segmentations.
+This 10-layer architecture uses 894\,017 parameters and has a receptive field size of $228 \times 228$, equivalent to a $3.6 \times 3.6$ cm area.
+	
+\subsection{Regularization}
+We use l2-norm regularization ($\lambda$ chosen using a validation set) and dropout after RELU layers with probabilities 0.9, 0.9, 0.8, 0.8, 0.7, 0.7, 0.7, 0.7 and 0.6.
+
+\subsection{Loss function}
+We use a weighted logistic loss function with errors over breast masses weighted by 0.9, errors over normal breast tissue weighted by 0.1 and errors over background weighted by zero. 
+
+\subsection{Experiments}
+We train a single network in enhanced mammograms. Results from this experiment can be compared to those in Experiment 1.3.

@@ -36,17 +36,17 @@
 \BOOKMARK [2][-]{subsection.3.2.5}{Cropping}{section.3.2}% 36
 \BOOKMARK [2][-]{subsection.3.2.6}{Data augmentation}{section.3.2}% 37
 \BOOKMARK [2][-]{subsection.3.2.7}{Storage}{section.3.2}% 38
-\BOOKMARK [1][-]{section.3.3}{Experiment 1}{chapter.3}% 39
+\BOOKMARK [1][-]{section.3.3}{Model 1}{chapter.3}% 39
 \BOOKMARK [2][-]{subsection.3.3.1}{Architecture}{section.3.3}% 40
 \BOOKMARK [2][-]{subsection.3.3.2}{Regularization}{section.3.3}% 41
 \BOOKMARK [2][-]{subsection.3.3.3}{Loss function}{section.3.3}% 42
 \BOOKMARK [2][-]{subsection.3.3.4}{Experiments}{section.3.3}% 43
-\BOOKMARK [1][-]{section.3.4}{Experiment 2}{chapter.3}% 44
+\BOOKMARK [1][-]{section.3.4}{Model 2}{chapter.3}% 44
 \BOOKMARK [2][-]{subsection.3.4.1}{Architecture}{section.3.4}% 45
 \BOOKMARK [2][-]{subsection.3.4.2}{Regularization}{section.3.4}% 46
 \BOOKMARK [2][-]{subsection.3.4.3}{Loss function}{section.3.4}% 47
 \BOOKMARK [2][-]{subsection.3.4.4}{Experiments}{section.3.4}% 48
-\BOOKMARK [1][-]{section.3.5}{Experiment 3}{chapter.3}% 49
+\BOOKMARK [1][-]{section.3.5}{Model 3}{chapter.3}% 49
 \BOOKMARK [2][-]{subsection.3.5.1}{Architecture}{section.3.5}% 50
 \BOOKMARK [2][-]{subsection.3.5.2}{Regularization}{section.3.5}% 51
 \BOOKMARK [2][-]{subsection.3.5.3}{Loss function}{section.3.5}% 52
@@ -66,12 +66,13 @@
 \BOOKMARK [1][-]{section.4.1}{Hyperparameter Search}{chapter.4}% 66
 \BOOKMARK [1][-]{section.4.2}{Experiments}{chapter.4}% 67
 \BOOKMARK [1][-]{section.4.3}{Discussion}{chapter.4}% 68
-\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 69
-\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 70
-\BOOKMARK [0][-]{appendix.A}{Examples}{}% 71
-\BOOKMARK [1][-]{section.A.1}{Example 1}{appendix.A}% 72
-\BOOKMARK [1][-]{section.A.2}{Example 2}{appendix.A}% 73
-\BOOKMARK [1][-]{section.A.3}{Example 3}{appendix.A}% 74
-\BOOKMARK [1][-]{section.A.4}{Example 4}{appendix.A}% 75
-\BOOKMARK [1][-]{section.A.5}{Example 5}{appendix.A}% 76
-\BOOKMARK [0][-]{appendix*.55}{Bibliography}{}% 77
+\BOOKMARK [1][-]{section.4.4}{Summary}{chapter.4}% 69
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 70
+\BOOKMARK [1][-]{section.5.1}{Future Work}{chapter.5}% 71
+\BOOKMARK [0][-]{appendix.A}{Examples}{}% 72
+\BOOKMARK [1][-]{section.A.1}{Example 1}{appendix.A}% 73
+\BOOKMARK [1][-]{section.A.2}{Example 2}{appendix.A}% 74
+\BOOKMARK [1][-]{section.A.3}{Example 3}{appendix.A}% 75
+\BOOKMARK [1][-]{section.A.4}{Example 4}{appendix.A}% 76
+\BOOKMARK [1][-]{section.A.5}{Example 5}{appendix.A}% 77
+\BOOKMARK [0][-]{appendix*.56}{Bibliography}{}% 78

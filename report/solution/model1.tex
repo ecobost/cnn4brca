@@ -1,0 +1,49 @@
+We use a simple architecture to have a baseline performance for convolutional networks and test the effect of using a weighted loss function and enhancing the input images.
+
+\subsection{Architecture}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{lcccccr}
+	\hline
+	\textbf{Layer} & \textbf{Filter} & \textbf{Stride} & \textbf{Pad} & \textbf{Dilation} & \textbf{Volume} & \textbf{Parameters} \\
+	\hline
+	\texttt{INPUT}	&- & -	& - & - & $52 \times 52 \times 1$ & -\\
+	\texttt{CONV -> RELU}	& $5 \times 5$ & 2 & 2 & 1 & $26 \times 26 \times 32$ & 832\\
+	\texttt{CONV -> RELU}	& $3 \times 3$ & 1 & 1 & 1 & $26 \times 26 \times 32$ & 9\,248\\
+	\texttt{CONV -> RELU}	& $3 \times 3$ & 2 & 1 & 1 & $13 \times 13 \times 64$ & 18\,496\\
+	\texttt{CONV -> RELU}	& $3 \times 3$ & 1 & 1 & 1 & $13 \times 13 \times 64$ & 36\,928\\
+	\texttt{CONV -> RELU}	& $3 \times 3$ & 1 & 2 & 2 & $13 \times 13 \times 96$ & 55\,392\\
+	\texttt{CONV -> RELU}	& $3 \times 3$ & 1 & 2 & 2 & $13 \times 13 \times 96$ & 83\,040\\
+	\texttt{CONV}			& $5 \times 5$ & 1 & 6 & 3 & $13 \times 13 \times 1$ & 2\,401\\
+	\texttt{BILINEAR (x4)}	& - & - && - & $52 \times 52 \times 1$ & -\\
+	\hline
+	\end{tabular}
+	\caption[Convolutional network architecture for Experiment 1]{Architecture of the network used for the first experiments. It shows the filter size, stride, padding and dilation in each layer as well as the resulting volume and number of learnable parameters per layer.}
+	\label{tab:convNetArchitecture1}
+\end{table} % 206 337 params
+
+Each image is whitened (zero-mean centered and divided by its standard deviation) individually before being input. 
+The first convolutional layer reduces the spatial dimensions of the input from $52 \times 52$ to $26 \times 26$ to reduce the number of parameters and memory requirements and augment its receptive field. Subsequent convolutional layers preserve the dimensions of its input volume relegating subsampling to pooling layers. 
+Finally, the volume is upsampled by a factor of four to recover the dimensions of the original image. The network outputs a heatmap of logits with the same size as the input image.
+%We produce a heatmap of logits rather than probabilities to improve numerical stability.
+
+The effective receptive field of the network is $101 \times 101$ pixels , which equates to $2.1 \times 2.1$ cms. This architecture uses 206\,337 parameters. %2 906 681
+
+\subsection{Regularization}
+We use l2-norm regularization with $\lambda$ selected using a validation set as explained in Sec.~\ref{subsec:Hyperparameters}.
+
+\subsection{Loss function}
+We compute the logistic loss function for each pixel in the produced segmentation and average the loss over pixels in the breast area---background is ignored. This amounts to using a weighted loss function where errors in the breast tissue and masses are weighted by one and those in the background are weighted by zero.
+
+\subsection{Experiments}
+We performed three experiments using this architecture:
+\subsubsection{Experiment 1.1} 
+To obtain a performance baseline, we trained this simple network in minimally processed images, i.e., mammograms without any enhancement.
+
+\subsubsection{Experiment 1.2} 
+\label{subsec:Experiment1_2}
+To fight the class imbalance due to breast mass pixels being rare in comparison to normal breast tissue pixels, we modify the loss function by weighting errors over masses by fifteen, those over normal breast tissue by one and ignoring those over the background. This forces networks to invest more resources in correctly classifying masses to avoid this costly errors~\cite{Provost2000}. As in the previous experiment, we do not enhance the input.
+%This technique balances the total sum of losses from the common class (normal breast tissue) with that of the rare class (breast masses) and is often used to fight class imbalance.
+
+\subsubsection{Experiment 1.3}
+In the final experiment, we combine both a weighted loss function and enhanced input images.

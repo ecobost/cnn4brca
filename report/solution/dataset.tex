@@ -46,20 +46,20 @@ For each fold, we randomly assign 80\% of patients to the training set and 20\% 
 \end{table}
 
 \subsection{Image enhancement (Exp. 1.3 and Exp. 3)}
-We zero any pixel below the mean pixel intensity of the image (calculated only on the breast area) and scale the rest linearly to cover the entire intensity range (0-255); this reduces all small variations in the background to black and increases the contrast of the image (Fig.~\ref{subfig:Preprocessingb}).
+We set to zero any pixel below the mean pixel intensity of the image (calculated only on the breast area) and scale the rest linearly to cover the entire intensity range (0-255); this reduces to black small variations in the background and increases the contrast of the image (Fig.~\ref{subfig:Preprocessingb}).
 %Background reduction reduces all small variations in the background to black and linear normalization increases the contrast of the remaining image. 
 
 Background reduction plus contrast normalization highlights breast masses, which are brighter than normal breast tissue; normalizes images from patients with darker or lighter tissue and improves convergence~\cite{Arevalo2016}. However, it may destroy important texture information by blending it with the background or cause false positives by highlighting dense tissue.
 
 \subsection{Resizing}
-Our convolutional networks have an effective receptive field (spatial dimensions around a pixel that affect its prediction) of roughly $128 \times 128$ pixels.
+Our convolutional networks have an effective receptive field, the spatial dimensions around a pixel that affect its prediction, of roughly $128 \times 128$ pixels.
 We resize our images to contain $2 \times 2$ cm in this area---roughly a 2.2 downsampling factor~\footnote{We use $96 \times 96$ for Experiment 1, whose network has an smaller receptive field.} (Fig.~\ref{subfig:Preprocessingc}). Considering that masses are rarely bigger than 2cm (length of the long axis)~\cite{Sahiner1996}, the network sees a good portion of the lesion during classification. 
 
 We resize images with PILLOW, the Python Image Library, using Lanczos interpolation for mammograms and nearest neighbor interpolation for labels. Lanczos interpolation is a high quality downsampling filter recommended by PILLOW and nearest neighbor interpolation assures that the reduced label contains only valid values (white, gray and black).
 
 \subsection{Cropping}
-We calculate the bounding box of the breast area in the label image and crop the mammogram and the label to delete unnecesary black spaces (Fig.~\ref{subfig:Preprocessingd}). 
-Because our networks downsample images to later upsample them by the same factor, we make sure the dimensions of the cropped image are multiples of this factor (cropping a slighlty bigger area if needed) to recover the exact dimensions after upsampling.
+We calculate the bounding box of the breast area in the label image and crop the mammogram and label to delete unnecesary black spaces (Fig.~\ref{subfig:Preprocessingd}). 
+Because our networks downsample images to later upsample them by the same factor, we ensure that this factor divides the dimensions of the cropped image (cropping a slightly bigger box if needed) to recover the exact dimensions after upsampling.
 
 \begin{figure}[h]
 	\centering

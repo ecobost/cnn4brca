@@ -1,7 +1,19 @@
 \chapter{Conclusions}
 \label{ch:Conclusions}
-We found that...
+%best candidate
+% main points and what can be learnt
+We found that convolutional neural networks are a viable option for breast cancer lesion segmentation. 
+We tained variosu models with different architecture and training decisions. Most shown promising performance and open to the door for further refinement and improvement.
 
-% What we've found and why is it important
+Deep learning is a fast moving field and advances in both there and data conllection for many radiological tasks will bear fruit soon.
+Although they have been used for small tasks by other breast cancer research groups, we beleive a correclty designed convolutional networks trained with enough data could play a bigger role in current computer vision models. We encourage research in this area. 
 
 \section{Future Work}
+This work is certainly not a complete system and we believe there are many possible avenues of improvement. 
+
+Perhaps the most important issue that needs to be adressed is the lack of large mammographic datasets. One of the most straight forward solutions could be to join different datasets trying to standardize images to appear better, curating the dataset will definetly help improve results, too for instance by removing some of the chest muscle or the bigger lesions manually, this could hinder performance because the network has to learn to detect both subtle as well as large obvious lesions, which have too much leverage and can topple the performance and should be detectable by simple inspection, as well as to avoid learning from chest mucle. Another cleaning step could be to add other types of lesions as positive images, again to avoid forcing the netowrk to predict negatives for lesions who may not be classified as a mass but should definitely be identified as a mass. Adding a richer set of labels, for instance to separate breast tissue into more than one step could als facilitate the task. film ammograms.
+
+Another possible avenue of research is to develop better ways to evaluate models that account for the many different factiors that are favorable/wantable so the best architectures and models can be properly separated.
+
+Making sure that results shwon here are good enough.
+
