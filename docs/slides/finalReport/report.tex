@@ -20,7 +20,7 @@
 \title[Thesis Dissertation]{Segmentation of Breast Cancer Masses in Digital Mammograms: A Convolutional Network}
 \subtitle{Master's thesis}
 \author[Erick Cobos]{Erick Cobos Tandazo \\ \medskip \footnotesize \textbf{Advisor:}\\Dr. Hugo Terashima Marín \\ \textbf{Supervisors:}\\Dr. Santiago Enrique Conant Pablos\hfill Dr. José Gerardo Tamez Peña}
-\date[November, 2016]{November, 2016}
+\date[December, 2016]{December, 2016}
 \institute[Tec de Monterrey]{
     Centro de Sistemas Intelligentes \\ Tecnologico de Monterrey}
 \subject{Machine Learning}
@@ -54,7 +54,7 @@
 		\end{itemize}
 	\end{frame}
    
-\begin{comment} 
+    \section[Breast Cancer]{Breast Cancer}
     \begin{frame}
      	\frametitle{Why breast cancer?}
      		Breast cancer is the most commonly diagnosed cancer among women.
@@ -68,8 +68,7 @@
 %About 1 in 8 U.S., UK women will develop invasive breast cancer.
 %Death rates higher than those for any other cancer, besides lung cancer.
 %People in the campus have been wporking on this already.
-\end{comment}
-    
+
 	\begin{frame}
 		\frametitle{Breast cancer signs}
 		Masses vs. microcalcifications
@@ -107,7 +106,6 @@
 	
 	
 	\section[Convolutional networks]{Convolutional networks}
-\begin{comment}
 	\begin{frame}
 	\frametitle{Why convolutional networks?}
 		\begin{itemize}
@@ -121,7 +119,6 @@
 % From 2012 to now they have been used everywhere become standard in image processing, if there is a breakthrough in computer vision, most probably is donde with convnets.
 % ImageNet (super-human ability) They can be used as is for image segmentation.
 % Everything is learned, end-to-end
-\end{comment}
 
 	\subsection[Classification]{Classification}
 	\begin{frame}
@@ -246,7 +243,6 @@
 
 
 	\section[Experiments]{Experiments}
-\begin{comment}
 	\begin{frame}
 		\frametitle{Literature review}
 		\vspace{15pt}
@@ -281,10 +277,10 @@
 		\source{[Arevalo et al., 2016], [Dubrovina et al.,2015]}
 		% What has been done in breast cancer, Wrote background, examples and accuracies
 	\end{frame}
-\end{comment}	
+	
     \begin{frame}
         \frametitle{Database}
-        Our mammographic database provided by the Breast Cancer Digital Repository Consortium consists of 256 digital mammograms from 63 portuguese patients with at least one breast mass. % 139 in total
+        Our mammographic database provided by the Breast Cancer Digital Repository Consortium consists of 256 digital mammograms from 63 Portuguese patients with at least one breast mass. % 139 in total
         
         We augment the data set for training.
         \small
@@ -371,7 +367,7 @@
 			\end{subfigure}
 			~
 			\begin{subfigure}{0.5\textwidth}
-				\includegraphics[width=\textwidth]{plots/code.png}
+				\includegraphics[width=\textwidth]{plots/tf_graph.png}
 			\end{subfigure}
 		\end{figure}
 		%Seleccionar software, aprender tensorflow y havcer modelo.
@@ -472,7 +468,7 @@
 	\begin{frame}
 	    \frametitle{Training}
 	    \textbf{Hyperparameter search:} 
-	    For each fold, we train 25 networks with different learning rate and regularization parameters to select the best combination. We hold out 20\% of the training set for evaluation.
+	    For each fold, we train 20 networks with different learning rate and regularization parameters to select the best combination. We hold out 20\% of the training set for evaluation.
 	    
 	    \medskip
 	    \textbf{Training:}	    
