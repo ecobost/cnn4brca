@@ -15,7 +15,7 @@ a01184587@itesm.mx
 
 Output should look like this:
 
-<img src="database_info/createMask/img_20_30_1_RCC.png" width="300"/> <img src="database_info/createMask/img_20_30_1_RCC_mask.png" width="300"/> 
+<img src="database_info/createMask/img_20_30_1_RCC.png" width="250"/> <img src="database_info/createMask/img_20_30_1_RCC_mask.png" width="250"/> 
 
 3. Use [prepareDB](code/prepareDB.py) to enhance the contrast of the mammograms and downsample them to have a manageable size (2cmx2cm in the mammogram in 128x128).
 
