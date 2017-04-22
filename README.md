@@ -8,10 +8,10 @@ Most articles in the Bibliography folder were obtained directly from the authors
 1. You can obtain the BCDR database [online](http://bcdr.inegi.up.pt/) ([Moura et al.](http://dx.doi.org/10.1007/s11548-013-0838-2)). I used the BCDR-DO1 data set, this one has around 70 patients(~300 digital mammograms) with breast masses and their lesion outlines. [fileOrganization](database_info/file_Organization) has some info on how is this images ordered
 2. To obtain the masks (from the outlines provided in the database) you can use [createMasks.m](database_info/createMask/createMask.m). This reads the mammogram info from a couple of files provided in the database: [sample bcdr_d01_img.csv](database_info/createMask/bcdr_d01_img.csv) and [sample bcdr_d01_outlines.csv](database_info/createMask/bcdr_d01_outlines.csv)
 Output should look like this:
-![mammogram](database_info/createMask/img_20_30_1_RCC.png) ![mask] (database_info/createMask/img_20_30_1_RCC_mask.png)
+<img src="database_info/createMask/img_20_30_1_RCC.png" width="480" align='left'> <img src="database_info/createMask/img_20_30_1_RCC_mask.png" width="480" align='right'>
 3. Use [prepareDB](code/prepareDB.py) to enhance the contrast of the mammograms and downsample them to have a manageable size (2cmx2cm in the mammogram in 128x128).
 Output looks like this:
-![resized mammogram](docs/report/plots/mammogram_resized.png)
+<img src="docs/report/plots/mammogram_resized.png" width="480" align='left'>
 4. Finally you would need to divide the dataset into training, validation and test patients. You would need to produce a .csv with image and label filenames as [this](code/example.csv) for each set.
 
 ## Training
@@ -22,6 +22,7 @@ Output looks like this:
 ## Evaluation
 1. You can use [compute_metrics](code/compute_metrics.py) or [compute_FROC](code/compute_FROC.py) to compute evaluation metrics or the FROC curve.
 
+You are invited to check the code for more details, I tried to document it nicely.
 
 ##### Contact info:
 
