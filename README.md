@@ -16,7 +16,7 @@ Output looks like this:
 
 ## Training
 1. You would need to [install Tensorflow](https://www.tensorflow.org/install/)
-2. Run [train](code/train.py) or [train_with_val_split](code/train_with_val_split.py) to train networks. These train the network defined in [model_v3](code/model_v3.py) which has 10 layers (900K parameters), uses dilated convolutions and is modelled on a ResNet network.
+2. Run [train](code/train.py) or [train_with_val_split](code/train_with_val_split.py) to train networks. These train the network defined in [model_v3](code/model_v3.py), a fully convolutional network with 10 layers (900K parameters) that uses dillated convolution and is modelled in a ResNet network. Training is done image by image (no batch, but cost is computed in every pixel of the thousand of pixels) and uses dropout among other things
     Note: Code was written for tensorflow 1.11.0 so it would need to be modified to make work in tf1.0
 
 ## Evaluation
